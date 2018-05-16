@@ -1,13 +1,23 @@
-# Usage and Scaling
+---
+
+Copyright:
+  years: 2017,2018
+lastupdated: "2018-05-14"
+---
+
+{:new_window: target="_blank"}
+{:shortdesc: .shortdesc}
+{:screen: .screen}
+{:codeblock: .codeblock}
+{:pre: .pre}
+
+# Settings
 
 ## Usage
 The _Overview_ page of yhe service contains a quick summary of the resource usage of the service. To get a breakdown of the resources allocated and used by your service, got to the _Settings_.
 
 
 ## Scaling
-
-
-
 
 ### Storage
 Disk usage for your data is allocated to the size of your data on disk. As you store more data in the service the amount of disk space will increase automatically. Your data is replicated across two data members in the PostgreSQL cluster, so the amount of space your usage reflects is roughly twice the saize of your data. Billing is based on the total amount of disk space allocated to your service.

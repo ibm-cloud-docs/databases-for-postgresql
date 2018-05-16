@@ -1,4 +1,17 @@
-## Pricing
+---
+
+Copyright:
+  years: 2017,2018
+lastupdated: "2018-05-14"
+---
+
+{:new_window: target="_blank"}
+{:shortdesc: .shortdesc}
+{:screen: .screen}
+{:codeblock: .codeblock}
+{:pre: .pre}
+
+# Pricing
 
 ## Base Configuration
 An ICD for PostgreSQL service is a cluster with two data nodes, each data node containing 1GB storage and 102MB of memory, with a total size of 2GB storage and 204MB of memory. The cost of the service is based on the total size of the service across these two dimentions.

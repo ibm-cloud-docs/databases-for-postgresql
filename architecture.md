@@ -1,3 +1,16 @@
+---
+
+Copyright:
+  years: 2017,2018
+lastupdated: "2018-05-14"
+---
+
+{:new_window: target="_blank"}
+{:shortdesc: .shortdesc}
+{:screen: .screen}
+{:codeblock: .codeblock}
+{:pre: .pre}
+
 # Architecture
 
 IBM Cloud Databases are managed DbaaS systems that run in containers orchestrated by Kubernetes. It's fully integrated into the IBM Cloud ecosystem. The database and it's asociated infrastructure all run in IBM Cloud.
