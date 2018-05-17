@@ -1,7 +1,7 @@
 ---
 
 Copyright:
-  years: 2017,2018
+  years: 2018
 lastupdated: "2018-05-14"
 ---
 
@@ -12,6 +12,8 @@ lastupdated: "2018-05-14"
 {:pre: .pre}
 
 # About ICD for PostgreSQL
+
+Lorem Ipsum
 
 
 ## Creating
