@@ -6,6 +6,7 @@ Compose For PostgreSQL
 
 	{: .navgroup id="learn"}
 	index.md
+	getting-started.md
     architecture.md
 	pricing.md
     security.md

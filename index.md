@@ -13,9 +13,10 @@ lastupdated: "2018-05-14"
 
 # About ICD for PostgreSQL
 
-Lorem Ipsum
-
+ICD for PostgreSQL is TBC.
 
 ## Creating
+
+Create things.
 
 
