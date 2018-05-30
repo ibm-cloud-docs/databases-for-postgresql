@@ -7,8 +7,6 @@ Compose For PostgreSQL
 	{: .navgroup id="learn"}
 	index.md
 	getting-started.md
-    architecture.md
-	pricing.md
     security.md
 
 	{: .topicgroup}
@@ -19,7 +17,7 @@ Compose For PostgreSQL
 
 	{: .navgroup id="howto"}
 	{: .topicgroup}
-	Connecting to Compose for PostgreSQL
+	Connecting to Databases for PostgreSQL
 		connecting-bluemix-app.md
 		connecting-external.md
 	{: .navgroup-end}
