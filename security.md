@@ -24,7 +24,7 @@ IBM Cloud Databases use the following methods to protect data in trasit or from 
 
 ## Data Resilience
 
-- Backups reside in the same cloud storage location as the database service itself, and so are also encrypted.
+- Backups are included in the service. Backups reside in the same cloud storage location as the database service itself, and so are also encrypted.
 - All IBM Cloud Databases are configured with replication, so the data exists with multiple copies and each copy resides on a different cluster and host. Where available, those clusters are also spread in different avalibility zones within the region where the service is deployed.
 
 ## GDPR
