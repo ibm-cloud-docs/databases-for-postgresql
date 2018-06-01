@@ -32,7 +32,7 @@ The default disk space for a ICD PostgreSQL serivce is ____GB. After that, disk 
 
 ### Memory
 
-The default size of memory allocated to your service is 512 MB per container. If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL service runs with two containers in a cluster, so the amount of memory you add will be added to both containers. Billing is based on the total amount of memory allocated to your service.
+The default size of memory allocated to your service is ____GB per container. If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL service runs with two containers in a cluster, so the amount of memory you add will be added to both containers. Billing is based on the total amount of memory allocated to your service.
 
 ### Scaling from the API
 
