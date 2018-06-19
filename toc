@@ -1,13 +1,11 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="databases-for-postgresqol" audience="service" href="/docs/services/databases-for-postgresql/index.html"}
-Compose For PostgreSQL
+{: .toc subcollection="databases-for-postgresql" audience="service" href="/docs/services/databases-for-postgresql/index.html"}
+Databases For PostgreSQL
 
 	{: .navgroup id="learn"}
 	index.md
-	getting-started.md
-    security.md
 
 	{: .topicgroup}
 	The Service Dashboard
@@ -18,6 +16,8 @@ Compose For PostgreSQL
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
-		connecting-bluemix-app.md
-		connecting-external.md
+		connecting-to.md
 	{: .navgroup-end}
+
+	{: .navgroup id="reference"}
+	reference-security.md
