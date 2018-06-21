@@ -28,11 +28,12 @@ Scaling operations can cause downtime. When the scaling is complete the Deployme
 Billing is based on the _total_ amount of resources allocated to the service. 
 
 ### Storage
-Disk space allocated based on the size of your data. As you store more data in the service the amount of disk space will increase automatically. Your data is replicated across two data containers in the PostgreSQL cluster, so the amount of space your usage reflects is roughly twice the size of your data. Billing is based on the total amount of disk space allocated to your service.
+
+Disk space allocated based on the size of your data. As you store more data in the service the amount of disk space will increase automatically. Your data is replicated across two data containers in the PostgreSQL cluster, so the amount of space your usage reflects is roughly twice the size of your data. 
 
 ### Memory
 
-If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL service runs with two containers in a cluster, so the amount of memory you add will be added to both containers. Billing is based on the total amount of memory allocated to your service.
+If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL service runs with two containers in a cluster, so the amount of memory you add will be added to both containers. 
 
 
 

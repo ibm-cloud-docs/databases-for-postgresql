@@ -13,7 +13,7 @@ lastupdated: "2018-05-11"
 
 # Service Overview
 
-The _Overview_ page shows you information about your {{site.data.keyword.cloud}} database. The overview includes essential identifying information and current resource usage. You'll also find a section for connection strings that you can use with tools or make use of tools to connect to your database.
+The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql}} database. The overview includes essential identifying information and current resource usage. You'll also find a section for connection strings that you can use with tools or make use of tools to connect to your database.
 
 ## Deployment Details
 
@@ -39,7 +39,7 @@ Making administrative changes to your service (such as scaling, or taking a manu
 
 ## Instance Administration API
 
-You can manage your ICD for PostgreSQL service through the {{site.data.keyword.cloud_notm}} Compose API.
+You can manage your {{site.data.keyword.databases-for-postgresql}} service through the {{site.data.keyword.cloud_notm}} Compose API.
 
 ### Foundation Endpoint
 

@@ -16,4 +16,4 @@ lastupdated: "2018-06-07"
 Automatic and On-demand
 
 
-Restore work is just starting
+## Restoring a Backup
