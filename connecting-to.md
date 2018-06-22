@@ -49,4 +49,5 @@ You can connect to your {{site.data.keyword.databases-for-postgresql}} through t
 Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using 
 `ibmcloud plugin install ibmcloud-dbs-plugin -f`
 
-Once you have it installed and logged in with `ibmcloud login`, run `ibmcloud dbs` to see usage information.
+Once you have it installed you can see to your {{site.data.keyword.databases-for-postgresql}} services with `ibmcloud dbs list`.
+Run `ibmcloud dbs help` for other commands and usage information.
