@@ -34,15 +34,17 @@ Creating service credentials does not create an associated PostgreSQL user, nor 
 {: .tip}
 
 ## `psql`
-
+The command-line interface tool for PostgreSQL is [`psql`](https://www.postgresql.org/docs/current/static/app-psql.html). You can use it to connect to and mangae your {{site.data.keyword.databases-for-postgresql}} databases. The _Service Credentials_ page displays a formatted `psql` command that will establish a connection to your service.
 
 ## API
 
-The {{site.data.keyword.cloud_notm}} Databases API is supplemental layer which adds the capability to manage {{site.data.keyword.cloud_notm}} Databases through a REST API. 
+The {{site.data.keyword.cloud_notm}} Databases API is supplemental layer which adds the capability to manage {{site.data.keyword.cloud_notm}} Databases through a REST API. Authentication is IAM-based, so use your {{site.data.keyword.cloud_notm}} account's platform API keys when accessing the API. More information on API keys is in the [IAM documentation](https://console.{{DomainName}}/docs/iam/apikeys.html#platform-api-keys).
+
+The full API reference for {{site.data.keyword.databases-for-postgresql}} is 
 
 ## `ibmcloud dbs` CLI Plugin
 
-You can connect to your {{site.data.keyword.databases-for-postgresql}} through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.bluemix.net/docs/cli/index.html#overview).
+You can connect to your {{site.data.keyword.databases-for-postgresql}} through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{{DomainName}}/docs/cli/index.html#overview).
 
 Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using 
 `ibmcloud plugin install ibmcloud-dbs-plugin -f`

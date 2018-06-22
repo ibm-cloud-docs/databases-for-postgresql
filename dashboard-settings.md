@@ -45,17 +45,3 @@ Use the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/
 
 #### To view resource information via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in:
 Use the command `ibmcloud dbs groups` to see current resource information for your service. Scaling is not currently available using the CLI.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
