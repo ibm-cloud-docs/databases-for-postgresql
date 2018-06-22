@@ -38,6 +38,7 @@ Creating service credentials does not create an associated PostgreSQL user, nor 
 
 ## API
 
+The {{site.data.keyword.cloud_notm}} Databases API is supplemental layer which adds the capability to manage {{site.data.keyword.cloud_notm}} Databases through a REST API. 
 
 ## `ibmcloud dbs` CLI Plugin
 

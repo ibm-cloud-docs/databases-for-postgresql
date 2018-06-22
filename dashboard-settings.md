@@ -14,18 +14,14 @@ lastupdated: "2018-06-18"
 
 # Settings
 
-Manage your ICD for PostgreSQL service through these available settings.
+Manage your {{site.data.keyword.databases-for-postgresql_full}} service through these available settings.
 
-## Scaling
+## Resource Management
 
-The _Scale Resources_ panel shows the current size and resource allocation for your service. You can manage resources available to your service by adjusting the individual resources. Resources that can be scaled will have a slider. Adjust the slider to raise or lower the resource allocated to your service. Click **Scale** button to trigger the rescaling and return to the dashboard overview.
+The _Scale Resources_ panel shows the current size and resource allocation for your service. You can manage resources available to your service by adjusting the individual resources. 
 
 Resources that are unable to be scaled are greyed out. They are present for informational purposes only.
 {: .tip} 
-
-Scaling operations can cause downtime. When the scaling is complete the Deployment Details pane updates to show the current usage and the new values for the available storage and memory. 
-
-Billing is based on the _total_ amount of resources allocated to the service. 
 
 ### Storage
 
@@ -34,6 +30,27 @@ Disk space allocated based on the size of your data. As you store more data in t
 ### Memory
 
 If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL service runs with two containers in a cluster, so the amount of memory you add will be added to both containers. 
+
+### Scaling
+
+Scaling operations can cause downtime. When the scaling is complete the Deployment Details pane updates to show the current usage and the new values for the available storage and memory. 
+
+Billing is based on the _total_ amount of resources allocated to the service. 
+
+#### To scale via the UI:
+Adjust the slider to raise or lower the resource allocated to your service. Click **Scale** button to trigger the rescaling and return to the dashboard overview.
+
+#### To scale via the API:
+Use the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource infromation, including which resources are adjustable. Send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request.
+
+#### To view resource information via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in:
+Use the command `ibmcloud dbs groups` to see current resource information for your service. Scaling is not currently available using the CLI.
+
+
+
+
+
+
 
 
 
