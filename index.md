@@ -11,7 +11,7 @@ lastupdated: "2018-06-19"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# About {{site.data.keyword.databases-for-postgresql_full-notm}}
+# About {{site.data.keyword.databases-for-postgresql_full_notm}}
 {: #about-databases-for-postgresql}
 
 {{site.data.keyword.databases-for-postgresql}} is a managed PostgreSQL service hosted in the {{site.data.keyword.cloud_notm}} and integrated with other {{site.data.keyword.cloud_notm}} services. It is alo currently highly-experimental and should not be used for production workloads in its current state.
