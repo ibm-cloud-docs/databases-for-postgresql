@@ -11,7 +11,7 @@ lastupdated: "2018-05-14"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# About ICD for PostgreSQL
+# About {{site.data.keyword.databases-for-postgresql_full_notm}}
 
 ICD for PostgreSQL is TBC.
 
