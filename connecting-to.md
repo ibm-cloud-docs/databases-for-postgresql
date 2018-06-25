@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-05-11"
+lastupdated: "2018-06-25"
 ---
 
 {:new_window: target="_blank"}
@@ -13,6 +13,7 @@ lastupdated: "2018-05-11"
 {:tip: .tip}
 
 # Connecting to {{site.data.keyword.databases-for-postgresql_full-notm}}
+{: #connecting-to}
 
 Connection information is available in the _Service credentials_ section from the left sidebar. The below table describes the types of connections that are available to your service.
 
@@ -33,16 +34,16 @@ If you have an exisiting PostgreSQL user, and you would like to generate service
 Creating service credentials does not create an associated PostgreSQL user, nor does it check to see if an associated user already exists.
 {: .tip}
 
-## `psql`
-The command-line interface tool for PostgreSQL is [`psql`](https://www.postgresql.org/docs/current/static/app-psql.html). You can use it to connect to and mangae your {{site.data.keyword.databases-for-postgresql}} databases. The _Service Credentials_ page displays a formatted `psql` command that will establish a connection to your service.
+## Connecting with `psql`
+The command-line interface tool for PostgreSQL is [`psql`](https://www.postgresql.org/docs/current/static/app-psql.html). You can use it to connect to and mangage your {{site.data.keyword.databases-for-postgresql}} databases. The _Service Credentials_ page displays a formatted `psql` command that will establish a connection to your service.
 
-## API
+## Using the API
 
 The {{site.data.keyword.cloud_notm}} Databases API is supplemental layer which adds the capability to manage {{site.data.keyword.cloud_notm}} Databases through a REST API. Authentication is IAM-based, so use your {{site.data.keyword.cloud_notm}} account's platform API keys when accessing the API. More information on API keys is in the [IAM documentation](https://console.{{DomainName}}/docs/iam/apikeys.html#platform-api-keys).
 
 The full API reference for {{site.data.keyword.databases-for-postgresql}} is 
 
-## `ibmcloud dbs` CLI Plugin
+## Using the `ibmcloud dbs` CLI Plugin
 
 You can connect to your {{site.data.keyword.databases-for-postgresql}} through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{{DomainName}}/docs/cli/index.html#overview).
 

@@ -19,8 +19,6 @@ The _Overview_ page shows you information about your {{site.data.keyword.databas
 
 The _Deployment Details_ panel shows details of your service.
 
-![Deployment Details](./images/postgres-deployment-details.png "A view of the Deployment Details panel")
-
 ### Type
 
 The type of database that is offered by the service, and the database version that your service uses.

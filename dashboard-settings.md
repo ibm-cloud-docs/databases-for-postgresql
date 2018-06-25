@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-06-18"
+lastupdated: "2018-06-25"
 ---
 
 {:new_window: target="_blank"}
@@ -37,11 +37,14 @@ Scaling operations can cause downtime. When the scaling is complete the Deployme
 
 Billing is based on the _total_ amount of resources allocated to the service. 
 
-#### Scaling via the UI:
+#### Scaling via the UI
+
 Adjust the slider to raise or lower the resource allocated to your service. Click **Scale** button to trigger the rescaling and return to the dashboard overview.
 
-#### Scaling via the API:
-Use the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource infromation, including which resources are adjustable. Send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request.
+#### Scaling via the API
 
-#### Viewing resource information via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in:
-Use the command `ibmcloud dbs groups` to see current resource information for your service. Scaling is not currently available using the CLI.
+Use the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource infromation, including which resources are adjustable. To scale, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request.
+
+#### Scaling via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in
+
+Use the command `ibmcloud dbs groups` to see current resource information for your service, including which resources are adjustable. To scale, 

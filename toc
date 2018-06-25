@@ -15,10 +15,11 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	connecting-to.md
+	{: .topicgroup}
+	Connecting to Databases for PostgreSQL
+		connecting-to.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
 	reference-security.md
-	reference-versions.md
 	{: .navgroup-end}
