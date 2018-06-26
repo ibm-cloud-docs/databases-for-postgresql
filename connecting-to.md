@@ -12,7 +12,7 @@ lastupdated: "2018-06-25"
 {:pre: .pre}
 {:tip: .tip}
 
-# Connecting to {{site.data.keyword.databases-for-postgresql_full-notm}}
+# Connecting to {{site.data.keyword.databases-for-postgresql_full_notm}}
 {: #connecting-to}
 
 Connection information is available in the _Service credentials_ section from the left sidebar. The below table describes the types of connections that are available to your service.
@@ -47,8 +47,6 @@ The full API reference for {{site.data.keyword.databases-for-postgresql}} is
 
 You can connect to your {{site.data.keyword.databases-for-postgresql}} through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{{DomainName}}/docs/cli/index.html#overview).
 
-Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using 
-`ibmcloud plugin install ibmcloud-dbs-plugin -f`
+Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`
 
-Once you have it installed you can see to your {{site.data.keyword.databases-for-postgresql}} services with `ibmcloud dbs list`.
-Run `ibmcloud dbs help` for other commands and usage information.
+Once you have it installed you can see to your {{site.data.keyword.databases-for-postgresql}} services with `ibmcloud dbs list`. Run `ibmcloud dbs help` for other commands and usage information. If you have `psql` already installed, you can open a `psql` connection using `ibmcloud dbs connection <name>`.

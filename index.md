@@ -27,7 +27,7 @@ When you provision your {{site.data.keyword.databases-for-postgresql}} instance 
 ### Creating a service via the {{site.data.keyword.cloud_notm}} CLI
 
 You can create a service through the {{site.data.keyword.cloud_notm}} CLI using the `service create` command.
-````
+```
 ibmcloud service create databases-for-postgresql PLAN SERVICE_INSTANCE_NAME
 ```
 Where the `SERVICE_INSTANCE_NAME` is the name for your new service instance, and `PLAN` is either "Public" or "Dedicated".
