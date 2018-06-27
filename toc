@@ -12,12 +12,13 @@ Databases For PostgreSQL
 	The Service Dashboard
 		dashboard-overview.md
         dashboard-settings.md
+		dashboard-backups.md
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
-		connecting-to.md
+		connecting-external.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
