@@ -43,6 +43,6 @@ The foundation endpoint is composed of the region the service resides in and the
 
 The deployment ID is necessary for most calls, and identifies the specific deployment instance.
 
-### Reference
+### API Reference
 
-For more documentation and reference for using the {{site.data.keyword.cloud_notm}} Databases API, see the {{site.data.keyword.cloud_notm}} Databases API [repository](https://github.ibm.com/compose/apidocs).
+For more documentation and the reference for using the {{site.data.keyword.cloud_notm}} Databases API, see the {{site.data.keyword.cloud_notm}} Databases API [repository](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html).
