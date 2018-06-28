@@ -25,7 +25,7 @@ instance_administration_api | API information specific to this service.
 {: caption="Table 1. ICD for PostgreSQL credentials" caption-side="top"}
 --------
 
-## Using TLS/SSL and self-signed certificates
+## Using self-signed certificates
 
-How you pass the certificate information to your applications will depend on the drivers and libraries you are using. 
+How you pass the certificate information to your applications will depend on the drivers and libraries you are using. You may need to save a local copy of the certificate and provide its path to the driver. Or you may need to add the certificate to a certificate store. 
 
