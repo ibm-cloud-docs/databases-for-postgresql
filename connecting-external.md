@@ -15,7 +15,7 @@ lastupdated: "2018-06-25"
 # Connecting an external application
 {: #connecting-external-app}
 
-Connection information is available in the _Service Credentials_ section from the left sidebar. The below table describes the types of connections to your service that are available.
+Connection information is available in the _Service Credentials_ section from the left sidebar. In order to connect an application or service to {{site.data.keyword.databases-for-postgresql}}, you will need to make at least one service credential. Click on **New Credential**, give a name to the credential, and click **Add** to provision the new credential. Both the username and password are auto-generated, and filled into the connection strings provided under _View Credentials_. The below table describes the types of connections to your service that are available.
 
 Field Name | Description
 ----------|-----------
@@ -24,6 +24,10 @@ cli | A formatted `psql` shell command line that connects to the database instan
 instance_administration_api | API information specific to this service.
 {: caption="Table 1. ICD for PostgreSQL credentials" caption-side="top"}
 --------
+
+## Generating Credentials via the API
+
+To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send in the desired username and password in the body of the request.
 
 ## Using self-signed certificates
 
