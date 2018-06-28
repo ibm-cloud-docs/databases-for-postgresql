@@ -25,13 +25,31 @@ A pre-formatted command for a specific backup is available in detailed view of t
 
 ## Managing Backups via the API
 
-Use the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/backups` endpoint to view and manage the available backups for your deployment. Send a `GET` request to return a list of all the backups, including each backup's id. Send a `POST` request to initiate an on-demand backup of your deployment.
+Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/backups` endpoint to view and manage the available backups for your deployment. Send a `GET` request to return a list of all the backups, including each backup's id. Send a `POST` request to initiate an on-demand backup of your deployment.
 
-To get information about a specific backup, send a `GET` request to the endpoint `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/backups/{backup_id}`.
+For example, the `curl` to list backups:
+```
+curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/backups"
+```
+And the `curl` to start an on-demand backup:
+```
+curl -X POST -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups"
+```
 
-Example API calls can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Backups)
+To get information about a specific backup, send a `GET` request to the endpoint `https://api.{region}.databases.cloud.ibm.com/v4/ibm/backups/{backup_id}`. For example:
+
+```
+curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/backups/{backup_id}"
+```
+More examples can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Backups)
 
 ## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI databases plugin
 
-Use the `ibmcloud dbs deployment-backups-list {service-name}` command to view the list of all available backups for your deployment. To get the details about a specific backup use `ibmcloud dbs backup-show {backup_id}` command.
+Use the `dbs deployment-backups-list` command to view the list of all available backups for your deployment. To get the details about a specific backup use `dbs backup-show` command.
+
+For example, to view the backups for a deployment named "example-deployment" use:  
+`ibmcloud dbs deployment-backups-list example-deployment`
+
+To see the details of one of the backups from the list use:  
+`ibmcloud dbs backup-show crn:v1:staging:public:databases-for-postgresql:us-south:a/6284014dd5b487c87a716f48aeeaf99f:3b4537bf-a585-4594-8262-2b1e24e2701e:backup:a3364821-d061-413f-a0df-6ba0e2951566`
 
