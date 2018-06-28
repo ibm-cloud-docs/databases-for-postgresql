@@ -45,4 +45,4 @@ The deployment ID is necessary for most calls, and identifies the specific deplo
 
 ### Reference
 
-For more documentation and reference for using the {{site.data.keyword.cloud_notm}} Databases API, read [The {{site.data.keyword.cloud_notm}} Databases API]().
+For more documentation and reference for using the {{site.data.keyword.cloud_notm}} Databases API, see the {{site.data.keyword.cloud_notm}} Databases API [repository](https://github.ibm.com/compose/apidocs).
