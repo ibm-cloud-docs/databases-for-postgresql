@@ -22,7 +22,7 @@ Field Name | Description
 postgres | The URI to be used when connecting applications and drivers to the service. Includes the schema (postgres:), a user name and password, host name of server, port number to connect to, the self-sigend certificate in base64 format, and the default database name.
 cli | A formatted `psql` shell command line that connects to the database instance, the self-signed certificate in base64 format, and the individual arguements to pass to `psql` when connecting.
 instance_administration_api | API information specific to this service.
-{: caption="Table 1. ICD for PostgreSQL credentials" caption-side="top"}
+{: caption="Table 1. {{site.data.keyword.databases-for-postgresql}} credentials" caption-side="top"}
 --------
 
 ## Generating Credentials via the API
