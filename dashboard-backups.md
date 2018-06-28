@@ -29,6 +29,8 @@ Use the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/
 
 To get information about a specific backup, send a `GET` request to the endpoint `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/backups/{backup_id}`.
 
+Example API calls can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Backups)
+
 ## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI databases plugin
 
 Use the `ibmcloud dbs backups-list {service-name}` command to view the list of available backups. 

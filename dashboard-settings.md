@@ -43,7 +43,7 @@ Adjust the slider to raise or lower the resource allocated to your service. Clic
 
 #### Scaling via the API
 
-Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource infromation, including which resources are adjustable. To scale, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request.
+Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource infromation, including which resources are adjustable. To scale, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request. Examples are in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling)
 
 #### Scaling via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in
 
@@ -56,5 +56,3 @@ In order to enable administrative access to your service, you have to set the ad
 A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click on the dice to the right of the field. When you click *Update Password* you will be asked to confirm before the change is applied. 
 
 Note: Changing the password changes the credentials that you or any other services that use the admin user to connect. It can cause these services to disconnect and experience downtime.
-
-
