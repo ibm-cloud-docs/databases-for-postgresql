@@ -18,7 +18,7 @@ Manage your {{site.data.keyword.databases-for-postgresql_full}} service through 
 
 ## Scale Resources
 
-The _Scale Resources_ panel shows the current size and resource allocation for your service. You can manage resources available to your service by adjusting the individual resources. 
+The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage resources available to your deployment by adjusting the groups of resources. 
 
 Resources that are unable to be scaled are greyed out. They are present for informational purposes only.
 {: .tip} 
@@ -29,7 +29,7 @@ Disk space allocated based on the size of your data. As you store more data in t
 
 ### Memory
 
-If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL service runs with two containers in a cluster, so the amount of memory you add will be added to both containers. 
+If you find that your queries and database activity suffers from performance issues due to a lack of memory, you may scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two containers in a cluster, so the amount of memory you add will be added to both containers. 
 
 ### Scaling
 
@@ -39,15 +39,15 @@ Billing is based on the _total_ amount of resources allocated to the service.
 
 #### Scaling via the UI
 
-Adjust the slider to raise or lower the resource allocated to your service. Click **Scale** button to trigger the rescaling and return to the dashboard overview.
+Adjust the slider to raise or lower the resources allocated to your service. Click **Scale** button to trigger the rescaling and return to the dashboard overview.
 
 #### Scaling via the API
 
-Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource infromation, including which resources are adjustable. To scale, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request. Examples are in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling)
+Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups` endpoint to see and manage your service's resources. Sending a `GET` request will return current resource group infromation, including which resources are adjustable. To scale, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request. Examples are in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling)
 
 #### Scaling via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in
 
-Use the command `ibmcloud dbs groups` to see current resource information for your service, including which resources are adjustable. 
+Use the command `ibmcloud dbs deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups use `ibmcloud dbs deployment-groups-set` command. 
 
 ## Setting the admin Password
 

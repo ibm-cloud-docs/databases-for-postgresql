@@ -29,6 +29,10 @@ instance_administration_api | API information specific to this service.
 
 To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send in the desired username and password in the body of the request. An example can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser)
 
+## Generating Credentials via the {{site.data.keyword.cloud_notm}} CLI databases plugin
+
+To use the CLI to provision a new credential, use the `ibmcloud dbs user-create` command. For example, `ibmcloud dbs user-create "my_service_name" {username} {password}`.
+
 ## Using self-signed certificates
 
 How you pass the certificate information to your applications will depend on the drivers and libraries you are using. You may need to save a local copy of the certificate and provide its path to the driver. Or you may need to add the certificate to a certificate store. 
