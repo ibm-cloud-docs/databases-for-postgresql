@@ -15,7 +15,7 @@ lastupdated: "2018-06-25"
 # Connecting an external application
 {: #connecting-external-app}
 
-Connection information is available in the _Service Credentials_ section from the left sidebar. In order to connect an application or service to {{site.data.keyword.databases-for-postgresql}}, you will need to make at least one service credential. Click on **New Credential**, give a name to the credential, and click **Add** to provision the new credential. Both the username and password are auto-generated, and filled into the connection strings provided under _View Credentials_. The below table describes the types of connections to your service that are available.
+Connection information is available in the _Service Credentials_ section from the left sidebar. In order to connect an application or service to {{site.data.keyword.databases-for-postgresql}}, you will need to make at least one service credential. Click on **New Credential**, give a name to the credential, and click **Add** to provision the new credential. Once you have created a set of service credetials for you application, you will find all of the connection information as JSON document under _Available Credentials_. It contains all the information that a driver or library will need to connect to your deployment. The below table describes the types of connections that are available.
 
 Field Name | Description
 ----------|-----------
@@ -43,9 +43,3 @@ curl -X POST "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{i
   }'
 ```
 More information can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser)
-
-## Using self-signed certificates
-
-How you pass the certificate information to your applications will depend on the drivers and libraries you are using. You may need to save a local copy of the certificate and provide its path to the driver. Or you may need to add the certificate to a certificate store. 
-
-To save a local certificate, copy the contents of the "certificate_base64" field from the connection information to a new file. Add `-----BEGIN CERTIFICATE-----` as the first line of the file and `-----END CERTIFICATE-----` as the final line of the file. Save it with .pem as the file extension.
