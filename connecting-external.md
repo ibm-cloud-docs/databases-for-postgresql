@@ -22,14 +22,30 @@ Field Name | Description
 postgres | The URI to be used when connecting applications and drivers to the service. Includes the schema (postgres:), a user name and password, host name of server, port number to connect to, the self-sigend certificate in base64 format, and the default database name.
 cli | A formatted `psql` shell command line that connects to the database instance, the self-signed certificate in base64 format, and the individual arguements to pass to `psql` when connecting.
 instance_administration_api | API information specific to this service.
-{: caption="Table 1. ICD for PostgreSQL credentials" caption-side="top"}
+{: caption="Table 1. {{site.data.keyword.databases-for-postgresql}} credentials" caption-side="top"}
 --------
 
 ## Generating Credentials via the API
 
-To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send in the desired username and password in the body of the request.
+To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send in the desired username and password in the body of the request.  
+For example, the `curl` to create user "Mary" with password "mostsecure":
+```
+curl -X POST "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users" \
+-H "Authorization: Bearer $APITOKEN" \
+-H "Content-Type: application/json; charset=utf-8" \
+-d \
+  '{
+  "user": 
+    {
+      "username":"Mary",
+      "password":"mostsecure"
+    }
+  }'
+```
+More information can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser)
 
 ## Using self-signed certificates
 
 How you pass the certificate information to your applications will depend on the drivers and libraries you are using. You may need to save a local copy of the certificate and provide its path to the driver. Or you may need to add the certificate to a certificate store. 
 
+To save a local certificate, copy the contents of the "certificate_base64" field from the connection information to a new file. Add `-----BEGIN CERTIFICATE-----` as the first line of the file and `-----END CERTIFICATE-----` as the final line of the file. Save it with .pem as the file extension.
