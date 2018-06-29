@@ -46,19 +46,19 @@ curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/jso
 
 And the `curl` for scaling the memory on a deployment:
 ```
-curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/groups/{groupid}" \
+curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/{groupid}" \
 -H "Authorization: Bearer $APITOKEN" \
 -H "Content-Type: application/json; charset=utf-8" \
--d 
-  {
+-d \
+  '{
   "group": 
     {
       "memory":
       {
         "allocation_mb": 12288
-      },
+      }
     }
-  }
+  }'
 ```
 More examples are in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling)
 
