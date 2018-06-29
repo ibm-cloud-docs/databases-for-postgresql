@@ -15,7 +15,7 @@ lastupdated: "2018-06-25"
 # Connecting an external application
 {: #connecting-external-app}
 
-Connection information is available in the _Service Credentials_ section from the left sidebar. In order to connect an application or service to {{site.data.keyword.databases-for-postgresql}}, you will need to make at least one service credential. Click on **New Credential**, give a name to the credential, and click **Add** to provision the new credential. Once you have created a set of service credetials for you application, you will find all of the connection information as JSON document under _Available Credentials_. It contains all the information that a driver or library will need to connect to your deployment. The below table describes the types of connections that are available.
+Connection information is available in the _Service Credentials_ section from the left sidebar. In order to connect an application or service to {{site.data.keyword.databases-for-postgresql}}, you will need to make at least one service credential. Click on **New Credential**, give a name to the credential, and click **Add** to provision the new credential. Once you have created a set of service credentials for you application, you will find all of the connection information in a JSON document under _Available Credentials_. It contains all the information that a driver or library will need to connect to your deployment. The below table describes the types of connections that are available.
 
 Field Name | Description
 ----------|-----------
