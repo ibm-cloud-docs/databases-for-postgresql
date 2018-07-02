@@ -35,7 +35,7 @@ ibmcloud service create databases-for-postgresql standard SERVICE_INSTANCE_NAME
 
 Once the provisioning process is complete, set the password for the administrative user on your deployment. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the left sidebar and open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
 
-You can also set the admin user password using the API. Send a `PATCH` request to the  `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{username}` endpoint. Use your deployment's id (CRN) and admin for the username. Specify the new password in the body of the request. An example is in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword)
+You can also set the admin user password using the API. Send a `PATCH` request to the  `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{username}` endpoint. Use your deployment's id (CRN) and `admin` for the username. Specify the new password in the body of the request. An example is in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword)
 
 ## Managing {{site.data.keyword.databases-for-postgresql}}
 
@@ -55,9 +55,9 @@ Connection strings and connection information to connect applications is availab
 
 ## Connecting with psql
 
-You can use psql, the command-line tool for PostgreSQL, to administrate your deployment. Once you have set the password for the admin user, you can view it's connection information using the {{site.data.keyword.cloud_notm}} CLI plugin with `ibmcloud dbs deployment-connections "your-service-name"`. You can also open a psql connection directly using `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`.
+You can use psql, the command-line tool for PostgreSQL, to administrate your databases. Once you have set the password for the admin user, you can view it's connection information using the {{site.data.keyword.cloud_notm}} CLI plugin with `ibmcloud dbs deployment-connections "your-service-name"`. You can also open a psql connection directly using `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`.
 
-psql connection information for the admin user is also available from the API. Send a `GET` requset to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin/connections` endpoint and it will return connection information relevant to the admin user.
+psql connection information for the admin user is also available from the API. Send a `GET` request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin/connections` endpoint and it will return connection information including connection strings for psql.
 
 
 
