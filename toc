@@ -18,7 +18,7 @@ Databases For PostgreSQL
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
-		connecting-ibmcloudapp.md
+		connecting-ibmcloud-app.md
 		connecting-external.md
 	{: .navgroup-end}
 

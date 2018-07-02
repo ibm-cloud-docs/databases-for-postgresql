@@ -31,12 +31,6 @@ ibmcloud service create databases-for-postgresql standard SERVICE_INSTANCE_NAME
 ```
 `SERVICE_INSTANCE_NAME` is the name for your new service instance.
 
-### Setting the admin password
-
-Once the provisioning process is complete, set the password for the administrative user on your deployment. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the left sidebar and open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
-
-You can also set the admin user password using the API. Send a `PATCH` request to the  `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{username}` endpoint. Use your deployment's id (CRN) and `admin` for the username. Specify the new password in the body of the request. An example is in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword)
-
 ## Managing {{site.data.keyword.databases-for-postgresql}}
 
 {{site.data.keyword.databases-for-postgresql}} is an IAM integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM integrated services across the {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{{DomainName}}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{{DomainName}}/docs/iam/index.html#iamoverview) documentation.
@@ -49,15 +43,16 @@ There are a few ways to manage your {{site.data.keyword.databases-for-postgresql
 
 - You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{{DomainName}}/docs/cli/index.html#overview). Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`. Once you have it installed, run `ibmcloud dbs help` for other commands and usage information. 
 
-## Connecting an application to {{site.data.keyword.databases-for-postgresql}}
+## Connecting to {{site.data.keyword.databases-for-postgresql}}
 
-Connection strings and connection information to connect applications is available through _Service Credentials_ in the left sidebar. Find more information on [Connecting an External Application](./connecting-external.html).
+You can connect to your deployemnt using the connection strings and command line that are provided upon provision of your service.
 
-## Connecting with psql
+## Connecting an {{site.data.keyword.cloud_notm}} application to {{site.data.keyword.databases-for-postgresql}}
 
-You can use psql, the command-line tool for PostgreSQL, to administrate your databases. Once you have set the password for the admin user, you can view it's connection information using the {{site.data.keyword.cloud_notm}} CLI plugin with `ibmcloud dbs deployment-connections "your-service-name"`. You can also open a psql connection directly using `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`.
+To connect an {{site.data.keyword.cloud_notm}} application to your service, use credentials that are created in the _Service Credentials_ panel. You can find information on how to connect an {{site.data.keyword.cloud_notm}} application to a {{site.data.keyword.databases-for-postgresql}} service in [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html).
 
-psql connection information for the admin user is also available from the API. Send a `GET` request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin/connections` endpoint and it will return connection information including connection strings for psql.
+## Connecting to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}
 
+If you want to connect to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
 
 
