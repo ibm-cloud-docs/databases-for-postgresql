@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-06-19"
+lastupdated: "2018-07-01"
 ---
 
 {:new_window: target="_blank"}
@@ -39,13 +39,13 @@ There are a few ways to manage your {{site.data.keyword.databases-for-postgresql
 
 - You can manage your service by selecting _Manage_ from the left sidebar and opening the management panel from your service. Here you can find information about your {{site.data.keyword.databases-for-postgresql}} database. Administative settings are availble in the [Settings](./dashboard-settings.html) tab and backups are available through the [Backups](./dashboard-backups.html) tab.
 
-- You can use the {{site.data.keyword.cloud_notm}} Databases API to manage your service. Authentication is IAM-based, so use your {{site.data.keyword.cloud_notm}} account's platform API keys when accessing the API. More information on API keys is in the [IAM documentation](https://console.{{DomainName}}/docs/iam/apikeys.html#platform-api-keys). The API is available at `https://api.{{region}}.databases.cloud.ibm.com/v4/ibm/` and the full API reference is available on [github](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html).
+- You can use the {{site.data.keyword.cloud_notm}} Databases API to manage your service. Authentication is IAM-based, so use your {{site.data.keyword.cloud_notm}} account's platform API keys when accessing the API. More information on API keys is in the [IAM documentation](https://console.{{DomainName}}/docs/iam/apikeys.html#platform-api-keys). The API is available at the Foundataion Endpoint displayed on the _Overview_ page when you open the _Mange_ panel of your service. The full API reference is available on [github](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html).
 
 - You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{{DomainName}}/docs/cli/index.html#overview). Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`. Once you have it installed, run `ibmcloud dbs help` for other commands and usage information. 
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}}
 
-You can connect to your deployemnt using the connection strings and command line that are provided upon provision of your service.
+You can connect to your deployement using the connection strings and command-line information that are provided upon provision of your service.
 
 ## Connecting an {{site.data.keyword.cloud_notm}} application to {{site.data.keyword.databases-for-postgresql}}
 
@@ -53,6 +53,6 @@ To connect an {{site.data.keyword.cloud_notm}} application to your service, use 
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}
 
-If you want to connect to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
+If you want to connect to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command-line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
 
 
