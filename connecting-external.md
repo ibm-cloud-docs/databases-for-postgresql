@@ -58,7 +58,7 @@ Field Name|Description
 
 ## Connecting with psql
 
-You can use psql, the command-line tool for PostgreSQL, to administrate your databases. You can connect to `psql` from the {{site.data.keyword.cloud_notm}} CLI databases plugin with the admin user with `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`. It will prompt for the admin password.
+You can use psql, the command-line tool for PostgreSQL, to administer your databases. You can connect to `psql` from the {{site.data.keyword.cloud_notm}} CLI databases plugin with the admin user with `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`. It will prompt for the admin password.
 
 Any PosgreSQL user's `psql` connection information is available through the API and can also be made available through the _Service Credentials_ panel. When retrieved through the API or the _Service Credentials_ panel, `psql` connection information is in "cli" field. The below table describes the sub-fields of connection information.
 
