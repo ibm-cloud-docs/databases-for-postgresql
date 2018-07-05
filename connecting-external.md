@@ -13,7 +13,9 @@ lastupdated: "2017-07-01"
 # Connecting an external application
 {: #connecting-external-app}
 
-{{site.data.keyword.databases-for-postgresql}_full}} provides all information to connect applications running anywhere, `psql`, and other third-party PostgreSQL applications. To connect to your deployment, use the admin user that is created when the service is provisioned. Once you have set up the admin credentials, retrieve the connection information associated with your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} provides connection string information for you to connect youyr applications, `psql`, and other third-party PostgreSQL applications. To connect to your deployment, use the admin user that is created when the service is provisioned. To get started you will have to:
+1. Set the admin credentials
+2. Retrieve the connection information associated with your deployment.
 
 ## Setting the admin password
 
