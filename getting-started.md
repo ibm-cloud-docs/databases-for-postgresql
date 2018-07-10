@@ -119,7 +119,7 @@ ibmcloud cf push
 1. Navigate to your {{site.data.keyword.databases-for-postgresql}} service dashboard
 2. Select _Connections_ from the dashboard menu. Your application should be listed under _Connected Applications_.
 
-If your application is not listed, repeat Steps 7 ad 8, making sure you have entered the correct details in [manifest.yml](#update-manifest).
+If your application is not listed, repeat Steps 7 and 8, making sure you have entered the correct details in [manifest.yml](#update-manifest).
 
 ## Step 9: Use the app
 
@@ -127,40 +127,7 @@ Now, when you visit `<host>.mybluemix.net/` you will be able to view the content
 
 ## Running the app locally
 
-Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally to test the connection to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you'll need to create a set of service credentials.
-
-1. From your {{site.data.keyword.cloud_notm}} dashboard, open your {{site.data.keyword.databases-for-postgresql}} service instance.
-2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
-3. Click **New Credential**.
-4. Choose a name for your credentials and click **Add**.
-5. Your new credentials are now listed. Click **View credentials** in the corresponding row of the table to view the credentials, and click the **Copy** icon to copy your credentials.
-6. In your editor of choice, create a new file with the following, inserting your credentials as shown:
-
-  ```
-  {
-    "services": {
-      "compose-for-postgresql": [
-        {
-          "credentials": INSERT YOUR CREDENTIALS HERE
-        }
-      ]
-    }
-  }
-  ```
-7. Save the file as `vcap-local.json` in the directory where the sample app is located.
-
-To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}} you should make sure that the file containing your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory you'll see that `vcap-local.json` is listed in both, so it won't be included in the files that are uploaded when you push the app to either Github or {{site.data.keyword.cloud_notm}}.
-{: .tip}
-
-Now start the local server.
-
-```
-npm start
-```
-
-The app is now running at [http://localhost:8080](http://localhost:8080). You can add words and definitions to your {{site.data.keyword.databases-for-postgresql}} database. When you stop and restart the app, any words you have already added are displayed when you refresh the page.
-
-For information about the credentials you created for the application to connect to your service, see [Available Credentials](./connecting-bluemix-app.html#available-credentials).
+Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally to test the connection to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you'll need to create a set of service credentials. For steps to generate credentials and use them in your apllication, see [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-bluemix-app.html#running-a-cloud-application-locally)
 
 ## Next steps
 

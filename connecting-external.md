@@ -13,7 +13,7 @@ lastupdated: "2017-07-01"
 # Connecting an external application
 {: #connecting-external-app}
 
-{{site.data.keyword.databases-for-postgresql_full}} provides connection string information for you to connect youyr applications, `psql`, and other third-party PostgreSQL applications. To connect to your deployment, use the admin user that is created when the service is provisioned. To get started you will have to:
+{{site.data.keyword.databases-for-postgresql_full}} provides connection string information for you to connect your applications, `psql`, and other third-party PostgreSQL applications. To connect to your deployment, use the admin user that is created when the service is provisioned. To get started you will have to:
 1. Set the admin credentials
 2. Retrieve the connection information associated with your deployment.
 
@@ -42,6 +42,8 @@ Connection information can be accessed in a few different ways.
 - The {{site.data.keyword.cloud_notm}} CLI databases plugin provides the admin connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`
 - The API will return connection information from a `GET` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin/connections` endpoint.
 - Any PostgreSQL user can be added to the _Service Credentials_ panel by providing its authentication information in the _Add Inline Configuration Parameters_ field. For example, to add the admin user to _Service Credentials_ use  `{"existing_credentials":{"username":"admin","password":"your_admin_password_here"}}`. This will make the admin connection string information available in the _Service Credentials_ panel.
+
+## Using _Service Credentials_
 
 If you use the API or the _Service Credentials_ panel, connection information is returned in a JSON object in the "postgres" field. The below table describes the sub-fields of connection information.
 
