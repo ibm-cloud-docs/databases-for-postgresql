@@ -43,13 +43,13 @@ curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/jso
 ```
 More examples can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Backups)
 
-## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI databases plugin
+## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin
 
-Use the `dbs deployment-backups-list` command to view the list of all available backups for your deployment. To get the details about a specific backup use `dbs backup-show` command.
+Use the `cdb deployment-backups-list` command to view the list of all available backups for your deployment. To get the details about a specific backup use `cdb backup-show` command.
 
 For example, to view the backups for a deployment named "example-deployment" use:  
-`ibmcloud dbs deployment-backups-list example-deployment`
+`ibmcloud cdb deployment-backups-list example-deployment`
 
 To see the details of one of the backups from the list use:  
-`ibmcloud dbs backup-show crn:v1:staging:public:databases-for-postgresql:us-south:a/6284014dd5b487c87a716f48aeeaf99f:3b4537bf-a585-4594-8262-2b1e24e2701e:backup:a3364821-d061-413f-a0df-6ba0e2951566`
+`ibmcloud cdb backup-show crn:v1:staging:public:databases-for-postgresql:us-south:a/6284014dd5b487c87a716f48aeeaf99f:3b4537bf-a585-4594-8262-2b1e24e2701e:backup:a3364821-d061-413f-a0df-6ba0e2951566`
 

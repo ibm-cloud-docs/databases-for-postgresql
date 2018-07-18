@@ -62,15 +62,15 @@ curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
 ```
 More examples are in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling)
 
-### Scaling via the {{site.data.keyword.cloud_notm}} Databases CLI plug-in
+### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databasses plug-in
 
-Use the command `dbs deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups use `dbs deployment-groups-set` command. 
+Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups use `cdb deployment-groups-set` command. 
 
 For example, to view the resource groups for a deployment named "example-deployment" use:  
-`ibmcloud dbs deployment-groups example-deployment`
+`ibmcloud cdb deployment-groups example-deployment`
 
 To scale the memory to 2048MB of RAM for each memory member of "example-deployment" use:  
-`ibmcloud dbs deployment-groups-set member --memory 2048`
+`ibmcloud cdb deployment-groups-set member --memory 2048`
 
 ## Setting the admin Password
 
