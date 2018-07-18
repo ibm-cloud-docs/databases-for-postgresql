@@ -12,7 +12,12 @@ lastupdated: "2017-07-18"
 
 # Administrating your PostgreSQL databases
 
-The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user intended to allow users to administrate PostgreSQL through it's command-line tool, `psql`.
+The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user intended to allow users to administrate PostgreSQL through it's command-line tool, `psql`. At provision time, the password is set but not stored by the provisioning process.
+
+The admin user comes with the PostgreSQL [default role `pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users outside of these functions.
+
+For security reasons, and as part of the infrastructure provided by {{site.data.keyword.databases-for-postgresql}} as a managed service, there is no superuser role available to the end-user.
+{.tip}
 
 To get started you will have to:
 1. Set the admin credentials
@@ -55,6 +60,11 @@ Field Name|Description
 {: caption="Table 2. `psql` connection information" caption-side="top"}
 
 ## Using the self-signed certificate
+
+The formatted `psql` command sets the option to verify the server via certifcate upon connection. In order to use this feature, you will have to:
+- Download and save a copy of the certifcate
+- Decode the certifcate from base64 format to the .pem certificate format.
+- Provide the path to the certificate to the connection string in the `PGSSLROOTCERT` environment variable.
 
 
 
