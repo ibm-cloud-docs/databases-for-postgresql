@@ -28,11 +28,11 @@ Applications running in IBM Cloud have can be bound to your {{site.data.keyword.
       - my-databases-for-postgresql-service
   ```
 
-- Change the host value to something unique. The host you choose will determinate the subdomain of your application's URL: <host>.mybluemix.net.
-- Change the name value. The value you choose will be the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
-- Update the services value to match the name of the service you created in Create a {{site.data.keyword.databases-for-postgresql}} service instance.
+- Change the host value to something unique. The host you choose determines the subdomain of your application's URL: <host>.mybluemix.net.
+- Change the name value. The value you choose is the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
+- Update the services value to match the name of the service you created in [Creating a {{site.data.keyword.databases-for-postgresql}} service](./index.html#creating-databases-for-postgresql-service).
 
-You can verify that the services are connected from the _Connections_ panel in the left sidebar. Both the application and the {{site.data.keyword.databases-for-postgresql}} service should show the connection.
+You can verify that the services are connected by navigating to the _Connections_ panel. If the service and the application are connected, .
 
 The sample app in the [Getting Started](./getting-started.html) tutorial demonstrates how to use Node.js to bind the service and how to create a database and read from and write to the database.
 

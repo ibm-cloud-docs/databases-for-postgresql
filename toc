@@ -16,7 +16,7 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	administrating.md
+	administering.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL

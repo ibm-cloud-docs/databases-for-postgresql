@@ -18,6 +18,7 @@ lastupdated: "2018-07-01"
 {{site.data.keyword.databases-for-postgresql}} is a managed PostgreSQL service hosted in the {{site.data.keyword.cloud_notm}} and integrated with other {{site.data.keyword.cloud_notm}} services. It is alo currently highly-experimental and should not be used for production workloads in its current state.
 
 ## Creating a {{site.data.keyword.databases-for-postgresql}} service
+{: #creating-databases-for-postgresql-service}
 
 You can create a {{site.data.keyword.databases-for-postgresql}} service from the {{site.data.keyword.cloud_notm}} catalog.
 
