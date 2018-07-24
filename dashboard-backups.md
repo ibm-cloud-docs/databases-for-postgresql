@@ -18,13 +18,15 @@ lastupdated: "2018-06-26"
 
 ## Restoring a Backup
 
-Restoring a backup provisions a new {{site.data.keyword.databases-for-postgresql}} deployment and restores the data from the backup into the new service. You use the {{site.data.keyword.cloud_notm}} CLI to restore a backup.
+To restore a backup to a new service instance, click in the corresponding row to expand the options for the backup you want to download. Click on the **Restore** button. A message is displayed to let you know that a restore has been initiated. The new service instance will automatically be named "postgres-restore-[timestamp]", and appears on your {{site.data.keyword.cloud_notm}} dashboard when provisioning starts.
+
+You can also use the {{site.data.keyword.cloud_notm}} CLI to restore a backup.
 
 ```
 ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-postgresql standard us-south -p '{"backup_id":"{backup_id"}
 ```
 
-**Note:** The value you use for `SERVICE_INSTANCE_NAME` is used for the name of your new service.
+**Note:** The change the value of `SERVICE_INSTANCE_NAME` to the name you want for your new service.
 
 A pre-formatted command for a specific backup is available in detailed view of the backup on the _Backups_ tab of the service dashboard.
 {: .tip}
@@ -47,7 +49,7 @@ curl -X POST -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/js
 ```
 {: codeblock}
 
-#Retrieving information about a backup
+### Retrieving information about a backup
 
 To get information about a specific backup, send a `GET` request to the endpoint `https://api.{region}.databases.cloud.ibm.com/v4/ibm/backups/{backup_id}`.
 
