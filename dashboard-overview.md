@@ -29,7 +29,7 @@ An internal identifier for the service.
 
 ## Recent Tasks
 
-Making administrative changes to your service (such as scaling, or taking a manual backup) starts a task. While the task is running, the _Recent Tasks_ panel shows the task name and a progress bar. When the task is complete, the _Recent Tasks_ panel lists the most recent previous tasks.
+Every time you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks.
 
 ## Instance Administration API
 

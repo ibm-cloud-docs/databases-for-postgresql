@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2017-07-01"
+lastupdated: "2017-07-18"
 ---
 
 {:new_window: target="_blank"}
@@ -13,35 +13,56 @@ lastupdated: "2017-07-01"
 # Connecting an external application
 {: #connecting-external-app}
 
-{{site.data.keyword.databases-for-postgresql}_full}} provides all information to connect applications running anywhere, `psql`, and other third-party PostgreSQL applications. To connect to your deployment, use the admin user that is created when the service is provisioned. Once you have set up the admin credentials, retrieve the connection information associated with your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} provides connection string information for you to connect your applications, `psql`, and other third-party PostgreSQL applications. 
 
-## Setting the admin password
+## Generating Connection Strings from _Service Credentials_
 
-You have to set the admin password before you can use it to connect. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the left sidebar and open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
+1. Navigate to the service dashboard for your service.
+2. Click _Service Credentials_ to open the _Service Credentials_ panel.
+3. Click **New Credential**.
+4. Choose a descriptive name for your new credential. 
+5. Click **Add** to provision the new credentials. A username and password, and an associated database user in the PostgreSQL database are auto-generated.
 
-You can also set the admin user password using the API. Send a `PATCH` request to the  `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{username}` endpoint. Use your deployment's id (CRN) and `admin` for the username. Specify the new password in the body of the request. For example,
+### Using Service IDs
+
+Because {{site.data.keyword.databases-for-postgresql}} is an IAM service, you can use [Service IDs](https://console.{DomainName}/docs/iam/serviceid.html#serviceids) to manage access to this service. For example, using a service ID that has an API key associated with it grants that API key access to the {{site.data.keyword.cloud_notm}} Databases API to administer this service. If you have a Service ID, enter its information under _Select Service ID_. 
+
+### Generating _Service Credentials_ for existing users.
+
+You can generate service credentials for an existing PostgreSQL user that was created through the API, the IBM Cloud CLI, or by using `psql`.
+
+Enter the user name and password in the JSON field below _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, `{"existing_credentials":{"username":"Robert","password":"supersecure"}}`.
+
+This does not check for or create an associated PostgreSQL user.
+{: tip}
+
+## Generating Connection Strings via API
+
+To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send the desired username and password in the body of the request.
+
+The following code creates a user "mary" with password "mostsecure".
+
 ```
-curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin" \
+curl -X POST "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users" \
 -H "Authorization: Bearer $APITOKEN" \
 -H "Content-Type: application/json; charset=utf-8" \
 -d \
   '{
   "user": 
     {
-      "password":"lkdfj1ieo4fhhelk5aei2efjdsa"
+      "username":"mary",
+      "password":"mostsecure"
     }
   }'
 ```
-More information is in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword)
 
-## Getting Connection Strings
+When the credentials have been created, you can view their associated connection information by sending a `GET` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections` endpoint. 
 
-Connection information can be accessed in a few different ways.
-- The {{site.data.keyword.cloud_notm}} CLI databases plugin provides the admin connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`
-- The API will return connection information from a `GET` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin/connections` endpoint.
-- Any PostgreSQL user can be added to the _Service Credentials_ panel by providing its authentication information in the _Add Inline Configuration Parameters_ field. For example, to add the admin user to _Service Credentials_ use  `{"existing_credentials":{"username":"admin","password":"your_admin_password_here"}}`. This will make the admin connection string information available in the _Service Credentials_ panel.
+For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser).
 
-If you use the API or the _Service Credentials_ panel, connection information is returned in a JSON object in the "postgres" field. The below table describes the sub-fields of connection information.
+## Using Connection Information
+
+If you use the API or the _Service Credentials_ panel, connection information is returned in a JSON object in the "postgres" field. The table describes the sub-fields of connection information.
 
 Field Name|Description
 ----------|-----------
@@ -56,18 +77,15 @@ Field Name|Description
 `type`|The format of the `composed` connection string.
 {: caption="Table 1. PostgreSQL connection information" caption-side="top"}
 
-## Connecting with psql
+## Using the self-signed certificate
 
-You can use psql, the command-line tool for PostgreSQL, to administer your databases. You can connect to `psql` from the {{site.data.keyword.cloud_notm}} CLI databases plugin with the admin user with `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`. It will prompt for the admin password.
+The connection information includes a self-signed certificate that you can use in your applications to verify the server when you connect to it. Different drivers for the various languages use a variety of TLS/SSL methods: check the documentation for the driver you are using for specific information on how it handles TLS/SSL.
 
-Any PosgreSQL user's `psql` connection information is available through the API and can also be made available through the _Service Credentials_ panel. When retrieved through the API or the _Service Credentials_ panel, `psql` connection information is in "cli" field. The below table describes the sub-fields of connection information.
+Usually, you need to complete the following steps.
 
-Field Name|Description
-----------|-----------
-`arguements`|The information that is passed as arguemnets to the `psql` command,
-`bin`|The package that this information is intended for; in this case `psql`.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. This is base64 encoded. You need to decode the key before using it.
-`composed`|A formatted `psql` command to establich a connection to your deployment.
-`environment`|`psql` arguements that can be set and pulled from the environment.
-`type`|The type of package that uses this connection information; in this case `cli`. 
-{: caption="Table 2. `psql` connection information" caption-side="top"}
+1. Download and save a copy of the certificate locally
+2. Decode it from base64 into a .pem certificate
+3. Provide the certifcate's path to the driver, and set the SSL mode to "Verify"
+
+
+ 

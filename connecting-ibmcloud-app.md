@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-07-01"
+lastupdated: "2018-07-10"
 ---
 
 {:new_window: target="_blank"}
@@ -14,43 +14,61 @@ lastupdated: "2018-07-01"
 
 # Connecting an {{site.data.keyword.cloud_notm}} application
 
-To connect an {{site.data.keyword.cloud}} application to your service, use the connection information in the _Service Credentials_ section of your service. The below table describes the types of connections that are available.
+Applications running in IBM Cloud have can be bound to your {{site.data.keyword.databases-for-postgresql}} service. 
 
-Field Name | Description
-----------|-----------
-postgres | The URI to be used when connecting applications and drivers to the service. Includes the schema (postgres:), a user name and password, host name of server, port number to connect to, the self-sigend certificate in base64 format, and the default database name.
-cli | A formatted `psql` shell command line that connects to the database instance, the self-signed certificate in base64 format, and the individual arguements to pass to `psql` when connecting.
-instance_administration_api | API information specific to this service.
-{: caption="Table 1. {{site.data.keyword.databases-for-postgresql}} credentials" caption-side="top"}
---------
+{{site.data.keyword.cloud_notm}} uses a manifest file - `manifest.yml` to associate an application with a service. Follow these steps to create your manifest file.
+- In an editor, open a new file and add the following:
+  ```
+  ---
+  applications:
+  - name:    databases-for-postgresql-helloworld-nodejs
+    host:    databases-for-postgresql-helloworld-nodejs
+    memory:  128M
+    services:
+      - my-databases-for-postgresql-service
+  ```
 
-## Generating a New Credential
-To connect an {{site.data.keyword.cloud_notm}} application to {{site.data.keyword.databases-for-postgresql}}, you will need to make at least one service credential. Click on **New Credential** and give it a descriptive name. 
+- Change the host value to something unique. The host you choose determines the subdomain of your application's URL: <host>.mybluemix.net.
+- Change the name value. The value you choose is the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
+- Update the services value to match the name of the service you created in [Creating a {{site.data.keyword.databases-for-postgresql}} service](./index.html#creating-databases-for-postgresql-service).
 
-If you have a service already running in the {{site.data.keyword.cloud}}, can enter it's information under _Select Service ID_. If you just want new credentials, you can ignore this field or select _Auto Generate_. 
+You can verify that the services are connected by navigating to the _Connections_ panel. If the service and the application are connected, .
 
-If you have an exisiting PostgreSQL user, and you would like to generate service credentials for, enter the user name and password in the JSON field below _Add Inline Configuration Parameters_, or specify a file where the JSON information is being stored. For example, `{"existing_credentials":{"username":"Robert","password":"supersecure"}}`. This does not check for or create an associated PostgreSQL user.
+The sample app in the [Getting Started](./getting-started.html) tutorial demonstrates how to use Node.js to bind the service and how to create a database and read from and write to the database.
 
-Click **Add** to provision the new Service Credential.
+## Running a cloud application locally
 
-### Generating Credentials via the API
+Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally and still connect to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you'll need to create a set of service credentials.
 
-To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send in the desired username and password in the body of the request.  
-For example, the `curl` to create user "mary" with password "mostsecure":
-```
-curl -X POST "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users" \
--H "Authorization: Bearer $APITOKEN" \
--H "Content-Type: application/json; charset=utf-8" \
--d \
-  '{
-  "user": 
-    {
-      "username":"mary",
-      "password":"mostsecure"
+1. From your {{site.data.keyword.cloud_notm}} dashboard, open your {{site.data.keyword.databases-for-postgresql}} service instance.
+2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
+3. Click **New Credential**.
+4. Choose a name for your credentials and click **Add**.
+5. Your new credentials are now listed. Click **View credentials** in the corresponding row of the table to view the credentials, and click the **Copy** icon to copy your credentials.
+6. In your editor of choice, create a new file with the following, inserting your credentials as shown:
+
+  ```
+  {
+    "services": {
+      "compose-for-postgresql": [
+        {
+          "credentials": INSERT YOUR CREDENTIALS HERE
+        }
+      ]
     }
-  }'
-```
+  }
+  ```
+7. Save the file as `vcap-local.json` in the directory where the sample app is located.
 
-Once the credentials have been created, you can view their associated connection information by sending a `GET` request to the`https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections` endpoint. 
+To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}} you should make sure that the file containing your credentials is listed in the relevant ignore file. 
+{: .tip}
 
-More information can be found in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser)
+You can then start your local server.
+
+For information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
+
+
+
+
+
+
