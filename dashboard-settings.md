@@ -45,6 +45,7 @@ A `GET` request returns current resource group information, including which reso
 ```
 curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups"
 ```
+{: codeblock}
 
 To scale resources, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request. 
 
@@ -69,16 +70,16 @@ You can find more examples in the [API Reference](https://pages.github.ibm.com/c
 
 Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups use `cdb deployment-groups-set` command. 
 
-For example, to view the resource groups for a deployment named "example-deployment" use:  
+For example, to view the resource groups for a deployment named "example-deployment":  
 `ibmcloud cdb deployment-groups example-deployment`
 
-To scale the memory to 2048MB of RAM for each memory member of "example-deployment" use:  
+To scale the memory to 2048MB of RAM for each memory member of "example-deployment":  
 `ibmcloud cdb deployment-groups-set member --memory 2048`
 
 ## Setting the admin Password
 
-In order to enable administrative access to your service, you have to set the admin password. You might also find it necessary to change the password of your service. You can do so using Update Password.
+To enable administrative access to your service, you have to set the admin password. You might also need to change the password of your service. You can do so using _Update Password_.
 
-A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click on the dice to the right of the field. When you click *Update Password* you will be asked to confirm before the change is applied. 
+A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click the icon to the right of the field. When you click *Update Password* you will be asked to confirm before the change is applied. 
 
-Note: Changing the password changes the credentials that you or any other services that use the admin user to connect. It can cause these services to disconnect and experience downtime.
+**Note:** Changing the password changes the credentials that you or any other services that use the admin user to connect. It can cause these services to disconnect and experience downtime.

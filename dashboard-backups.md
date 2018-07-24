@@ -38,12 +38,14 @@ Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/ba
 ```
 curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/backups"
 ```
+{: codeblock}
 
 ### Starting an on-demand backup
 
 ```
 curl -X POST -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups"
 ```
+{: codeblock}
 
 #Retrieving information about a backup
 
@@ -52,6 +54,7 @@ To get information about a specific backup, send a `GET` request to the endpoint
 ```
 curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/backups/{backup_id}"
 ```
+{: codeblock}
 
 For more examples, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Backups).
 
@@ -64,9 +67,11 @@ For example, to view the backups for a deployment named "example-deployment", us
 ```
 ibmcloud cdb deployment-backups-list example-deployment
 ```
+{: codeblock}
 
 To see the details of one of the backups from the list:
 
 ```
 ibmcloud cdb backup-show crn:v1:staging:public:databases-for-postgresql:us-south:a/6284014dd5b487c87a716f48aeeaf99f:3b4537bf-a585-4594-8262-2b1e24e2701e:backup:a3364821-d061-413f-a0df-6ba0e2951566
 ```
+{: codeblock}
