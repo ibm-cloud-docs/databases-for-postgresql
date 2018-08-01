@@ -31,7 +31,7 @@ You can also use the {{site.data.keyword.cloud_notm}} CLI to restore a backup.
 ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-postgresql standard us-south -p '{"backup_id":"{backup_id"}
 ```
 
-**Note:** The change the value of `SERVICE_INSTANCE_NAME` to the name you want for your new service.
+**Note:** Change the value of `SERVICE_INSTANCE_NAME` to the name you want for your new service.
 
 A pre-formatted command for a specific backup is available in detailed view of the backup on the _Backups_ tab of the service dashboard.
 {: .tip}
