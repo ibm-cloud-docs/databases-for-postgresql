@@ -14,7 +14,7 @@ lastupdated: "2018-07-31"
 
 
 # Getting started tutorial
-This tutorial uses the [clouddatabases-postgresql-helloworld-nodejs](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) sample app to demonstrate how to use Node.js to connect to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database using data supplied through the app's web interface.
+This tutorial uses the [clouddatabases-postgresql-helloworld-nodejs](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) sample app to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database using data supplied through the app's web interface.
 {: shortdesc}
 
 ## Before you begin
