@@ -18,7 +18,12 @@ lastupdated: "2018-07-24"
 
 ## Restoring a Backup
 
-To restore a backup to a new service instance, click in the corresponding row to expand the options for the backup you want to download. Click on the **Restore** button. A message is displayed to let you know that a restore has been initiated. The new service instance will automatically be named "postgres-restore-[timestamp]", and appears on your {{site.data.keyword.cloud_notm}} dashboard when provisioning starts.
+To restore a backup to a new service instance:
+
+1. Click in the corresponding row to expand the options for the backup you want to download.
+2. Click the **Restore** button. A message is displayed to let you know that a restore has been initiated.
+
+The new service instance is automatically named "postgres-restore-[timestamp]", and appears on your {{site.data.keyword.cloud_notm}} dashboard when provisioning starts.
 
 You can also use the {{site.data.keyword.cloud_notm}} CLI to restore a backup.
 
