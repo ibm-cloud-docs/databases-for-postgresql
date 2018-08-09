@@ -14,7 +14,7 @@ lastupdated: "2018-07-10"
 
 # Connecting an {{site.data.keyword.cloud_notm}} application
 
-Applications running in {{site.data.keyword.cloud_notm}}  have can be bound to your {{site.data.keyword.databases-for-postgresql_full}} service. 
+Applications running in {{site.data.keyword.cloud_notm}} can be bound to your {{site.data.keyword.databases-for-postgresql_full}} service. 
 
 {{site.data.keyword.cloud_notm}} uses a manifest file - `manifest.yml` to associate an application with a service. Follow these steps to create your manifest file.
 - In an editor, open a new file and add the following:
@@ -39,17 +39,17 @@ The sample app in the [Getting Started](./getting-started.html) tutorial provide
 ## Creating a Cloud Foundry alias
 {: #create-alias}
 
-If your application is running on Cloud Foundry you will have to create an alias for your {{site.data.keyword.databases-for-postgresql}} service so that it is discoverable by the Cloud Foundry application. Log into the {{site.data.keyword.cloud_notm}} CLI and use the command:
+If your application is running on Cloud Foundry you need to create an alias for your {{site.data.keyword.databases-for-postgresql}} service so that it is discoverable by the Cloud Foundry application. Log into the {{site.data.keyword.cloud_notm}} CLI and use the command:
 
 `ibmcloud resource service-alias alias-name --instance instance-name`
 
-The alias name can be the same as the database service instance name. So, for an {{site.data.keyword.databases-for-postgresql}} service named "example-psql":
+The alias name can be the same as the database service instance name. So, for a {{site.data.keyword.databases-for-postgresql}} service named "example-psql", use the following command:
 
 `ibmcloud resource service-alias example-psql --instance example-psql`
 
 ## Running a cloud application locally
 
-Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally and still connect to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you'll need to create a set of service credentials.
+Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally and still connect to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you need to create a set of service credentials.
 
 1. From your {{site.data.keyword.cloud_notm}} dashboard, open your {{site.data.keyword.databases-for-postgresql}} service instance.
 2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
@@ -71,7 +71,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
   ```
 7. Save the file as `vcap-local.json` in the directory where the sample app is located.
 
-To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}} you should make sure that the file containing your credentials is listed in the relevant ignore file. 
+To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. 
 {: .tip}
 
 You can then start your local server.
