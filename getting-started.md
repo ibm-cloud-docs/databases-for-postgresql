@@ -101,14 +101,14 @@ The alias name can be the same as the database service instance name. So, for ou
 1. In an editor, open a new file and add the following:
 
   ```
----
-applications:
-- name:    example-helloworld-nodejs
-  routes:
-  - route: example-helloworld-nodejs.mybluemix.net
-  memory:  128M
-  services:
-    - example-psql
+  ---
+  applications:
+  - name:    example-helloworld-nodejs
+    routes:
+    - route: example-helloworld-nodejs.mybluemix.net
+    memory:  128M
+    services:
+      - example-psql
   ```
 
 2. Change the `route` value to something unique. The host you choose will determinate the subdomain of your application's URL:  `<route>.mybluemix.net`.
