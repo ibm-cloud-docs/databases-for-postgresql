@@ -87,11 +87,11 @@ The {{site.data.keyword.cloud_notm}} CLI tool tool is what you'll use to communi
 
 Make the database service discoverable by Cloud Foundry applications by giving it a Cloud Foundry alias. 
 
-`ibmcloud resource service-alias alias-name --instance instance-name`
+`ibmcloud resource service-alias-create alias-name --instance instance-name`
 
 The alias name can be the same as the database service instance name. So, for our database created in step 1, we could do:
 
-`ibmcloud resource service-alias example-psql --instance example-psql`
+`ibmcloud resource service-alias-create example-psql --instance example-psql`
 
 ## Step 7: Update the app's manifest file
 {: #update-manifest}
@@ -101,16 +101,17 @@ The alias name can be the same as the database service instance name. So, for ou
 1. In an editor, open a new file and add the following:
 
   ```
-  ---
-  applications:
-  - name:    clouddatabases-postgresql-helloworld-nodejs
-    host:    clouddatabases-postgresql-helloworld-nodejs
-    memory:  128M
-    services:
-      - example-psql
+---
+applications:
+- name:    example-helloworld-nodejs
+  routes:
+  - route: example-helloworld-nodejs.mybluemix.net
+  memory:  128M
+  services:
+    - example-psql
   ```
 
-2. Change the `host` value to something unique. The host you choose will determinate the subdomain of your application's URL:  `<host>.mybluemix.net`.
+2. Change the `route` value to something unique. The host you choose will determinate the subdomain of your application's URL:  `<route>.mybluemix.net`.
 3. Change the `name` value. The value you choose will be the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
 4. Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-alias).
 
