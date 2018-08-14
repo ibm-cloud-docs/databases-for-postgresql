@@ -36,7 +36,9 @@ ibmcloud service create databases-for-postgresql standard SERVICE_INSTANCE_NAME
 
 {{site.data.keyword.databases-for-postgresql}} is an IAM integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM integrated services across the {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
 
-There are a few ways to manage your {{site.data.keyword.databases-for-postgresql}} deployment:
+For the reference on IAM roles and actions for {{site.data.keyword.databases-for-postgresql}} service instances is available on the [Access Management](./access-management.html) page.
+
+Once you or another users have access to the service, there are a few ways to manage it.
 
 - You can manage your service by selecting _Manage_ from the left sidebar and opening the management panel from your service. Here you can find information about your {{site.data.keyword.databases-for-postgresql}} database. Administative settings are availble in the [Settings](./dashboard-settings.html) tab and backups are available through the [Backups](./dashboard-backups.html) tab.
 

@@ -16,6 +16,7 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
+	access-management.md
 	administering.md
 	
 	{: .topicgroup}
