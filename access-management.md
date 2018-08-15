@@ -24,9 +24,11 @@ Policies enable access to be granted at different levels. Some of the options in
 
 After you define the scope of the access policy, you assign a role. Review the following tables which outline what actions each role allows within the {{site.data.keyword.databases-for-postgresql}} service.
 
-The following table details actions that are mapped to platform management roles. Platform management roles enable users to perform tasks on service resources at the platform level, for example assign user access for the service, create or delete service IDs, create instances, and bind instances to applications.
+For information about assigning user roles in {{site.data.keyword.cloud_notm}}, see [Managing IAM access](https://{DomainName}net/docs/iam/iamusermanage.html#iamusermanage).
 
-Platform management role | Description of actions | Example actions
+The following table details actions that are mapped to service management roles. Service management roles enable users to perform tasks on service resources at the service level, for example assign user access for the service, create or delete service IDs, create instances, and bind instances to applications.
+
+Service management role | Description of actions | Example actions
 -----------------|-----------------|-----------------
 Viewer | As a viewer, you can view service instances, but you can't modify them. | View Service Overview and View Alerts
 Editor | As an editor, you can perform all platform actions except for managing the account and assigning access policies. | Scale a Deployment and Change a Deployment's Password
@@ -34,7 +36,7 @@ Operator | N/A | N/A
 Administrator | As an administrator, you can perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users. | Scale a Deployment, Change a Deployment's Password, and Assign Access Policies
 {: caption="Table 1. IAM user roles and actions" caption-side="top"}
 
-## Actions for {{site.data.keyword.databases-for-postgresql}}
+## Actions for {{site.data.keyword.databases-for-postgresql}} API
 
 Platform Action| Operation on service| Role
 -------------|--------------------|--------------
@@ -50,11 +52,9 @@ GET /v4/ibm/deployments/:deployment_id/backups | Read all deployment backups | A
 POST /v4/ibm/deployments/:deployment_id/backups | Create an on-demand backup | Administrator, Editor
 GET /v4/ibm/deployments/:deployment_id/groups | Read all deployment groups | Administrator, Editor, Viewer
 PATCH /v4/ibm/deployments/:deployment_id/groups/:group_id | Read deployment group | Administrator, Editor
-POST /v4/ibm/deployments/:deployment_id/users | Create a DeploymentUser | Administrator, Editor
-PATCH /v4/ibm/deployments/:deployment_id/users/:user_id | Update a DeploymentUser | Administrator, Editor
-DELETE /v4/ibm/deployments/:deployment_id/users/:user_id | Remove a DeploymentUser | Administrator, Editor
+POST /v4/ibm/deployments/:deployment_id/users | Create a Deployment User | Administrator, Editor
+PATCH /v4/ibm/deployments/:deployment_id/users/:user_id | Update a Deployment User | Administrator, Editor
+DELETE /v4/ibm/deployments/:deployment_id/users/:user_id | Remove a Deployment User | Administrator, Editor
 GET /v4/ibm/deployments/:deployment_id/users/:user_id/connections | Read deployment user connections | Administrator, Editor, Viewer
 POST /v4/ibm/deployments/:deployment_id/users/:user_id/connections | Create deployment user connections | Administrator, Editor
 {: caption="Table 2. Platform actions and operations" caption-side="top"}
-
-For information about assigning user roles in the UI, see [Managing IAM access](https://{DomainName}net/docs/iam/iamusermanage.html#iamusermanage).
