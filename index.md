@@ -28,9 +28,9 @@ Choose a service name, and a region, organization and space to provision the ser
 
 You can create a service through the {{site.data.keyword.cloud_notm}} CLI using the `service create` command.
 ```
-ibmcloud service create databases-for-postgresql standard SERVICE_INSTANCE_NAME
+ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-postgresql standard REGION
 ```
-`SERVICE_INSTANCE_NAME` is the name for your new service instance.
+SERVICE_INSTANCE_NAME is the name for your new service instance, and REGION is where you want the service to be located.
 
 ## Managing {{site.data.keyword.databases-for-postgresql}}
 
