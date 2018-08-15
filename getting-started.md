@@ -164,8 +164,11 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
 To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. 
 {: .tip}
 
-You can then start the local server.  
-`npm start`
+You can then start the local server.
+```
+npm start
+```
+
 The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-postgresql}} database. When you stop and restart the app, any words you have already added are displayed when you refresh the page.
 
 For information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
