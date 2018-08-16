@@ -58,10 +58,10 @@ The `psql` connection information table describes the sub-fields of connection i
 
 Field Name|Description
 ----------|-----------
-`arguments`|The information that is passed as arguemnets to the `psql` command,
+`arguements`|The information that is passed as arguemnets to the `psql` command,
 `bin`|The package that this information is intended for; in this case `psql`.
 `certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. This is base64 encoded. You need to decode the key before using it.
-`composed`|A formatted `psql` command to establich a connection to your deployment.
+`composed`|A formatted `psql` command to establish a connection to your deployment.
 `environment`|`psql` arguements that can be set and pulled from the environment.
 `type`|The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `psql` connection information" caption-side="top"}
