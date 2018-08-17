@@ -66,7 +66,7 @@ curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
 ```
 You can find more examples in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling).
 
-### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databasses plug-in
+### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
 Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups use `cdb deployment-groups-set` command. 
 
