@@ -72,7 +72,7 @@ Field Name|Description
 `database`|The default database created at deployment provision.
 `hosts`|The hostname and port of the deployment.
 `path`|The path to the default database on the deployment.
-`query_options`|The optional arguements included in the `composed` connection string.
+`query_options`|The optional arguments included in the `composed` connection string.
 `scheme`|The type of database that is offered by the service; in this case `postgresql`.
 `type`|The format of the `composed` connection string.
 {: caption="Table 1. PostgreSQL connection information" caption-side="top"}
@@ -85,7 +85,7 @@ Usually, you need to complete the following steps.
 
 1. Download and save a copy of the certificate locally
 2. Decode it from base64 into a .pem certificate
-3. Provide the certifcate's path to the driver, and set the SSL mode to "Verify"
+3. Provide the certificate's path to the driver, and set the SSL mode to "Verify"
 
 
  

@@ -87,11 +87,11 @@ The {{site.data.keyword.cloud_notm}} CLI tool tool is what you'll use to communi
 
 Make the database service discoverable by Cloud Foundry applications by giving it a Cloud Foundry alias. 
 
-`ibmcloud resource service-alias-create alias-name --instance instance-name`
+`ibmcloud resource service-alias-create alias-name --instance-name instance-name`
 
 The alias name can be the same as the database service instance name. So, for our database created in step 1, we could do:
 
-`ibmcloud resource service-alias-create example-psql --instance example-psql`
+`ibmcloud resource service-alias-create example-psql --instance-name example-psql`
 
 ## Step 7: Update the app's manifest file
 {: #update-manifest}
@@ -135,11 +135,43 @@ If your application is not listed, repeat Steps 7 and 8, making sure you have en
 
 ## Step 10: Use the app
 
-Now, when you visit `<host>.mybluemix.net/` you will be able to view the contents of your {{site.data.keyword.databases-for-postgresql}} collection. As you add words and their definitions they are added to the database and displayed. If you stop and restart the app you'll see any words and definitions you've already added are now listed.
+Now, when you visit `<route>.mybluemix.net/` you will be able to view the contents of your {{site.data.keyword.databases-for-postgresql}} collection. As you add words and their definitions they are added to the database and displayed. If you stop and restart the app you'll see any words and definitions you've already added are now listed.
 
 ## Running the app locally
 
-Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally to test the connection to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you'll need to create a set of service credentials. For steps to generate credentials and use them in your apllication, see [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-bluemix-app.html#running-a-cloud-application-locally)
+Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally and still connect to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you need to create a set of service credentials.
+
+1. From your {{site.data.keyword.cloud_notm}} dashboard, open your {{site.data.keyword.databases-for-postgresql}} service instance.
+2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
+3. Click **New Credential**.
+4. Choose a name for your credentials and click **Add**.
+5. Your new credentials are now listed. Click **View credentials** in the corresponding row of the table to view the credentials, and click the **Copy** icon to copy your credentials.
+6. In your editor of choice, create a new file with the following, inserting your credentials as shown:
+
+  ```
+  {
+    "services": {
+      "databases-for-postgresql": [
+        {
+          "credentials": INSERT YOUR CREDENTIALS HERE
+        }
+      ]
+    }
+  }
+  ```
+7. Save the file as `vcap-local.json` in the directory where the sample app is located.
+
+To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. 
+{: .tip}
+
+You can then start the local server.
+```
+npm start
+```
+
+The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-postgresql}} database. When you stop and restart the app, any words you have already added are displayed when you refresh the page.
+
+For information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
 
 ## Next steps
 
