@@ -50,7 +50,7 @@ For more information, see the [API Reference](https://pages.github.ibm.com/compo
 
 The {{site.data.keyword.cloud_notm}} CLI cloud databases plugin provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
 
-You can also connect to `psql` from the cloud databases plugin with the admin user with `ibmcloud dbs deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
+You can also connect to `psql` from the cloud databases plugin with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
 
 To retrieve the admin user's connection strings through the API, send a GET request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin`. The JSON response includes the strings to connect to `psql` in "cli" field.
 
@@ -58,11 +58,11 @@ The `psql` connection information table describes the sub-fields of connection i
 
 Field Name|Description
 ----------|-----------
-`arguments`|The information that is passed as arguemnets to the `psql` command,
+`arguments`|The information that is passed as arguments to the `psql` command,
 `bin`|The package that this information is intended for; in this case `psql`.
 `certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. This is base64 encoded. You need to decode the key before using it.
-`composed`|A formatted `psql` command to establich a connection to your deployment.
-`environment`|`psql` arguements that can be set and pulled from the environment.
+`composed`|A formatted `psql` command to establish a connection to your deployment.
+`environment`|`psql` arguments that can be set and pulled from the environment.
 `type`|The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `psql` connection information" caption-side="top"}
 
@@ -70,8 +70,8 @@ Field Name|Description
 
 The formatted `psql` command sets the option to verify the server via certificate upon connection. To use this feature, you need to complete the following steps:
 
-1. Download and save a copy of the certifcate
-2. Decode the certifcate from base64 format to the .pem certificate format.
+1. Download and save a copy of the certificate
+2. Decode the certificate from base64 format to the .pem certificate format.
 3. Provide the path to the certificate to the connection string in the `PGSSLROOTCERT` environment variable.
 
 
