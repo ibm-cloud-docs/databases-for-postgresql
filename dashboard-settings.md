@@ -34,7 +34,7 @@ Billing is based on the _total_ amount of resources allocated to the service.
 
 ### Scaling via the UI
 
-Adjust the slider to raise or lower the resources allocated to your service. Click **Scale** to trigger the rescaling and return to the dashboard overview.
+Adjust the slider to raise or lower the resources allocated to your service. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
 
 ### Scaling via the API
 

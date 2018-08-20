@@ -9,7 +9,7 @@ This repo contains the documentation for the IBM Cloud Databases for PostgreSQL 
 
 ## Output
 
-The output from these docs is available on the Bluemix staging server: 
+The output from these docs is available on the IBM Cloud staging server: 
 
 - [About IBM Cloud Databases for PostgreSQL](https://console.stage1.bluemix.net/docs/services/databases-for-postgresql/index.html#about-databases-for-postgresql)
 
