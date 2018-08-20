@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-07-24"
+lastupdated: "2018-08-20"
 ---
 
 {:new_window: target="_blank"}
@@ -14,7 +14,7 @@ lastupdated: "2018-07-24"
 # Backups
 {: #backups}
 
-{{site.data.keyword.databases-for-postgresql_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily, weekly, monthly, and on-demand backups are available. Each backup is labeled with its type, and when the backup was taken. Click the backup to reveal the full ID of the backup and a command that you can use to restore a backup with the {{site.data.keyword.cloud_notm}} CLI.
+{{site.data.keyword.databases-for-postgresql_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily and on-demand backups are available for 30 days. Each backup is labeled with its type, and when the backup was taken. Click the backup to reveal the full ID of the backup and a command that you can use to restore a backup with the {{site.data.keyword.cloud_notm}} CLI.
 
 ## Restoring a Backup
 
@@ -63,7 +63,7 @@ curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/jso
 ```
 {: codeblock}
 
-For more examples, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Backups).
+For more examples, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/cloud-databases-api-static.html#tag/Backups).
 
 ## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin
 

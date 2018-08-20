@@ -10,6 +10,7 @@ lastupdated: "2018-07-01"
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:tip: .tip}
 
 # About {{site.data.keyword.databases-for-postgresql_full_notm}}
 {: #about-databases-for-postgresql}

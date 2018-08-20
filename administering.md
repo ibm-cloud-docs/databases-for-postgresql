@@ -9,6 +9,7 @@ lastupdated: "2017-07-18"
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:tip: .tip}
 
 # Administering your PostgreSQL databases
 
