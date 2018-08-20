@@ -14,14 +14,14 @@ lastupdated: "2018-07-24"
 # Backups
 {: #backups}
 
-{{site.data.keyword.databases-for-postgresql_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily, weekly, monthly, and on-demand backups are available. Each backup is labled with its type, and when the backup was taken. Click the backup to reveal the full ID of the backup and a command that you can use to restore a backup with the {{site.data.keyword.cloud_notm}} CLI.
+{{site.data.keyword.databases-for-postgresql_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily, weekly, monthly, and on-demand backups are available. Each backup is labeled with its type, and when the backup was taken. Click the backup to reveal the full ID of the backup and a command that you can use to restore a backup with the {{site.data.keyword.cloud_notm}} CLI.
 
 ## Restoring a Backup
 
 To restore a backup to a new service instance:
 
 1. Click in the corresponding row to expand the options for the backup you want to download.
-2. Click the **Restore** button. A message is displayed to let you know that a restore has been initiated.
+2. Click the **Restore** button.  A message is displayed that a backup is in progress, and a 'pending' backup is added to the list of available backups.
 
 The new service instance is automatically named "postgres-restore-[timestamp]", and appears on your {{site.data.keyword.cloud_notm}} dashboard when provisioning starts.
 
