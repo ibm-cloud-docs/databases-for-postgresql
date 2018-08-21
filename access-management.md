@@ -58,3 +58,4 @@ DELETE /v4/ibm/deployments/:deployment_id/users/:user_id | Remove a Deployment U
 GET /v4/ibm/deployments/:deployment_id/users/:user_id/connections | Read deployment user connections | Administrator, Editor, Viewer
 POST /v4/ibm/deployments/:deployment_id/users/:user_id/connections | Create deployment user connections | Administrator, Editor
 {: caption="Table 2. Platform actions and operations" caption-side="top"}
+

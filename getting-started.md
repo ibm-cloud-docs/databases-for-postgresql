@@ -14,7 +14,7 @@ lastupdated: "2018-07-31"
 
 
 # Getting started tutorial
-This tutorial uses the [clouddatabases-postgresql-helloworld-nodejs](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) sample app to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database using data supplied through the app's web interface.
+This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database using data supplied through the app's web interface.
 {: shortdesc}
 
 ## Before you begin
@@ -111,8 +111,8 @@ The alias name can be the same as the database service instance name. So, for ou
       - example-psql
   ```
 
-2. Change the `route` value to something unique. The route you choose will determine the subdomain of your application's URL:  `<route>.mybluemix.net`.
-3. Change the `name` value. The value you choose will be the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
+2. Change the `route` value to something unique. The route that you choose will determine the subdomain of your application's URL:  `<route>.mybluemix.net`.
+3. Change the `name` value. The name that you choose is displayed in your {{site.data.keyword.cloud_notm}} dashboard.
 4. Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-alias).
 
 ## Step 8: Push the app to {{site.data.keyword.cloud_notm}}.
@@ -126,16 +126,16 @@ When you push the app it will automatically be bound to the service specified in
 ibmcloud cf push
 ```
 
-## Step 9: Check the app is connected to your {{site.data.keyword.databases-for-postgresql}} service
+## Step 9: Check that the app is connected to your {{site.data.keyword.databases-for-postgresql}} service
 
-1. Navigate to your {{site.data.keyword.databases-for-postgresql}} service dashboard
+1. Go to your {{site.data.keyword.databases-for-postgresql}} service dashboard
 2. Select _Connections_ from the dashboard menu. Your application should be listed under _Connected Applications_.
 
-If your application is not listed, repeat Steps 7 and 8, making sure you have entered the correct details in [manifest.yml](#update-manifest).
+If your application is not listed, repeat Steps 7 and 8, making sure that you have entered the correct details in [manifest.yml](#update-manifest).
 
 ## Step 10: Use the app
 
-Now, when you visit `<route>.mybluemix.net/` you will be able to view the contents of your {{site.data.keyword.databases-for-postgresql}} collection. As you add words and their definitions, they are added to the database and displayed. If you stop and restart the app, you'll see any words and definitions you've already added are now listed.
+Now, when you visit `<route>.mybluemix.net/` you can see the contents of your {{site.data.keyword.databases-for-postgresql}} collection. As you add words and their definitions, they are added to the database and displayed. If you stop and restart the app, you'll see any words and definitions you've already added are now listed.
 
 ## Running the app locally
 
@@ -161,7 +161,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
   ```
 7. Save the file as `vcap-local.json` in the directory where the sample app is located.
 
-To avoid accidentally exposing your credentials when pushing an application to Github or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. 
+To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory you can see that `vcap-local.json` is listed in both, so it is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
 {: .tip}
 
 You can then start the local server.
@@ -175,7 +175,7 @@ For more information about the credentials you created for the application to co
 
 ## Next steps
 
-To understand more about how the [clouddatabases-postgresql-helloworld-nodejs](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) sample app works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
+To understand more about how the [sample app](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
 
 To start exploring your {{site.data.keyword.databases-for-postgresql}} service, see the following topics about the service dashboard:
 
