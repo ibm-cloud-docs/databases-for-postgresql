@@ -38,7 +38,7 @@ You can manage your {{site.data.keyword.databases-for-postgresql}} service throu
 
 ### Foundation Endpoint
 
-The foundation endpoint is composed of the region the service resides in and the service instance id. It will be at the start of every endpoint.
+The foundation endpoint is composed of the region your service resides in and the base {{site.data.keyword.cloud_notm}} Databases API endpoint. 
 
 ### Deployment ID
 
@@ -46,4 +46,4 @@ The deployment ID is necessary for most calls, and identifies the specific deplo
 
 ### {{site.data.keyword.cloud_notm}} Databases API Reference
 
-For more documentation and the reference for using the {{site.data.keyword.cloud_notm}} Databases API, see the [reference page](https://pages.github.ibm.com/compose/apidocs/).
+For more information on using the {{site.data.keyword.cloud_notm}} Databases API, see the [API reference page](https://pages.github.ibm.com/compose/apidocs/).

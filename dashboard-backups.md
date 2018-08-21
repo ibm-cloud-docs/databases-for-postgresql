@@ -67,7 +67,7 @@ For more examples, see the [API Reference](https://pages.github.ibm.com/compose/
 
 ## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin
 
-Use the `cdb deployment-backups-list` command to view the list of all available backups for your deployment. To get the details about a specific backup use `cdb backup-show` command.
+Use the `cdb deployment-backups-list` command to view the list of all available backups for your deployment. To get the details about a specific backup, use `cdb backup-show` command.
 
 For example, to view the backups for a deployment named "example-deployment", use the following command.
 

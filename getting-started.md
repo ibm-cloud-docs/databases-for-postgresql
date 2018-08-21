@@ -61,7 +61,7 @@ Use npm to install dependencies.
 
 ## Step 4: Download and install the {{site.data.keyword.cloud_notm}} CLI tool
 
-The {{site.data.keyword.cloud_notm}} CLI tool tool is what you'll use to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line. For details, see [Download and install {{site.data.keyword.cloud_notm}} CLI](https://console.{DomainName}/docs/cli/reference/bluemix_cli/download_cli.html).
+The {{site.data.keyword.cloud_notm}} CLI tool is what you'll use to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line. For more information, see [Download and install {{site.data.keyword.cloud_notm}} CLI](https://console.{DomainName}/docs/cli/reference/bluemix_cli/download_cli.html).
 
 ## Step 5: Connect to {{site.data.keyword.cloud_notm}}
 
@@ -111,7 +111,7 @@ The alias name can be the same as the database service instance name. So, for ou
       - example-psql
   ```
 
-2. Change the `route` value to something unique. The host you choose will determinate the subdomain of your application's URL:  `<route>.mybluemix.net`.
+2. Change the `route` value to something unique. The route you choose will determine the subdomain of your application's URL:  `<route>.mybluemix.net`.
 3. Change the `name` value. The value you choose will be the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
 4. Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-alias).
 
@@ -135,11 +135,11 @@ If your application is not listed, repeat Steps 7 and 8, making sure you have en
 
 ## Step 10: Use the app
 
-Now, when you visit `<route>.mybluemix.net/` you will be able to view the contents of your {{site.data.keyword.databases-for-postgresql}} collection. As you add words and their definitions they are added to the database and displayed. If you stop and restart the app you'll see any words and definitions you've already added are now listed.
+Now, when you visit `<route>.mybluemix.net/` you will be able to view the contents of your {{site.data.keyword.databases-for-postgresql}} collection. As you add words and their definitions, they are added to the database and displayed. If you stop and restart the app, you'll see any words and definitions you've already added are now listed.
 
 ## Running the app locally
 
-Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally and still connect to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service you need to create a set of service credentials.
+Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally and still connect to your {{site.data.keyword.databases-for-postgresql}} service instance. To connect to the service, you need to create a set of service credentials.
 
 1. From your {{site.data.keyword.cloud_notm}} dashboard, open your {{site.data.keyword.databases-for-postgresql}} service instance.
 2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
@@ -171,7 +171,7 @@ npm start
 
 The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-postgresql}} database. When you stop and restart the app, any words you have already added are displayed when you refresh the page.
 
-For information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
+For more information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
 
 ## Next steps
 

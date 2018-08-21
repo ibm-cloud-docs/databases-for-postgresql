@@ -31,7 +31,7 @@ Because {{site.data.keyword.databases-for-postgresql}} is an IAM service, you ca
 
 You can generate service credentials for an existing PostgreSQL user that was created through the API, the IBM Cloud CLI, or by using `psql`.
 
-Enter the user name and password in the JSON field below _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, `{"existing_credentials":{"username":"Robert","password":"supersecure"}}`.
+Enter the user name and password in the JSON field _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, `{"existing_credentials":{"username":"Robert","password":"supersecure"}}`.
 
 This does not check for or create an associated PostgreSQL user.
 {: tip}
@@ -67,8 +67,8 @@ If you use the API or the _Service Credentials_ panel, connection information is
 Field Name|Description
 ----------|-----------
 `authentication`|Basic authentication information: username, password, and auth type.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. This is base64 encoded. You need to decode the key before using it.
-`composed`|The URI to be used when connecting to the service. Includes the schema (`postgres:`), admin user name and password, host name of server, port number to connect to, database name and "?sslmode=verify-full" to enable SSL connections and verify the server.
+`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`composed`|The URI used for connecting to the service. Includes the schema (`postgres:`), admin user name and password, host name of server, port number to connect to, database name and "?sslmode=verify-full" to enable SSL connections and verify the server.
 `database`|The default database created at deployment provision.
 `hosts`|The hostname and port of the deployment.
 `path`|The path to the default database on the deployment.
@@ -89,7 +89,7 @@ Usually, you need to complete the following steps.
 
 ### CLI plugin support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plugin using the `ibmcloud cdb deployment-cacert "your-service-name" command. You can copy and save the command's out put to a file and provide the file's path to your driver.
+You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to your driver.
 
 
  

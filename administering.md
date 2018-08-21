@@ -18,9 +18,9 @@ The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned w
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users outside of these functions.
 
 For security reasons, and as part of the infrastructure provided by {{site.data.keyword.databases-for-postgresql}} as a managed service, there is no superuser role available to the end-user.
-{.tip}
+{: .tip}
 
-To get started you will have to complete the following steps:
+To get started, you will have to complete the following steps:
 
 1. Set the admin credentials
 2. Retrieve the admin connection strings and other connection information
@@ -30,7 +30,7 @@ To get started you will have to complete the following steps:
 
 You have to set the admin password before you can use it to connect. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the service dashboard to open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
 
-You can also set the admin user password using the API. Send a `PATCH` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin` endpoint.
+You can also set the admin user password through the API. Send a `PATCH` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin` endpoint.
 
 ```
 curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin" \
@@ -49,7 +49,7 @@ For more information, see the [API Reference](https://pages.github.ibm.com/compo
 
 ## Connecting with `psql`
 
-To use `psql`, the PostgreSQL client tools will need to be installed on the local system. They can be installed by installing the full PostgreSQL package downloaded from postgresql.org, or from your operating systems packages.
+To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed by installing the full PostgreSQL package downloaded from postgresql.org, or from your operating systems packages.
 
 You can read more about psql in the PostgreSQL documentation - reference - and a simple introduction in Postgres Guide.
 
@@ -85,7 +85,7 @@ The formatted `psql` command sets the option to verify the server via certificat
 
 ### CLI plugin support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plugin using the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's out put to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
+You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
 
 
 
