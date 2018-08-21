@@ -59,4 +59,8 @@ To connect an {{site.data.keyword.cloud_notm}} application to your service, use 
 
 If you want to connect to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command-line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
 
+## Database Administration
+
+Direct access to the PostgreSQL databases is provided by [setting up the admin user](./administering.html) on your {{site.data.keyword.databases-for-postgresql}} service. You can then use PostgreSQL's command-line `psql` to log into your cluster, manage databases, manage users and roles, and other database admin functions.
+
 

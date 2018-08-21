@@ -13,7 +13,7 @@ lastupdated: "2017-07-18"
 
 # Administering your PostgreSQL databases
 
-The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user, so you can administer PostgreSQL by using its command-line tool, `psql`. A password is set for the admin user at provision time, but the password is not stored by the provisioning process.
+The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user, so you can administer PostgreSQL by using its command-line tool, `psql`.
 
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users outside of these functions.
 
@@ -49,9 +49,17 @@ For more information, see the [API Reference](https://pages.github.ibm.com/compo
 
 ## Connecting with `psql`
 
+To use `psql`, the PostgreSQL client tools will need to be installed on the local system. They can be installed by installing the full PostgreSQL package downloaded from postgresql.org, or from your operating systems packages.
+
+You can read more about psql in the PostgreSQL documentation - reference - and a simple introduction in Postgres Guide.
+
+### Connecting to 'psql' with the CLI plugin
+
 The {{site.data.keyword.cloud_notm}} CLI cloud databases plugin provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
 
 You can also connect to `psql` from the cloud databases plugin with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
+
+### Getting a `psql` connection string with the API
 
 To retrieve the admin user's connection strings through the API, send a GET request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin`. The JSON response includes the strings to connect to `psql` in "cli" field.
 
@@ -74,6 +82,14 @@ The formatted `psql` command sets the option to verify the server via certificat
 1. Download and save a copy of the certificate
 2. Decode the certificate from base64 format to the .pem certificate format.
 3. Provide the path to the certificate to the connection string in the `PGSSLROOTCERT` environment variable.
+
+### CLI plugin support for the self-signed certificate
+
+You can display the decoded certificate for your deployment with the CLI plugin using the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's out put to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
+
+
+
+
 
 
 

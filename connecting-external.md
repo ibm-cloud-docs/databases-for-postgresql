@@ -87,5 +87,9 @@ Usually, you need to complete the following steps.
 2. Decode it from base64 into a .pem certificate
 3. Provide the certificate's path to the driver, and set the SSL mode to "Verify"
 
+### CLI plugin support for the self-signed certificate
+
+You can display the decoded certificate for your deployment with the CLI plugin using the `ibmcloud cdb deployment-cacert "your-service-name" command. You can copy and save the command's out put to a file and provide the file's path to your driver.
+
 
  
