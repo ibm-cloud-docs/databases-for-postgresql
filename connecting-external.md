@@ -25,7 +25,7 @@ lastupdated: "2017-07-18"
 
 ### Using Service IDs
 
-Because {{site.data.keyword.databases-for-postgresql}} is an IAM service, you can use [Service IDs](https://console.{DomainName}/docs/iam/serviceid.html#serviceids) to manage access to this service. For example, using a service ID that has an API key associated with it grants that API key access to the {{site.data.keyword.cloud_notm}} Databases API to administer this service. If you have a Service ID, enter its information under _Select Service ID_. 
+Because {{site.data.keyword.databases-for-postgresql}} is an IAM service, you can use [Service IDs](https://console.{DomainName}/docs/iam/serviceid.html#serviceids) to manage access to this service. For example, using a Service ID that has an API key associated with it grants that API key access to the {{site.data.keyword.cloud_notm}} Databases API, as well as generating a PostgreSQL user and connection string in _Service Credentials_.  If you have a Service ID, enter its information under _Select Service ID_.  
 
 ### Generating _Service Credentials_ for existing users.
 

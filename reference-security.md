@@ -16,7 +16,7 @@ lastupdated: "2018-05-30"
 
 ## Protection Against Unauthorized Access
 
-IBM Cloud Databases use the following methods to protect data in transit or from storage.
+IBM Cloud Databases use the following methods to protect data in transit or in storage.
 - All IBM Cloud Databases use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via IAM (Identity & Access Management)
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require a valid set of database-level credentials which are obtainable only through prior access to the database or through our Management Console UI or API.
