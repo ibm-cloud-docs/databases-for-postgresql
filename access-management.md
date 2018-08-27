@@ -16,13 +16,13 @@ lastupdated: "2018-08-14"
 
 Access to {{site.data.keyword.databases-for-postgresql_full}} service instances for users in your account is controlled by {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). Every user that accesses the {{site.data.keyword.databases-for-postgresql}} service in your account must be assigned an access policy with an IAM user role defined. That policy determines what actions the user can perform within the context of the service or instance you select. The allowable actions are customized and defined by the {{site.data.keyword.cloud_notm}} service as operations that are allowed to be performed on the service. The actions are then mapped to IAM user roles.
 
-Policies enable access to be granted at different levels. Some of the options include the following: 
+Policies enable access to be granted at different levels. Some of the options include: 
 * Access across all instances of the service in your account
 * Access to an individual service instance in your account
 * Access to a specific resource within an instance
 * Access to all IAM-enabled services in your account
 
-After you define the scope of the access policy, you assign a role. Review the following tables which outline what actions each role allows within the {{site.data.keyword.databases-for-postgresql}} service.
+After you define the scope of the access policy, you assign a role. Review the following tables that outline what actions each role allows within the {{site.data.keyword.databases-for-postgresql}} service.
 
 For more information about assigning user roles in {{site.data.keyword.cloud_notm}}, see [Managing IAM access](https://{DomainName}net/docs/iam/iamusermanage.html#iamusermanage).
 

@@ -13,15 +13,15 @@ lastupdated: "2018-08-21"
 
 # Architecture
 
-{{site.data.keyword.cloud_notm}} Databases are managed Databases as a Service that run in containers orchestrated by Kubernetes. It's fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and monitoring all run in {{site.data.keyword.cloud_notm}}.
+{{site.data.keyword.cloud_notm}} Databases is a managed cloud database service that runs in containers that are orchestrated by Kubernetes. It is fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and monitoring all run in {{site.data.keyword.cloud_notm}}.
 
 ## PostgreSQL Databases
 
-An {{site.data.keyword.databases-for-postgresql}} service contains a cluster with two data members; a leader and a follower member. Data is replicated across both data members, and their disk space is spread over the region's availability zones. High-availability is managed with [Patroni](https://github.com/zalando/patroni), where three etcd arbiters maintain cluster state, manage replication, and handle failover. Should one data member become unreachable, your cluster will continue to operate normally.
+An {{site.data.keyword.databases-for-postgresql}} service contains a cluster with two data members; a leader and a follower member. Data is replicated across both data members, and their disk space is spread over the region's availability zones. High-availability is managed with [Patroni](https://github.com/zalando/patroni), where three etcd arbiters maintain cluster state, manage replication, and handle failover. If one data member become unreachable, your cluster will continue to operate normally.
 
 ### Storage
 
-All storage for {{site.data.keyword.cloud_notm}} Databases is provided on {{site.data.keyword.cloud_notm}} Cloud Object Storage. Storage for {{site.data.keyword.databases-for-postgresql}} is auto-scaled to the size of your data on disk.
+All storage for {{site.data.keyword.cloud_notm}} Databases is provided on {{site.data.keyword.cloud_notm}} Object Storage. Storage for {{site.data.keyword.databases-for-postgresql}} is auto-scaled to the size of your data on disk.
 
 ### Full-disk Encryption
 
@@ -29,11 +29,11 @@ All {{site.data.keyword.databases-for-postgresql}} services all have encryption 
 
 ## Portals
 
-{{site.data.keyword.databases-for-postgresql}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the PostgreSQL cluster and provide load-balancing. These are then behind the Kubernetes Nodeport Service, which provides the point of connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
+{{site.data.keyword.databases-for-postgresql}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the PostgreSQL cluster and provide load-balancing. The portals are then behind the Kubernetes Nodeport Service, which provides the point of connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
 
 ### Encryption in Transit
 
-All {{site.data.keyword.databases-for-postgresql}} HAProxy portals have TLS/SSL enabled and support TLS version 1.2. Self-signed certificates are provided to enable applications to validate the server upon connection.
+All {{site.data.keyword.databases-for-postgresql}} HAProxy portals are TLS/SSL enabled and support TLS version 1.2. Self-signed certificates are provided to enable applications to validate the server upon connection.
 
 ## Monitoring
 

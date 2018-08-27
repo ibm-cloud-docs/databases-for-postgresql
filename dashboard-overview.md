@@ -34,16 +34,16 @@ Every time that you make administrative changes to your service (such as scaling
 
 ## Instance Administration API
 
-You can manage your {{site.data.keyword.databases-for-postgresql}} service through the {{site.data.keyword.cloud_notm}} Databases API.
+You can manage your {{site.data.keyword.databases-for-postgresql}} service through the {{site.data.keyword.cloud_notm}} databases API.
 
 ### Foundation Endpoint
 
-The foundation endpoint is composed of the region your service resides in and the base {{site.data.keyword.cloud_notm}} Databases API endpoint. 
+The foundation endpoint is composed of the region your service resides in and the base {{site.data.keyword.cloud_notm}} databases API endpoint. 
 
 ### Deployment ID
 
 The deployment ID is necessary for most calls, and identifies the specific deployment instance.
 
-### {{site.data.keyword.cloud_notm}} Databases API Reference
+### {{site.data.keyword.cloud_notm}} databases API Reference
 
-For more information on using the {{site.data.keyword.cloud_notm}} Databases API, see the [API reference page](https://pages.github.ibm.com/compose/apidocs/).
+For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference page](https://pages.github.ibm.com/compose/apidocs/).

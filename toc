@@ -26,5 +26,6 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
+	reference-architecture.md
 	reference-security.md
 	{: .navgroup-end}

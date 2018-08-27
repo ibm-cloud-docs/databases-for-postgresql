@@ -15,7 +15,7 @@ lastupdated: "2017-07-18"
 
 The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user, so you can administer PostgreSQL by using its command-line tool, `psql`.
 
-The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users outside of these functions.
+The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
 
 For security reasons, and as part of the infrastructure provided by {{site.data.keyword.databases-for-postgresql}} as a managed service, there is no superuser role available to the end-user.
 {: .tip}
@@ -53,23 +53,23 @@ To use `psql`, the PostgreSQL client tools need to be installed on the local sys
 
 You can read more about psql in the PostgreSQL documentation - reference - and a simple introduction in Postgres Guide.
 
-### Connecting to 'psql' with the CLI plugin
+### Connecting to 'psql' with the CLI plug-in
 
-The {{site.data.keyword.cloud_notm}} CLI cloud databases plugin provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
+The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
 
-You can also connect to `psql` from the cloud databases plugin with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
+You can also connect to `psql` from the cloud databases plug-in with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
 
 ### Getting a `psql` connection string with the API
 
 To retrieve the admin user's connection strings through the API, send a GET request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin`. The JSON response includes the strings to connect to `psql` in "cli" field.
 
-The `psql` connection information table describes the sub-fields of connection information.
+The `psql` connection information table describes the subfields of connection information.
 
 Field Name|Description
 ----------|-----------
 `arguments`|The information that is passed as arguments to the `psql` command,
 `bin`|The package that this information is intended for; in this case `psql`.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. This is base64 encoded. You need to decode the key before using it.
+`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
 `composed`|A formatted `psql` command to establish a connection to your deployment.
 `environment`|`psql` arguments that can be set and pulled from the environment.
 `type`|The type of package that uses this connection information; in this case `cli`. 
@@ -83,9 +83,9 @@ The formatted `psql` command sets the option to verify the server via certificat
 2. Decode the certificate from base64 format to the .pem certificate format.
 3. Provide the path to the certificate to the connection string in the `PGSSLROOTCERT` environment variable.
 
-### CLI plugin support for the self-signed certificate
+### CLI plug-in support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
+You can display the decoded certificate for your deployment with the CLI plug-in with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
 
 
 
