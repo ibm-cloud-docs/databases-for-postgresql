@@ -24,7 +24,11 @@ Policies enable access to be granted at different levels. Some of the options in
 
 After you define the scope of the access policy, you assign a role. Review the following tables that outline what actions each role allows within the {{site.data.keyword.databases-for-postgresql}} service.
 
+<<<<<<< HEAD
 For more information about assigning user roles in {{site.data.keyword.cloud_notm}}, see [Managing IAM access](https://{DomainName}net/docs/iam/iamusermanage.html#iamusermanage).
+=======
+For information about assigning user roles in {{site.data.keyword.cloud_notm}}, see [Managing IAM access](https://console.{DomainName}/docs/iam/iamusermanage.html#iamusermanage).
+>>>>>>> staging
 
 The following table details actions that are mapped to service management roles. Service management roles enable users to perform tasks on service resources at the service level, for example assign user access for the service, create or delete service IDs, create instances, and bind instances to applications.
 
@@ -38,6 +42,7 @@ Administrator | As an administrator, you can perform all platform actions based 
 
 ## Actions for {{site.data.keyword.databases-for-postgresql}} API
 
+<<<<<<< HEAD
 Platform Action  | Operation on service | Role |
 ----------|------------|----------|
 GET /v4/:platform/deployables | Read Deployables | Administrator, Editor, Operator, Viewer 
@@ -62,3 +67,25 @@ POST /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses | Create a
 DELETE /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses/:ip_address_id | Remove a Whitelisted IP Addresses | Administrator, Editor, Operator
 {: caption="Table 2. Platform actions and operations" caption-side="top"}
 
+=======
+Platform Action| Operation on service| Role
+-------------|--------------------|--------------
+GET /v4/ibm/deployables| Read Deployables| Administrator, Editor, Viewer 
+GET /v4/ibm/tasks/:task_id| Read a Task| Administrator, Editor, Viewer
+GET /v4/ibm/backups/:backup_id | Read a Backup| Administrator, Editor, Viewer
+POST /v4/ibm/deployments | Create a Deployment | Administrator, Editor
+GET /v4/ibm/deployments/:deployment_id | Read a Deployment | Administrator, Editor, Viewer
+DELETE /v4/ibm/deployments/:deployment_id | Remove a Deployment | Administrator, Editor 
+GET /v4/ibm/deployables/:deployable_id/groups | Read deployable group | Administrator, Editor, Viewer
+GET /v4/ibm/deployments/:deployment_id/tasks| Read all deployment tasks | Administrator, Editor, Viewer 
+GET /v4/ibm/deployments/:deployment_id/backups | Read all deployment backups | Administrator, Editor, Viewer
+POST /v4/ibm/deployments/:deployment_id/backups | Create an on-demand backup | Administrator, Editor
+GET /v4/ibm/deployments/:deployment_id/groups | Read all deployment groups | Administrator, Editor, Viewer
+PATCH /v4/ibm/deployments/:deployment_id/groups/:group_id | Read deployment group | Administrator, Editor
+POST /v4/ibm/deployments/:deployment_id/users | Create a Deployment User | Administrator, Editor
+PATCH /v4/ibm/deployments/:deployment_id/users/:user_id | Update a Deployment User | Administrator, Editor
+DELETE /v4/ibm/deployments/:deployment_id/users/:user_id | Remove a Deployment User | Administrator, Editor
+GET /v4/ibm/deployments/:deployment_id/users/:user_id/connections | Read deployment user connections | Administrator, Editor, Viewer
+POST /v4/ibm/deployments/:deployment_id/users/:user_id/connections | Create deployment user connections | Administrator, Editor
+{: caption="Table 2. Platform actions and operations" caption-side="top"}
+>>>>>>> staging
