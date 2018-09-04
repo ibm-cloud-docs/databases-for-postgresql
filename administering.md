@@ -17,7 +17,7 @@ The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned w
 
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
 
-For security reasons, and as part of the infrastructure provided by {{site.data.keyword.databases-for-postgresql}} as a managed service, there is no superuser role available to the end-user.
+For security reasons, and as part of the infrastructure that is provided by {{site.data.keyword.databases-for-postgresql}} as a managed service, there is no superuser role available to the end user.
 {: .tip}
 
 To get started, you will have to complete the following steps:
@@ -49,9 +49,9 @@ For more information, see the [API Reference](https://pages.github.ibm.com/compo
 
 ## Connecting with `psql`
 
-To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed by installing the full PostgreSQL package downloaded from postgresql.org, or from your operating systems packages.
+To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from postgresql.org, or from your operating systems packages.
 
-You can read more about psql in the PostgreSQL documentation - reference - and a simple introduction in Postgres Guide.
+For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html).
 
 ### Connecting to 'psql' with the CLI plug-in
 
@@ -89,17 +89,11 @@ You can display the decoded certificate for your deployment with the CLI plug-in
 
 ## Users and Roles
 
-If you need to [connect external services](./connecting-external.html), such as applications or third-party tools, use the cloud databases cli-plugin, the API, or  _Service Credentials_. Users created through use the cloud databases cli-plugin, the API, or  _Service Credentials_ have `Create role` and `Create DB` privileges. Those users also have ownership over the things that they create.
+If you need to [connect external services](./connecting-external.html), such as applications or third-party tools, use the cloud databases cli plugin, the API, or  _Service Credentials_. Users that are created through use the cloud databases cli plugin, the API, or  _Service Credentials_ have `Create role` and `Create DB` privileges. Those users also have ownership over the things that they create.
 
-Users can also be created through `psql` using [PostgreSQL's native user management](https://www.postgresql.org/docs/10/static/user-manag.html). Please note that users created directly in PostgreSQL with `psql` are not governed by IAM or other access policies and mechanisms.
+Users can also be created through `psql` using [PostgreSQL's native user management](https://www.postgresql.org/docs/10/static/user-manag.html). Note that users created directly in PostgreSQL with `psql` are not governed by IAM or other access policies and mechanisms.
 
 ## The default `ibmclouddb` database
 
-When the service is provisioned, it automatically creates a default database. There is nothing special about this database except that it is the database that is auto-filled into the connection strings provided with your service. You are free to use this database, or to create other databases and connect to them. If using other databases, be sure to fill the new database into the connection strings accordingly. If you do not wish to use the `ibmcloudb`, you can delete the database entirely.
-
-
-
-
-
-
+When the service is provisioned, it automatically creates a default database. There is nothing special about this database except that it is the database that is auto-filled into the connection strings that are provided with your service. You are free to use this database, or to create other databases and connect to them. Accordingly if using other databases, be sure to fill the new database into the connection strings. If you do not wish to use the `ibmcloudb`, you can delete the database entirely.
 

@@ -43,9 +43,9 @@ Once you or another users have access to the service, there are a few ways to ma
 
 - You can manage your service by selecting _Manage_ from the left sidebar and opening the management panel from your service. Here you can find information about your {{site.data.keyword.databases-for-postgresql}} database. Database configuration settings are available on the [Settings](./dashboard-settings.html) tab and backups are available on the [Backups](./dashboard-backups.html) tab.
 
-- You can use the {{site.data.keyword.cloud_notm}} Databases API to manage your service. Authentication is IAM-based, so use your {{site.data.keyword.cloud_notm}} account's platform API keys when accessing the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the _Overview_ page when you open the _Manage_ panel of your service. The full API reference is available on [GitHub](https://pages.github.ibm.com/compose/apidocs/).
+- You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the _Overview_ page when you open the _Manage_ panel of your service. The full API reference is available on [GitHub](https://pages.github.ibm.com/compose/apidocs/).
 
-- You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{DomainName}/docs/cli/index.html#overview). Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from its [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`. Once you have it installed, run `ibmcloud cdb help` for other commands and usage information. 
+- You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you need to download and install it, get it [here](https://console.{DomainName}/docs/cli/index.html#overview). Once you have the {{site.data.keyword.cloud_notm}} CLI, get the {{site.data.keyword.cloud_notm}} databases plugin. Download the latest release from its [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`. Once you have it installed, run `ibmcloud cdb help` for other commands and usage information. 
 
 ## Connecting an {{site.data.keyword.cloud_notm}} application to {{site.data.keyword.databases-for-postgresql}}
 
@@ -53,10 +53,10 @@ To connect an {{site.data.keyword.cloud_notm}} application to your service, use 
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}
 
-If you want to connect to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command-line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
+If you want to connect to {{site.data.keyword.databases-for-postgresql}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
 
 ## Database Administration
 
-Direct access to the PostgreSQL databases is provided by [setting up the admin user](./administering.html) on your {{site.data.keyword.databases-for-postgresql}} service. You can then use PostgreSQL's command-line `psql` to log into your cluster, manage databases, manage users and roles, and other database admin functions.
+Direct access to the PostgreSQL databases is provided by [setting up the admin user](./administering.html) on your {{site.data.keyword.databases-for-postgresql}} service. You can then use PostgreSQL's command line `psql` to log into your cluster, manage databases, manage users and roles, and other database admin functions.
 
 

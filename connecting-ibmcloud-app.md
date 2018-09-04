@@ -33,7 +33,7 @@ Applications running in {{site.data.keyword.cloud_notm}} can be bound to your {{
 - Change the name value. The value that you choose is the name of the app as it appears in your {{site.data.keyword.cloud_notm}} dashboard.
 - Update the services value to match the name or [Cloud Foundry alias](#create-alias) of your {{site.data.keyword.databases-for-postgresql}} service.
 
-You can verify that the services are connected by navigating to the _Connections_ panel. If the service and the application are connected, the connection should show up in both services.
+You can verify that the services are connected by navigating to the _Connections_ panel. If the service and the application are connected, the connection shows up in both services.
 
 The sample app in the [Getting Started](./getting-started.html) tutorial provides a sample Cloud Foundry application that uses Node.js and demonstrates how to bind the sample application to the {{site.data.keyword.databases-for-postgresql} service.
 
