@@ -87,6 +87,16 @@ The formatted `psql` command sets the option to verify the server via certificat
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
 
+## Users and Roles
+
+If you need to [connect external services](./connecting-external.html), such as applications or third-party tools, use the cloud databases cli-plugin, the API, or  _Service Credentials_. Users created through use the cloud databases cli-plugin, the API, or  _Service Credentials_ have `Create role` and `Create DB` privileges. Those users also have ownership over the things that they create.
+
+Users can also be created through `psql` using [PostgreSQL's native user management](https://www.postgresql.org/docs/10/static/user-manag.html). Please note that users created directly in PostgreSQL with `psql` are not governed by IAM or other access policies and mechanisms.
+
+## The default `ibmclouddb` database
+
+When the service is provisioned, it automatically creates a default database. There is nothing special about this database except that it is the database that is auto-filled into the connection strings provided with your service. You are free to use this database, or to create other databases and connect to them. If using other databases, be sure to fill the new database into the connection strings accordingly. If you do not wish to use the `ibmcloudb`, you can delete the database entirely.
+
 
 
 
