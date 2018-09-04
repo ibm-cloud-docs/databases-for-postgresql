@@ -13,15 +13,15 @@ lastupdated: "2018-08-21"
 
 # Architecture
 
-{{site.data.keyword.cloud_notm}} Databases is a managed cloud database service that runs in containers that are orchestrated by Kubernetes. It is fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and monitoring all run in {{site.data.keyword.cloud_notm}}.
+{{site.data.keyword.databases-for-postgresql_full}} is a managed cloud database service that runs in containers that are orchestrated by Kubernetes. It is fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and monitoring all run in {{site.data.keyword.cloud_notm}}.
 
 ## PostgreSQL Databases
 
-An {{site.data.keyword.databases-for-postgresql_full}} service contains a cluster with two data members, a leader member and a follower member. Data is replicated across both data members, and their disk space is spread over the region's availability zones. High-availability is managed with [Patroni](https://github.com/zalando/patroni), where three etcd arbiters maintain cluster state, manage replication, and handle failover. If one data member becomes unreachable, your cluster continues to operate normally.
+A {{site.data.keyword.databases-for-postgresql}} service contains a cluster with two data members, a leader member and a follower member. Data is replicated across both data members, and their disk space is spread over the region's availability zones. High-availability is managed with [Patroni](https://github.com/zalando/patroni), where three etcd arbiters maintain cluster state, manage replication, and handle failover. If one data member becomes unreachable, your cluster continues to operate normally.
 
 ### Storage
 
-All storage for {{site.data.keyword.cloud_notm}} Databases is provided on {{site.data.keyword.cloud_notm}} Object Storage. Storage for {{site.data.keyword.databases-for-postgresql}} is auto-scaled to the size of your data on disk.
+All storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Object Storage. Storage is auto-scaled to the size of your data on disk.
 
 ### Full-disk Encryption
 
