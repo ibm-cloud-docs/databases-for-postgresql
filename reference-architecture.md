@@ -29,7 +29,7 @@ All {{site.data.keyword.databases-for-postgresql}} services all have encryption 
 
 ## Portals
 
-{{site.data.keyword.databases-for-postgresql}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the PostgreSQL cluster and provide load-balancing. The portals are then behind the Kubernetes Nodeport Service, which provides the point of connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
+{{site.data.keyword.databases-for-postgresql}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the PostgreSQL cluster and provide load-balancing. The portals are then behind a Kubernetes endpoint, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
 
 ### Encryption in Transit
 
