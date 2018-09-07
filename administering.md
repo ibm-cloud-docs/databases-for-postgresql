@@ -30,20 +30,18 @@ To get started, you will have to complete the following steps:
 
 You have to set the admin password before you can use it to connect. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the service dashboard to open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
 
-You can also set the admin user password through the API. Send a `PATCH` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin` endpoint.
+### Setting the admin password via the command line
 
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin to set the admin password with the command line.
+
+For example, to set the admin password for a deployment named "example-deployment", use the following command.
 ```
-curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin" \
--H "Authorization: Bearer $APITOKEN" \
--H "Content-Type: application/json; charset=utf-8" \
--d \
-  '{
-  "user": 
-    {
-      "password":"lkdfj1ieo4fhhelk5aei2efjdsa"
-    }
-  }'
+ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
+
+### Setting the admin password via the API
+
+The _Foundation Endpoint_ shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it in conjunction with the `/users/admin` endpoint if you need to manage or automate setting the password programmatically.
 
 For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword).
 
@@ -53,27 +51,23 @@ To use `psql`, the PostgreSQL client tools need to be installed on the local sys
 
 For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html).
 
+Use the `psql` connection strings to get connected. The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud cdb deployment-connections "your-service-name"`. The `psql` connection is in the `CLI` field.
+
+Access the full connection information using ``ibmcloud cdb deployment-connections --all "your-service-name"`. The `CLI` table in the response contains all the parts of the `psql` connection information.
+
+Field Name|Subfields|Description
+----------|-----------|-----------
+`arguments`|None|The information that is passed as arguments to the `psql` command,
+`bin`|None|The package that this information is intended for; in this case `psql`.
+`certificate`|Name, Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`composed`|None|A formatted `psql` command to establish a connection to your deployment.
+`environment`|PGSSLROOTCERT,PGPASSWORD|`psql` arguments that can be set and pulled from the environment.
+`type`|None|The type of package that uses this connection information; in this case `cli`. 
+{: caption="Table 1. `psql` connection information" caption-side="top"}
+
 ### Connecting to 'psql' with the CLI plug-in
 
-The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
-
-You can also connect to `psql` from the cloud databases plug-in with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
-
-### Getting a `psql` connection string with the API
-
-To retrieve the admin user's connection strings through the API, send a GET request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin`. The JSON response includes the strings to connect to `psql` in "cli" field.
-
-The `psql` connection information table describes the subfields of connection information.
-
-Field Name|Description
-----------|-----------
-`arguments`|The information that is passed as arguments to the `psql` command,
-`bin`|The package that this information is intended for; in this case `psql`.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
-`composed`|A formatted `psql` command to establish a connection to your deployment.
-`environment`|`psql` arguments that can be set and pulled from the environment.
-`type`|The type of package that uses this connection information; in this case `cli`. 
-{: caption="Table 1. `psql` connection information" caption-side="top"}
+You can also connect to `psql` directly from the cloud databases plug-in with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
 
 ## Using the self-signed certificate
 

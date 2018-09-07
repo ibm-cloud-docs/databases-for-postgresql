@@ -36,36 +36,6 @@ Billing is based on the _total_ amount of resources allocated to the service.
 
 Adjust the slider to increase or decrease the resources allocated to your service. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
 
-### Scaling via the API
-
-Use the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups` endpoint to see and manage your service's resources.
-
-A `GET` request returns current resource group information, including which resources are adjustable. The following code lists the groups on your deployment:
-
-```
-curl -X GET -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups"
-```
-{: codeblock}
-
-To scale resources, send a `PATCH` request with the group you are scaling, the resources you are scaling, and the new values for those resources in the body of the request. 
-
-```
-curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/{groupid}" \
--H "Authorization: Bearer $APITOKEN" \
--H "Content-Type: application/json; charset=utf-8" \
--d \
-  '{
-  "group": 
-    {
-      "memory":
-      {
-        "allocation_mb": 12288
-      }
-    }
-  }'
-```
-You can find more examples in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling).
-
 ### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
 Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
@@ -74,7 +44,13 @@ For example, to view the resource groups for a deployment named "example-deploym
 `ibmcloud cdb deployment-groups example-deployment`
 
 To scale the memory to 2048 MB of RAM for each memory member of "example-deployment":  
-`ibmcloud cdb deployment-groups-set member --memory 2048`
+`ibmcloud cdb deployment-groups-set member --memory 2048`ß
+
+### Scaling via the API
+
+The _Foundation Endpoint_ shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it in conjunction with the `/groups` endpoint if you need to manage or automate backups programmatically.
+
+You can find more examples in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling).
 
 ## Setting the admin Password
 
