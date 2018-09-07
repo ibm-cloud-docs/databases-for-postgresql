@@ -30,20 +30,20 @@ An internal identifier for the service.
 
 ## Recent Tasks
 
-Every time you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks.
+Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks.
 
 ## Instance Administration API
 
-You can manage your {{site.data.keyword.databases-for-postgresql}} service through the {{site.data.keyword.cloud_notm}} Databases API.
+You can manage your {{site.data.keyword.databases-for-postgresql}} service through the {{site.data.keyword.cloud_notm}} databases API.
 
 ### Foundation Endpoint
 
-The foundation endpoint is composed of the region the service resides in and the service instance id. It will be at the start of every endpoint.
+The foundation endpoint is composed of the region your service resides in and the base {{site.data.keyword.cloud_notm}} databases API endpoint. 
 
 ### Deployment ID
 
 The deployment ID is necessary for most calls, and identifies the specific deployment instance.
 
-### {{site.data.keyword.cloud_notm}} Databases API Reference
+### {{site.data.keyword.cloud_notm}} databases API Reference
 
-For more documentation and the reference for using the {{site.data.keyword.cloud_notm}} Databases API, see the [reference page](https://pages.github.ibm.com/compose/apidocs/).
+For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference page](https://pages.github.ibm.com/compose/apidocs/).
