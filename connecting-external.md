@@ -36,45 +36,31 @@ Enter the user name and password in the JSON field _Add Inline Configuration Par
 Generating credentials from an existing user does not check for or create the associated PostgreSQL user.
 {: tip}
 
-## Generating Connection Strings via API
+## Generating Connection Strings from the command line
 
-To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send the username and password in the body of the request.
+Use the `cdb user-create` command to create a new user and password with access to your PostgreSQL deployment. For example, to create a new user for a deployment named "example-deployment", use the following command.
 
-The following code creates a user "mary" with password "mostsecure".
+`ibmcloud cdb user-create example-deployment <newusername> <newpassword>`
 
-```
-curl -X POST "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users" \
--H "Authorization: Bearer $APITOKEN" \
--H "Content-Type: application/json; charset=utf-8" \
--d \
-  '{
-  "user": 
-    {
-      "username":"mary",
-      "password":"mostsecure"
-    }
-  }'
-```
+The response will contain the task `ID`, `Deployment ID`, `Description`, `Created At`, `Status`, and `Progress Percentage` fields.  You can use the task ID to track the progress of user creation with the `cdb task-show` command.
 
-When the credentials have been created, you can view their associated connection information by sending a `GET` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections` endpoint. 
-
-For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser).
+`ibmcloud cdb task-show <taskID>`
 
 ## Using Connection Information
 
-If you use the API or the _Service Credentials_ panel, connection information is returned in a JSON object in the "postgres" field. The table describes the subfields of connection information.
+Connection information is displayed in the the _Service Credentials_ panel, available from the cloud databases plugin command `cdb deployment-connections --all`, or returned from the API `/users` endpoint. The information that applications and drivers use is in the "PostgreSQL" field. The table describes the connection information.
 
-Field Name|Description
+Field Name|Subfields|Description
 ----------|-----------
-`authentication`|Basic authentication information, username, password, and authentication type.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
-`composed`|The URI used for connecting to the service. Includes the schema (`postgres:`), admin user name and password, host name of server, port number to connect to, database name and "?sslmode=verify-full" to enable SSL connections and verify the server.
-`database`|The default database created at deployment provision.
-`hosts`|The hostname and port of the deployment.
-`path`|The path to the default database on the deployment.
-`query_options`|The optional arguments included in the `composed` connection string.
-`scheme`|The type of database that is offered by the service; in this case `postgresql`.
-`type`|The format of the `composed` connection string.
+`authentication`|Username, Password, Method|Basic authentication information, username, password, and authentication type.
+`certificate`|Name, Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`composed`|None|The URI used for connecting to the service. Includes the schema (`postgres:`), admin user name and password, host name of server, port number to connect to, database name and "?sslmode=verify-full" to enable SSL connections and verify the server.
+`database`|None|The default database created at deployment provision.
+`hosts`|None|The hostname and port of the deployment.
+`path`|None|The path to the default database on the deployment.
+`query_options`|None|The optional arguments included in the `composed` connection string.
+`scheme`|None|The type of database that is offered by the service; in this case `postgresql`.
+`type`|None|The format of the `composed` connection string.
 {: caption="Table 1. PostgreSQL connection information" caption-side="top"}
 
 ## Using the self-signed certificate
@@ -89,7 +75,13 @@ Usually, you need to complete the following steps.
 
 ### CLI plugin support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert "your-service-name"` command. Copy and save the command's output to a file and provide the file's path to your driver.
+You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert your-service-name` command. Copy and save the command's output to a file and provide the file's path to your driver.
+
+## Generating Connection Strings via API
+
+The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users` endpoint if you need to manage or automate user connection string management programmatically.
+
+For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser).
 
 
  

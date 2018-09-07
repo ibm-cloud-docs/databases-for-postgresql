@@ -61,7 +61,7 @@ Field Name|Subfields|Description
 `bin`|None|The package that this information is intended for; in this case `psql`.
 `certificate`|Name, Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
 `composed`|None|A formatted `psql` command to establish a connection to your deployment.
-`environment`|PGSSLROOTCERT,PGPASSWORD|`psql` arguments that can be set and pulled from the environment.
+`environment`|PGSSLROOTCERT, PGPASSWORD|`psql` arguments that can be set and pulled from the environment.
 `type`|None|The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `psql` connection information" caption-side="top"}
 
