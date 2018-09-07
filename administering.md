@@ -79,7 +79,7 @@ The formatted `psql` command sets the option to verify the server via certificat
 
 ### CLI plug-in support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plug-in with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
+You can display the decoded certificate for your deployment with the CLI plug-in with the `ibmcloud cdb deployment-cacert "your-service-name"` command. Copy and save the command's output to a file and provide the file's path to the `PGSSLROOTCERT` environment variable.
 
 ## Users and Roles
 
