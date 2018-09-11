@@ -21,7 +21,7 @@ A {{site.data.keyword.databases-for-postgresql}} service contains a cluster with
 
 ### Storage
 
-All storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Object Storage. Storage is auto-scaled to the size of your data on disk.
+All storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Block Storage. Storage is auto-scaled to the size of your data on disk.
 
 ### Full-disk Encryption
 
