@@ -13,18 +13,21 @@ lastupdated: "2017-07-18"
 
 # Administering your PostgreSQL databases
 
-The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user, so you can administer PostgreSQL by using its command-line tool, `psql`.
+The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user, so you can administer PostgreSQL by using its command line tool, `psql`.
 
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
 
 For security reasons, and as part of the infrastructure that is provided by {{site.data.keyword.databases-for-postgresql}} as a managed service, there is no superuser role available to the end user.
 {: .tip}
 
-To get started, you will have to complete the following steps:
+## Prerequisites
 
-1. Set the admin credentials
-2. Retrieve the admin connection strings and other connection information
-3. Decode and save a copy of the self-signed certificate
+Before starting, you will have to complete the following steps:
+
+1. Set the admin user's password
+2. Install a command line client for PostgreSQL, `psql`. To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from postgresql.org, or from your operating systems packages. For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html).
+
+It is also recommended that you install the [{{site.data.keyword.cloud_notm}} CLI](https://console.{DomainName}/docs/cli/index.html#overview) and install the [cloud databases plugin](). These both make it easier to access connection information and connect to your Redis deployment.
 
 ## Setting the admin password
 
@@ -45,29 +48,32 @@ The _Foundation Endpoint_ shown on the _Overview_ panel of your service provides
 
 For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword).
 
+### Connecting to 'psql' via the cloud databases plugin
+
+The `ibmcloud cdb deployment-connections` command handles everything involved in creating a command line client connection. For example, to connect to a deployment named  "example-postgres", use the following command.
+
+```
+ibmcloud cdb deployment-connections example-postgres -start
+```
+
+The command will prompt for the admin password and then run the `psql` command line client to connect to the database.
+
 ## Connecting with `psql`
 
-To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from postgresql.org, or from your operating systems packages.
-
-For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html).
-
-Use the `psql` connection strings to get connected. The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud cdb deployment-connections "your-service-name"`. The `psql` connection is in the `CLI` field.
+You can also connect to your PostgreSQL database directly from the `psql` command. Use the `psql` connection strings to get connected. The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud cdb deployment-connections "your-service-name"`. The `psql` connection is in the `CLI` field.
 
 Access the full connection information using ``ibmcloud cdb deployment-connections --all "your-service-name"`. The `CLI` table in the response contains all the parts of the `psql` connection information.
 
-Field Name|Subfields|Description
+Field Name|Index|Description
 ----------|-----------|-----------
 `arguments`|None|The information that is passed as arguments to the `psql` command,
-`bin`|None|The package that this information is intended for; in this case `psql`.
-`certificate`|Name, Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`bin`|None|The recommended binary to create a connection; in this case `psql`.
+`Certificate`Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`Certificate`|Name|The allocated name for the self-signed certificate.
 `composed`|None|A formatted `psql` command to establish a connection to your deployment.
 `environment`|PGSSLROOTCERT, PGPASSWORD|`psql` arguments that can be set and pulled from the environment.
 `type`|None|The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `psql` connection information" caption-side="top"}
-
-### Connecting to 'psql' with the CLI plug-in
-
-You can also connect to `psql` directly from the cloud databases plug-in with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
 
 ## Using the self-signed certificate
 
