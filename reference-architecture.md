@@ -21,11 +21,11 @@ A {{site.data.keyword.databases-for-postgresql}} service contains a cluster with
 
 ### Storage
 
-All storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Object Storage. Storage is auto-scaled to the size of your data on disk.
+Database storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Block Storage. Backup storage is on {{site.data.keyword.cloud_notm}} Object Storage.
 
 ### Full-disk Encryption
 
-All {{site.data.keyword.databases-for-postgresql}} services all have encryption at rest. Your data resides on servers that have volume-level encryption enabled.
+All {{site.data.keyword.databases-for-postgresql}} services all have encryption at rest. Both your data and your backups reside on servers that have volume-level encryption enabled.
 
 ## Portals
 

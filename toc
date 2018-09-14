@@ -16,11 +16,18 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	access-management.md
-	administering.md
+	{: .topicgroup}
+	Administer your Database
+		admin-password.md
+		admin-connecting.md
 	
 	{: .topicgroup}
-	Connecting to Databases for PostgreSQL
+	Work with your Database
+		work-with-connection-strings.md
+		work-with-cli.md
+	
+	{: .topicgroup}
+	Connect to Databases for PostgreSQL
 		connecting-ibmcloud-app.md
 		connecting-external.md
 	{: .navgroup-end}
@@ -28,4 +35,5 @@ Databases For PostgreSQL
 	{: .navgroup id="reference"}
 	reference-architecture.md
 	reference-security.md
+	reference-access-management.md
 	{: .navgroup-end}
