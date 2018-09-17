@@ -13,83 +13,36 @@ lastupdated: "2017-07-18"
 # Connecting an external application
 {: #connecting-external-app}
 
-{{site.data.keyword.databases-for-postgresql_full}} provides connection string information for you to connect your applications, `psql`, and other third-party PostgreSQL applications. 
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-postgresql_full}}. The service provides connection strings specifically for drivers and applications. 
 
-## Generating Connection Strings from _Service Credentials_
+## Getting Connection Strings
 
-1. Navigate to the service dashboard for your service.
-2. Click _Service Credentials_ to open the _Service Credentials_ panel.
-3. Click **New Credential**.
-4. Choose a descriptive name for your new credential. 
-5. Click **Add** to provision the new credentials. A username and password, and an associated database user in the PostgreSQL database are auto-generated.
+The easiest way to get connection strings for an application is to create a set of _Service Credentials_ specifically for your application to connect with. Doing so also returns all the connection information as JSON in a click-to-copy field. Full documentation on generating and retrieving connection strings is on the [Getting Connection Strings](./work-with-connection-strings.html) page.
 
-### Using Service IDs
+Other options for getting connection strings are through the [CLI cloud databases plug-in](./work-with-connection-strings.html#generating-connection-strings-from-the-command-line), and the [cloud databases API](https://pages.github.ibm.com/compose/apidocs/). A [table](./working-connection-strings#the-postgresql-section) with a breakdown of all the connection information is included for reference.
 
-Because {{site.data.keyword.databases-for-postgresql}} is an IAM service, you can use [Service IDs](https://console.{DomainName}/docs/iam/serviceid.html#serviceids) to manage access to this service. For example, by using an IAM-managed Service ID, that user gets a PostgreSQL user and connection string in _Service Credentials_, and has API key access to the {{site.data.keyword.cloud_notm}} Databases API.  If you have a Service ID, enter its information under _Select Service ID_.  
+## Connecting with a language's driver
 
-### Generating _Service Credentials_ for existing users.
+PostgreSQL has a vast array of language drivers. The table covers a few of the most common.
 
-You can generate service credentials for an existing PostgreSQL user that was created through the API, the IBM Cloud CLI, or by using `psql`.
-
-Enter the user name and password in the JSON field _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, `{"existing_credentials":{"username":"Robert","password":"supersecure"}}`.
-
-Generating credentials from an existing user does not check for or create the associated PostgreSQL user.
-{: tip}
-
-## Generating Connection Strings via API
-
-To use the API to provision a new credential, send a `POST` request to the `https://api.{region}.databases.cloud.ibm.com/v4/{platform}/deployments/{id}/users` endpoint. Send the username and password in the body of the request.
-
-The following code creates a user "mary" with password "mostsecure".
-
-```
-curl -X POST "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users" \
--H "Authorization: Bearer $APITOKEN" \
--H "Content-Type: application/json; charset=utf-8" \
--d \
-  '{
-  "user": 
-    {
-      "username":"mary",
-      "password":"mostsecure"
-    }
-  }'
-```
-
-When the credentials have been created, you can view their associated connection information by sending a `GET` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections` endpoint. 
-
-For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser).
-
-## Using Connection Information
-
-If you use the API or the _Service Credentials_ panel, connection information is returned in a JSON object in the "postgres" field. The table describes the subfields of connection information.
-
-Field Name|Description
+Language|Driver|Examples
 ----------|-----------
-`authentication`|Basic authentication information, username, password, and authentication type.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
-`composed`|The URI used for connecting to the service. Includes the schema (`postgres:`), admin user name and password, host name of server, port number to connect to, database name and "?sslmode=verify-full" to enable SSL connections and verify the server.
-`database`|The default database created at deployment provision.
-`hosts`|The hostname and port of the deployment.
-`path`|The path to the default database on the deployment.
-`query_options`|The optional arguments included in the `composed` connection string.
-`scheme`|The type of database that is offered by the service; in this case `postgresql`.
-`type`|The format of the `composed` connection string.
-{: caption="Table 1. PostgreSQL connection information" caption-side="top"}
+PHP|`pgsql`|[Link](http://php.net/manual/en/pgsql.examples-basic.php)
+Ruby|`ruby-pg`|[Link](https://bitbucket.org/ged/ruby-pg/wiki/Home)
+Ruby on Rails|Rails|[Rails Guide](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-postgresql-database)
+Python|`Psycopg2`|[Link](https://wiki.postgresql.org/wiki/Psycopg2_Tutorial)
+C#|`ODBC`|[Link](https://wiki.postgresql.org/wiki/Using_Microsoft_.NET_with_the_PostgreSQL_Database_Server_via_ODBC)
+Go|`pq`|[Link](https://godoc.org/github.com/lib/pq)
+Node|`node-postgres`|[Link](https://github.com/brianc/node-postgres/wiki/Example)
 
-## Using the self-signed certificate
+## Driver TLS and self-signed certificate support
 
-The connection information includes a self-signed certificate that you can use in your applications to verify the server when you connect to it. Different drivers for the various languages use various TLS/SSL methods: check the documentation for the driver you are using for specific information on how it handles TLS/SSL.
+All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect need to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection. In most cases, you want to decode and save a copy of the certificate, and then provide the path to the driver. For more information, see [Using the self-signed certificate](./work-with-connection-strings.html#using-the-self-signed-certificate).
 
-Usually, you need to complete the following steps.
 
-1. Download and save a copy of the certificate locally
-2. Decode it from base64 into a .pem certificate
-3. Provide the certificate's path to the driver, and set the SSL mode to "Verify"
 
-### CLI plugin support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert "your-service-name"` command. Copy and save the command's output to a file and provide the file's path to your driver.
+
 
 
  

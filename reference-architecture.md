@@ -21,11 +21,11 @@ A {{site.data.keyword.databases-for-postgresql}} service contains a cluster with
 
 ### Storage
 
-All storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Block Storage. Storage is auto-scaled to the size of your data on disk.
+Database storage for {{site.data.keyword.databases-for-postgresql}} is provided on {{site.data.keyword.cloud_notm}} Block Storage. Backup storage is on {{site.data.keyword.cloud_notm}} Object Storage.
 
 ### Full-disk Encryption
 
-All {{site.data.keyword.databases-for-postgresql}} services all have encryption at rest. Your data resides on servers that have volume-level encryption enabled.
+All {{site.data.keyword.databases-for-postgresql}} services all have encryption at rest. Both your data and your backups reside on servers that have volume-level encryption enabled.
 
 ## Portals
 
@@ -39,5 +39,5 @@ All {{site.data.keyword.databases-for-postgresql}} HAProxy portals are TLS/SSL e
 
 {{site.data.keyword.databases-for-postgresql}} is an IAM-integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM-integrated services across the {{site.data.keyword.cloud_notm}}. For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation. For more information on how IAM affects access to {{site.data.keyword.databases-for-postgresql}}, see [Managing Access](./access-management.html).
 
-Database-level access can be managed through PostgreSQL's native [user management and database roles](https://www.postgresql.org/docs/current/static/database-roles.html). For more information on database-level administration in {{site.data.keyword.databases-for-postgresql}}, see the [Administering your PostgreSQL databases](./administering.html) page.
+Database-level access can be managed through PostgreSQL's native [user management and database roles](https://www.postgresql.org/docs/current/static/database-roles.html).
 
