@@ -29,7 +29,6 @@ Databases For PostgreSQL
 	{: .topicgroup}
 	Connect to Databases for PostgreSQL
 		connecting-ibmcloud-app.md
-		connecting-external.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}

@@ -13,23 +13,37 @@ lastupdated: "2017-07-18"
 # Connecting an external application
 {: #connecting-external-app}
 
-In order to connect an application to {{site.data.keyword.databases-for-postgresql_full}}, you will need some connection strings.
+
 
 
 ## Getting Connection Strings
 
-{{site.data.keyword.databases-for-postgresql}} provides connection strings specifically for drivers and applications. They contain all the relevant pieces of connection information. The _Service Credentials_ panel provides connection strings as a JSON object. 
+A page (./work-with-connection-strings)
 
+The _Service Credentials_ panel provides connection strings as a JSON object. 
+Retrieving connection strings from the CLI returns a table or JSON.
+
+{{site.data.keyword.databases-for-postgresql}} provides connection strings specifically for drivers and applications.
 A [table](./working-connection-strings#the-postgresql-section) with a breakdown of all the connection information.
 
-Links to examples of drivers using connection information. Or enter code snippets here.
+## Connecting with a language's driver
 
-### Driver TLS and self-signed certificate support
+Postgres has a vast array of language drivers. The table covers a few of the most common.
+
+Language|Driver|Examples
+----------|-----------
+PHP|`pgsql`|[Link](http://php.net/manual/en/pgsql.examples-basic.php)
+Ruby|`ruby-pg`|[Link](https://bitbucket.org/ged/ruby-pg/wiki/Home)
+Ruby on Rails|Rails|[Rails Guide](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-postgresql-database)
+Python|`Psycopg2`|[Link](https://wiki.postgresql.org/wiki/Psycopg2_Tutorial)
+C#|`ODBC`|[Link](https://wiki.postgresql.org/wiki/Using_Microsoft_.NET_with_the_PostgreSQL_Database_Server_via_ODBC)
+Go|`pq`|[Link](https://godoc.org/github.com/lib/pq)
+Node|`node-postgres`|[Link](https://github.com/brianc/node-postgres/wiki/Example)
+
+## Driver TLS and self-signed certificate support
 
 
-## Connecting with Python - an example
 
-## Connection with Language - an example
 
 
 
