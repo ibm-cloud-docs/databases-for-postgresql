@@ -62,4 +62,4 @@ The response has the backup `ID`, the `Deployment ID`, `Type`, `Created At`, `St
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/backups` endpoint if you need to manage or automate backups programmatically.
 
-For more information and examples, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/cloud-databases-api-static.html#tag/Backups).
+For more information and examples, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/).

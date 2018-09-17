@@ -122,4 +122,4 @@ You can display the decoded certificate for your deployment with the CLI plug-in
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users` endpoint if you need to manage or automate user connection string management programmatically. 
 
-For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/createDatabaseUser).
+For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/).

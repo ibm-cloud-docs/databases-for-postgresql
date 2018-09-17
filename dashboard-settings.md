@@ -50,7 +50,7 @@ To scale the memory to 2048 MB of RAM for each memory member of "example-deploym
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-You can find more examples in the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#tag/Scaling).
+You can find more examples in the [API Reference](https://pages.github.ibm.com/compose/apidocs/).
 
 ## Setting the admin Password
 
