@@ -37,7 +37,7 @@ Node|`node-postgres`|[Link](https://github.com/brianc/node-postgres/wiki/Example
 
 ## Driver TLS and self-signed certificate support
 
-All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect will need to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection. Most drivers will have a parameter to specify the path to a copy of the certificate you have decoded and saved locally. For more information, see [Using the self-signed certificate](./work-with-connection-strings.html#using-the-self-signed-certificate).
+All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect need to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection. In most cases, you want to decode and save a copy of the certificate, and then provide the path to the driver. For more information, see [Using the self-signed certificate](./work-with-connection-strings.html#using-the-self-signed-certificate).
 
 
 

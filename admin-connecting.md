@@ -14,11 +14,11 @@ lastupdated: "2018-09-13"
 
 # Connecting with `psql`
 
-You can access your PostgreSQL database directly from a command line client. This allows for direct interaction and monitoring of the data structures created within the database. This is also useful for testing and monitoring the queries and performance, installing and modifying scripts, and other management activities.
+You can access your PostgreSQL database directly from its command line client, `psql`. You can use `psql` for direct interaction and monitoring of the data structures created within the database. It is also useful for testing and monitoring the queries and performance, installing and modifying scripts, and other management activities.
 
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
 
-You have to set the admin password before connecting to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
+You have to set the admin password before you use it to connect to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
 {: .tip}
 
 ## Installing `psql`
@@ -29,11 +29,11 @@ Install the command line client for PostgreSQL, `psql`. To use `psql`, the Postg
 
 {{site.data.keyword.databases-for-postresql_full}} provides connection strings specifically for CLI clients. They contain all the relevant pieces of connection information. You can get the admin connection strings by following the steps in the [Getting your Connection Strings](./working-connection-strings) page. 
 
-Also available is a [table](./working-connection-strings#the-cli-section) with a breakdown of all the CLI connection information.
+A [table](./working-connection-strings#the-cli-section) with a breakdown of all the CLI connection information is also included for reference.
 
 ## Connecting with `psql`
 
-The `ibmcloud cdb deployment-connections` command handles everything involved in creating a command line client connection. For example, to connect to a deployment named  "example-postgres", use the following command.
+The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating a command line client connection. For example, to connect to a deployment named  "example-postgres", use the following command.
 
 ```
 ibmcloud cdb deployment-connections example-postgres -start
@@ -43,7 +43,7 @@ Or
 ibmcloud cdb cxn example-postgres -s
 ```
 
-The command will prompt for the admin password and then run the `psql` command line client to connect to the database.
+The command prompts for the admin password and then runs the `psql` command line client to connect to the database.
 
 If you have not installed the cloud databases plug-in, connect to your PostgreSQL databases using `psql` by giving it the "composed" connection string. It provides environment variables `PGPASSWORD` and `PGSSLROOTCERT`. Set `PGPASSWORD` to the admin's password and `PGSSLROOTCERT` to the path or file name for the self-signed certificate.  
 

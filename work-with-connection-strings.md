@@ -14,7 +14,7 @@ lastupdated: "2018-09-10"
 
 # Getting your Connection Strings
 
-In order to connect to {{site.data.keyword.databases-for-postgresql_full}}, you will need some connection strings.
+In order to connect to {{site.data.keyword.databases-for-postgresql_full}}, you need some connection strings.
 
 ## Generating Connection Strings from _Service Credentials_
 
@@ -24,7 +24,7 @@ In order to connect to {{site.data.keyword.databases-for-postgresql_full}}, you 
 4. Choose a descriptive name for your new credential. 
 5. Click **Add** to provision the new credentials. A username and password, and an associated database user in the PostgreSQL database are auto-generated.
 
-The new credentials appear in the table, and the connection strings are available as JSON in in a click-to-copy field under _View Credentials_.
+The new credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under _View Credentials_.
 
 ### Using Service IDs
 
@@ -36,7 +36,7 @@ If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and 
 
 `ibmcloud cdb user-create example-deployment <newusername> <newpassword>`
 
-The response will contain the task `ID`, `Deployment ID`, `Description`, `Created At`, `Status`, and `Progress Percentage` fields.  You can use the task ID to track the progress of user creation with the `cdb task-show` command.
+The response contains the task `ID`, `Deployment ID`, `Description`, `Created At`, `Status`, and `Progress Percentage` fields.  You can use the task ID to track the progress of user creation with the `cdb task-show` command.
 
 `ibmcloud cdb task-show <taskID>`
 
@@ -67,14 +67,14 @@ Full connection information is returned by the `ibmcloud cdb deployment-connecti
 ibmcloud cdb deployment-connections example-postgres --all
 ```
 
-If you don't specify a user, the `deployment-connections` commands will return information for the admin user by default.
+If you don't specify a user, the `deployment-connections` commands return information for the admin user by default.
 {: .tip}
 
 ## Connection String Breakdown
 
 ### The PostgreSQL Section
 
-The "Redis" section contains information that is suited to applications making connections to Redis.
+The "Redis" section contains information that is suited to applications that make connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------
