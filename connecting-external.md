@@ -13,22 +13,17 @@ lastupdated: "2017-07-18"
 # Connecting an external application
 {: #connecting-external-app}
 
-
-
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-postgresql_full}}. The service provides connection strings specifically for drivers and applications. 
 
 ## Getting Connection Strings
 
-A page (./work-with-connection-strings)
+The easiest way to get connection strings for an application is to create a set of _Service Credentials_ specifically for your application to connect with. Doing so also returns all the connection information as JSON in a click-to-copy field. Full documentation on generating and retrieving connection strings is on the [Getting Connection Strings](./work-with-connection-strings.html) page.
 
-The _Service Credentials_ panel provides connection strings as a JSON object. 
-Retrieving connection strings from the CLI returns a table or JSON.
-
-{{site.data.keyword.databases-for-postgresql}} provides connection strings specifically for drivers and applications.
-A [table](./working-connection-strings#the-postgresql-section) with a breakdown of all the connection information.
+Other options for getting connection strings are through the [CLI cloud databases plug-in](./work-with-connection-strings.html#generating-connection-strings-from-the-command-line), and the [cloud databases API](https://pages.github.ibm.com/compose/apidocs/). A [table](./working-connection-strings#the-postgresql-section) with a breakdown of all the connection information is included for reference.
 
 ## Connecting with a language's driver
 
-Postgres has a vast array of language drivers. The table covers a few of the most common.
+PostgreSQL has a vast array of language drivers. The table covers a few of the most common.
 
 Language|Driver|Examples
 ----------|-----------
@@ -42,7 +37,7 @@ Node|`node-postgres`|[Link](https://github.com/brianc/node-postgres/wiki/Example
 
 ## Driver TLS and self-signed certificate support
 
-
+All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect will need to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection. Most drivers will have a parameter to specify the path to a copy of the certificate you have decoded and saved locally. For more information, see [Using the self-signed certificate](./work-with-connection-strings.html#using-the-self-signed-certificate).
 
 
 
