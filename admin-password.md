@@ -15,8 +15,6 @@ lastupdated: "2018-09-13"
 
 The {{site.data.keyword.databases-for-postgresql_full}} service is provisioned with an admin user, so you can manage PostgreSQL by using its command line tool, `psql`.
 
-The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
-
 You have to set the admin password before you can use it to connect. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the service dashboard to open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
 
 ## Setting the admin password via the command line
@@ -33,3 +31,4 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users/admin` endpoint if you need to manage or automate setting the password programmatically.
 
 For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword).
+

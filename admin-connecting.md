@@ -12,22 +12,24 @@ lastupdated: "2018-09-13"
 {:tip: .tip}
 
 
-# Connecting as an Admin
+# Connecting with `psql`
 
 You can access your PostgreSQL database directly from a command line client. This allows for direct interaction and monitoring of the data structures created within the database. This is also useful for testing and monitoring the queries and performance, installing and modifying scripts, and other management activities.
+
+The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
+
+You have to set the admin password before connecting to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
+{: .tip}
 
 ## Installing `psql`
 
 Install the command line client for PostgreSQL, `psql`. To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from postgresql.org, or from your operating systems packages. For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html).
 
-## Admin Connection Strings
+## `psql` Connection Strings
 
 {{site.data.keyword.databases-for-postresql_full}} provides connection strings specifically for CLI clients. They contain all the relevant pieces of connection information. You can get the admin connection strings by following the steps in the [Getting your Connection Strings](./working-connection-strings) page. 
 
 Also available is a [table](./working-connection-strings#the-cli-section) with a breakdown of all the CLI connection information.
-
-You have to set the admin password before connecting to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
-{: .tip}
 
 ## Connecting with `psql`
 
