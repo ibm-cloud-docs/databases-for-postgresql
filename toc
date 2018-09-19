@@ -16,8 +16,9 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-		getting-connection-strings.md
-		using-ibmcloud-cli.md
+	provisioning.md
+	getting-connection-strings.md
+	using-ibmcloud-cli.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
@@ -28,11 +29,11 @@ Databases For PostgreSQL
 	Administering PostgreSQL
 		admin-password.md
 		admin-connecting.md
+		admin-extensions.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
 	reference-architecture.md
-	reference-provisioning.md
 	reference-security.md
 	reference-access-management.md
 	reference-activity-tracker.md

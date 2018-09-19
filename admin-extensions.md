@@ -35,8 +35,18 @@ To install an extension on to a database use [`CREATE EXTENSION`](https://www.po
 
 ```
 ibmclouddb=> CREATE EXTENSION pg_stat_statements;
+CREATE EXTENSION
+```
 
-ibmclouddb=>
+If you run the `\dx` command after installing an extension, it appears in the table.
+```
+ibmclouddb=> \dx
+                                     List of installed extensions
+        Name        | Version |   Schema   |                        Description
+--------------------+---------+------------+-----------------------------------------------------------
+ pg_stat_statements | 1.5     | public     | track execution statistics of all SQL statements executed
+ plpgsql            | 1.0     | pg_catalog | PL/pgSQL procedural language
+(2 rows)
 ```
 
 Database extensions in PostgreSQL are managed per database. If you have multiple databases that you need to install an extension on, you run the install command on each database.
