@@ -16,9 +16,10 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	provisioning.md
-	getting-connection-strings.md
-	using-ibmcloud-cli.md
+	howto-provisioning.md
+	howto-getting-connection-strings.md
+	howto-using-ibmcloud-cli.md
+	howto-migration.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
