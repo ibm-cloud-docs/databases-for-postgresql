@@ -30,7 +30,7 @@ When you create the deployment from the catalog, you need to specify the followi
 3. **The database version** - The major version of the database to be created within the deployment. The latest minor version is always be used automatically. 
 
 PostgreSQL changed versioning strategy at version 10. Previously, a major version was two sets of numbers (for example, 9.6) but from version 10, the major version is a single number (for example, 10 or 11). The most recent version is always automatically selected.
-{. :tip}
+{: .tip}
 
 Users can optionally set:
 
@@ -82,7 +82,7 @@ The `service-instance-create` command supports a `-p` flag, which allows additio
 * `key_protect_key` - A CRN that references a Key Protect key, which is then used for disk encryption.
 * `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "4096" then the two database members get 4 GB of RAM between them, giving 2 GB of RAM per member. If omitted, the default value is used; "2048".
 
-For example, if a database is being provisioned from a particular backup and the new database deployment needs two 2 GB members, then the command looks like:
+For example, if a database is being provisioned from a particular backup and the new database deployment needs two members, each with 2 GB, then the command looks like:
 
 ```
 ibmcloud resource service-instance-create example-psql databases-for-postgresql standard us-south \
