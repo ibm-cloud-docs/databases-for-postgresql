@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-09-18"
+lastupdated: "2018-09-20"
 ---
 
 {:new_window: target="_blank"}
@@ -24,8 +24,16 @@ lastupdated: "2018-09-18"
 
 ### Using the command line interface
 
-The command line interface for {{site.data.keyword.databases-for-postgresql}} is provided by the {{site.data.keyword.cloud_notm}} CLI which provides in interactive terminal interface for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-postgresql}} deployment. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-postgresql}}](./using-ibmcloud-cli.html) page.
+The command line interface for {{site.data.keyword.databases-for-postgresql}} is the {{site.data.keyword.cloud_notm}} CLI which provides in interactive terminal interface for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-postgresql}} deployment. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-postgresql}}](./using-ibmcloud-cli.html) page.
 
+## Provisioning {{site.data.keyword.databases-for-postgresql}}
+
+{{site.data.keyword.databases-for-postgresql}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-postgresql}} from the [{{site.data.keyword.cloud_notm}} catalog](https://console.{DomainName}/catalog/services/databases-for-postgresql).
+
+For detailed provisioning information, including CLI instructions, see the [Provisioning](./provisioning.html) page.
+
+If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://console.{DomainName}/registration/) page.
+]
 ### Managing Access to {{site.data.keyword.databases-for-postgresql}}
 
 {{site.data.keyword.databases-for-postgresql}} is an Identity and Access Management (IAM) integrated service. Access is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
