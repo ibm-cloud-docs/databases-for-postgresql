@@ -24,13 +24,13 @@ lastupdated: "2018-09-20"
 
 ### Using the command line interface
 
-The command line interface for {{site.data.keyword.databases-for-postgresql}} is the {{site.data.keyword.cloud_notm}} CLI, which provides in interactive terminal interface for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-postgresql}} deployment. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-postgresql}}](./using-ibmcloud-cli.html) page.
+The command line interface for {{site.data.keyword.databases-for-postgresql}} is the {{site.data.keyword.cloud_notm}} CLI, which provides in interactive terminal interface for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-postgresql}} deployment. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-postgresql}}](./howto-using-ibmcloud-cli.html) page.
 
 ## Provisioning {{site.data.keyword.databases-for-postgresql}}
 
 {{site.data.keyword.databases-for-postgresql}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-postgresql}} from the [{{site.data.keyword.cloud_notm}} catalog](https://console.{DomainName}/catalog/services/databases-for-postgresql).
 
-For detailed provisioning information, including {{site.data.keyword.cloud_notm} CLI instructions, see the [Provisioning](./provisioning.html) page.
+For detailed provisioning information, including {{site.data.keyword.cloud_notm} CLI instructions, see the [Provisioning](./howto-provisioning.html) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://console.{DomainName}/registration/) page.
 ]
@@ -38,7 +38,7 @@ If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on th
 
 {{site.data.keyword.databases-for-postgresql}} is an Identity and Access Management (IAM) integrated service. Access is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
 
-More information on IAM roles and actions for the {{site.data.keyword.databases-for-postgresql}} service is available on the [Access Management](./access-management.html) page.
+More information on IAM roles and actions for the {{site.data.keyword.databases-for-postgresql}} service is available on the [Access Management](./reference-access-management.html) page.
 
 ### Using the cloud databases API
 
@@ -50,7 +50,7 @@ Under the the {{site.data.keyword.databases-for-postgresql}} service, are the Po
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}}
 
-General information on getting connection strings for your applications, for `psql`, and for users you provision on your account can be found on the [Getting Connection Strings](./using-connection-strings) page.
+General information on getting connection strings for your applications, for `psql`, and for users you provision on your account can be found on the [Getting Connection Strings](./howto-using-connection-strings) page.
 
 Specific guidance on connecting with PostgreSQL drivers is on the [Connecting External Applications](./connecting-external.html) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html) page. The [Getting Started tutorial](./getting-started.md) that provides a sample application that can run locally or on {{site.data.keyword.cloud_notm}} to test-drive your {{site.data.keyword.databases-for-postgresql}} deployment.
 
