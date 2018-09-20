@@ -20,6 +20,7 @@ Databases For PostgreSQL
 	Administer your Database
 		admin-password.md
 		admin-connecting.md
+		admin-migration.md
 	
 	{: .topicgroup}
 	Work with your Database
