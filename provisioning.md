@@ -12,7 +12,7 @@ lastupdated: "2018-09-13"
 {:screen: .screen}
 {:tip: .tip}
 
-# Provisioning
+# Provisioning {{site.data.keyword.databases-for-postgresql}}
 
 To create an {{site.data.keyword.databases-for-postgresql_full}} deployment, you will need to create an {{site.data.keyword.cloud}} service instance. A service instance can represent different types of service. The service type is determined by the service id and you will need to specify the appropriate service id when creating a new service instance. For {{site.data.keyword.databases-for-postgresql}} the service id is `databases_for_postgresql`.
 
@@ -92,5 +92,5 @@ ibmcloud resource service-instance-create example-psql databases-for-postgresql 
 
 ## Using the API
 
-The Resource Controller API is not currently publiclly documented. We recommend using the command line to provision new database deployments in the interim.
+The Resource Controller API is not currently publicly documented. We recommend using the command line to provision new database deployments in the interim.
 
