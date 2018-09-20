@@ -74,7 +74,7 @@ If you don't specify a user, the `deployment-connections` commands return inform
 
 ### The PostgreSQL Section
 
-The "Redis" section contains information that is suited to applications that make connections to Redis.
+The "postgresql" section contains information that is suited to applications that make connections to PostgreSQL.
 
 Field Name|Index|Description
 ----------|-----|-----------
