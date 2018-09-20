@@ -31,13 +31,13 @@ The `pg_dump` command has many options and it is recommended that you [consult t
 
 The resulting output of `pg_dump` can then be uploaded into a new {{site.data.keyword.databases-for-postgresql}} deployment. As the output is SQL, it can simply be sent to the database through the `psql` command. We recommend that imports be performed with the admin user. 
 
-See the [Connecting with `psql`](./admin-connecting.html) for details on how to connect as admin using `psql`. To connect using only the `psql` command, you need the admin user's connection string and the TLS certificate decoded from the base64 in the same file and stored as an arbitrary local file.  To import the previously created `dump.sql` into a database deployment named `example-psql`, the `psql` command can be called with `-f dump.sql` as a parameter. This tells `psql` to read and execute the SQL statements in that file. The command looks something like this.
+See the [Connecting with `psql`](./admin-connecting.html) for details on how to connect as admin using `psql`. To connect with the `psql` command, you need the admin user's connection string and the TLS certificate. The certificate needs to be decoded from the base64 and stored as an arbitrary local file.  To import the previously created `dump.sql` into a database deployment named `example-psql`, the `psql` command can be called with `-f dump.sql` as a parameter. The parameter tells `psql` to read and execute the SQL statements in the file. The command looks something like:
 
 ```shell
 PGPASSWORD=yourpasswordhere PGSSLROOTCERT=cert.crt psql 'host=c7798cf6-e5d2-4513-b17f-3d3fa67d8291.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud port=32484 dbname=ibmclouddb user=admin sslmode=verify-full' -f dump.sql
 ```
 
-As noted in that [Administration/Connecting](admin-connecting) documentation, the {{site.data.keyword.databases-for}} CLI plug-in simplifies connecting. The previous `psql` import can be performed as:
+As noted in that [Connecting with `psql`](./admin-connecting.html) documentation, the {{site.data.keyword.databases-for}} CLI plug-in simplifies connecting. The previous `psql` import can be performed as:
 
 ```shell
 ibmcloud cdb deployment-connections example-psql -s -- -f dump.sql
@@ -45,4 +45,4 @@ ibmcloud cdb deployment-connections example-psql -s -- -f dump.sql
 
 The command automatically uses the admin user, if no user is specified. It also interactively prompts for the password. The TLS certificate is automatically retrieved and used. The `-s` starts `psql` (or whatever command has been configured) once the details are established from the API. Anything after the `--` is passed to the command.
 
-While running, the restore process emits a number of messages about changes it is making to the database deployment.
+While the restore process is running, it emits a number of messages about changes it is making to the database deployment.
