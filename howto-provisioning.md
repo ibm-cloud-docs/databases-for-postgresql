@@ -25,7 +25,7 @@ You can create a {{site.data.keyword.databases-for-postgresql}} service from the
 
 When you create the deployment from the catalog, you need to specify the following parameters.
 
-1. **The service name** - The name can be any string and is the name used on the web and in the command line to identify the new database deployment.
+1. **The service name** - The name can be any string and is the name that is used on the web and in the command line to identify the new database deployment.
 2. **The region** - The region in which the database deployment resides. Currently, only US-South is available.
 3. **The database version** - The major version of the database to be created within the deployment. The latest minor version is always be used automatically. 
 
@@ -39,7 +39,7 @@ Users can optionally set:
 
 Users cannot set:
 
-1. **The service plan** - A service can have a number of plan types with different pricing, resources or other features, each with their own service plan ID. For {{site.data.keyword.databases-for-postgresql}}, there is currently one service plan, standard. 
+1. **The service plan** - A service can have a number of plan types with different pricing, resources or other features, each with their own service plan ID. {{site.data.keyword.databases-for-postgresql}} currently has one service plan, standard. 
 
 Once you select the appropriate settings, click **Create** to start the provisioning process off.
 
@@ -59,7 +59,7 @@ ibmcloud resource service-instance-create <service-name> <service-id> <service-p
 
 More information about this command, in general, is available in the [CLI reference for resource groups](/docs/cli/reference/ibmcloud/cli_resource_group.html#ibmcloud_resource_service_instance_create).
 
-In the specific case of creating a {{site.data.keyword.databases-for-postgresql}} deployment, a user would set the service name to their chosen name, not forgetting to quote any name with spaces in it, set `databases-for-postgresql` as the service ID, enter `standard` for the service plan ID and `us-south` for the region.
+In the specific case of creating a {{site.data.keyword.databases-for-postgresql}} deployment, set the service name (quote any name with spaces in it). Then, set `databases-for-postgresql` as the service ID. Enter `standard` for the service plan ID and `us-south` for the region.
 
 ```
 ibmcloud resource service-instance-create example-psql databases-for-postgresql standard us-south
@@ -77,12 +77,12 @@ This command reports the current state of the service instance.
 
 The `service-instance-create` command supports a `-p` flag, which allows addition parameters to be passed to the provisioning process. The parameters are in JSON format. Some parameters values are CRNs (Cloud Resource Name), which uniquely identifies a resource in the cloud. All parameter names and values are passed as strings.
 
-* **backup_id** - A CRN of a backup resource to restore from. The backup must have been created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<...>:backup:<uuid>`. If omitted, the database is provisioned empty. This parameter cannot be set with a **version** parameter
-* **version** - The version of the database to be provisioned. If omitted, the database is created with the most recent major and minor version. This parameter cannot be set with a **backup_id** parameter.
-* **key_protect_key** - A CRN that references a Key Protect key, which is then used for disk encryption.
-* **members_memory_allocation_mb** -  Total amount of memory to be shared between the database members within the database. For example, if the value is "4096" then the two database members get 4 GB of RAM between them, giving 2 GB of RAM per member. If omitted, the default value is used; "2048".
+* `backup_id`- A CRN of a backup resource to restore from. The backup must have been created by a database deployment with the same service ID. The backup is loaded after provisioning and the new deployment starts up that uses that data. A backup CRN is in the format `crn:v1:<...>:backup:<uuid>`. If omitted, the database is provisioned empty. This parameter cannot be set with a **version** parameter
+* `version` - The version of the database to be provisioned. If omitted, the database is created with the most recent major and minor version. This parameter cannot be set with a **backup_id** parameter.
+* `key_protect_key` - A CRN that references a Key Protect key, which is then used for disk encryption.
+* `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "4096" then the two database members get 4 GB of RAM between them, giving 2 GB of RAM per member. If omitted, the default value is used; "2048".
 
-For example, if a database is being provisioned from a particular backup and the new database deployment needs two 2GB members, then the command looks like:
+For example, if a database is being provisioned from a particular backup and the new database deployment needs two 2 GB members, then the command looks like:
 
 ```
 ibmcloud resource service-instance-create example-psql databases-for-postgresql standard us-south \
