@@ -32,6 +32,8 @@ pg_dump -h sl-eu-lon-2-portal.4.dblayer.com -p 17980 -d compose -U admin -f dump
 
 The `pg_dump` command has many options and it is recommended that you [consult the official documentation](https://www.postgresql.org/docs/9.6/static/backup-dump.html) and [command reference](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) for a fuller view of its capabilities.
 
+## Restoring pg_dump's output
+
 The resulting output of `pg_dump` can then be uploaded into a new {{site.data.keyword.databases-for-postgresql}} deployment. As the output is SQL, it can simply be sent to the database through the `psql` command. We recommend imports be performed with the admin user. 
 
 See the [Administration/Connecting](admin-connecting) for details on how to connect as admin using `psql`.  For `psql` the connection string should be established from the contents of a newly created set of service credentials and the TLS certificate decoded from the base64 in the same file and stored as an arbitrary local file.  To import the previously created `dump.sql` into a database deployment named `example-psql` the following command the `psql` command can be called with `-f dump.sql` as a parameter. This tells `psql` to read and execute the SQL statements in that file. This command would look something like this:

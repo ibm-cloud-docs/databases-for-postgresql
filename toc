@@ -19,6 +19,7 @@ Databases For PostgreSQL
 	howto-provisioning.md
 	howto-getting-connection-strings.md
 	howto-using-ibmcloud-cli.md
+	howto-migration.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
