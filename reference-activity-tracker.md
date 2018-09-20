@@ -36,7 +36,7 @@ Action|Description
 `databases-for-postgresql-user.create`|A user was created. A "-failure" flag is included in the message if the attempt to create a user failed.
 `databases-for-postgresql-user.delete`|A user was deleted. A "-failure" flag is included in the message if the attempt to delete a user failed.
 `databases-for-postgresql.backup.restore`|A restore from backup was created. If the attempted restore failed, a "-failure" flag is included in the message.
-`databases-for-postgresql.scale`|A scaling operation was performed. If the scaling operation failed, a "-failure" flag is included in the message.
+`databases-for-postgresql.resources.scale`|A scaling operation was performed. If the scaling operation failed, a "-failure" flag is included in the message.
 `databases-for-postgresql.whitelisted-ips-list.update`|The whitelist was modified. A "-failure" flag is included in the message if the attempt to modify the whitelist failed.
 {: caption="Table 1. List of Events and Event Descriptions" caption-side="top"}
 
