@@ -4,7 +4,6 @@ This repo contains the documentation for the IBM Cloud Databases for PostgreSQL 
 
 ## Contacts for this repo
 
-- [Neil Dewhurst](https://github.ibm.com/NDewhurs)
 - [The Compose Devcom Team](https://github.ibm.com/orgs/Bluemix-Docs/teams/compose-devcom)
 
 ## Output
