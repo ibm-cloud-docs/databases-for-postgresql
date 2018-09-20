@@ -36,29 +36,29 @@ Operator | N/A | N/A
 Administrator | As an administrator, you can perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users. | Scale a Deployment, Change a Deployment's Password, and Assign Access Policies
 {: caption="Table 1. IAM user roles and actions" caption-side="top"}
 
-## Actions for {{site.data.keyword.databases-for-postgresql}} API
+## Actions for {{site.data.keywords.databases_for}} API
 
 Platform Action  | Operation on service | Role |
 ----------|------------|----------|
-GET /v4/:platform/deployables | Read Deployables | Administrator, Editor, Operator, Viewer 
-GET /v4/:platform/tasks/:task_id | Read a Task | Administrator, Editor, Operator, Viewer 
-GET /v4/:platform/backups/:backup_id | Read a Backup | Administrator, Editor, Operator, Viewer 
-POST /v4/:platform/deployments | Create a Deployment | Administrator, Editor, Operator
-GET /v4/:platform/deployments/:deployment_id | Read a Deployment | Administrator, Editor, Operator, Viewer
-DELETE /v4/:platform/deployments/:deployment_id | Remove a Deployment | Administrator, Editor, Operator
-GET /v4/:platform/deployables/:deployable_id/groups | Read deployable group | Administrator, Editor, Operator, Viewer 
-GET /v4/:platform/deployments/:deployment_id/tasks | Read all deployment tasks | Administrator, Editor, Operator, Viewer 
-GET /v4/:platform/deployments/:deployment_id/backups | Read all deployment backups | Administrator, Editor, Operator, Viewer 
-POST /v4/:platform/deployments/:deployment_id/backups | Create an on-demand backup | Administrator, Editor, Operator
-GET /v4/:platform/deployments/:deployment_id/groups | Read all deployment groups | Administrator, Editor, Operator, Viewer
-PATCH /v4/:platform/deployments/:deployment_id/groups/:group_id | Read deployment group | Administrator, Editor, Operator
-POST /v4/:platform/deployments/:deployment_id/users | Create a DeploymentUser | Administrator, Editor, Operator
-PATCH /v4/:platform/deployments/:deployment_id/users/:user_id | Update a DeploymentUser | Administrator, Editor, Operator 
-DELETE /v4/:platform/deployments/:deployment_id/users/:user_id | Remove a DeploymentUser | Administrator, Editor, Operator 
-GET /v4/:platform/deployments/:deployment_id/users/:user_id/connections | Read deployment user connections | Administrator, Editor, Operator, Viewer 
-POST /v4/:platform/deployments/:deployment_id/users/:user_id/connections | Create deployment user connections | Administrator, Editor, Operator
-GET /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses | Read Whitelisted IP Addresses | Administrator, Editor, Operator, Viewer
-POST /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses | Create a Whitelisted IP Addresses | Administrator, Editor, Operator
-DELETE /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses/:ip_address_id | Remove a Whitelisted IP Addresses | Administrator, Editor, Operator
+`GET /v4/:platform/deployables` | Read Deployables | Administrator, Editor, Operator, Viewer 
+`GET /v4/:platform/tasks/:task_id` | Read a Task | Administrator, Editor, Operator, Viewer 
+`GET /v4/:platform/backups/:backup_id` | Read a Backup | Administrator, Editor, Operator, Viewer 
+`POST /v4/:platform/deployments` | Create a Deployment | Administrator, Editor, Operator
+`GET /v4/:platform/deployments/:deployment_id` | Read a Deployment | Administrator, Editor, Operator, Viewer
+`DELETE /v4/:platform/deployments/:deployment_id` | Remove a Deployment | Administrator, Editor, Operator
+`GET /v4/:platform/deployables/:deployable_id/groups` | Read deployable group | Administrator, Editor, Operator, Viewer 
+`GET /v4/:platform/deployments/:deployment_id/tasks` | Read all deployment tasks | Administrator, Editor, Operator, Viewer 
+`GET /v4/:platform/deployments/:deployment_id/backups` | Read all deployment backups | Administrator, Editor, Operator, Viewer 
+`POST /v4/:platform/deployments/:deployment_id/backups` | Create an on-demand backup | Administrator, Editor, Operator
+`GET /v4/:platform/deployments/:deployment_id/groups` | Read all deployment groups | Administrator, Editor, Operator, Viewer
+`PATCH /v4/:platform/deployments/:deployment_id/groups/:group_id` | Read deployment group | Administrator, Editor, Operator
+`POST /v4/:platform/deployments/:deployment_id/users` | Create a DeploymentUser | Administrator, Editor, Operator
+`PATCH /v4/:platform/deployments/:deployment_id/users/:user_id` | Update a DeploymentUser | Administrator, Editor, Operator 
+`DELETE /v4/:platform/deployments/:deployment_id/users/:user_id` | Remove a DeploymentUser | Administrator, Editor, Operator 
+`GET /v4/:platform/deployments/:deployment_id/users/:user_id/connections` | Read deployment user connections | Administrator, Editor, Operator, Viewer 
+`POST /v4/:platform/deployments/:deployment_id/users/:user_id/connections` | Create deployment user connections | Administrator, Editor, Operator
+`GET /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses` | Read Whitelisted IP Addresses | Administrator, Editor, Operator, Viewer
+`POST /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses` | Create a Whitelisted IP Addresses | Administrator, Editor, Operator
+`DELETE /v4/:platform/deployments/:deployment_id/whitelists/ip_addresses/:ip_address_id` | Remove a Whitelisted IP Addresses | Administrator, Editor, Operator
 {: caption="Table 2. Platform actions and operations" caption-side="top"}
 
