@@ -24,13 +24,13 @@ lastupdated: "2018-09-20"
 
 ### Using the command line interface
 
-The command line interface for {{site.data.keyword.databases-for-postgresql}} is the {{site.data.keyword.cloud_notm}} CLI which provides in interactive terminal interface for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-postgresql}} deployment. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-postgresql}}](./using-ibmcloud-cli.html) page.
+The command line interface for {{site.data.keyword.databases-for-postgresql}} is the {{site.data.keyword.cloud_notm}} CLI, which provides in interactive terminal interface for your {{site.data.keyword.cloud_notm}} account and your {{site.data.keyword.cloud_notm}} services. The cloud databases plug-in extends this functionality to your {{site.data.keyword.databases-for-postgresql}} deployment. More information and installation instructions are on the [Using Command line Tools for {{site.data.keyword.databases-for-postgresql}}](./using-ibmcloud-cli.html) page.
 
 ## Provisioning {{site.data.keyword.databases-for-postgresql}}
 
 {{site.data.keyword.databases-for-postgresql}} is an {{site.data.keyword.cloud_notm}} service. Provisioning and account management is handled through your {{site.data.keyword.cloud_notm}} account. If you already have an account, you can provision {{site.data.keyword.databases-for-postgresql}} from the [{{site.data.keyword.cloud_notm}} catalog](https://console.{DomainName}/catalog/services/databases-for-postgresql).
 
-For detailed provisioning information, including CLI instructions, see the [Provisioning](./provisioning.html) page.
+For detailed provisioning information, including {{site.data.keyword.cloud_notm} CLI instructions, see the [Provisioning](./provisioning.html) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://console.{DomainName}/registration/) page.
 ]
@@ -56,7 +56,7 @@ Specific guidance on connecting with PostgreSQL drivers is on the [Connecting Ex
 
 ## Other {{site.data.keyword.cloud_notm}} Integrations
 
-{{site.data.keyword.databases-for-postgresql}} offers other cloud services integrations. 
+{{site.data.keyword.databases-for-postgresql}} deployments offer other cloud services integrations. 
 - View events with [Activity Tracker](./reference-activity-tracker)
 
 
