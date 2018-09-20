@@ -74,13 +74,13 @@ If you don't specify a user, the `deployment-connections` commands return inform
 
 ### The PostgreSQL Section
 
-The "Redis" section contains information that is suited to applications that make connections to Redis.
+The "postgresql" section contains information that is suited to applications that make connections to PostgreSQL.
 
 Field Name|Index|Description
 ----------|-----|-----------
 `Type`||Type of connection - for PostgreSQL, it is "URI"
 `Scheme`||Scheme for a URI - for PostgreSQL, it is "postgresql"
-`Path`||Path for a URI - for Redis, it is the database number
+`Path`||Path for a URI - for PostgreSQL, it is the database name
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
