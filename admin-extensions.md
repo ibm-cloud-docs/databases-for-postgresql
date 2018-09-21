@@ -13,7 +13,7 @@ lastupdated: "2018-09-13"
 
 # Managing PostgreSQL Extensions
 
-In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. In order to use them you need to [set the admin password]() for your service and [connect as an admin]() through `psql`.
+In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. In order to use them you need to [set the admin password](./admin-password.html) for your service and [connect as an admin](./admin-connecting.html) through `psql`.
 
 ## Listing Installed Extensions
 
