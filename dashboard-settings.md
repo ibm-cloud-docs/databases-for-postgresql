@@ -20,14 +20,12 @@ Manage your {{site.data.keyword.databases-for-postgresql_full}} service through 
 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
-Resources that are not scalable are grayed out. They are shown for informational purposes only.
+You can not currently scale down, and scaling operations can cause downtime.
 {: .tip} 
 
 **Storage** - Storage shows the amount of disk space that is allocated to your service. Each container gets the allocated space. Your data is replicated across two data containers in the PostgreSQL cluster, so the total amount of storage you are using is roughly twice the size of your data.
 
 **Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two containers in a cluster, so the amount of memory you add is added to both containers. 
-
-Scaling operations can cause downtime. When the scaling is complete the Deployment Details pane updates to show the current usage and the new values for the available storage and memory. 
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
@@ -64,7 +62,11 @@ A new, randomly generated password appears, or you can type your own password in
 
 If you want to restrict access to your databases, you can whitelist specific IP addresses or ranges of IP addresses on your deployment. When there are no IP addresses in the whitelist, the whitelist is disabled and the deployment will accept connections from any system on the internet.
 
+{{site.data.keyword.cloud_notm}} management services will still be able to connect.
+{: .tip}
+
 ### IP Addresses
+
 The *IP* field can take a single complete IPv4 address or IPv6 address with or without a netmask. Without a netmask, incoming connections must come from exactly that IP address. 
 
 Although the *IP* field allows for IPv6, no deployments are currently available to IPv6 networking and so these addresses cannot be filtered on.
@@ -78,9 +80,7 @@ To allow a connection from a specified range of IP addresses, use a netmask. The
 
 The *Description* can be any user-significant text for identifying the whitelist entry - a customer name, project identifier, or employee number, for example. The description field is required.
 
-### Compose Services
-Whitelist entries are automatically added for {{site.data.keyword.cloud_notm}} services to allow them to connect.
-
 ### Removal
+
 To remove an IP address or netmask from the Whitelist, click *Remove*.
 When all entries on the whitelist are removed, the whitelist will be disabled and all IP addresses are accepted by the TCP access portals.
