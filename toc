@@ -38,4 +38,5 @@ Databases For PostgreSQL
 	reference-security.md
 	reference-access-management.md
 	reference-activity-tracker.md
+	reference-key-protect.md
 	{: .navgroup-end}
