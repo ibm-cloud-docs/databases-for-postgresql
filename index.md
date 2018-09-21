@@ -42,7 +42,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ### Using the cloud databases API
 
-You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-settings.html) page. For more information, see the [API reference](https://console.bluemix.net/apidocs/cloud-databases-api)
+You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-settings.html) page. For more information, see the [API reference](https://console.{DomianName}/apidocs/cloud-databases-api)
 
 ## PostgreSQL Database Administration
 
@@ -50,14 +50,15 @@ Under the the {{site.data.keyword.databases-for-postgresql}} service, are the Po
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}}
 
-General information on getting connection strings for your applications, for `psql`, and for users you provision on your account can be found on the [Getting Connection Strings](./howto-using-connection-strings) page.
+General information on getting connection strings for your applications, for `psql`, and for users you provision on your account can be found on the [Getting Connection Strings](./howto-using-connection-strings.html) page.
 
-Specific guidance on connecting with PostgreSQL drivers is on the [Connecting External Applications](./connecting-external.html) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html) page. The [Getting Started tutorial](./getting-started.md) that provides a sample application that can run locally or on {{site.data.keyword.cloud_notm}} to test-drive your {{site.data.keyword.databases-for-postgresql}} deployment.
+Specific guidance on connecting with PostgreSQL drivers is on the [Connecting External Applications](./connecting-external.html) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html) page. The [Getting Started tutorial](./getting-started.html) that provides a sample application that can run locally or on {{site.data.keyword.cloud_notm}} to test-drive your {{site.data.keyword.databases-for-postgresql}} deployment.
 
 ## Other {{site.data.keyword.cloud_notm}} Integrations
 
 {{site.data.keyword.databases-for-postgresql}} deployments offer other cloud services integrations. 
-- View events with [Activity Tracker](./reference-activity-tracker)
+- View events with [Activity Tracker](./reference-activity-tracker.html)
+- BYOK encryption is available if you use [Key Protect](./reference-key-protect.html)
 
 
 
