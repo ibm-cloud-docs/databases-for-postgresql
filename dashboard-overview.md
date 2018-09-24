@@ -32,6 +32,10 @@ The ID is a [CRN (Cloud Resource Name)](https://console.bluemix.net/docs/overvie
 
 Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks.
 
+## Security
+
+Encryption at rest is enabled for all {{site.data.keyword.databases-for-postgresql}} deployments. If you brought your own encryption key from [Key Protect](./reference-key-protect.html), there is a link to your Key Protect Instance and the _Encryption Key_ field will have the name of the key.
+
 ## Instance Administration API
 
 You can manage your {{site.data.keyword.databases-for-postgresql}} service through the {{site.data.keyword.cloud_notm}} databases API. This panel provides the essential information for using the API.

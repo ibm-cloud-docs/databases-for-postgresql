@@ -38,6 +38,6 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 
 ## Removing keys and deleting your data
 
-Caution - If you delete the key used to encrypt your service, you will lose access to the data. You will not be able to recover the data from the live deployment. You can be able to recover the database by restoring a backup into a new {{site.data.keyword.databases-for-postgresql}} deployment.
+Caution - If you delete the key used to encrypt your service, you will lose access to the data. You will not be able to recover the data from the live deployment. You might be able recover the database by restoring a backup into a new {{site.data.keyword.databases-for-postgresql}} deployment.
 
 If you wish to securely delete your data, you must delete both the {{site.data.keyword.databases-for-postgresql}} deployment and remove the Key Protect key.
