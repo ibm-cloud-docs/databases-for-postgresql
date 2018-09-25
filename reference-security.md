@@ -15,11 +15,11 @@ lastupdated: "2018-09-21"
 
 ## Protection Against Unauthorized Access
 
-IBM Cloud Databases use the following methods to protect data in transit or in storage.
-- All IBM Cloud Databases use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
+{{site.data.keyword.databases-for-postgresql_full}} use the following methods to protect data in transit or in storage.
+- All {{site.data.keyword.databases-for-postgresql}} use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via IAM (Identity and Access Management)
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
-- All IBM Cloud Database storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS). If you require bring-your-own-key (BYOK) for encryption, it is available through [{{site.data.keyword.cloud_notm}} Key Protect](https://console.bluemix.net/docs/services/key-protect/about.html#about). 
+- All {{site.data.keyword.databases-for-postgresql}} storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS). If you require bring-your-own-key (BYOK) for encryption, it is available through [{{site.data.keyword.cloud_notm}} Key Protect](https://console.{DomainName}/docs/services/key-protect/about.html#about). 
 - IP Whitelisting - All deployments have the ability to whitelist IP addresses to restrict access to the service.
 
 ## Data Resilience
@@ -41,8 +41,8 @@ a support ticket with
 
 ## General Data Protection Regulation (GDPR) 
 
-If you have an account provisioned by IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
-[IBM DPA ![External link icon](../images/launch-glyph.svg "External link icon"](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
+If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
+[IBM DPA ![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
 
 {{site.data.keyword.databases-for-postgresql}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. {{site.data.keyword.databases-for-postgresql}} monitors client interactions with the {{site.data.keyword.databases-for-postgresql}} dashboard. 
 

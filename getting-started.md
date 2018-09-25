@@ -14,7 +14,7 @@ lastupdated: "2018-07-31"
 
 
 # Getting started tutorial
-This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database that uses data supplied through the app's web interface.
+This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database that uses that is supplied through the app's web interface.
 {: shortdesc}
 
 If you have already created your database and just want to connect to your {{site.data.keyword.databases-for-postgresql}} database through command line tools so you can administer it, you will want to [set your administrator password](admin-password.html) and then use a [command line tool to connect](admin-connecting.html).
@@ -38,7 +38,7 @@ Click **Create** to provision your service. Provisioning can take a while to com
 You won't be able to connect an application to the service until provisioning has completed.
 {: .tip}
 
-## Step 2. Clone the Hello World sample app from Github
+## Step 2. Clone the Hello World sample app from GitHub
 
 Clone the Hello World app to your local environment from your terminal by using the following command:
 

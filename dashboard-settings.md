@@ -21,32 +21,32 @@ Manage your {{site.data.keyword.databases-for-postgresql_full}} service through 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
 
-**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the PostgreSQL cluster, so the total amount of storage you will be using is approximately twice the size of your data set.
+**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the PostgreSQL cluster, so the total amount of storage you use is approximately twice the size of your data set.
 
-The minimum storage a PostgreSQL deployment can have is 10240 MB, adjustable in step sizes of 2048 MB. This equates to 5120 MB per member with 1024 MB increments available.
+The minimum storage of a PostgreSQL deployment is 10240 MB, adjustable in step sizes of 2048 MB. This equates to 5120 MB per member with 1024 MB increments available.
 
-You can not scale down storage. If your data set size has reduced, you can recover space by backing up and restoring to a new deployment.
+You cannot scale down storage. If your data set size has shrunk, you can recover space by backing up and restoring to a new deployment.
 {: .tip} 
 
 **Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two members in a cluster, so the amount of memory you allocate to the service is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
-The minimum RAM a PostgreSQL deployment can have is 2048MB, adjustable in step sizes of 256MB.  This equates to 1024 MB per member with 128 MB increments available.
+The minimum RAM for a PostgreSQL deployment is 2048 MB, adjustable in step sizes of 256 MB.  This equates to 1024 MB per member with 128 MB increments available.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
 ### Scaling via the UI
 
-Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI shows the total allocated memory or disk this will result in. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
+Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
 ### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
 Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
-For example, to view the resource groups for a deployment named "example-deployment":  
+For example, the command to view the resource groups for a deployment named "example-deployment":  
 `ibmcloud cdb deployment-groups example-deployment`
 
-This produces output which looks like this:
+This produces the output:
 
 ```
 Group   member
@@ -67,9 +67,9 @@ Count   2
 |   Adjustable              true
 ```
 
-Here, the deployment has two members, with 2048 MB of RAM and 10240 MB of disk allocated in total. This results in a "per member" allocation of 1024 MB of RAM and 5120 MB of disk. The minimum value is the lowest the total allocation can be set to. The step size is the smallest amount by which the total allocation can be adjusted.
+The deployment has two members, with 2048 MB of RAM and 10240 MB of disk allocated in total. The "per member" allocation is 1024 MB of RAM and 5120 MB of disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
-The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. That means that to scale the memory to 2048 MB of RAM for each memory member of "example-deployment" you need to :  
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. To scale the memory to 2048 MB of RAM for each memory member of "example-deployment" you need to:  
 `ibmcloud cdb deployment-groups-set member --memory 2048`
 
 ### Scaling via the API
@@ -82,18 +82,18 @@ You can find more examples in the [API Reference](https://console.bluemix.net/ap
 
 To enable administrative access to your service, you have to set the admin password. You might also need to change the password of your service. You can do so by using _Update Password_.
 
-A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click the icon to the right of the field. When you click *Update Password*, you will be asked to confirm before the change is applied. 
+A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click the icon to the right of the field. When you click *Update Password*, you are asked to confirm before the change is applied. 
 
 **Note:** Changing the password changes the credentials that you or any other services that use the admin user to connect. It can cause these services to disconnect and experience downtime.
 
 ## Whitelisting
 
-If you want to restrict access to your databases, you can whitelist specific IP addresses or ranges of IP addresses on your deployment. When there are no IP addresses in the whitelist, the whitelist is disabled and the deployment will accept connections from any system on the internet.
+If you want to restrict access to your databases, you can whitelist specific IP addresses or ranges of IP addresses on your deployment. When no IP addresses are in the whitelist, the whitelist is disabled and the deployment will accept connections from any system on the internet.
 
-{{site.data.keyword.cloud_notm}} management services will still be able to connect.
+Even if not explicitly whitelisted, {{site.data.keyword.cloud_notm}} management services are still be able to connect.
 {: .tip}
 
-### IP Addresses
+### IP addresses
 
 The *IP* field can take a single complete IPv4 address or IPv6 address with or without a netmask. Without a netmask, incoming connections must come from exactly that IP address. 
 
@@ -102,7 +102,7 @@ Although the *IP* field allows for IPv6, no deployments are currently available 
 
 ### Netmasks
 
-To allow a connection from a specified range of IP addresses, use a netmask. The IP address must be fully specified when using a netmask. That means entering, for example, 192.168.1.0/24 rather than 192.168.1/24.
+To allow a connection from a specified range of IP addresses, use a netmask. The IP address must be fully specified if you use a netmask. That means entering, for example, 192.168.1.0/24 rather than 192.168.1/24.
 
 ### Description
 
@@ -111,4 +111,4 @@ The *Description* can be any user-significant text for identifying the whitelist
 ### Removal
 
 To remove an IP address or netmask from the Whitelist, click *Remove*.
-When all entries on the whitelist are removed, the whitelist will be disabled and all IP addresses are accepted by the TCP access portals.
+When all entries on the whitelist are removed, the whitelist is disabled and all IP addresses are accepted by the TCP access portals.
