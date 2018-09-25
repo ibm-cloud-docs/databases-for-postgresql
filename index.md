@@ -42,11 +42,11 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ### Using the cloud databases API
 
-You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-settings.html) page. For more information, see the [API reference](https://console.{DomianName}/apidocs/cloud-databases-api)
+You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-settings.html) page. For more information, see the [API reference](https://console.{DomianName}/apidocs/cloud-databases-api).
 
 ## PostgreSQL Database Administration
 
-Under the the {{site.data.keyword.databases-for-postgresql}} service, are the PostgreSQL databases. You can control and manage the databases directly. [Set the admin password](./admin-password.html) and [connect as the admin](./admin-connecting) using `psql`. Read more if you need to manage users and privileges or [install database extensions](./admin-extensions.html).
+Under the {{site.data.keyword.databases-for-postgresql}} service, are the PostgreSQL databases. You can control and manage the databases directly. [Set the admin password](./admin-password.html) and [connect as the admin](./admin-connecting) using `psql`. Read more if you need to manage users and privileges or [install database extensions](./admin-extensions.html).
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}}
 

@@ -25,11 +25,11 @@ You can install just the stand-alone package from the [Installing the stand-alon
 
 ## The cloud databases plug-in
 
-Once you have the {{site.data.keyword.cloud_notm}} CLI, grab the cloud databases plug-in. Download the latest release from its [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), extract it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`. 
+Once you have the {{site.data.keyword.cloud_notm}} CLI, [login](https://console.{DomianName}/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_login) and grab the cloud databases plug-in. 
 
-## Using the `cdb` commands
+`ibmcloud plugin install cloud-databases`
 
-Run `ibmcloud cdb help` for other commands and usage information. 
+Use `ibmcloud cdb help` for a list of commands and usage, or see the [documentation]() for a command reference. 
 
 ## Using the plug-in for database administration
 
