@@ -20,19 +20,24 @@ Manage your {{site.data.keyword.databases-for-postgresql_full}} service through 
 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
-You can not currently scale down, and scaling operations can cause downtime.
+
+**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the PostgreSQL cluster, so the total amount of storage you will be using is approximately twice the size of your data set.
+
+The minimum storage a PostgreSQL deployment can have is 10240 MB, adjustable in step sizes of 2048 MB. This equates to 5120 MB per member with 1024 MB increments available.
+
+You can not scale down storage. If your data set size has reduced, you can recover space by backing up and restoring to a new deployment.
 {: .tip} 
 
-**Storage** - Storage shows the amount of disk space that is allocated to your service. Each container gets the allocated space. Your data is replicated across two data containers in the PostgreSQL cluster, so the total amount of storage you are using is roughly twice the size of your data.
+**Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two members in a cluster, so the amount of memory you allocate to the service is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
-**Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two containers in a cluster, so the amount of memory you add is added to both containers. 
+The minimum RAM a PostgreSQL deployment can have is 2048MB, adjustable in step sizes of 256MB.  This equates to 1024 MB per member with 128 MB increments available.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
 ### Scaling via the UI
 
-Adjust the slider to increase or decrease the resources that are allocated to your service. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
+Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI shows the total allocated memory or disk this will result in. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
 ### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
@@ -41,14 +46,37 @@ Use the command `cdb deployment-groups` to see current resource information for 
 For example, to view the resource groups for a deployment named "example-deployment":  
 `ibmcloud cdb deployment-groups example-deployment`
 
-To scale the memory to 2048 MB of RAM for each memory member of "example-deployment":  
+This produces output which looks like this:
+
+```
+Group   member
+Count   2
+|
++   Memory
+|   Allocation              2048mb
+|   Allocation per member   1024mb
+|   Minimum                 2048mb
+|   Step Size               256mb
+|   Adjustable              true
+|
++   Disk
+|   Allocation              10240mb
+|   Allocation per member   5120mb
+|   Minimum                 10240mb
+|   Step Size               2048mb
+|   Adjustable              true
+```
+
+Here, the deployment has two members, with 2048 MB of RAM and 10240 MB of disk allocated in total. This results in a "per member" allocation of 1024 MB of RAM and 5120 MB of disk. The minimum value is the lowest the total allocation can be set to. The step size is the smallest amount by which the total allocation can be adjusted.
+
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. That means that to scale the memory to 2048 MB of RAM for each memory member of "example-deployment" you need to :  
 `ibmcloud cdb deployment-groups-set member --memory 2048`
 
 ### Scaling via the API
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-You can find more examples in the [API Reference](https://pages.github.ibm.com/compose/apidocs/).
+You can find more examples in the [API Reference](https://console.bluemix.net/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl).
 
 ## Setting the admin Password
 
