@@ -17,10 +17,10 @@ lastupdated: "2018-09-21"
 
 {{site.data.keyword.databases-for-postgresql_full}} use the following methods to protect data in transit or in storage.
 - All {{site.data.keyword.databases-for-postgresql}} use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
-- Access to the Account, Management Console UI, and API is secured via IAM (Identity and Access Management)
+- Access to the Account, Management Console UI, and API is secured via IAM (Identity and Access Management).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-postgresql}} storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS). If you require bring-your-own-key (BYOK) for encryption, it is available through [{{site.data.keyword.cloud_notm}} Key Protect](https://console.{DomainName}/docs/services/key-protect/about.html#about). 
-- IP Whitelisting - All deployments have the ability to whitelist IP addresses to restrict access to the service.
+- IP Whitelisting - All deployments support whitelisting IP addresses to restrict access to the service.
 
 ## Data Resilience
 
@@ -44,9 +44,7 @@ a support ticket with
 If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
 [IBM DPA ![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
 
-{{site.data.keyword.databases-for-postgresql}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. {{site.data.keyword.databases-for-postgresql}} monitors client interactions with the {{site.data.keyword.databases-for-postgresql}} dashboard. 
-
-{{site.data.keyword.databases-for-postgresql}} uses email for contacting clients as appropriate. 
+{{site.data.keyword.databases-for-postgresql}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. 
 
 {{site.data.keyword.databases-for-postgresql}} provides a [Data Sheet Addendum (DSA)![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/software/reports/compatibility/clarityreports/report/html/softwareReqsForProduct?deliverableId=CD09D2E06DC811E8A0B560E89C071ECC){:new_window} with its policies as a Data Processor regarding content and data protection. 
 
@@ -56,7 +54,7 @@ If you have an account with IBM Cloud, your personal data is held by {{site.data
 
 ## Terms
 
-[The IBM Privacy Policy](https://www.ibm.com/privacy/us/en/)
-[The IBM Cloud Notices and Terms of Use](https://console.bluemix.net/docs/overview/terms-of-use/notices.html#notices)
+- [The IBM Privacy Policy](https://www.ibm.com/privacy/us/en/)
+- [The IBM Cloud Notices and Terms of Use](https://console.{DomianName}/docs/overview/terms-of-use/notices.html#notices)
 
 

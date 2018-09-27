@@ -25,19 +25,19 @@ Database storage for {{site.data.keyword.databases-for-postgresql}} is provided 
 
 ### Full-disk Encryption
 
-All {{site.data.keyword.databases-for-postgresql}} services all have encryption at rest. Both your data and your backups reside on servers that have volume-level encryption enabled.
+All {{site.data.keyword.databases-for-postgresql}} services all have encryption at rest. Both your data and your backups reside on servers that have volume-level encryption enabled. If your environment requires that you control the encryption keys, [Key Protect integration](./reference-key-protect.html) is available.
 
 ## Portals
 
-{{site.data.keyword.databases-for-postgresql}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the PostgreSQL cluster and provide load-balancing. The portals are then behind a Kubernetes endpoint, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
+{{site.data.keyword.databases-for-postgresql}} database connections are managed by 2 HAProxy portals which automatically connect to the leader member of the PostgreSQL cluster. The portals are then behind a Kubernetes endpoint, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
 
 ### Encryption in Transit
 
-All {{site.data.keyword.databases-for-postgresql}} HAProxy portals are TLS/SSL enabled and support TLS version 1.2. Self-signed certificates are provided to enable applications to validate the server upon connection.
+All {{site.data.keyword.databases-for-postgresql}} connections are TLS/SSL enabled and support TLS version 1.2. Self-signed certificates are provided to enable applications to validate the server upon connection.
 
 ## Access Management
 
-{{site.data.keyword.databases-for-postgresql}} is an IAM-integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM-integrated services across the {{site.data.keyword.cloud_notm}}. For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation. For more information on how IAM affects access to {{site.data.keyword.databases-for-postgresql}}, see [Managing Access](./access-management.html).
+{{site.data.keyword.databases-for-postgresql}} is an IAM-integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM-integrated services across {{site.data.keyword.cloud_notm}}. For more information about IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation. For more information on how IAM affects access to {{site.data.keyword.databases-for-postgresql}}, see [Managing Access](./access-management.html).
 
 Database-level access can be managed through PostgreSQL's native [user management and database roles](https://www.postgresql.org/docs/current/static/database-roles.html).
 
