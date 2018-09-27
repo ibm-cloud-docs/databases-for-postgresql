@@ -32,7 +32,7 @@ Service management role | Description of actions | Example actions
 -----------------|-----------------|-----------------
 Viewer | As a viewer, you can view service instances, but you can't modify them. | View Service Overview and View Alerts
 Editor | As an editor, you can perform all platform actions except for managing the account and assigning access policies. | Scale a Deployment and Change a Deployment's Password
-Operator | N/A | N/A
+Operator | As an operator, you can perform all platform actions except for managing the account and assigning access policies. | Scale a Deployment and Change a Deployment's Password
 Administrator | As an administrator, you can perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users. | Scale a Deployment, Change a Deployment's Password, and Assign Access Policies
 {: caption="Table 1. IAM user roles and actions" caption-side="top"}
 
