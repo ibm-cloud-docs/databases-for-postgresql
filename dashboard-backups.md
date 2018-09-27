@@ -63,3 +63,9 @@ The response has the backup `ID`, the `Deployment ID`, `Type`, `Created At`, `St
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/backups` endpoint if you need to manage or automate backups programmatically.
 
 For more information and examples, see the [API Reference](https://console.{DomainName}/apidocs/cloud-databases-api#get-information-about-a-backup).
+
+## Backups and Restoration
+
+* {{site.data.keyword.cloud_notm}} Databases is not responsible for restoration, timeliness or validity of said backups.
+* There are actions you can take as a user that will compromise the integrity of backups, such as under-allocating memory and disk. Customers should both monitor that backups were performed successfully via the API, and periodically restore a backup to ensure validity and integrity. Users can retrieve the most recent scheduled backup details from the IBM Cloud Databases plugin: `ibmcloud cdb backups deploymentname -s -f`.
+* In addition, as a managed service IBM will monitor the state of your backups and attempt to remediate when possible. If you encounter issues you cannot recover from, you can contact support for additional help.
