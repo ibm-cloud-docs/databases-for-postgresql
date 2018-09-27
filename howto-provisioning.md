@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-20"
+lastupdated: "2018-09-27"
 ---
 
 {:shortdesc: .shortdesc}
@@ -51,7 +51,7 @@ The {{site.data.keyword.cloud_notm}} CLI tool is what you use to communicate wit
 
 To create a {{site.data.keyword.databases-for-postgresql}} deployment, you use the CLI to request a service instance with a `databases-for-postgresql` service ID.
 
-The template for the command is:
+The command template is:
 
 ```
 ibmcloud resource service-instance-create <service-name> <service-id> <service-plan-id> <region>

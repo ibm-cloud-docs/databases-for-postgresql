@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017,2018
-lastupdated: "2018-08-20"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -18,7 +18,7 @@ lastupdated: "2018-08-20"
 
 ## Restoring a Backup
 
-To restore a backup to a new service instance:
+To restore a backup to a new service instance,
 
 1. Click in the corresponding row to expand the options for the backup you want to download.
 2. Click the **Restore** button.  A message is displayed that a backup is in progress, and a 'pending' backup is added to the list of available backups.
@@ -66,6 +66,6 @@ For more information and examples, see the [API Reference](https://console.{Doma
 
 ## Backups and Restoration
 
-* {{site.data.keyword.cloud_notm}} Databases is not responsible for restoration, timeliness or validity of said backups.
-* There are actions you can take as a user that will compromise the integrity of backups, such as under-allocating memory and disk. Customers should both monitor that backups were performed successfully via the API, and periodically restore a backup to ensure validity and integrity. Users can retrieve the most recent scheduled backup details from the IBM Cloud Databases plugin: `ibmcloud cdb backups deploymentname -s -f`.
-* In addition, as a managed service IBM will monitor the state of your backups and attempt to remediate when possible. If you encounter issues you cannot recover from, you can contact support for additional help.
+* {{site.data.keyword.cloud_notm}} Databases is not responsible for restoration, timeliness, or validity of said backups.
+* Actions that you take as a user can compromise the integrity of backups, such as under-allocating memory and disk. Users can monitor that backups were performed successfully via the API, and periodically restore a backup to ensure validity and integrity. Users can retrieve the most recent scheduled backup details from the IBM Cloud Databases plug-in: `ibmcloud cdb backups deploymentname -s -f`.
+* As a managed service {{site.data.keyword.cloud_notm}} Databases monitors the state of your backups and can attempt to remediate when possible. If you encounter issues you cannot recover from, you can contact support for additional help.

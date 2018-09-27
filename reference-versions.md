@@ -1,7 +1,7 @@
 ---
 Copyright:
   years: 2018
-lastupdated: "2018-09-24"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -13,7 +13,7 @@ lastupdated: "2018-09-24"
 
 # Versioning Policy
 
-{{site.data.keyword.IBM_notm}} {{site.data.keywords.databases_for}} allow users to select major versions for its database. We are committed to providing the more secure, up-to-date versions of databases. With this in mind, we take control of upgrading database minor versions as appropriate.
+{{site.data.keyword.IBM_notm}} {{site.data.keywords.databases_for}} allow users to select major versions for its database. We are committed to providing the more secure, up-to-date versions of databases. With this in mind, we take control of upgrading database minor versions when appropriate.
 
 ## Major Versions
 

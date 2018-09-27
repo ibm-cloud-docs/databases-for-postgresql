@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2018-09-10"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -32,7 +32,7 @@ Because {{site.data.keyword.databases-for-postgresql}} is an IAM service, you ca
 
 ## Generating Connection Strings from the command line
 
-If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and the cloud databases plug-in, you can generate a new user and connection strings with the `cdb user-create` command. For example, to create a new user for a deployment named "example-deployment", use the following command.
+If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and the cloud databases plug-in, you can generate a new user and connection strings with `cdb user-create`. For example, to create a new user for a deployment named "example-deployment", use the following command.
 
 `ibmcloud cdb user-create example-deployment <newusername> <newpassword>`
 
@@ -99,10 +99,10 @@ The "CLI" section contains information that is suited for connecting with `psql`
 Field Name|Index|Description
 ----------|-----|-----------
 `Bin`||The recommended binary to create a connection; in this case it is `psql`.
-`Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings and uses `Arguments` as command line parameters.
+`Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses `Arguments` as command line parameters.
 `Environment`||A list of key/values you set as environment variables.
 `Arguments`|0...|The information that is passed as arguments to the command shown in the Bin field.
-`Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded.
 `Certificate`|Name|The allocated name for the self-signed certificate.
 `Type`||The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `psql`/`cli` connection information" caption-side="top"}

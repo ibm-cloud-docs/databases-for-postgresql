@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2018-09-14"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -29,7 +29,7 @@ Once you have the {{site.data.keyword.cloud_notm}} CLI, [login](https://console.
 
 `ibmcloud plugin install cloud-databases`
 
-Use `ibmcloud cdb help` for a list of commands and usage, or see the [documentation]() for a command reference. 
+Use `ibmcloud cdb help` for a list of commands and usage, or see the [documentation](https://console.{DomainName}/docs/databases-cli-plugin/cloud-databases-cli.html#cloud-databases-cli-plug-in) for a command reference. 
 
 ## Using the plug-in for database administration
 
@@ -46,10 +46,10 @@ ibmcloud cdb cxn example-postgres -s
 If you don't specify a user, the `deployment-connections` command uses the admin user by default. In order to connect with the admin user, you have to [set its password](./admin-password.html).
 {: .tip}
 
-The command prompts for the password and then runs the `psql` command line client to connect to the database. For more information on connecting to PostgreSQL directly, see the [Connecting as an Admin](./admin-connecting) page.
+The command prompts for the password and then runs the `psql` command line client to connect to the database. For more information about connecting to PostgreSQL directly, see the [Connecting as an Admin](./admin-connecting) page.
 
 ## The {{site.data.keyword.cloud_notm}} CLI and IAM
 
-Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Integrated Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you have to set the correct permissions. For more information on general IAM management, see the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted).
+Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Integrated Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you have to set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted).
 
-For more information on how IAM affects {{site.data.keyword.databases-for-postgresql}}, see the [reference page](./reference-access-management.html)
+For more information on how IAM affects {{site.data.keyword.databases-for-postgresql}}, see the [IAM reference page](./reference-access-management.html)

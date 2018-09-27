@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-09-18"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -34,7 +34,7 @@ Every time that you make administrative changes to your service (such as scaling
 
 ## Security
 
-Encryption at rest is enabled for all {{site.data.keyword.databases-for-postgresql}} deployments. If you brought your own encryption key from [Key Protect](./reference-key-protect.html), there is a link to your Key Protect Instance and the _Encryption Key_ field will have the name of the key.
+Encryption at rest is enabled for all {{site.data.keyword.databases-for-postgresql}} deployments. If you brought your own encryption key from [Key Protect](./reference-key-protect.html), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
 
 ## Instance Administration API
 
@@ -50,4 +50,4 @@ Many API calls require the ID of the database deployment. The database deploymen
 
 ### {{site.data.keyword.cloud_notm}} databases API Reference
 
-For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://console.{DomainName}/apidocs/cloud-databases-api) page.
+For more information about the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://console.{DomainName}/apidocs/cloud-databases-api) page.

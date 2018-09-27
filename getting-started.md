@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-07-31"
+lastupdated: "2018-09-27"
 ---
 
 {:shortdesc: .shortdesc}
@@ -14,15 +14,15 @@ lastupdated: "2018-07-31"
 
 
 # Getting started tutorial
-This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database that uses that is supplied through the app's web interface.
+This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-postgresql-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-postgresql_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
 {: shortdesc}
 
-If you have already created your database and just want to connect to your {{site.data.keyword.databases-for-postgresql}} database through command line tools so you can administer it, you will want to [set your administrator password](admin-password.html) and then use a [command line tool to connect](admin-connecting.html).
+If you have already created your deployment and just want to connect to your PostgreSQL databases, you can skip to [setting your administrator password](admin-password.html) and then start using a [command line tool to connect](admin-connecting.html).
 {: .tip}
 
 ## Before you begin
 
-Make sure you have an [{{site.data.keyword.cloud_notm}} account][ibm_cloud_signup_url]{:new_window}.
+Make sure that you have an [{{site.data.keyword.cloud_notm}} account][ibm_cloud_signup_url]{:new_window}.
 
 You also need to install [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/downloads).
 
@@ -35,7 +35,7 @@ Choose a service name, region, organization and space to provision the service i
 
 Click **Create** to provision your service. Provisioning can take a while to complete. You are taken back to your {{site.data.keyword.cloud_notm}} _Dashboard_ while the service is provisioning. 
 
-You won't be able to connect an application to the service until provisioning has completed.
+You are not able to connect an application to the service until provisioning is finished.
 {: .tip}
 
 ## Step 2. Clone the Hello World sample app from GitHub
@@ -101,7 +101,7 @@ The alias name can be the same as the database service instance name. For exampl
 
 {{site.data.keyword.cloud_notm}} uses a manifest file - `manifest.yml` to associate an application with a service. Follow these steps to create your manifest file.
 
-1. In an editor, open a new file and add the following:
+1. In an editor, open a new file and add the following text:
 
   ```
   ---
@@ -120,10 +120,10 @@ The alias name can be the same as the database service instance name. For exampl
 
 ## Step 8. Push the app to {{site.data.keyword.cloud_notm}}.
 
-This step fails if the service has not finished provisioning from Step 1. You can check its progress on your {{site.data.keyword.cloud_notm}} _Dashboard_.
+This step fails if the service is not finished provisioning from Step 1. You can check its progress on your {{site.data.keyword.cloud_notm}} _Dashboard_.
 {: .tip}
 
-When you push the app, it will automatically be bound to the service specified in the manifest file.
+When you push the app, it is automatically bound to the service specified in the manifest file.
 
 ```
 ibmcloud cf push
@@ -132,9 +132,9 @@ ibmcloud cf push
 ## Step 9. Check that the app is connected to your {{site.data.keyword.databases-for-postgresql}} service
 
 1. Go to your {{site.data.keyword.databases-for-postgresql}} service dashboard
-2. Select _Connections_ from the dashboard menu. Your application should be listed under _Connected Applications_.
+2. Select _Connections_ from the dashboard menu. Your application is be listed under _Connected Applications_.
 
-If your application is not listed, repeat Steps 7 and 8, making sure that you have entered the correct details in [manifest.yml](#update-manifest).
+If your application is not listed, repeat Steps 7 and 8, making sure that you entered the correct details in [manifest.yml](#update-manifest).
 
 ## Step 10. Use the app
 
@@ -149,7 +149,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
 3. Click **New Credential**.
 4. Choose a name for your credentials and click **Add**.
 5. Your new credentials are now listed. Click **View credentials** in the corresponding row of the table to view the credentials, and click the **Copy** icon to copy your credentials.
-6. In your editor of choice, create a new file with the following, inserting your credentials as shown:
+6. In your editor of choice, create a new file with the following JSON, inserting your credentials as shown.
 
   ```
   {
@@ -164,7 +164,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
   ```
 7. Save the file as `vcap-local.json` in the directory where the sample app is located.
 
-To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory you can see that `vcap-local.json` is listed in both, so it is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
+To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file that contains your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory, you can see that `vcap-local.json` is listed in both. It is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
 {: .tip}
 
 Now start the local server.
@@ -172,7 +172,7 @@ Now start the local server.
 npm start
 ```
 
-The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-postgresql}} database. When you stop and restart the app, any words you have already added are displayed when you refresh the page.
+The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-postgresql}} database. When you stop and restart the app, any added words are displayed when you refresh the page.
 
 For more information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
 

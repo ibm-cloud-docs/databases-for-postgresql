@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-09-21"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -89,7 +89,7 @@ A new, randomly generated password appears, or you can type your own password in
 
 If you want to restrict access to your databases, you can whitelist specific IP addresses or ranges of IP addresses on your deployment. When no IP addresses are in the whitelist, the whitelist is disabled and the deployment accepts connections from any system on the internet.
 
-Even if not explicitly whitelisted, {{site.data.keyword.cloud_notm}} management services are still be able to connect.
+Even if not explicitly whitelisted, {{site.data.keyword.cloud_notm}} management services are still able to connect.
 {: .tip}
 
 ### IP addresses

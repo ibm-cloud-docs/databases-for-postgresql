@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2018-09-13"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -13,7 +13,7 @@ lastupdated: "2018-09-13"
 
 # Managing PostgreSQL Extensions
 
-In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. In order to use them you need to [set the admin password](./admin-password.html) for your service and [connect as an admin](./admin-connecting.html) through `psql`.
+In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. In order to use them, you need to [set the admin password](./admin-password.html) for your service and [connect as an admin](./admin-connecting.html) through `psql`.
 
 ## Listing Installed Extensions
 
@@ -49,13 +49,13 @@ ibmclouddb=> \dx
 (2 rows)
 ```
 
-Database extensions in PostgreSQL are managed per database. If you have multiple databases that you need to install an extension on, you run the install command on each database.
+Database extensions in PostgreSQL are managed per database. If you have multiple databases that you need to install an extension on, you run the `CREATE` command on each database.
 
 ## Upgrading Extensions
 
 If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` to upgrade it.
 
-## Currently Available Extensions
+## Available Extensions
 ```
 ibmclouddb=> SELECT name FROM pg_available_extensions;
              name

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2018-09-13"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -14,7 +14,7 @@ lastupdated: "2018-09-13"
 
 # Connecting with `psql`
 
-You can access your PostgreSQL database directly from its command line client, `psql`. You can use `psql` for direct interaction and monitoring of the data structures created within the database. It is also useful for testing and monitoring the queries and performance, installing and modifying scripts, and other management activities.
+You can access your PostgreSQL database directly from its command line client, `psql`. You can use `psql` for direct interaction and monitoring of the data structures that are created within the database. It is also useful for testing and monitoring the queries and performance, installing and modifying scripts, and other management activities.
 
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html), allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
 
