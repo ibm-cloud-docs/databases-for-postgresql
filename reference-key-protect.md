@@ -13,7 +13,7 @@ lastupdated: "2018-09-21"
 
 # Key Protect
 
-{{site.data.keyword.databases-for-postgresql_full}} encrypts your data by default by using randomly generated keys. If you need to control the encryption keys, you can use [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/services/keymgmt/keyprotect_about.html) to create, add, and manage encryption keys. Then you can associate those keys with your {{site.data.keyword.databases-for-postgresql}} deployment to encrypt your databases.
+{{site.data.keyword.databases-for-postgresql_full}} encrypts your data by default by using randomly generated keys. If you need to control the encryption keys, you can use [{{site.data.keyword.keymanagementservicelong_notm}}](/docs/services/keymgmt/keyprotect_about.html) to create, add, and manage encryption keys. Then, you can associate those keys with your {{site.data.keyword.databases-for-postgresql}} deployment to encrypt your databases.
 
 To get started, you need [{{site.data.keyword.keymanagementserviceshort}}](https://console.{DomianName}/catalog/services/key-protect) provisioned on your {{site.data.keyword.cloud_notm}} account.
 
@@ -40,4 +40,4 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 
 Caution - If you delete the key that is used to encrypt your service, you lose access to the data. You will not be able to recover the data from the live deployment. You might be able recover the database by restoring a backup into a new {{site.data.keyword.databases-for-postgresql}} deployment.
 
-If you wish to securely delete your data, you must delete both the {{site.data.keyword.databases-for-postgresql}} deployment and remove the Key Protect key.
+If you want to securely delete your data, you must delete both the {{site.data.keyword.databases-for-postgresql}} deployment and remove the Key Protect key.
