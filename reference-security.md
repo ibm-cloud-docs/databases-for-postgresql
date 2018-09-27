@@ -37,16 +37,16 @@ for service providers such as IBM Cloud to safeguard their customers' data and i
 You can request an SOC 2 Type 2 report from the customer portal 
 or contact your sales representative. Alternatively, you can open 
 a support ticket with 
-[IBM Cloud support ![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud/support){:new_window}
+[IBM Cloud support](https://watson.service-now.com/wcp){:new_window}
 
 ## General Data Protection Regulation (GDPR) 
 
 If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
-[IBM DPA ![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
+[IBM DPA](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
 
 {{site.data.keyword.databases-for-postgresql}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. 
 
-{{site.data.keyword.databases-for-postgresql}} provides a [Data Sheet Addendum (DSA)![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/software/reports/compatibility/clarityreports/report/html/softwareReqsForProduct?deliverableId=CD09D2E06DC811E8A0B560E89C071ECC){:new_window} with its policies as a Data Processor regarding content and data protection. 
+{{site.data.keyword.databases-for-postgresql}} provides a [Data Sheet Addendum (DSA)](https://www.ibm.com/software/reports/compatibility/clarityreports/report/html/softwareReqsForProduct?deliverableId=CD09D2E06DC811E8A0B560E89C071ECC){:new_window} with its policies as a Data Processor regarding content and data protection. 
 
 ## HIPAA
 
