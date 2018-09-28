@@ -27,14 +27,14 @@ lastupdated: "2018-09-27"
 - Backups are included in the service. Backups reside in {{site.data.keyword.cloud_notm}} Object Storage and are also encrypted.
 - {{site.data.keyword.databases-for-postgresql}} is configured with replication, so the data exists with multiple copies and each copy resides on a different cluster and host. Where available, those clusters are also spread in different availability zones within the region where the service is deployed.
  
-## SOC 2 Type 2 Certification
+## SOC 2 Type 1 Certification
 
-{{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 2 report 
+{{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 1 report 
 for {{site.data.keyword.databases-for-postgresql}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. 
 The Trust Services Principles define adequate control systems and establish industry standards 
 for service providers such as IBM Cloud to safeguard their customers' data and information.
 
-You can request an SOC 2 Type 2 report from the customer portal 
+You can request an SOC 2 Type 1 report from the customer portal 
 or contact your sales representative. Alternatively, you can open 
 a support ticket with 
 [IBM Cloud support](https://watson.service-now.com/wcp){:new_window}
