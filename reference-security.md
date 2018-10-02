@@ -16,7 +16,7 @@ lastupdated: "2018-09-27"
 ## Protection Against Unauthorized Access
 
 {{site.data.keyword.databases-for-postgresql_full}} use the following methods to protect data in transit or in storage.
-- All {{site.data.keyword.databases-for-postgresql}} connecitons use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
+- All {{site.data.keyword.databases-for-postgresql}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via IAM (Identity and Access Management).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-postgresql}} storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS). If you require bring-your-own-key (BYOK) for encryption, it is available through [{{site.data.keyword.cloud_notm}} Key Protect](https://console.{DomainName}/docs/services/key-protect/about.html#about). 
