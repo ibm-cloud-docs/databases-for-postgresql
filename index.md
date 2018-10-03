@@ -46,7 +46,7 @@ You can use the {{site.data.keyword.cloud_notm}} databases API to manage your se
 
 ## PostgreSQL Database Administration
 
-Under the {{site.data.keyword.databases-for-postgresql}} service, are the PostgreSQL databases. You can control and manage the databases directly. [Set the admin password](./admin-password.html) and [connect as the admin](./admin-connecting) using `psql`. Read more if you need to manage users and privileges or [install database extensions](./admin-extensions.html).
+Under the {{site.data.keyword.databases-for-postgresql}} service, are the PostgreSQL databases. You can control and manage the databases directly. [Set the admin password](./admin-password.html) and [connect as the admin](./admin-connecting.html) using `psql`. Read more if you need to manage users and privileges or [install database extensions](./admin-extensions.html).
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}}
 
