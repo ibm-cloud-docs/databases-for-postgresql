@@ -20,7 +20,7 @@ lastupdated: "2018-10-02"
 
 ## {{site.data.keyword.databases-for-postgresql}} as an {{site.data.keyword.cloud_notm}} service
 
-{{site.data.keyword.databases-for-postgresql}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](./dashboard-overview) of your service as well as configuration settings on the [Settings](./dashboard-settings.html) tab and access to your backups on the [Backups](./dashboard-backups.html) tab.
+{{site.data.keyword.databases-for-postgresql}} provides a UI, accessible by selecting _Manage_ from the left sidebar of your service and opening the management panel. You get a quick [Overview](./dashboard-overview.html) of your service as well as configuration settings on the [Settings](./dashboard-settings.html) tab and access to your backups on the [Backups](./dashboard-backups.html) tab.
 
 ### Using the command line interface
 
@@ -42,7 +42,7 @@ More information on IAM roles and actions for the {{site.data.keyword.databases-
 
 ### Using the cloud databases API
 
-You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-settings.html) page. For more information, see the [API reference](https://console.{DomainName}/apidocs/cloud-databases-api).
+You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-overview.html) page. For more information, see the [API reference](https://console.{DomainName}/apidocs/cloud-databases-api).
 
 ## PostgreSQL Database Administration
 
