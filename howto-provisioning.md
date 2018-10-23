@@ -94,11 +94,11 @@ ibmcloud resource service-instance-create example-psql databases-for-postgresql 
 
 ## Provisioning through the Resource Controller API
 
-You can provision new deployments using the Resource Controller API. However, in order to use the Resource Controller API there are some preliminary steps to take.
+You can provision new deployments by using the Resource Controller API. However, in order to use the Resource Controller API, you need some additional preparation.
 
 1. [Obtain an IAM token from your API token](https://console.bluemix.net/apidocs/resource-controller#authentication).
-2. You have to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/cli_resource_group.html#ibmcloud_resource_groups). You can find a list of resource groups with `ibmcloud resource groups` and the ID of a resource group with `ibmcloud resource group`. 
-3. You will need to know the region that you would like to deploy to.
+2. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/cli_resource_group.html#ibmcloud_resource_groups). You can find a list of resource groups with `ibmcloud resource groups` and the ID of a resource group with `ibmcloud resource group`. 
+3. You need to know the region that you would like to deploy to.
 
 Once you have all the information, the create request is a `POST` to the `https://resource-controller.bluemix.net/v2/resource_instances` endpoint.
 
@@ -114,7 +114,7 @@ curl -X POST \
     "resource_plan_id": "databases-for-postgresql-standard"
   }'
 ```
-The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You can send in the same additional parameters to the API as the CLI: `backup_id`, `version`, `key_protect_key`, and `members_memory_allocation_mb`. Add the parameters you need to the request body.
+The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You can send in the same additional parameters to the API as the CLI: `backup_id`, `version`, `key_protect_key`, and `members_memory_allocation_mb`. Add the parameters that you need to the request body.
 
 Sample Response (formatted)
 ```
