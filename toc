@@ -11,7 +11,7 @@ Databases For PostgreSQL
 	{: .topicgroup}
 	The Service Dashboard
 		dashboard-overview.md
-        dashboard-settings.md
+        	dashboard-settings.md
 		dashboard-backups.md
 	{: .navgroup-end}
 
