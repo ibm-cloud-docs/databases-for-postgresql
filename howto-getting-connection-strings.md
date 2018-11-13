@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2018-09-27"
+lastupdated: "2018-11-13"
 ---
 
 {:new_window: target="_blank"}
@@ -74,13 +74,13 @@ If you don't specify a user, the `deployment-connections` commands return inform
 
 ### The PostgreSQL Section
 
-The "postgresql" section contains information that is suited to applications that make connections to PostgreSQL.
+The "postgres" section contains information that is suited to applications that make connections to PostgreSQL.
 
 Field Name|Index|Description
 ----------|-----|-----------
 `Type`||Type of connection - for PostgreSQL, it is "URI"
 `Scheme`||Scheme for a URI - for PostgreSQL, it is "postgresql"
-`Path`||Path for a URI - for PostgreSQL, it is the database name
+`Path`||Path for a URI - for PostgreSQL, it is the database name. The default is `ibmclouddb`.
 `Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
@@ -105,18 +105,9 @@ Field Name|Index|Description
 `Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded.
 `Certificate`|Name|The allocated name for the self-signed certificate.
 `Type`||The type of package that uses this connection information; in this case `cli`. 
-{: caption="Table 1. `psql`/`cli` connection information" caption-side="top"}
+{: caption="Table 2. `psql`/`cli` connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
-
-## Using the self-signed certificate
-
-1. Copy the certificate information from the Base64 field of the connection information. 
-2. Decode the Base64 string into text and save it to a file. (You can use the Name that is provided or your own file name).
-
-### CLI plug-in support for the self-signed certificate
-
-You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `ROOTCERT` environment variable.
 
 ## Generating Connection Strings via API
 
