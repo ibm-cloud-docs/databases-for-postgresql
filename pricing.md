@@ -32,7 +32,7 @@ Resources | Breakdown | Price
 Total per month = $21.60/Month
 Total per hour = $.03/Hour
 
-All prices here are in US dollars. To see pricing in your local currency you will need to use the [pricing calculator](https://{DomainName}/pricing/configure/service/databases-for-postgresql).
+All prices here are in US dollars. To see pricing in your local currency you can to use the [pricing calculator](https://{DomainName}/pricing/configure/service/databases-for-postgresql).
 {: .tip}
 
 
@@ -48,10 +48,10 @@ Users also receive their total disk space purchased, per database, in free backu
 
 ## Scaling per Member
 
-{{site.data.keyword.databases-for-postgresql}} deployments have minimum and maximum allocation for disk and RAM as shown below. Scaling deployments through the API/CLI provides more granularity and also allows a user to scale a database instance up to 4TB of disk
-- Disk minimum - 5GB
-- Disk maximum - 4TB
-- Disk step granularity through API/CLI - 1GB
-- RAM minimum - 1GB
-- RAM maximum - 112GB
-- RAM step granularity through API/CLI - 128MB
+{{site.data.keyword.databases-for-postgresql}} deployments have minimum and maximum allocation for disk and RAM as shown below. Scaling deployments through the API/CLI provides more granularity and also allows a user to scale a database instance up to 4 TB of disk per member.
+- Disk minimum - 5GB per member
+- Disk maximum - 4TB per member
+- Disk step granularity through API/CLI - 1GB per member
+- RAM minimum - 1GB per member
+- RAM maximum - 112GB per member
+- RAM step granularity through API/CLI - 256MB per member
