@@ -13,15 +13,15 @@ lastupdated: "2018-11-27"
 
 
 
-Pricing for {{site.data.keyword.databases-for-postgresql_full_notm}} 
+# Pricing for {{site.data.keyword.databases-for-postgresql_full_notm}} 
 
 A {{site.data.keyword.databases-for-postgresql}} Standard plan deploys with as one highly available PostgreSQL cluster with two data members. Your data is replicated on both members. The Standard plan is priced based on the total amount of disk storage, RAM, and backup storage allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-postgresql}} instances have a minimum of 5GB of disk and 1GB of RAM per data member.
 
 ## Cost Breakdown
 
-**Disk storage per data member** - gigabytes of disk allocated to a {{site.data.keyword.databases-for-postgresql}} data member, or the size of your data.
-**RAM per data member** - gigabytes of RAM allocated to a {{site.data.keyword.databases-for-postgresql}} data member
-**Backup storage** - amount of storage used for backups by a {{site.data.keyword.databases-for-postgresql}} instance 
+**Disk storage per data member** - gigabytes of disk allocated to a {{site.data.keyword.databases-for-postgresql}} data member, or the size of your data.  
+**RAM per data member** - gigabytes of RAM allocated to a {{site.data.keyword.databases-for-postgresql}} data member.  
+**Backup storage** - amount of storage used for backups by a {{site.data.keyword.databases-for-postgresql}} instance. 
 
 Resources | Breakdown | Price
 -------|-------|-------
@@ -31,6 +31,9 @@ Resources | Breakdown | Price
 
 Total per month = $21.60/Month
 Total per hour = $.03/Hour
+
+All prices here are in US dollars. To see pricing in your local currency you will need to use the [pricing calculator](https://{DomainName}/pricing/configure/service/databases-for-postgresql).
+{: .tip}
 
 
 ## Using the Pricing Calculator
