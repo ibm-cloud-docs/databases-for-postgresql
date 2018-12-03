@@ -158,8 +158,7 @@ Sample Response (formatted)
 }
 ```
 
-More information on the Resource Controller API is found in its [API Reference](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance
-).
+More information on the Resource Controller API is found in its [API Reference](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance).
 
 
 
