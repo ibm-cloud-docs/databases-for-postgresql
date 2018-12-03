@@ -6,7 +6,6 @@ Databases For PostgreSQL
 
 	{: .navgroup id="learn"}
 	index.md
-	pricing.md
 	getting-started.md
 
 	{: .topicgroup}

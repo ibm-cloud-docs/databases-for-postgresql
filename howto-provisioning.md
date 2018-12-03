@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-27"
+lastupdated: "2018-12-03"
 ---
 
 {:shortdesc: .shortdesc}
@@ -158,8 +158,7 @@ Sample Response (formatted)
 }
 ```
 
-More information on the Resource Controller API is found in its [API Reference](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance
-).
+More information on the Resource Controller API is found in its [API Reference](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance).
 
 
 
