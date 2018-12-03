@@ -14,7 +14,21 @@ lastupdated: "2018-12-03"
 
 # Getting your Connection Strings
 
-In order to connect to {{site.data.keyword.databases-for-postgresql_full}}, you need some connection strings.
+In order to connect to {{site.data.keyword.databases-for-postgresql_full}}, you need some connection strings. A {{site.data.keyword.databases-for-postgresql}} deployment is provisioned with an admin user, and after [setting the root password](./howto-admin-password), you can use its connection strings to connect to your deployment.
+
+The simplest way to retrieve connection information is from the [cloud databases plug-in](./howto-using-ibmcloud-cli.html). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for any user on your deployment. For example, to retrieve a connection string for the admin user on a deployment named  "example-postgres", use the following command.
+
+```
+ibmcloud cdb deployment-connections -u admin
+```
+Or
+```
+ibmcloud cdb cxn example-postgres -u admin
+```
+
+## Generating Connection Strings for additional users
+
+Access to your {{site.data.keyword.databases-for-postgresql}} deployment is not just limited to the root user. You can create additional users and retrieve connection strings specific to them by using the _Service Credentials_ panel, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API. 
 
 ## Generating Connection Strings from _Service Credentials_
 
@@ -36,9 +50,26 @@ If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and 
 
 `ibmcloud cdb user-create example-deployment <newusername> <newpassword>`
 
-The response contains the task `ID`, `Deployment ID`, `Description`, `Created At`, `Status`, and `Progress Percentage` fields.  You can use the task ID to track the progress of user creation with the `cdb task-show` command.
+The response contains the task `ID`, `Deployment ID`, `Description`, `Created At`, `Status`, and `Progress Percentage` fields.  The `Status` and `Progress Percentage` fields update when the task is complete.
 
-`ibmcloud cdb task-show <taskID>`
+Once the task has finished, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
+
+```
+ibmcloud cdb deployment-connections example-deployment -u <newusername>
+```
+Or
+```
+ibmcloud cdb cxn example-deployment -u <newusername>
+```
+
+Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named  "example-deployment", use the following command.
+
+```
+ibmcloud cdb deployment-connections example-deployment -u <newusername> --all
+```
+
+If you don't specify a user, the `deployment-connections` commands return information for the root user by default.
+{: .tip}
 
 ### Generating _Service Credentials_ for existing users.
 
@@ -48,27 +79,6 @@ Enter the user name and password in the JSON field _Add Inline Configuration Par
 
 Generating credentials from an existing user does not check for or create that user.
 {: tip}
-
-## Getting your Connection Strings
-
-The simplest way to retrieve connection information is from the [cloud databases plug-in](./howto-using-ibmcloud-cli.html). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for any user on your deployment. For example, to retrieve a connection string for the admin user on a deployment named  "example-postgres", use the following command.
-
-```
-ibmcloud cdb deployment-connections -u admin
-```
-Or
-```
-ibmcloud cdb cxn example-postgres -u admin
-```
-
-Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named  "example-postgres", use the following command.
-
-```
-ibmcloud cdb deployment-connections example-postgres --all
-```
-
-If you don't specify a user, the `deployment-connections` commands return information for the admin user by default.
-{: .tip}
 
 ## Connection String Breakdown
 
