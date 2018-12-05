@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-12-03"
+lastupdated: "2018-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -25,7 +25,7 @@ lastupdated: "2018-12-03"
 For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](./howto-provisioning.html) page.
 
 If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://{DomainName}/registration/) page.
-]
+
 ### Managing Access to {{site.data.keyword.databases-for-postgresql}}
 
 {{site.data.keyword.databases-for-postgresql}} is an Identity and Access Management (IAM) integrated service. Access to the service is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://{DomainName}/docs/iam/index.html#iamoverview) documentation.
@@ -42,11 +42,11 @@ The {{site.data.keyword.cloud_notm}} command line interface provides in interact
 
 ### Using the cloud databases API
 
-You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-overview.html) page. For more information, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api).
+{{site.data.keyword.databases-for-postgresql}} is compatible with the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API, so you can access and manage your service programmatically. Each region has an unique endpoint, so you can find the API foundation endpoint for your deployment on the [_Overview_](./dashboard-overview.html) page. The {{site.data.keyword.IBM_notm}} API documentation contains the full [{{site.data.keyword.databases-for}} API reference](https://{DomainName}/apidocs/cloud-databases-api). Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://{DomainName}/docs/iam/apikeys.html#platform-api-keys).
 
 ## PostgreSQL Database Administration
 
-Under the {{site.data.keyword.databases-for-postgresql}} service, are the PostgreSQL databases. You can control and manage the databases directly. [Set the admin password](./admin-password.html) and [connect as the admin](./admin-connecting.html) using `psql`. Read more if you need to manage users and privileges or [install database extensions](./admin-extensions.html).
+Although {{site.data.keyword.databases-for-postgresql}} is a managed service, you can still access your PostgreSQL databases directly with `psql`. Your deployment comes with a default admin user, so [set the admin password](./admin-password.html) and use it to [connect with `psql`](./admin-connecting.html). You can use `psql` to [install extensions](./admin-extensions.html), manage database roles and privileges, and many other administrative functions.
 
 ## Connecting to {{site.data.keyword.databases-for-postgresql}}
 
