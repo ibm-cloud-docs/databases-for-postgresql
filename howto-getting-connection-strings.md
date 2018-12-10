@@ -19,7 +19,7 @@ In order to connect to {{site.data.keyword.databases-for-postgresql_full}}, you 
 The simplest way to retrieve connection information is from the [cloud databases plug-in](./howto-using-ibmcloud-cli.html). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for any user on your deployment. For example, to retrieve a connection string for the admin user on a deployment named  "example-postgres", use the following command.
 
 ```
-ibmcloud cdb deployment-connections -u admin
+ibmcloud cdb deployment-connections example-postgres -u admin
 ```
 Or
 ```
