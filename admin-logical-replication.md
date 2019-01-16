@@ -28,7 +28,7 @@ The external PostgreSQL instance is the publisher, and needs to be configured in
 2. Your external (publisher) PostgreSQL needs to have an `admin` user, and that user needs to have privileges on the databases you would like replicate.
     ```bash
         postgres=> CREATE ROLE admin WITH REPLICATION LOGIN PASSWORD 'my_password';
-        postgres=> GRANT ALL PRIVILEGES ON DATABASE example-database TO admin;
+        postgres=> GRANT ALL PRIVILEGES ON DATABASE exampledb TO admin;
         postgres=> GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;
     ```
 3. The PostgreSQL you are replicating from needs to have TLS/SSL enabled.
@@ -87,7 +87,7 @@ Arguments:
     publisher_name      The name of publisher channel on the publisher
 
 Usage:
-    example-database=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','example-database','my_publication');
+    exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','exampledb','my_publication');
 ```
 
 **`delete_subscription`**
@@ -97,7 +97,7 @@ Arguments:
     db_name             The name of the replicated database
 
 Usage:
-example-database=> SELECT delete_subscription('subs1', 'example-database');
+exampledb=> SELECT delete_subscription('subs1', 'exampledb');
 ```
 
 **`list_subscriptions`**
@@ -106,7 +106,7 @@ Arguments:
     None
 
 Usage:
-    example-database=> SELECT * FROM list_subscriptions();
+    exampledb=> SELECT * FROM list_subscriptions();
 ```
 
 **`disable_subscription`**
@@ -116,7 +116,7 @@ Arguments:
     db_name             The name of the replicated database
 
 Usage:
-    example-database=> SELECT disable_subscription('subs1','example-database');
+    exampledb=> SELECT disable_subscription('subs1','exampledb');
 ```
 
 **`enable_subscription`**
@@ -126,7 +126,7 @@ Arguments:
     db_name             The name of the replicated database
 
 Usage:
-    example-database=> SELECT enable_subscription('subs1','example-database');
+    exampledb=> SELECT enable_subscription('subs1','exampledb');
 ```
 
 **`refresh_subscription`**  
@@ -138,7 +138,7 @@ Arguments:
     db_name             The name of the replicated database
 
 Usage:
-    example-database=> SELECT refresh_subscription('subs1','example-database');
+    exampledb=> SELECT refresh_subscription('subs1','exampledb');
 ```
 
 ## Setting up Logical Replication
@@ -165,15 +165,15 @@ Now you can define a publisher on the database and add the tables you want to re
 
 - Log in to database you want to publish from with the `admin` user
     ```bash
-        psql -U admin -d example-database
+        psql -U admin -d exampledb
     ```
 - Create the publication channel
     ```bash
-        example-database=> CREATE PUBLICATION my_publication;
+        exampledb=> CREATE PUBLICATION my_publication;
     ``` 
 - Add tables to publisher
     ```bash
-       example-database=> ALTER PUBLICATION my_publication ADD TABLE my_table;
+       exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
 
 ### On the Subscriber
@@ -181,16 +181,16 @@ Now you can define a publisher on the database and add the tables you want to re
 To configure your {{site.data.keyword.databases-for-postgresql}} as a subscriber,
 - Log in to the database created for replication with `admin` user.
     ```bash
-    psql -U admin -d example-database
+    psql -U admin -d exampledb
     ```
 - Run the following query to call the `create_subscription` function and create the subscriber channel. 
     ```bash
-        example-database=> SELECT create_subscription('subs1','130.215.223.184','5432','admin','password','example-database','my_publication');
+        exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','admin','password','exampledb','my_publication');
     ```
 
 ## Monitoring Replication
 
 You can monitor the status of logical replication from both the publisher and the subscriber by running the following query on either.
 ```bash
-    example-database=> SELECT * FROM pg_stat_replication;
+    exampledb=> SELECT * FROM pg_stat_replication;
 ```
