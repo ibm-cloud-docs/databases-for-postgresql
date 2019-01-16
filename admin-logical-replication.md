@@ -26,7 +26,7 @@ The external PostgreSQL instance is the publisher, and needs to be configured in
 
 1. Every table that is selected for replication needs to contain a [Primary Key](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS).
 2. Your external (publisher) PostgreSQL needs to have an `admin` user, and that user needs to have privileges on the databases you would like replicate.
-    ```sql
+    ```bash
         postgres=> CREATE ROLE admin WITH REPLICATION LOGIN PASSWORD 'my_password';
         postgres=> GRANT ALL PRIVILEGES ON DATABASE example-database TO admin;
         postgres=> GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;
@@ -76,7 +76,7 @@ Only the [admin user](./admin-connecting.html) that is provided by {{site.data.k
 ### Subscriber Functions
 
 **`create_subscription`**
-```sql
+```bash
 Arguments:
     subscription_name   Unique name to create the subscription channel with
     host_ip             Publisher hostname or public IP address
@@ -91,7 +91,7 @@ Usage:
 ```
 
 **`delete_subscription`**
-```sql
+```bash
 Arguments:
     subscription_name   Name the subscription channel to delete
     db_name             The name of the replicated database
@@ -101,7 +101,7 @@ example-database=> SELECT delete_subscription('subs1', 'example-database');
 ```
 
 **`list_subscriptions`**
-```sql
+```bash
 Arguments:
     None
 
@@ -110,7 +110,7 @@ Usage:
 ```
 
 **`disable_subscription`**
-```sql
+```bash
 Arguments:
     subscription_name   Name the subscription channel to disable
     db_name             The name of the replicated database
@@ -120,7 +120,7 @@ Usage:
 ```
 
 **`enable_subscription`**
-```sql
+```bash
 Arguments:
     subscription_name   Name the subscription channel to enable
     db_name             The name of the replicated database
@@ -129,9 +129,10 @@ Usage:
     example-database=> SELECT enable_subscription('subs1','example-database');
 ```
 
-**`refresh_subscription`** 
+**`refresh_subscription`**  
+
 This function is used to refresh a subscription on the subscriber after changes are made on the publisher, like adding or removing a table.
-```sql
+```bash
 Arguments:
     subscription_name   Name the subscription channel to refresh
     db_name             The name of the replicated database
@@ -167,11 +168,11 @@ Now you can define a publisher on the database and add the tables you want to re
         psql -U admin -d example-database
     ```
 - Create the publication channel
-    ```sql
+    ```bash
         example-database=> CREATE PUBLICATION my_publication;
     ``` 
 - Add tables to publisher
-    ```sql 
+    ```bash
        example-database=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
 
@@ -183,13 +184,13 @@ To configure your {{site.data.keyword.databases-for-postgresql}} as a subscriber
     psql -U admin -d example-database
     ```
 - Run the following query to call the `create_subscription` function and create the subscriber channel. 
-    ```sql
+    ```bash
         example-database=> SELECT create_subscription('subs1','130.215.223.184','5432','admin','password','example-database','my_publication');
     ```
 
 ## Monitoring Replication
 
 You can monitor the status of logical replication from both the publisher and the subscriber by running the following query on either.
-```sql
+```bash
     example-database=> SELECT * FROM pg_stat_replication;
 ```
