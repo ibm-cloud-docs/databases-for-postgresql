@@ -144,7 +144,7 @@ Now you can define a publisher on the database and add the tables you want to re
        exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
 
-### Setting up Logical Replication on the Subscriber
+## Setting up Logical Replication on the Subscriber
 
 To configure your {{site.data.keyword.databases-for-postgresql}} as a subscriber,
 - Log in to the database created for replication with `admin` user.
