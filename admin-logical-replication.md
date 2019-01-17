@@ -15,51 +15,21 @@ lastupdated: "2019-01-14"
 
 # Using Logical Replication
 
-{{site.data.keyword.databases-for-postgresql_full}} supports [logical replication](https://www.postgresql.org/docs/current/logical-replication.html) between your deployment and an external PostgreSQL instance. You can set up your external PostgreSQL as a publisher, your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber, and replicate your data across from an external database into your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} supports [logical replication](https://www.postgresql.org/docs/current/logical-replication.html) from an external PostgreSQL instance to your deployment. You can set up your external PostgreSQL as a publisher, your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber, and replicate your data across from an external database into your deployment.
 
-Logical Replication is only available on deployments running PostgreSQL 10 or above.
+Logical Replication is only available on deployments running PostgreSQL 10 or above. Links to the PostgreSQL documentation from this page direct you to the current version of PostgreSQL. If you need find documentation for a specific version, you can find links to specific PostgreSQL versions at the top of PostgrerSQL documentation page.
 {: .tip}
 
 ## Configuring the Publisher
 
 The external PostgreSQL instance is the publisher, and needs to be configured in order for your {{site.data.keyword.databases-for-postgresql}} deployment to connect and be able to pull the data in correctly.
 
-1. Every table that is selected for replication needs to contain a [Primary Key](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS).
-2. Your external (publisher) PostgreSQL needs to have an `admin` user, and that user needs to have privileges on the databases you would like replicate.
-    ```bash
-        postgres=> CREATE ROLE admin WITH REPLICATION LOGIN PASSWORD 'my_password';
-        postgres=> GRANT ALL PRIVILEGES ON DATABASE exampledb TO admin;
-        postgres=> GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin;
-    ```
-3. The PostgreSQL you are replicating from needs to have TLS/SSL enabled.
+1. Every table that is selected for replication needs to contain a [Primary Key](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS), or have [`REPLICA IDENTITY`](https://www.postgresql.org/docs/current/sql-altertable.html#replica-identity) set.
+2. Your external (publisher) PostgreSQL needs to have a replication user that has the [PostgreSQL privilege `REPLICATION`](https://www.postgresql.org/docs/current/sql-createrole.html#replication), and that user needs to have privileges on the databases you would like replicate.
+3. The PostgreSQL you are replicating from needs to have [TLS/SSL enabled](https://www.postgresql.org/docs/current/ssl-tcp.html).
 
-### Enabling TLS/SSL
-
-In order for PostgreSQL to start and run with TLS/SSL enabled, it must have files containing a server certificate and private key.
-
-- Navigate to your local PostgreSQL data directory.
-- Create self-signed certificate with `openssl` by running the following command. Make sure to set `Common Name` to your local PostgreSQL hostname or public IP address.
-    ```bash
-    openssl req -new -text -out server.crt -keyout server.key -subj "/CN=dbhost.yourdomain.com"
-    ```
-- You now have two files that have been generated, `server.crt` and `server.key`
-- Remove the pass phrase from the generated private key
-    ```bash
-    openssl rsa -in server.key -out server.key
-    ```
-- Modify the permissions on the created key
-    ```bash
-    chmod og-rwx server.key
-    ``` 
-    If the permissions are more liberal, the server rejects the file.
-- Edit your local `postgresql.conf` and set `ssl=on`
-- Restart the PostgreSQL server.
-- Verify TLS/SSL by connecting with `psql`. You should see a similar message upon connecting.
-    ```
-    psql (10.4, server 10.5)
-    SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
-    Type "help" for help.
-    ```
+There are inherent limitations and some restrictions to logical replication outlined in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/logical-replication-restrictions.html). You should review these before deciding that logical replication is appropriate for your use-case.
+{: .tip}
 
 ## Configuring the Subscriber
 
@@ -141,9 +111,7 @@ Usage:
     exampledb=> SELECT refresh_subscription('subs1','exampledb');
 ```
 
-## Setting up Logical Replication
-
-### On the Publisher
+## Setting up Logical Replication on the Publisher
 
 To configure your external PostgreSQL as a publisher,
 
@@ -176,7 +144,7 @@ Now you can define a publisher on the database and add the tables you want to re
        exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
 
-### On the Subscriber
+### Setting up Logical Replication on the Subscriber
 
 To configure your {{site.data.keyword.databases-for-postgresql}} as a subscriber,
 - Log in to the database created for replication with `admin` user.
