@@ -121,7 +121,7 @@ To configure your external PostgreSQL as a publisher,
     hostssl    all                    all         0.0.0.0/0      md5
     ```
 
-- Edit your local `postgresql.conf` with the required [logical replication configuration](https://www.postgresql.org/docs/10/logical-replication-config.html). Set `wal_level` to 'logical', and set `listen_addresses='*'` to accept connections from any host.  
+- Edit your local `postgresql.conf` with the required [logical replication configuration](https://www.postgresql.org/docs/current/logical-replication-config.html). Set `wal_level` to 'logical', and set `listen_addresses='*'` to accept connections from any host.  
     ```text
     listen_addresses='*'
     wal_level = logical                   
@@ -131,22 +131,22 @@ To configure your external PostgreSQL as a publisher,
 
 Now you can define a publisher on the database and add the tables you want to replicate to the subscriber.
 
-- Log in to database you want to publish from with the `admin` user
+- Log in to database you want to publish from with your replication user.
     ```bash
-        psql -U admin -d exampledb
+        psql -U replicator -d exampledb
     ```
-- Create the publication channel
+- Create the publication channel.
     ```bash
         exampledb=> CREATE PUBLICATION my_publication;
     ``` 
-- Add tables to publisher
+- Add tables to publisher.
     ```bash
        exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
 
 ## Setting up Logical Replication on the Subscriber
 
-To configure your {{site.data.keyword.databases-for-postgresql}} as a subscriber,
+To configure your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber,
 - Log in to the database created for replication with `admin` user.
     ```bash
     psql -U admin -d exampledb
