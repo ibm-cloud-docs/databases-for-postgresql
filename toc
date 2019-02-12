@@ -8,6 +8,9 @@ Databases For PostgreSQL
 	index.md
 	pricing.md
 	getting-started.md
+	high-availability.md
+	security-compliance.md
+	versions.md
 
 	{: .topicgroup}
 	The Service Dashboard
@@ -36,9 +39,6 @@ Databases For PostgreSQL
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
-	reference-architecture.md
-	reference-security.md
-	reference-versions.md
 	reference-access-management.md
 	reference-activity-tracker.md
 	reference-monitoring.md
