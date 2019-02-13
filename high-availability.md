@@ -18,11 +18,9 @@ lastupdated: "2019-02-07"
 
 {{site.data.keyword.databases-for-postgresql}} provides replication, fail-over, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and failures. Deployments contain a cluster with two data members, a leader and a replica. Both members contain a copy of your data using asynchronous replication, with a distributed consensus mechanism to maintain cluster state and handle failovers. If one data member becomes unreachable, your cluster continues to operate normally.
 
+By contrast, application resilience and connection error handling are the responsibility of the application developer.
+
 ## Application-level High-Availability
-
-{{site.data.keyword.databases-for-postgresql}} provides replication, fail-over, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and failures. By contrast, application resilience and connection error handling are the responsibility of the application designer. 
-
-### Updates, Maintenance, and Network Interruptions
 
 Applications that communicate over networks and cloud services are subject to transient connection failures. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}.
 
