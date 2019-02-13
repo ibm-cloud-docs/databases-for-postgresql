@@ -11,7 +11,7 @@ lastupdated: "2019-02-07"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# High-Availability {{site.data.keyword.databases-for-postgresql}}
+# High-Availability
 {: #high-availability}
 
 {{site.data.keyword.databases-for-postgresql_full}} is a managed cloud database service that is fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and supporting infrastructure all run in {{site.data.keyword.cloud_notm}}.
@@ -22,7 +22,7 @@ lastupdated: "2019-02-07"
 
 {{site.data.keyword.databases-for-postgresql}} provides replication, fail-over, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and failures. By contrast, application resilience and connection error handling are the responsibility of the application designer. 
 
-## Updates, Maintenance, and Network Interruptions
+### Updates, Maintenance, and Network Interruptions
 
 Applications that communicate over networks and cloud services are subject to transient connection failures. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}.
 

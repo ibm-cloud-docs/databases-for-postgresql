@@ -6,8 +6,8 @@ Databases For PostgreSQL
 
 	{: .navgroup id="learn"}
 	index.md
+	getting-started.md	
 	pricing.md
-	getting-started.md
 	high-availability.md
 	security-compliance.md
 	versions.md
