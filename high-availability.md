@@ -32,7 +32,7 @@ Several minutes of database unavailability or connection interruption is not exp
 
 ## Resource Scaling
 
-{{site.data.keyword.databases-for-postgresql}} does not auto-scale. Deployment owners should [monitor](./reference-monitoring.html) the state of the deployment, estimate typical resource usage, and scale the deployment accordingly.
+{{site.data.keyword.databases-for-postgresql}} does not auto-scale. Deployment owners should [monitor](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-monitoring) the state of the deployment, estimate typical resource usage, and scale the deployment accordingly.
 
 If you are planning on running operations that might put a spike in the usual RAM usage, or any data operations that could overflow your allotted storage, you should manually scale your service's resources up first to avoid hitting any resource limits that would affect deployment operations.
 
@@ -43,11 +43,11 @@ If you are planning on running operations that might put a spike in the usual RA
 FATAL: remaining connection slots are reserved for
 non-replication superuser connections
 ```
-your application is exceeding this connection limit. The recommended solution is to make use of [connection pooling](#connection-pooling). It is possible to raise the connection limit, but connections to the database consume resources. To raise the connection limit you might have to [scale your deployment](./dashboard-settings.html#scaling-resources) and then you must [open a support ticket](https://cloud.ibm.com/unifiedsupport/cases/add). 
+your application is exceeding this connection limit. The recommended solution is to make use of connection pooling. It is possible to raise the connection limit, but connections to the database consume resources. To raise the connection limit you might have to [scale your deployment](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-dashboard-settings#scaling-resources) and then you must [open a support ticket](https://cloud.ibm.com/unifiedsupport/cases/add). 
 
 ### Connection Pooling
 
-Exceeding the [connection limit](#connection-limits) for your deployment can cause your database to be unreachable by your applications.
+Exceeding the connection limit for your deployment can cause your database to be unreachable by your applications.
 
 Application designers are responsible for monitoring and managing the number of connections that are being made to the database. Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case.
 
@@ -55,5 +55,5 @@ Alternatively, you can use a third-party tool such as [PgBouncer](https://pgboun
 
 ## SLA
 
-{{site.data.keyword.databases-for-postgresql}} conforms to the {{site.data.keyword.cloud_notm}} [SLA terms](https://cloud.ibm.com/docs/overview/zero_downtime.html#SLAs).
+{{site.data.keyword.databases-for-postgresql}} conforms to the {{site.data.keyword.cloud_notm}} [SLA terms](/docs/overview?topic=overview-SLAs#SLAs).
 

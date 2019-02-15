@@ -12,8 +12,8 @@ lastupdated: "2018-12-07"
 {:tip: .tip}
 
 
-
 # Pricing
+{: #pricing}
 
 A {{site.data.keyword.databases-for-postgresql}} Standard plan deploys as one highly available PostgreSQL cluster with two data members. Your data is replicated on both members. The Standard plan is priced based on the total amount of disk storage, RAM, and backup storage allocated to deployments, prorated hourly. {{site.data.keyword.databases-for-postgresql}} deployments have a minimum of 5 GB of disk and 1 GB of RAM per data member.
 

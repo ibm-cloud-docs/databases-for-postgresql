@@ -10,7 +10,7 @@ Databases For PostgreSQL
 	pricing.md
 	high-availability.md
 	security-compliance.md
-	versions.md
+	versioning.md
 
 	{: .topicgroup}
 	The Service Dashboard
@@ -22,23 +22,24 @@ Databases For PostgreSQL
 	{: .navgroup id="howto"}
 	howto-provisioning.md
 	howto-getting-connection-strings.md
-	howto-using-ibmcloud-cli.md
+	howto-admin-password.md
 	howto-migration.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
 		connecting-external.md
 		connecting-ibmcloud-app.md
+		connecting-psql.md
 
 	{: .topicgroup}
 	Administering PostgreSQL
-		admin-password.md
-		admin-connecting.md
 		admin-extensions.md
 		admin-logical-replication.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
+	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
+	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)	
 	reference-access-management.md
 	reference-activity-tracker.md
 	reference-monitoring.md
