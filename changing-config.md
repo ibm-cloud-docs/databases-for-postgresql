@@ -28,7 +28,7 @@ To change your configuration through the {{site.data.keyword.databases-for}} cli
 ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING]
 ```
 
-The command reads the changes you would like to make from the JSON object or a file. For more information, see the [reference page](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#ibmcloud-cdb-deployment-configuration).
+The command reads the changes you would like to make from the JSON object or a file. For more information, see the [reference page](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#deployment-configuration).
 
 ## via API
 
