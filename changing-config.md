@@ -12,7 +12,7 @@ lastupdated: "2019-02-28"
 {:tip: .tip}
 
 # Changing the Database Configuration
-{: #changing-config-settings}
+{: #changing-configuration}
 
 {{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PosgreSQL configuration settings so you can tune your PostgreSQL databases to your use-case. 
 The configuration defined in a schema. When you change the the configuration via the API or the CLI, you make changes to the configuration's JSON schema. To make a change, you make a JSON object with the settings and their new values. For example, to set the `max_connection` setting to 150, you would supply 
