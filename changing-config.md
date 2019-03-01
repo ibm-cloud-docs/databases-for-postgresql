@@ -11,7 +11,7 @@ lastupdated: "2019-02-28"
 {:pre: .pre}
 {:tip: .tip}
 
-# Changing the Database Configuration
+# Changing the PostgreSQL Configuration
 {: #changing-configuration}
 
 {{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PosgreSQL configuration settings so you can tune your PostgreSQL databases to your use-case. 
