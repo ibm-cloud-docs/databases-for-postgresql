@@ -15,13 +15,13 @@ lastupdated: "2019-02-28"
 {: #changing-configuration}
 
 {{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PosgreSQL configuration settings so you can tune your PostgreSQL databases to your use-case. 
-The configuration defined in a schema. When you change the the configuration via the API or the CLI, you make changes to the configuration's JSON schema. To make a change, you make a JSON object with the settings and their new values. For example, to set the `max_connections` setting to 150, you would supply 
+The configuration is defined in a schema. When you change the the configuration via the API or the CLI, you make changes to the configuration's JSON schema. To make a change, you make a JSON object with the settings and their new values. For example, to set the `max_connections` setting to 150, you would supply 
 ```
 {"configuration":{"max_connections":150}}
 ```
 to either the CLI or to the API.
 
-## via CLI
+## Using the CLI
 
 To change your configuration through the {{site.data.keyword.databases-for}} cli-plugin, use `deployment-configuration` command. 
 ```
@@ -30,11 +30,11 @@ ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSO
 
 The command reads the changes you would like to make from the JSON object or a file. For more information, see the [reference page](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#deployment-configuration).
 
-## via API
+## Using the API
 
-There are two deployment-configuration endpoints, one for viewing the configuration schema and one for changing the configuration. To view the configuration schema send a `GET` request to `/deployments/{id}/configuration/schema`.
+There are two deployment-configuration endpoints, one for viewing the configuration schema and one for changing the configuration. To view the configuration schema, send a `GET` request to `/deployments/{id}/configuration/schema`.
 
-To change the configuration send the settings you would like to change as a JSON object in the request body of a `PATCH` request to `/deployments/{id}/configuration`.
+To change the configuration, send the settings you would like to change as a JSON object in the request body of a `PATCH` request to `/deployments/{id}/configuration`.
 
 For more information, see the [API Reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration)
 
