@@ -33,7 +33,7 @@ Once the branch has been cloned you can select the appropriate directory for the
 
 1. If you do not already have an IBM Cloud account, [sign up here](https://{DomainName}/registration/?)
 
-2. [Download and install IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install_use)
+2. [Download and install IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli)
 
     The IBM Cloud CLI tool tool is what you'll use to communicate with IBM Cloud from your terminal or command line.
 
