@@ -13,7 +13,7 @@ lastupdated: "2019-03-14"
 {:tip: .tip}
 
 
-# Managing Roles and Privileges 
+# Managing Users, Roles, and Privileges 
 {: #user-management}
 
 PostgreSQL uses a system of roles to manage database permissions. Roles are used to give a single user or a group of users a set of privileges. You can determine roles, groups, and privileges for all roles across your deployment by using the `psql` command `\du`.
