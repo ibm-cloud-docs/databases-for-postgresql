@@ -27,7 +27,7 @@ Role name | Attributes | Member of
 `service_credentials_1` | Create role, Create DB | {ibm-cloud-base-user}
 {: caption="Table 1. Users in a PostgreSQL deployment" caption-side="top"}
 
-When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given an admin user to access and manage PosgreSQL. You can also add users in the _Service Credentials_ panel, which allows for access to RabbitMQ to be integrated with your {{site.data.keyword.cloud_notm}} account and [IAM](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-iam).
+When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given an admin user to access and manage PostgreSQL. You can also add users in the _Service Credentials_ panel, which allows users for PostgreSQL to be integrated with your {{site.data.keyword.cloud_notm}} account and [IAM](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-iam).
 
 ## The `admin` user
 
@@ -65,4 +65,4 @@ Note that these users will not be integrated with IAM controls, even if added to
 
 ## The `ibm` and `ibm-replication` Users
 
-If you run the `\du` command with your admin account, you might notice two users named `ibm` and `ibm-replication`. These users the internal administrative accounts that manage replication, metrics, and other functions that ensure the stability of your deployment. The `ibm` account is the only superuser account on your deployment and is not available for you to use. Changes to the `ibm` and `ibm-replication` account are not advised and can disrupt the availability of your deployment.
+If you run the `\du` command with your admin account, you might notice two users named `ibm` and `ibm-replication`. These users are internal administrative accounts that manage replication, metrics, and other functions that ensure the stability of your deployment. The `ibm` and the `ibm-replication` accounts are the only superusers on your deployment. A superuser account is not available for you to use.
