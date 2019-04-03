@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019
-lastupdated: "2019-03-18"
+lastupdated: "2019-04-03"
 
 subcollection: databases-for-postgresql
 
@@ -30,7 +30,7 @@ A read-only replica is set up to replicate all of your data from the leader depl
 
 - Backups are disabled on read-only replicas. Backups are taken only on leader deployments.
 
-- Read-replication is not compatible with IP whitelisting. If you have a whitelist, you need to remove it to create a read-only replica. Likewise, if you need to use a whitelist, you have to delete all read-only replicas first.
+- Read-replication is not currently compatible with IP whitelisting. If you have a whitelist, you need to remove it to create a read-only replica. Likewise, if you need to use a whitelist, you have to delete all read-only replicas first.
 
 - Read replication is not supported into or out of EU Cloud-enabled regions (currently `eu-de`). It is supported within those regions.
 
@@ -40,9 +40,9 @@ A read-only replica is set up to replicate all of your data from the leader depl
 
 - The minimum size of a read-only replica is 2 GB RAM and 10 GB of disk. This is true even if your leader deployment is smaller.
 
-- Read-only replicas do not auto-scale to match the leader. If the amount of data you store outgrows the disk allocated to your deployments, scale the disk on the read-only replicas and then the leader. Scaling the read-only replica first ensures that you do not run out of space on the read-only replicas.
+- Read-only replicas do not auto-scale to match the leader. If the amount of data you store outgrows the disk allocated to your deployments, scale the disk on the read-only replicas and then the leader. Scaling the read-only replica first ensures that you do not run out of space on the read-only replicas. If you have scaled the leader's disk for performance and not for space, it is not necessary to scale the read-only replicas.
 
-- Replication is asynchronous, and may be subject to replication lag. By default, there is no communication between the primary and replica with respect to consistency. If you find that read queries are failing due to conflicts with the master, you can resync the read-only replica. Replication lag can be greater when the replica is in a region far away geographically from its leader.
+- Replication is asynchronous, and may be subject to replication lag. By default, there is no communication between the primary and replica with respect to consistency. It is possible for a read-only replica to fall far enough behind that it needs to be resynced. Replication lag can be greater when the replica is in a region far away geographically from its leader.
 
 ## The Leader
 
@@ -55,6 +55,8 @@ If a deployment is a leader and has a read-only replica already attached to it, 
 ![List of replicas attached to a leader](images/replica-after.png)
 
 ### Checking Replication Status
+
+Replication status is not automatically monitored, you have to monitor replication.
 
 You can check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user). Once you are connected run either
 - for PostgreSQL version 10 and above `SELECT * from pg_stat_replication;`
@@ -109,14 +111,14 @@ On the _Settings_ tab of a read-only replica, the _Replication_ panel contains i
 
 ## Resyncing a Read-only Replica
 
-If you need to resync a read-only replica, click the **Resync Read-Only Replica** button. Resyncing is a disruptive operation and performing a resync tears down and rebuilds the data in the databases. The read-only replica is not able to perform any other operations or run any queries while a resync is running. Queries are not re-routed to the leader, so any queries on the read-only replica fail until the it has finished resyncing. 
+If you need to resync a read-only replica, click the **Resync Read-Only Replica** button. Resyncing is a disruptive operation and performing a resync tears down and rebuilds the data in the databases. The read-only replica is not able to perform any other operations or run any queries while a resync is running. Queries are not re-routed to the leader, so any connections to the read-only replica fail until the it has finished resyncing. 
 
 The amount of time it takes to resync a read-only replica varies, but the process can be very long running.
 {: .tip}
 
 ## Promoting a Read-replica
 
-A read-only replica is able to be promoted to an independent cluster that can accept write as well as read operations. Should something happen to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. 
+A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. Should something happen to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. 
 
 Upon promotion, the read-only replica terminates its connection to the leader and becomes a standalone {{site.data.keyword.databases-for-postgresql}} deployment. The deployment can start accepting and executing read and write operations, backups are enabled, and it is issued its own admin user. A new data member is added so the deployment becomes a cluster with two data members. This will increase the cost as it is billed at the same per member consumption rate, but the deployment has two members instead of one.
 
@@ -124,13 +126,13 @@ Once a read-only replica is promoted to an independent deployment, it is not pos
 
 ## Read-only Replica Users
 
-Any user on the leader can log into and execute reads on a read-only replica. You can also create users with access to the read-only replica from the read-only replica.
+Any user on the leader can log into and execute reads on a read-only replica with the same privileges that they have on the leader. You can also create users with access to the read-only replica from the read-only replica.
 
 When you create a user through the read-only replica, it gets first created on the leader and then propagated out to read-only replica. If you have more than one read-only replica attached to a leader, a user created on any one of the read-only replicas is also created on all of the other read-only replicas. Read-replica users and their credentials can be made through [_Service Credentials_](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#generating-connection-strings-from-service-credentials), the [CLI](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#generating-connection-strings-from-the-command-line), and the [API](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#generating-connection-strings-from-the-api).
 
 Read-only replica users are able connect to the replicas and execute reads. Read-only replica users are not able to connect and execute operations on the leader.
 
-Read-only replica users are assigned privileges by the leader, and are part of the `ibm-cloud-base-user` group. They have access to all of the objects created by other members of this group including any users on the leader that were created through _Service Credentials_, the CLI, or the API. Consistent with privileges of the `ibm-cloud-base-user`, the read-only replica user does not have access to objects created by the admin user. For more information see the [Managing Users, Roles, and Privileges](/docs/services/databases-for-postgresq?topic=databases-for-postgresql-user-management) page.
+Read-only replica users are assigned privileges by the leader, and are part of the `ibm-cloud-base-user` group. They have access to all of the objects created by other members of this group including any users on the leader that were created through _Service Credentials_, the CLI, or the API. Consistent with privileges of the `ibm-cloud-base-user`, the read-only replica user does not have access to objects created by the admin user, or other users created through `psql`. For more information see the [Managing Users, Roles, and Privileges](/docs/services/databases-for-postgresq?topic=databases-for-postgresql-user-management) page.
 
 Write operations on the read-only replica for all users are not filtered or rejected, but fail at DB level.
 {: .tip}
