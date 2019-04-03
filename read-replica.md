@@ -54,21 +54,12 @@ If a deployment is a leader and has a read-only replica already attached to it, 
 
 ![List of replicas attached to a leader](images/replica-after.png)
 
-### Checking Replication Status
-
-Replication status is not automatically monitored, you have to monitor replication.
-
-You can check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user). Once you are connected run either
-- for PostgreSQL version 10 and above `SELECT * from pg_stat_replication;`
-Or
-- for PostgreSQL version 9.x and below `SELECT * FROM get_pg_stat_replication();`
-
 ## Provisioning a read-replica
 
-UI, click **Create Read Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy the it in, and it's initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
+You can provision a read-only replica from the leader's _Settings_ panel by clicking **Create Read Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy it in, and it's initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
 
 If you use [Key Protect](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-key-protect), BYOK is supported only when provisioning from the CLI and API. Otherwise the read-only replica is encrypted with a generated key. 
-{. :tip}
+{: .tip}
 
 ### Provisioning through the API or the CLI
 
@@ -108,6 +99,15 @@ For both the CLI and API commands, you have to specify both the RAM and disk amo
 On the _Settings_ tab of a read-only replica, the _Replication_ panel contains its name and region, and the name and region of its leader. It also has buttons to resync the read-only replica and to promote it.
 
 ![Replication Panel of a read-only replica](images/replica-roreplica.png)
+
+## Checking Replication Status
+
+Replication status is not automatically monitored, you have to monitor replication.
+
+You can check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user). Once you are connected run either
+- for PostgreSQL version 10 and above `SELECT * from pg_stat_replication;`
+Or
+- for PostgreSQL version 9.x and below `SELECT * FROM get_pg_stat_replication();`
 
 ## Resyncing a Read-only Replica
 
