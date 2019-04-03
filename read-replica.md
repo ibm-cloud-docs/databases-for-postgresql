@@ -54,7 +54,7 @@ If a deployment is a leader and has a read-only replica already attached to it, 
 
 ![List of replicas attached to a leader](images/replica-after.png)
 
-## Provisioning a read-replica
+## Provisioning a Read-only Replica
 
 You can provision a read-only replica from the leader's _Settings_ panel by clicking **Create Read-Only Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy it in, and it's initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
 
@@ -116,7 +116,7 @@ If you need to resync a read-only replica, click the **Resync Read-Only Replica*
 The amount of time it takes to resync a read-only replica varies, but the process can be very long running.
 {: .tip}
 
-## Promoting a Read-replica
+## Promoting a Read-only Replica
 
 A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. Should something happen to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. 
 
@@ -137,7 +137,7 @@ Read-only replica users are assigned privileges by the leader, and are part of t
 Write operations on the read-only replica for all users are not filtered or rejected, but fail at DB level.
 {: .tip}
 
-## Read replicas and the API
+## Read-only Replicas and the API
 
 In addition to being able to provision a read-only replica from the Resource Controller API, the {{site.data.keyword.databases-for}} API has endpoints for managing your read-only replica. You can get information on leaders, read-only replicas, and promote read-only replicas from the `/deployments/{id}/remotes` endpoint. You can resync a read-only replica from the `/deployments/{id}/remotes/resync` endpoint. For more information about the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
 
