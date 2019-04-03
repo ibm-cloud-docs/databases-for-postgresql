@@ -56,9 +56,9 @@ If a deployment is a leader and has a read-only replica already attached to it, 
 
 ## Provisioning a Read-only Replica
 
-You can provision a read-only replica from the leader's _Settings_ panel by clicking **Create Read-Only Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy it in, and it's initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
+You can provision a read-only replica from the leader's _Settings_ panel by clicking **Create Read-Only Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy it in, and its initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
 
-If you use [Key Protect](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-key-protect), BYOK is supported only when provisioning from the CLI and API. Otherwise the read-only replica is encrypted with a generated key. 
+If you use [Key Protect](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-key-protect), Bring Your Own Key (BYOK) is supported only when provisioning from the CLI and API. Otherwise the read-only replica is encrypted with a generated key. 
 {: .tip}
 
 ### Provisioning through the API or the CLI
@@ -92,7 +92,7 @@ curl -X POST \
   }'
 ```
 
-For both the CLI and API commands, you have to specify both the RAM and disk amounts, keeping in mind the minimum size is 2 GB RAM and 10 GB disk. You are not be able to specify a version for the read-only replica, the version is automatically set to the same major version as the leader deployment.
+For both the CLI and API commands, you have to specify both the RAM and disk amounts, keeping in mind the minimum size is 2 GB RAM and 10 GB disk. You are not be able to specify a version for the read-only replica. The version is automatically set to the same major version as the leader deployment.
 
 ## The Read-only Replica
 
@@ -111,7 +111,7 @@ Or
 
 ## Resyncing a Read-only Replica
 
-If you need to resync a read-only replica, click the **Resync Read-Only Replica** button. Resyncing is a disruptive operation and performing a resync tears down and rebuilds the data in the databases. The read-only replica is not able to perform any other operations or run any queries while a resync is running. Queries are not re-routed to the leader, so any connections to the read-only replica fail until the it has finished resyncing. 
+If you need to resync a read-only replica, click the **Resync Read-Only Replica** button. Resyncing is a disruptive operation and performing a resync tears down and rebuilds the data in the read-only replica. The read-only replica is not able to perform any other operations or run any queries while a resync is running. Queries are not re-routed to the leader, so any connections to the read-only replica fail until the it has finished resyncing. 
 
 The amount of time it takes to resync a read-only replica varies, but the process can be very long running.
 {: .tip}
@@ -132,7 +132,7 @@ When you create a user through the read-only replica, it gets first created on t
 
 Read-only replica users are able connect to the replicas and execute reads. Read-only replica users are not able to connect and execute operations on the leader.
 
-Read-only replica users are assigned privileges by the leader, and are part of the `ibm-cloud-base-user` group. They have access to all of the objects created by other members of this group including any users on the leader that were created through _Service Credentials_, the CLI, or the API. Consistent with privileges of the `ibm-cloud-base-user`, the read-only replica user does not have access to objects created by the admin user, or other users created through `psql`. For more information see the [Managing Users, Roles, and Privileges](/docs/services/databases-for-postgresq?topic=databases-for-postgresql-user-management) page.
+Read-only replica users are assigned privileges by the leader, and are assigned the `ibm-cloud-base-user-ro` role, and are members of the `ibm-cloud-base-user` group. They have access to all of the objects created by other members of this group including any users on the leader that were created through _Service Credentials_, the CLI, or the API. Consistent with privileges of the `ibm-cloud-base-user`, the read-only replica user does not have access to objects created by the admin user, or other users created through `psql`. For more information see the [Managing Users, Roles, and Privileges](/docs/services/databases-for-postgresq?topic=databases-for-postgresql-user-management) page.
 
 Write operations on the read-only replica for all users are not filtered or rejected, but fail at DB level.
 {: .tip}
