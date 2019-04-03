@@ -56,7 +56,7 @@ If a deployment is a leader and has a read-only replica already attached to it, 
 
 ## Provisioning a read-replica
 
-You can provision a read-only replica from the leader's _Settings_ panel by clicking **Create Read Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy it in, and it's initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
+You can provision a read-only replica from the leader's _Settings_ panel by clicking **Create Read-Only Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can re-name it freely. You can choose the region to deploy it in, and it's initial memory allocation. Disk size is automatically calculated from the size of the leader deployment. The read-only replica is automatically provisioned with the same version as the leader. 
 
 If you use [Key Protect](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-key-protect), BYOK is supported only when provisioning from the CLI and API. Otherwise the read-only replica is encrypted with a generated key. 
 {: .tip}
