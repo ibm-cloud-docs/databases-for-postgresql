@@ -44,6 +44,8 @@ A read-only replica is set up to replicate all of your data from the leader depl
 
 - Replication is asynchronous, and may be subject to replication lag. By default, there is no communication between the primary and replica with respect to consistency. It is possible for a read-only replica to fall far enough behind that it needs to be resynced. Replication lag can be greater when the replica is in a region far away geographically from its leader.
 
+- A read-only replica is a deployment with single data member and does not have any internal high-availability. It is prone to temporary interruptions and downtime during maintenance. If you have applications that rely on read-only replicas, be sure to have logic to retry failed queries, or load-balancing over multiple read-only replicas.
+
 ## The Leader
 
 On the _Settings_ tab of a {{site.data.keyword.databases-for-postgresql}} deployment before any read-only replicas have been provisioned, the _Replication_ panel has a **Create Read Replica** button.
