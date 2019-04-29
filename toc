@@ -10,20 +10,17 @@ Databases For PostgreSQL
 	pricing.md
 	high-availability.md
 	security-compliance.md
-	versioning.md
-
-	{: .topicgroup}
-	The Service Dashboard
-		dashboard-overview.md
-		dashboard-settings.md
-		dashboard-backups.md
+	/cloud-databases/cloud-databases-versioning-policy
+	dashboard-overview.md
+	/cloud-databases/cloud-databases-tutorial-k8s-app
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	howto-provisioning.md
-	howto-getting-connection-strings.md
-	howto-admin-password.md
+	/cloud-databases/cloud-databases-provisioning
 	howto-migration.md
+	howto-admin-password.md
+	howto-getting-connection-strings.md
+
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
@@ -31,10 +28,15 @@ Databases For PostgreSQL
 		connecting-ibmcloud-app.md
 		connecting-psql.md
 
+	howto-resources-scaling.md
+	howto-managing-connections.md
+	howto-backups.md
+	howto-user-management.md
+	/cloud-databases/cloud-databases-whitelisting
+
 	{: .topicgroup}
 	Configuring PostgreSQL
 		changing-config.md
-		howto-user-management.md
 		admin-extensions.md
 		read-replica.md
 		admin-logical-replication.md
@@ -43,10 +45,10 @@ Databases For PostgreSQL
 	{: .navgroup id="reference"}
 	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
 	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)	
-	reference-access-management.md
-	reference-service-endpoints.md
+	/cloud-databases/cloud-databases-iam
+	/cloud-databases/cloud-databases-service-endpoints
 	reference-activity-tracker.md
-	reference-logging.md
+	/cloud-databases/cloud-databases-logging
 	reference-monitoring.md
-	reference-key-protect.md
+	/cloud-databases/cloud-databases-key-protect
 	{: .navgroup-end}

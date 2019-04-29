@@ -49,20 +49,7 @@ If you are planning on running operations that might put a spike in the usual RA
 
 ## Connection Limits 
 
-{{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. If you see a string of connection failures and the error,
-```
-FATAL: remaining connection slots are reserved for
-non-replication superuser connections
-```
-your application is exceeding this connection limit. The recommended solution is to make use of connection pooling. It is possible to raise the connection limit, but connections to the database consume resources. To raise the connection limit, you might have to [scale your deployment](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-dashboard-settings#scaling-resources) and then [change the PostgreSQL configuration](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#changing-configuration).
-
-### Connection Pooling
-
-Exceeding the connection limit for your deployment can cause your database to be unreachable by your applications.
-
-Application designers are responsible for monitoring and managing the number of connections that are being made to the database. Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case.
-
-Alternatively, you can use a third-party tool such as [PgBouncer](https://pgbouncer.github.io/) to manage your application's connections.
+{{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. After the connection limit has been reached, any attempts at starting a new connection results in an error. To prevent overwhelming your deployment with connections, use connection pooling, or scale your deployment and increase its connection limit. For more information, see the [Managing PostgreSQL Connections](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-managing-connections) page.
 
 ## SLA
 
