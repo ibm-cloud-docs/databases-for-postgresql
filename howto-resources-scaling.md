@@ -82,47 +82,12 @@ The `cdb deployment-groups-set` command allows either the total RAM or total dis
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically. 
 
-To view the current and scalable resources on the "example-deployment",
+To view the current and scalable resources on a deployment,
 ```
 curl -X GET -H "Authorization: Bearer $APIKEY" `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
-
-{
-  "groups": [
-    {
-      "id": "member",
-      "count": 2,
-      "memory": {
-        "units": "mb",
-        "allocation_mb": 2048,
-        "minimum_mb": 2048,
-        "maximum_mb": 229376,
-        "step_size_mb": 256,
-        "is_adjustable": true,
-        "can_scale_down": true
-      },
-      "disk": {
-        "units": "mb",
-        "allocation_mb": 10240,
-        "minimum_mb": 10240,
-        "maximum_mb": 7340032,
-        "step_size_mb": 1024,
-        "is_adjustable": true,
-        "can_scale_down": false
-      },
-      "cpu": {
-        "units": "count",
-        "allocation_count": 0,
-        "minimum_count": 0,
-        "maximum_count": 0,
-        "step_size_count": 0,
-        "is_adjustable": false
-      }
-    }
-  ]
-}
 ```
 
-To scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB).
+To scale the memory of a deployment to 2048 MB of RAM for each memory member (for a total memory of 4096 MB).
 ```
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
 -H "Authorization: Bearer $APIKEY" \

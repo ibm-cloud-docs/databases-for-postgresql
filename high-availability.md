@@ -35,11 +35,11 @@ Several minutes of database unavailability or connection interruption is not exp
 
 ## Performance
 
-{{site.data.keyword.databases-for-postgresql}} deployments can be [scaled to your usage](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-dashboard-settings#scaling-resources), but they do not auto-scale. There are a few factors to consider if you are concerned about the performance of your deployment.
+{{site.data.keyword.databases-for-postgresql}} deployments can be [scaled to your usage](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling), but they do not auto-scale. There are a few factors to consider if you are concerned about the performance of your deployment.
 
 ### Disk IOPS
 
-The number of Input-Output Operations Per Second (IOPS) is limited by the type of storage volume being used. Storage volumes for {{site.data.keyword.databases-for-postgresql}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance).  If your operational load saturates or exceeds the IOPS limit, requests are delayed until the disk can catch up. Extended periods of heavy-load can cause your deployment to be unable to process queries and become effectively unavailable. If you experience delayed responses and failing operations you could be exceeding the disk's IOPS limit. You can increase the number IOPS available to your deployment by increasing disk space.
+The number of Input-Output Operations Per Second (IOPS) is limited by the type of storage volume being used. Storage volumes for {{site.data.keyword.databases-for-postgresql}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/infrastructure/BlockStorage?topic=BlockStorage-About#provendurance). If your operational load saturates or exceeds the IOPS limit, requests are delayed until the disk can catch up. Extended periods of heavy-load can cause your deployment to be unable to process queries and become effectively unavailable. If you experience delayed responses and failing operations you could be exceeding the disk's IOPS limit. You can increase the number IOPS available to your deployment by increasing disk space.
 
 ### Monitoring your deployment
 

@@ -23,7 +23,7 @@ subcollection: databases-for-postgresql
 - Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/services/databases-for-postgresql?topic=cloud-databases-iam).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-postgresql}} storage is provided on storage encrypted with [{{site.data.keyword.keymanagementserviceshort}}](/docs/services/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect integration](/docs/services/databases-for-postgresql?topic=cloud-databases-key-protect)
-- IP Whitelisting - All deployments support whitelisting IP addresses to restrict access to the service.
+- IP Whitelisting - All deployments support [whitelisting IP addresses](/docs/services/databases-for-postgresql?topic=cloud-databases-whitelisting) to restrict access to the service.
 - Public and Private Networking - {{site.data.keyword.databases-for-postgresql}} is integrated with [Service Endpoints](/docs/services/databases-for-postgresql?topic=cloud-databases-service-endpoints). You can select whether to use connections over the public network, the {{site.data.keyword.cloud_notm}} internal network, or both.
 
 ## Data Resilience
@@ -31,7 +31,7 @@ subcollection: databases-for-postgresql
 - Backups are included in the service. {{site.data.keyword.databases-for-postgresql}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage) and are also [encrypted](/docs/services/cloud-object-storage?topic=cloud-object-storage-security).
 - {{site.data.keyword.databases-for-postgresql}} deployments are configured with replication. Deployments contain a cluster with two data members. Both members contain a copy of your data using asynchronous replication, with a distributed consensus mechanism to maintain cluster state and handle failovers. 
 - If you deploy to an [{{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database node resides on a different host in the datacenter. 
-- If you deploy to a {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations. 
+- If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations. 
 
 ## SOC 2 Type 1 Certification
 

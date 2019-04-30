@@ -20,7 +20,6 @@ Databases For PostgreSQL
 	howto-migration.md
 	howto-admin-password.md
 	howto-getting-connection-strings.md
-
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
@@ -28,8 +27,11 @@ Databases For PostgreSQL
 		connecting-ibmcloud-app.md
 		connecting-psql.md
 
-	howto-resources-scaling.md
-	howto-managing-connections.md
+	{: .topicgroup}
+	Managing Resources
+		howto-resources-scaling.md
+		howto-managing-connections.md
+	
 	howto-backups.md
 	howto-user-management.md
 	/cloud-databases/cloud-databases-whitelisting
