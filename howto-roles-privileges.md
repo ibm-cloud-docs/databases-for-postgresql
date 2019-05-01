@@ -1,4 +1,19 @@
+---
 
+Copyright:
+  years: 2019
+lastupdated: "2019-05-01"
+
+subcollection: databases-for-postgresql
+
+---
+
+{:new_window: target="_blank"}
+{:shortdesc: .shortdesc}
+{:screen: .screen}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:tip: .tip}
 
 # PostgreSQL Roles and Privileges
 {: #roles-privileges}
