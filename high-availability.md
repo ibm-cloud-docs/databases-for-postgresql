@@ -43,7 +43,7 @@ The number of Input-Output Operations Per Second (IOPS) is limited by the type o
 
 ### Monitoring your deployment
 
-You can use the [monitoring integration](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-monitoring), or you can (in PostgreSQL 10 and above) use the [admin user's](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user) role as [`pg_monitor`](https://www.postgresql.org/docs/current/default-roles.html) to estimate typical resource usage, and scale your deployment accordingly.
+You can use the [monitoring integration](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-monitoring), or you can (in PostgreSQL 10 and above) use the [admin user's](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-roles-privileges#the-admin-user) role as [`pg_monitor`](https://www.postgresql.org/docs/current/default-roles.html) to estimate typical resource usage, and scale your deployment accordingly.
 
 If you are planning on running operations that might put a spike in the usual RAM usage, an increase in your data size on disk, or an increase in IOPS, you can manually scale your service's resources up to avoid hitting limits that can affect deployment operations.
 

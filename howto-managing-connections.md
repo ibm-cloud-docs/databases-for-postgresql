@@ -20,14 +20,17 @@ subcollection: databases-for-postgresql
 
 Connections to your {{site.data.keyword.databases-for-postgresql_full}} deployment use resources, so it is important to consider how many connections you need when tuning your deployment's performance. PostgreSQL uses a `max_connections` setting to limit the number of connections (and resources consumed by connections) to prevent run-away connection behavior to overwhelm your deployment's resources.
 
-You can check the value of `max_connections` with your [admin user]() and [`psql`]().
-```
-ibmclouddb=> SHOW max_connections;
+You can check the value of `max_connections` with your [admin user](/docs/services/databases-for-postgresql?topic=databases-for-postgresq-roles-privileges#the-admin-user) and [`psql`](/docs/services/databases-for-postgresql?topic=databases-for-postgresq-connecting-psql).
+```sql
+SHOW max_connections;
  max_connections
 -----------------
  115
 (1 row)
 ```
+
+Many of the queries rely on the admin user's role as `pg_monitor`, which is only available in PostgreSQL 10 and above. Users on PostgreSQL 9.x, might not have permissions to run all of the queries in these docs.
+{: .tip}
 
 ## Connection Limits 
 
@@ -39,17 +42,17 @@ non-replication superuser connections
 Exceeding the connection limit for your deployment can cause your database to be unreachable by your applications.
 
 You can check the number of connections to your deployment with the admin user, `psql`, and `pg_stat_database`.
-```
+```sql
 SELECT count(distinct(numbackends)) FROM pg_stat_database;
 ```
 
 If you need to figure out where the connections are going you can breakdown the connections by database.
-```
-ibmclouddb=> SELECT datname, numbackends FROM pg_stat_database;
+```sql
+SELECT datname, numbackends FROM pg_stat_database;
 ```
 
 To further investigate connections to a specific database, query `pg_stat_activity`.
-```
+```sql
 SELECT * FROM pg_stat_activity WHERE datname='ibmclouddb';
 ```
 

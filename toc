@@ -6,12 +6,15 @@ Databases For PostgreSQL
 
 	{: .navgroup id="learn"}
 	index.md
-	getting-started.md	
+	getting-started.md
 	pricing.md
-	high-availability.md
-	security-compliance.md
-	/cloud-databases/cloud-databases-versioning-policy
-	dashboard-overview.md
+
+	{: .topicgroup}
+	Service Overview
+		dashboard-overview.md
+		high-availability.md
+		security-compliance.md
+	
 	/cloud-databases/cloud-databases-tutorial-k8s-app
 	{: .navgroup-end}
 
@@ -19,10 +22,10 @@ Databases For PostgreSQL
 	/cloud-databases/cloud-databases-provisioning
 	howto-migration.md
 	howto-admin-password.md
-	howto-getting-connection-strings.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
+		howto-getting-connection-strings.md
 		connecting-external.md
 		connecting-ibmcloud-app.md
 		connecting-psql.md
@@ -32,8 +35,12 @@ Databases For PostgreSQL
 		howto-resources-scaling.md
 		howto-managing-connections.md
 	
+	{: .topicgroup}
+	Managing Users
+		howto-creating-users.md
+		howto-roles-privileges.md
+	
 	howto-backups.md
-	howto-user-management.md
 	/cloud-databases/cloud-databases-whitelisting
 
 	{: .topicgroup}
@@ -46,7 +53,8 @@ Databases For PostgreSQL
 
 	{: .navgroup id="reference"}
 	[Cloud Databases CLI plugin](/databases-cli-plugin/cloud-databases-cli-cdb-reference)
-	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)	
+	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)
+	/cloud-databases/cloud-databases-versioning-policy
 	/cloud-databases/cloud-databases-iam
 	/cloud-databases/cloud-databases-service-endpoints
 	reference-activity-tracker.md

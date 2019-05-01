@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {:tip: .tip}
 
-# The UI - Service Overview
+# The Service Dashboard
 {: #dashboard-overview}
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql_full}} database. The overview includes essential identifying information.
