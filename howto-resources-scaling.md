@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {:tip: .tip}
 
-# Resources and Scaling
+# Managing Resources and Scaling
 {: #resources-scaling}
 
 A visual representation of your data members and their resource allocation is available on the _Settings_ tab of your deployment's _Manage_ page. 
@@ -82,7 +82,7 @@ The `cdb deployment-groups-set` command allows either the total RAM or total dis
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically. 
 
-To view the current and scalable resources on a deployment,
+To view the current and scalable resources on a deployment, use
 ```
 curl -X GET -H "Authorization: Bearer $APIKEY" `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
 ```

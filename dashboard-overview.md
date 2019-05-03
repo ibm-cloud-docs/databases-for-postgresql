@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {:tip: .tip}
 
-# The Service Dashboard
+# The UI - Dashboard Overview
 {: #dashboard-overview}
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql_full}} database. The overview includes essential identifying information.
@@ -72,7 +72,7 @@ The _Settings_ tab contains the UI for many of the tunable settings for your dep
 - [configure public and private endpoints](/docs/services/databases-for-postgresql?topic=cloud-databases-service-endpoints)
 - [change the admin password](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-admin-password)
 - [implement or modify an IP whitelist](/docs/services/databases-for-postgresql?topic=cloud-databases-whitelisting)
-- [kill all connections](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-managing-connections) (active, hanging, and zombie) to your PostgreSQL database.
+- [kill all connections](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-managing-connections) (active, idle, and zombie) to your PostgreSQL database.
 
 ## Backups
 

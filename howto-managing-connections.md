@@ -20,9 +20,9 @@ subcollection: databases-for-postgresql
 
 Connections to your {{site.data.keyword.databases-for-postgresql_full}} deployment use resources, so it is important to consider how many connections you need when tuning your deployment's performance. PostgreSQL uses a `max_connections` setting to limit the number of connections (and resources consumed by connections) to prevent run-away connection behavior to overwhelm your deployment's resources.
 
-You can check the value of `max_connections` with your [admin user](/docs/services/databases-for-postgresql?topic=databases-for-postgresq-roles-privileges#the-admin-user) and [`psql`](/docs/services/databases-for-postgresql?topic=databases-for-postgresq-connecting-psql).
-```sql
-SHOW max_connections;
+You can check the value of `max_connections` with your [admin user](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user) and [`psql`](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+```
+ibmclouddb=> SHOW max_connections;
  max_connections
 -----------------
  115
@@ -34,7 +34,7 @@ Many of the queries rely on the admin user's role as `pg_monitor`, which is only
 
 ## Connection Limits 
 
-At provision, {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. If the number of connections exceeds the limit, new connections fail and return an error.
+At provision, {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. If the number of connections to the database exceeds the 100 connection limit, new connections fail and return an error.
 ```
 FATAL: remaining connection slots are reserved for
 non-replication superuser connections
