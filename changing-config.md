@@ -50,7 +50,7 @@ For more information, see the [API Reference](https://cloud.ibm.com/apidocs/clou
 [`shared_buffers`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-SHARED-BUFFERS)
   - Default - `32000` (number of 8 KiB buffers, or about 262 MB) 
   - Restarts Database? - **Yes**
-  - Options - The maximum amount of total space for `shared_buffers` is 8GB.
+  - Options - The maximum amount of total space for `shared_buffers` is 8GB (or 1048576 buffers). The limit is a recommendation from the PostgreSQL community. Your deployment can make use of additional RAM over and above this for caching. You do not have to configure the database to use all of the allocated RAM in order for your deployment to make use of it.
   - Notes - The number of 8 KiB shared memory buffers. For example, 1 GB of `shared_buffers` is 1048576 KiB, and
 (1048576 KiB / 8 KiB) is `131072`. The recommended memory allocation for `shared_buffers` is 1/4 of the deployment's RAM. Setting `shared_buffers` any higher can result in memory issues leading to a database crash. Setting `shared_buffers` equal, close to equal, or higher than the amount of allocated memory will prevent the database from starting. 
 
@@ -80,13 +80,6 @@ For more information, see the [API Reference](https://cloud.ibm.com/apidocs/clou
 [`deadlock_timeout`](https://www.postgresql.org/docs/current/runtime-config-locks.html)
   - Default - 10000
   - Restarts Database - No
-  - Options - Minimum value of 10
+  - Options - Minimum value of 100
   - Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/services/databases-for-postgresql?topic=cloud-databases-logging). Setting this too low negatively impacts performance.
-
-`backup_retention_period`
-  - Default - 30
-  - Restarts Database - No
-  - Notes - Adjust how many days deployment backups are retained. Deployments are provisioned with backup storage that equals the disk space. Increasing the number of days backups are retained increases the amount of storage they use and might [increase the cost of your deployment](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-pricing#backups-pricing).
-
-
 
