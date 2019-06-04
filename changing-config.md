@@ -50,9 +50,8 @@ For more information, see the [API Reference](https://cloud.ibm.com/apidocs/clou
 [`shared_buffers`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-SHARED-BUFFERS)
   - Default - `32000` (number of 8 KiB buffers, or about 262 MB) 
   - Restarts Database? - **Yes**
-  - Options - The maximum amount of total space for `shared_buffers` is 8GB (or 1048576 buffers). The limit is a recommendation from the PostgreSQL community. Your deployment can make use of additional RAM over and above this for caching. You do not have to configure the database to use all of the allocated RAM in order for your deployment to make use of it.
-  - Notes - The number of 8 KiB shared memory buffers. For example, 1 GB of `shared_buffers` is 1048576 KiB, and
-(1048576 KiB / 8 KiB) is `131072`. The recommended memory allocation for `shared_buffers` is 1/4 of the deployment's RAM. Setting `shared_buffers` any higher can result in memory issues leading to a database crash. Setting `shared_buffers` equal, close to equal, or higher than the amount of allocated memory will prevent the database from starting. 
+  - Options - The maximum number of buffers is 1048576. 
+  - Notes - The setting specifies the number of 8 KiB shared memory buffers. For example, 1 GB of `shared_buffers` space is 1048576 KiB, and (1048576 KiB / 8 KiB) is 131072 buffers. The recommended memory allocation for `shared_buffers` is 1/4 of the deployment's RAM. Setting `shared_buffers` any higher can result in memory issues leading to a database crash. Setting `shared_buffers` equal, close to equal, or higher than the amount of allocated memory will prevent the database from starting. The maximum amount of total space for `shared_buffers` is 8 GB or 1048576 buffers based on recommendations from the PostgreSQL community. Your deployment can make use of additional RAM for caching and performance, even without allocating it to `shared_buffers` . You do not have to configure the database to use all of the allocated RAM in order for your deployment to make use of it.
 
 ### General Settings
 
