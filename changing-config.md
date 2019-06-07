@@ -57,12 +57,12 @@ For more information, see the [API Reference](https://cloud.ibm.com/apidocs/clou
 
 [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
   - Default - 115
-  - Restarts Database? - No
+  - Restarts Database? - **YES**
   - Notes - [You might need to scale before you increase max connections.](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#connection-limits)
 
 [`max_prepared_transactions`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)
   - Default - 0
-  - Restarts Database? - No
+  - Restarts Database? - **YES**
   - Notes - The default value of `0` disables use of [prepared transactions](https://www.postgresql.org/docs/current/sql-prepare-transaction.html) and is strongly recommended unless you need to use them.
 
 [`synchronous_commit`](https://www.postgresql.org/docs/current/wal-async-commit.html)
