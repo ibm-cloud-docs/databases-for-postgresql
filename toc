@@ -36,7 +36,7 @@ Databases For PostgreSQL
 		howto-resources-scaling.md
 		howto-managing-connections.md
 
-	howto-backups.md
+	/cloud-databases/cloud-databases-dashboard-backups
 	/cloud-databases/cloud-databases-whitelisting
 
 	{: .topicgroup}
