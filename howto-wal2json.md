@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019
-lastupdated: "2019-06-27"
+lastupdated: "2019-07-10"
 
 subcollection: databases-for-postgresql
 
@@ -33,7 +33,7 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{i
       }'
 ```
 
-2. Set a password for the `repl` user. Any user's password can be changes using the {{site.data.keyword.databases-for}} CLI plug-in [cdb deployment-user-password](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#deployment-user-password) command or {{site.data.keyword.databases-for}} API [/deployments/{id}/users/{username}](https://cloud.ibm.com/apidocs/cloud-databases-api#set-database-level-user-s-password) endpoint. The `repl` user has REPLICATION privileges, but it is not accessible until you set a password for it.
+2. Set a password for the `repl` user. Any user's password can be changes using the {{site.data.keyword.databases-for}} CLI plug-in [cdb deployment-user-password](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#deployment-user-password) command or {{site.data.keyword.databases-for}} API [/deployments/{id}/users/{username}](https://cloud.ibm.com/apidocs/cloud-databases-api#set-database-level-user-s-password) endpoint. The `repl` user has REPLICATION privileges and the `wal2json` plugin uses it after you set a password for it.
 
 3. Create a replication slot on the database from the {{site.data.keyword.databases-for}} API. Send a POST request to the [`/deployments/{id}/postgresql/logical_replication_slots`]() endpoint.
 ```
@@ -56,7 +56,7 @@ SELECT * FROM pg_replication_slots WHERE slot_name = '<slot_name>';
 PGSSLMODE=require pg_recvlogical -d <DATABASE NAME> -U repl -h <HOST> -p <PORT> --slot <SLOT NAME> --start -o pretty-print=1 -f -
 ```
 
-Create a table on `ibmclouddb` and insert some data. You should see the inserts come out in the terminal that is running `pg_recvlogical` Note that table creates will not appear.
+5. Create a table on `ibmclouddb` and insert some data. You should see the inserts come out in the terminal that is running `pg_recvlogical`. Note that table creates will not appear.
 
 ## Considerations
 
@@ -66,4 +66,4 @@ Create a table on `ibmclouddb` and insert some data. You should see the inserts 
 
 - Logical replication slots do not sync between a primary (leader) and a replica. In the event of controlled switchover or failover, the slot will be recreated on the new leader automatically, but it does not maintain the place in the replication stream that it was prior to switchover or failover. This can result in downstream consumers missing changes. Systems have be able to detect when failover happens and and resync as needed.
 
-- If yor create a logical replication slot, and you do not have a consumer connected and consuming the changes, you run the risk of running their formation out of disk space. The replication slot tells PostgreSQL to keep all the transaction logs that have the changes the consumer needs. If nothing is consuming those changes, PostgreSQL continues collecting them until the formation runs out of disk space. You can monitor disk space with the [monitoring integration](docs/services/databases-for-postgresql?topic=cloud-databases-monitoring). If you run out of space, you can [scale up disk](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling), which allows the database to start. Then, you can either start consuming the changes or drop the slot.
+- If you create a logical replication slot, and you do not have a consumer connected and consuming the changes, you run the risk of running your deployment out of disk space. The replication slot tells PostgreSQL to keep all the transaction logs that have the changes the consumer needs. If nothing is consuming those changes, PostgreSQL continues collecting them until it is out of disk space. You can monitor disk space with the [monitoring integration](docs/services/databases-for-postgresql?topic=cloud-databases-monitoring). If you run out of space, you can [scale up disk](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling), which allows the database to start. Then, you can either start consuming the changes or drop the slot.
