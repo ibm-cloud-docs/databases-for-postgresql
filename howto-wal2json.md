@@ -20,7 +20,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} deployments support the [wal2json](https://github.com/eulerto/wal2json) plugin, enabling [logical decoding](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html) on your deployment. The plugin is already installed, but you do have to configure your deployment and databases in order to start using it.
 
-1. First, you need to [configure](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) the `wal_level`, `max_replication_slots`, and `max_wal_senders` settings. The `wal_level` is set to `logical`. The `max_replication_slots`, and `max_wal_senders` both need to be set to a value greater than 20. {{site.data.keyword.databases-for-postgresql}} reserves 20 replication slots and WAL senders for current and future operational purposes.
+1. First, you need to [configure](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) the `wal_level`, `max_replication_slots`, and `max_wal_senders` settings. Change the `wal_level` to `logical`. The `max_replication_slots`, and `max_wal_senders` both need to be set to a value greater than 20. {{site.data.keyword.databases-for-postgresql}} reserves 20 replication slots and WAL senders for current and future operational purposes.
 ```
 curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/configuration 
   -H 'Authorization: Bearer <>'

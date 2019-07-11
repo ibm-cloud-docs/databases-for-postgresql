@@ -94,10 +94,10 @@ The next three settings `wal_level`, `max_replication_slots` and `max_wal_sender
 [`max_replication_slots`](https://www.postgresql.org/docs/current/runtime-config-replication.html)
   - Default - `10`
   - Restarts Database - **YES**
-  - Notes - The maximum number of simultaneously defined replication slots. The default and minimum number of slots is 10. Several are used internally by your deployment for High- Availability (HA) purposes. You need to have 1 slot per consumer.  It is recommended to add one additional slot over the minimum per expected consumer. Using `wal2json` and not increasing this may impact HA and/or read-only replicas. If you are not using `wal2json`, you should leave this setting at the default.
+  - Notes - The maximum number of simultaneously defined replication slots. The default and minimum number of slots is 10. 20 slots are reserved for internal use by your deployment for High-Availability (HA) purposes. To use slots, you need to set the value above 20 and have 1 slot per consumer. It is recommended to add one additional slot over the minimum per expected consumer. Using `wal2json` and not increasing this may impact HA and/or read-only replicas. If you are not using `wal2json`, you should leave this setting at the default.
 
 [`max_wal_senders`](https://www.postgresql.org/docs/current/runtime-config-replication.html)
   - Default - `12`
   - Restarts Database - **YES**
-  - Notes - The maximum number of simultaneously running WAL sender processes. The default and minimum is 12. One `wal_sender` per consumer is required.  Several are used internally by your deployment for High- Availability (HA) purposes. It is recommended to add one additional `wal_sender` over the minimum per expected consumer. Using `wal2json` and not increasing `max_wal_senders` may impact HA and/or read replicas. If you are not using `wal2json`, you should leave this setting at the default.
+  - Notes - The maximum number of simultaneously running WAL sender processes. The default and minimum is 12. One `wal_sender` per consumer is required.  20 slots are reserved for internal use by your deployment for High-Availability (HA) purposes. You need to set the value above 20 and it is recommended to add one additional `wal_sender` over the minimum per expected consumer. Using `wal2json` and not increasing `max_wal_senders` may impact HA and/or read replicas. If you are not using `wal2json`, you should leave this setting at the default.
 
