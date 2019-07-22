@@ -56,7 +56,7 @@ Users that you create through the Cloud Databases API and the Cloud Databases CL
 
 When a user creates a resource in a database, like a table, all users that are in the same group have access to that resource.  Resources created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the admin user.
 
-Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#generating-service-credentials-for-existing-users) if you choose.
+Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#adding-users-to-_service-credentials_) if you choose.
 
 ## The read-only user
 
