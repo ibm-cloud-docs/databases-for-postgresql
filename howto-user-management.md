@@ -68,7 +68,6 @@ You can bypass creating users through IBM Cloud entirely, and create users direc
 
 Users that are created directly in PostgreSQL do not appear in _Service Credentials_, but you can [add them](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#adding-users-to-_service-credentials_) if you choose. 
 
-
 Note that these users are not integrated with IAM controls, even if added to _Service Credentials_.
 {: .tip}
 

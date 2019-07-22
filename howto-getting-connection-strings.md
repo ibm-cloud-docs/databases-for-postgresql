@@ -86,7 +86,8 @@ More information is available in the [API Reference](https://{DomainName}/apidoc
 
 Creating a new user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information. Enter the user name and password in the JSON field under _Add Inline Configuration Parameters_. For example, {"existing_credentials":{"username":"Robert","password":"supersecure"}}. Basically, you send in the username and password, and _Service Credentials_ generates the connection strings with the credentials filled in.
 
-Generating credentials from an existing user does not check for or create that user. {: tip}
+Generating credentials from an existing user does not check for or create that user. 
+{: .tip}
 
 ## Connection String Breakdown
 
