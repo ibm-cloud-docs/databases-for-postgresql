@@ -66,7 +66,7 @@ The `ibm-cloud-base-user-ro` manages privileges for users that are created to ac
 
 You can bypass creating users through IBM Cloud entirely, and create users directly in PostgreSQL with `psql`. This allows you to make use of PostgreSQL's native [role and user management](https://www.postgresql.org/docs/current/database-roles.html). Users/roles created in `psql` have to have all of their privileges set manually, as well as privileges to the objects that they create. 
 
-Users that are created directly in PostgreSQL do not appear in _Service Credentials_, but you can [add them](/docs/services/databases-for-postgresql?topic=messages-for-postgresql-connection-strings#generating-service-credentials-for-existing-users) if you choose. 
+Users that are created directly in PostgreSQL do not appear in _Service Credentials_, but you can [add them](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#generating-service-credentials-for-existing-users) if you choose. 
 
 Note that these users are not integrated with IAM controls, even if added to _Service Credentials_.
 {: .tip}
