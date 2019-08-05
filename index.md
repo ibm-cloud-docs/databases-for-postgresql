@@ -63,8 +63,8 @@ Specific guidance on connecting with PostgreSQL drivers is on the [Connecting Ex
 ## Other {{site.data.keyword.cloud_notm}} Integrations
 
 {{site.data.keyword.databases-for-postgresql}} deployments offer other cloud services integrations. 
-- View events with [Activity Tracker](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-activity-tracker)
-- Monitor deployment resource use with the [Monitoring](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-monitoring) service.
+- View events with [Activity Tracker](/docs/services/databases-for-postgresql?topic=cloud-databases-activity-tracker)
+- Monitor deployment resource use with the [Monitoring](/docs/services/databases-for-postgresql?topic=cloud-databases-monitoring) service.
 - BYOK encryption is available if you use [Key Protect](/docs/services/databases-for-postgresql?topic=cloud-databases-key-protect)
 - [Service Endpoints Integration](/docs/services/databases-for-postgresql?topic=cloud-databases-service-endpoints) allows you to select public or private networking for your deployment at provision
 
