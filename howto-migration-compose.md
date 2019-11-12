@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019
-lastupdated: "2019-10-25"
+lastupdated: "2019-11-12"
 
 keywords: postgresql, databases, compose
 
