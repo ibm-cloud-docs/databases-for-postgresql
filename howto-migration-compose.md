@@ -19,15 +19,15 @@ subcollection: databases-for-postgresql
 # Migrating from a Compose PostgreSQL
 {: #compose-migrating}
 
-Current users of {{site.data.keyword.composeForPostgreSQL}} or Compose.com can migrate to {{site.data.keyword.databases-for-postgresql_full}} using a {{site.data.keyword.databases-for-postgresql}} read-only replica.
+Current users of {{site.data.keyword.composeForPostgreSQL}} or Compose.com can migrate to {{site.data.keyword.databases-for-postgresql_full}} by using a {{site.data.keyword.databases-for-postgresql}} read-only replica.
 
-The general process for a migration is to create an {{site.data.keyword.databases-for-postgresql}} read-only replica subscribed to a Compose Deployment as the source. Your data is copied from the Compose deployment and the replica. Once the initial copy is made, replication is established and any new changes are replicated from Compose over to the replica.
+The general process for a migration is to create an {{site.data.keyword.databases-for-postgresql}} read-only replica that is subscribed to a Compose Deployment as the source. Your data is copied from the Compose deployment and the replica. Once the initial copy is made, replication is established and any new changes are replicated from Compose over to the replica.
 
 When you want to migrate and switch your applications to use {{site.data.keyword.databases-for-postgresql}}, disconnect your applications from the Compose deployment, promote the replica to a stand-alone {{site.data.keyword.databases-for-postgresql}} deployment, and reconnect your applications to {{site.data.keyword.databases-for-postgresql}}. 
 
 Replication between Compose and {{site.data.keyword.databases-for-postgresql}} is set up to be a short-term operation only for the purposes of migration. It is not supported as a permanent replication strategy.
 
-Downtime is limited to the window where you stop your applications using the Compose deployment, promote the replica, and reconnect your applications to the new {{site.data.keyword.databases-for-postgresql}} deployment.
+Downtime is limited to the window where you stop your applications that use the Compose deployment, promote the replica, and reconnect your applications to the new {{site.data.keyword.databases-for-postgresql}} deployment.
 
 ## Setting Up on Compose
 
@@ -37,20 +37,20 @@ Next, you are going to want to take note of the size of your Compose deployment.
 
 Pick one of the connection strings from your Compose deployment to have the replica connect to. You provide the hostname and port to the replica when you provision it.
 
-Compose deployments only support having one read-only replica connected at a time. 
+Compose deployments support having only one read-only replica connected at a time. 
 
-If you use whitelists to limit connections to your Compose deployment, you need to either disable the whitelist before creating the read-only replica or whitelist the the range of IPs that your new {{site.data.keyword.databases-for-postgresql}} uses. Use the subnets listed on the [Whitelisting](/docs/services/databases-for-postgresql?topic=cloud-databases-whitelisting#whitelisting-cloud-databases-in-your-environment) page, and add all the ranges for the region where your {{site.data.keyword.databases-for-postgresql}} deployment lives to your Compose whitelist.
+If you use whitelists to limit connections to your Compose deployment, you need to either disable the whitelist before you create the read-only replica or whitelist the range of IP addresses that your new {{site.data.keyword.databases-for-postgresql}} uses. Use the subnets listed on the [Whitelisting](/docs/services/databases-for-postgresql?topic=cloud-databases-whitelisting#whitelisting-cloud-databases-in-your-environment) page, and add all the ranges for the region where your {{site.data.keyword.databases-for-postgresql}} deployment lives to your Compose whitelist.
 
 ## Setting Up on IBM Cloud
 
 First, if you don't already have one, you need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}. 
 
-You are going to provision a {{site.data.keyword.databases-for-postgresql}} read-only replica using either the Resource Controller API or CLI. Using the CLI is a little easier, so you can also install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli). If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs. You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) page. 
+You are going to provision a {{site.data.keyword.databases-for-postgresql}} read-only replica by using either the Resource Controller API or CLI. Using the CLI is a little easier, so you can also install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started). If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs. You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli) page. 
 
 
 ## Provisioning the Read-only Replica
 
-To provision the {{site.data.keyword.databases-for-postgresql}} deployment using the `ibmcloud` CLI, login to your account with the `ibmcloud login` command. Provisioning of services is handled by the Resource Controller, so you use the
+To provision the {{site.data.keyword.databases-for-postgresql}} deployment using the `ibmcloud` CLI, log in to your account with the `ibmcloud login` command. Provisioning of services is handled by the Resource Controller, so you use the
 [`ibmcloud resource service-instance-create`](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_create) command to provision {{site.data.keyword.databases-for-postgresql}}.
 ```
 ibmcloud resource service-instance-create <your-new-deployment-name> databases-for-postgresql standard <region> \
@@ -118,7 +118,7 @@ You can access the {{site.data.keyword.databases-for-postgresql}} deployment in 
 
 Most importantly, you can access the PostgreSQL database directly using `psql`, which can be used to monitor the replication status.
 
-The admin user from your Compose deployment can log into and execute commands on the read-only replica. Connect to both the Compose deployment and the {{site.data.keyword.databases-for-postgresql}} replica using `psql` and the admin user.
+The admin user from your Compose deployment can log in to and execute commands on the read-only replica. Connect to both the Compose deployment and the {{site.data.keyword.databases-for-postgresql}} replica using `psql` and the admin user.
 
 - On the Compose deployment run
   ```
@@ -130,32 +130,32 @@ The admin user from your Compose deployment can log into and execute commands on
   SELECT pg_last_xlog_replay_location();
   ```
 
-These commands output a PostgreSQL logical sequence number (lsn). If the two lsn match, the replica is caught up and synced to the Compose deployment. If the two lsn do not match, the replica is still has to catch up. If you want to compare how far apart they are, you can run the following on either member
+These commands output a PostgreSQL logical sequence number (`lsn`). If the two `lsn` match, the replica is caught up and synced to the Compose deployment. If the two `lsn` do not match, the replica still has to catch up. If you want to compare how far apart they are, you can run the following command on either member
 ```
 SELECT pg_size_pretty(pg_xlog_location_diff('<Output_from_Compose>','<Output_from_replica>'));
 ```
-During the migration the Compose deployment might scale. While the replica is subscribed to the deployment, transaction logs on the Compose deployment are kept to catch the replica up later. The extra logs might cause the Compose deployment to grow and scale. As the replication catches up, you might be able to scale the deployment back down.
+During the migration, the Compose deployment might scale. While the replica is subscribed to the deployment, transaction logs on the Compose deployment are kept to catch the replica up later. The extra logs might cause the Compose deployment to grow and scale. As the replication catches up, you might be able to scale the deployment back down.
 
-The goal is to make sure replication catches up after the initial subscription (which might take a while), but after that you want to check that replication is close to up to date.
+The goal is to make sure that replication catches up after the initial subscription (which might take a while), but after that you want to check that replication is close to up-to-date.
 
 When the replication is in sync or close to synced, you can shut down your applications that are writing to the Compose database. Perform a last check to ensure that the replica is completely caught up and all your data is migrated over.
 
 ## Promoting the Read-only Replica
 
-After the replication is complete and you have ensured that your data is migrated to the {{site.data.keyword.databases-for-postgresql}} replica, you need to promote the read-only replica into a stand-alone deployment. Promotion severs the connection between the replica and your source Compose deployment and they can not be rejoined. 
+After the replication is complete, you need to promote the read-only replica into a stand-alone deployment. Promotion severs the connection between the replica and your source Compose deployment and they can not be rejoined. 
 
 It is important promote the replica to a full {{site.data.keyword.databases-for-postgresql}} deployment promptly after the migration of your data is finished. The replication operation between Compose and {{site.data.keyword.databases-for-postgresql}} is not intended to be a long-term arrangement. Keep the window between creating the replica and promoting it as small as possible, ideally within a few days.
 
-To get the {{site.data.keyword.databases-for-postgresql}} deployment up and minimize your downtime, check the **Skip Initial Backup** option, which makes the deployment available more quickly. You can kick off an on-demand backup after promotion is finished.
+To get the {{site.data.keyword.databases-for-postgresql}} deployment up and minimize your downtime, check the **Skip Initial Backup** option, which makes the deployment available more quickly. You can start an on-demand backup after promotion is finished.
 
-You can either perform the promotion using the UI of your deployment, the promotion button is on the _Settings_ tab, in the _Replication_ section.
+You can either perform the promotion by using the UI of your deployment, the promotion button is on the _Settings_ tab, in the _Replication_ section.
 
 If you want to stick with using the CLI, you can use the [`ibmcloud cdb read-replica-promote`](https://cloud.ibm.com/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#read-replica-promote) command. 
 ```
 ibmcloud cdb read-replica-promote <your-new-deployment-name> 
 ```
 
-The CLI doesn't currently support the `--skip_initial_backup` flag. If minimizing downtime is important, kick off the promotion using the UI or API.
+The CLI doesn't currently support the `--skip_initial_backup` flag. If minimizing downtime is important, start the promotion by using the UI or API.
 {: .tip}
 
 To promote through the {{site.data.keyword.databases-for}} API, use the [`/deployments/{id}/remotes`](https://cloud.ibm.com/apidocs/cloud-databases-api#modify-read-only-replication-on-a-deployment) endpoint. Setting the "leader" to the empty string is what starts the promotion.
@@ -171,7 +171,7 @@ After the promotion is complete, you can switch your applications to connect to 
 
 ## Cleaning Up
 
-On your new {{site.data.keyword.databases-for-postgresql}} deployment, certain PostgreSQL extensions might need to be updated. You can connect using `pqsl` and check which extensions are available and what versions you should update. Users of PostGIS, for example, should check its versions from the table,
+On your new {{site.data.keyword.databases-for-postgresql}} deployment, certain PostgreSQL extensions might need to be updated. You can connect with `pqsl` and check which extensions are available and what versions you should update. Users of PostGIS, for example, should check its versions from the table,
 ```
 SELECT name, version FROM pg_available_extension_versions; 
 ```

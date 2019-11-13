@@ -24,7 +24,7 @@ You can set up your {{site.data.keyword.databases-for-postgresql_full}} deployme
 
 A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. As the name implies, read-only replicas support read transactions and can be used to balance databases that have both write-heavy and read-heavy operations. The read-only replica has a single PostgreSQL data member, and it is billed at the [same per member consumption rates as the leader](https://{DomainName}/catalog/services/databases-for-postgresql/).
 
-## Considerations
+## Read-only Replica Considerations
 
 - The read-only replica can exist in the same region as the source formation or in different one, enabling your data to be replicated across regions.
 
