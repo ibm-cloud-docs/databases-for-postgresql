@@ -118,17 +118,19 @@ You can access the {{site.data.keyword.databases-for-postgresql}} deployment in 
 
 Most importantly, you can access the PostgreSQL database directly using `psql`, which can be used to monitor the replication status.
 
+### Monitoring the Migration
+
 The admin user from your Compose deployment can log in to and execute commands on the read-only replica. Connect to both the Compose deployment and the {{site.data.keyword.databases-for-postgresql}} replica using `psql` and the admin user.
 
-- On the Compose deployment run
-  ```
-  SELECT pg_current_xlog_flush_location();
-  ```
+On the Compose deployment run
+```
+SELECT pg_current_xlog_flush_location();
+```
 
-- On the {{site.data.keyword.databases-for-postgresql}} replica run
-  ```
-  SELECT pg_last_xlog_replay_location();
-  ```
+On the {{site.data.keyword.databases-for-postgresql}} replica run
+```
+SELECT pg_last_xlog_replay_location();
+```
 
 These commands output a PostgreSQL logical sequence number (`lsn`). If the two `lsn` match, the replica is caught up and synced to the Compose deployment. If the two `lsn` do not match, the replica still has to catch up. If you want to compare how far apart they are, you can run the following command on either member
 ```
@@ -137,10 +139,10 @@ SELECT pg_size_pretty(pg_xlog_location_diff('<Output_from_Compose>','<Output_fro
 
 The goal is to make sure that replication catches up after the initial subscription (which might take a while), but after that you want to check that replication is close to up-to-date. When the replication is in sync or close to synced, you can shut down your applications that are writing to the Compose database. Perform a last check to ensure that the replica is completely caught up and all your data is migrated over.
 
-**Things to note on Compose**  
+### Things to note on Compose
 During the migration, the Compose deployment might scale. While the replica is subscribed to the deployment, transaction logs on the Compose deployment are kept to catch the replica up later. The extra logs might cause the Compose deployment to grow and scale. As the replication catches up, you might be able to scale the deployment back down.
 
-**Things to note on the Replica**  
+### Things to note on the Replica
 If you use the [Logging Integration](/docs/services/databases-for-postgresql?topic=cloud-databases-logging) to view logs on your {{site.data.keyword.databases-for-postgresql}} replica, you may see logs that contain
 ```
 2019-11-13 22:02:00 UTC [1207]: [1-1] user=ibm,db=postgres,client=127.0.0.1 ERROR:  could not get commit timestamp data
