@@ -148,6 +148,25 @@ If you use the [Logging Integration](/docs/services/databases-for-postgresql?top
 ```
 They can be safely ignored and no longer appear after the read-only replica is promoted.
 
+### Troubleshooting a Migration
+
+If replication is lagging and does not appear to catch up, check the following. On the Compose deployment, as the admin user, run
+```
+SELECT count(*) FROM pg_replication_slots WHERE slot_name = 'ibm_cloud_databases_migration';
+```
+
+If the command does not return a result, run the following command against Compose as the admin user.
+```
+SELECT pg_create_physical_replication_slot('ibm_cloud_databases_migration');
+```
+
+If replication does not start catching up, check the [logs](/docs/services/databases-for-postgresql?topic=cloud-databases-logging) on the {{site.data.keyword.databases-for-postgresql}} deployment for the following error message.
+```
+2019-11-25 17:04:16 UTC [296409]: [2-1] user=,db=,client= FATAL: could not receive data from WAL stream: ERROR: requested WAL segment 0000000C0000372C000000C5 has already been removed
+```
+
+If you see the message, {{site.data.keyword.databases-for-postgresql}} deployment will not sync back to the Compose deployment. You need to delete the {{site.data.keyword.databases-for-postgresql}} deployment, run the [cleanup](#cleaning-up) steps below, then create a new {{site.data.keyword.databases-for-postgresql}} read-only replica, starting the entire process again.
+
 ## Promoting the Read-only Replica
 
 After the replication is complete, you need to promote the read-only replica into a stand-alone deployment. Promotion severs the connection between the replica and your source Compose deployment and they can not be rejoined. 
