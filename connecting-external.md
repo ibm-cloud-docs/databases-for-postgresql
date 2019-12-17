@@ -45,7 +45,7 @@ Field Name|Index|Description
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-<!-– **begin generic content** -->
+<!-- begin generic content  -->
 
 Many PostgreSQL drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 ```
@@ -53,10 +53,11 @@ postgres://ibm_cloud_30399dec_4835_4967_a23d_30587a08d9a8:$PASSWORD@981ac415-5a3
 ```
 {: generic}
 
-<!-– **end generic content** -->
+<!-- end generic content  -->
 
 
-<!-– **begin Java example** -->
+
+<!-- begin Java example  -->
 
 This example uses the information from your connection string and the Java driver [`jdbc`](https://jdbc.postgresql.org/documentation/head/index.html) to connect to your database.
 {: java}
@@ -121,10 +122,11 @@ public class PGConnect {
 ```
 {: java}
 
-<!-– **end Java example** -->
+<!-- end Java example  -->
 
 
-<!-– **begin Python example** -->
+
+<!-- begin Python example  -->
 
 This example uses the information from your connection string and the Python driver [`Psycopg2`](https://wiki.postgresql.org/wiki/Psycopg2_Tutorial) to connect to your database. This is just a simple connection example, without error handling or retry logic and may not be suitable for production.
 {: python}
@@ -154,8 +156,7 @@ for row in rows:
 ```
 {: python}
 
-<!-– **end Python example** -->
-
+<!-- end Python example  -->
 
 ## Driver TLS and self-signed certificate support
 
