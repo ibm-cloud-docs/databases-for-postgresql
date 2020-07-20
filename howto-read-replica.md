@@ -76,6 +76,7 @@ ibmcloud resource service-instance-create <replica_name> databases-for-postgresq
   "members_disk_allocation_mb": "10240"
 }'
 ```
+{: pre}
 
 The same parameter is used to provision a read-only replica through the Resource Controller API.
 ```
@@ -93,6 +94,7 @@ curl -X POST \
     "members_disk_allocation_mb": "10240"
   }'
 ```
+{: pre}
 
 For both the CLI and API commands, you have to specify both the RAM and disk amounts, keeping in mind the minimum size is 2 GB RAM and 10 GB disk. You can optionally specify whether the read-only replica uses public or private endpoints. You are not able to specify a version for the read-only replica. The version is automatically set to the same major version as the leader deployment.
 
