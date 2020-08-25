@@ -18,6 +18,7 @@ Databases For PostgreSQL
 	/cloud-databases/cloud-databases-provisioning
 	howto-admin-password.md
 	howto-getting-connection-strings.md
+	howto-pgaudit.md
 	
 	{: .topicgroup}
 	Connecting to Databases for PostgreSQL
