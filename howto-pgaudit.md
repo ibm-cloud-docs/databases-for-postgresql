@@ -16,7 +16,7 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# pgAudit
+# Logging with pgAudit
 {: #pgaudit}
 
 The PostgreSQL Audit Extension (pgAudit) provides enablement of session logging for your {{site.data.keyword.databases-for-postgresql_full}} deployments. 
@@ -27,7 +27,7 @@ You can configure Session logging parameters that will log all activity for sets
 
 ### Event Types
 
-Event types that we support across all versions 
+Session logging is configured per event type. The supported event types across all versions are:  
 * FUNCTION 
 * ROLE
 * DDL
@@ -36,8 +36,8 @@ Event types that we support across all versions
 The additional MISC_SET type is only supported in PostgreSQL 12.
 {: .note}
 
-Details of these event types and what they log are here:
-https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog
+Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog).
+
 
 ### Enabling pgAudit
 
