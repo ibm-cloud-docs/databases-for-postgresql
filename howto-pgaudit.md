@@ -23,7 +23,7 @@ The PostgreSQL Audit Extension (pgAudit) provides enablement of session logging 
 
 ### Session Logging
 
-You can configure Session logging parameters that will log all activity for sets of audit event types. Session logging is enabled for the whole DB cluster and is either `on` or `off` for a given event type.
+Session logging is off by default. You can enable Session logging parameters that will log all activity for sets of audit event types. Session logging is enabled for the whole DB cluster and is either `on` or `off` for a given event type.
 
 ### Event Types
 
@@ -39,11 +39,9 @@ The additional MISC_SET type is only supported in PostgreSQL 12.
 Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog).
 
 
-### Enabling pgAudit
+### Enabling pgAudit session logging
 
-pgAudit is enabled directly in the database. No API or CLI access is provided. 
-
-To enable pgAudit, connect as the admin user and call the `set_pgaudit_session_logging` function with the appropriate events.
+To enable pgAudit session logging, connect as the admin user and call the `set_pgaudit_session_logging` function with the appropriate event parameters specified. Session logging is enabled directly in the database and no API or CLI access is provided. 
 
 For example, to enable DDL and ROLE you would call:
 ```
