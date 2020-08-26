@@ -21,11 +21,11 @@ subcollection: databases-for-postgresql
 
 The PostgreSQL Audit Extension (pgAudit) provides enablement of session logging for your {{site.data.keyword.databases-for-postgresql_full}} deployments. 
 
-### Session Logging
+## Session Logging
 
 Session logging is off by default. You can enable Session logging parameters that will log all activity for sets of audit event types. Session logging is enabled for the whole DB cluster and is either `on` or `off` for a given event type.
 
-### Event Types
+## Event Types
 
 Session logging is configured per event type. The supported event types across all versions are:  
 * FUNCTION 
@@ -39,7 +39,7 @@ The additional MISC_SET type is only supported in PostgreSQL 12.
 Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog).
 
 
-### Enabling pgAudit session logging
+## Enabling pgAudit session logging
 
 To enable pgAudit session logging, connect as the admin user and call the `set_pgaudit_session_logging` function with the appropriate event parameters specified. Session logging is enabled directly in the database and no API or CLI access is provided. 
 
@@ -52,7 +52,7 @@ SELECT public.set_pgaudit_session_logging('{ddl, role}');
 Any subsequent calls replace the existing configuration; they are not additive. For example, a subsequent call to `SELECT public.set_pgaudit_session_logging('{misc}');` would result in logging only misc while disabling ddl and role.
 {: .note}
 
-### Disabling pgAudit
+## Disabling pgAudit
 
 To disable audit logging: call the same function with `none` specified. For example:
 ```
@@ -63,7 +63,7 @@ SELECT public.set_pgaudit_session_logging('{none}');
 Changing audit levels happens immediately when calling the function; it will not interrupt the database activity.
 {: .note}
 
-### Audit Logs
+## Audit Logs
 
 Audit events appear in LogDNA with the following format:
 ```
