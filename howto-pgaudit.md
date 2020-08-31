@@ -75,5 +75,4 @@ If you want to see the current log level, you can run the command:
 ```
 show pgaudit.log;
 ```
-{: .pre
-}
+{: .pre}
