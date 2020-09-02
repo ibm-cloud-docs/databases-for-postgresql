@@ -32,7 +32,7 @@ Session logging is configured per event type. The supported event types across a
 * ROLE
 * DDL
 * MISC
-* MISC_SET (this additional type is only supported in PostgreSQL 12)
+* MISC_SET (this additional type is only supported in PostgreSQL 12 or greater)
 
 Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog).
 
