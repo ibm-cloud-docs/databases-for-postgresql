@@ -52,11 +52,11 @@ Many PostgreSQL drivers are able to make a connection to your deployment when gi
 ```
 postgres://ibm_cloud_30399dec_4835_4967_a23d_30587a08d9a8:$PASSWORD@981ac415-5a35-4ac7-b6bb-fb609326dc42.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32704/ibmclouddb?sslmode=verify-full
 ```
-{: .pre}
+ {: .codeblock}
 
 This example uses the information from your connection string and the Java driver [`jdbc`](https://jdbc.postgresql.org/documentation/head/index.html) to connect to your database.
 
-```
+```java
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -114,12 +114,12 @@ public class PGConnect {
     }
 }
 ```
-{: .pre}
+ {: .codeblock}
 
 
 This example uses the information from your connection string and the Python driver [`Psycopg2`](https://wiki.postgresql.org/wiki/Psycopg2_Tutorial) to connect to your database. This is just a simple connection example, without error handling or retry logic and may not be suitable for production.
 
-```
+```python
 import psycopg2
 
 try:
