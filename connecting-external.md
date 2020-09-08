@@ -142,11 +142,11 @@ print("List of databases:")
 for row in rows:
     print("  ",row[0])
 ```
-{: .pre}
+{: .codeblock}
 
 This example uses the information from your connection string and the Node driver [`node-postgres`](https://node-postgres.com/) to connect to your database.
 
-```
+```java
 const pg = require("pg");
 const fs = require("fs");
 
@@ -182,7 +182,7 @@ let client = new pg.Client({ connectionString: connectionString,
     }
 });
 ```
-{: .pre}
+{: .codeblock}
 
 ## Driver TLS and self-signed certificate support
 
