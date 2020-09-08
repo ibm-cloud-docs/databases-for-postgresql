@@ -60,7 +60,7 @@ postgres://ibm_cloud_30399dec_4835_4967_a23d_30587a08d9a8:$PASSWORD@981ac415-5a3
 This example uses the information from your connection string and the Java driver [`jdbc`](https://jdbc.postgresql.org/documentation/head/index.html) to connect to your database.
 {: java}
 
-```java
+```
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
