@@ -62,7 +62,7 @@ For more information, see the [API Reference](https://cloud.ibm.com/apidocs/clou
   - Recommended max value: 25% of available RAM
   - Restarts database? - **Yes** 
   
-**Note:** - The recommended memory allocation for shared_buffers is 25% of the deployment's RAM. **Warning: Setting `shared_buffers` any higher can result in memory issues that cause the database to crash, and might decrease the performance of your Database as data is most likely buffered by the OS already.** Setting `shared_buffers` equal, close to equal, or higher than the amount of allocated memory prevents the database from starting. The setting specifies the number of 8 KiB shared memory buffers. 
+**Note:** The recommended memory allocation for shared_buffers is 25% of the deployment's RAM. **Warning: Setting `shared_buffers` any higher can result in memory issues that cause the database to crash, and might decrease the performance of your Database as data is most likely buffered by the OS already.** Setting `shared_buffers` equal, close to equal, or higher than the amount of allocated memory prevents the database from starting. The setting specifies the number of 8 KiB shared memory buffers. 
   
 For example, 1 GB of `shared_buffers` space is `1048576 KiB`, and (`1048576 KiB / 8 KiB`) is `131072` buffers. Your deployment can use extra RAM for caching and performance, even without allocating it to `shared_buffers`. You do not have to configure the database to use all of the allocated RAM in order for your deployment to use it.
 
