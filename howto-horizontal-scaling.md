@@ -18,7 +18,7 @@ subcollection: databases-for-postgresql
 {:tip: .tip}
 
 
-# Adding {{site.data.keyword.databases-for-postgresql_full}} Nodes
+# Adding PostgreSQL Nodes
 {: #horizontal-scaling}
 
 It is possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally by adding more nodes. If your deployment starts to strain or slowdown, adding nodes increases capacity and reliability. When a node is added, {{site.data.keyword.databases-for-postgresql}} automatically balances the workload across all the nodes in your deployment.
