@@ -23,6 +23,9 @@ subcollection: databases-for-postgresql
 
 It is possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally by adding more nodes. If your deployment starts to strain or slowdown, adding nodes increases capacity and reliability. When a node is added, {{site.data.keyword.databases-for-postgresql}} automatically balances the workload across all the nodes in your deployment.
 
+Horizontal scaling can only increase disk and memory allotments. Nodes cannot be scaled down. 
+{: .note}
+
 Nodes that you add to your deployment are added with the amount of disk, memory, and CPU as the other nodes currently in your deployment. A visual representation of your data members and their resource allocation is available on the _Settings_ tab of your deployment's _Manage_ page. 
 
 ![The Scale Resources Panel in _Settings_](images/settings-scaling.png)
