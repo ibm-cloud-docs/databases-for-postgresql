@@ -21,7 +21,7 @@ subcollection: databases-for-postgresql
 # Adding PostgreSQL Members
 {: #horizontal-scaling}
 
-It is possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally by adding more members. If your deployment starts to strain or slow down, adding members increases capacity and reliability. When a member is added, {{site.data.keyword.databases-for-postgresql}} automatically balances the workload across all the members in your deployment.
+It is possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally by adding more members. Adding members increases the reliability of deployment by spreading data across additional `Availability Zones` (where available) and allow for more reliably synchronous replication. Adding a new member does not spread loads nor help with capacity in your deployment.
 
 Horizontal scaling can only increase disk and memory allotments. Members cannot be scaled down. 
 {: .note}
