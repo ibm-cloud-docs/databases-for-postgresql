@@ -21,7 +21,7 @@ subcollection: databases-for-postgresql
 # Adding PostgreSQL Members
 {: #horizontal-scaling}
 
-It is possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally by adding more members. Adding members increases the reliability of deployment by spreading data across additional `Availability Zones` (where available) and allow for more reliably synchronous replication. Adding a new member does not spread loads nor help with capacity in your deployment.
+It is possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally by adding more members. Adding members increases the reliability of deployment by spreading data across extra `Availability Zones` (where available) and allow for more reliably synchronous replication. Adding a member does not spread loads nor help with capacity in your deployment. 
 
 Horizontal scaling can only increase disk and memory allotments. Members cannot be scaled down. 
 {: .note}
@@ -37,7 +37,7 @@ Billing is based on the _total_ amount of resources that are allocated to the se
 
 ## Adding Members through the API
 
-The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API.
+The _Foundation Endpoint_ that is shown on the _Overview_ pane of your service provides the base URL to access this deployment through the API.
 
 To view the current and scalable resources on a deployment, use the [/deployments/{id}/groups](https://cloud.ibm.com/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl)
 ```
