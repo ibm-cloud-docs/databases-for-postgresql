@@ -1,9 +1,9 @@
 ---
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-12-04"
+  years: 2019, 2021
+lastupdated: "2021-01-20"
 
-keywords: postgresql, databases
+keywords: postgresql, databases, config
 
 subcollection: databases-for-postgresql
 
@@ -103,7 +103,7 @@ pg_statio_user_indexes;
   - Notes - [You might need to scale before you increase max connections.](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#connection-limits-ha)
 
 [`max_prepared_transactions`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)
-  - Default - 0
+  - Default - `0`
   - Restarts database? - **YES**
   - Notes - The default value of `0` disables use of [prepared transactions](https://www.postgresql.org/docs/current/sql-prepare-transaction.html) and is strongly recommended unless you need to use them.
 
@@ -119,11 +119,31 @@ pg_statio_user_indexes;
   - Notes - It is recommended to leave this setting at the default. Only increase it if you profiled SQL queries and have observed inefficient bitmap heap scans. As [IOPS are tied to disk size](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance#disk-iops), increasing this setting on default or smaller sized disks is also not recommended.
 
 [`deadlock_timeout`](https://www.postgresql.org/docs/current/runtime-config-locks.html)
-  - Default - 10000
+  - Default - `10000`
   - Restarts database - No
   - Options - Minimum value of 100
   - Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). Setting this number too low negatively impacts performance.
 
+[`log_connections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-CONNECTIONS)
+  - Default - `off`
+  - Restarts database - No
+  - Options - Values of `on` or `off` 
+  - Notes - Setting this value to `on` will make the logs very verbose. It will also show the connections of the monitoring tooling as it extracts metrics every 60 seconds. When set to `off`, there is no change in behavior to the default setting and no connections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). If "on" is set, the DB logs in logdna will show lines similar to this example:
+    ```
+    2021-01-18 15:39:43 UTC [[unknown]] [00000] [1200]: [1-1] user=[unknown],db=[unknown],client=127.0.0.1 LOG:  connection received: host=127.0.0.1 port=43380
+    ```
+   
+  
+[`log_disconnections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-DISCONNECTIONS)
+  - Default - `off`
+  - Restarts database - No
+  - Options - Values of `on` or `off` 
+  - Notes - Setting this value to `on` will make the logs very verbose. It will also show the disconnections of the monitoring tooling as it extracts metrics every 60 seconds. When set to `off`, there is no change in behavior to the default setting and no disconnections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). If "on" is set, the DB logs in logdna will show lines similar to this example:
+    ```
+    2021-01-18 15:39:47 UTC [psql] [00000] [1200]: [3-1] user=admin,db=ibmclouddb,client=127.0.0.1 LOG:  disconnection: session time: 0:00:03.415 user=admin database=ibmclouddb host=127.0.0.1 port=43380
+    ``` 
+   
+  
 ### WAL Settings
 
 [`archive_timeout`](https://www.postgresql.org/docs/current/runtime-config-wal.html)
