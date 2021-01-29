@@ -128,21 +128,25 @@ pg_statio_user_indexes;
   - Default - `off`
   - Restarts database - No
   - Options - Values of `on` or `off` 
-  - Notes - Setting this value to `on` will make the logs very verbose. It will also show the connections of the monitoring tooling as it extracts metrics every 60 seconds. When set to `off`, there is no change in behavior to the default setting and no connections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). If "on" is set, the DB logs in logdna will show lines similar to this example:
+  - Notes - Setting this value to `on` will make the logs very verbose. It will also show the connections of the monitoring tooling as it extracts metrics every 60 seconds. When set to `off`, there is no change in behavior to the default setting and no connections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). If `on` is set, the logs will show lines similar to this example:
     ```
     2021-01-18 15:39:43 UTC [[unknown]] [00000] [1200]: [1-1] user=[unknown],db=[unknown],client=127.0.0.1 LOG:  connection received: host=127.0.0.1 port=43380
     ```
-   
   
 [`log_disconnections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-DISCONNECTIONS)
   - Default - `off`
   - Restarts database - No
   - Options - Values of `on` or `off` 
-  - Notes - Setting this value to `on` will make the logs very verbose. It will also show the disconnections of the monitoring tooling as it extracts metrics every 60 seconds. When set to `off`, there is no change in behavior to the default setting and no disconnections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). If "on" is set, the DB logs in logdna will show lines similar to this example:
+  - Notes - Setting this value to `on` will make the logs very verbose. It will also show the disconnections of the monitoring tooling as it extracts metrics every 60 seconds. When set to `off`, there is no change in behavior to the default setting and no disconnections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). If `on` is set, the logs will show lines similar to this example:
     ```
     2021-01-18 15:39:47 UTC [psql] [00000] [1200]: [3-1] user=admin,db=ibmclouddb,client=127.0.0.1 LOG:  disconnection: session time: 0:00:03.415 user=admin database=ibmclouddb host=127.0.0.1 port=43380
     ``` 
-   
+
+[`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config-logging.html)
+  - Default - `100`
+  - Restarts database - No
+  - Options - Minimum value of 100
+  - Notes - Statements that take longer than the specified number of milliseconds are logged.   
   
 ### WAL Settings
 
@@ -151,13 +155,6 @@ pg_statio_user_indexes;
   - Restarts database - No
   - Options - Minimum value of 300
   - Notes - The number of seconds to wait before forcing a switch to the next WAL file. If the number of seconds has passed and if there has been database activity, the server switches to a new segment. Effectively limits the amount of time data can remain unarchived.
-
-[`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config-logging.html)
-  - Default - `100`
-  - Restarts database - No
-  - Options - Minimum value of 100
-  - Notes - Statements that take longer than the specified number of milliseconds are logged.
-
 
 The next three settings `wal_level`, `max_replication_slots` and `max_wal_senders` enable use of the [`wal2json` logical decoding plug-in](/docs/databases-for-postgresql?topic=databases-for-postgresql-wal2json). Anyone not using this plug-in should leave these settings at the default.
 
