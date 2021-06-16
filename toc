@@ -59,6 +59,11 @@ Databases For PostgreSQL
 		howto-extensions.md
 		howto-wal2json.md
 		howto-pgaudit.md
+	
+	{: .topicgroup}
+	IBM Cloud Databases for Satellite
+		howto-sat-location.md
+
 
 	{: .topicgroup}
 	Tutorials
