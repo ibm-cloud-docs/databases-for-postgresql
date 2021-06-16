@@ -19,7 +19,7 @@ subcollection: databases-for-postgresql
 {:external: target="_blank" .external}
 {:step: data-tutorial-type='step'} <!-- Apply to steps for automatic numbering -->
 
-# Getting started
+# Getting started with IBM Cloud™ Databases Satellite
 {: #getting-started}
 
 <!-- The title of your H1 should be Getting started with _service-name_, where _service-name_ is the non-trademarked short version conref. -->
@@ -28,13 +28,20 @@ Set up an IBM Cloud™ Databases Satellite location to represent a data center t
 
 ## Before you begin
 {: #prereqs}
-_There should be a one sentence intro to the prereqs. If you don't have prereqs, remove this section_ For example: "You need an [{{site.data.keyword.Bluemix}} account](https://cloud.ibm.com/registration/), an instance of the _ServiceName_ service, and the following commands to check if you are properly set up."
+- You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
+- And a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
+- [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
+_There should be a one sentence intro to the prereqs. If you don't have prereqs, remove this section_ For example: "You need an [{{site.data.keyword.Bluemix}} account](https://cloud.ibm.com/registration/), an instance of the _ServiceName_ service, and the following commands to check if you are properly set up.".-->
 
 <!-- For each step in your tutorial, add an H2 section. The title should be task-oriented and descriptive. Recommendation is no more than 9 steps. -->
 
-## _Title should be task oriented and descriptive_
+## Setting Up a Satellite Service 
 {: #anchor_value}
-{: step}
+
+{: step} Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
+{: step} now do this
+{: step} then do this
+
 
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
 
