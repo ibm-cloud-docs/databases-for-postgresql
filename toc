@@ -64,7 +64,6 @@ Databases For PostgreSQL
 	IBM Cloud Databases for Satellite
 		howto-sat-location.md
 
-
 	{: .topicgroup}
 	Tutorials
 		/cloud-databases/cloud-databases-tutorial-k8s-app
