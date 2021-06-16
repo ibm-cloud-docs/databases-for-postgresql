@@ -19,7 +19,7 @@ subcollection: databases-for-postgresql
 {:external: target="_blank" .external}
 {:step: data-tutorial-type='step'} <!-- Apply to steps for automatic numbering -->
 
-# Getting started with IBM Cloud Databases for Satellite
+# Getting started
 {: #getting-started}
 
 <!-- The title of your H1 should be Getting started with _service-name_, where _service-name_ is the non-trademarked short version conref. -->
