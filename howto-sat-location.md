@@ -17,7 +17,6 @@ subcollection: databases-for-postgresql
 {:tip: .tip}
 {:note: .note}
 {:external: target="_blank" .external}
-{:step: data-tutorial-type='step'} <!-- Apply to steps for automatic numbering -->
 
 # Getting started with IBM Cloud™ Databases Satellite
 {: #getting-started}
