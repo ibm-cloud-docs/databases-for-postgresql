@@ -37,6 +37,7 @@ Set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite loca
 1. Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 1. Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
 1. When creating Satellite location, choose `Manual setup`.
+
 ![Choose manual setup from Setup card options](images/manual-setup.png)
 
 ## Edit Satellite Location
