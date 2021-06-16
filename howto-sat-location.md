@@ -24,23 +24,25 @@ subcollection: databases-for-postgresql
 
 <!-- The title of your H1 should be Getting started with _service-name_, where _service-name_ is the non-trademarked short version conref. -->
 
-Set up an IBM Cloud™ Databases Satellite location to represent a data center that you fill with your own infrastructure resources, and start running IBM Cloud™ Databases on your own infrastructure.{: shortdesc}
+Set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite location to represent a data center that you fill with your own infrastructure resources, and start running IBM Cloud™ Databases on your own infrastructure.{: shortdesc}
 
 ## Before you begin
 {: #prereqs}
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-- And a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
+- You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
-_There should be a one sentence intro to the prereqs. If you don't have prereqs, remove this section_ For example: "You need an [{{site.data.keyword.Bluemix}} account](https://cloud.ibm.com/registration/), an instance of the _ServiceName_ service, and the following commands to check if you are properly set up.".-->
-
-<!-- For each step in your tutorial, add an H2 section. The title should be task-oriented and descriptive. Recommendation is no more than 9 steps. -->
 
 ## Setting Up a Satellite Service 
-{: #anchor_value}
 
-{: step} Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-{: step} now do this
-{: step} then do this
+1. Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
+1. Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
+1. When creating Satellite location, choose `Manual setup`.
+![Choose manual setup from Setup card options](images/manual-setup.png)
+
+## Edit Satellite Location
+- Name: xxx
+- Resource group: xxx
+
 
 
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
