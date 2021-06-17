@@ -67,7 +67,7 @@ This tutorial focuses on the steps required to set up an IBM Cloud Databases for
 - You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
 
-## Step 1: Setting Up a Satellite Service 
+## Setting Up a Satellite Service 
 {: step}
 
 1. Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
@@ -76,12 +76,13 @@ This tutorial focuses on the steps required to set up an IBM Cloud Databases for
 
 ![Choose manual setup from Setup card options](images/manual-setup.png)
 
-## Step 2: Create a Satellite location
+## Create a Satellite location
 {: step}
+
 1. Complete the form to create your Satellite location:
-- Provide a name.
-- Choose a Resource group.
-- Enter name for the host zone. 
+  - Provide a name.
+  - Choose a Resource group.
+  - Enter name for the host zone. 
 
 Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3.
 {: note}
@@ -90,9 +91,11 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
 
 ![Fill out form to create satellite location](images/satellite-location.png)
 
-3. Attach hosts to your location
+## Attach hosts to your location
+{: step}
+
 - Download the generated script, which contains location-specific information. 
--From the script, extract three parameters:
+- From the script, extract three parameters:
   - `HOST_QUEUE_TOKEN`
   - `ACCOUNT_ID`
   - `CONTROLLER_ID`
@@ -107,7 +110,9 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
   - internal nodes: 3 * 8x32 hosts (AWS m5d.2xlarge)
   - customer nodes : 3 * 32x128 hosts (AWS m5d.8xlarge), (multiples of three)
   - no edge nodes needed
-5. Configure the control plane
+## Configure the control plane
+{: step}
+
 - Assign 3 hosts (8x32) to the Satellite control plane and assign the zones of those worker nodes, accordingly.
 
 These newly assigned nodes will take several minutes to appear in the Satellite UI.
