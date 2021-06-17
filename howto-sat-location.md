@@ -80,10 +80,10 @@ This tutorial focuses on the steps required to set up an IBM Cloud Databases for
 {: step}
 1. Complete the form to create your Satellite location:
 - Provide a name.
-- Choose a Resource group
+- Choose a Resource group.
 - Enter name for the host zone. 
 
-Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3
+Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3.
 {: note}
 
 2. Click `Done editing` to complete your Satellite creation.
