@@ -8,15 +8,45 @@ keywords: IBM Cloud, databases, Satellite, ICD, get started
 
 subcollection: databases-for-postgresql
 
+content-type: tutorial
+services: databases-for-postgresql
+completion-time: 15m
+
 ---
 
-{:shortdesc: .shortdesc}
-{:screen: .screen}  
-{:codeblock: .codeblock}  
+{:codeblock: .codeblock}
+{:screen: .screen}
+{:download: .download}
+{:external: target="_blank" .external}
+{:faq: data-hd-content-type='faq'}
+{:gif: data-image-type='gif'}
+{:important: .important}
+{:note: .note}
 {:pre: .pre}
 {:tip: .tip}
-{:note: .note}
-{:external: target="_blank" .external}
+{:preview: .preview}
+{:deprecated: .deprecated}
+{:beta: .beta}
+{:term: .term}
+{:shortdesc: .shortdesc}
+{:script: data-hd-video='script'}
+{:support: data-reuse='support'}
+{:table: .aria-labeledby="caption"}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:help: data-hd-content-type='help'}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:tsSymptoms: .tsSymptoms}
+{:java: .ph data-hd-programlang='java'}
+{:javascript: .ph data-hd-programlang='javascript'}
+{:swift: .ph data-hd-programlang='swift'}
+{:curl: .ph data-hd-programlang='curl'}
+{:video: .video}
+{:step: data-tutorial-type='step'}
+{:tutorial: data-hd-content-type='tutorial'}
+{:ui: .ph data-hd-interface='ui'}
+{:cli: .ph data-hd-interface='cli'}
+{:api: .ph data-hd-interface='api'}
 
 # Getting started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #getting-started}
@@ -49,9 +79,13 @@ This tutorial focuses on the steps required to set up an IBM Cloud Databases for
 ## Step 2: Create a Satellite location
 {: step}
 1. Complete the form to create your Satellite location:
-- Provide a name
-- Resource group
-- Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3
+- Provide a name.
+- Choose a Resource group
+- Enter name for the host zone. 
+
+Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3
+{: note}
+
 2. Click `Done editing` to complete your Satellite creation.
 
 ![Fill out form to create satellite location](images/satellite-location.png)
