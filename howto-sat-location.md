@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-11-12"
+  years: 2021
+lastupdated: "2021-06-16"
 
-keywords: IBM Cloud, databases, Satellite, ICD
+keywords: IBM Cloud, databases, Satellite, ICD, get started
 
 subcollection: databases-for-postgresql
 
@@ -20,18 +20,25 @@ subcollection: databases-for-postgresql
 
 # Getting started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #getting-started}
-
-<!-- The title of your H1 should be Getting started with _service-name_, where _service-name_ is the non-trademarked short version conref. -->
+{: toc-content-type="tutorial"}
+{: toc-completion-time="15m"}
 
 With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can choose a location to represent a data center that you fill with your own infrastructure resources and start running IBM Cloud™ Databases on your own infrastructure.
+{: shortdesc}
+
+# Objective
+{: #objective}
+
+This tutorial focuses on the steps required to set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service instance and location.
 
 ## Before you begin
-{: #prereqs}
+{: #before-start}
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
 
 ## Step 1: Setting Up a Satellite Service 
+{: step}
 
 1. Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 1. Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
@@ -40,6 +47,7 @@ With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can 
 ![Choose manual setup from Setup card options](images/manual-setup.png)
 
 ## Step 2: Create a Satellite location
+{: step}
 1. Complete the form to create your Satellite location:
 - Provide a name
 - Resource group
