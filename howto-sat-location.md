@@ -31,7 +31,7 @@ Set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite loca
 - You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
 
-## Setting Up a Satellite Service 
+## Step 2: Setting Up a Satellite Service 
 
 1. Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 1. Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
@@ -39,11 +39,12 @@ Set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite loca
 
 ![Choose manual setup from Setup card options](images/manual-setup.png)
 
+## Step 2: Create Satellite location
 1. Complete the form to create your Satellite location:
 - Provide a name
 - Resource group
-- Zones 1, 2, and 3 should retain their default values: zone-1, zone-2, zone-3
-1. Click `Done editing` to complete your Satellite creation.
+- Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3
+2. Click `Done editing` to complete your Satellite creation.
 
 ![Fill out form to create satellite location](images/satellite-location.png)
 
