@@ -39,10 +39,13 @@ Set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite loca
 
 ![Choose manual setup from Setup card options](images/manual-setup.png)
 
-## Edit Satellite Location
-- Name: xxx
-- Resource group: xxx
+1. Complete the form to create your Satellite location:
+- Provide a name
+- Resource group
+- Zones 1, 2, and 3 should retain their default values: zone-1, zone-2, zone-3
+1. Click `Done editing` to complete your Satellite creation.
 
+![Fill out form to create satellite location](images/satellite-location.png)
 
 
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
