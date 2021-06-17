@@ -90,45 +90,28 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
 
 ![Fill out form to create satellite location](images/satellite-location.png)
 
+3. Attach hosts to your location
+- Download the generated script, which contains location-specific information. 
+-From the script, extract three parameters:
+  - `HOST_QUEUE_TOKEN`
+  - `ACCOUNT_ID`
+  - `CONTROLLER_ID`
 
-<!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
+![Extract parameters from the generated script](images/script-params.png)
 
-_If you have substeps, introduce them and then follow with the steps as paragraph chunks. Do not use numbers or substep labels for a single substep or unless it is a true sequence._
+[View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#attach-hosts-to-location)
 
-_For commands, introduce the command and then surround what the user must enter in the command prompt with three backticks, set the programming language if it applies, and follow with a pre attribute if you want the copy button applied._ For example:
-"Now you're ready to start working with the app. First, clone the repo with the sample app code.
-  ```sh
-  git clone https://github.com/IBM-Cloud/get-started-node
-  ```
-  {: pre}
+4. To attach hosts to the new location, run the terraform script with the extracted parameters.
+- Satellite control plane: 3 * 8x32 hosts (AWS m5d.2xlarge)
+- Per ICD dataplane cluster
+  - internal nodes: 3 * 8x32 hosts (AWS m5d.2xlarge)
+  - customer nodes : 3 * 32x128 hosts (AWS m5d.8xlarge), (multiples of three)
+  - no edge nodes needed
+5. Configure the control plane
+- Assign 3 hosts (8x32) to the Satellite control plane and assign the zones of those worker nodes, accordingly.
 
-  Then, change the directory to where the sample app is located.
+These newly assigned nodes will take several minutes to appear in the Satellite UI.
+{: note}
 
-  ```sh
-  cd get-started-node
-  ```
-  {: pre}
+[View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#assign-hosts-to-cp)
 
-## _Title should be task oriented and descriptive_
-{: #anchor_value}
-{: step}
-
-## _Title should be task oriented and descriptive_
-{: #anchor_value}
-{: step}
-
-## _Title should be task oriented and descriptive_
-{: #anchor_value}
-{: step}
-
-_If you have any "tips" to include for this step, add the content in the flow where you would like it to appear. This information should be not be required information for completing the step, but helpful information in explaining additional concepts about what the user is doing in the step. It should be in the following format:_
-
-One to two sentences of content that can include inline links or lists.
-{: tip}
-
-_You can have multiple "tips" per step. Each tip will output with a *Tip:* label and be formatted in a nested, styled box._
-
-## Next steps
-{: #anchor_value}
-
-_What's the single thing the user needs to do next? Think "guided journey." Either provide information that leads the user to production use, for example HA, how to make a service secure, or how to connect to on-premise data. Or you can point the user to another tutorial. Give a choice between two options max._
