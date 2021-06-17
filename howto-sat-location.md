@@ -110,6 +110,7 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
   - internal nodes: 3 * 8x32 hosts (AWS m5d.2xlarge)
   - customer nodes : 3 * 32x128 hosts (AWS m5d.8xlarge), (multiples of three)
   - no edge nodes needed
+  
 ## Configure the control plane
 {: step}
 
