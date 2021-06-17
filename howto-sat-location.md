@@ -23,7 +23,7 @@ subcollection: databases-for-postgresql
 
 <!-- The title of your H1 should be Getting started with _service-name_, where _service-name_ is the non-trademarked short version conref. -->
 
-Set up an IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite location to represent a data center that you fill with your own infrastructure resources, and start running IBM Cloud™ Databases on your own infrastructure.{: shortdesc}
+With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can choose a location to represent a data center that you fill with your own infrastructure resources and start running IBM Cloud™ Databases on your own infrastructure.
 
 ## Before you begin
 {: #prereqs}
