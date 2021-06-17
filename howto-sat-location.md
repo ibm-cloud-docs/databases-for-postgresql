@@ -18,7 +18,7 @@ subcollection: databases-for-postgresql
 {:note: .note}
 {:external: target="_blank" .external}
 
-# Getting started with IBM Cloud™ Databases Satellite
+# Getting started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #getting-started}
 
 <!-- The title of your H1 should be Getting started with _service-name_, where _service-name_ is the non-trademarked short version conref. -->
