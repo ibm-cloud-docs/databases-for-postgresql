@@ -60,7 +60,7 @@ completion-time: 15m
 <!-- The title of your tutorial should be in active voice and and start with a verb. If you include product names, makes sure to use the non-trademarked short version conref. -->
 <!-- Make sure each H1/H2/H3/etc. heading is _unique_ to your tutorial by adding a short but human-readable identifier. For example, instead of just "#overview", use "#cd-kube-overview" -->
 
-# Create a Storage Configuration for newly created location
+# Creating Storage Configuration for a newly created location
 {: #tutorial-sc-sat}
 {: toc-content-type="tutorial"} <!-- Always use this value -->
 {: toc-completion-time="10m"} <!-- Use same value from completion-time metadata above-->
@@ -101,7 +101,6 @@ To review any of the above steps, refer to the [Getting Started with IBM Cloud D
 
 ## Invoke CLI command
 {: #cd-postgresql-clicommand}
-{: step}
 
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
 
