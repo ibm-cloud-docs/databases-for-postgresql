@@ -70,16 +70,17 @@ This tutorial focuses on the steps required to set up an IBM Cloud Databases for
 ## Setting Up a Satellite Service 
 {: step}
 
-1. Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-1. Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
-1. When creating Satellite location, choose `Manual setup`.
+- Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
+- Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
+- When creating Satellite location, choose `Manual setup`.
 
 ![Choose manual setup from Setup card options](images/manual-setup.png)
+
 
 ## Create a Satellite location
 {: step}
 
-1. Complete the form to create your Satellite location:
+- Complete the form to create your Satellite location:
   - Provide a name.
   - Choose a Resource group.
   - Enter name for the host zone. 
@@ -87,7 +88,7 @@ This tutorial focuses on the steps required to set up an IBM Cloud Databases for
 Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3.
 {: note}
 
-2. Click `Done editing` to complete your Satellite creation.
+- Click `Done editing` to complete your Satellite creation.
 
 ![Fill out form to create satellite location](images/satellite-location.png)
 
@@ -104,7 +105,7 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
 
 [View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#attach-hosts-to-location)
 
-4. To attach hosts to the new location, run the terraform script with the extracted parameters.
+- To attach hosts to the new location, run the terraform script with the extracted parameters.
 - Satellite control plane: 3 * 8x32 hosts (AWS m5d.2xlarge)
 - Per ICD dataplane cluster
   - internal nodes: 3 * 8x32 hosts (AWS m5d.2xlarge)
