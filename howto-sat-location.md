@@ -103,14 +103,14 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
 
 ![Extract parameters from the generated script](images/script-params.png)
 
-[View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#attach-hosts-to-location)
-
 - To attach hosts to the new location, run the terraform script with the extracted parameters.
 - Satellite control plane: 3 * 8x32 hosts (AWS m5d.2xlarge)
 - Per ICD dataplane cluster
   - internal nodes: 3 * 8x32 hosts (AWS m5d.2xlarge)
   - customer nodes : 3 * 32x128 hosts (AWS m5d.8xlarge), (multiples of three)
   - no edge nodes needed
+  
+  [View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#attach-hosts-to-location){: external}.
   
 ## Configure the control plane
 {: step}
@@ -120,5 +120,5 @@ Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2,
 These newly assigned nodes will take several minutes to appear in the Satellite UI.
 {: note}
 
-[View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#assign-hosts-to-cp)
+[View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#assign-hosts-to-cp){: external}.
 
