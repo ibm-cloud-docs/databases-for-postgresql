@@ -60,7 +60,7 @@ completion-time: 15m
 <!-- The title of your tutorial should be in active voice and and start with a verb. If you include product names, makes sure to use the non-trademarked short version conref. -->
 <!-- Make sure each H1/H2/H3/etc. heading is _unique_ to your tutorial by adding a short but human-readable identifier. For example, instead of just "#overview", use "#cd-kube-overview" -->
 
-# Creating Storage Configuration for a newly created location
+# Creating Storage Configuration
 {: #tutorial-sc-sat}
 {: toc-content-type="tutorial"} <!-- Always use this value -->
 {: toc-completion-time="10m"} <!-- Use same value from completion-time metadata above-->
@@ -75,7 +75,7 @@ In this tutorial, you will learn how to create a storage configuration for a new
 <!--![Architectural diagram](images/image.svg)
 {: figure caption="Figure 1. A diagram that shows the architecture for my tutorial."}
 
-The pipeline that you create has the following architecture:
+<!--The pipeline that you create has the following architecture:
 1. Workflow step 1
 1. Workflow step 2
 1. Workflow step 3
