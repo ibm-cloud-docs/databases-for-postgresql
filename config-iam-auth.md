@@ -127,6 +127,6 @@ The source service is the service that is granted access to the target service. 
 Repeat this step for all databases enabled in IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite: 
 - `Databases for PostgreSQL preproduction`
 - `Databases for Elasticsearch preproduction`
-- `Databases for etcd prepproduction`
-- `Databases for Redis prepproduction`
-- `Messages for RabbitMQ prepproduction service`
+- `Databases for etcd preproduction`
+- `Databases for Redis preproduction`
+- `Messages for RabbitMQ preproduction service`
