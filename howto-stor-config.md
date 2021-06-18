@@ -1,3 +1,6 @@
+---
+
+copyright:
   years: 2021
 lastupdated: "2021-06-16"
 
@@ -85,73 +88,37 @@ The pipeline that you create has the following architecture:
 
 <!-- Note: Currently no format for checkboxes. Let's check with design if required for first pass -->
 
-* Set up a Satellite service.
-* Create a satellite location. 
-* Attach hosts to your location.
-* Configure the control plane.
+* To get started with storage configuration, you will need to have completed the following steps for your location: 
+  * Set up a Satellite service.
+  * Create a satellite location. 
+  * Attach hosts to your location.
+  * Configure the control plane.
+
+To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](docs/howto-sat-location.md).
+{: note}
 
 <!-- For each step in your tutorial, add an H2 section. The title should be task-oriented and descriptive. If you find your tutorial going over 9 steps, consider whether your substeps can be grouped differently or whether your tutorial should be a multi-part series. -->
 
-## Create a development Kubernetes cluster
-{: #cd-kube-dev-cluster}
-{: step} -->
+## Invoke CLI command
+{: #cd-postgresql-clicommand}
+{: step}
 
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
 
-First, you need to set up a Kubernetes cluster on the {{site.data.keyword.containershort_notm}} service. {{site.data.keyword.containershort_notm}} delivers powerful tools by combining Docker and Kubernetes technologies, an intuitive user experience, and built-in security and isolation to automate the deployment, operation, scaling, and monitoring of containerized apps in a cluster of compute hosts.
+To set up a block storage configuration, you will need to invoke a CLI command.
+Here is a sample command:
 
-1. In the IBM Cloud catalog, go to the [Kubernetes Service](/kubernetes/catalog/cluster/create).
-1. Select **Standard** as the cluster type, and select **2 MB / 1 Worker** as the machine type. All other options can be left as default.  
-1. Click **Create** to create your cluster. Check the status of your cluster and worker nodes until they're in the Ready state. 
+```
+ ic sat storage config create  \
+  --name 'aws-ebs-config-storage-testing-1' \
+  --template-name 'aws-ebs-csi-driver' \
+  --template-version '0.9.14' \
+  --location 'c2tace1w07k5gvilnqq0' \
+  -p "aws-access-key=${SAT_EBS_ADMIN_KEY_ID}" \
+  -p "aws-secret-access-key=${SAT_EBS_ADMIN_KEY}"
+  ```
+that will output the following:
 
-You'll need to wait until your workers are ready to move to the next step. 
-{: note}
-
-## Build your app locally
-{: #cd-kube-build-app}
-{: step}
-
-<!-- For commands, introduce the command in a sentence first. Then surround what the user must enter in the command prompt with three backticks, and set the programming language if it applies. After the code block, add a {: pre} attribute to add a $ before the command and a copy link. --> 
-
-You can build and run the application as you normally would using `mvn` for Java&trade; local development or `npm` for Node.js development.  You can also build a Docker image and run the application in a container to ensure consistent execution locally and on the cloud. Use the following steps to build your docker image.
-
-1. Ensure your local Docker engine is started.
-   ```
-   docker ps
-   ```
-   {: pre}
-1. Navigate to the generated project directory.
-   ```
-   cd <project name>
-   ```
-   {: pre}
-1. Build the application locally.
-   ```
-   ibmcloud dev build
-   ```
-   {: pre}
-
-   This might take a few minutes to run because all of the application dependencies are downloaded and a Docker image, which contains your application and all the required environment, is built.
-
-## Add a task-oriented title
-{: #cd-kube-step-desc}
-{: step}
-
-## Add a task-oriented title
-{: #cd-kube-step-desc}
-{: step}
-
-## Add a task-oriented title
-{: #cd-kube-step-desc}
-{: step}
-
-## Next steps
-{: #cd-kube-step-next}
-
-Want to start fresh? Remove the following resources that you created as a part of this tutorial:
-
-* Delete the Git repository.
-* Delete the toolchain.
-* Delete the cluster.
-* Delete the Slack channel.
-
+```
+Storage configuration 'aws-ebs-config-storage-testing-1' was successfully created with ID 'b1005956-2d9d-4d46-9fbf-0589c9437716'.
+```
