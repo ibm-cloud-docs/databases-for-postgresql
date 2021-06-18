@@ -64,6 +64,7 @@ Databases For PostgreSQL
 	IBM Cloud Databases for Satellite
 		howto-sat-location.md
 		howto-stor-config.md
+		config-iam-auth.md
 
 	{: .topicgroup}
 	Tutorials
