@@ -63,6 +63,7 @@ Databases For PostgreSQL
 	{: .topicgroup}
 	IBM Cloud Databases for Satellite
 		howto-sat-location.md
+		howto-stor-config.md
 
 	{: .topicgroup}
 	Tutorials
