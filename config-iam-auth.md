@@ -55,15 +55,15 @@ completion-time: 15m
 {:tip: .tip}
 {:note: .note}
 {:external: target="_blank" .external}
-{:step: data-tutorial-type='step'} <!-- Apply to steps for automatic numbering -->
+<!--  {:step: data-tutorial-type='step'} Apply to steps for automatic numbering -->
 
 <!-- The title of your tutorial should be in active voice and and start with a verb. If you include product names, makes sure to use the non-trademarked short version conref. -->
 <!-- Make sure each H1/H2/H3/etc. heading is _unique_ to your tutorial by adding a short but human-readable identifier. For example, instead of just "#overview", use "#cd-kube-overview" -->
 
 # Configuring IAM Authorizations
 {: #tutorial-pgsql-iam}
-{: toc-content-type="tutorial"} <!-- Always use this value -->
-{: toc-completion-time="10m"} <!-- Use same value from completion-time metadata above-->
+<!--{: toc-content-type="tutorial"}  Always use this value -->
+<!--{: toc-completion-time="10m"} <!-- Use same value from completion-time metadata above-->
 
 <!-- The short description should be a single, concise paragraph that contains one or two sentences and no more than 50 words. Briefly mention what the user's learning goal is and include the following SEO keywords in the title short description: IBM Cloud, ServiceName, tutorial.--> 
 
