@@ -65,6 +65,7 @@ Databases For PostgreSQL
 		howto-sat-location.md
 		howto-stor-config.md
 		config-iam-auth.md
+		deploy-instance-sat.md
 
 	{: .topicgroup}
 	Tutorials
