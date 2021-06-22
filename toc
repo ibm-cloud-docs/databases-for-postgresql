@@ -17,6 +17,14 @@ Databases For PostgreSQL
 
 	{: .navgroup id="howto"}
 	/cloud-databases/cloud-databases-provisioning
+	
+	{: .topicgroup}
+	Provisioning as Managed Service: IBM Cloud Databases for Satellite
+		howto-sat-location.md
+		howto-stor-config.md
+		config-iam-auth.md
+		deploy-instance-sat.md
+		
 	howto-admin-password.md
 	howto-getting-connection-strings.md
 	/cloud-databases/cloud-databases-deprovisioning
@@ -59,13 +67,6 @@ Databases For PostgreSQL
 		howto-extensions.md
 		howto-wal2json.md
 		howto-pgaudit.md
-	
-	{: .topicgroup}
-	IBM Cloud Databases for Satellite
-		howto-sat-location.md
-		howto-stor-config.md
-		config-iam-auth.md
-		deploy-instance-sat.md
 
 	{: .topicgroup}
 	Tutorials
