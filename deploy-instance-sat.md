@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021
-lastupdated: "2021=06-21"
+lastupdated: "2021-06-21"
 
 keywords: postgresql, databases, instance
 
@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 {:tip: .tip}
 
 
-# Deploying
+# Deployment
 {: #instance-sat}
 
 `Create` an instance in the Satellite location and verify that a cluster has been created and the instance is provisioning. When the service cluster is created, if the corresponding hosts are available then the hosts are typically `auto-assigned` to the cluster.
