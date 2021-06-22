@@ -48,7 +48,7 @@ completion-time: 15m
 {:cli: .ph data-hd-interface='cli'}
 {:api: .ph data-hd-interface='api'}
 
-# Getting started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite
+# Getting started
 {: #getting-started}
 {: toc-content-type="tutorial"}
 {: toc-completion-time="15m"}
