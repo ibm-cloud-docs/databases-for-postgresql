@@ -19,7 +19,7 @@ Databases For PostgreSQL
 	/cloud-databases/cloud-databases-provisioning
 	
 	{: .topicgroup}
-	Provisioning as Managed Service: IBM Cloud Databases for Satellite
+	Provisioning databases enabled by IBM Cloud Satellite
 		howto-sat-location.md
 		howto-stor-config.md
 		config-iam-auth.md
