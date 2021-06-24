@@ -62,6 +62,8 @@ With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can 
 - You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
 
+Before setting up your satellite location, see below regarding IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations. {: .note}
+
 ## Setting Up a Satellite Service 
 {: step}
 
@@ -70,3 +72,23 @@ With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can 
 - Create and attach Satellite location's AWS hosts that will be assigned the control plane.
 - Create and attach AWS hosts for the Satellite location's data plane.
 - Create a Satellite location storage configuration.
+
+## Service Limitations
+IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations are as follows:
+- AWS support is dependent upon Satellite's AWS block storage support, specifically [Amazon Elastic Block Store (EBS)](https://aws.amazon.com/ebs/).
+- Azure is not available.
+- Google Cloud is not available.
+- Satellite location is limited to `us-east (wdc)`.
+- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite's control plane in `eu-de` is `EU-managed`; therefore, the Satellite service itself is `EU managed`. ICD does not support `non-EU managed` locations in FRA.
+- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite has a limitation of 20 locations per IBM Cloud MZR, per account. For more information, see [Satellite usage requirements](https://test.cloud.ibm.com/docs/satellite?topic=satellite-requirements).
+- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite does not support Amazon Virtual Private Cloud (VPC).
+- There is no guaranteed SLA.
+- There is no SOC 2 support.
+- There is no HIPAA support.
+- There is no PCI support.
+- There is no FS Cloud support.
+- There is no FedRAMP support.
+- There is no Disaster Recovery support.
+- There is no disk encryption support. 
+- There is no BYOK for Disk encryption support.
+- There is no read-only replica support.
