@@ -35,4 +35,4 @@ ibmcloud sat storage assignment create \
 ```
 {: pre}
 
-- Once this step is complete, next step is to deploy the requested database instance.
+- Once this step is complete, the next step is to deploy the requested database instance.
