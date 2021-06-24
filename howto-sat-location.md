@@ -66,54 +66,7 @@ With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can 
 {: step}
 
 - Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-- Create a new preproduction Satellite location in a non-default resource group. For more information on setting up a satellite location, refer to [Setting up Satellite locations](https://cloud.ibm.com/docs/satellite?topic=satellite-locations) in the {{site.data.keyword.satellitelong}} documentation.
-- When creating Satellite location, choose `Manual setup`.
-
-![Choose manual setup from Setup card options](images/manual-setup.png)
-
-
-## Create a Satellite location
-{: step}
-
-- Complete the form to create your Satellite location:
-  - Provide a name.
-  - Choose a Resource group.
-  - Enter name for the host zone. 
-
-Zones 1, 2, and 3 should retain their respective default values: zone-1, zone-2, zone-3.
-{: note}
-
-- Click `Done editing` to complete your Satellite creation.
-
-![Fill out form to create satellite location](images/satellite-location.png)
-
-## Attach hosts to your location
-{: step}
-
-- Download the generated script, which contains location-specific information. 
-- From the script, extract three parameters:
-  - `HOST_QUEUE_TOKEN`
-  - `ACCOUNT_ID`
-  - `CONTROLLER_ID`
-
-![Extract parameters from the generated script](images/script-params.png)
-
-- To attach hosts to the new location, run the terraform script with the extracted parameters.
-- Satellite control plane: 3 * 8x32 hosts (AWS m5d.2xlarge)
-- Per ICD dataplane cluster
-  - internal nodes: 3 * 8x32 hosts (AWS m5d.2xlarge)
-  - customer nodes : 3 * 32x128 hosts (AWS m5d.8xlarge), (multiples of three)
-  - no edge nodes needed
-  
-  [View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#attach-hosts-to-location){: external}.
-  
-## Configure the control plane
-{: step}
-
-- Assign 3 hosts (8x32) to the Satellite control plane and assign the zones of those worker nodes, accordingly.
-
-These newly assigned nodes will take several minutes to appear in the Satellite UI.
-{: note}
-
-[View the full documentation for this step](https://test.cloud.ibm.com/docs/satellite?topic=satellite-getting-started#assign-hosts-to-cp){: external}.
-
+- Create a new Satellite location.
+- Create and attach Satellite location's AWS hosts that will be assigned the control plane.
+- Create and attach AWS hosts for the Satellite location's data plane.
+- Create a Satellite location storage configuration.
