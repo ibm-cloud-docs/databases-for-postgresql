@@ -75,21 +75,17 @@ Before setting up your satellite location, see below regarding IBM Cloud Databas
 - Create a Satellite location storage configuration.
 
 ## Service Limitations
-IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations are as follows:
+
+### IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations are as follows:
+
 - AWS support is dependent upon Satellite's AWS block storage support, specifically [Amazon Elastic Block Store (EBS)](https://aws.amazon.com/ebs/).
-- Azure is not available.
-- Google Cloud is not available.
 - Satellite location is limited to `us-east (wdc)`.
-- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite's control plane in `eu-de` is `EU-managed`; therefore, the Satellite service itself is `EU managed`. ICD does not support `non-EU managed` locations in FRA.
+- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite's control plane in `eu-de` is `EU-managed`. Therefore, the Satellite service itself is `EU managed`. ICD does not support `non-EU managed` locations in FRA.
 - IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite has a limitation of 20 locations per IBM Cloud MZR, per account. For more information, see [Satellite usage requirements](https://test.cloud.ibm.com/docs/satellite?topic=satellite-requirements).
-- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite does not support Amazon Virtual Private Cloud (VPC).
+
+### IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite does not support the following:
+- Google Cloud, Azure, or Amazon Virtual Private Cloud (VPC).
 - There is no guaranteed SLA.
-- There is no SOC 2 support.
-- There is no HIPAA support.
-- There is no PCI support.
-- There is no FS Cloud support.
-- There is no FedRAMP support.
+- SOC 2, HIPAA, PCI, FS Cloud, or FedRAMP.
 - There is no Disaster Recovery support.
-- There is no disk encryption support. 
-- There is no BYOK for Disk encryption support.
-- There is no read-only replica support.
+- There is no disk encryption support, BYOK Disk encryption support, or read-only replica support.
