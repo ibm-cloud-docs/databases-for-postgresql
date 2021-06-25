@@ -53,7 +53,7 @@ completion-time: 15m
 {: toc-content-type="tutorial"}
 {: toc-completion-time="15m"}
 
-With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can create an IBM Cloud® Databases deployment using [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises](https://cloud.ibm.com/docs/satellite?topic=satellite-infrastructure-service) using [NetApp](https://www.ibm.com/cloud/netapp).
+With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can order managed infrastructure from IBM to create an [on-premises](https://cloud.ibm.com/docs/satellite?topic=satellite-infrastructure-service) location using [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises] using [NetApp](https://www.ibm.com/cloud/netapp).
 {: shortdesc}
 
 ## Before you begin
@@ -69,7 +69,7 @@ Before setting up your satellite location, see below regarding IBM Cloud Databas
 {: step}
 
 - Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-- Create a new Satellite location.
+- Create a new Satellite location. Refer 
 - Create and attach Satellite location's AWS hosts that will be assigned the control plane.
 - Create and attach AWS hosts for the Satellite location's data plane.
 - Create a Satellite location storage configuration.
