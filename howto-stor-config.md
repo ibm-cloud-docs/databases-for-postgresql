@@ -94,7 +94,7 @@ In this tutorial, you will learn how to create a storage configuration for a new
   * Attach hosts to your location.
   * Configure the control plane.
 
-To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](docs/howto-sat-location.md).
+To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](https://test.cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started).
 {: note}
 
 <!-- For each step in your tutorial, add an H2 section. The title should be task-oriented and descriptive. If you find your tutorial going over 9 steps, consider whether your substeps can be grouped differently or whether your tutorial should be a multi-part series. -->
