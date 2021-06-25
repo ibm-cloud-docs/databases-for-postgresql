@@ -62,7 +62,8 @@ With IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite, you can 
 - You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
 
-Before setting up your satellite location, see below regarding IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations. {: .note}
+Before setting up your satellite location, see below regarding IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations. 
+{: .note}
 
 ## Setting Up a Satellite Service 
 {: step}
