@@ -53,7 +53,7 @@ completion-time: 15m
 {: toc-content-type="tutorial"}
 {: toc-completion-time="15m"}
 
-With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can choose a location to represent a data center that you fill with your own infrastructure resources and start running IBM Cloud™ Databases on your own infrastructure.
+With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can create an IBM Cloud® Databases deployment using [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises](https://cloud.ibm.com/docs/satellite?topic=satellite-infrastructure-service) using [NetApp](https://www.ibm.com/cloud/netapp).
 {: shortdesc}
 
 ## Before you begin
