@@ -48,7 +48,7 @@ completion-time: 15m
 {:cli: .ph data-hd-interface='cli'}
 {:api: .ph data-hd-interface='api'}
 
-IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
+# IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #postgresql-satellite}
 
 With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can order create a satellite location through the cloud with [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises] using [NetApp](https://www.ibm.com/cloud/netapp).
