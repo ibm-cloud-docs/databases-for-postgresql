@@ -48,16 +48,15 @@ completion-time: 15m
 {:cli: .ph data-hd-interface='cli'}
 {:api: .ph data-hd-interface='api'}
 
-# Getting started
-{: #getting-started}
-{: toc-content-type="tutorial"}
-{: toc-completion-time="15m"}
+IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
+{: #postgresql-satellite}
 
-With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can order managed infrastructure from IBM to create an [on-premises](https://cloud.ibm.com/docs/satellite?topic=satellite-infrastructure-service) location using [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises] using [NetApp](https://www.ibm.com/cloud/netapp).
+With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can order create a satellite location through the cloud with [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises] using [NetApp](https://www.ibm.com/cloud/netapp).
 {: shortdesc}
 
-## Before you begin
-{: #before-start}
+# Getting started 
+{: #getting-started}
+
 - You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
 - [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
