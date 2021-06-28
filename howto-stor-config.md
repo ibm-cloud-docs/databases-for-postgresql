@@ -105,7 +105,7 @@ To review any of the above steps, refer to the [Getting Started with IBM Cloud D
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
 
 To set up a block storage configuration, you will need to invoke a CLI command.
-Here is a sample command:
+Here is a sample AWS command:
 
 ```
  ic sat storage config create  \
@@ -120,4 +120,13 @@ that will output the following:
 
 ```
 Storage configuration 'aws-ebs-config-storage-testing-1' was successfully created with ID 'b1005956-2d9d-4d46-9fbf-0589c9437716'.
+```
+
+Here is a sample NetApp command:
+
+```
+$ ibmcloud sat storage config create --source-org 'ntap-troy' --source-branch 'develop' --location '<location-id>' --name 'netapp-trident'  --template-name 'netapp-trident' --template-version '21.04'
+$ ibmcloud sat storage config create --source-org 'ntap-troy' --source-branch 'develop' --location '<location-id>' --name 'netapp-san'  --template-name 'netapp-ontap-san' --template-version '21.04' --param "dataLIF=169.60.138.166" --param "managementLIF=169.60.138.164" --param  "svm=<svm name>" --param "username=admin" --param 'password=<password>'
+$ ibmcloud sat storage assignment create --name "trident-assignment" --cluster '<cluster-id>' --config 'netapp-trident'
+$ ibmcloud sat storage assignment create --name "san-assignment" --cluster '<cluster-id>' --config 'netapp-san'
 ```
