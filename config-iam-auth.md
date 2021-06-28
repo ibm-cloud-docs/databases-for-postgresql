@@ -55,48 +55,15 @@ completion-time: 15m
 {:tip: .tip}
 {:note: .note}
 {:external: target="_blank" .external}
-<!--  {:step: data-tutorial-type='step'} Apply to steps for automatic numbering -->
-
-<!-- The title of your tutorial should be in active voice and and start with a verb. If you include product names, makes sure to use the non-trademarked short version conref. -->
-<!-- Make sure each H1/H2/H3/etc. heading is _unique_ to your tutorial by adding a short but human-readable identifier. For example, instead of just "#overview", use "#cd-kube-overview" -->
 
 # Configuring IAM Authorizations
 {: #tutorial-pgsql-iam}
-<!--{: toc-content-type="tutorial"}  Always use this value -->
-<!--{: toc-completion-time="10m"} <!-- Use same value from completion-time metadata above-->
 
-<!-- The short description should be a single, concise paragraph that contains one or two sentences and no more than 50 words. Briefly mention what the user's learning goal is and include the following SEO keywords in the title short description: IBM Cloud, ServiceName, tutorial.--> 
-
-In this tutorial, you will learn how to create a storage configuration for a newly created IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service location.
+To create a storage configuration for a newly created IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service location, you need to configure IAM authorizations.
 {: shortdesc}
-
-<!-- It's recommended to include an architectural diagram that shows how the services that are used in this tutorial interact. SVG is the recommended format. If you include a diagram, include a brief text-based description of the workflow shown in the diagram, using active voice to describe the workflow. This makes the content more searchable and improves accessibility. -->
-
-<!--![Architectural diagram](images/image.svg)
-{: figure caption="Figure 1. A diagram that shows the architecture for my tutorial."}
-
-<!-- The pipeline that you create has the following architecture:
-1. Workflow step 1
-1. Workflow step 2
-1. Workflow step 3
-1. Workflow step 4-->
-
-## Before you begin
-{: #postgres-sat-prereqs}
-
-* To get started with storage configuration, you will need to have completed the following steps for your location: 
-  * Set up a Satellite service.
-  * Create a satellite location. 
-  * Attach hosts to your location.
-  * Create storage configuration.
-
-To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](docs/howto-sat-location.md).
-{: note}
 
 ## Configure IAM Authorizations
 {: #cd-postgresql-iamauth}
-
-<!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
 
 - Configure your IAM Authorizations under the **Manage** tab.
 
