@@ -84,10 +84,6 @@ In this tutorial, you will learn how to create a storage configuration for a new
 ## Before you begin
 {: #postgres-sat-prereqs}
 
-<!-- List any access, setup, or knowledge that the user must have before they start the tutorial. Be sure to link to any related documentation or resources to help the user complete these prerequisites.-->
-
-<!-- Note: Currently no format for checkboxes. Let's check with design if required for first pass -->
-
 * To get started with storage configuration, you will need to have completed the following steps for your location: 
   * Set up a Satellite service.
   * Create a satellite location. 
@@ -97,19 +93,15 @@ In this tutorial, you will learn how to create a storage configuration for a new
 To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](docs/howto-sat-location.md).
 {: note}
 
-<!-- For each step in your tutorial, add an H2 section. The title should be task-oriented and descriptive. If you find your tutorial going over 9 steps, consider whether your substeps can be grouped differently or whether your tutorial should be a multi-part series. -->
-
 ## Configure IAM Authorizations
 {: #cd-postgresql-iamauth}
 
 <!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
 
-- Configure your IAM Authorizations under the `Manage` tab.
+- Configure your IAM Authorizations under the **Manage** tab.
 
-![Manage tab for configuring IAM Authorizations](/images/manage-iam.png){: caption="Manage access under the Access (IAM) menu tab" caption-side="bottom"}
-
-- Choose the `Authorizations` tab from the lefthand menu.
-- Click the `create` button  to create an authorization to allow a service instance access to another service instance.
+- Choose the **Authorizations** tab from the lefthand menu.
+- Click the **create** button to create an authorization to allow a service instance access to another service instance.
 
 ## Grant a service authorization
 {: #cd-postgresql-serviceauth}
