@@ -57,7 +57,7 @@ With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you c
 - You must be the account owner, or have the [administrator permissions](/docs/satellite?topic=satellite-iam#iam-roles-clusters) to the required services in Identity and Access Management (IAM).
 - Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - Create a new [Satellite](/docs/satellite?topic=satellite-locations) location by selecting the **Manual setup** tab.
-  - For management location, choose **Washingtion DC**.
+  - For management location, choose **Washington DC**.
   - When choosing **host zones**, we recommend leaving the default values provided by AWS: **zone-1**, **zone-2**, and **zone-3**.
 
 ## Step 2: Attach additional hosts to your Satellite location
