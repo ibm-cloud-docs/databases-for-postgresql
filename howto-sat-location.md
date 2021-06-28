@@ -47,7 +47,8 @@ completion-time: 15m
 # IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #postgresql-satellite}
 
-With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can deploy database instances into Satellite locations through the cloud with [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or on-premises. Before proceeding, you should refer to the [Satellite usage requirements](/docs/satellite?topic=satellite-requirements). 
+With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud Database service will then install an ICD Satellite service cluster into your Satellite location on which database instances will be deployed.
+IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or within your on-premises data center that are attached to the IBM Cloud management location in Washington, DC. Before proceeding, you should refer to the [Satellite usage requirements](/docs/satellite?topic=satellite-requirements). 
 {: shortdesc}
 
 ## Step 1: Create your Satellite location 
