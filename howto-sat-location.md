@@ -64,8 +64,12 @@ Before proceeding, you should refer to the [Satellite usage requirements](/docs/
   - Create and attach hosts to the Satellite hosts, either AWS or on-prem.
   - Assign the created hosts to the control plane. 
 
-## Step 2: Attach additional hosts to your Satellite location
+## Step 2: Prepare Satellite location for deployment
 {: #postgresql-satellite-host}
+
+We recommend you prepare your Satellite location before deploying Satellite service into it. 
+- Attach additional hosts to the Satellite location
+- Provide a block storage configuration
 
 A Satellite host represents a compute machine of your own infrastructure, either on-premises or AWS. AWS support is dependent upon Satellite's AWS block storage support, specifically [Amazon Elastic Block Store (EBS)](docs/satellite?topic=satellite-config-storage-ebs). You can attach hosts to a location and then assign the hosts to run services such as clusters. To deploy an instance into your Satellite location, you have to provide three **8x32** and three **32x128** hosts.
 {: shortdesc}
