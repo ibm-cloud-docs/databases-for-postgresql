@@ -61,50 +61,14 @@ completion-time: 15m
 <!-- Make sure each H1/H2/H3/etc. heading is _unique_ to your tutorial by adding a short but human-readable identifier. For example, instead of just "#overview", use "#cd-kube-overview" -->
 
 # Creating Storage Configuration
-{: #tutorial-sc-sat}
-<!-- {: toc-content-type="tutorial"} <!-- Always use this value -->
-<!-- {: toc-completion-time="10m"} <!-- Use same value from completion-time metadata above-->
-
-<!-- The short description should be a single, concise paragraph that contains one or two sentences and no more than 50 words. Briefly mention what the user's learning goal is and include the following SEO keywords in the title short description: IBM Cloud, ServiceName, tutorial.--> 
-
-In this tutorial, you will learn how to create a storage configuration for a newly created IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite service location.
-{: shortdesc}
-
-<!-- It's recommended to include an architectural diagram that shows how the services that are used in this tutorial interact. SVG is the recommended format. If you include a diagram, include a brief text-based description of the workflow shown in the diagram, using active voice to describe the workflow. This makes the content more searchable and improves accessibility. -->
-
-<!--![Architectural diagram](images/image.svg)
-{: figure caption="Figure 1. A diagram that shows the architecture for my tutorial."}
-
-<!--The pipeline that you create has the following architecture:
-1. Workflow step 1
-1. Workflow step 2
-1. Workflow step 3
-1. Workflow step 4-->
-
-## Before you begin
 {: #postgres-sat-prereqs}
 
-<!-- List any access, setup, or knowledge that the user must have before they start the tutorial. Be sure to link to any related documentation or resources to help the user complete these prerequisites.-->
-
-<!-- Note: Currently no format for checkboxes. Let's check with design if required for first pass -->
-
-* To get started with storage configuration, you will need to have completed the following steps for your location: 
-  * Set up a Satellite service.
-  * Create a satellite location. 
-  * Attach hosts to your location.
-  * Configure the control plane.
-
-To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](https://test.cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started).
-{: note}
-
-<!-- For each step in your tutorial, add an H2 section. The title should be task-oriented and descriptive. If you find your tutorial going over 9 steps, consider whether your substeps can be grouped differently or whether your tutorial should be a multi-part series. -->
+To set up a block storage configuration, you will need to invoke a CLI command.
+{: shortdesc}
 
 ## Invoke CLI command
 {: #cd-postgresql-clicommand}
 
-<!-- Introduce each major step with a description of what it will accomplish. If there are sequential substeps, use an ordered list for each substep. Don't include the step number. -->
-
-To set up a block storage configuration, you will need to invoke a CLI command.
 Here is a sample AWS command:
 
 ```
