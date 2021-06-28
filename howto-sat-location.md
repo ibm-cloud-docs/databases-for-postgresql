@@ -59,6 +59,8 @@ With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you c
 - Create a new [Satellite](/docs/satellite?topic=satellite-locations) location by selecting the **Manual setup** tab.
   - For management location, choose **Washington DC**.
   - When choosing **host zones**, we recommend leaving the default values provided by AWS: **zone-1**, **zone-2**, and **zone-3**.
+  - Create and attach AWS hosts to the Satellite location. 
+  - Assign the created hosts to the control plane. 
 
 ## Step 2: Attach additional hosts to your Satellite location
 {: #postgresql-satellite-host}
