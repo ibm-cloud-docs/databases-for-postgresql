@@ -37,11 +37,7 @@ completion-time: 15m
 {:tsCauses: .tsCauses}
 {:tsResolve: .tsResolve}
 {:tsSymptoms: .tsSymptoms}
-{:java: .ph data-hd-programlang='java'}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:swift: .ph data-hd-programlang='swift'}
 {:curl: .ph data-hd-programlang='curl'}
-{:video: .video}
 {:step: data-tutorial-type='step'}
 {:tutorial: data-hd-content-type='tutorial'}
 {:ui: .ph data-hd-interface='ui'}
@@ -51,40 +47,27 @@ completion-time: 15m
 # IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #postgresql-satellite}
 
-With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can order create a satellite location through the cloud with [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or [on-premises] using [NetApp](https://www.ibm.com/cloud/netapp).
+With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can create a satellite location through the cloud with [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or on-premises using [NetApp](https://www.ibm.com/cloud/netapp).
 {: shortdesc}
 
-# Getting started 
-{: #getting-started}
+## Step 1: Create your location 
+{: #postgresql-satellite-location}
 
-- You need to have an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-- You will also need a {{site.data.keyword.databases-for-postgresql}} deployment. You can provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
-- [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
-
-Before setting up your satellite location, see below regarding IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations. 
-{: .note}
-
-## Setting Up a Satellite Service 
-{: step}
-
+**Before you begin**:
+- You must be the account owner, or have the [administrator permissions](/docs/satellite?topic=satellite-iam#iam-roles-clusters) to the required services in Identity and Access Management (IAM).
 - Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
-- Create a new Satellite location. Refer 
-- Create and attach Satellite location's AWS hosts that will be assigned the control plane.
-- Create and attach AWS hosts for the Satellite location's data plane.
-- Create a Satellite location storage configuration.
+- Create a new [Satellite](https://cloud.ibm.com/satellite/overview) location by selecting the **Manual setup** tab.
+- For management location, choose **Washingtion DC**.
+- When choosing host zones, leave the defaul values of **zone-1**, **zone-2**, and **zone-3**.
 
-## Service Limitations
+## Step 2: Attach hosts to your Satellite location
+{: #postgresql-satellite-host}
 
-### IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service limitations are as follows:
+A Satellite host represents a compute machine of your own infrastructure, either on-premises or AWS. You can attach hosts to a location and then assign the hosts to run services such as clusters.
+{: shortdesc}
 
-- AWS support is dependent upon Satellite's AWS block storage support, specifically [Amazon Elastic Block Store (EBS)](https://aws.amazon.com/ebs/).
-- Satellite location is limited to `us-east (wdc)`.
-- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite's control plane in `eu-de` is `EU-managed`. Therefore, the Satellite service itself is `EU managed`. ICD does not support `non-EU managed` locations in FRA.
-- IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite has a limitation of 20 locations per IBM Cloud MZR, per account. For more information, see [Satellite usage requirements](https://test.cloud.ibm.com/docs/satellite?topic=satellite-requirements).
-
-### IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite does not support the following:
-- Google Cloud, Azure, or Amazon Virtual Private Cloud (VPC).
-- There is no guaranteed SLA.
-- SOC 2, HIPAA, PCI, FS Cloud, or FedRAMP.
-- There is no Disaster Recovery support.
-- There is no disk encryption support, BYOK Disk encryption support, or read-only replica support.
+1.  **Attach**: Your machine becomes a host after you successfully [attach the host](#attach-hosts) to a Satellite location by running a registration script on the machine. Your machine must meet the [minimum host requirements](/docs/satellite?topic=satellite-host-reqs). For AWS-specific configurations, see [Manually adding AWS hosts to Satellite
+](/docs/satellite?topic=satellite-aws#aws-host-attach). 
+2.  **Assign**: The hosts in your Satellite location do not run any workloads until you assign them as compute capacity to the control plane. 
+- Assign three 8x32 **AWS m5d.2xlarge** AWS hosts that will be assigned the Satellite control plane.
+- Assign three 8x32 **AWS m5d.8xlarge** AWS hosts that will be assigned the Satellite data plane.
