@@ -88,7 +88,7 @@ In this tutorial, you will learn how to create a storage configuration for a new
   * Set up a Satellite service.
   * Create a satellite location. 
   * Attach hosts to your location.
-  * Configure the control plane.
+  * Create storage configuration.
 
 To review any of the above steps, refer to the [Getting Started with IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite documentation](docs/howto-sat-location.md).
 {: note}
@@ -108,17 +108,10 @@ To review any of the above steps, refer to the [Getting Started with IBM Cloud D
 
 The source service is the service that is granted access to the target service. The roles that you select define the level of access for this service. The target service is the service you are granting permission to be accessed by the source service based on the assigned roles.
 
-- In the `Source Service` field, select `Databases for PostgreSQL development`.
-- In the `Target Service` field, select `Satellite`.
+- In the **Source Service** field, select **Databases for PostgreSQL development**.
+- In the **Target Service** field, select **Satellite**.
 - Select all options:
-  - `Satellite Cluster Creator` 
-  - `Satellite Link Administrator` 
-  - `Satellite Link Source Access Controller`
- - Then `Authorize`.
- 
-Repeat this step for all databases enabled in IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite: 
-- `Databases for PostgreSQL preproduction`
-- `Databases for Elasticsearch preproduction`
-- `Databases for etcd preproduction`
-- `Databases for Redis preproduction`
-- `Messages for RabbitMQ preproduction service`
+  - **Satellite Cluster Creator** 
+  - **Satellite Link Administrator** 
+  - **Satellite Link Source Access Controller** 
+ - Then **Authorize**.
