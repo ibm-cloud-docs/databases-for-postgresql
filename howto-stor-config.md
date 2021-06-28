@@ -67,7 +67,7 @@ completion-time: 15m
 
 <!-- The short description should be a single, concise paragraph that contains one or two sentences and no more than 50 words. Briefly mention what the user's learning goal is and include the following SEO keywords in the title short description: IBM Cloud, ServiceName, tutorial.--> 
 
-In this tutorial, you will learn how to create a storage configuration for a newly created IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service location.
+In this tutorial, you will learn how to create a storage configuration for a newly created IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite service location.
 {: shortdesc}
 
 <!-- It's recommended to include an architectural diagram that shows how the services that are used in this tutorial interact. SVG is the recommended format. If you include a diagram, include a brief text-based description of the workflow shown in the diagram, using active voice to describe the workflow. This makes the content more searchable and improves accessibility. -->
