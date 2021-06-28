@@ -63,7 +63,7 @@ With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you c
 ## Step 2: Attach additional hosts to your Satellite location
 {: #postgresql-satellite-host}
 
-A Satellite host represents a compute machine of your own infrastructure, either on-premises or AWS. You can attach hosts to a location and then assign the hosts to run services such as clusters. To deploy an instance into your Satellite location, you have to provide three 8x32 and three 32x128 hosts.
+A Satellite host represents a compute machine of your own infrastructure, either on-premises or AWS. You can attach hosts to a location and then assign the hosts to run services such as clusters. To deploy an instance into your Satellite location, you have to provide three **8x32** and three **32x128** hosts.
 {: shortdesc}
 
 1.  **Attach**: Your machine becomes a host after you successfully [attach the host](#attach-hosts) to a Satellite location by running a registration script on the machine. Your machine must meet the [minimum host requirements](/docs/satellite?topic=satellite-host-reqs). For AWS-specific configurations, see [Manually adding AWS hosts to Satellite
