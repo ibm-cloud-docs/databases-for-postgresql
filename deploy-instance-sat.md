@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 {:tip: .tip}
 {:important: .important}
 
-# Deployment
+# Assigning storage to service cluster
 {: #instance-sat}
 
 **Create** an instance in the Satellite location and verify that a cluster has been created and the instance is provisioning. 
