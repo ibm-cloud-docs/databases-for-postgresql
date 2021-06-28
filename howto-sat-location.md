@@ -47,8 +47,9 @@ completion-time: 15m
 # IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #postgresql-satellite}
 
-With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud Database service will then install an ICD Satellite service cluster into your Satellite location on which database instances will be deployed.
-IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws) or within your on-premises data center that are attached to the IBM Cloud management location in Washington, DC. Before proceeding, you should refer to the [Satellite usage requirements](/docs/satellite?topic=satellite-requirements). 
+With IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud Database service will then install an ICD Satellite service cluster in your Satellite location on which your database instances will be deployed.
+IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws), as well as on your on-premises data centers that are attached to the IBM Cloud management location in Washington, DC. 
+Before proceeding, you should refer to the [Satellite usage requirements](/docs/satellite?topic=satellite-requirements). 
 {: shortdesc}
 
 ## Step 1: Create your Satellite location 
@@ -59,8 +60,8 @@ IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Sa
 - Log in to your [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){:new_window}.
 - Create a new [Satellite](/docs/satellite?topic=satellite-locations) location by selecting the **Manual setup** tab.
   - For management location, choose **Washington DC**.
-  - When choosing **host zones**, we recommend leaving the default values provided by AWS: **zone-1**, **zone-2**, and **zone-3**.
-  - Create and attach AWS hosts to the Satellite location. 
+  - If you intend to create your Satellite location on AWS, we recommend adjusting the **host zones** to AWS-default zone names: **zone-1**, **zone-2**, and **zone-3**.
+  - Create and attach hosts to the Satellite hosts, either AWS or on-prem.
   - Assign the created hosts to the control plane. 
 
 ## Step 2: Attach additional hosts to your Satellite location
