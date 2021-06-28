@@ -15,16 +15,19 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
-
+{:important: .important}
 
 # Deployment
 {: #instance-sat}
 
-**Create** an instance in the Satellite location and verify that a cluster has been created and the instance is provisioning. When the service cluster is created, if the corresponding hosts are available then the hosts are typically **auto-assigned** to the cluster.
+**Create** an instance in the Satellite location and verify that a cluster has been created and the instance is provisioning. 
+When the service cluster is created, if the corresponding hosts are available then the hosts are typically **auto-assigned** to the cluster.
 
 ## Cluster Configuration
 
-- To assign an existing Satellite storage configuration to IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite service, the Satellite location administrator must perform a manual step to fetch the appropriate information from the **application developer**.
+To assign an existing Satellite storage configuration to IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite service, the Satellite location administrator must perform the following manual step to fetch the appropriate information from the **application developer**.
+{: important}
+
 - This should be done using the Satellite CLI, as shown below:
 
 ```
