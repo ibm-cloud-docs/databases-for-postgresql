@@ -47,7 +47,7 @@ completion-time: 15m
 # IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #postgresql-satellite}
 
-With IBM Cloud™ Databases (ICD) for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud™ Database (ICD) service will then install an ICD Satellite service cluster in your Satellite location upon which your database instances will be deployed.
+With IBM Cloud™ Databases (ICD) for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud™ Database (ICD) service will then install an ICD Satellite service cluster in your Satellite location into which your database instances will be deployed.
 IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws), as well as on your on-premises data centers that are attached to the IBM Cloud management location in Washington, DC.
 {: shortdesc}
 
@@ -58,16 +58,19 @@ Before proceeding, you should refer to the [Satellite Usage requirements](/docs/
 ## Before you begin:
 {: #postgresql-satellite-location}
 
-If you haven't already created a Satellite location, see [Setting up Satellite locations](/docs/satellite?topic=satellite-locations). We recommend following the steps in the [Manually creating Satellite locations
+- If you have not already created a Satellite location, see [Setting up Satellite locations](/docs/satellite?topic=satellite-locations). We recommend following the steps in the [Manually creating Satellite locations
 ](/docs/satellite?topic=satellite-locations#location-create) documentation.
 
-For the management location, choose **Washington DC**. If creating your Satellite location on AWS, adjust the **host zones** to AWS-default zone names, for example: **us-east-1a**, **us-east-1b**, **us-east-1c**.
+- Also, be sure you have set up the [IBM Cloud command-line interface (CLI)](/docs/satellite?topic=satellite-setup-cli
+), the plug-in for Satellite commands, and other related CLIs.
+
+- For the management location, choose **Washington DC**. If creating your Satellite location on AWS, adjust the **host zones** to AWS-default zone names, for example: **us-east-1a**, **us-east-1b**, **us-east-1c**.
 {: .important}
 
 ![Manual Setup](images/manual-setup.png)
 {: caption="Choose Washington DC and, if deploying on AWS, use AWS-default zone names." caption-side="bottom"}
 
-Before proceeding with **Step 1**, you should have set up your Satellite location properly and ensured the Satellite control plane is up and running.
+- Before proceeding with **Step 1**, you should have set up your Satellite location properly and ensured the Satellite control plane is up and running.
 
 ## Step 1: Prepare Satellite location for IBM Cloud™ Databases
 {: #postgresql-satellite-host}
