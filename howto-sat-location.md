@@ -166,6 +166,12 @@ When the service cluster is available in your Satellite location, the next step 
 - Select **Services**
 - Follow the prompt to attach block storage.
 
+To obtain your `ROKS-Service-cluster-ID`, enter the following command into the IBM Cloud CLI:
+```
+ibmcloud oc cluster ls --provider satellite
+```
+{: pre}
+
 See the example below for an AWS Satellite location storage assignment:
 ```
 ibmcloud sat storage assignment create  \
