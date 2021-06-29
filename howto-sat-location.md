@@ -49,20 +49,27 @@ completion-time: 15m
 
 With IBM Cloud™ Databases (ICD) for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud™ Database (ICD) service will then install an ICD Satellite service cluster in your Satellite location upon which your database instances will be deployed.
 IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws), as well as on your on-premises data centers that are attached to the IBM Cloud management location in Washington, DC.
-Before proceeding, you should refer to the [Satellite usage requirements](/docs/satellite?topic=satellite-requirements).
 {: shortdesc}
 
-## Step 1: Create your Satellite location
+
+Before proceeding, you should refer to the [Satellite Usage requirements](/docs/satellite?topic=satellite-requirements).
+{: .tip}
+
+## Before you begin:
 {: #postgresql-satellite-location}
 
-### Before you begin:
-Follow the steps to setup a Satellite location [here](/docs/satellite?topic=satellite-locations) in detail. We recommend creating a new [Satellite location](/docs/satellite?topic=satellite-locations) by selecting the **Manual setup** tab:
-- For the management location, choose **Washington DC**.
-- If you create your Satellite location on AWS, adjust the **host zones** to AWS-default zone names, for example: **us-east-1a**, **us-east-1b**, **us-east-1c**.
+If you haven't already created a Satellite location, see [Setting up Satellite locations](/docs/satellite?topic=satellite-locations). We recommend following the steps in the [Manually creating Satellite locations
+](/docs/satellite?topic=satellite-locations#location-create) documentation.
 
-Before proceeding with **Step 2**, you should have set up your Satellite location properly and ensured the Satellite control plane is up and running.
+For the management location, choose **Washington DC**. If creating your Satellite location on AWS, adjust the **host zones** to AWS-default zone names, for example: **us-east-1a**, **us-east-1b**, **us-east-1c**.
+{: .important}
 
-## Step 2: Prepare Satellite location for IBM Cloud™ Databases
+![Manual Setup](images/manual-setup.png)
+{: caption="Choose Washington DC and, if deploying on AWS, use AWS-default zone names." caption-side="bottom"}
+
+Before proceeding with **Step 1**, you should have set up your Satellite location properly and ensured the Satellite control plane is up and running.
+
+## Step 1: Prepare Satellite location for IBM Cloud™ Databases
 {: #postgresql-satellite-host}
 
 Before deploying the IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite service, you should prepare your Satellite location.
@@ -79,12 +86,14 @@ Attach to your Satellite location:
 ### Create a Satellite block storage configuration
 
 IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports the following [Satellite storage templates](https://cloud.ibm.com/docs/satellite?topic=satellite-sat-storage-template-ov):
-- [Amazon Elastic Block Storage (EBS)](/docs/satellite?topic=satellite-config-storage-ebs) storage template for a Satellite location on AWS
-- [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp) storage template for a Satellite location within your datacenter (on-premises)
+- If you are setting up your Satellite location using AWS, you should configure your block storage using [Amazon Elastic Block Storage (EBS)](/docs/satellite?topic=satellite-config-storage-ebs).
+- If you are setting up your data center on-prem, you should use [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp) storage template for a Satellite location within your data center (on-premises)
 
-To create an AWS Satellite location, see [Creating an AWS EBS storage configuration](/docs/satellite?topic=satellite-config-storage-ebs).
+#### AWS EBS
 
-Copy the following the command and replace the variables with the parameters for your storage configuration.
+To create an AWS Satellite location, refer to [Creating an AWS EBS storage configuration](/docs/satellite?topic=satellite-config-storage-ebs).
+
+See below for an EBS storage configuration code example. For a full list of steps, consult the above documentation.
 
 ```
 ibmcloud sat storage config create  \
@@ -96,9 +105,11 @@ ibmcloud sat storage config create  \
   -p "aws-secret-access-key=${SAT_EBS_ADMIN_KEY}"
 ```
 
-For a Satellite location within your on-prem data center, see [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp).
+#### NetApp ONTAP-SAN
 
-Copy the following the command and replace the variables with the parameters for your storage configuration.
+For a Satellite location within your on-prem data center, refer to [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp).
+
+See below for an NetApp ONTAP-SAN storage configuration code example. For a full list of steps, consult the above documentation.
 
 ```
 ibmcloud sat storage config create \
@@ -115,17 +126,17 @@ ibmcloud sat storage config create \
     --source-branch 'develop'
 ````
 
-### Configure IAM Authorizations
-{: #cd-postgresql-iamauth}
 
-- Configure your IAM Authorizations under the **Manage** tab.
-- Choose the **Authorizations** tab from the lefthand menu.
-- Click the **create** button to create an authorization to allow a service instance access to another service instance.
-
-## Step 3: Grant a service authorization
+## Step 2: Grant a service authorization
 {: #cd-postgresql-serviceauth}
 
+Begin by configuring IAM Authorizations:
+- Configure your IAM Authorizations under the **Manage** tab.
+- Choose the **Authorizations** tab from the lefthand menu.
+- Click the **create** button to create an authorization that will allow a service instance access to another service instance.
+
 The source service is the service that is granted access to the target service. The roles you select define the level of access for this service. The target service is the service you are granting permission to be accessed by the source service based on the assigned roles.
+{: .note}
 
 - In the **Source Service** field, select **Databases for PostgreSQL development**.
 - In the **Target Service** field, select **Satellite**.
@@ -135,13 +146,25 @@ The source service is the service that is granted access to the target service. 
   - **Satellite Link Source Access Controller**
  - Then **Authorize**.
 
-## Step 4: Deploy IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
+## Step 3: Provisioning ICD Satellite Deployment
 
-When you create a new database service instance, a service cluster will first be deployed into your Satellite location. This service cluster step requires that you have prepared the Satellite location properly (see Step 2 above). Deployment of the service cluster can take up to one hour. When the service cluster is created you have to create a storage assignment manually **before** the database instance will be started.
+When you create a new database service instance, a service cluster will first be deployed into your Satellite location. This service cluster step requires you to have prepared the Satellite location properly (see Step 2 above). 
+Once you have prepared your satellite location and granted service authorization, you will need to provision your ICD Satellite Deployment by selecting the Satellite location you have created. For thorough documentation of the provisioning process, see [Provisioning](docs/databases-for-postgresql?topic=cloud-databases-provisioning).
 
-## Step 5: Create a Storage Assignment
+Deployment of the first service cluster can take up to one hour. Once the service cluster is created, you have to create a storage assignment manually **before** the database instance will be started. Subsequent clusters will provision more quickly.
+{: .important}
 
-When the service cluster is available in your Satellite location, you have to create a Satellite storage assignment. This will allow the service cluster to create volumes on the previously configured storage.
+## Step 4: Create a Storage Assignment
+
+When the service cluster is available in your Satellite location, the next step is to create a Satellite storage assignment. This will allow the service cluster to create volumes on the previously configured storage.
+
+- From the lefthand **Navigation Menu**, select **Satellite**, then **Locations**.
+![Satellite Locations Menu](images/sat-loc.png)
+{: caption="Navigation Menu > Satellite > Locations" caption-side="bottom"}
+
+- Select your Satellite location.
+- Select **Services**
+- Follow the prompt to attach block storage.
 
 See the example below for an AWS Satellite location storage assignment:
 ```
