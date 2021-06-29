@@ -21,7 +21,6 @@ Databases For PostgreSQL
 	{: .topicgroup}
 	Provisioning databases enabled by IBM Cloud Satellite
 		howto-sat-location.md
-		secure-data-satellite.md
 		
 	howto-admin-password.md
 	howto-getting-connection-strings.md
