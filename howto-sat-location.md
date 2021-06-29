@@ -67,9 +67,6 @@ Before proceeding, you should refer to the [Satellite Usage requirements](/docs/
 - For the management location, choose **Washington DC**. If creating your Satellite location on AWS, adjust the **host zones** to AWS-default zone names, for example: **us-east-1a**, **us-east-1b**, **us-east-1c**.
 {: .important}
 
-![Manual Setup](images/manual-setup.png)
-{: caption="Choose Washington DC and, if deploying on AWS, use AWS-default zone names." caption-side="bottom"}
-
 - Before proceeding with **Step 1**, you should have set up your Satellite location properly and ensured the Satellite control plane is up and running.
 
 ## Step 1: Prepare Satellite location for IBM Cloud™ Databases
