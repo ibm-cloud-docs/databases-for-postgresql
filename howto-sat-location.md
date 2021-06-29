@@ -148,6 +148,15 @@ The source service is the service that is granted access to the target service. 
   - **Satellite Link Administrator**
   - **Satellite Link Source Access Controller**
  - Then **Authorize**.
+ 
+To gain access to your cluster from the public network, such as to test access to your cluster from your local machine, first retrieve your public endpoints from your AWS portal for the control plane hosts. 
+Then, using the IP's from your AWS portal, enter the following command:
+```
+ibmcloud sat location dns register --location <location> --ip <public-ip1> --ip <public-ip2> --ip <public-ipN>
+```
+
+For more information on accessing clusters, refer to [Accessing clusters from the public network](/docs/openshift?topic=openshift-access_cluster#sat_public_access).
+
 
 ## Step 3: Provisioning ICD Satellite Deployment
 
