@@ -82,8 +82,8 @@ Databases For PostgreSQL
 	{: .navgroup id="reference"}
 	/databases-cli-plugin/databases-cli-plugin-cdb-reference
 	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)
-	/cloud-databases/cloud-databases-howto-sat-location
 	/cloud-databases/cloud-databases-versioning-policy
+	/cloud-databases/cloud-databases-howto-sat-location.md
 	
 	{: .topicgroup}
 	Connecting over Private Networks
