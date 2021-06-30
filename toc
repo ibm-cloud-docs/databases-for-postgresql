@@ -17,6 +17,7 @@ Databases For PostgreSQL
 
 	{: .navgroup id="howto"}
 	/cloud-databases/cloud-databases-provisioning
+	/cloud-databases/cloud-databases-cd-satellite
 	
 	{: .topicgroup}
 	Provisioning databases enabled by IBM Cloud Satellite
