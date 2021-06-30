@@ -82,14 +82,16 @@ These additional attached worker nodes are used to create a service cluster into
 Attach to your Satellite location:
 - three type **8x32** hosts
    - on AWS, choose three hosts of type **AWS m5d.2xlarge**
-- three type **32x128** hosts
+- six type **32x128** hosts
    - on AWS choose three hosts of type **AWS m5d.8xlarge**
 
 ### Create a Satellite block storage configuration
 
-ICD enabled by IBM Cloud Satellite supports the following [Satellite storage templates](https://cloud.ibm.com/docs/satellite?topic=satellite-sat-storage-template-ov):
+<!--ICD enabled by IBM Cloud Satellite supports the following [Satellite storage templates](https://cloud.ibm.com/docs/satellite?topic=satellite-sat-storage-template-ov):
 - If you are setting up your Satellite location using AWS, you should configure your block storage using [Amazon Elastic Block Storage (EBS)](/docs/satellite?topic=satellite-config-storage-ebs).
-- If you are setting up your data center on-prem, you should use [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp) storage template for a Satellite location within your data center (on-premises)
+- If you are setting up your data center on-prem, you should use [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp) storage template for a Satellite location within your data center (on-premises)-->
+
+ICD enabled by IBM Cloud Satellite supports block storage configuration using [Amazon Elastic Block Storage (EBS)](/docs/satellite?topic=satellite-config-storage-ebs).
 
 #### AWS EBS
 
@@ -107,12 +109,12 @@ ibmcloud sat storage config create  \
   -p "aws-secret-access-key=${SAT_EBS_ADMIN_KEY}"
 ```
 
-#### NetApp ONTAP-SAN
+<!-- #### NetApp ONTAP-SAN -->
 
-For a Satellite location within your on-prem data center, refer to [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp).
+<!-- For a Satellite location within your on-prem data center, refer to [NetApp ONTAP-SAN](/docs/satellite?topic=satellite-config-storage-netapp). 
 
-See below for an NetApp ONTAP-SAN storage configuration code example. For a full list of steps, consult the above documentation.
-
+<!-- See below for an NetApp ONTAP-SAN storage configuration code example. For a full list of steps, consult the above documentation. -->
+<!--
 ```
 ibmcloud sat storage config create \
     --name 'netapp-san'  \
@@ -127,7 +129,7 @@ ibmcloud sat storage config create \
     --source-org 'ntap-org'  \
     --source-branch 'develop'
 ````
-
+-->
 ### Enable public endpoints on the Satellite Control Plane
 ICD enabled by IBM Cloud Satellite requires enablement of public endpoints on the Satellite control plane to provide database management. To gain access to your cluster from the public network, first retrieve your public endpoints from your AWS portal for the control plane hosts. 
 Then, using the IP's from your AWS portal, enter the following command:
