@@ -83,7 +83,6 @@ Databases For PostgreSQL
 	/databases-cli-plugin/databases-cli-plugin-cdb-reference
 	[Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api)
 	/cloud-databases/cloud-databases-versioning-policy
-	/cloud-databases/cloud-databases-cd-satellite
 	
 	{: .topicgroup}
 	Connecting over Private Networks
