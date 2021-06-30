@@ -51,7 +51,7 @@ With IBM Cloud™ Databases (ICD) enabled by IBM Cloud Satellite, you can deploy
 ICD enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](/docs/satellite?topic=satellite-aws).
 {: shortdesc}
 
-ICD enabled by IBM Cloud Satellite supports {{site.data.keyword.databases-for-enterprisedb}}, {{site.data.keyword.databases-for-etcd}}, {{site.data.keyword.databases-for-postgresql}}, {{site.data.keyword.databases-for-redis}}, and {{site.data.keyword.messages-for-rabbitmq}}.
+ICD enabled by IBM Cloud Satellite supports {{site.data.keyword.databases-for-etcd}}, {{site.data.keyword.databases-for-postgresql}}, {{site.data.keyword.databases-for-redis}}, and {{site.data.keyword.messages-for-rabbitmq}}.
 {: .note}
 
 Before proceeding, you should refer to the [Satellite Usage requirements](/docs/satellite?topic=satellite-requirements).
@@ -88,7 +88,7 @@ To set up your Satellite location using AWS, you should configure your block sto
 
 ### AWS EBS
 
-To create an AWS Satellite location, refer to [Creating an AWS EBS storage configuration](/docs/satellite?topic=satellite-config-storage-ebs).
+To create a block storage configuration for your Satellite location, refer to [Creating an AWS EBS storage configuration](/docs/satellite?topic=satellite-config-storage-ebs).
 
 See below for an EBS storage configuration code example. For a full list of steps, consult the above documentation.
 
@@ -97,10 +97,9 @@ ibmcloud sat storage config create  \\
   --name 'aws-ebs-config-storage-testing-1' \\
   --template-name 'aws-ebs-csi-driver' \\
   --template-version '0.9.14' \\
-  --location 'c2tace1w07k5gvilnqq0' \\
+  --location '${LOCATION_ID}' \\
   -p "aws-access-key=${SAT_EBS_ADMIN_KEY_ID}" \\
   -p "aws-secret-access-key=${SAT_EBS_ADMIN_KEY}"
-
 ```
 
 ### Enable public endpoints on the Satellite Control Plane
@@ -125,10 +124,7 @@ Begin by configuring IAM Authorizations:
 - Configure your IAM Authorizations under the **Manage** tab.
 - Choose the **Authorizations** tab from the lefthand menu.
 - Click the **create** button to create an authorization that will allow a service instance access to another service instance.
-
-The source service is the service that is granted access to the target service. The roles you select define the level of access for this service. The target service is the service you are granting permission to be accessed by the source service based on the assigned roles.
-{: .note}
-
+-The source service is the service that is granted access to the target service. The roles you select define the level of access for this service. The target service is the service you are granting permission to be accessed by the source service based on the assigned roles.
 - In the **Source Service** field, select **Databases for <cloud database>**.
 - In the **Target Service** field, select **Satellite**.
 - Select all options:
