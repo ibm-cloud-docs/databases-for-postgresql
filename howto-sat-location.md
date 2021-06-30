@@ -51,7 +51,7 @@ With IBM Cloud™ Databases (ICD) enabled by IBM Cloud Satellite, you can deploy
 ICD enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](/docs/satellite?topic=satellite-aws).
 {: shortdesc}
 
-ICD enabled by IBM Cloud Satellite supports {{site.data.keyword.databases-for-cassandra}}, {{site.data.keyword.databases-for-enterprisedb}}, {{site.data.keyword.databases-for-etcd}}, {{site.data.keyword.databases-for-postgresql}}, {{site.data.keyword.databases-for-redis}}, and {{site.data.keyword.messages-for-rabbitmq}}.
+ICD enabled by IBM Cloud Satellite supports {{site.data.keyword.databases-for-enterprisedb}}, {{site.data.keyword.databases-for-etcd}}, {{site.data.keyword.databases-for-postgresql}}, {{site.data.keyword.databases-for-redis}}, and {{site.data.keyword.messages-for-rabbitmq}}.
 {: .note}
 
 Before proceeding, you should refer to the [Satellite Usage requirements](/docs/satellite?topic=satellite-requirements).
@@ -60,13 +60,13 @@ Before proceeding, you should refer to the [Satellite Usage requirements](/docs/
 ## Before you begin:
 {: #cd-satellite-location}
 
+- Be sure you have set up the [IBM Cloud command-line interface (CLI)](/docs/satellite?topic=satellite-setup-cli), the plug-in for Satellite commands, and other related CLIs.
 - If you have not already created a Satellite location, see [Setting up Satellite locations](/docs/satellite?topic=satellite-locations). We recommend following the steps in the [Manually creating Satellite locations](/docs/satellite?topic=satellite-locations#location-create) documentation.
-- Also, be sure you have set up the [IBM Cloud command-line interface (CLI)](/docs/satellite?topic=satellite-setup-cli), the plug-in for Satellite commands, and other related CLIs.
 - For the management location, choose **Washington DC**. If creating your Satellite location on AWS, adjust the **host zones** to AWS-default zone names, for example: **us-east-1a**, **us-east-1b**, **us-east-1c**.
 {: .important}
 - Before proceeding with **Step 1**, you should have set up your Satellite location properly and ensured the Satellite control plane is up and running.
 
-## Step 1: Prepare Satellite location for IBM Cloud™ Databases
+## Step 1: Prepare a Satellite location for IBM Cloud™ Databases
 
 {: #cd-satellite-host}
 
