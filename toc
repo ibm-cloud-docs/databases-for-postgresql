@@ -91,6 +91,7 @@ Databases For PostgreSQL
 		/cloud-databases/cloud-databases-service-endpoints
 
 	reference-monitoring.md
+	howto-sat-loc.md
 	/cloud-databases/cloud-databases-activity-tracker
 	/cloud-databases/cloud-databases-logging
 	/cloud-databases/cloud-databases-iam
