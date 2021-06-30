@@ -134,9 +134,6 @@ Begin by configuring IAM Authorizations:
 
 Once you have prepared your satellite location and granted service authorization, you can provision your ICD Satellite Deployment by selecting the Satellite location you have created in the **Location** dropdown of the provisioning page.  For thorough documentation of the provisioning process, see the relevant provisioning documentation for your ICD Satellite deployment. For example, for PostgreSQL, refer to [Provisioning](/docs/databases-for-postgresql?topic=cloud-databases-provisioning) here. Once you have created a new service instance, this instance will appear in the IBM Cloud `Resource List` as `Provisioned`.
 
-Note that the first database you provision into a location will remain "Provision In Progress" until this step has been completed.
-{: .important}
-
 When you deploy the first database service instance, a service cluster will automatically be deployed into your Satellite location. The deployment of the service cluster can take up to one hour.
 
 You can verify in the IBM Cloud UI whether the service cluster is already created:
@@ -151,6 +148,9 @@ Once the service cluster is created, you must create a storage assignment manual
 {: #cd-satellite-stor-assign}
 
 When the service cluster is available in your Satellite location, the next step is to create a Satellite storage assignment. This will allow the service cluster to create volumes on the previously configured storage.
+
+Note that the first database you provision into a location will remain "Provision In Progress" until this step has been completed.
+{: .important}
 
 Refer to [AWS EBS IBM Cloud Satellite documentation](/docs/satellite?topic=satellite-config-storage-ebs) for more information regarding AWS EBS.
 {: .note}
