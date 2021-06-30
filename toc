@@ -18,9 +18,7 @@ Databases For PostgreSQL
 	{: .navgroup id="howto"}
 	/cloud-databases/cloud-databases-provisioning
 	
-	{: .topicgroup}
-	Provisioning databases enabled by IBM Cloud Satellite
-		howto-sat-location.md
+	howto-sat-location.md
 		
 	howto-admin-password.md
 	howto-getting-connection-strings.md
