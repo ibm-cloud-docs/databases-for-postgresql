@@ -129,7 +129,7 @@ ibmcloud sat storage config create \
 ````
 
 ### Enable public endpoints on the Satellite Control Plane
-To gain access to your cluster from the public network, such as to test access to your cluster from your local machine, first retrieve your public endpoints from your AWS portal for the control plane hosts. 
+ICD enabled by IBM Cloud Satellite requires enablement of public endpoints on the Satellite control plane to provide database management. To gain access to your cluster from the public network, first retrieve your public endpoints from your AWS portal for the control plane hosts. 
 Then, using the IP's from your AWS portal, enter the following command:
 ```
 ibmcloud sat location dns register --location <location> --ip <public-ip1> --ip <public-ip2> --ip <public-ipN>
@@ -173,7 +173,10 @@ When the service cluster is available in your Satellite location, the next step 
 - From the lefthand **Navigation Menu**, select **Satellite**, then **Locations**.
 - Select your Satellite location.
 - Select **Services**
-- Follow the prompt to attach block storage.
+- Follow the prompt to attach block storage. 
+
+Refer to [AWS EBS IBM Cloud Satellite documentation](/docs/satellite?topic=satellite-config-storage-ebs) for more information regarding AWS EBS.
+{: .note}
 
 To obtain your `ROKS-Service-cluster-ID`, enter the following command into the IBM Cloud CLI:
 ```
