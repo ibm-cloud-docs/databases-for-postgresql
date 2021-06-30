@@ -47,10 +47,9 @@ completion-time: 15m
 # IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite
 {: #postgresql-satellite}
 
-With IBM Cloud™ Databases (ICD) for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The IBM Cloud™ Database (ICD) service will then install an ICD Satellite service cluster in your Satellite location into which your database instances will be deployed.
+With IBM Cloud™ Databases (ICD) for PostgreSQL enabled by IBM Cloud Satellite, you can deploy IBM Cloud Database instances into a Satellite location. The ICD service will then install an ICD Satellite service cluster in your Satellite location into which your database instances will be deployed.
 IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite supports Satellite locations on [Amazon Web Services (AWS)](https://cloud.ibm.com/docs/satellite?topic=satellite-aws), as well as on your on-premises data centers that are attached to the IBM Cloud management location in Washington, DC.
 {: shortdesc}
-
 
 Before proceeding, you should refer to the [Satellite Usage requirements](/docs/satellite?topic=satellite-requirements).
 {: .tip}
@@ -80,7 +79,7 @@ These additional attached worker nodes are used to create a service cluster upon
 Attach to your Satellite location:
 - three type **8x32** hosts
    - on AWS, choose three hosts of type **AWS m5d.2xlarge**
-- three type **32*128** hosts
+- three type **32x128** hosts
    - on AWS choose three hosts of type **AWS m5d.8xlarge**
 
 ### Create a Satellite block storage configuration
@@ -126,6 +125,14 @@ ibmcloud sat storage config create \
     --source-branch 'develop'
 ````
 
+### Enable public endpoints on the Satellite Control Plane
+To gain access to your cluster from the public network, such as to test access to your cluster from your local machine, first retrieve your public endpoints from your AWS portal for the control plane hosts. 
+Then, using the IP's from your AWS portal, enter the following command:
+```
+ibmcloud sat location dns register --location <location> --ip <public-ip1> --ip <public-ip2> --ip <public-ipN>
+```
+
+For more information on accessing clusters, refer to [Accessing clusters from the public network](/docs/openshift?topic=openshift-access_cluster#sat_public_access).
 
 ## Step 2: Grant a service authorization
 {: #cd-postgresql-serviceauth}
@@ -138,22 +145,13 @@ Begin by configuring IAM Authorizations:
 The source service is the service that is granted access to the target service. The roles you select define the level of access for this service. The target service is the service you are granting permission to be accessed by the source service based on the assigned roles.
 {: .note}
 
-- In the **Source Service** field, select **Databases for PostgreSQL development**.
+- In the **Source Service** field, select **Databases for PostgreSQL**.
 - In the **Target Service** field, select **Satellite**.
 - Select all options:
   - **Satellite Cluster Creator**
   - **Satellite Link Administrator**
   - **Satellite Link Source Access Controller**
  - Then **Authorize**.
- 
-To gain access to your cluster from the public network, such as to test access to your cluster from your local machine, first retrieve your public endpoints from your AWS portal for the control plane hosts. 
-Then, using the IP's from your AWS portal, enter the following command:
-```
-ibmcloud sat location dns register --location <location> --ip <public-ip1> --ip <public-ip2> --ip <public-ipN>
-```
-
-For more information on accessing clusters, refer to [Accessing clusters from the public network](/docs/openshift?topic=openshift-access_cluster#sat_public_access).
-
 
 ## Step 3: Provisioning ICD Satellite Deployment
 
@@ -168,9 +166,6 @@ Deployment of the first service cluster can take up to one hour. Once the servic
 When the service cluster is available in your Satellite location, the next step is to create a Satellite storage assignment. This will allow the service cluster to create volumes on the previously configured storage.
 
 - From the lefthand **Navigation Menu**, select **Satellite**, then **Locations**.
-![Satellite Locations Menu](images/sat-loc.png)
-{: caption="Navigation Menu > Satellite > Locations" caption-side="bottom"}
-
 - Select your Satellite location.
 - Select **Services**
 - Follow the prompt to attach block storage.
