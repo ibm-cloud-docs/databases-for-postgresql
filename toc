@@ -19,6 +19,7 @@ Databases For PostgreSQL
 	/cloud-databases/cloud-databases-provisioning
 	
 	howto-sat-location.md
+	/cloud-databases/cloud-databases-sat-loc
 		
 	howto-admin-password.md
 	howto-getting-connection-strings.md
