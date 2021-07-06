@@ -17,8 +17,6 @@ Databases For PostgreSQL
 
 	{: .navgroup id="howto"}
 	/cloud-databases/cloud-databases-provisioning
-	
-	howto-sat-location.md
 	/cloud-databases/cloud-databases-satellite
 		
 	howto-admin-password.md
