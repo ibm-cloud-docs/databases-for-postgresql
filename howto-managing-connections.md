@@ -140,9 +140,11 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
 ```
 {: pre}
 
+### Connection Limits and TCP/IP keepalives Settings 
 
+In the event of a failover of edge nodes/VIPs, it is possible that broken TCP/IP connections remain until their `tcp_keepalives_idle` timeout is reached. To avoid this scenario, we recommend the following:
+- `tcp_keepalives_idle` should be set to 5 minutes
+- `tcp_keepalives_interval` probe interval should be set to 10 seconds
+- `tcp_keepalives_count` should be set to 6
 
-
-
-
-
+To prevent failover connections from overwhelming your service, we also recommend that you set `max_connections` to at least double your expected connections count. Should your connection limit be reached, you should [end connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#end-connections) to immediately, which will immediately mitigate connection issues.
