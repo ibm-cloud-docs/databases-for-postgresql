@@ -147,4 +147,4 @@ In the event of a failover of edge nodes/VIPs, it is possible that broken TCP/IP
 - `tcp_keepalives_interval` probe interval should be set to 10 seconds
 - `tcp_keepalives_count` should be set to 6
 
-To prevent failover connections from overwhelming your service, we also recommend that you set `max_connections` to at least double your expected connections count. Should your connection limit be reached, you should [end connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#end-connections) to immediately, which will immediately mitigate connection issues.
+To prevent failover connections from overwhelming your service, we also recommend that you set `max_connections` to at least double your expected connections count. Should your connection limit be reached, you should [end connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#end-connections) to immediately, which will immediately mitigate connection issues. 
