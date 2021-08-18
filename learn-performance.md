@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2020, 2021 
-lastupdated: "2021-03-30"
+lastupdated: "2021-08-18"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, connection limits
 
