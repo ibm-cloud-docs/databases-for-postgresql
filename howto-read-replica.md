@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019, 2021
-lastupdated: "2021-02-04"
+lastupdated: "2021-08-23"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication
 
@@ -16,6 +16,8 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
+
 
 # Configuring Read-only Replicas
 {: #read-only-replicas}
@@ -23,6 +25,9 @@ subcollection: databases-for-postgresql
 You can set up your {{site.data.keyword.databases-for-postgresql_full}} deployment to be a read-only replica of another {{site.data.keyword.databases-for-postgresql}} deployment. 
 
 A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. As the name implies, read-only replicas support read transactions and can be used to balance databases that have both write-heavy and read-heavy operations. The read-only replica has a single PostgreSQL data member, and it is billed at the [same per member consumption rates as the leader](https://{DomainName}/catalog/services/databases-for-postgresql/).
+
+PostgreSQL deployments have two members by default. However, a read-only replica has only one member, and provisioning allocates on a per-deployment basis. Therefore, provisioning currently uses values that are half of the requested values for memory and storage. The web UI cannot be configured to modify the value for storage, and it automatically will use the leader deployment's value - which will be cut in half. If that is insufficient for your data to fit, you will need to use the API or CLI and specify twice the storage you actually want to be provisioned. An update is in progress to remediate this situation. 
+{: .note}
 
 ## Read-only Replica Considerations
 
