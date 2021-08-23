@@ -20,7 +20,7 @@ subcollection: databases-for-postgresql
 {: #postgres-icu}
 [ICU](http://site.icu-project.org/) (International Components for Unicode) uses C/C++ and Java libraries to provide Unicode and Globalization internationalization and localization facilities, including collation. ICU provides stability to your database by preventing index corruption caused by operating system collation changes. 
 
-{{site.data.keyword.databases-for-postgresql_full}} supports ICU. To use ICU, your deployment needs to be built explicitly with ICU support. ICU-based collations are offered alongside the `libc` collations (which use the locales provided by the operating system C library), so building with ICU support does not remove `libc` collation support. Consult the [PostreSQL Collation Support documentation](http://www.postgresql.org/docs/10/static/collation.html) for details on selecting an ICU versus `libc` collation.
+{{site.data.keyword.databases-for-postgresql_full}} supports ICU. To use ICU, your deployment needs to be built explicitly with ICU support. ICU-based collations are offered alongside the `libc` collations (which use the locales provided by the operating system C library), so building with ICU support does not remove `libc` collation support. Consult the [PostgreSQL Collation Support documentation](http://www.postgresql.org/docs/10/static/collation.html) for details on selecting an ICU versus `libc` collation.
 
 ## Enabling ICU
 {: #enabling-icu}
