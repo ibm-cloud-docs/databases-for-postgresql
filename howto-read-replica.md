@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {:tip: .tip}
 {:note: .note}
-
+{:important: .important}
 
 # Configuring Read-only Replicas
 {: #read-only-replicas}
@@ -25,10 +25,7 @@ subcollection: databases-for-postgresql
 You can set up your {{site.data.keyword.databases-for-postgresql_full}} deployment to be a read-only replica of another {{site.data.keyword.databases-for-postgresql}} deployment. 
 
 A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment using asynchronous replication. As the name implies, read-only replicas support read transactions and can be used to balance databases that have both write-heavy and read-heavy operations. The read-only replica has a single PostgreSQL data member, and it is billed at the [same per member consumption rates as the leader](https://{DomainName}/catalog/services/databases-for-postgresql/).
-
-PostgreSQL deployments have two members by default. However, a read-only replica has only one member, and provisioning allocates on a per-deployment basis. Therefore, provisioning currently uses values that are half of the requested values for memory and storage. The web UI cannot be configured to modify the value for storage, and it automatically will use the leader deployment's value - which will be cut in half. If that is insufficient for your data to fit, you will need to use the API or CLI and specify twice the storage you actually want to be provisioned. An update is in progress to remediate this situation. 
-{: .note}
-
+ 
 ## Read-only Replica Considerations
 
 - The read-only replica can exist in the same region as the source formation or in different one, enabling your data to be replicated across regions.
@@ -62,6 +59,11 @@ If a deployment is a leader and has a read-only replica that is already attached
 ![List of replicas that are attached to a leader](images/replica-after.png)
 
 ## Provisioning a Read-only Replica
+
+PostgreSQL deployments have two members by default. However, a read-only replica has only one member, and provisioning allocates on a per-deployment basis. Therefore, provisioning currently uses values that are half of the requested values for memory and storage. 
+
+The web UI cannot be configured to modify the value for storage, and it will automatically use the leader deployment's value - which will be cut in half. The same applies to memory, although a lower amount of memory should not prevent the restore from being successful. If that is insufficient for your data to fit, you will need to use the API or CLI to specify twice the storage you actually want to be provisioned. An update is in progress to remediate this situation.
+{:important: .important}
 
 You can provision a read-only replica from the leader's _Read Replicas_ tab by clicking **Create Read-Only Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can rename it freely. You can choose the region to deploy it in, and its initial memory allocation. Disk size, version, and public or private endpoints are automatically configured to match the settings of the leader deployment.
 
