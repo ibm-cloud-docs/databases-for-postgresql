@@ -24,8 +24,10 @@ subcollection: databases-for-postgresql
 
 ## Enabling ICU
 {: #enabling-icu}
-While ICU collations are available, {{site.data.keyword.databases-for-postgresql_full}} are the same. 
+While ICU collations are available, {{site.data.keyword.databases-for-postgresql_full}} defaults are the same. 
 
 To deploy with support for the ICU library, the ICU4C package must be installed by appending the `--with-icu` flag. 
 
 To enable ICU support on your {{site.data.keyword.databases-for-postgresql_full}} deployment, append your commands with `-x-icu` flag.
+
+For more information on PostgreSQL ICU support, refer to [More robust collations with ICU support in PostgreSQL 10](https://www.2ndquadrant.com/en/blog/icu-support-postgresql-10/) and [PostgreSQL's Collation Support](https://www.postgresql.org/docs/10/collation.html) documentation. 
