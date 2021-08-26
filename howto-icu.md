@@ -22,4 +22,3 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} supports ICU. To use ICU, your tables need to be created with ICU support, as outlined in the [PostgreSQL Collation Support documentation](http://www.postgresql.org/docs/10/static/collation.html). ICU-based collations are offered alongside the `libc` collations (which use the locales provided by the operating system C library), so building with ICU support does not remove `libc` collation support. 
 
-For more information on PostgreSQL ICU support, refer to [More robust collations with ICU support in PostgreSQL 10](https://www.2ndquadrant.com/en/blog/icu-support-postgresql-10/) and [PostgreSQL's Collation Support](https://www.postgresql.org/docs/10/collation.html) documentation. 
