@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2021-08-21"
 
 keywords: postgresql, databases, connection limits, terminating connections, connection pooling
 
