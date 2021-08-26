@@ -140,11 +140,16 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
 ```
 {: pre}
 
-### Connection Limits and TCP/IP keepalives Settings 
+### Connection Limits and TCP/IP keepalives Settings
 
-In the event of a failover of edge nodes/VIPs, it is possible that broken TCP/IP connections remain until their `tcp_keepalives_idle` timeout is reached. To avoid this scenario, we recommend the following:
-- `tcp_keepalives_idle` should be set to 5 minutes
-- `tcp_keepalives_interval` probe interval should be set to 10 seconds
-- `tcp_keepalives_count` should be set to 6
+In the event of a network connection reset or failover, it is possible that broken TCP/IP connections remain in a half-opened/closed state until the tcp keepalive timeouts are reached. To avoid this scenario it is recommended to set the `socket_timeout` and `connection_timeout` settings in your specific application drivers as well. The correct settings _vary based on the specific workload and it is important to run load tests before going to production_. A good starting point for the `connection_timeout` is between 2 to 5 seconds. For the `socket_timeout` a good starting point is between 30 to 60 seconds.
 
-To prevent failover connections from overwhelming your service, we also recommend that you set `max_connections` to at least double your expected connections count. Should your connection limit be reached, you should [end connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#end-connections) to immediately, which will immediately mitigate connection issues. 
+Furthermore on the server side the following [keepalive configurations](https://www.postgresql.org/docs/12/runtime-config-connection.html) are used as the default.
+
+- `tcp_keepalives_idle` is set to 5 minutes
+- `tcp_keepalives_interval` probe interval is set to 10 seconds
+- `tcp_keepalives_count` is set to 6
+
+To prevent half-open/closed connections or bursts in connection attempts from overwhelming your deployment it is also encouraged to [set the `max_connections` paremeter](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) for Postgres to at least double your expected connection count.
+
+If you connection limit is reached, you can [end all connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#end-connections) immediately.
