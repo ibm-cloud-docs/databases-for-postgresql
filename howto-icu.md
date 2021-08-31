@@ -15,6 +15,7 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{:external: .external target="_blank"} 
 
 # PostgreSQL ICU Support
 {: #postgres-icu}
@@ -22,7 +23,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} supports ICU. To use ICU, your tables need to be created with ICU support, as outlined in the [PostgreSQL Collation Support documentation](http://www.postgresql.org/docs/10/static/collation.html). 
 
-ICU-based collations are offered alongside the `libc` collations (which use the locales provided by the operating system C library), so building with ICU support does not remove `libc` collation support. 
+ICU-based collations are offered alongside the `libc` collations. `libc` uses the locales provided by the operating system C library and are the locales that most tools provided by the operating system use. Building with ICU support does not remove `libc` collation support. For more information regarding PostgreSQL collation, see [PostgreSQL Collation Support](https://www.postgresql.org/docs/12/collation.html){: external}. 
 
 For example, if you previously specified 
 
