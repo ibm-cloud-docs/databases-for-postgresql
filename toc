@@ -17,9 +17,9 @@ Databases For PostgreSQL
 
 	{: .navgroup id="howto"}
 	IBM Cloud™ Databases (ICD) enabled by IBM Cloud Satellite
-	/cloud-databases-satellite-get-started
-	/cloud-databases-satellite-aws
-	/cloud-databases-satellite-on-prem
+		/cloud-databases-satellite-get-started
+		/cloud-databases-satellite-aws
+		/cloud-databases-satellite-on-prem
 		
 	howto-admin-password.md
 	howto-getting-connection-strings.md
