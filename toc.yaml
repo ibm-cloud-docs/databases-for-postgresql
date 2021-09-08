@@ -12,17 +12,6 @@ toc:
     product-page: https://www.ibm.com/cloud/databases-for-postgresql
     path: databases-for-postgresql
     label: Databases For PostgreSQL
-
-#  List your getting started tutorial (getting-started.md) as the first item in the Get started nav group. See https://test.cloud.ibm.com/docs/writing?topic=writing-navigation for more details on the toc design.
-  entries: 
-  - navgroup: 
-      id: learn
-      topics:
-      - topicgroup: 
-          label: topic-group-label
-          topics:
-          - index.md
-
   - navgroup: 
       id: learn
       topics: 
@@ -36,7 +25,6 @@ toc:
       - learn-performance.md 
       - learn-security-compliance.md 
       - learn-pricing.md
-      - topic: topic-3.md
   - navgroup: 
       id: howto
       topics:
