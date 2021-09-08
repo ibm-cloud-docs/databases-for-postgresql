@@ -4,14 +4,14 @@
 ---
 toc:
   properties:
-    subcollection: service-name
-    category: category-value
-    audience: audience-value
-    href: /docs/subcollection-value
-    console-page: /relative/console/path
-    product-page: https://ibm.com/cloud/product-value
-    path: repo-name
-    label: Docs subcollection title
+    subcollection: databases-for-postgresql
+    category: databases
+    audience: service
+    href: /docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started
+    console-page: /catalog/services/databases-for-postgresql
+    product-page: https://www.ibm.com/cloud/databases-for-postgresql
+    path: databases-for-postgresql
+    label: Databases For PostgreSQL
 
 #  List your getting started tutorial (getting-started.md) as the first item in the Get started nav group. See https://test.cloud.ibm.com/docs/writing?topic=writing-navigation for more details on the toc design.
   entries: 
@@ -24,60 +24,99 @@ toc:
           - index.md
 
   - navgroup: 
-      id: tutorial
+      id: learn
       topics: 
-      - topic-1.md
-      - topic-2.md
+      - getting-started.md
+      - /cloud-databases/cloud-databases-best-practices
+      - link: 
+          label: What is PostgreSQL?
+          href: https://cloud.ibm.com/apidocs/cloud-databases-api
+      - learn-dashboard-overview.md 
+      - learn-high-availability.md 
+      - learn-performance.md 
+      - learn-security-compliance.md 
+      - learn-pricing.md
       - topic: topic-3.md
-        navtitle: A shorter navtitle 
-
   - navgroup: 
       id: howto
       topics:
-      - topic-3.md
       - topicgroup: 
-          label: topic-group-label
+          label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics: 
-          - topic-4.md
-          - topicgroup: 
-              label: nested-topic-group-label
-              topics: 
-              - topic-5.md
-
-#  Links to your REST API docs should be included in the Reference navigation group. For details on publishing API docs, see https://test.cloud.ibm.com/docs/api-docs.
-#  Links to your command line reference docs should be included in the Reference navigation group.
-  - navgroup:
-      id: reference
-      topics: 
-      - topicgroup:
-          label: API reference
-          links: 
-          - link: 
-              label: Catalog Management
-              href: https://cloud.ibm.com/apidocs/resource-catalog/private-catalog
-          - link: 
-              label: Enterprise Management
-              href: https://{DomainName}/apidocs/enterprise-apis/enterprise
-      - topicgroup:
-          label: Command reference
-          topics:
-          - /cli/cli-manage-catalogs-plugin
-          - /cli/cli-ibmcloud_commands_services
-          - /cli/cli-ibmcloud_commands_account
-      - topic-6.md
-
-  - navgroup:
+          - /cloud-databases/cloud-databases-satellite-get-started
+          - /cloud-databases/cloud-databases-satellite-aws
+          - /cloud-databases/cloud-databases-satellite-on-prem
+      - howto-admin-password.md   
+      - howto-getting-connection-strings.md
+      - /cloud-databases/cloud-databases-provisioning
+      - /cloud-databases/cloud-databases-deprovisioning
+      - /cloud-databases/cloud-databases-ha-dr
+      - topicgroup: 
+          label: Connecting to Databases for PostgreSQL
+          topics: 
+          - connecting-external.md
+          - connecting-ibmcloud-app.md
+          - connecting-psql.md
+      - howto-user-management.md 
+      - topicgroup: 
+          label: Managing Resources
+          topics: 
+          - howto-resources-scaling.md
+          - howto-autoscaling.md
+          - howto-horizontal-scaling.md
+          - howto-managing-connections.md
+      - /cloud-databases/cloud-databases-dashboard-backups  
+      - howto-pitr.md
+      - /cloud-databases/cloud-databases-allowlisting
+      - topicgroup: 
+          label: Replication
+          topics: 
+          - howto-read-replica.md
+          - howto-logical-replication.md
+      - topicgroup: 
+          label: Migrating PostgreSQL
+          topics: 
+          - howto-migration.md
+          - howto-migration-compose.md
+      - howto-upgrading.md
+      - topicgroup: 
+          label: Configuring PostgreSQL
+          topics: 
+          - howto-changing-config.md
+          - howto-extensions.md
+          - howto-wal2json.md
+          - howto-pgaudit.md
+          - howto-icu.md
+      - topicgroup: 
+          label: Tutorials
+          topics: 
+          - /cloud-databases/cloud-databases-tutorial-k8s-app
+          - /cloud-databases/cloud-databases-tutorial-cf-app
+      - topicgroup: 
+          label: Enhancing security
+          topics: 
+          - /cloud-databases/cloud-databases-manage-security-compliance
+  - navgroup: 
       id: help
       topics: 
-      - support.md
+      - ts-connect.md
+  - navgroup: 
+      id: reference
+      topics:
+      - /databases-cli-plugin/databases-cli-plugin-cdb-reference
+      - link:
+          label: Cloud Databases API
+          href: https://cloud.ibm.com/apidocs/cloud-databases-api
+      - /cloud-databases/cloud-databases-versioning-policy
       - topicgroup: 
-          label: FAQs
+          label: Connecting over Private Networks
           topics: 
-          - topic-7.md
-          - topic-8.md
-      - topicgroup: 
-          label: Troubleshooting
-          topics: 
-          - topic-9.md
-          - topic-10.md
-      - release-notes.md
+          - /cloud-databases/cloud-databases-vpes
+          - /cloud-databases/cloud-databases-service-endpoints
+      - reference-monitoring.md
+      - /cloud-databases/cloud-databases-logging
+	  - /cloud-databases/cloud-databases-iam
+	  - /cloud-databases/cloud-databases-key-protect
+	  - /cloud-databases/cloud-databases-hpcs
+	  - /cloud-databases/cloud-databases-responsibilities-cloud-databases
+      
