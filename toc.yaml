@@ -5,7 +5,7 @@
 toc:
   properties:
     subcollection: databases-for-postgresql
-    category: databases
+    category: database
     audience: service
     href: /docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started
     console-page: /catalog/services/databases-for-postgresql
@@ -115,8 +115,8 @@ toc:
           - /cloud-databases/cloud-databases-service-endpoints
       - reference-monitoring.md
       - /cloud-databases/cloud-databases-logging
-	  - /cloud-databases/cloud-databases-iam
-	  - /cloud-databases/cloud-databases-key-protect
-	  - /cloud-databases/cloud-databases-hpcs
-	  - /cloud-databases/cloud-databases-responsibilities-cloud-databases
+      - /cloud-databases/cloud-databases-iam
+      - /cloud-databases/cloud-databases-key-protect
+      - /cloud-databases/cloud-databases-hpcs
+      - /cloud-databases/cloud-databases-responsibilities-cloud-databases
       
