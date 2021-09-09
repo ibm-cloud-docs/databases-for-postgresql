@@ -78,7 +78,7 @@ The source service is the service that is granted access to the target service. 
 - In the **Source Service** field, select **Databases for PostgreSQL development**.
 - In the **Target Service** field, select **Satellite**.
 - Select all options:
-  - **Satellite Cluster Creator** 
-  - **Satellite Link Administrator** 
-  - **Satellite Link Source Access Controller** 
- - Then **Authorize**.
+    - **Satellite Cluster Creator** 
+    - **Satellite Link Administrator** 
+    - **Satellite Link Source Access Controller** 
+    - Then **Authorize**.
