@@ -1,6 +1,7 @@
 toc:
   properties:
     subcollection: databases-for-postgresql
+    version: 2
     category: database
     audience: service
     href: /docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started
