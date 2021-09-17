@@ -26,6 +26,7 @@ The configuration is defined in a schema. To make a change, you send a JSON obje
 {"configuration":{"max_connections":150}}
 ```
 {: .codeblock}
+
 to either the CLI or to the API. 
 
 For more information on checking the current value of `max_connections`, see the [Managing PostreSQL Connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections) documentation. 
