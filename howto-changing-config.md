@@ -146,7 +146,20 @@ pg_statio_user_indexes;
     - Default - `100`
     - Restarts database - No
     - Options - Minimum value of 100
-    - Notes - Statements that take longer than the specified number of milliseconds are logged.   
+    - Notes - Statements that take longer than the specified number of milliseconds are logged.  
+
+[`tcp_keepalives_idle`](https://www.postgresql.org/docs/10/runtime-config-connection.html)
+    - Default - `300`
+    - Restarts database - No
+
+[`tcp_keepalives_interval`](https://www.postgresql.org/docs/10/runtime-config-connection.html)
+    - Default - `10`
+    - Restarts database - No 
+
+[`tcp_keepalives_count`](https://www.postgresql.org/docs/10/runtime-config-connection.html)
+    - Default - `6`
+    - Restarts database - No
+
   
 ### WAL Settings
 
