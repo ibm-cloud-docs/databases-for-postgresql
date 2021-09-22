@@ -17,7 +17,7 @@ toc:
       - /cloud-databases/cloud-databases-best-practices
       - link: 
           label: What is PostgreSQL?
-          href: https://cloud.ibm.com/apidocs/cloud-databases-api
+          href: https://www.ibm.com/cloud/learn/postgresql
       - learn-dashboard-overview.md 
       - learn-high-availability.md 
       - learn-performance.md 
