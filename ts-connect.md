@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-12-10"
+lastupdated: "2020-09-21"
 
 keywords: troubleshooting for PostgreSQL
 
