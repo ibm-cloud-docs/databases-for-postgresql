@@ -95,7 +95,7 @@ You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm
 
 ## Connection Pooling
 
-One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling.
+One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling. If you find yourself setting the Databases for PostgreSQL connection to limit to above 500 connections, you should seriously consider using connection pooling or re-evaluting how to use and maintain connections more efficiently. Performance benchmarking in the PostgreSQL community suggests 500 connections or less to be optimal for database performance. 
 
 Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case. For example, the Python driver Psycopg2 has [classes to handle connection pooling in your application](http://initd.org/psycopg/docs/pool.html). The Java PostgreSQL JDBC driver has methods for [connection pooling at both the application and application server level](https://jdbc.postgresql.org/documentation/head/datasource.html).
 
