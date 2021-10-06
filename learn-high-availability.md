@@ -25,7 +25,13 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql}} will, at times, do controlled switchovers under normal operation. These switchovers are no-data-loss events that result in resets of active connections. There is a period of up to 15 seconds where reconnections can fail. At times, unplanned failovers might occur due to unforeseen events on the operating environment. These can take up to 45 seconds, but can be less. In both cases, potential exists for the downtime to be longer.
 
-You can extend high-availability further by either adding [PostgreSQL members](https://test.cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling) to the instance for greater in region redundancy, as well as provisioning [read-only replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) for cross-regionial failover or read offloading. 
+You can extend high-availability further by either adding [PostgreSQL members](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling) to the instance for greater in region redundancy, as well as provisioning [read-only replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) for cross-regionial failover or read offloading. 
+
+Databases for PostgreSQL is designed and built to provide a robust, resilient, and performant Database as a Service offering. We highly recommend reviewing the PostgreSQL documentation on [replication techniques](https://www.postgresql.org/docs/current/wal-async-commit.html) to understand the constraints and tradeoffs associated with the asynchronous replication strategy deployed by default with Databases for PostgreSQL
+
+In scenarios where the database becomes critically unhealthy, such as a server crash on the leader, Databases for PostgreSQL will attempt to initate a failover. This auto failover capability is capped at 1 MB of data lag from leader to follower, (a few rows of data once accounting for additional PostgreSQL data overhead) and will not be preformed if the lag exceeds that threshold. If the potential for 1 MB data loss is intolerable for the application, you can horizontal scale your Databases for PostgreSQL instance to 3 members and configure Databases for PostgreSQL to use a synchronous replication strategy on per user or per database basis.
+
+Keep in mind, that employing synchronous commit can potentially slow down database performance by some degree. Typically, a performant and effective way to use this feature is to use it on only specific databases or users within PostgreSQL that must have the highest degree of data durability available. 
 
 ## Application-level High-Availability
 
