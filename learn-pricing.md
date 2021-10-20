@@ -39,7 +39,7 @@ Resources | Breakdown | Price
 Total per month = $15.80/Month
 Total per hour = $.02/Hour
 
-All prices here are in US dollars. To see pricing in your local currency, you can to use the pricing calculator.
+All prices here are in US dollars. To see pricing in your local currency, you can use the pricing calculator.
 {: .tip}
 
 ## Using the Pricing Calculator
