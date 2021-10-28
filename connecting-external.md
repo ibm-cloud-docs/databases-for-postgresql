@@ -18,7 +18,7 @@ subcollection: databases-for-postgresql
 {:javascript: .ph data-hd-programlang='javascript'}
 {:pre: .pre}
 
-# Connecting an external application
+# Connecting an external application 
 {: #external-app}
 
 Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-postgresql_full}}. The service provides connection strings specifically for drivers and applications. Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
@@ -44,7 +44,6 @@ Field Name|Index|Description
 {: caption="Table 1. postgres/URI connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
-
 
 Many PostgreSQL drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 ```shell
@@ -203,8 +202,8 @@ You can display the decoded certificate for your deployment with the CLI plug-in
 
 PostgreSQL has a vast array of language drivers. The table covers a few of the most common.
 
-Language|Driver|Examples
-----------|-----------
+Language | Driver | Examples
+-------|-------|-------
 PHP|`pgsql`|[Link](http://php.net/manual/en/pgsql.examples-basic.php)
 Ruby|`ruby-pg`|[Link](https://github.com/ged/ruby-pg)
 Ruby on Rails|Rails|[Rails Guide](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-postgresql-database)
@@ -212,4 +211,3 @@ C#|`ODBC`|[Link](https://wiki.postgresql.org/wiki/Using_Microsoft_.NET_with_the_
 Go|`pq`|[Link](https://godoc.org/github.com/lib/pq)
 Node|`node-postgres`|[Link](https://node-postgres.com/)
 {: caption="Table 2. PostgreSQL drivers" caption-side="top"}
-
