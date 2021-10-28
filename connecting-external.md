@@ -183,12 +183,12 @@ let client = new pg.Client({ connectionString: connectionString,
 
 ## Driver TLS and self-signed certificate support
 
-All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection. 
+All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
 
 ### Using the self-signed certificate
 
-1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information. 
-2. If needed, decode the Base64 string into text. 
+1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information.
+2. If needed, decode the Base64 string into text.
 3. Save the certificate  to a file. (You can use the name that is provided or your own file name).
 4. Provide the path to the certificate to the driver or client.
 
