@@ -1,6 +1,6 @@
 ---
 
-Copyright:
+copyright:
   years: 2018, 2019
 lastupdated: "2021-08-31"
 
