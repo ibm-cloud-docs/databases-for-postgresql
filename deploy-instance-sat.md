@@ -30,7 +30,7 @@ To assign an existing Satellite storage configuration to IBM Cloud™ Databases 
 
 - This should be done using the Satellite CLI, as shown below:
 
-```
+```shell
  ibmcloud sat storage assignment create --config CONFIG [--name NAME] [-q] (--cluster CLUSTER | --group GROUP | --service-cluster-id CLUSTER)
 PARAMETERS:
     --name value                The name of a Satellite storage assignment.
