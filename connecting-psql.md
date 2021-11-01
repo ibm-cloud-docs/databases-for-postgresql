@@ -86,7 +86,7 @@ PGPASSWORD=$PASSWORD PGSSLROOTCERT=0b22f14b-7ba2-11e8-b8e9-568642342d40 psql 'ho
 4. Provide the path to the certificate to the `ROOTCERT` environment variable.
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command:
-```
+```shell
 ibmcloud cdb deployment-cacert "your-service-name"
 ```
 {: pre}
