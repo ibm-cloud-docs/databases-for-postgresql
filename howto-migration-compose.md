@@ -234,6 +234,7 @@ SELECT name, version FROM pg_available_extension_versions;
 {: .codeblock}
 
 and then update the extension.
+
 ```shell
 ALTER EXTENSION postgis UPDATE TO '2.4.6';
 ```
@@ -242,16 +243,16 @@ ALTER EXTENSION postgis UPDATE TO '2.4.6';
 On the Compose deployment, you might have to perform a few actions post-migration to clean up the replication slots and log archive settings. This is especially true if the promotion fails, or if you create a replica and then delete it without promoting it.
 
 1. Connect to the `template1` database on your Compose deployment as the `admin` user.
-2. Run the following commands
+2. Run the following commands:
 
 ```SELECT pg_drop_replication_slot('ibm_cloud_databases_migration');```
-{: pre}
+{: .codeblock}
 
 ```DROP ROLE ibm;```
-{: pre}
+{: .codeblock}
 
 ```SELECT public.set_wal_keep_segments(0);```
-{: pre} 
+{: .codeblock}
 
 Specifying `0` sets the default of 16 internally.
 {: .note}
