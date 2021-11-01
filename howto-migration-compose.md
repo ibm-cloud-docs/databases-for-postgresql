@@ -242,7 +242,7 @@ On the Compose deployment, you might have to perform a few actions post-migratio
 
 1. Connect to the `template1` database on your Compose deployment as the `admin` user.
 2. Run the following commands.
-    - ```SELECT pg_drop_replication_slot('ibm_cloud_databases_migration');``` {: pre}
+    - ```SELECT pg_drop_replication_slot('ibm_cloud_databases_migration');```{: pre}
     - ```DROP ROLE ibm;```{: pre}
     - ```SELECT public.set_wal_keep_segments(0);```{: pre} (specifying 0 sets it back to the default of 16 internally)
 
