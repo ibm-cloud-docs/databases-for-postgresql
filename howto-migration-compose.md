@@ -15,6 +15,7 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{:note: .note}
 
 # Migrating from a Compose PostgreSQL
 {: #compose-migrating}
@@ -241,10 +242,19 @@ ALTER EXTENSION postgis UPDATE TO '2.4.6';
 On the Compose deployment, you might have to perform a few actions post-migration to clean up the replication slots and log archive settings. This is especially true if the promotion fails, or if you create a replica and then delete it without promoting it.
 
 1. Connect to the `template1` database on your Compose deployment as the `admin` user.
-2. Run the following commands.
-    - ```SELECT pg_drop_replication_slot('ibm_cloud_databases_migration');```{: pre}
-    - ```DROP ROLE ibm;```{: pre}
-    - ```SELECT public.set_wal_keep_segments(0);```{: pre} (specifying 0 sets it back to the default of 16 internally)
+2. Run the following commands
+
+```SELECT pg_drop_replication_slot('ibm_cloud_databases_migration');```
+{: pre}
+
+```DROP ROLE ibm;```
+{: pre}
+
+```SELECT public.set_wal_keep_segments(0);```
+{: pre} 
+
+Specifying `0` sets the default of 16 internally.
+{: .note}
 
 You should also now be able to scale your Compose deployment back down to a pre-migration size if you experienced it growing during the migration.
 
