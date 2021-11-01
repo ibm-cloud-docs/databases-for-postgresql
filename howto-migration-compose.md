@@ -244,7 +244,7 @@ On the Compose deployment, you might have to perform a few actions post-migratio
 2. Run the following commands.
     - ```SELECT pg_drop_replication_slot('ibm_cloud_databases_migration');``` {: pre}
     - ```DROP ROLE ibm;```{: pre}
-    - ```SELECT public.set_wal_keep_segments(0);``` {: pre} (specifying 0 sets it back to the default of 16 internally)
+    - ```SELECT public.set_wal_keep_segments(0);```{: pre} (specifying 0 sets it back to the default of 16 internally)
 
 You should also now be able to scale your Compose deployment back down to a pre-migration size if you experienced it growing during the migration.
 
