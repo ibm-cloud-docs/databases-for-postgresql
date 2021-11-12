@@ -9,7 +9,7 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:new_window: target="_blank"}
+{:external: .external target="_blank"}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -24,6 +24,7 @@ subcollection: databases-for-postgresql
 When the service cluster is created, if the corresponding hosts are available then the hosts are typically **auto-assigned** to the cluster.
 
 ## Cluster Configuration
+{: #cluster-config}
 
 To assign an existing Satellite storage configuration to IBM Cloud™ Databases for PostgreSQL enabled by IBM Cloud Satellite service, the Satellite location administrator must perform the following manual step to fetch the `ROKS` cluster ID and Service Cluster ID from the **application developer**.
 {: important}

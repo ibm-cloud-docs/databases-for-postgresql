@@ -2,62 +2,23 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-06-16"
+lastupdated: "2021-11-11"
 
 keywords: IBM Cloud, databases, Satellite, ICD, IAM authorization
 
 subcollection: databases-for-postgresql
 
-content-type: tutorial
-services: databases-for-postgresql
-completion-time: 15m
-
 ---
 
-{:codeblock: .codeblock}
+{:external: .external target="_blank"}
+{:shortdesc: .shortdesc}
 {:screen: .screen}
-{:download: .download}
-{:external: target="_blank" .external}
-{:faq: data-hd-content-type='faq'}
-{:gif: data-image-type='gif'}
-{:important: .important}
-{:note: .note}
+{:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
-{:preview: .preview}
-{:deprecated: .deprecated}
-{:beta: .beta}
-{:term: .term}
-{:shortdesc: .shortdesc}
-{:script: data-hd-video='script'}
-{:support: data-reuse='support'}
-{:table: .aria-labeledby="caption"}
-{:troubleshoot: data-hd-content-type='troubleshoot'}
-{:help: data-hd-content-type='help'}
-{:tsCauses: .tsCauses}
-{:tsResolve: .tsResolve}
-{:tsSymptoms: .tsSymptoms}
-{:java: .ph data-hd-programlang='java'}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:swift: .ph data-hd-programlang='swift'}
-{:curl: .ph data-hd-programlang='curl'}
-{:video: .video}
-{:step: data-tutorial-type='step'}
-{:tutorial: data-hd-content-type='tutorial'}
-{:ui: .ph data-hd-interface='ui'}
-{:cli: .ph data-hd-interface='cli'}
-{:api: .ph data-hd-interface='api'}
-
-{:shortdesc: .shortdesc}
-{:screen: .screen}  
-{:codeblock: .codeblock}  
-{:pre: .pre}
-{:tip: .tip}
-{:note: .note}
-{:external: target="_blank" .external}
 
 # Configuring IAM Authorizations
-{: #tutorial-pgsql-iam}
+{: #pgsql-iam}
 
 To create a storage configuration for a newly created IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service location, you need to configure IAM authorizations.
 {: shortdesc}

@@ -1,8 +1,8 @@
 ---
 
-Copyright:
+copyright:
   years: 2018, 2020
-lastupdated: "2020-09-25"
+lastupdated: "2021-11-11"
 
 keywords: postgresql, databases, connection limits
 
@@ -10,7 +10,7 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:new_window: target="_blank"}
+{:external: .external target="_blank"}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -36,6 +36,7 @@ Employing synchronous commits can potentially slow down database performance by 
 {: .note}
 
 ## Application-level High-Availability
+{: #application-level-ha}
 
 Applications that communicate over networks and cloud services are subject to transient connection failures. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}.
 
@@ -51,6 +52,7 @@ Several minutes of database unavailability or connection interruption are not ex
 {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. After the connection limit has been reached, any attempts at starting a new connection results in an error. To prevent overwhelming your deployment with connections, use connection pooling, or scale your deployment and increase its connection limit. For more information, see the [Managing PostgreSQL Connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections) page.
 
 ## High availability, disaster recovery, and SLA resources
+{: #ha-recovery-sla}
 
 {{site.data.keyword.databases-for-postgresql}} deployments conform to the {{site.data.keyword.cloud_notm}} Databases [HA, DR, and SLA](/docs/cloud-databases?topic=cloud-databases-ha-dr) information and terms.
 
