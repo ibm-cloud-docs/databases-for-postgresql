@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2020
-lastupdated: "2021-11-02"
+lastupdated: "2021-11-18"
 
 keywords: postgresql, databases, pricing, resources, scaling
 
