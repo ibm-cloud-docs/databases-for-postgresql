@@ -97,7 +97,7 @@ ibmcloud cdb deployment-cacert "your-service-name"
 
 The command decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `ROOTCERT` environment variable.
 
-To specify the certificate parameters as part of a connection string, add `&sslrootcert=/path/to/cert` to your command. For example,
+Another option is to add `&sslrootcert=/path/to/cert` to your connection string, for example:
 
 ```shell
 postgres://$USERNAME:$PASSWORD@6eb96148-90bc-49a0-a5a4-dc2b53334653.btdl8mld0r95fevivv30.databases.appdomain.cloud:32109/ibmclouddb?sslmode=verify-full&sslrootcert=/path/to/cert
