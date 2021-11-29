@@ -112,7 +112,7 @@ curl -X POST \
     "source_password": "your-compose-admin-password",
     "source_host":"sl-us-south-1-portal.52.dblayer.com",
     "source_port":"25417"
-    "version":"9.6",
+    "version":"12",
     "members_memory_allocation_mb": "8192",
     "members_disk_allocation_mb": "20480"
     }'
@@ -146,7 +146,7 @@ SELECT pg_current_wal_flush_lsn();
 
 On the {{site.data.keyword.databases-for-postgresql}} replica run
 ```shell
-SELECT pg_last_wal_replay_lsn();;
+SELECT pg_last_wal_replay_lsn();
 ```
 {: .codeblock}
 
@@ -226,8 +226,6 @@ After the promotion is complete, you can switch your applications to connect to 
 
 ## Cleaning Up
 {: #clean-up}
-
-On your new {{site.data.keyword.databases-for-postgresql}} deployment, certain PostgreSQL extensions might need to be updated. You can connect with `pqsl` and check which extensions are available and what versions you should update.
 
 On the Compose deployment, you might have to perform a few actions post-migration to clean up the replication slots and log archive settings. This is especially true if the promotion fails, or if you create a replica and then delete it without promoting it.
 
