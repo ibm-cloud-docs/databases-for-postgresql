@@ -35,8 +35,6 @@ A read-only replica is set up to replicate all of your data from the leader depl
 
 - Backups are disabled on read-only replicas. Backups are taken only on leader deployments.
 
-- Read replication is not supported into or out of EU Cloud-enabled regions (currently `eu-de`). It is supported within those regions.
-
 - There is a limit of 5 read-only replicas per leader.
 
 - The read-only replica does not participate in leader->follower elections for the leader cluster and failover to the read-only replica is not automated. Promotion of the read-only replica to a full deployment is a manual, user-initiated task.
