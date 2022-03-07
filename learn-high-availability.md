@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2021-11-11"
+lastupdated: "2022-03-07"
 
 keywords: postgresql, databases, connection limits
 
@@ -27,6 +27,8 @@ subcollection: databases-for-postgresql
 {{site.data.keyword.databases-for-postgresql}} will, at times, do controlled switchovers under normal operation. These switchovers are no-data-loss events that result in resets of active connections. There is a period of up to 15 seconds where reconnections can fail. At times, unplanned failovers might occur due to unforeseen events on the operating environment. These can take up to 45 seconds, but can be less. In both cases, potential exists for the downtime to be longer.
 
 You can extend high-availability further by adding [PostgreSQL members](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling) to the instance, for greater in-region redundancy, or by provisioning [read-only replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) for cross-regional failover or read offloading. 
+
+By default, streaming replication is asynchronous. If the primary server crashes then some transactions that were committed may not have been replicated to the standby server, causing data loss. The amount of data loss is proportional to the replication delay at the time of failover. {{site.data.keyword.databases-for-postgresql}} synchronous replication offers the ability to confirm that all changes made by a transaction have been transferred to a synchronous member, ensuring consistency across a cluster by confirming that writes are written to a secondary before returning to the connecting client with a success. For variables regarding synchronous replication, see [`synchronous_commit`](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#gen-settings) on the Changing Configuration page. 
 
 {{site.data.keyword.databases-for-postgresql}} is designed and built to provide a robust, resilient, and performant Database as a Service offering. We highly recommend reviewing the PostgreSQL documentation on [replication techniques](https://www.postgresql.org/docs/current/wal-async-commit.html) to understand the constraints and tradeoffs associated with the asynchronous replication strategy deployed by default with {{site.data.keyword.databases-for-postgresql}}.
 
