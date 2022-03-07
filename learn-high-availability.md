@@ -37,9 +37,6 @@ Employing synchronous replication will negatively impact the performance of the 
 
 In scenarios where a database becomes critically unhealthy, such as a server crash on the leader, {{site.data.keyword.databases-for-postgresql}} will attempt to initiate a failover. This auto failover capability is capped at 1 MB of data lag from leader to follower (a few rows of data once accounting for additional PostgreSQL data overhead) and will not be performed if the lag threshold is exceeded. If the potential for 1 MB of data loss is intolerable for the application, you can horizontally scale your {{site.data.keyword.databases-for-postgresql}} instance to 3 members and configure {{site.data.keyword.databases-for-postgresql}} to use a synchronous replication strategy on a per user or per database basis.
 
-Employing synchronous commits can potentially slow down database performance by a measurable degree. Typically, a performant and effective way to employ this feature is by using it only on specific databases or users within PostgreSQL that must have the highest degree of data durability available. 
-{: .note}
-
 ## Application-level High-Availability
 {: #application-level-ha}
 
