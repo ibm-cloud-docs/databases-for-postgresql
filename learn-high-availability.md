@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2022-03-07"
+lastupdated: "2022-03-08"
 
 keywords: postgresql, databases, connection limits
 
@@ -28,14 +28,21 @@ subcollection: databases-for-postgresql
 
 You can extend high-availability further by adding [PostgreSQL members](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling) to the instance, for greater in-region redundancy, or by provisioning [read-only replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) for cross-regional failover or read offloading. 
 
-By default, streaming replication is asynchronous. If the primary server crashes then some transactions that were committed may not have been replicated to the standby server, causing data loss. The amount of data loss is proportional to the replication delay at the time of failover. {{site.data.keyword.databases-for-postgresql}} synchronous replication offers the ability to confirm that all changes made by a transaction have been transferred to a synchronous member, ensuring consistency across a cluster by confirming that writes are written to a secondary before returning to the connecting client with a success. For variables regarding synchronous replication, see [`synchronous_commit`](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#gen-settings) on the Changing Configuration page. 
-
-Employing synchronous replication will negatively impact the performance of the database. Typically, a performant and effective way to employ this feature is by using it only on specific databases or users within EnterpriseDB that must have the highest degree of data durability available.
-{: .note}
-
 {{site.data.keyword.databases-for-postgresql}} is designed and built to provide a robust, resilient, and performant Database as a Service offering. We highly recommend reviewing the PostgreSQL documentation on [replication techniques](https://www.postgresql.org/docs/current/wal-async-commit.html) to understand the constraints and tradeoffs associated with the asynchronous replication strategy deployed by default with {{site.data.keyword.databases-for-postgresql}}.
 
-In scenarios where a database becomes critically unhealthy, such as a server crash on the leader, {{site.data.keyword.databases-for-postgresql}} will attempt to initiate a failover. This auto failover capability is capped at 1 MB of data lag from leader to follower (a few rows of data once accounting for additional PostgreSQL data overhead) and will not be performed if the lag threshold is exceeded. If the potential for 1 MB of data loss is intolerable for the application, you can horizontally scale your {{site.data.keyword.databases-for-postgresql}} instance to 3 members and configure {{site.data.keyword.databases-for-postgresql}} to use a synchronous replication strategy on a per user or per database basis.
+In scenarios where a database becomes critically unhealthy, such as a server crash on the leader, {{site.data.keyword.databases-for-postgresql}} will attempt to initiate a failover. This auto failover capability is capped at 16 MB of data lag from leader to follower (a few rows of data once accounting for additional PostgreSQL data overhead) and will not be performed if the lag threshold is exceeded. If the potential for 16 MB of data loss is intolerable for the application, you can horizontally scale your {{site.data.keyword.databases-for-postgresql}} instance to 3 members and configure {{site.data.keyword.databases-for-postgresql}} to use a synchronous replication strategy on a per user or per database basis.
+
+## Synchronous replication
+{: #sync-repl}
+
+By default, streaming replication is asynchronous. If the primary server crashes then some transactions that were committed may not have been replicated to the standby server, causing data loss. {{site.data.keyword.databases-for}} ensures data loss is kept to a minimum substantial data loss; however, synchronous replication offers the ability to confirm that all changes made by a transaction have been transferred to a synchronous member, ensuring consistency across a cluster. This consistency come from confirming that writes are written to a secondary before returning to the connecting client with a success. For variables regarding synchronous replication, see [`synchronous_commit`](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#gen-settings) on the Changing Configuration page. 
+
+Synchronous replication brings replica availability into the primary write path. If there is no replica to acknowledge the write, the write will hang until such time as a replica is available. This requires at least three members to function reliably, as synchronous replication is not supported on two-member deployments. You _must_ horizontally scale to at least three members before synchronous replication can be enabled.
+
+While unlikely, it is possible that more than one replica may become unavailable simultaneously. If this happens, the primary database will not be able to complete any writes until a replica comes back online, effectively blocking all write traffic to your database. When deciding to use synchronous replication, you should weigh the relative costs and benefits of higher data durability versus potential availability issues.
+
+Employing synchronous replication will negatively impact the performance of the database. Typically, a performant and effective way to employ this feature is by using it only on specific databases or users that must have the highest degree of data durability available.
+{: .note}
 
 ## Application-level High-Availability
 {: #application-level-ha}
