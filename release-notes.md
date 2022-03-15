@@ -25,7 +25,3 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date or build number_.
 {: shortdesc}
-
-<!-- If you also have a change log for your API or CLI, include the following tip with a link to the change log. -->
-For information about changes to the {{site.data.keyword.databases-for-postgresql_full}} API, see [Change log for _service-name_ API](/docs/link-to-change-log).
-{: tip}
