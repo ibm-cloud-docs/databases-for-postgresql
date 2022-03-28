@@ -46,7 +46,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 :  Customers may scale {{site.data.keyword.databases-for-postgresql_full}} by adding members to their database instance. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/whats-new-in-ibm-cloud-databases).
 
 ## 9 Sept 2020
-{: #databases-for-postgresql-09sept2020}
+{: #databases-for-postgresql-09sep2020}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} 9.5 End of Life
