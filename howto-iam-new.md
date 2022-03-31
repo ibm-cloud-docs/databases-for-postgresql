@@ -55,19 +55,6 @@ To find the role_id values, run the `ibmcloud iam roles` command or go to the Ma
 {: tab-title="Platform roles"}
 {: tab-group="IAM"}
 
-| Service role |  Description of actions | 
-|--------------|------------------------|
-| Reader         | Description of what users can accomplish; think tasks.   | 
-| Writer         | Description            |
-| Manager        | Description            | 
-| Content Reader | Description            |
-{: row-headers}
-{: class="simple-tab-table"}
-{: caption="Table 1. IAM service access roles" caption-side="bottom"}
-{: #iamrolesservice}
-{: tab-title="Service roles"}
-{: tab-group="IAM"}
-
 ## Assigning access to databases-for-postgresql in the console
 {: #assign-access-console}
 {: ui}
@@ -78,24 +65,24 @@ There are two common ways to assign access in the console:
 * Access groups. Access groups are used to streamline access management by assigning access to a group once, then you can add or remove users as needed from the group to control their access. You manage access groups and their access from the **Manage** > **Access (IAM)** > **Access groups** page in the console. For more information, see [Assigning access to a group in the console](/docs/account?topic=account-groups&interface=ui#access_ag).
 
 
-## Assigning access to databases-for-postgresql in the CLI
+## Assigning access to {{site.data.keyword.databases-for-postgresql_full}} in the CLI
 {: #assign-access-cli}
 {: cli}
 
 For step-by-step instructions for assigning, removing, and reviewing access, see [Assigning access ro resources by using the CLI](/docs/account?topic=account-assign-access-resources&interface=cli#access-resources-cli). The following example shows a command for assigning the `<Object Writer>` role for `<Cloud Object Storage>`:
 
-Use `<programmatic_service_name>` for the service name. Also, use quotations around role names that are more than one word like the example here.
+Use `databases-for-postgresql` for the service name. Also, use quotations around role names that are more than one word, like the example here.
 {: tip}
 <!--The `<programmatic_service_name` in the note above is important to include because the service name in the UI often doesn't match the service name that should be used to make an API call or run a CLI command.-->
 
 <!-- Tailor this example to your service --> 
 
 ```bash
-ibmcloud iam user-policy-create USER@EXAMPLE.COM --service-name cloud-object-storage --roles "Object Writer"
+ibmcloud iam user-policy-create USER@EXAMPLE.COM --databases-for-postgresql cloud-object-storage --roles "Object Writer"
 ```
 {: pre}
 
-## Assigning access to databases-for-postgresql by using the API
+## Assigning access to {{site.data.keyword.databases-for-postgresql_full}} by using the API
 {: #assign-access-api}
 {: api}
 
