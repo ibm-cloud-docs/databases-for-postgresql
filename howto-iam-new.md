@@ -1,26 +1,29 @@
 ---
 
 copyright:
-  years:  2017, 2022
-lastupdated: "2022-03-28"
+  years: 2021
+lastupdated: "2022-03-31"
 
-keywords: IAM access for _servicename_, permissions for _servicename_, identity and access management for _servicename_, roles for _servicename_, actions for _servicename_, assigning access for _servicename_
+keywords: IBM Cloud, databases, Satellite, ICD, IAM authorization
 
-subcollection: _your-subcollection_
+subcollection: databases-for-postgresql
 
 ---
 
-{{site.data.keyword.attribute-definition-list}}
+{:external: .external target="_blank"}
+{:shortdesc: .shortdesc}
+{:screen: .screen}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:tip: .tip}
 
-_Include this file in the **How to** nav group of your toc.yaml file_
+# Managing IAM access for {{site.data.keyword.databases-for-postgresql_full}}
+{: #manage-iam-postgresql}
 
-# Managing IAM access for _servicename_
-{: #iam-docs-template}
-
-Access to `<service_name>` service instances for users in your account is controlled by {{site.data.keyword.cloud}} Identity and Access Management (IAM). Every user that accesses the `<service_name>` service in your account must be assigned an access policy with an IAM role. Review the following roles, actions, and more to help determine the best way to assign access to `<service_name>`. 
+Access to `databases-for-postgresql` service instances for users in your account is controlled by {{site.data.keyword.cloud}} Identity and Access Management (IAM). Every user that accesses the `databases-for-postgresql` service in your account must be assigned an access policy with an IAM role. Review the following roles, actions, and more to help determine the best way to assign access to `databases-for-postgresql`. 
 {: shortdesc}
 
-The access policy that you assign users in your account determines what actions a user can perform within the context of the service or specific instance that you select. The allowable actions are customized and defined by the `<service_name>` as operations that are allowed to be performed on the service. Each actions is mapped to an IAM platform or service role that you can assign to a user.
+The access policy that you assign users in your account determines what actions a user can perform within the context of the service or specific instance that you select. The allowable actions are customized and defined by the `databases-for-postgresql` as operations that are allowed to be performed on the service. Each action is mapped to an IAM platform or service role that you can assign to a user.
 
 If a specific role and its actions don't fit the use case that you're looking to address, you can [create a custom role](/docs/account?topic=account-custom-roles#custom-access-roles) and pick the actions to include.
 {: tip}
@@ -31,7 +34,7 @@ IAM access policies enable access to be granted at different levels. Some of the
 * Access to an individual service instance in your account <!-- if this applies -->
 * Access to a specific resource within an instance, _such as resource type `bucket`_ <!-- if this applies list what resoureceType attributes are supported, for example COS buckets or Kubernetes namespaces -->
 
-Review the following tables that outline what types of tasks each role allows for when you're working with the `<service_name>` service. Platform management roles enable users to-perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to `<service_name>` and the ability to call the `<service_name>'s` API. For information about the exact actions that are mapped to each role, see [`<service_name>`](_YourSubHeadingLink_).
+Review the following tables that outline what types of tasks each role allows for when you're working with the `databases-for-postgresql` service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to `databases-for-postgresql` and the ability to call the `databases-for-postgresql's` API. For information about the exact actions that are mapped to each role, see [`databases-for-postgresql`](_YourSubHeadingLink_).
 <!-- IMPORTANT: This link should go directly to your service's heading in https://cloud.ibm.com/docs/account?topic=account-iam-service-roles-actions, for example [`service-name`](/docs/account?topic=account-iam-service-roles-actions#certificate-manager) -->
 
 <!-- This is a high level view of what the platform roles allow users to do. Use a plain language description about what kind of tasks can be completed or the common jobs to be done that users can expect to accomplish when having each role assigned. -->
@@ -41,10 +44,10 @@ To find the role_id values, run the `ibmcloud iam roles` command or go to the Ma
 
 | Platform role |  Description of actions | 
 |---------------|-------------------------|
-| Viewer                 |  Description of what users can accomplish; think tasks. |
-| Operator               |  Description            |
-| Editor                 |  Description            | 
-| Administrator          |  Description            |
+| Viewer                 |  As a viewer, you can view database instances but you can't make configuration changes. |
+| Operator               |  As an operator, you can view database instances and make configuration changes including managing database credentials.	            |
+| Editor                 |  As an editor, you can perform all platform actions (including making configuration changes and managing credentials) except for managing the account and assigning access policies.	            | 
+| Administrator          |  As an administrator, you can perform all platform actions including assigning access policies to other users.	            |
 {: row-headers}
 {: class="simple-tab-table"}
 {: caption="Table 1. IAM platform roles" caption-side="bottom"}
@@ -65,7 +68,7 @@ To find the role_id values, run the `ibmcloud iam roles` command or go to the Ma
 {: tab-title="Service roles"}
 {: tab-group="IAM"}
 
-## Assigning access to <service_name> in the console
+## Assigning access to databases-for-postgresql in the console
 {: #assign-access-console}
 {: ui}
 
@@ -75,7 +78,7 @@ There are two common ways to assign access in the console:
 * Access groups. Access groups are used to streamline access management by assigning access to a group once, then you can add or remove users as needed from the group to control their access. You manage access groups and their access from the **Manage** > **Access (IAM)** > **Access groups** page in the console. For more information, see [Assigning access to a group in the console](/docs/account?topic=account-groups&interface=ui#access_ag).
 
 
-## Assigning access to <service_name> in the CLI
+## Assigning access to databases-for-postgresql in the CLI
 {: #assign-access-cli}
 {: cli}
 
@@ -92,7 +95,7 @@ ibmcloud iam user-policy-create USER@EXAMPLE.COM --service-name cloud-object-sto
 ```
 {: pre}
 
-## Assigning access to <service_name> by using the API
+## Assigning access to databases-for-postgresql by using the API
 {: #assign-access-api}
 {: api}
 
@@ -321,7 +324,7 @@ fmt.Println(string(b))
 {: go}
 {: codeblock}
 
-## Assigning access to <service_name> by using Terraform
+## Assigning access to databases-for-postgresql by using Terraform
 {: #assign-access-terraform}
 {: terraform}
 
