@@ -69,24 +69,42 @@ There are two common ways to assign access in the console:
 {: #assign-access-cli}
 {: cli}
 
-For step-by-step instructions for assigning, removing, and reviewing access, see [Assigning access ro resources by using the CLI](/docs/account?topic=account-assign-access-resources&interface=cli#access-resources-cli). The following example shows a command for assigning the `<Object Writer>` role for `<Cloud Object Storage>`:
+For step-by-step instructions for assigning, removing, and reviewing access, see [Assigning access ro resources by using the CLI](/docs/account?topic=account-assign-access-resources&interface=cli#access-resources-cli). 
 
-Use `databases-for-postgresql` for the service name. Also, use quotations around role names that are more than one word, like the example here.
-{: tip}
-<!--The `<programmatic_service_name` in the note above is important to include because the service name in the UI often doesn't match the service name that should be used to make an API call or run a CLI command.-->
 
-<!-- Tailor this example to your service --> 
+If you manage your service through the IBM Cloud CLI and the cloud databases plug-in, you can create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command.
 
 ```bash
-ibmcloud iam user-policy-create USER@EXAMPLE.COM --databases-for-postgresql cloud-object-storage --roles "Object Writer"
+ibmcloud cdb user-create example-deployment <newusername> <newpassword>
 ```
 {: pre}
+
+Once the task has finished, you can retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
 ## Assigning access to {{site.data.keyword.databases-for-postgresql_full}} by using the API
 {: #assign-access-api}
 {: api}
 
 For step-by-step instructions for assigning, removing, and reviewing access, see [Assigning access to resources by using the API](/docs/account?topic=account-assign-access-resources&interface=api) or the [Create a policy API docs](/apidocs/iam-policy-management#create-policy). Role cloud resource names (CRN) in the following table are used to assign access with the API.
+
+The _Foundation Endpoint_ that is shown on the _Overview_ panel _Deployment details_ of your service provides the base URL to access this deployment through the API. To create and manage users, use the base URL with the `/users` endpoint, like the following example.
+
+```bash
+curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users' -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" -d '{"username":"jane_smith", "password":"newsupersecurepassword"}'
+```
+{: pre}
+
+Once the task has finished, you can retrieve the new user's connection strings, from the `/users/{userid}/connections` endpoint.
+
+## Adding users to _Service Credentials_
+{: #user-management-adding-users-service-cred}
+
+Creating a new user from the CLI doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information.
+
+Enter the user name and password in the JSON field _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, putting `{"existing_credentials":{"username":"Robert","password":"supersecure"}}` in the field generates _Service Credentials_ with the username "Robert" and password "supersecure" filled into connection strings.
+
+Generating credentials from an existing user does not check for or create that user.
+{: tip}
 
 
 | Role name | Role CRN | 
