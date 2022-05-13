@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2022-02-21"
+lastupdated: "2022-05-13"
 
-keywords: pgAdmin, postgresql gui
+keywords: pgAdmin, postgresql gui, postgresql, postgres
 
 subcollection: databases-for-postgresql
 
