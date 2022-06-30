@@ -20,7 +20,7 @@ subcollection: databases-for-postgresql
 # Getting Started
 {: #getting-started}
 
-This tutorial is a short introduction to using an {{site.data.keyword.databases-for-postgresql_full}} deployment. [pgAdmin](https://www.pgadmin.org/) is an open source administration platform for PostgreSQL, and provides many tools for managing your data and databases. [Download and install](https://www.pgadmin.org/download/) the version that is appropriate to your environment, and then follow the steps to connect it to your {{site.data.keyword.databases-for-postgresql}} deployment.
+This tutorial is a short introduction to using an {{site.data.keyword.databases-for-postgresql_full}} deployment. [pgAdmin](https://www.pgadmin.org/){: .external} is an open source administration platform for PostgreSQL, and provides many tools for managing your data and databases. [Download and install](https://www.pgadmin.org/download/){: .external} the version that is appropriate to your environment, and then follow the steps to connect it to your {{site.data.keyword.databases-for-postgresql}} deployment.
 
 ## {{site.data.keyword.databases-for-postgresql_full}}
 {: #postgresql-product-description}
@@ -116,7 +116,7 @@ Administrative features that require a superuser are not available through pgAdm
 ## Next Steps
 {: #next-steps}
 
-If you are just using PostgreSQL for the first time, it is a good idea to take a tour through the [official PostgreSQL documentation](https://www.postgresql.org/docs/). 
+If you are just using PostgreSQL for the first time, it is a good idea to take a tour through the [official PostgreSQL documentation](https://www.postgresql.org/docs/){: .external}. 
 
 You can connect to and manage your databases and data with PostgreSQL's command-line tool [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
