@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-11-11"
+  years: 2021, 2022
+lastupdated: "2022-06-30"
 
-keywords: IBM Cloud, databases, Satellite, ICD, IAM authorization
+keywords: IBM Cloud, databases, ICD, IAM authorization
 
 subcollection: databases-for-postgresql
 
@@ -28,13 +28,13 @@ To create a storage configuration for a newly created IBM Cloud Databases for Po
 
 - Configure your IAM Authorizations under the **Manage** tab.
 
-- Choose the **Authorizations** tab from the lefthand menu.
-- Click the **create** button to create an authorization to allow a service instance access to another service instance.
+- Choose the **Authorizations** tab from the left menu.
+- Click the **Create** button to create an authorization to allow a service instance access to another service instance.
 
 ## Grant a service authorization
 {: #cd-postgresql-serviceauth}
 
-The source service is the service that is granted access to the target service. The roles that you select define the level of access for this service. The target service is the service you are granting permission to be accessed by the source service based on the assigned roles.
+The source service is the service that is granted access to the target service. The roles that you select define the level of access for this service. The target service is the service that you are granting permission to be accessed by the source service based on the assigned roles.
 
 - In the **Source Service** field, select **Databases for PostgreSQL development**.
 - In the **Target Service** field, select **Satellite**.
@@ -42,4 +42,4 @@ The source service is the service that is granted access to the target service. 
     - **Satellite Cluster Creator** 
     - **Satellite Link Administrator** 
     - **Satellite Link Source Access Controller** 
-    - Then **Authorize**.
+    - Then, **Authorize**.
