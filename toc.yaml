@@ -66,6 +66,7 @@ toc:
           topics: 
           - howto-migration.md
           - howto-migration-compose.md
+          - /cloud-databases/cloud-databases-migrate-data-center
       - howto-upgrading.md
       - topicgroup: 
           label: Configuring PostgreSQL
