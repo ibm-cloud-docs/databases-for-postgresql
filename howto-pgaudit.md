@@ -36,7 +36,7 @@ Session logging is configured per event type. The supported event types across a
 * MISC
 * MISC_SET (this additional type is only supported in PostgreSQL 12 or greater)
 
-Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog).
+Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog){: .external}.
 
 
 ## Enabling pgAudit session logging
@@ -72,7 +72,7 @@ Audit events appear in {{site.data.keyword.la_full}} with the following format:
 ```sh
 LOG: AUDIT: SESSION,1,1,DDL,CREATE TABLE,,,create table f2 (id int);,<not logged>
 ```
-The format is documented [here](https://github.com/pgaudit/pgaudit/blob/master/README.md#format). 
+The format is documented [here](https://github.com/pgaudit/pgaudit/blob/master/README.md#format){: .external}. 
 
 If you want to see the current log level, you can run the command:  
 ```sh
