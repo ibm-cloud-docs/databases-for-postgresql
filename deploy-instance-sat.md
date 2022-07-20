@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2021
-lastupdated: "2021-06-21"
+  years: 2021, 2022
+lastupdated: "2022-07-20"
 
 keywords: postgresql, databases, instance
 
@@ -31,7 +31,7 @@ To assign an existing Satellite storage configuration to IBM Cloud™ Databases 
 
 - This should be done using the Satellite CLI, as shown below:
 
-```shell
+```sh
  ibmcloud sat storage assignment create --config CONFIG [--name NAME] [-q] (--cluster CLUSTER | --group GROUP | --service-cluster-id CLUSTER)
 PARAMETERS:
     --name value                The name of a Satellite storage assignment.
