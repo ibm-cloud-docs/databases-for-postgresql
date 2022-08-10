@@ -29,7 +29,7 @@ content-type: troubleshoot
 {: troubleshoot}
 {: support}
 
-If you encounter an error when attempting to increase the `max_connections` on {{site.data.keyword.databases-for-postgresql_full}} deployment, review these solutions.
+If you encounter an error when attempting to increase the `max_connections` on your {{site.data.keyword.databases-for-postgresql_full}} deployment, review these solutions.
 {: shortdesc}
 
 You receive a `superuser` error message when attempting the increase the `max_connections` on your {{site.data.keyword.databases-for-postgresql_full}} deployment.
@@ -38,6 +38,5 @@ You receive a `superuser` error message when attempting the increase the `max_co
 Review the following information to troubleshoot and resolve your `max_connections` issues:
 {: tsResolve}
 
-* See [Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
-* The preferred method for this process is to use [Connection Pooling](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#connection-pooling). Connection pooling prevents you from exceeding the connection limit and ensures that connections from your applications are being handled efficiently.
-
+* The preferred method for this process is to use [Connection Pooling](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#connection-pooling). Connection pooling prevents you from exceeding the connection limit and ensures that connections from your applications are being handled efficiently.{: .note}
+* Alternatively, see [Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
