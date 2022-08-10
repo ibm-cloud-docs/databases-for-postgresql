@@ -29,6 +29,9 @@ content-type: troubleshoot
 {: troubleshoot}
 {: support}
 
+If you encounter an error when attempting to increase the `max_connections` on {{site.data.keyword.databases-for-postgresql_full}} deployment, review these solutions.
+{: shortdesc}
+
 You receive a `superuser` error message when attempting the increase the `max_connections` on your {{site.data.keyword.databases-for-postgresql_full}} deployment.
 {: tsSymptoms}
 
