@@ -95,11 +95,6 @@ toc:
           - learn-security-compliance.md 
           - manage-scc.md
   - navgroup: 
-      id: help
-      topics: 
-      - ts-connect.md
-      - ts-max-connections.md
-  - navgroup: 
       id: reference
       topics:
       - /databases-cli-plugin/databases-cli-plugin-cdb-reference
@@ -116,4 +111,8 @@ toc:
       - /cloud-databases/cloud-databases-key-protect
       - /cloud-databases/cloud-databases-hpcs
       - /cloud-databases/cloud-databases-responsibilities-cloud-databases
-      
+  - navgroup: 
+      id: help
+      topics: 
+      - ts-connect.md
+      - ts-max-connections.md
