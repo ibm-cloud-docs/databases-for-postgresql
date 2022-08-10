@@ -24,7 +24,7 @@ content-type: troubleshoot
 {:troubleshoot: data-hd-content-type='troubleshoot'}
  
 
-# How do I increase the `max_connections` on my {{site.data.keyword.databases-for-postgresql_full}} deployment?
+# How do I increase the max_connections on my {{site.data.keyword.databases-for-postgresql_full}} deployment?
 {: #troubleshoot-connect}
 {: troubleshoot}
 {: support}
