@@ -98,6 +98,7 @@ toc:
       id: help
       topics: 
       - ts-connect.md
+      - ts-max-connections.md
   - navgroup: 
       id: reference
       topics:
