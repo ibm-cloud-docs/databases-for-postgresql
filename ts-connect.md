@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2020
-lastupdated: "2020-09-21"
+  years: 2020, 2022
+lastupdated: "2022-08-10"
 
-keywords: troubleshooting for PostgreSQL
+keywords: troubleshooting for PostgreSQL, connecting postgresql deployment, postgres endpoints
 
 subcollection: databases-for-postgresql
 
