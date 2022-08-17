@@ -148,19 +148,20 @@ The following example uses the information from your connection string and the N
 const pg = require("pg");
 const fs = require("fs");
 
-let connectionString = "postgres://<username>:<password>@<host>:<port>/<database>?sslmode=verify-full";
+let connectionString = "postgres://<username>:<password>@<host>:<port>/<database>";
 let caCert = fs.readFileSync('/path/to/cert');
 
-// set up a client with your PostgreSQL connection string
-let client = new pg.Client({ connectionString: connectionString,
-    // set up the TLS options
+// set up a client with your PostgreSQL connection string and TLS options
+let client = new pg.Client({ 
+    connectionString: connectionString,
     ssl: {
-        ca: caCert,
-        rejectUnauthorized: true
+      ca: caCert,
+      rejectUnauthorized: true
     }
- });
+  })
 
- client.connect(function(err) {
+
+client.connect(function(err) {
     if (err) {
         console.log(err);
         process.exit(1);
@@ -181,6 +182,9 @@ let client = new pg.Client({ connectionString: connectionString,
 });
 ```
 {: .codeblock}
+
+In the example above, you have to remove the `sslmode` parameter from the connection string that you obtain for the deployment because of a bug with the open source NodeJS PG driver. 
+{: .note}
 
 ## Driver TLS and self-signed certificate support
 {: #tls-certificate-support}
