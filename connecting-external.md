@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2017, 2022
-lastupdated: "2022-07-20"
+lastupdated: "2022-08-17"
 
-keywords: postgresql drivers, python, java, javascript, certificate, postgresql connection string, postgresql connecting external application
+keywords: postgresql drivers, python, java, javascript, certificate, postgresql connection string, postgresql connecting external application, postgresql python
 
 subcollection: databases-for-postgresql
 
@@ -155,10 +155,10 @@ let caCert = fs.readFileSync('/path/to/cert');
 let client = new pg.Client({ 
     connectionString: connectionString,
     ssl: {
-      ca: caCert,
-      rejectUnauthorized: true
+    ca: caCert,
+    rejectUnauthorized: true
     }
-  })
+});
 
 
 client.connect(function(err) {
@@ -183,7 +183,7 @@ client.connect(function(err) {
 ```
 {: .codeblock}
 
-In the example above, you have to remove the `sslmode` parameter from the connection string that you obtain for the deployment because of a bug with the open source NodeJS PG driver. 
+To use the node-postgres driver, remove the `sslmode` parameter from the deployment's connection string. If not, this parameter overrides the ssl: {...} parameters, preventing the CA certificate from properly loading.
 {: .note}
 
 ## Driver TLS and self-signed certificate support
