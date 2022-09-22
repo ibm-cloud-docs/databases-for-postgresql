@@ -34,13 +34,13 @@ For more information, see [Managing PostgreSQL Connections](/docs/databases-for-
 ## Using the CLI with {{site.data.keyword.databases-for-postgresql_full}}
 {: #using-cli}
 
-You can check the default configuration of your deployment with the following command.  
+You can check the default configuration of your deployment with the `deployment-configuration-schema` command.  
 ```sh
 ibmcloud cdb deployment-configuration-schema <deployment name or CRN>
 ```
 {: pre}
 
-To change your configuration through the {{site.data.keyword.databases-for}} cli-plugin, use `deployment-configuration` command. 
+Similarly, change your configuration with the `deployment-configuration` command. 
 ```sh
 ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING]
 ```
