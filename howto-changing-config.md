@@ -58,7 +58,7 @@ The command reads the changes that you would like to make from the JSON object o
 ## Using the API with {{site.data.keyword.databases-for-postgresql_full}}
 {: #using-api}
 
-There are two deployment-configuration endpoints, one for viewing the configuration schema and one for changing the configuration. To view the configuration schema, send a `GET` request to `/deployments/{id}/configuration/schema`.
+The two deployment-configuration endpoints allow viewing the configuration schema and changing the configuration. To view the configuration schema, send a `GET` request to `/deployments/{id}/configuration/schema`.
 
 To change the configuration, send the settings that you would like to change as a JSON object in the request body of a `PATCH` request to `/deployments/{id}/configuration`.
 
