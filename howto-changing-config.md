@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2022
-lastupdated: "2022-08-10"
+lastupdated: "2022-09-22"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri
 
@@ -27,16 +27,23 @@ The configuration is defined in a schema. To make a change, you send a JSON obje
 ```
 {: .codeblock}
 
-to either the CLI or to the API. 
+to the CLI or to the API. 
 
 For more information, see [Managing PostgreSQL Connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections). 
 
 ## Using the CLI with {{site.data.keyword.databases-for-postgresql_full}}
 {: #using-cli}
 
-You can check the current configuration of your deployment with 
+You can check the default configuration of your deployment with the following command.  
 ```sh
 ibmcloud cdb deployment-configuration-schema <deployment name or CRN>
+```
+{: pre}
+
+To check your current configuration, use the following command in your pgadmin query tool.
+
+```sh
+select setting from pg_settings where name = 'max_connections';
 ```
 {: pre}
 
@@ -185,19 +192,19 @@ pg_statio_user_indexes;
 - Options - Minimum value of 300
 - Notes - The number of seconds to wait before forcing a switch to the next WAL file. If the number of seconds has passed and if there has been database activity, the server switches to a new segment. Effectively limits the amount of time data can remain unarchived.
 
-The next three settings `wal_level`, `max_replication_slots` and `max_wal_senders` enable use of the [`wal2json` logical decoding plug-in](/docs/databases-for-postgresql?topic=databases-for-postgresql-wal2json). Anyone not using this plug-in should leave these settings at the default.
+The next three settings `wal_level`, `max_replication_slots` and `max_wal_senders` enable use of the [`wal2json` logical decoding plug-in](/docs/databases-for-postgresql?topic=databases-for-postgresql-wal2json). If you aren't using this plug-in, leave these settings at the default.
 
 [`wal_level`](https://www.postgresql.org/docs/current/runtime-config-wal.html){: .external}
 - Default - `hot_standby`
 - Restarts database - **YES**
-- Notes - Controls WAL level. Allowed values are `hot_standby` or `logical`. Set to logical to use logical decoding. If you are not using logical decoding, using `logical` increases the WAL size, which has several disadvantages and no real advantage. If you check your configuration using `SHOW wal_level;` in `psql`, note that as of version 9.6 the value `hot_standby` is mapped to `replica`.
+- Notes - Controls WAL level. Allowed values are `hot_standby` or `logical`. Set to logical to use logical decoding. If you are not using logical decoding, using `logical` increases the WAL size, which has several disadvantages and no real advantage. If you check your configuration using `SHOW wal_level;` in `psql`. As of version 9.6 the value `hot_standby` is mapped to `replica`.
 
 [`max_replication_slots`](https://www.postgresql.org/docs/current/runtime-config-replication.html){: .external}
 - Default - `10`
 - Restarts database - **YES**
-- Notes - The maximum number of simultaneously defined replication slots. The default and minimum number of slots is 10. Twenty slots are reserved for internal use by your deployment for High-Availability (HA) purposes. To use slots, you need to set the value above 20 and have one slot per consumer. Add one additional slot over the minimum per expected consumer. Using `wal2json` and not increasing `max_replication_slots` can impact HA and read-only replicas. If you are not using `wal2json`, you should leave this setting at the default.
+- Notes - The maximum number of simultaneously defined replication slots. The default and minimum number of slots is 10. Twenty slots are reserved for internal use by your deployment for High-Availability (HA) purposes. To use slots, you need to set the value above 20 and have one slot per consumer. Add one extra slot over the minimum per expected consumer. Using `wal2json` and not increasing `max_replication_slots` can impact HA and read-only replicas. If you are not using `wal2json`, leave this setting at the default.
 
 [`max_wal_senders`](https://www.postgresql.org/docs/current/runtime-config-replication.html){: .external}
 - Default - `12`
 - Restarts database - **YES**
-- Notes - The maximum number of simultaneously running WAL sender processes. The default and minimum is 12. One `wal_sender` per consumer is required.  Twenty slots are reserved for internal use by your deployment for High-Availability (HA) purposes. You need to set the value above 20 and it is recommended to add one more `wal_sender` over the minimum per expected consumer. Using `wal2json` and not increasing `max_wal_senders` can impact HA and read-only replicas. If you are not using `wal2json`, you should leave this setting at the default.
+- Notes - The maximum number of simultaneously running WAL sender processes. The default, and minimum, is 12. One `wal_sender` per consumer is required. Twenty slots are reserved for internal use by your deployment for High-Availability (HA) purposes. You need to set the value above 20 and it is recommended to add one more `wal_sender` over the minimum per expected consumer. Using `wal2json` and not increasing `max_wal_senders` can impact HA and read-only replicas. If you are not using `wal2json`, leave this setting at the default.
