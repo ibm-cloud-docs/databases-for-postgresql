@@ -40,13 +40,6 @@ ibmcloud cdb deployment-configuration-schema <deployment name or CRN>
 ```
 {: pre}
 
-To check your current configuration, use the following command in your pgadmin query tool.
-
-```sh
-select setting from pg_settings where name = 'max_connections';
-```
-{: pre}
-
 To change your configuration through the {{site.data.keyword.databases-for}} cli-plugin, use `deployment-configuration` command. 
 ```sh
 ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING]
