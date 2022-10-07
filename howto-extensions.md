@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2022
-lastupdated: "2022-07-07"
+lastupdated: "2022-10-07"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions
 
