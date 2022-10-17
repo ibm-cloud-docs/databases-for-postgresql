@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2022
-lastupdated: "2022-10-07"
+lastupdated: "2022-10-17"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions
 
@@ -47,8 +47,8 @@ CREATE EXTENSION
 ```
 {: pre}
 
-Extensions will be installed into the ibm_extension schema, the schema is part of the search_path so extension objects do not need to be qualified with a schema. 
-ibm_extension is a read only schema.
+Extensions are installed into the `ibm_extension` schema. The schema is part of the `search_path` so extension objects do not need to be qualified with a schema. 
+`ibm_extension` is a read-only schema.
 
 If you run the `\dx` command after installing an extension, it appears in the table.
 ```sh
@@ -61,7 +61,7 @@ ibmclouddb=> \dx
 (2 rows)
 ```
 
-Database extensions in PostgreSQL are managed per database. If you have multiple databases that you need to install an extension on, you run the `CREATE` command on each database.
+Database extensions in PostgreSQL are managed per database. If you have multiple databases that you need to install an extension on, run the `CREATE` command on each database.
 
 ## Upgrading Extensions
 {: #upgrading-extensions}
