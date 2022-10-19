@@ -47,8 +47,9 @@ CREATE EXTENSION
 ```
 {: pre}
 
-Extensions are installed into the `ibm_extension` schema. The schema is part of the `search_path` so extension objects do not need to be qualified with a schema. 
-`ibm_extension` is a read-only schema.
+Extensions are installed into the read-only `ibm_extension` schema. The schema is part of the `search_path` so extension objects do not need to be qualified with a schema. 
+The change from `public` schema to `ibm_extension` schema is necessary to protect the security and integrity of your data.
+
 
 If you run the `\dx` command after installing an extension, it appears in the table.
 ```sh
