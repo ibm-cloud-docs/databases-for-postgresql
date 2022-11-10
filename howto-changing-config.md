@@ -3,7 +3,7 @@ copyright:
   years: 2019, 2022
 lastupdated: "2022-09-22"
 
-keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri
+keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
 subcollection: databases-for-postgresql
 
@@ -15,6 +15,7 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}	
 {:pre: .pre}
 {:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration
 {: #changing-configuration}
@@ -33,6 +34,7 @@ For more information, see [Managing PostgreSQL Connections](/docs/databases-for-
 
 ## Using the CLI with {{site.data.keyword.databases-for-postgresql_full}}
 {: #using-cli}
+{: cli}
 
 You can check the default configuration of your deployment with the `deployment-configuration-schema` command.  
 ```sh
@@ -50,6 +52,7 @@ The command reads the changes that you would like to make from the JSON object o
 
 ## Using the API with {{site.data.keyword.databases-for-postgresql_full}}
 {: #using-api}
+{: api}
 
 The two deployment-configuration endpoints allow viewing the configuration schema and changing the configuration. To view the configuration schema, send a `GET` request to `/deployments/{id}/configuration/schema`.
 
