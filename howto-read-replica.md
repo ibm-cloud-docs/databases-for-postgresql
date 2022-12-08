@@ -10,29 +10,21 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # Configuring Read-only Replicas
 {: #read-only-replicas}
 
-You can set up your {{site.data.keyword.databases-for-postgresql_full}} deployment to be a read-only replica of another {{site.data.keyword.databases-for-postgresql}} deployment. 
+You can set up your {{site.data.keyword.databases-for-postgresql_full}} deployment to be a read-only replica of another {{site.data.keyword.databases-for-postgresql}} deployment.
 
 A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment through asynchronous replication. As the name implies, read-only replicas support read transactions and can be used to balance databases that have both write-heavy and read-heavy operations. The read-only replica has a single PostgreSQL data member, and it is billed at the [same per member consumption rates as the leader](https://{DomainName}/catalog/services/databases-for-postgresql/).
- 
+
 ## Read-only Replica Considerations
 {: #read-only-replicas-consider}
 
 - The read-only replica can exist in the same region as the source formation or in different one, enabling your data to be replicated across regions.
 
-- A read-only replica must be the same major version as its leader. 
+- A read-only replica must be the same major version as its leader.
 
 - Backups are disabled on read-only replicas. Backups are taken only on leader deployments.
 
@@ -69,7 +61,7 @@ Resources for PostgreSQL deployments are allocated per-deployment, and normal de
 
 You can provision a read-only replica from the leader's _Read Replicas_ tab by clicking **Create Read-Only Replica**. The source instance is automatically filled in. The read-only replica's name is auto-generated in the _Service Name_ field, but you can rename it freely. You can choose the region to deploy it in, and its initial memory allocation. Disk size, version, and public or private endpoints are automatically configured to match the settings of the leader deployment.
 
-If you use [Key Protect](/docs/databases-for-postgresql?topic=cloud-databases-key-protect), Bring Your Own Key (BYOK) is supported only when provisioning from the CLI and API. Otherwise, the read-only replica is encrypted with a generated key. 
+If you use [Key Protect](/docs/databases-for-postgresql?topic=cloud-databases-key-protect), Bring Your Own Key (BYOK) is supported only when provisioning from the CLI and API. Otherwise, the read-only replica is encrypted with a generated key.
 {: .tip}
 
 ### Provisioning through the API or the CLI
@@ -129,7 +121,7 @@ Or
 ### Read-only Replica Users and Privileges
 {: #read-only-replica-users-priv}
 
-- Any user on the leader, even ones present before read-only replica provision, can log in to and run reads on a read-only replica with the same privileges to objects that they have on the leader. 
+- Any user on the leader, even ones present before read-only replica provision, can log in to and run reads on a read-only replica with the same privileges to objects that they have on the leader.
 
 - If you have more than one read-only replica that is attached to a leader, a user that is created on the leader is also created on all of the other read-only replicas.
 
@@ -146,7 +138,7 @@ Read-only replica created users are assigned privileges by the leader, and are a
 ## Resyncing a Read-only Replica
 {: #resyncing-read-only-replica}
 
-If you need to resync a read-only replica, click the **Resync Read-Only Replica** button. Resyncing is a disruptive operation and performing a resync tears down and rebuilds the data in the read-only replica. The read-only replica is not able to perform any other operations or run any queries while a resync is running. Queries are not rerouted to the leader, so any connections to the read-only replica fail until it is finished resyncing. 
+If you need to resync a read-only replica, click the **Resync Read-Only Replica** button. Resyncing is a disruptive operation and performing a resync tears down and rebuilds the data in the read-only replica. The read-only replica is not able to perform any other operations or run any queries while a resync is running. Queries are not rerouted to the leader, so any connections to the read-only replica fail until it is finished resyncing.
 
 The amount of time it takes to resync a read-only replica varies, but the process can be long running.
 {: .tip}
@@ -161,14 +153,14 @@ To start a resync through the API, send a POST to the [`/deployments/{id}/remote
 ```sh
 curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/resync \
-  -H 'Authorization: Bearer <>' 
+  -H 'Authorization: Bearer <>'
 ```
 {: pre}
 
 ## Promoting a Read-only Replica
 {: #promoting-read-only-replica}
 
-A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. If something happens to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. 
+A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. If something happens to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application.
 
 To promote a read-only replica from the UI, click the **Promote Read-Only Replica** button.
 
@@ -190,7 +182,7 @@ curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/promotion \
   -H 'Authorization: Bearer <>'  \
  -H 'Content-Type: application/json' \
- -d '{"promotion": {}}' \ 
+ -d '{"promotion": {}}' \
 ```
 {: pre}
 
@@ -200,23 +192,22 @@ curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/promotion \
   -H 'Authorization: Bearer <>'  \
  -H 'Content-Type: application/json' \
- -d '{"promotion": {"skip_initial_backup": true}}' \ 
+ -d '{"promotion": {"skip_initial_backup": true}}' \
  ```
  {: pre}
 
 ### Time to completion
 {: #read-only-replica-completion}
 
-The promote task completes only when the database is highly available. However, read/write availability occurs after about 10 minutes with one major caveat: the database is not highly available until the task completes. 
+The promote task completes only when the database is highly available. However, read/write availability occurs after about 10 minutes with one major caveat: the database is not highly available until the task completes.
 
 The full promotion time of a read-replica is determined by the size of the data in two possible ways:
 - Read replicas are single members. When promoted, the formation spec is changed to two members, which creates a second replica. The creation time of that replica depends on the size of the data. The creation of that replica runs at 25 MB/s to avoid saturating the network. As databases grow, the creation can take a substantial amount of time. The task does not complete until the creation of that replica is done.
 - If you choose to take a backup as part of the promotion, the completion of that backup also needs to finish before the task completes. Again, this depends on the size of the database.
 
-Remember that there is no High-Availability member until the promotion task completes. Likewise, if you have selected to have an initial backup, no backup exists until the second point completes or a manual backup is created. 
+Remember that there is no High-Availability member until the promotion task completes. Likewise, if you have selected to have an initial backup, no backup exists until the second point completes or a manual backup is created.
 
 ### Upgrading while Promoting
 {: #read-only-replica-upgrading-promoting}
 
 If you need to upgrade to a new major version of the database, you can do so when promoting a read-only replica to a stand-alone deployment. Full documentation on your upgrading options, is on the [Upgrading to a New Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading) page.
-
