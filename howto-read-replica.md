@@ -13,7 +13,7 @@ subcollection: databases-for-postgresql
 {{site.data.keyword.attribute-definition-list}}
 
 # Configuring Read-only Replicas
-{: #read-only-replicas}
+{: #read-only-replicas-configure}
 
 You can set up your {{site.data.keyword.databases-for-postgresql_full}} deployment to be a read-only replica of another {{site.data.keyword.databases-for-postgresql}} deployment.
 
