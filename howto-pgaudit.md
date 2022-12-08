@@ -15,6 +15,7 @@ subcollection: databases-for-postgresql
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{{site.data.keyword.attribute-definition-list}}
 
 # Logging with pgAudit
 {: #pgaudit}

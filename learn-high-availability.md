@@ -16,6 +16,7 @@ subcollection: databases-for-postgresql
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:note: .note}
+{{site.data.keyword.attribute-definition-list}}
 
 # High-Availability
 {: #high-availability}

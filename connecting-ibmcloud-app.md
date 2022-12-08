@@ -17,6 +17,7 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {:tip: .tip}
 {:deprecated: .deprecated}
+{{site.data.keyword.attribute-definition-list}}
 
 
 # Connecting an {{site.data.keyword.cloud_notm}} application

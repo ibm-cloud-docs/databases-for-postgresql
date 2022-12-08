@@ -16,6 +16,7 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {:screen: .screen}
 {:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Getting Started
 {: #getting-started}

@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Managing {{site.data.keyword.databases-for-postgresql_full}} Connections
 {: #managing-connections}
