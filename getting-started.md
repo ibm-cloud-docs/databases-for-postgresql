@@ -10,12 +10,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: .external target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Getting Started
