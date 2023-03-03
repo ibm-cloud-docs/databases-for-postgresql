@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for PostgreSQL docs",
-    "lastupdated": "2023-02-22",
+    "lastupdated": "2023-03-03",
     "introduction": "PostgreSQL is a powerful, open source object-relational database that is highly customizable.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
@@ -31,7 +31,7 @@
       "community": "https://community.ibm.com/community/user/publiccloud/home"
     },
     "section_updates": {
-      "view_more": "/docs/acme-test?topic=acme-test-release-notes",
+      "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
       "tiles": [
         {
           "date": "28 October 2022",
