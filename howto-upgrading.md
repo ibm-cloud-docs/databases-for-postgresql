@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-11-10"
+  years: 2020, 2023
+lastupdated: "2023-04-12"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -9,12 +9,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Upgrading to a new Major Version
@@ -22,7 +16,7 @@ subcollection: databases-for-postgresql
 
 Once a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
 
-You can find the available versions of PostgreSQL on the [{{site.data.keyword.databases-for-postgresql_full}} the catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the cloud databases cli plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
+You can find the available versions of PostgreSQL on the [{{site.data.keyword.databases-for-postgresql_full}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the cloud databases CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
 ## Requirements for upgrading to PostgreSQL (v 13, 14) from PostgreSQL (v10, 11, 12)
 {: #upgrading-reqs}
@@ -68,13 +62,13 @@ curl -X POST \
 ## Back up and Restore Upgrade
 {: #backup-restore}
 
-One way to upgrade your database version is to [restore a backup](/docs/databases-for-postgresql?topic=cloud-databases-dashboard-backups#restoring-a-backup) of your data into a new deployment that is running the new database version.
+One way to upgrade your database version is to [restore a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment that is running the new database version.
 
 ### Upgrading in the UI
 {: #upgrading-ui}
 {: ui}
 
-You can upgrade to a new version when [restoring a backup](/docs/databases-for-postgresql?topic=cloud-databases-dashboard-backups#restoring-a-backup) from the _Backups_ menu of your _Deployment dashboard_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
+You can upgrade to a new version when [restoring a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) from the _Backups_ menu of your _Deployment dashboard_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
 
 ### Upgrading through the CLI
 {: #upgrading-cli}
