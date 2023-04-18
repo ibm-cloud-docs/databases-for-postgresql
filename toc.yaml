@@ -56,16 +56,12 @@ toc:
       - include: ../cloud-databases/howto-manage-backups.md
       - howto-pitr.md
       - include: ../cloud-databases/howto-allowlists.md
+      - howto-migration.md
       - topicgroup: 
           label: Replication
           topics: 
           - howto-read-replica.md
           - howto-logical-replication.md
-      - topicgroup: 
-          label: Migrating PostgreSQL
-          topics: 
-          - howto-migration.md
-          - howto-migration-compose.md
       - howto-upgrading.md
       - topicgroup: 
           label: Configuring PostgreSQL
