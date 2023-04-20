@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-11-10"
+  years: 2019, 2023
+lastupdated: "2023-04-20"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -9,12 +9,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}	
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration
@@ -77,7 +71,8 @@ The time zone for {{site.data.keyword.databases-for-postgresql_full}} deployment
 - Recommended max value: 25% of available RAM
 - Restarts database? - **Yes** 
   
-**Note:** The recommended memory allocation for `shared_buffers` is 25% of the deployment's RAM. **Warning: Setting `shared_buffers` any higher can result in memory issues that cause the database to crash, and might decrease the performance of your Database as data is most likely buffered by the OS already.** Setting `shared_buffers` equal, close to equal, or higher than the amount of allocated memory prevents the database from starting. The setting specifies the number of 8 KiB shared memory buffers. 
+The recommended memory allocation for `shared_buffers` is 25% of the deployment's RAM. Setting `shared_buffers` any higher can result in memory issues that cause the database to crash, and might decrease the performance of your database as data is most likely buffered by the OS already. Setting `shared_buffers` to equal, close to equal, or higher than the amount of allocated memory prevents the database from starting. The setting specifies the number of 8 KiB shared memory buffers.
+{: important}
   
 For example, 1 GB of `shared_buffers` space is `1048576 KiB`, and (`1048576 KiB / 8 KiB`) is `131072` buffers. Your deployment can use extra RAM for caching and performance, even without allocating it to `shared_buffers`. You do not have to configure the database to use all of the allocated RAM in order for your deployment to use it.
 
@@ -110,6 +105,9 @@ FROM
 pg_statio_user_indexes;
 ```
 {: .pre}
+
+The `work_mem` value is automatically adjusted in relationship to the `shared_buffer` and `max_connection` configuration values.
+{: note}
 
 ### {{site.data.keyword.databases-for-postgresql_full}} General Settings
 {: #gen-settings}
