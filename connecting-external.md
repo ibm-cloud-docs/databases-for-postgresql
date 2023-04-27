@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-08-17"
+  years: 2017, 2023
+lastupdated: "2023-04-27"
 
 keywords: postgresql drivers, python, java, javascript, certificate, postgresql connection string, postgresql connecting external application, postgresql python
 
@@ -9,14 +9,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:pre: .pre}
 {{site.data.keyword.attribute-definition-list}}
 
 # Connecting an external application to your PostgreSQL deployment
