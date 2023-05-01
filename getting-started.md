@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-04-28"
+lastupdated: "2023-05-01"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -46,7 +46,7 @@ Additionally, {{site.data.keyword.databases-for-postgresql}} provides independen
 - Install [pgAdmin4](https://www.pgadmin.org/download/).
 - Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-postgresql}} deployment.
 
-### Connect to your database with the CLI
+## Connect to your database with the CLI
 {: #connecting-cli}
 {: step}
 
@@ -61,7 +61,7 @@ ibmcloud cdb deployment-connections example-postgres --start
 
 The command prompts for the admin password and then runs the `psql` CLI to connect to the database. To install the Cloud Databases plug-in, see [Connecting with psql documentation here](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
-### Connect with pgAdmin
+## Connect with pgAdmin
 {: #connecting-pgadmin}
 {: step}
 
@@ -92,7 +92,7 @@ Back on the _General_ tab, give your deployment a name and add any comments that
 
 If the _Connect now?_ field is checked, pgAdmin attempts to connect to your deployment when you click the **Save** button.
 
-### Use pgAdmin
+## Use pgAdmin
 {: #using-pgadmin}
 {: step}
 
