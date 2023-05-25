@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-10-28"
+  years: 2019, 2023
+lastupdated: "2023-05-25"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 25 May 2023
+{: #databases-for-postgresql-22may2023}
+{: release-note}
+
+Setting up disk alerts for disk utilization tutorial
+:  In this tutorial, you use the {{site.data.keyword.cloud_notm}} API and the [{{site.data.keyword.cloud_notm}} CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started){: external} to set up an alert that emails you whenever the disk utilization of your database exceeds 90%. This specific example creates an alert on a {{site.data.keyword.databases-for-elasticsearch}} deployment, but it is applicable to all the databases in the IBM {{site.data.keyword.databases-for}} catalog. For more information, see [Setting up disk alerts for disk utilization](/docs/databases-for-mysql?topic=databases-for-postgresql-disk-util-alert-tutorial).
 
 ## 28 October 2022
 {: #databases-for-postgresql-28oct2022}
