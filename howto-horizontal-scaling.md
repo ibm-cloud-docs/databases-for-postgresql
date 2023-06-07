@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2023
-lastupdated: "2023-05-30"
+lastupdated: "2023-06-07"
 
 keywords: databases, scaling, horizontal scaling, postgresql members, postgres members, postgres scaling, data members
 
@@ -41,7 +41,10 @@ curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}
 ```
 {: pre}
 
-To add members, use the [/deployments/{id}/groups/{group_id}](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup-permissions) endpoint. This endpoint sends a `PATCH` request with the number of members that you want in your deployment. The follwoing example request increases the number of members from the default of 2 to 3.
+To add members, use the [/deployments/{id}/groups/{group_id}](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup-permissions) endpoint. This endpoint sends a `PATCH` request with the number of members that you want in your deployment. The following example request increases the number of members from the default of 2 to 3.
+
+A 2-member deployment can be scaled only up to a 3-member instance.
+{: note}
 
 ```sh
 curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/{group_id} 
