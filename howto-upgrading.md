@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-06-01"
+lastupdated: "2023-06-06"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -16,7 +16,7 @@ subcollection: databases-for-postgresql
 
 Once a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
 
-You can find the available versions of PostgreSQL on the [{{site.data.keyword.databases-for-postgresql_full}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the cloud databases CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
+Find the available versions of PostgreSQL on the [{{site.data.keyword.databases-for-postgresql_full}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
 ## Requirements for upgrading to PostgreSQL (v 13, 14) from PostgreSQL (v10, 11, 12)
 {: #upgrading-reqs}
@@ -28,7 +28,7 @@ DROP EXTENSION pg_repack;
 ```
 {: pre}
 
-After upgrading, you can reinstall `pg_repack`.
+After upgrading, reinstall `pg_repack`.
 
 - If you are using PostGIS, you must upgrade to PostGIS 3.3 before upgrading. This can by done by running the following against a database with PostGIS installed 
 
@@ -40,17 +40,17 @@ SELECT * FROM update_to_postgis_33();
 ## Upgrading from a Read-only Replica
 {: #upgrading-replica}
 
-You can also upgrade by setting up a read-only replica. A quick summary: you provision a read-only replica with the same database version as your deployment, and wait while it replicates all of your data. Once your deployment and its replica are synced, you can promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database.
+You can also upgrade by setting up a read-only replica. Provision a read-only replica with the same database version as your deployment and wait while it replicates all of your data. Once your deployment and its replica are synced, promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database.
 
-The [Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) doc covers the provisioning, syncing, and other details for read-only replicas. To perform the upgrade and promotion step, use a POST to the [`/deployments/{id}/remotes/promotion`](https://cloud.ibm.com/apidocs/cloud-databases-api#promote-read-only-replica-to-a-full-deployment) endpoint with the version that you want to upgrade to in the body of the request.
+[Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) covers the provisioning, syncing, and other details for read-only replicas. To perform the upgrade and promotion step, use a POST to the [`/deployments/{id}/remotes/promotion`](https://cloud.ibm.com/apidocs/cloud-databases-api#promote-read-only-replica-to-a-full-deployment) endpoint with the version that you want to upgrade to in the body of the request.
 ```sh
 curl -X POST \
-  https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/promotion \
+  https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/remotes/promotion \
   -H 'Authorization: Bearer <>'  \
  -H 'Content-Type: application/json' \
  -d '{
     "promotion": {
-        "version": "11",
+        "version": "14",
         "skip_initial_backup": false
     }
 }' \
@@ -68,7 +68,7 @@ One way to upgrade your database version is to [restore a backup](/docs/database
 {: #upgrading-ui}
 {: ui}
 
-You can upgrade to a new version when [restoring a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) from the _Backups_ menu of your _Deployment dashboard_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
+Upgrade to a new version when [restoring a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) from the _Backups_ menu of your _Deployment dashboard_. Clicking **Restore** on a backup brings up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
 
 ### Upgrading through the CLI
 {: #upgrading-cli}
@@ -86,7 +86,7 @@ The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are
 ibmcloud resource service-instance-create example-upgrade databases-for-postgresql standard us-south \
 -p \ '{
   "backup_id": "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-  "version":11
+  "version":14
 }'
 ```
 {: pre}
@@ -107,7 +107,7 @@ curl -X POST \
     "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
     "resource_plan_id": "databases-for-postgresql-standard",
     "backup_id": "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-    "version":11
+    "version":14
   }'
 ```
 {: pre}
@@ -115,12 +115,12 @@ curl -X POST \
 ### Dry running the promotion and upgrade
 {: #promotion-dry-run}
 
-In order to evaluate the effects of major version upgrades, you can trigger a dry run. A dry run does not perform the promotion and upgrade, but it does simulate it, with the results printed to the database logs. You can access and view your database logs through the [Log Analysis Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
+To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log Analysis Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
 
 The dry run must be run with `skip_initial_backup` set to `false`, and `version` defined.
 ```sh
 curl -X POST \
-  https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/promotion \
+  https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/remotes/promotion \
   -H 'Authorization: Bearer <>'  \
  -H 'Content-Type: application/json' \
  -d '{
