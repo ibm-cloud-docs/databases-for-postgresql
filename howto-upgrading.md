@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-06-06"
+lastupdated: "2023-06-08"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -125,7 +125,7 @@ curl -X POST \
  -H 'Content-Type: application/json' \
  -d '{
     "promotion": {
-        "version": "11",
+        "version": "14",
         "skip_initial_backup": false,
         "dry_run": true
     }
