@@ -25,14 +25,17 @@ A high-availability {{site.data.keyword.databases-for-postgresql}} read-only rep
 ### Provisioning a high-availability read-only replica
 {: #provision-ha-read-only-replica}
 
-Provisioning a high-availability read-only replica can be done through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
+Provisioning a high-availability read-only replica can be done through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction). High-availability {{site.data.keyword.databases-for-postgresql}} read-only replica replicas must initially be provisioned in the single-member (non-HA) configuration. After provisioning, use the API, as in the following example, to scale up the read replica to two (or more) members.
 
 Use a command like, 
 
 ```sh
-curl -XPATCH -H "Authorization: $TOKEN" "https://api.test-yp-01.us-south.databases.cloud.ibm.com/v5/ibm/deployments/$CRN_ENC/groups/member" -d '{"members": {"allocation_count": 2}}'
+curl -XPATCH -H 'Authorization: Bearer <>' "https://api.test-yp-01.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
 ```
 {: pre}
+
+The `{id}` value is your URL-encoded CRN. For more information, see [Deployment IDs and CRNs](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#deployment-ids-and-crns).
+{: note}
 
 ## The Leader
 {: #read-only-replicas-leader}
@@ -169,7 +172,7 @@ curl -X POST \
 ## Promoting a Read-only Replica
 {: #promoting-read-only-replica}
 
-A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. If something happens to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application.
+A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. If something happens to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. Promoting a read-replica cluster to a stand-alone cluster will be quicker if the read-replica cluster already has more than one data member.
 
 Upon promotion, the read-only replica terminates its connection to the leader and becomes a stand-alone {{site.data.keyword.databases-for-postgresql}} deployment. The deployment can start accepting and running read and write operations, backups are enabled, and it is issued its own admin user. A new data member is added so the deployment becomes a cluster with two data members. This increases the cost as it is billed at the same per member consumption rate, but the deployment has two members instead of one.
 
