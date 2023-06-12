@@ -24,6 +24,8 @@ High-availability {{site.data.keyword.databases-for-postgresql}} read-only repli
 
 After your read-replica is provisioned, use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction) to scale up the read replica to two (or more) members. 
 
+To scale up your read-replica, use the [Scaling groups endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) of the {{site.data.keyword.databases-for}} API.
+
 Use a command like: 
 
 ```sh
@@ -33,3 +35,15 @@ curl -XPATCH -H 'Authorization: Bearer <>' "https://api.test-yp-01.us-south.data
 
 The `{id}` value is your URL-encoded CRN. For more information, see [Deployment IDs and CRNs](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#deployment-ids-and-crns).
 {: note}
+
+## Verifying the state of your read-replica
+{: #verifying-ha-read-only-replica}
+
+To verify the current state of your read-replica, use the [Scaling groups endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups) of the {{site.data.keyword.databases-for}} API.
+
+Use a command like:
+
+```sh
+curl -XGET -H 'Authorization: Bearer <>' "https://api.test-yp-01.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups"
+```
+{: pre}
