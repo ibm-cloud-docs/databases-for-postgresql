@@ -61,6 +61,7 @@ toc:
           label: Replication
           topics: 
           - howto-read-replica.md
+          - howto-ha-read-replica.md
           - howto-logical-replication.md
       - howto-upgrading.md
       - topicgroup: 
