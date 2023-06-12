@@ -12,7 +12,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# The {{site.data.keyword.databases-for-postgresql}} high-availability read-only replica
+# The high-availability read-only replica
 {: #the-ha-read-only-replica}
 
 A high-availability {{site.data.keyword.databases-for-postgresql}} read-only replica provides benefits such as improved read scalability, increased availability, reduced read latency, backup and disaster recovery capabilities, and the ability to distribute read traffic efficiently. It contributes to a more robust and responsive database infrastructure for your application.
