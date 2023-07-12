@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-06-12"
+lastupdated: "2023-07-12"
 
 keywords: postgresql, databases, ha read-only replica, high availability read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -20,13 +20,13 @@ A high-availability {{site.data.keyword.databases-for-postgresql}} read-only rep
 ## Provision a high-availability read-only replica
 {: #provision-ha-read-only-replica}
 
-High-availability {{site.data.keyword.databases-for-postgresql}} read-only replicas must initially be provisioned in the single-member (non-HA) configuration. To provision a read-only replica, follow the procedure outlined in [Provisioning a Read-only Replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision). 
+High-availability {{site.data.keyword.databases-for-postgresql}} read-only replicas must initially be provisioned in the single-member (non-HA) configuration. To provision a read-only replica, follow the procedure that is outlined in [Provisioning a Read-only Replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision).
 
-After your read-replica is provisioned, use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction) to scale up the read replica to two (or more) members. 
+After your read-replica is provisioned, use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction) to scale up the read replica to two (or more) members.
 
 To scale up your read-replica, use the [Scaling groups endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) of the {{site.data.keyword.databases-for}} API.
 
-Use a command like: 
+Use a command like:
 
 ```sh
 curl -XPATCH -H 'Authorization: Bearer <>' "https://api.test-yp-01.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
