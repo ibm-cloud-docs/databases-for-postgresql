@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-05-25"
+lastupdated: "2023-07-13"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 07 July 2023
+{: #databases-for-postgresql-13july2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-postgresql_full}} v15 Preferred
+:  For more information, see [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 
 ## 25 May 2023
 {: #databases-for-postgresql-22may2023}
