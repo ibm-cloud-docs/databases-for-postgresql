@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-07-20"
+lastupdated: "2023-07-21"
 
 keywords: admin, superuser, roles, service credentials, postgresql users, postgresql service credentials
 
@@ -71,7 +71,7 @@ To set the password through the {{site.data.keyword.cloud_notm}} dashboard, sele
 {: #user-management-set-admin-password-cli}
 {: cli}
 
-Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
+Use the `cdb user-password` command from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin) to set the `admin` password.
 
 For example, to set the admin password for a deployment named `example-deployment`, use the following command:
 
@@ -101,10 +101,21 @@ Users that you [create through the _Service Credentials_ panel](/docs/databases-
 
 When a user in a group creates a resource in a database, like a table, all users that are in the same group have access to that resource.  Resources that are created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the admin user.
 
-## Users created through the CLI and the API
-{: #user-management-cli-api}
+## Users created through the CLI
+{: #user-management-cli}
+{: cli}
 
-Users that you create through the Cloud Databases API and the Cloud Databases CLI will also be members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
+Users that you create through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin) are also members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
+
+When a user creates a resource in a database, like a table, all users that are in the same group have access to that resource. Resources that are created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the `admin` user.
+
+Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#adding-users-to-_service-credentials_) if you choose.
+
+## Users created through the API
+{: #user-management-api}
+{: api}
+
+Users that you create through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction) are also members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
 
 When a user creates a resource in a database, like a table, all users that are in the same group have access to that resource.  Resources that are created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the admin user.
 
@@ -113,7 +124,7 @@ Users that are created directly from the API and CLI do not appear in _Service C
 ## The read-only user
 {: #user-management-read-only-user}
 
-The `ibm-cloud-base-user-ro` manages privileges for users that are created to access read-only replicas. More information can be found on the [Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) page.
+The `ibm-cloud-base-user-ro` manages privileges for users that are created to access read-only replicas. For more information, see [Configuring Read-only Replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).
 
 ## The `repl` user
 {: #user-management-repl-user}
@@ -123,7 +134,7 @@ The `repl` user has Replication privileges and is used if you enable the [`wal2j
 ## Other `ibm` Users
 {: #user-management-ibm-users}
 
-If you run the `\du` command with your admin account, you might notice users that are named `ibm`,  `ibm-cloud-base-user`, and `ibm-replication`.
+If you run the `\du` command with your `admin` account, you might notice users that are named `ibm`,  `ibm-cloud-base-user`, and `ibm-replication`.
 
 The `ibm-cloud-base-user` is used as a template to manage group roles for other users. It is used to manage the users created through the CLI and API as well as enable the integration with the _Service Credentials_ user creation on IBM Cloud. A user that is a member of `ibm-cloud-base-user` inherits the create role and create database attributes from `ibm-cloud-base-user`. The `ibm-cloud-base-user` is not able to log in.
 
@@ -142,7 +153,7 @@ Note that these users are not integrated with IAM controls, even if added to _Se
 ## Additional Users and Connection Strings
 {: #creating_users}
 
-Access to your {{site.data.keyword.databases-for-postgresql}} deployment is not limited to the admin user. You can create users by using the _Service Credentials_ panel, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API. 
+Access to your {{site.data.keyword.databases-for-postgresql}} deployment is not limited to the `admin` user. Add users in the UI in _Service Credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 
@@ -192,10 +203,9 @@ Once the task has finished, you can retrieve the new user's connection strings, 
 ### Adding users to _Service Credentials_
 {: #user-management-adding-users-service-cred}
 
-Creating a new user from the CLI doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information.
+Creating a new user from the CLI or API doesn't automatically populate that user's connection strings into _Service Credentials_. To add them, create a new credential with the existing user information.
 
 Enter the user name and password in the JSON field _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, putting `{"existing_credentials":{"username":"Robert","password":"supersecure"}}` in the field generates _Service Credentials_ with the username "Robert" and password "supersecure" filled into connection strings.
 
 Generating credentials from an existing user does not check for or create that user.
 {: tip}
-
