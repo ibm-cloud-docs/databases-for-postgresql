@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-07-26"
 
 keywords: admin, superuser, roles, service credentials, postgresql users, postgresql service credentials
 
@@ -138,7 +138,7 @@ If you run the `\du` command with your `admin` account, you might notice users t
 
 The `ibm-cloud-base-user` is used as a template to manage group roles for other users. It is used to manage the users created through the CLI and API as well as enable the integration with the _Service Credentials_ user creation on IBM Cloud. A user that is a member of `ibm-cloud-base-user` inherits the create role and create database attributes from `ibm-cloud-base-user`. The `ibm-cloud-base-user` is not able to log in.
 
-The `ibm` and the `ibm-replication` accounts are the only superusers on your deployment. A superuser account is not available for you to use. These users are internal administrative accounts that manage replication, metrics, and other functions that ensure the stability of your deployment.
+The `ibm` account is the only superuser on your deployment. A superuser account is not available for you to us. This user is an internal administrative account that manages the stability of your deployment.
 
 ## Users created with `psql`
 {: #user-management-psql}
