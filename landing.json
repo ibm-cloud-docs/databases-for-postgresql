@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for PostgreSQL docs",
-    "lastupdated": "2023-03-03",
+    "lastupdated": "2023-08-01",
     "introduction": "PostgreSQL is a powerful, open source object-relational database that is highly customizable.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
@@ -16,7 +16,7 @@
       {
         "title": "Setting the Admin Password",
         "description": "The IBM Cloud® Databases for PostgreSQL service is provisioned with a admin user. You must set the admin password before you use it to connect.",
-        "href": "/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password&interface=ui"
+        "href": "/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui"
       },
       {
         "title": "Getting Connection Strings",
