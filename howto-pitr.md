@@ -124,7 +124,7 @@ If you need to adjust resources or use a Key Protect key, add the optional param
 ## Verifying PITR
 {: #pitr-verify}
 
-To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging) to be set up on your deployment.
+To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging) to be set up on your deployment.
 
 When you perform a recovery, your data is restored from the most recent incremental backup. Any outstanding transactions from the WAL log are used to restore your database up to the time you recovered to. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
 ```sh

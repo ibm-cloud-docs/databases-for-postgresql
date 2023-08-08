@@ -120,7 +120,7 @@ curl -X POST \
 ### Dry running the promotion and upgrade
 {: #promotion-dry-run}
 
-To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log Analysis Integration](/docs/databases-for-postgresql?topic=cloud-databases-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
+To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log Analysis Integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
 
 The dry run must be run with `skip_initial_backup` set to `false`, and `version` defined.
 
