@@ -42,7 +42,7 @@ Additionally, {{site.data.keyword.databases-for-postgresql}} provides independen
 
 - You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: .external}.
 - You also nneed a {{site.data.keyword.databases-for-postgresql}} deployment. Provision one from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/services/databases-for-postgresql). Give your deployment a memorable name that appears in your account's Resource List.
-- [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
+- [Set the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) for your deployment.
 - Install [pgAdmin4](https://www.pgadmin.org/download/).
 - Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) documentation for general guidance on setting up a basic {{site.data.keyword.databases-for-postgresql}} deployment.
 

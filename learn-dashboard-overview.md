@@ -83,7 +83,7 @@ The _Observability_ tab provides access to the IBM Cloud Monitoring, logging, an
 
 The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can 
 - view encryption details. Encryption at rest is enabled for all {{site.data.keyword.databases-for-postgresql}} deployments. If you brought your own encryption key from [Key Protect](/docs/databases-for-postgresql?topic=cloud-databases-key-protect), the panel provides a link to your Key Protect instance, and the _Encryption Key_ field has the name of the key.
-- [Change the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password)
+- [Change the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui)
 - [Implement or modify an IP allowlist](/docs/databases-for-postgresql?topic=cloud-databases-allowlisting)
 
 ## Service Credentials

@@ -25,7 +25,7 @@ You can access your PostgreSQL database directly from its command-line client, `
 
 The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html){: .external}, allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
 
-You must set the admin password before you use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) page.
+You must set the admin password before you use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) page.
 {: .tip}
 
 ## Installing `psql`
@@ -58,7 +58,7 @@ The information that you need to make a connection with `psql` is in the "cli" s
 ## Creating a command-line client connection
 {: #create-cli-connection}
 
-Before creating a command-line client connection, ensure that you have [set the Admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password) for your deployment.
+Before creating a command-line client connection, ensure that you have [set the Admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) for your deployment.
 
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating a command-line client connection. For example, to connect to a deployment named "example-postgres", use the following command:
 

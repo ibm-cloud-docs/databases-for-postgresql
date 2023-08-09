@@ -29,7 +29,7 @@ To connect to {{site.data.keyword.databases-for-postgresql_full}}, you need some
 
 ![Endpoints panel on the Dashboard Overview](images/getting-started-endpoints-panel.png){: caption="Figure 1. Endpoints panel on the Dashboard Overview" caption-side="bottom"}
 
-A {{site.data.keyword.databases-for-postgresql}} deployment is provisioned with an admin user, and after [setting the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-admin-password), you can use its connection strings to connect to your deployment.
+A {{site.data.keyword.databases-for-postgresql}} deployment is provisioned with an admin user, and after [setting the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui), you can use its connection strings to connect to your deployment.
 {: .tip}
 
 ## Getting Connection Strings in the CLI
