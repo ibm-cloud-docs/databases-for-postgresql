@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-07-20"
+  years: 2021, 2023
+lastupdated: "2023-08-23"
 
 keywords: postgresql, databases, instance
 
@@ -9,13 +9,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-{:important: .important}
 {{site.data.keyword.attribute-definition-list}}
 
 # Assigning storage to service cluster
