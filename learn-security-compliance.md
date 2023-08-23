@@ -24,7 +24,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} use the following methods to protect data in transit or in storage.
 - All {{site.data.keyword.databases-for-postgresql}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
-- Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/databases-for-postgresql?topic=cloud-databases-iam).
+- Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/databases-for-postgresql?topic=databases-for-postgresql-iam).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-postgresql}} storage is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/databases-for-postgresql?topic=cloud-databases-key-protect).
 - IP allowlisting - All deployments support [allowlisting IP addresses](/docs/databases-for-postgresql?topic=cloud-databases-allowlisting) to restrict access to the service.
