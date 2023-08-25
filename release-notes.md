@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-07-13"
+lastupdated: "2023-08-25"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,16 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 25 Aug 2023
+{: #databases-for-postgresql-25aug2023}
+{: release-note}
+
+{{site.data.keyword.databases-for-postgresql_full}} version 11 End of life on February 29, 2024
+:  Action required before February 29, 2024, for your PostgreSQL 11 deployments. After February 29, 2024, all {{site.data.keyword.databases-for-postgresql_full}} instances on version 11 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql_full}}, with all the great features added to version 15. Upgrade your database instances by following the procedure at [Upgrading to a new Major Version
+](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}.
+For more information, see the original [announcement](https://www.ibm.com/blog/announcement/ibm-cloud-databases-for-postgresql-11-end-of-life-on-february-29-2024/){: external}.
+If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 07 July 2023
 {: #databases-for-postgresql-13july2023}
