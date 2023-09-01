@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-04-17"
+lastupdated: "2023-09-01"
 
 keywords: postgresql, monitoring, metrics, iops, disk usage, memory usage, connection usage, postgresql monitor integration, postgresql disk i/o
 
@@ -351,7 +351,7 @@ Transaction commit count
 ### Transaction commit rate
 {: #ibm_databases_for_postgresql_transaction_commit_rate}
 
-Transaction commit rate
+The `ibm_databases_for_postgresql_transaction_commit_rate` indicates the average speed at which the total number of transactions committed across all databases has been increasing over the last 5 minutes.
 
 | Metadata | Description |
 |----------|-------------|
