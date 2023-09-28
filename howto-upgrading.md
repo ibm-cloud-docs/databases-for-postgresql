@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-06-08"
+lastupdated: "2023-09-28"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -16,9 +16,9 @@ subcollection: databases-for-postgresql
 
 Once a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
 
-Find the available versions of PostgreSQL on the [{{site.data.keyword.databases-for-postgresql_full}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
+Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases){: external} endpoint.
 
-## Requirements for upgrading to PostgreSQL (v 13, 14) from PostgreSQL (v10, 11, 12)
+## Requirements for upgrading to PostgreSQL (v 13, 14, 15) from PostgreSQL (v10, 11, 12)
 {: #upgrading-reqs}
 
 - If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
@@ -143,8 +143,9 @@ curl -X POST \
 ## Changelog for Major PostgreSQL Versions
 {: #changelog-postgres}
 
-- [PostgreSQL 10](https://www.postgresql.org/docs/10/release-10.html)
-- [PostgreSQL 11](https://www.postgresql.org/docs/11/release-11.html)
-- [PostgreSQL 12](https://www.postgresql.org/docs/current/release-12.html)
-- [PostgreSQL 13](https://www.postgresql.org/docs/13/release-13.html)
-- [PostgreSQL 14](https://www.postgresql.org/docs/14/release-14.html)
+- [PostgreSQL 10](https://www.postgresql.org/docs/10/release-10.html){: external}
+- [PostgreSQL 11](https://www.postgresql.org/docs/11/release-11.html){: external}
+- [PostgreSQL 12](https://www.postgresql.org/docs/current/release-12.html){: external}
+- [PostgreSQL 13](https://www.postgresql.org/docs/13/release-13.html){: external}
+- [PostgreSQL 14](https://www.postgresql.org/docs/14/release-14.html){: external}
+- [PostgreSQL 15](https://www.postgresql.org/docs/release/15.0/){: external}
