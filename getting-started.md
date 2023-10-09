@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-05-01"
+lastupdated: "2023-10-09"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -17,8 +17,8 @@ completion-time: 30m
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting Started
-{: #getting-started}
+# Getting Started with {{site.data.keyword.databases-for-postgresql}}
+{: #getting-started-pg}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
 {: toc-completion-time="30m"}
