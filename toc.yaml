@@ -14,7 +14,6 @@ toc:
   - navgroup: 
       id: learn
       topics: 
-      - getting-started.md
       - getting-started-pg.md
       - include: ../cloud-databases/learn-getting-to-production.md
       - link: 
