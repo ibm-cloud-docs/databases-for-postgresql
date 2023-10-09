@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-10-05"
+lastupdated: "2023-10-09"
 
 keywords: postgresql, databases, ha read-only replica, high availability read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -44,6 +44,6 @@ To verify the current state of your read-replica, use the [Scaling groups endpoi
 Use a command like:
 
 ```sh
-curl -XGET -H 'Authorization: Bearer <>' "https://api.test-yp-01.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups"
+curl -XGET -H 'Authorization: Bearer <>' "https://api.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups"
 ```
 {: pre}
