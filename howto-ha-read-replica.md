@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-07-12"
+lastupdated: "2023-10-05"
 
 keywords: postgresql, databases, ha read-only replica, high availability read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -29,12 +29,12 @@ To scale up your read-replica, use the [Scaling groups endpoint](https://cloud.i
 Use a command like:
 
 ```sh
-curl -XPATCH -H 'Authorization: Bearer <>' "https://api.test-yp-01.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
+curl -XPATCH -H 'Authorization: Bearer <>' "https://api.{region}.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
 ```
 {: pre}
 
-The `{id}` value is your URL-encoded CRN. For more information, see [Deployment IDs and CRNs](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#deployment-ids-and-crns).
-{: note}
+- The `{region}` is 
+- The `{id}` value is your URL-encoded CRN. For more information, see [Deployment IDs and CRNs](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#deployment-ids-and-crns).
 
 ## Verifying the state of your read-replica
 {: #verifying-ha-read-only-replica}
