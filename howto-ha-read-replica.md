@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-10-09"
+lastupdated: "2023-10-10"
 
 keywords: postgresql, databases, ha read-only replica, high availability read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -26,15 +26,23 @@ After your read-replica is provisioned, use the [{{site.data.keyword.databases-f
 
 To scale up your read-replica, use the [Scaling groups endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) of the {{site.data.keyword.databases-for}} API.
 
-Use a command like:
+### The high-availability read-only replica command
+{: #provision-ha-read-only-replica-command}
+
+To execute the command, you first need the `{foundation endpoint}` and the `{id}` for your {{site.data.keyword.databases-for}} instance. 
+
+The `{foundation endpoint}` is the starting point for accessing and interacting with the resources exposed by the {{site.data.keyword.databases-for}} API. The foundation endpoint is visibile in the UI within the **Overview** panel. To use the foundation endpoint, it must first be URL encoded. URL encoding replaces unsafe characters with a `%` followed by two hexadecimal digits representing the character's ASCII code.
+
+The `{id}` is your Cloud Resource Name (CRN) and uniquely identifies your {{site.data.keyword.databases-for}} instance. It is visibile in the UI within the **Overview** panel.
+
+To use your instance's `{CRN}` and `{foundation endpoint}` in a command, they must first be URL encoded. URL encoding replaces unsafe characters with a `%` followed by two hexadecimal digits representing the character's ASCII code.
+{: note}
 
 ```sh
-curl -XPATCH -H 'Authorization: Bearer <>' "https://api.{region}.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
+curl -XPATCH -H 'Authorization: Bearer <>' "https://api.{foundation_endpoint}/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
 ```
 {: pre}
 
-- The `{region}` is 
-- The `{id}` value is your URL-encoded CRN. For more information, see [Deployment IDs and CRNs](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#deployment-ids-and-crns).
 
 ## Verifying the state of your read-replica
 {: #verifying-ha-read-only-replica}
@@ -44,6 +52,6 @@ To verify the current state of your read-replica, use the [Scaling groups endpoi
 Use a command like:
 
 ```sh
-curl -XGET -H 'Authorization: Bearer <>' "https://api.us-south.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups"
+curl -XGET -H 'Authorization: Bearer <>' "https://api.{foundation_endpoint}/deployments/{id}/groups"
 ```
 {: pre}
