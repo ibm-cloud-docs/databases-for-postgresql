@@ -4,7 +4,7 @@ copyright:
   years: 2023
 lastupdated: "2023-10-10"
 
-keywords: postgresql, databases, ha read-only replica, high availability read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
+keywords: postgresql, databases, ha read-only replica, high availability read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status, url encoding, foundation endpoint
 
 subcollection: databases-for-postgresql
 
@@ -31,9 +31,9 @@ To scale up your read-replica, use the [Scaling groups endpoint](https://cloud.i
 
 To execute the command, you first need the `{foundation endpoint}` and the `{id}` for your {{site.data.keyword.databases-for}} instance. 
 
-The `{foundation endpoint}` is the starting point for accessing and interacting with the resources exposed by the {{site.data.keyword.databases-for}} API. The foundation endpoint is visibile in the UI within the **Overview** panel. To use the foundation endpoint, it must first be URL encoded. URL encoding replaces unsafe characters with a `%` followed by two hexadecimal digits representing the character's ASCII code.
+The `{foundation endpoint}` is the starting point for accessing and interacting with the resources that are exposed by the {{site.data.keyword.databases-for}} API. The foundation endpoint is visible in the UI within your **Overview**. To use the foundation endpoint, it must first be URL encoded. URL encoding replaces unsafe characters with a `%` followed by two hexadecimal digits representing the character's ASCII code.
 
-The `{id}` is your Cloud Resource Name (CRN) and uniquely identifies your {{site.data.keyword.databases-for}} instance. It is visibile in the UI within the **Overview** panel.
+The `{id}` is your Cloud Resource Name (CRN) and uniquely identifies your {{site.data.keyword.databases-for}} instance. It is visible in the UI within your **Overview**.
 
 To use your instance's `{CRN}` and `{foundation endpoint}` in a command, they must first be URL encoded. URL encoding replaces unsafe characters with a `%` followed by two hexadecimal digits representing the character's ASCII code.
 {: note}
