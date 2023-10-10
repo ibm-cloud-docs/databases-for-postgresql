@@ -39,7 +39,7 @@ To use your instance's `{CRN}` and `{foundation endpoint}` in a command, they mu
 {: note}
 
 ```sh
-curl -XPATCH -H 'Authorization: Bearer <>' "https://api.{foundation_endpoint}/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
+curl -XPATCH -H 'Authorization: Bearer <>' "{foundation_endpoint}/deployments/{id}/groups/member" -d '{"members": {"allocation_count": 2}}'
 ```
 {: pre}
 
@@ -52,6 +52,6 @@ To verify the current state of your read-replica, use the [Scaling groups endpoi
 Use a command like:
 
 ```sh
-curl -XGET -H 'Authorization: Bearer <>' "https://api.{foundation_endpoint}/deployments/{id}/groups"
+curl -XGET -H 'Authorization: Bearer <>' "{foundation_endpoint}/deployments/{id}/groups"
 ```
 {: pre}
