@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-09-18"
+lastupdated: "2023-10-16"
 
 keywords: admin, superuser, roles, service credentials, postgresql users, postgresql service credentials, connection strings, admin password, new user
 
@@ -41,7 +41,7 @@ To allow the user `joe` to cancel backends, grant `pg_signal_backend` to all the
 
 ```sql
 GRANT pg_signal_backend TO "ibm-cloud-base-user";
-``` 
+```
 {: .pre}
 
 This privilege allows the user or users to terminate any connections to the database.
