@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-07-10"
+lastupdated: "2023-10-18"
 
 keywords: troubleshooting for PostgreSQL, query history, slow queries
 
@@ -14,7 +14,14 @@ content-type: troubleshoot
 
 {{site.data.keyword.attribute-definition-list}}
 
-# How do I track query history?
+# PostgreSQL Queries
+{: #pg-queries}
+{: troubleshoot}
+{: support}
+
+PostgreSQL queries are commands used to retrieve data from a table in a relational database management system. PostgreSQL uses the standard SQL query language.
+
+## How do I track query history?
 {: #troubleshoot-long-term-query-history}
 {: troubleshoot}
 {: support}
@@ -33,3 +40,26 @@ You are experiencing slow queries.
 - Enable [`logminduration_statement`](https://www.postgresql.org/docs/14/runtime-config-logging.html){: external}, a configuration parameter in PostgreSQL that determines the minimum length of time after which queries should be logged. By setting an appropriate value, you can configure PostgreSQL to log queries that exceed a certain execution time. Adjust the value based on your requirements.
 - For more information, see [Changing your {{site.data.keyword.databases-for-postgresql}} Configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
 {: tsResolve}
+
+## How do I keep slow query logging from exposing sensitive data?
+{: #troubleshoot-slow-query-logging}
+{: troubleshoot}
+{: support}
+
+Logging slow PostgreSQL queries can result in exposing sensitive data into the logs.
+{: shortdesc}
+
+Your {{site.data.keyword.databases-for-postgresql}} deployment is logging slow queries and you worry that this will result in sensitive data being exposed.
+{: tsSymptoms}
+
+PostgreSQL queries can contain sensitive data such as personal information, passwords, or confidential business data. If these sensitive details are included in a query, they may end up in the log files.
+{: tsCauses}
+
+If you worry about exposing sensitive information in your PosgreSQL logs, do the following:
+- Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external} to adjust the “100 milliseconds” default threshold to a much larger value. Doing so will disable the entry from being written to the logs.
+- Adjust your queries to contain hashed passwords instead of cleartext passwords.
+    Updating your queries with hashed passwords requires changes to your application.
+    {: note}
+{: tsResolve}
+
+
