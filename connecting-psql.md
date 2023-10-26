@@ -98,7 +98,7 @@ For Windows, use the [PostgreSQL installer from Enterprise DB](https://www.enter
 After it installs, you set up your Windows environment variables so that you can use the `psql` client in the command prompt. Go to the **Control Panel** > **System and Security** > **System** and select* Advanced system settings*. From there you see a box called **System Properties**. Select **Environment Variables**. A window appears with the two sets of environment variables. In the top set, marked "User variables for...", select the `PATH` entry and then click the **Edit** button. An edit window will appear. Click *New* and add the path to the `psql` client. Your path will depend on where PostgreSQL installed, but typically that would be:
 
 ```sh
-C:\Program Files\PostgreSQL\10\bin
+C:\Program Files\PostgreSQL\<POSTGRES_VERSION>\bin
 ```
 {: pre}
 
