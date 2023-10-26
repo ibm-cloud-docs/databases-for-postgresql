@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-07-20"
+  years: 2017, 2023
+lastupdated: "2023-10-26"
 
 keywords: postgresql, databases, psql, postgresql command line
 
@@ -9,31 +9,100 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 
 # Connecting with `psql`
 {: #connecting-psql}
 
-You can access your PostgreSQL database directly from its command-line client, `psql`. You can use `psql` for direct interaction and monitoring of the data structures that are created within the database. It is also useful for testing and monitoring the queries and performance, installing and modifying scripts, and other management activities.
+Use `psql` for direct interaction and monitoring of the data structures that are created within the database. `psql` is also useful for testing and monitoring queries and performance, installing and modifying scripts, and other management activities.
 
-The admin user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html){: .external}, allowing access to PostgreSQL monitoring views and functions. By default, the admin user does not have permissions on objects that are created by other users.
+The `admin` user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html){: .external}, that allows access to PostgreSQL monitoring views and functions. By default, the `admin` user does not have permissions on objects that are created by other users.
 
-You must set the admin password before you use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) page.
+You must set the `admin` password before you use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) page.
 {: .tip}
 
 ## Installing `psql`
 {: #installing-psql}
 
-Install the command-line client for PostgreSQL, `psql`. To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from [postgresql.org](https://www.postgresql.org/download/){: .external}, or as a [package from your operating system's package manager](https://www.compose.com/articles/postgresql-tips-installing-the-postgresql-client/){: .external}. 
+To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from [postgresql.org](https://www.postgresql.org/download/){: .external}, as a [package from your operating system's package manager](https://www.compose.com/articles/postgresql-tips-installing-the-postgresql-client/){: .external}.
 
 For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html){: .external}.
+
+Most instructions for installing the PostgreSQL tools assume you want the database installed too. It's a reasonable assumption if you're dealing with users who don't have access to PostgreSQL in the cloud or on a remote server.
+
+Here are steps for installing `psql` as a stand-alone tool on macOS, Linux, and Windows. 
+
+### Installing `psql` on macOS with Homebrew
+{: #installing-psql-macos}
+
+We recommend [Homebrew](https://brew.sh/){: external} as a package manager for macOS. With Homebrew, you are able to install numerous applications, usually with the programs available in `/usr/local/bin`. Homebrew's package for the PostgreSQL client tools is the `libpq` package. Brew makes it easy to install:
+
+```sh
+brew install libpq
+```
+{: pre}
+
+There's a small catch though: `libpq` won't install itself in the `/usr/local/bin` directory. To make that happen, you need to run:
+
+```sh
+brew link --force libpq
+```
+{: pre}
+
+Which will symlink (a file that points to another file or folder) all the tools, not just `libpq`, into the `/usr/local/bin` directory.
+
+### Installing `postgresql-client` on Ubuntu
+{: #installing-psql-ubuntu}
+
+Linux systems, unlike macOS, have a package manager built in. For Ubuntu (and Debian-based distributions) thats's the `apt` command. The PostgreSQL client is distributed in the appositely named `postgresql-client`. To install it, run a command like:
+
+```sh
+sudo apt-get install postgresql-client
+```
+{: pre}
+
+This will install the PostgreSQL client.
+
+### Installing `postgresql-client` on Red Hat Enterprise Linux
+{: #installing-psql-rh-linux}
+
+For Red Hat Enterprise Linux (or RHEL as it's usually written), there's a little more setup than with Ubuntu. For RHEL, the package manager is [`Yum`](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-yum#doc-wrapper){: external}. 
+
+First, you need to point `Yum` to the PostgreSQL repository, like this:
+
+```sh
+sudo yum install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat10-10-2.noarch.rpm
+```
+{: pre}
+
+`Yum` goes to that URL and configures itself to use that package repository. With that done, you can add packages by name:
+
+```sh
+sudo yum install postgresql15
+```
+{: pre}
+
+This command installs just the client packages. If you are wondering where to find that repository URL, head to Linux Downloads (Red Hat Family) where you'll find a form that will let you select the PostgreSQL version, platform and architecture and it'll give you the appropriate instructions for that Red Hat variant - that includes CentOS, Scientific Linux, and Oracle Enterprise Linux. It also includes Fedora. Fedora's default repositories already have a PostgreSQL client available from them. So For Fedora 27 and 28 and later, install the PostgreSQL client from the terminal with:
+
+```sh
+sudo dnf install postgresql.x86_64
+```
+{: pre}
+
+### Installing `psql` on Windows
+{: #installing-psql-windows}
+
+For Windows, use the [PostgreSQL installer from Enterprise DB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads){: external}. It's a full installation package for PostgreSQL on Windows but you can set it to only install the command line tools like `psql`. Select your PostgreSQL and Windows versions. Once the executable file is downloaded, run it. Select only the *Command Line Tools*, if you don't need the server installed. 
+
+After it installs, you set up your Windows environment variables so that you can use the `psql` client in the command prompt. Go to the **Control Panel** > **System and Security** > **System** and select* Advanced system settings*. From there you see a box called **System Properties**. Select **Environment Variables**. A window appears with the two sets of environment variables. In the top set, marked "User variables for...", select the `PATH` entry and then click the **Edit** button. An edit window will appear. Click *New* and add the path to the `psql` client. Your path will depend on where PostgreSQL installed, but typically that would be:
+
+```sh
+C:\Program Files\PostgreSQL\10\bin
+```
+{: pre}
+
+After that, click **OK** a couple of times to go back to the desktop. Start a new Command Prompt and you should be able to run `psql`.
 
 ## `psql` Connection Strings
 {: #psql-connection-strings}
