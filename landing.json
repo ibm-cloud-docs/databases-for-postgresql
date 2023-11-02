@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for PostgreSQL docs",
-    "lastupdated": "2023-08-01",
+    "lastupdated": "2023-11-02",
     "introduction": "PostgreSQL is a powerful, open source object-relational database that is highly customizable.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
@@ -34,19 +34,19 @@
       "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
       "tiles": [
         {
-          "date": "28 October 2022",
-          "title": "IBM Cloud® Databases for PostgreSQL v10: End-of-Life Extension",
-          "description": "To ensure additional time for you to upgrade, Cloud Databases is extending the EOL support for PostgreSQL v10 until February 22, 2023."
+          "date": "25 Aug 2023",
+          "title": "IBM Cloud® Databases for PostgreSQL version 11 End of life on February 29, 2024",
+          "description": "Action required before February 29, 2024, for your PostgreSQL 11 deployments. After February 29, 2024, all IBM Cloud® Databases for PostgreSQL instances on version 11 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of IBM Cloud® Databases for PostgreSQL, with all the great features added to version 15. Upgrade your database instances by following the procedure at Upgrading to a new Major Version . For more information, see the original announcement. If you have any questions or concerns, contact Cloud Databases support."
         },
         {
-          "date": "19 October 2022",
-          "title": "Deploying and Connecting an IBM Cloud® Databases Instance Tutorial",
-          "description": "This tutorial guides you through the process of deploying a Cloud Databases instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on Cloud Databases. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker."
+          "date": "07 July 2023",
+          "title": "IBM Cloud® Databases for PostgreSQL v15 Preferred",
+          "description": "For more information, see Upgrading to a new Major Version."
         },
         {
-          "date": "11 October 2022",
-          "title": "Protecting IBM Cloud® Databases for PostgreSQL resources with context-based restrictions",
-          "description": "Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for IBM Cloud® resources based on the context of access requests. Access to Cloud Databases resources can be controlled with CBR and identity and access management (IAM) policies."
+          "date": "25 May 2023",
+          "title": "Setting up disk alerts for disk utilization tutorial",
+          "description": "In this tutorial, you use the IBM Cloud API and the IBM Cloud CLI to set up an alert that emails you whenever the disk utilization of your database exceeds 90%. This specific example creates an alert on a Databases for Elasticsearch deployment, but it is applicable to all the databases in the IBM Cloud Databases catalog. For more information, see Setting up disk alerts for disk utilization."
         }
       ]
     }
