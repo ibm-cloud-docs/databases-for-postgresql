@@ -116,12 +116,13 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS){: .external}
 - Default - 115
 - Restarts database? - **YES**
+- Options - Minimum value of 10
 - Notes - [You might need to scale before you increase max connections.](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#connection-limits-ha)
 
 [max_locks_per_transaction](https://www.postgresql.org/docs/current/runtime-config-locks.html#GUC-MAX-LOCKS-PER-TRANSACTION){: external}
 
-- Default - none
-- Restarts database? - YES
+- Default - 64
+- Restarts database? - **YES**
 
 [`max_prepared_transactions`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS){: .external}
 - Default - `0`
@@ -130,7 +131,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 
 [`synchronous_commit`](https://www.postgresql.org/docs/current/wal-async-commit.html){: .external}
 - Default - `local`
-- Restarts database? - No
+- Restarts database - No
 - Options - `local`, `on`, or `off`
 - Notes - Setting `synchronous_commit` to off increases transaction commit rate at the expense of a loss of committed transactions if an unclean shutdown occurs. With `synchronous_commit` set to `on`, a transaction is committed only when written to the leader and at least one replica. Therefore, the `on` setting is only available on formations that have been horizontally scaled to at least three members. Before implementing this change, read through the [High-Availability page](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}.
 
