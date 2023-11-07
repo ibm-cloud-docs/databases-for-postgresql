@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2023
-lastupdated: "2023-04-20"
+lastupdated: "2023-11-07"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -11,12 +11,13 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration
+# Changing your {{site.data.keyword.databases-for-postgresql}} Configuration
 {: #changing-configuration}
 
-{{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PostgreSQL configuration settings so you can tune your PostgreSQL databases to your use case. To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to write the changes to the configuration file for your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PostgreSQL configuration settings so you can tune your PostgreSQL databases to your use case. To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration){: external} to write the changes to the configuration file for your deployment.
 
-The configuration is defined in a schema. To make a change, you send a JSON object with the settings and their new values to the API or the CLI. For example, to set the `max_connections` setting to 150, you would supply 
+The configuration is defined in a schema. To make a change, you send a JSON object with the settings and their new values to the API or the CLI. For example, to set the `max_connections` setting to 150, you would supply:
+
 ```sh
 {"configuration":{"max_connections":150}}
 ```
@@ -26,7 +27,7 @@ to the CLI or to the API.
 
 For more information, see [Managing PostgreSQL Connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections). 
 
-## Using the CLI with {{site.data.keyword.databases-for-postgresql_full}}
+## Using the CLI with {{site.data.keyword.databases-for-postgresql}}
 {: #using-cli}
 {: cli}
 
@@ -52,7 +53,7 @@ The two deployment-configuration endpoints allow viewing the configuration schem
 
 To change the configuration, send the settings that you would like to change as a JSON object in the request body of a `PATCH` request to `/deployments/{id}/configuration`.
 
-For more information, see the [API Reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration).
+For more information, see the [API Reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration){: external}.
 
 
 ## Available {{site.data.keyword.databases-for-postgresql_full}} Configuration settings
@@ -117,6 +118,12 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Restarts database? - **YES**
 - Notes - [You might need to scale before you increase max connections.](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#connection-limits-ha)
 
+[max_locks_per_transaction](https://www.postgresql.org/docs/current/runtime-config-locks.html#GUC-MAX-LOCKS-PER-TRANSACTION){: external}
+
+Default - none
+Restarts database? - YES
+Notes -
+
 [`max_prepared_transactions`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS){: .external}
 - Default - `0`
 - Restarts database? - **YES**
@@ -126,7 +133,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Default - `local`
 - Restarts database? - No
 - Options - `local`, `on`, or `off`
-- Notes - Setting `synchronous_commit` to off increases transaction commit rate at the expense of a loss of committed transactions if an unclean shutdown occurs. With `synchronous_commit` set to `on`, a transaction is committed only when written to the leader and at least one replica. Therefore, the `on` setting is only available on formations that have been horizontally scaled to at least three members. Before implementing this change, read through the [High-Availability page](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability).
+- Notes - Setting `synchronous_commit` to off increases transaction commit rate at the expense of a loss of committed transactions if an unclean shutdown occurs. With `synchronous_commit` set to `on`, a transaction is committed only when written to the leader and at least one replica. Therefore, the `on` setting is only available on formations that have been horizontally scaled to at least three members. Before implementing this change, read through the [High-Availability page](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}.
 
 [`effective_io_concurrency`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-EFFECTIVE-IO-CONCURRENCY){: .external}
 - Default - `12`
@@ -137,7 +144,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Default - `10000`
 - Restarts database - No
 - Options - Minimum value of 100
-- Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging). Setting this number too low negatively impacts performance.
+- Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging){: external}. Setting this number too low negatively impacts performance.
 
 [`log_connections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-CONNECTIONS){: .external}
 - Default - `off`
