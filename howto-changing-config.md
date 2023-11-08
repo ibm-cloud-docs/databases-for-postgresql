@@ -121,12 +121,12 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 [max_locks_per_transaction](https://www.postgresql.org/docs/current/runtime-config-locks.html#GUC-MAX-LOCKS-PER-TRANSACTION){: external}
 
 - Default - 64
+- Options - Minimum value of 10
 - Restarts database? - **YES**
 
 [`max_prepared_transactions`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS){: .external}
 - Default - `0`
 - Restarts database? - **YES**
-- Options - Minimum value of 10
 - Notes - The default value of `0` disables use of [prepared transactions](https://www.postgresql.org/docs/current/sql-prepare-transaction.html){: .external} and is recommended unless you need to use them.
 
 [`synchronous_commit`](https://www.postgresql.org/docs/current/wal-async-commit.html){: .external}
