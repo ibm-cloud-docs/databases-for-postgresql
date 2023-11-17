@@ -1,10 +1,10 @@
 {
     "title": "IBM Cloud® Databases for PostgreSQL docs",
-    "lastupdated": "2023-11-02",
+    "lastupdated": "2023-11-17",
     "introduction": "PostgreSQL is a powerful, open source object-relational database that is highly customizable.",
     "section_devtools": {
-      "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
-      "cli": "/docs/databases-cli-plugin", 
+      "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
+      "cli": "/docs/databases-cli-plugin",
       "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
     },
     "section_recommended": [
@@ -34,6 +34,11 @@
       "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
       "tiles": [
         {
+          "date": "17 Nov 2023",
+          "title": "Deploy pgadmin using Code Engine and connect to your Databases for PostgreSQL instance",
+          "description": "With this tutorial, deploy pgadmin using Code Engine and connect to your Databases for PostgreSQL instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure."
+        },
+        {
           "date": "25 Aug 2023",
           "title": "IBM Cloud® Databases for PostgreSQL version 11 End of life on February 29, 2024",
           "description": "Action required before February 29, 2024, for your PostgreSQL 11 deployments. After February 29, 2024, all IBM Cloud® Databases for PostgreSQL instances on version 11 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of IBM Cloud® Databases for PostgreSQL, with all the great features added to version 15. Upgrade your database instances by following the procedure at Upgrading to a new Major Version . For more information, see the original announcement. If you have any questions or concerns, contact Cloud Databases support."
@@ -42,11 +47,6 @@
           "date": "07 July 2023",
           "title": "IBM Cloud® Databases for PostgreSQL v15 Preferred",
           "description": "For more information, see Upgrading to a new Major Version."
-        },
-        {
-          "date": "25 May 2023",
-          "title": "Setting up disk alerts for disk utilization tutorial",
-          "description": "In this tutorial, you use the IBM Cloud API and the IBM Cloud CLI to set up an alert that emails you whenever the disk utilization of your database exceeds 90%. This specific example creates an alert on a Databases for Elasticsearch deployment, but it is applicable to all the databases in the IBM Cloud Databases catalog. For more information, see Setting up disk alerts for disk utilization."
         }
       ]
     }
