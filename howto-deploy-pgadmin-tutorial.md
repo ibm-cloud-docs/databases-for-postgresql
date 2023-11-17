@@ -21,7 +21,7 @@ completion-time: 30min
 {: toc-content-type="tutorial"}
 {: toc-completion-time="30min"}
 
-With this tutorial, deploy [pgadmin](https://www.pgadmin.org/){: external} using [{{site.data.keyword.codeengineshort}}](https://www.ibm.com/products/code-engine){: external} and connect to your [{{site.data.keyword.databases-for-postresql}}](https://www.ibm.com/products/databases-for-postgresql){: external} instance. pgadmin is a web interface that allows you to view and modify the data in your postgresql database. {{site.data.keyword.codeengineshort}} is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure. Postresql is an open source database that has a strong reputation for its reliability, flexibility, and support of open technical standards.
+With this tutorial, deploy [pgadmin](https://www.pgadmin.org/){: external} using [{{site.data.keyword.codeengineshort}}](https://www.ibm.com/products/code-engine){: external} and connect to your [{{site.data.keyword.databases-for-postgresql}}](https://www.ibm.com/products/databases-for-postgresql){: external} instance. pgadmin is a web interface that allows you to view and modify the data in your postgresql database. {{site.data.keyword.codeengineshort}} is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure. Postresql is an open source database that has a strong reputation for its reliability, flexibility, and support of open technical standards.
 {: shortdesc}
 
 NOTE: {{site.data.keyword.codeengineshort}} is a paid-for service, so following this tutorial will incur charges.
