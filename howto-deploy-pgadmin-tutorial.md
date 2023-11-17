@@ -21,10 +21,11 @@ completion-time: 30min
 {: toc-content-type="tutorial"}
 {: toc-completion-time="30min"}
 
-With this tutorial, deploy [pgadmin](https://www.pgadmin.org/){: external} using [{{site.data.keyword.codeengineshort}}](https://www.ibm.com/products/code-engine){: external} and connect to your [{{site.data.keyword.databases-for-postgresql}}](https://www.ibm.com/products/databases-for-postgresql){: external} instance. pgadmin is a web interface that allows you to view and modify the data in your postgresql database. {{site.data.keyword.codeengineshort}} is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure. Postresql is an open source database that has a strong reputation for its reliability, flexibility, and support of open technical standards.
+With this tutorial, deploy [pgadmin](https://www.pgadmin.org/){: external} using [{{site.data.keyword.codeengineshort}}](https://www.ibm.com/products/code-engine){: external} and connect to your [{{site.data.keyword.databases-for-postgresql}}](https://www.ibm.com/products/databases-for-postgresql){: external} instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. {{site.data.keyword.codeengineshort}} is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure. PostgreSQL is an open source database that has a strong reputation for its reliability, flexibility, and support of open technical standards.
 {: shortdesc}
 
-NOTE: {{site.data.keyword.codeengineshort}} is a paid-for service, so following this tutorial will incur charges.
+{{site.data.keyword.codeengineshort}} is a paid-for service, so following this tutorial will incur charges.
+{: note}
 
 ## Before you start
 {: #pgadmin-code-engine-icd-postgresql-before-start}
@@ -57,7 +58,7 @@ git clone https://github.com/IBM/ibm-postgresql-pgadmin-codeengine.git
 {: #pgadmin-code-engine-icd-postgresql-install-infra}
 {: step}
 
-1. Navigate into the terraform folder of the cloned project.
+1. Navigate into the `terraform` folder of the cloned project.
 
    ```sh
    cd ibm-postgresql-pgadmin-codeengine/terraform
@@ -96,9 +97,9 @@ git clone https://github.com/IBM/ibm-postgresql-pgadmin-codeengine.git
 The previous step produces a URL, which is the public URL of your pgadmin deployment. It looks something like: `https://pgadmin-app.1834dcfgrtygbg.eu-gb.codeengine.appdomain.cloud`.
 
 Visit that URL in your web browser. You should see the pgadmin login screen where you can log in with the pgadmin credentials you defined above.
-Once you are logged in, you will need to create a connection to the postgresql database using the [Connect to Server](https://www.pgadmin.org/docs/pgadmin4/development/connecting.html) dialog. You will need the host, port, username and password defined above. You can set the `ssl mode` value in the `Parameters` section to `Allow` to override certificate validation (this is ok for testing purposes, but you may need a more secure connection for production deployments). You can now access your postgresql deployment!
+Once you are logged in, connect to the PostgreSQL database using the [Connect to Server](https://www.pgadmin.org/docs/pgadmin4/development/connecting.html){: external} dialog. You need the `pg_host`, `pg_port`, `pg_user` and `pg_password` defined above. You can set the `ssl mode` value in the `Parameters` section to `Allow` to override certificate validation (this is acceptable for testing purposes, but you may need a more secure connection for production deployments). You can now access your postgresql deployment!
 
-This tutorial incurs some Code Engine charges. After you finish this tutorial, you can remove all the infrastructure by going to the `terraform` directory of the project and using the command:
+This tutorial incurs some Code Engine charges. After you finish this tutorial, remove all the infrastructure by going to the `terraform` directory of the project and using the command:
 
 ```sh
 terraform destroy
