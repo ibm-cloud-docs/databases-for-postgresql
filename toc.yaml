@@ -28,6 +28,37 @@ toc:
       - learn-pricing.md
       - release-notes.md
   - navgroup:
+      id: tutorial
+      topics:
+      - topicgroup:
+          label: Databases for PostgreSQL tutorials
+          topics:
+          - howto-deploy-pgadmin-tutorial.md
+          - include: ../cloud-databases/hello-world-tutorial.md
+          - include: ../cloud-databases/terra-postgres-tutorial.md
+          - include: ../cloud-databases/terra-mongodb-tutorial.md
+          - include: ../cloud-databases/k8-tutorial.md
+          - include: ../cloud-databases/truck-tracker-tutorial.md
+          - include: ../cloud-databases/disk-util-alerts-tutorial.md
+  - navgroup:
+      id: tutorial
+      topics:
+      - topicgroup:
+          label: Cloud Databases tutorials
+          topics:
+          - link:
+              label: Getting Started with Cloud Databases tutorials
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-getting-started
+          - link:
+              label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes Service application
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app
+          - link:
+              label: Example context-based restrictions scenarios
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-cbr-tutorial
+          - link:
+              label: Setting up disk alerts for disk utilization
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial
+  - navgroup:
       id: howto
       topics:
       - howto-provisioning.md
@@ -77,17 +108,6 @@ toc:
           - howto-wal2json.md
           - howto-pgaudit.md
           - howto-icu.md
-      - topicgroup:
-          label: Tutorials
-          topics:
-          - howto-deploy-pgadmin-tutorial.md
-          - include: ../cloud-databases/howto-tutorials.md
-          - include: ../cloud-databases/hello-world-tutorial.md
-          - include: ../cloud-databases/terra-postgres-tutorial.md
-          - include: ../cloud-databases/terra-mongodb-tutorial.md
-          - include: ../cloud-databases/k8-tutorial.md
-          - include: ../cloud-databases/truck-tracker-tutorial.md
-          - include: ../cloud-databases/disk-util-alerts-tutorial.md
       - topicgroup:
           label: Logging and monitoring
           topics:
