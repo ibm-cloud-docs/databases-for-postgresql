@@ -35,11 +35,9 @@ toc:
           topics:
           - howto-deploy-pgadmin-tutorial.md
           - include: ../cloud-databases/hello-world-tutorial.md
-          - include: ../cloud-databases/terra-postgres-tutorial.md
-          - include: ../cloud-databases/terra-mongodb-tutorial.md
-          - include: ../cloud-databases/k8-tutorial.md
-          - include: ../cloud-databases/truck-tracker-tutorial.md
-          - include: ../cloud-databases/disk-util-alerts-tutorial.md
+          - link:
+              label: Provision a Databases for PostgreSQL instance with Terraform
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-provision-postgres-tf
   - navgroup:
       id: tutorial
       topics:
@@ -49,6 +47,12 @@ toc:
           - link:
               label: Getting Started with Cloud Databases tutorials
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-getting-started
+          - link:
+              label: Deploying and Connecting a Cloud Databases Instance
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-create-instance-tutorial
+          - link:
+              label: Setting up disk alerts for disk utilization
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial
           - link:
               label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes Service application
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app
