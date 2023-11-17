@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance published
-:  With this tutorial, deploy pgadmin using Code Engine and connect to your Databases for PostgreSQL instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure.
+:  With this tutorial, deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure.
 For more information, see [Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgadmin-code-engine-icd-postgresql){: external}.
 
 ## 25 Aug 2023
@@ -121,7 +121,7 @@ General Availability of {{site.data.keyword.databases-for-postgresql_full}} supp
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} 9.6 End of Life
-:  On 11 November 2021, all IBM Cloud Databases for PostgreSQL instances on version 9.6 that are still active will be disabled. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-postgresql-9-6-end-of-life).
+:  On 11 November 2021, all IBM Cloud {{site.data.keyword.databases-for-postgresql}} instances on version 9.6 that are still active will be disabled. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-postgresql-9-6-end-of-life).
 
 ## 15 February 2021
 {: #databases-for-postgresql-15feb2021}
@@ -135,7 +135,7 @@ General Availability of {{site.data.keyword.databases-for-postgresql_full}} supp
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} 9.5 End of Life
-:  On November 11, 2021, all IBM Cloud Databases for PostgreSQL instances on version 9.5 that are still active will be disabled. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/postgresql-9-5-end-of-life).
+:  On November 11, 2021, all IBM Cloud {{site.data.keyword.databases-for-postgresql}} instances on version 9.5 that are still active will be disabled. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/postgresql-9-5-end-of-life).
 
 ## 13 April 2020
 {: #databases-for-postgresql-13apr2020}
