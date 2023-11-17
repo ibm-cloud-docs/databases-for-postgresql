@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-08-25"
+lastupdated: "2023-11-17"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 17 Nov 2023
+{: #databases-for-postgresql-25aug2023}
+{: release-note}
+
+Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance published
+:  With this tutorial, deploy pgadmin using Code Engine and connect to your Databases for PostgreSQL instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure.
+For more information, see [Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgadmin-code-engine-icd-postgresql){: external}.
 
 ## 25 Aug 2023
 {: #databases-for-postgresql-25aug2023}
@@ -163,4 +171,3 @@ New Regions Available for IBM Cloud Database Services
 
 General Availability of {{site.data.keyword.databases-for-postgresql_full}}
 :  {{site.data.keyword.databases-for-postgresql_full}} added to the [IBM Cloud Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-postgresql-and-databases-for-redis-are-now-generally-available).
-
