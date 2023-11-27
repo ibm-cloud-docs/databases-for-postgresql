@@ -5,7 +5,7 @@ toc:
     version: 2
     category: database
     audience: service
-    href: /docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started
+    href: /docs/databases-for-cassandra
     console-page: /catalog/services/databases-for-postgresql
     product-page: https://www.ibm.com/cloud/databases-for-postgresql
     path: databases-for-postgresql
