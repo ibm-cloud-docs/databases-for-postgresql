@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-11-17"
+lastupdated: "2023-11-27"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 27 November 2023
+{: #databases-for-postgresql-27nov2023}
+{: release-note}
+
+Monitoring Integreation documentation updated
+:  Monitoring Integration documentation now lists metrics for all {{site.data.keyword.databases-for}} services. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 ## 17 Nov 2023
 {: #databases-for-postgresql-25aug2023}
