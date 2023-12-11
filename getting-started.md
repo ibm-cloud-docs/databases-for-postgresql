@@ -17,13 +17,13 @@ completion-time: 30m
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting Started with {{site.data.keyword.databases-for-postgresql}}
+# Getting Started
 {: #getting-started}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
 {: toc-completion-time="30m"}
 
-This tutorial is a short introduction to using an {{site.data.keyword.databases-for-postgresql_full}} deployment. [pgAdmin](https://www.pgadmin.org/){: .external} is an open source administration platform for PostgreSQL, and provides many tools for managing your data and databases. [Download and install](https://www.pgadmin.org/download/){: .external} the version that is appropriate to your environment, and then follow the steps to connect it to your {{site.data.keyword.databases-for-postgresql}} deployment.
+This tutorial is a short introduction to using a {{site.data.keyword.databases-for-postgresql_full}} instance . [pgAdmin](https://www.pgadmin.org/){: .external} is an open source administration platform for PostgreSQL that provides many tools for managing your data and databases.
 
 Follow these steps to complete the tutorial: {: ui}
 
@@ -208,6 +208,20 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    ibmcloud resource service-instance-delete <INSTANCE_NAME>
    ```
    {: pre}
+
+### Connect to your database with the CLI
+{: #connecting-cli}
+
+Find the appropriate commands to connect to your database from the CLI in [Cloud Databases CLI Reference](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) and [Connecting with psql](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+
+The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating a CLI connection. For example, to connect to a deployment named "example-postgres", use a command like:
+
+```sh
+ibmcloud cdb deployment-connections example-postgres --start
+```
+{: pre}
+
+The command prompts for the admin password and then runs the `psql` CLI to connect to the database. To install the Cloud Databases plug-in, see [Connecting with psql documentation here](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
 ### The `--parameters` parameter
 {: #flags-params-service-endpoints}
@@ -421,63 +435,44 @@ To set the Admin password through the UI, follow these steps:
 
 Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
-
-
-## Connect to your database with the CLI
-{: #connecting-cli}
-{: step}
-
-Find the appropriate commands to connect to your database from the CLI in [Cloud Databases CLI Reference](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) and [Connecting with psql](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
-
-The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating a CLI connection. For example, to connect to a deployment named "example-postgres", use a command like:
-
-```sh
-ibmcloud cdb deployment-connections example-postgres --start
-```
-{: pre}
-
-The command prompts for the admin password and then runs the `psql` CLI to connect to the database. To install the Cloud Databases plug-in, see [Connecting with psql documentation here](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
-
-## Connect with pgAdmin
-{: #connecting-pgadmin}
-{: step}
+## Set up with pgAdmin
+{: #pgadmin}
 
 pgAdmin runs as a server and you connect to it through a browser. When the server is started, it runs on localhost, at default `http://127.0.0.1:53113/browser/`.
 
-When you first open pgAdmin, you get a prompt for setting a primary password. This password is different from your deployment's password as it is used specifically for pgAdmin to store passwords to your PostgreSQL servers or PostgreSQL deployments.
+When you first open pgAdmin, you get a prompt for setting a primary password. This password is different from your instance's password as it is used specifically for pgAdmin to store passwords to your PostgreSQL servers or PostgreSQL instance.
 
-The _Dashboard_ panel has a _Welcome_ screen. From the _Quick Links_, click _Add New Server_.
+The *Dashboard* panel has a *Welcome* screen. From the *Quick Links*, click *Add New Server*.
 
-On your deployment's _Overview_ page, there is an _Endpoints_ panel with all the relevant connection information.
+On your instance's *Overview* page, there is an *Endpoints* panel with all the relevant connection information.
 
-Back in pgAdmin, provide pgAdmin with the information it needs to connect to your deployment.
+Back in pgAdmin, provide pgAdmin with the information it needs to connect to your instance.
 
-First, complete the _Connection_ information,
-- For _Host name/address_, use the _Hostname_ of your deployment.
-- For the _Port_, use the _Port_ of your deployment.
-- The _Maintenance database_ remains `postgres`.
-- For _Username_ and _Password_, use the `admin` credentials that you set after provisioning your deployment. You can choose for pgAdmin to save the password.
-- The _Role_ and _Service_ fields can be left empty.
+First, complete the *Connection* information,
+- For *Host name/address*, use the *Hostname* of your instance.
+- For the *Port*, use the *Port* of your instance.
+- The *Maintenance database* remains `postgres`.
+- For *Username* and *Password*, use the `admin` credentials that you set after provisioning your instance. You can choose for pgAdmin to save the password.
+- The *Role* and *Service* fields can be left empty.
 
-Then, configure the _SSL_ settings.
-- Copy the certificate information from the [_Endpoints_ panel](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings) in your deployment's `Dashboard overview` page.
+Then, configure the *SSL* settings.
+- Copy the certificate information from the [*Endpoints* panel](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings) in your instance's `Dashboard overview` page.
 - Save the certificate to a file. (You can use the name that is provided in the download, or your own file name.)
-- Set the _SSL mode_ field to _Verify-Full_.
-- In the _Root certificate_ field, select the file where you saved your deployment's certificate.
+- Set the *SSL mode* field to *Verify-Full*.
+- In the *Root certificate* field, select the file where you saved your instance's certificate.
 
-Back on the _General_ tab, give your deployment a name and add any comments that you want to describe or identify your deployment in pgAdmin.
+Back on the *General* tab, give your instance a name and add any comments that you want to describe or identify your instance in pgAdmin.
 
-If the _Connect now?_ field is checked, pgAdmin attempts to connect to your deployment when you click the **Save** button.
+If the *Connect now?* field is checked, pgAdmin attempts to connect to your instance when you click the **Save** button.
 
-## Use pgAdmin
+### Use pgAdmin
 {: #using-pgadmin}
-{: step}
 
-Once pgAdmin connects, your deployment appears in the _Servers_ list and you get a _Dashboard_ with information and statistics.
+Once pgAdmin connects, your instance appears in the *Servers* list and you get a *Dashboard* with information and statistics.
 
-In the list of databases in the _Browser_, there is both the `postgres` database, which you are connected to, and the `ibmclouddb` database, which is the default database for all {{site.data.keyword.databases-for-postgresql}} deployments. Click `ibmclouddb` to connect to it and expand the information about it.
+In the list of databases in the *Browser*, there is both the `postgres` database, which you are connected to, and the `ibmclouddb` database, which is the default database for all {{site.data.keyword.databases-for-postgresql}} deployments. Click `ibmclouddb` to connect to it and expand the information about it.
 
-Use pgAdmin to view, administer, and manage your data and databases in your {{site.data.keyword.databases-for-postgresql}} deployment. For more information, see [pgAdmin documentation](https://www.pgadmin.org/docs/pgadmin4/latest/index.html).
+Use pgAdmin to view, administer, and manage your data and databases in your {{site.data.keyword.databases-for-postgresql}} instance. For more information, see [pgAdmin documentation](https://www.pgadmin.org/docs/pgadmin4/latest/index.html).
 
 Administrative features that require a superuser are not available through pgAdmin because there is no superuser access available to users of a {{site.data.keyword.databases-for-postgresql}} deployment.
 {: .tip}
@@ -490,7 +485,7 @@ If you are just using PostgreSQL for the first time, see the [official PostgreSQ
 
 Connect to and manage your databases and data with PostgreSQL's CLI tool [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
-Looking for more tools on managing your deployment? Connect to your deployment with the [IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli), the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference), or the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
+Looking for more tools on managing your instance? Connect to your instance with the [IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli), the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference), or the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
 
 If you are planning to use {{site.data.keyword.databases-for-postgresql}} for your applications, see [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app) and [Connecting an IBM Cloud application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app).
 
