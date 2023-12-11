@@ -435,7 +435,7 @@ To set the Admin password through the UI, follow these steps:
 
 Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
 
-## Set up with pgAdmin
+## Set up pgAdmin
 {: #pgadmin}
 
 pgAdmin runs as a server and you connect to it through a browser. When the server is started, it runs on localhost, at default `http://127.0.0.1:53113/browser/`.
@@ -479,14 +479,20 @@ Administrative features that require a superuser are not available through pgAdm
 
 ## Next Steps
 {: #next-steps}
-{: step}
 
-If you are just using PostgreSQL for the first time, see the [official PostgreSQL documentation](https://www.postgresql.org/docs/){: .external}.
+If you are using PostgreSQL for the first time, see the [official PostgreSQL documentation](https://www.postgresql.org/docs/){: .external}.
 
 Connect to and manage your databases and data with PostgreSQL's CLI tool [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
-Looking for more tools on managing your instance? Connect to your instance with the [IBM Cloud CLI](/docs/cli?topic=cli-install-ibmcloud-cli), the [Cloud Databases CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference), or the [Cloud Databases API](https://cloud.ibm.com/apidocs/cloud-databases-api).
+Looking for more tools on managing your instance? Connect to your instance with:
+- the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli){: external}
+- the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}
+- the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}
 
-If you are planning to use {{site.data.keyword.databases-for-postgresql}} for your applications, see [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app) and [Connecting an IBM Cloud application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app).
+If you plan to use {{site.data.keyword.databases-for-postgresql}} for your applications, see:
+- [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app){: external}
+- [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app){: external}
 
-To ensure the stability of your applications and your database, see [High-Availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability) and [Performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance).
+To ensure the stability of your applications and your databases, see:
+- [High-Availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}
+- [Performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance){: external}
