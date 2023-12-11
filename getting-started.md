@@ -79,7 +79,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}.
 
-## Step 2: Provision through the console
+## Step 1: Provision through the console
 {: #provision_instance_ui}
 {: ui}
 
@@ -102,7 +102,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 1. When your instance has been provisioned, click the instance name to view more information.
 
-## Step 2: Provision through the CLI
+## Step 1: Provision through the CLI
 {: #provision_instance_cli}
 {: cli}
 
@@ -226,7 +226,7 @@ ibmcloud resource service-instance-create databases-for-postgresql <SERVICE_NAME
 ```
 {: .pre}
 
-## Step 2: Provision through the resource controller API
+## Step 1: Provision through the resource controller API
 {: #provision_instance_api}
 {: api}
 
@@ -289,7 +289,7 @@ Follow these steps to provision by using the [resource controller API](https://c
 * `members_cpu_allocation_count` - Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts.
 * `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
 
-## Step 2: Provision through Terraform
+## Step 1: Provision through Terraform
 {: #provision_instance_tf}
 {: terraform}
 
@@ -300,6 +300,128 @@ Use Terraform to manage your infrastructure through the [`ibm_database` Resource
 {: api}
 
 Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external} to work with your {{site.data.keyword.databases-for-postgresql}} instance. The resource controller API is used to [provision an instance](#provision_instance_api).
+
+## Step 2: Set the Admin password
+{: #admin_pw}
+
+### The admin user
+{: #admin_pw_admin_user}
+
+When you provision a {{site.data.keyword.databases-for-postgresql}} deployment, an Admin user is automatically created.
+
+Set the admin password before using it to connect.
+{: important}
+
+When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given an `admin` user to access and manage PostgreSQL. Once you [set the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui), use it to connect to your deployment.
+
+When `admin` creates a resource in a database, like a table, `admin` owns that object. Resources that are created by `admin` are not accessible by other users, unless you expressly grant permissions to them.
+
+The biggest difference between the `admin` user and any other users you add to your deployment is the [`pg_monitor`](https://www.postgresql.org/docs/current/default-roles.html){: .external} and [`pg_signal_backend`](https://www.postgresql.org/docs/current/default-roles.html){: .external} roles. The `pg_monitor` role provides a set of permissions that makes the admin user appropriate for monitoring the database server. The `pg_signal_backend` role provides the admin user the ability to send signals to cancel queries and connections that are initiated by other users. It is not able to send signals to processes owned by superusers.
+
+You can also use the `admin` user to grant these two roles to other users on your deployment.
+
+To expose the ability to cancel queries to other database users, grant the `pg_signal_backend` role from the `admin` user. Use a command like:
+
+```sql
+GRANT pg_signal_backend TO joe;
+```
+{: .pre}
+
+To allow the user `joe` to cancel backends, grant `pg_signal_backend` to all the users with the `ibm-cloud-base-user` role with a command like:
+
+```sql
+GRANT pg_signal_backend TO "ibm-cloud-base-user";
+```
+{: .pre}
+
+This privilege allows the user or users to terminate any connections to the database.
+{: important}
+
+To set up a specific monitoring user, `mary`, use a command like:
+
+```sql
+GRANT pg_monitor TO mary;
+```
+{: .pre}
+
+Grant `pg_signal_backend` to all the users with the `ibm-cloud-base-user` role with a command like:
+
+```sql
+GRANT pg_monitor TO "ibm-cloud-base-user";
+```
+{: .pre}
+
+### Setting the Admin Password in the UI
+{: #user-management-set-admin-password-ui}
+{: ui}
+
+Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
+
+### Set the Admin password through the UI
+{: #admin_pw_set_ui}
+{: ui}
+
+Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
+
+### Set the Admin password through the CLI
+{: #admin_pw_set_cli}
+{: cli}
+
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
+
+For example, to set the admin password for a deployment named `example-deployment`, use the following command:
+
+```sh
+ibmcloud cdb user-password example-deployment admin <newpassword>
+```
+{: pre}
+
+### Set the Admin password through the API
+{: #admin_pw_set_api}
+{: api}
+
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+
+```sh
+curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
+-H `Authorization: Bearer <>` \
+-H `Content-Type: application/json` \
+-d `{"password":"newrootpasswordsupersecure21"}` \
+```
+{: pre}
+
+### Set the Admin password through Terraform
+{: #admin_pw_set_tf}
+{: terraform}
+
+To set the Admin password, use the API:
+
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+
+```sh
+curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
+-H `Authorization: Bearer <>` \
+-H `Content-Type: application/json` \
+-d `{"password":"newrootpasswordsupersecure21"}` \
+```
+{: pre}
+
+You can also use the CLI:
+
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
+
+For example, to set the admin password for a deployment named `example-deployment`, use the following command:
+
+```sh
+ibmcloud cdb user-password example-deployment admin <newpassword>
+```
+{: pre}
+
+To set the Admin password through the UI, follow these steps:
+
+Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
+
+
 
 ## Connect to your database with the CLI
 {: #connecting-cli}
