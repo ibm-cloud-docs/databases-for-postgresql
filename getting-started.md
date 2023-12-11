@@ -2,14 +2,14 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-10-09"
+lastupdated: "2023-12-11"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
 subcollection: databases-for-postgresql
 
 content-type: tutorial
-services: 
+services:
 account-plan: paid
 completion-time: 30m
 
@@ -18,7 +18,7 @@ completion-time: 30m
 {{site.data.keyword.attribute-definition-list}}
 
 # Getting Started with {{site.data.keyword.databases-for-postgresql}}
-{: #getting-started-pg}
+{: #getting-started}
 {: toc-content-type="tutorial"}
 {: toc-services=""}
 {: toc-completion-time="30m"}
@@ -73,9 +73,9 @@ The _Dashboard_ panel has a _Welcome_ screen. From the _Quick Links_, click _Add
 
 On your deployment's _Overview_ page, there is an _Endpoints_ panel with all the relevant connection information.
 
-Back in pgAdmin, provide pgAdmin with the information it needs to connect to your deployment. 
+Back in pgAdmin, provide pgAdmin with the information it needs to connect to your deployment.
 
-First, complete the _Connection_ information, 
+First, complete the _Connection_ information,
 - For _Host name/address_, use the _Hostname_ of your deployment.
 - For the _Port_, use the _Port_ of your deployment.
 - The _Maintenance database_ remains `postgres`.
@@ -96,7 +96,7 @@ If the _Connect now?_ field is checked, pgAdmin attempts to connect to your depl
 {: #using-pgadmin}
 {: step}
 
-Once pgAdmin connects, your deployment appears in the _Servers_ list and you get a _Dashboard_ with information and statistics. 
+Once pgAdmin connects, your deployment appears in the _Servers_ list and you get a _Dashboard_ with information and statistics.
 
 In the list of databases in the _Browser_, there is both the `postgres` database, which you are connected to, and the `ibmclouddb` database, which is the default database for all {{site.data.keyword.databases-for-postgresql}} deployments. Click `ibmclouddb` to connect to it and expand the information about it.
 
@@ -109,7 +109,7 @@ Administrative features that require a superuser are not available through pgAdm
 {: #next-steps}
 {: step}
 
-If you are just using PostgreSQL for the first time, see the [official PostgreSQL documentation](https://www.postgresql.org/docs/){: .external}. 
+If you are just using PostgreSQL for the first time, see the [official PostgreSQL documentation](https://www.postgresql.org/docs/){: .external}.
 
 Connect to and manage your databases and data with PostgreSQL's CLI tool [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
