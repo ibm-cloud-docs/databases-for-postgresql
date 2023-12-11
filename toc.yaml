@@ -17,7 +17,7 @@ toc:
       - link:
           label: IBM Cloud Databases
           href: https://cloud.ibm.com/docs/cloud-databases
-      - getting-started-pg.md
+      - getting-started.md
       - include: ../cloud-databases/learn-getting-to-production.md
       - link:
           label: What is PostgreSQL?
