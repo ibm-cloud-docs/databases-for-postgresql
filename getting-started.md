@@ -66,7 +66,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Before you begin](#prereqs)
 * [Step 1: Provision through Terraform](#provision_instance_tf)
 * [Step 2: Set your Admin password](#admin_pw)
-* [Step 3: Set up  pgAdmin](#pgadmin)
+* [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
 * [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_tf)
@@ -174,7 +174,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    ```
    {: pre}
 
-   When complete, you will see a response like:
+   When complete, you see a response like:
 
    ```text
    Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
