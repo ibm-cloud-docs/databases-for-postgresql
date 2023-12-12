@@ -23,7 +23,7 @@ completion-time: 30m
 {: toc-services=""}
 {: toc-completion-time="30m"}
 
-This tutorial is a short introduction to using a {{site.data.keyword.databases-for-postgresql_full}} instance . [pgAdmin](https://www.pgadmin.org/){: .external} is an open source administration platform for PostgreSQL that provides many tools for managing your data and databases.
+This tutorial guides you through the steps to quickly start by using {{site.data.keyword.databases-for-postgresql}} by provisioning an instance, setting up pgAdmin, setting your Admin password, and setting up logging and monitoring.
 
 Follow these steps to complete the tutorial: {: ui}
 
