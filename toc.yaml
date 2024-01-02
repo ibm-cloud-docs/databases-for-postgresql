@@ -67,16 +67,16 @@ toc:
       topics:
       - howto-provisioning.md
       - howto-user-management.md
-      - topicgroup:
-          label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
-          topics:
-          - include: ../cloud-databases/howto-sat-loc.md
-          - include: ../cloud-databases/howto-sat-loc-aws.md
-          - include: ../cloud-databases/howto-sat-loc-onprem.md
+      - link:
+          label: Deleting your Deployment and Removing your Data
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-deprovisioning
+      - link:
+          label: Migrating resources to a different data center
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-migrate-data-center
+      - link:
+          label: Understanding high availability and disaster recovery for Cloud Databases
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-ha-dr
       - howto-getting-connection-strings.md
-      - include: ../cloud-databases/howto-deprovisioning.md
-      - include: ../cloud-databases/closures.md
-      - include: ../cloud-databases/ha-dr.md
       - topicgroup:
           label: Connecting to Databases for PostgreSQL
           topics:
@@ -115,18 +115,30 @@ toc:
       - topicgroup:
           label: Logging and monitoring
           topics:
-          - include: ../cloud-databases/reference-activity-tracker.md
+          - link:
+              label: Activity Tracker Integration
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
           - link:
               label: Monitoring Integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring
-          - include: ../cloud-databases/reference-sysdig.md
+          - link:
+              label: Log Analysis Integration
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-logging
+          - link:
+              label: IBM Cloud® Monitoring
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-sysdig-monitor
       - topicgroup:
           label: Enhancing security
           topics:
           - learn-security-compliance.md
           - manage-scc.md
           - include: ../cloud-databases/howto-cbr.md
-          - include: ../cloud-databases/cbr-tutorial.md
+      - topicgroup:
+          label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
+          topics:
+          - include: ../cloud-databases/howto-sat-loc.md
+          - include: ../cloud-databases/howto-sat-loc-aws.md
+          - include: ../cloud-databases/howto-sat-loc-onprem.md
   - navgroup:
       id: reference
       topics:
