@@ -34,7 +34,6 @@ toc:
           label: Databases for PostgreSQL tutorials
           topics:
           - howto-deploy-pgadmin-tutorial.md
-          - include: ../cloud-databases/hello-world-tutorial.md
           - link:
               label: Provision a Databases for PostgreSQL instance with Terraform
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-provision-postgres-tf
@@ -67,6 +66,7 @@ toc:
       topics:
       - howto-provisioning.md
       - howto-user-management.md
+      - howto-getting-connection-strings.md
       - link:
           label: Deleting your Deployment and Removing your Data
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-deprovisioning
@@ -76,7 +76,6 @@ toc:
       - link:
           label: Understanding high availability and disaster recovery for Cloud Databases
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-ha-dr
-      - howto-getting-connection-strings.md
       - topicgroup:
           label: Connecting to Databases for PostgreSQL
           topics:
@@ -90,9 +89,13 @@ toc:
           - howto-autoscaling.md
           - howto-horizontal-scaling.md
           - howto-managing-connections.md
-      - include: ../cloud-databases/howto-manage-backups.md
+      - link:
+          label: Managing Cloud Databases backups
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups
       - howto-pitr.md
-      - include: ../cloud-databases/howto-allowlists.md
+      - link:
+          label: Allowlisting
+          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-allowlisting
       - howto-migration.md
       - topicgroup:
           label: Replication
@@ -116,11 +119,11 @@ toc:
           label: Logging and monitoring
           topics:
           - link:
-              label: Activity Tracker Integration
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
-          - link:
               label: Monitoring Integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring
+          - link:
+              label: Activity Tracker Integration
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
           - link:
               label: Log Analysis Integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-logging
@@ -133,6 +136,7 @@ toc:
           - learn-security-compliance.md
           - manage-scc.md
           - include: ../cloud-databases/howto-cbr.md
+          - include: ../cloud-databases/cbr-tutorial.md
       - topicgroup:
           label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics:
@@ -163,10 +167,16 @@ toc:
   - navgroup:
       id: help
       topics:
-      - ts-connect.md
-      - ts-max-connections.md
-      - ts-no-space-left.md
-      - queries.md
+      - topicgroup:
+          label: Troubleshooting
+          topics:
+          - ts-connect.md
+          - ts-max-connections.md
+          - ts-no-space-left.md
+          - queries.md
+          - link:
+              label: Why did my Terraform script delete my instance?
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-troubleshoot-terraform
       - topicgroup:
           label: FAQs
           topics:
