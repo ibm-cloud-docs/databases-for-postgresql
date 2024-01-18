@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} version 12 End of life on January 22, 2025
-:  Action required before January 22, 2025, for your PostgreSQL v12 deployments. After January 22, 2025, all IBM Cloud® Databases for PostgreSQL instances on version 12 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of IBM Cloud® Databases for PostgreSQL.
+:  Action required before January 22, 2025, for your PostgreSQL v12 deployments. After January 22, 2025, all IBM Cloud® Databases for PostgreSQL instances on version 12 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql_full}}.
 Upgrade your database instances by following the procedure at [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading). If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 27 November 2023
