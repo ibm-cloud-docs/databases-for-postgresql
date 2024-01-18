@@ -40,7 +40,7 @@
         },
         {
           "date": "27 Nov 2023",
-          "title": "Monitoring Integreation documentation updated",
+          "title": "Monitoring Integration documentation updated",
           "description": "Monitoring Integration documentation now lists metrics for all {{site.data.keyword.databases-for}} services."
         },
         {
