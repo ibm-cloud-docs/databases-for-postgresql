@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for PostgreSQL docs",
-    "lastupdated": "2024-01-18",
+    "lastupdated": "2024-01-19",
     "introduction": "PostgreSQL is a powerful, open source object-relational database that is highly customizable.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
@@ -35,7 +35,7 @@
       "tiles": [
         {
           "date": "18 Jan 2024",
-          "title": "Monitoring Integration documentation updated",
+          "title": "IBM Cloud® Databases for PostgreSQL version 12 End of life on January 22, 2025",
           "description": "Action required before January 22, 2025, for your PostgreSQL v12 deployments. After January 22, 2025, all IBM Cloud® Databases for PostgreSQL instances on version 12 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of IBM Cloud® Databases for PostgreSQL. Upgrade your database instances by following the procedure at Upgrading to a new Major Version. If you have any questions or concerns, contact Cloud Databases support."
         },
         {
