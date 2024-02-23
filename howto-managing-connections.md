@@ -129,7 +129,7 @@ ibmcloud cdb deployment-configuration example-deployment '{"configuration":{"max
 To make the changes through the API,
 
 ```sh
-curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
+curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
 -d '{"memory": {
@@ -137,7 +137,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
       }
     }'
 
-curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/configuration' \
+curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/configuration' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
 -d '{"configuration":{
