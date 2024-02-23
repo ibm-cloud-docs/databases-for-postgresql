@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-08-16"
+  years: 2019, 2024
+lastupdated: "2024-02-23"
 
 keywords: postgresql, databases, connection limits, terminating connections, postgresql connection pooling, postgres connection pooling, managing connections
 
@@ -10,17 +10,12 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing {{site.data.keyword.databases-for-postgresql_full}} Connections
+# Managing Connections
 {: #managing-connections}
 
-Connections to your {{site.data.keyword.databases-for-postgresql_full}} deployment use resources, so it is important to consider how many connections you need when tuning your deployment's performance. PostgreSQL uses a `max_connections` setting to limit the number of connections (and resources that are consumed by connections) to prevent run-away connection behavior from overwhelming your deployment's resources.
+Connections to your {{site.data.keyword.databases-for-postgresql}} deployment use resources, so it is important to consider how many connections you need when tuning your deployment's performance. PostgreSQL uses a `max_connections` setting to limit the number of connections (and resources that are consumed by connections) to prevent run-away connection behavior from overwhelming your deployment's resources.
 
 You can check the value of `max_connections` with your [admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user) and [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 ```sh
@@ -35,7 +30,7 @@ ibmclouddb=> SHOW max_connections;
 Many of the queries rely on the admin user's role as `pg_monitor`, which is only available in PostgreSQL 10 and newer. Users on PostgreSQL 9.x, might not have permissions to run all of the queries in these docs.
 {: .tip}
 
-## PostgreSQL Connection Limits
+## Connection Limits
 {: #postgres-connection-limits}
 
 At provision, {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. If the number of connections to the database exceeds the 100-connection limit, new connections fail and return an error.
@@ -74,7 +69,7 @@ If you are on PostgreSQL 9.6 and newer, your admin user has the `pg_signal_backe
    ```
    {: .codeblock}
 
-- `pg_terminate_backend` stops the entire process and closes the connection. 
+- `pg_terminate_backend` stops the entire process and closes the connection.
    ```sql
    SELECT pg_terminate_backend(pid);
    ```
@@ -82,42 +77,51 @@ If you are on PostgreSQL 9.6 and newer, your admin user has the `pg_signal_backe
 
 The admin user does have the power to reset or close the connections for any user on the deployment except superusers. Be careful not to terminate replication connections from the `ibm-replication` user, as it interferes with the high-availability of your deployment.
 
-### End PostgreSQL Connections
+### End Connections
 {: #end-connections}
 
-If your deployment reaches the connection limit or you are having trouble connecting to your deployment and suspect that a high number of connections is a problem, disconnect all of the connections to your deployment. 
+If your deployment reaches the connection limit or you are having trouble connecting to your deployment and suspect that a high number of connections is a problem, disconnect all of the connections to your deployment.
 
 In the UI, on the _Settings_ tab, there is a button to `End Connections` to your deployment. Use caution, as it disrupts anything that is connected to your deployment.
 
-The CLI command to end connections to the deployment is 
+The CLI command to end connections to the deployment is
 ```sh
 ibmcloud cdb deployment-kill-connections <deployment name or CRN>
 ```
 
 You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#kill-connections-to-a-postgresql-deployment) to perform the end all connections operation.
 
-## PostgreSQL Connection Pooling
+## Connection Pooling
 {: #connection-pooling}
 
-One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling. If you find yourself setting the {{site.data.keyword.databases-for-postgresql_full}} connection limit to more than 500 connections, you should seriously consider using connection pooling or reevaluating how to more efficiently use and maintain connections. Performance benchmarking in the PostgreSQL community suggests 500 connections or fewer to be optimal for database performance. 
+One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling. If you find yourself setting the {{site.data.keyword.databases-for-postgresql_full}} connection limit to more than 500 connections, you should seriously consider using connection pooling or reevaluating how to more efficiently use and maintain connections. Performance benchmarking in the PostgreSQL community suggests 500 connections or fewer to be optimal for database performance.
 
 Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case. For example, the Python driver Psycopg2 has [classes to handle connection pooling in your application](http://initd.org/psycopg/docs/pool.html){: .external}. The Java PostgreSQL JDBC driver has methods for [connection pooling at both the application and application server level](https://jdbc.postgresql.org/documentation/head/datasource.html){: .external}.
 
 Alternatively, you can use a third-party tool such as [PgBouncer](https://pgbouncer.github.io/){: .external} to manage your application's connections.
 
-## Raising the PostgreSQL Connection Limit
+## Raising the Connection Limit
 {: #raise-connection-limit}
 
 PostgreSQL allocates some amount of memory on a per connection basis, typically around 5 - 10 MB per connection. It is important to consider the total amount of memory that is available to your deployment before increasing the connection limit. To raise the connection limit, first you might want to [scale your deployment](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling) to ensure that you have enough memory to accommodate more connections.
 
-Next, change the value of `max_connections` on your deployment. To make permanent changes to the [PostgreSQL configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#changing-configuration), you want to use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to write the changes to the configuration file for your deployment. 
+Next, change the value of `max_connections` on your deployment. To make permanent changes to the [PostgreSQL configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#changing-configuration), you want to use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to write the changes to the configuration file for your deployment.
 
-For example, to raise `max_connections` to 215, it might be a good idea to scale your deployment to at least 2 GB of RAM per data member, for a total of 4 GB of RAM for your deployment. Once the scaling operation has finishes, then set the connection limit. In the CLI,
+For example, to raise `max_connections` to 215, it might be a good idea to scale your deployment to at least 2 GB of RAM per data member, for a total of 4 GB of RAM for your deployment. Once the scaling operation has finishes, then set the connection limit. Before you adjust `max_connections`, make sure to target your preferred region with a command like:
+
+```sh
+ibmcloud target -r <region>
+```
+{: pre}
+
+Next, increase the amount of memory available to a deployment group with a command like:
 
 ```sh
 ibmcloud cdb deployment-groups-set example-deployment member --memory 4096
 ```
 {: pre}
+
+Lastly, adjust `max_connections` with a command like:
 
 ```sh
 ibmcloud cdb deployment-configuration example-deployment '{"configuration":{"max_connections":215}}'
