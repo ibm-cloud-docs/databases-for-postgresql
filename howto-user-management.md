@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-11-02"
+  years: 2019, 2024
+lastupdated: "2024-04-18"
 
 keywords: admin, superuser, roles, service credentials, postgresql users, postgresql service credentials, connection strings, admin password, new user
 
@@ -134,7 +134,7 @@ The `repl` user has Replication privileges and is used if you enable the [`wal2j
 ## Other `ibm` Users
 {: #user-management-ibm-users}
 
-If you run the `\du` command with your `admin` account, you might notice users that are named `ibm`, `ibm-cloud-base-user`, and `ibm-replication`.
+If you run the `\du` command with your `admin` account, you might notice users that are named `ibm`, `ibm-cloud-base-user`, `ibm-replication`, and `ibm-rewind`.
 
 The `ibm-cloud-base-user` is used as a template to manage group roles for other users. It is used to manage the users who are created through the CLI and API as well as enable the integration with the _Service Credentials_ user creation on IBM Cloud. A user that is a member of `ibm-cloud-base-user` inherits the create role and create database attributes from `ibm-cloud-base-user`. The `ibm-cloud-base-user` is not able to log in.
 
