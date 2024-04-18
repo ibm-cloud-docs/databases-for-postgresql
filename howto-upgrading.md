@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-04-17"
+lastupdated: "2024-04-18"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -29,6 +29,11 @@ DROP EXTENSION pg_repack;
 {: pre}
 
 After upgrading, reinstall `pg_repack`. This can be done with a command like:
+
+```sh
+CREATE EXTENSION pg_repack;
+```
+{: pre}
 
 ```sh
 SELECT * FROM update_to_postgis_33();
