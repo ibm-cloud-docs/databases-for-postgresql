@@ -43,13 +43,13 @@ toc:
               label: Getting Started with Cloud Databases tutorials
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-getting-started
           - link:
-              label: Deploying and Connecting a Cloud Databases Instance
+              label: Deploying and connecting a Cloud Databases instance
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-create-instance-tutorial
           - link:
               label: Setting up disk alerts for disk utilization
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial
           - link:
-              label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes Service application
+              label: Connect a Cloud Databases deployment to an IBM Cloud Kubernetes service application
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app
           - link:
               label: Example context-based restrictions scenarios
@@ -64,7 +64,7 @@ toc:
       - howto-user-management.md
       - howto-getting-connection-strings.md
       - link:
-          label: Deleting your Deployment and Removing your Data
+          label: Deleting your deployment and removing your data
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-deprovisioning
       - link:
           label: Migrating resources to a different data center
@@ -79,7 +79,7 @@ toc:
           - connecting-ibmcloud-app.md
           - connecting-psql.md
       - topicgroup:
-          label: Managing Resources
+          label: Managing resources
           topics:
           - howto-resources-scaling.md
           - howto-autoscaling.md
@@ -100,7 +100,7 @@ toc:
           - howto-ha-read-replica.md
           - howto-logical-replication.md
           - link:
-              label: Upgrading PostgreSQL with Minimal Downtime using logical replication
+              label: Upgrading PostgreSQL with minimal downtime using logical replication
               href: https://www.ibm.com/blog/upgrading-ibm-cloud-databases-for-postgresql-with-minimal-downtime/
       - howto-upgrading.md
       - topicgroup:
@@ -115,13 +115,13 @@ toc:
           label: Logging and monitoring
           topics:
           - link:
-              label: Monitoring Integration
+              label: Monitoring integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring
           - link:
-              label: Activity Tracker Integration
+              label: Activity Tracker integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-activity-tracker
           - link:
-              label: Log Analysis Integration
+              label: Log Analysis integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-logging
           - link:
               label: IBM Cloud® Monitoring
@@ -139,14 +139,20 @@ toc:
       - topicgroup:
           label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics:
-          - include: ../cloud-databases/howto-sat-loc.md
-          - include: ../cloud-databases/howto-sat-loc-aws.md
-          - include: ../cloud-databases/howto-sat-loc-onprem.md
+          - link:
+              label: Getting started
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-satellite-get-started
+          - link:
+              label: Setting up Amazon Web Services location
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-satellite-aws
+          - link:
+              label: Setting up on-premises location with NetApp ONTAP-SAN storage
+              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-satellite-on-prem
   - navgroup:
       id: reference
       topics:
       - link:
-          label: Versioning Policy
+          label: Versioning policy
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy
       - link:
           label: Cloud Databases CLI plug-in
@@ -161,16 +167,16 @@ toc:
               label: Virtual Private Endpoints
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-vpes
           - link:
-              label: Service Endpoints Integration
+              label: Service Endpoints integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-service-endpoints
           - link:
-              label: Key Protect Integration
+              label: Key Protect integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-key-protect
           - link:
               label: Identity and Access Management
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-iam
           - link:
-              label: Hyper Protect Crypto Services Integration
+              label: Hyper Protect Crypto Services integration
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hpcs
           - link:
               label: Responsibilities for Cloud Databases
@@ -198,7 +204,7 @@ toc:
               label: IBM Cloud platform and service FAQ
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-ibm-cloud-status
           - link:
-              label: Resource Configuration FAQ
+              label: Resource configuration FAQ
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-faq-resource-config
           - link:
               label: Certificates FAQ
