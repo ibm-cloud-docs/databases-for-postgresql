@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-04-18"
+lastupdated: "2024-04-19"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -28,20 +28,21 @@ DROP EXTENSION pg_repack;
 ```
 {: pre}
 
-After upgrading, reinstall `pg_repack`. This can be done with a command like:
+After upgrading, reinstall `pg_repack`. This can be done with the following command:
 
 ```sh
 CREATE EXTENSION pg_repack;
 ```
 {: pre}
 
+If you are using PostGIS, you must upgrade to PostGIS 3.3 before upgrading. This can be done by running the following against a database with PostGIS installed.
+{: note}
+
 ```sh
 SELECT * FROM update_to_postgis_33();
 ```
 {: pre}
 
-If you are using PostGIS, you must upgrade to PostGIS 3.3 before upgrading. This can be done by running the following against a database with PostGIS installed.
-{: note}
 
 ## Upgrading from a Read-only Replica
 {: #upgrading-replica}
