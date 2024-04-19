@@ -25,7 +25,7 @@ toc:
       - learn-high-availability.md
       - learn-performance.md
       - learn-pricing.md
-      - release-notes.md
+      - release-notes.md 
   - navgroup:
       id: tutorial
       topics:
@@ -36,9 +36,6 @@ toc:
           - link:
               label: Provision a Databases for PostgreSQL instance with Terraform
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-tutorial-provision-postgres-tf
-  - navgroup:
-      id: tutorial
-      topics:
       - topicgroup:
           label: Cloud Databases tutorials
           topics:
@@ -139,7 +136,6 @@ toc:
           - link:
               label: Protecting Cloud Databases resources with context-based restrictions
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-cbr
-          - include: ../cloud-databases/cbr-tutorial.md
       - topicgroup:
           label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics:
