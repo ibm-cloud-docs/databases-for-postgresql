@@ -21,7 +21,7 @@ Find the available versions of {{site.data.keyword.databases-for-postgresql}} in
 ## Requirements for upgrading to PostgreSQL (v 13, 14, 15) from PostgreSQL (v10, 11, 12)
 {: #upgrading-reqs}
 
-- If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
+If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
 
 ```sh
 DROP EXTENSION pg_repack; 
