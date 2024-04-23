@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-04-19"
+lastupdated: "2024-04-23"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -11,12 +11,15 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Upgrading to a new Major Version
+# Upgrading to a new major version
 {: #upgrading}
 
-Once a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
+When a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
 
 Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases){: external} endpoint.
+
+When you upgrade to a new instance, you also need to change the connection information in your application.
+{: note}
 
 ## Requirements for upgrading to PostgreSQL (v 13, 14, 15) from PostgreSQL (v10, 11, 12)
 {: #upgrading-reqs}
@@ -44,10 +47,10 @@ SELECT * FROM update_to_postgis_33();
 {: pre}
 
 
-## Upgrading from a Read-only Replica
+## Upgrading from a read-only replica
 {: #upgrading-replica}
 
-Upgrade by [configuring a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas). Provision a read-only replica with the same database version as your deployment and wait while it replicates all of your data. Once your deployment and its replica are synced, promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database. To perform the upgrade and promotion step, use a POST request to the [`/deployments/{id}/remotes/promotion`](https://cloud.ibm.com/apidocs/cloud-databases-api#promote-read-only-replica-to-a-full-deployment) endpoint with the version that you want to upgrade to in the body of the request. 
+Upgrade by [configuring a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas). Provision a read-only replica with the same database version as your deployment and wait while it replicates all of your data. When your deployment and its replica are synced, promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database. To perform the upgrade and promotion step, use a POST request to the [`/deployments/{id}/remotes/promotion`](https://cloud.ibm.com/apidocs/cloud-databases-api#promote-read-only-replica-to-a-full-deployment) endpoint with the version that you want to upgrade to in the body of the request. 
 
 This request looks like:
 ```sh
@@ -66,7 +69,7 @@ curl -X POST \
 
 `skip_initial_backup` is optional. If set to `true`, the new deployment does not take an initial backup when the promotion completes. Your new deployment is available in a shorter amount of time, at the expense of not being backed up until the next automatic backup is run, or you take an on-demand backup.
 
-## Back up and Restore Upgrade
+## Back up and restore upgrade
 {: #backup-restore}
 
 You can upgrade your database version by [restoring a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment that is running the new database version.
@@ -145,7 +148,7 @@ curl -X POST \
 ```
 {: pre}
 
-## Changelog for Major PostgreSQL Versions
+## Changelog for major PostgreSQL versions
 {: #changelog-postgres}
 
 - [PostgreSQL 10](https://www.postgresql.org/docs/10/release-10.html){: external}
