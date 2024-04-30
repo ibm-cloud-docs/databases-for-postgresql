@@ -14,7 +14,7 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for {{site.data.keyword.databases-for-postgresql_full}}
+# Release notes
 {: #postgresql-relnotes}
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
@@ -26,7 +26,6 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 
 New hosting models
 :  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types){: external}.
-
 
 ## 18 January 2024
 {: #databases-for-postgresql-18jan2023}
