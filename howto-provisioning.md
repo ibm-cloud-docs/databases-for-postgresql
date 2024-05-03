@@ -37,7 +37,7 @@ Deploy from the console by specifying the following parameters:
 
 - **Isolated:** Secure single-tenant offering for complex, highly-performant enterprise workloads.
 - **Shared:** Flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections.<br>
-For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types).
+For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 
 ### Resource allocation
 {: #resource_allocation}
