@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-05-02"
+lastupdated: "2024-05-06"
 
 keywords: postgresql, databases, point in time recovery, backups, restore, pitr
 
@@ -15,7 +15,10 @@ subcollection: databases-for-postgresql
 # Point-in-time Recovery
 {: #pitr}
 
-{{site.data.keyword.databases-for-postgresql_full}} offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need. For new hosting models, PITR is currently available through the CLI, TF, and API.
+{{site.data.keyword.databases-for-postgresql_full}} offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need. 
+
+For new hosting models, PITR is currently available through the CLI, TF, and API.
+{: note}
 
 The _Backups_ tab of your deployment's UI keeps all your PITR information under _Point-in-Time_.
 
