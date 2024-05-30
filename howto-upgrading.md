@@ -72,13 +72,13 @@ curl -X POST \
 ## Back up and restore upgrade
 {: #backup-restore}
 
-You can upgrade your database version by [restoring a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment that is running the new database version.
+You can upgrade your database version by [restoring a backup](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup-ui) of your data into a new deployment that is running the new database version.
 
 ### Upgrading in the UI
 {: #upgrading-ui}
 {: ui}
 
-Upgrade to a new version when [restoring a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=ui#restore-backup) from the _Backups_ menu of your _Deployment dashboard_. Click **Restore** on a backup to bring up a dialog box where you can change some options for the new deployment. One of the options is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
+Upgrade to a new version when [restoring a backup](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup-ui) from the _Backups_ menu of your _Deployment dashboard_. Click **Restore** on a backup to bring up a dialog box where you can change some options for the new deployment. One of the options is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
 
 ### Upgrading through the CLI
 {: #upgrading-cli}
