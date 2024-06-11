@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-07-11"
+  years: 2018, 2024
+lastupdated: "2024-06-11"
 
 keywords: postgresql, databases, soc, hipaa, gdpr, terms, postgresql security
 
@@ -16,22 +16,22 @@ subcollection: databases-for-postgresql
 {:pre: .pre}
 {{site.data.keyword.attribute-definition-list}}
 
-# Security and Compliance
+# Security and compliance
 {: #security-compliance}
 
-## Protection Against Unauthorized Access
+## Protection against unauthorized access
 {: #protect-unauth}
 
 {{site.data.keyword.databases-for-postgresql_full}} use the following methods to protect data in transit or in storage.
 - All {{site.data.keyword.databases-for-postgresql}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/databases-for-postgresql?topic=databases-for-postgresql-iam).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
-- All {{site.data.keyword.databases-for-postgresql}} storage is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/databases-for-postgresql?topic=cloud-databases-key-protect).
+- All {{site.data.keyword.databases-for-postgresql}} storage is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui).
 - IP allowlisting - All deployments support [allowlisting IP addresses](/docs/databases-for-postgresql?topic=cloud-databases-allowlisting) to restrict access to the service.
 - Public and Private Networking - {{site.data.keyword.databases-for-postgresql}} is integrated with [Service Endpoints](/docs/databases-for-postgresql?topic=cloud-databases-service-endpoints). You can select whether to use connections over the public network, the {{site.data.keyword.cloud_notm}} internal network, or both.
 - Dedicated Cores - Allocating dedicated cores to your deployment introduces hypervisor-level isolation to your database instance, using isolated virtual machines to ensure that your data processing remains separated from other customers. It also provides a minimum number of CPUs to your deployment. Deployments with dedicated cores in the same Resource Group and {{site.data.keyword.cloud_notm}} Region can share a virtual machine.
 
-## Data Resilience
+## Data resilience
 {: #data-resilience}
 
 - [Backups](/docs/databases-for-postgresql?topic=cloud-databases-dashboard-backups) are included in the service. {{site.data.keyword.databases-for-postgresql}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
@@ -39,7 +39,7 @@ subcollection: databases-for-postgresql
 - If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database member resides on a different host in the data center. 
 - If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the members are spread over the region's availability zone locations. 
 
-## SOC 2 Type 2 Certification
+## SOC 2 Type 2 certification
 {: #soc-type2-cert}
 
 {{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 2 report for {{site.data.keyword.databases-for-postgresql}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. The Trust Services Principles define adequate control systems and establish industry standards for service providers such as IBM Cloud to safeguard their customers' data and information.
