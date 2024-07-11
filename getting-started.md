@@ -371,12 +371,6 @@ GRANT pg_monitor TO "ibm-cloud-base-user";
 
 Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
-### Set the Admin password through the UI
-{: #admin_pw_set_ui}
-{: ui}
-
-Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
-
 ### Set the Admin password through the CLI
 {: #admin_pw_set_cli}
 {: cli}
