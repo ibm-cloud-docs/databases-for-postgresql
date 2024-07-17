@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-05-03"
+lastupdated: "2024-07-17"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -29,8 +29,8 @@ Deploy from the console by specifying the following parameters:
 
 The platform that your database will be deployed on. Choose your required network and compute environment. 
 
-- **IBM Cloud** Deploy a database on the IBM Cloud platform, in a region of your choosing.
-- **Satellite** Deploy your database on on-prem, on the edge, or on any cloud. 
+- **{{site.data.keyword.cloud}}** Deploy a database on the {{site.data.keyword.cloud_notm}} platform, in a region of your choosing.
+- **Satellite** Deploy your database on-prem, on the edge, or on any cloud. 
 
 ### Service details
 {: #service_details}
@@ -231,7 +231,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-1. You need to know the region you would like to deploy to.
+1. You need to know the region you want to deploy to.
 
    To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
 
