@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-05-03"
+lastupdated: "2024-07-17"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -22,6 +22,15 @@ Provision a {{site.data.keyword.databases-for-postgresql_full}} deployment throu
 {: ui}
 
 Deploy from the console by specifying the following parameters:
+
+### Platform
+{: #platform}
+{: ui}
+
+The platform that your database will be deployed on. Choose your required network and compute environment. 
+
+- **{{site.data.keyword.cloud}}** Deploy a database on the {{site.data.keyword.cloud_notm}} platform, in a region of your choosing.
+- **Satellite** Deploy your database on-prem, on the edge, or on any cloud. 
 
 ### Service details
 {: #service_details}
@@ -56,8 +65,8 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: ui}
 
 - **Database Version:** [Set only at deployment]{: tag-red} The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-- **Encryption:** If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints:** [Set only at deployment]{: tag-red} Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
+- **Encryption:** [Set only at deployment] {: tag-red} If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
+- **Endpoints:** Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
@@ -222,7 +231,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
    ```
    {: pre}
 
-1. You need to know the region you would like to deploy to.
+1. You need to know the region you want to deploy to.
 
    To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
 
