@@ -21,7 +21,7 @@ Find the available versions of {{site.data.keyword.databases-for-postgresql}} in
 When you upgrade to a new instance, you also need to change the connection information in your application.
 {: note}
 
-## Requirements for upgrading to PostgreSQL (v 13, 14, 15) from PostgreSQL (v10, 11, 12)
+## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v12 or earlier
 {: #upgrading-reqs}
 
 If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
