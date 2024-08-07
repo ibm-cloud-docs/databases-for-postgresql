@@ -1,8 +1,8 @@
 # Databases for PostgreSQL documentation
 
-This repo contains documentation for the Databases for PostgreSQL services.
+This repo contains documentation for the Databases for PostgreSQL service.
 
-## Contacts for this repo
+## Contact for this repo
 
 - Andrea Lang: ANDREAL, andreal@de.ibm.com
 
@@ -59,7 +59,6 @@ As someone with merge responsibilities, follow these guidelines and practices to
 
     - Use the **Squash and merge** option when you merge a PR. Status checks prevent the merge if the squash and merge method is not used. For more information, see [Squashing your merge commits](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github#squashing-your-merge-commits).
 
-
 ## Monitoring
 
 After a build is triggered by a commit or merge, you can monitor progress.
@@ -92,6 +91,6 @@ The output from the `publish` branch is mirrored on [github.com](https://github.
 
 For general questions about IBM Cloud Databases, see the [icd-questions channel](https://ibm-cloudplatform.slack.com/messages/C534XRCF3/).
 
-## Blog Submissions
+## Blog submissions
 
 To submit a blog, go [here](https://w3.ibm.com/w3publisher/ibm-cloud-blog/submit-a-post). Ian Smalley handles everything blog-related, so any updates go through him. Use the same form to update, just make a note that it's an update, not a new post.
