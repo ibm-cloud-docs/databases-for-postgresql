@@ -31,7 +31,7 @@ Billing is based on the _total_ resources that are allocated to the service.
 ### Disk usage
 {: #resources-scaling-disk-usage}
 
-Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across all the data members in the PostgreSQL cluster.
+Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across all the data members in the PostgreSQL database cluster.
 
 Disk allocation also affects the performance of the disk, with larger disks having higher performance. Baseline input/output operations per second (IOPS) performance for disk is 10 IOPS for each GB. Scale disk to increase the IOPS that your deployment can handle.
 
@@ -41,9 +41,12 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 ### RAM
 {: #ram-allocation}
 
-If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the RAM allocation that you want for your database. Note that Dedicated Core is deprecated, and will be removed in May 2025.
+If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the RAM allocation that you want for your database. 
 
-Adding memory to the total allocation adds memory to the members equally. {{site.data.keyword.databases-for-elasticsearch}} deployments have their memory allocation policy set at 50% heap and 50% system memory, so increasing the amount of RAM increases both heap and system memory. RAM can be scaled up or down.
+Dedicated Core is deprecated, and will be removed in May 2025.
+{: note}
+
+Adding memory to the total allocation adds memory to the members equally. {{site.data.keyword.databases-for-postgresql}} deployments have their memory allocation policy set at 50% heap and 50% system memory, so increasing the amount of RAM increases both heap and system memory. RAM can be scaled up or down.
 
 [`work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-WORK-MEM), [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM), and [`effective_cache_size`](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE) are auto-tuned based on the deployment's total memory. They are also set when you scale memory on your deployment. When you scale, the values are adjusted without outage to the running deployment.
 
@@ -52,7 +55,10 @@ The amount of memory allocated to the database's shared buffer pool is **not** a
 ### vCPU
 {: #resources-scaling-cpu}
 
-If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database. Note that Dedicated Core is deprecated, and will be removed in May 2025.
+If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database. 
+
+Dedicated Core is deprecated, and will be removed in May 2025.
+{: note}
 
 The default of 0 cores uses compute resources on multi-tenanted hosts. This style of multi-tenant is deprecated, and will be removed in September 2025 in favor of Shared Compute. CPU can be scaled up or down.
 
@@ -69,7 +75,7 @@ The default of 0 cores uses compute resources on multi-tenanted hosts. This styl
 - Similarly, drastically scaling up CPU, RAM, or disk can take longer to run than small resource increases to account for provisioning more underlying hardware resources.
 - Scaling operations are logged in [{{site.data.keyword.at_full}}](/docs/databases-for-postgresql?topic=cloud-databases-activity-tracker).
 - If you find consistent trends in resource usage or want to scale when certain resource thresholds are reached, enable [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling) on your deployment.
-- {{site.data.keyword.databases-for-elasticsearch}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding Elasticsearch nodes](/docs/databases-for-postgresql?topic=databases-for-epostgresql-horizontal-scaling).
+- {{site.data.keyword.databases-for-postgresql}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding Elasticsearch nodes](/docs/databases-for-postgresql?topic=databases-for-epostgresql-horizontal-scaling).
 
 ## Scaling in the UI
 {: #resources-scaling-ui}
