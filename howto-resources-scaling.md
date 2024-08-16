@@ -49,7 +49,6 @@ Adding memory to the total allocation adds memory to the members equally. {{site
 
 The amount of memory allocated to the database's shared buffer pool is **not** adjusted automatically when you scale your deployment. Setting it to 25% of the deployment's total memory is recommended. You can manually tune the shared buffer pool through the [`shared_buffer`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-SHARED-BUFFERS) setting in your [PostgreSQL's configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration). It is not auto-tuned because changing the `shared_buffer` requires a database restart.
 
-
 ### vCPU
 {: #resources-scaling-cpu}
 
@@ -71,6 +70,7 @@ The default of 0 cores uses compute resources on multi-tenanted hosts. This styl
 - Scaling operations are logged in [{{site.data.keyword.at_full}}](/docs/databases-for-postgresql?topic=cloud-databases-activity-tracker).
 - If you find consistent trends in resource usage or want to scale when certain resource thresholds are reached, enable [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling) on your deployment.
 - {{site.data.keyword.databases-for-elasticsearch}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding Elasticsearch nodes](/docs/databases-for-postgresql?topic=databases-for-epostgresql-horizontal-scaling).
+
 ## Scaling in the UI
 {: #resources-scaling-ui}
 {: ui}
@@ -82,7 +82,6 @@ A visual representation of your data members and their resource allocation is av
 
 ![The Scale Resources Panel in _Resources_](images/scaling-update.png){: caption="Figure 1. The Scale Resources Panel" caption-side="bottom"}
 
-
 Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI currently uses a coarser-grained resolution of 8 GB increments for disk and 1 GB increments for memory. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
 
 ## Resources and scaling in the CLI
@@ -93,10 +92,10 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 For example, the command to view the resource groups for a deployment named "example-deployment" :
 
-
 `ibmcloud cdb deployment-groups example-deployment`
 
 This produces the output:
+
 ```sh
 Group   member
 Count   2
@@ -351,7 +350,6 @@ output "ICD Elasticsearch database connection string" {
 }
 ```
 {: codeblock}
-
 
 ### The `host flavor` parameter
 {: #host-flavor-parameter-terraform}
