@@ -23,7 +23,7 @@ You can manually adjust the resources available to your {{site.data.keyword.data
 ## Resource breakdown
 {: #resource-breakdown}
 
-A default {{site.data.keyword.databases-for-postgresql}} deployment runs with two data members in a cluster, and resources are allocated to both members equally. For example, the minimum storage of a PostgreSQL deployment is 10240 MB, which equates to an initial size of 5120 MB per member. The minimum RAM for a PostgreSQL deployment is 2048 MB, which equates to an initial allocation of 1028 MB per member.
+{{site.data.keyword.databases-for-postgresql}} deployments have two data members in a cluster, and resources are allocated to both members equally. For example, the minimum storage of a PostgreSQL deployment is 10240 MB, which equates to an initial size of 5120 MB per member. The minimum RAM for a PostgreSQL deployment is 8192 MB, which equates to an initial allocation of 4096 MB per member.
 
 Billing is based on the _total_ resources that are allocated to the service.
 {: .tip}
@@ -73,9 +73,9 @@ The default of 0 cores uses compute resources on multi-tenanted hosts. This styl
 
 - Scaling between hosting models (Shared Compute, Isolated Compute, and Dedicated Cores) moves your deployment to new hosts. Your databases are restarted as part of that move. As your deployment is moved to a new host, this can also take longer than just adding more resources. For more information, see [Shared Compute and Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 - Similarly, drastically scaling up CPU, RAM, or disk can take longer to run than small resource increases to account for provisioning more underlying hardware resources.
-- Scaling operations are logged in [{{site.data.keyword.at_full}}](/docs/databases-for-postgresql?topic=cloud-databases-activity-tracker).
+- Scaling operations are logged in [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
 - If you find consistent trends in resource usage or want to scale when certain resource thresholds are reached, enable [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling) on your deployment.
-- {{site.data.keyword.databases-for-postgresql}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding Elasticsearch nodes](/docs/databases-for-postgresql?topic=databases-for-epostgresql-horizontal-scaling).
+- {{site.data.keyword.databases-for-postgresql}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling).
 
 ## Scaling in the UI
 {: #resources-scaling-ui}
@@ -84,7 +84,7 @@ The default of 0 cores uses compute resources on multi-tenanted hosts. This styl
 For new [hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models), scaling is currently available through the CLI, API, and Terraform.
 {: note}
 
-A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page.
+A visual representation of your data members and their resource allocation is available on the _Resources_ tab from the left-hand navigation panel.
 
 ![The Scale Resources Panel in _Resources_](images/scaling-update.png){: caption="Figure 1. The Scale Resources Panel" caption-side="bottom"}
 
@@ -107,9 +107,9 @@ Group   member
 Count   2
 |
 +   Memory
-|   Allocation              4096mb
-|   Allocation per member   2048mb
-|   Minimum                 2048mb
+|   Allocation              8192mb
+|   Allocation per member   4096mb
+|   Minimum                 4096mb
 |   Step Size               256mb
 |   Adjustable              true
 |
@@ -128,12 +128,12 @@ Count   2
 |   Adjustable              true
 ```
 
-The deployment has two members, with 4096 MB of RAM and 10240 MB of disk allocated in total. The "per member" allocation is 2048 MB of RAM and 5120 MB of disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
+The deployment has two members, with 4096 MB of RAM and 10240 MB of disk allocated in total. The "per member" allocation is 4096 MB of RAM and 5120 MB of disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
 
-The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 8192 MB), you use the command:
 
 ```sh
-ibmcloud cdb deployment-groups-set example-deployment member --memory 4096
+ibmcloud cdb deployment-groups-set example-deployment member --memory 8192
 ```
 {: pre}
 
@@ -145,7 +145,6 @@ ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--memory <val>] [--
 {: pre}
 
 For example, use:
-
 ```sh
 ibmcloud cdb deployment-groups-set crn:abc ... xyz:: member  --memory 24576 --cpu 6  --hostflavor multitenant
 ```
@@ -165,7 +164,7 @@ ibmcloud cdb deployment-groups-set crn:abc ... xyz:: member  --hostflavor b3c.4x
 ```
 {: pre}
 
-CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](//docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
 
 | **Host flavor** | **host_flavor value** |
@@ -195,20 +194,20 @@ ibmcloud cdb groups <deployment_id> --json
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-To view the current and scalable resources on a deployment, use the [/deployments/{id}/groups](https://cloud.ibm.com/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl) endpoint.
+To view the current and scalable resources on a deployment, use the [/deployments/{id}/groups](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups) endpoint.
 
 ```sh
-curl -X GET -H "Authorization: Bearer $APIKEY" `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
+curl -X GET -H "Authorization: Bearer $APIKEY" `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups'
 ```
 
-To scale the memory of a deployment to 2048 MB of RAM for each member (there are 3 so a total memory of 6144 MB), use the [/deployments/{id}/groups/{group_id}](https://cloud.ibm.com/apidocs/cloud-databases-api#set-scaling-values-on-a-specified-group) API endpoint.
+To scale the memory of a deployment to 4096 MB of RAM for each member (there are 2 so a total memory of 8192 MB), use the [/deployments/{id}/groups/{group_id}](https://cloud.ibm.com/apidocs/cloud-databases-api#set-scaling-values-on-a-specified-group) API endpoint.
 
 ```sh
-curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
+curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member' \
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
 -d '{"memory": {
-        "allocation_mb": 4096
+        "allocation_mb": 8192
       }
     }'
 ```
@@ -223,9 +222,9 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{i
 -d '{"host_flavor":
         {"id": "multitenant"},
       "cpu":
-        {"allocation_count": 3},
+        {"allocation_count": 2},
       "memory":
-        {"allocation_mb": 2048}
+        {"allocation_mb": 4096}
     }' \
 ```
 {: pre}

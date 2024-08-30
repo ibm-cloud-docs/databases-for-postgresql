@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 # Autoscaling
 {: #autoscaling}
 
-Autoscaling is designed to respond to the short-to-medium term trends in resource usage on your {{site.data.keyword.databases-for-postgresql_full}} deployment. When enabled, your deployment is checked at the interval you specify. If it is running short on resources, more resources are added to the deployment. To keep an eye on your resources, use the [{{site.data.keyword.monitoringfull}} integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring), which provides metrics for memory, disk space, and disk I/O usage.
+Autoscaling is designed to respond to the short-to-medium term trends in resource usage on your {{site.data.keyword.databases-for-postgresql_full}} deployment. When enabled, your deployment is checked at the interval you specify. If it is running short on resources, more resources are added to the deployment. To keep an eye on your resources, use the [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O usage.
 
 You can set your deployment to autoscale disk, RAM, or both.
 
@@ -42,12 +42,12 @@ The resource numbers refer to each database member in a deployment. For example,
 
 - A few scaling operations can be more long running than others. Drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
 
-- Autoscaling operations are logged in [{{site.data.keyword.at_full}}](/docs/databases-for-postgresql?topic=cloud-databases-activity-tracker).
+- Autoscaling operations are logged in [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
 
 - Limits
     - can't set anything to scale in an interval less than 60 seconds.
     - Maximum Disk = 4 TB per member
-    - Maximum RAM = 112 GB per member
+    - Maximum RAM = 240 GB per member
 
 - Autoscaling does not scale down deployments where disk or memory usage is shrunk. The RAM provisioned to your deployment remains for your future needs, or until you scale down your deployment manually. The disk provisioned to your deployment remains because disk cannot be scaled down.
 
@@ -59,7 +59,7 @@ The resource numbers refer to each database member in a deployment. For example,
 {: #config-autoscaling-ui}
 {: ui}
 
-The Autoscaling panel is on the _Resources_ tab of your deployment's _Manage_ page. To enable scaling, enter your parameters. Then, check the boxes to enable the parameters you are using. Be sure to click **Save Changes** for your configuration to be saved and your changes to take effect.
+The Autoscaling panel is on the _Resources_ tab on the left-hand navigation menu. To enable scaling, enter your parameters. Then, check the boxes to enable the parameters you are using. Be sure to click **Save Changes** for your configuration to be saved and your changes to take effect.
 
 To disable autoscaling, clear the boxes for the parameters that you no longer want to use. If you clear all the boxes, autoscaling is disabled. Click **Save Changes** to save the configuration.
 
