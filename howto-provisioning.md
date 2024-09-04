@@ -94,41 +94,109 @@ Before provisioning, follow the instructions provided in the documentation to in
 
 3. Provision your database with the following command:
 
-   ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
-   ```
-   {: pre}
+    ```sh
+    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
+    ```
+    {: pre}
 
-  For example, to provision a {{site.data.keyword.databases-for-postgresql}} Shared Compute hosting model instance, use a command like:
+    For example, to provision a {{site.data.keyword.databases-for-postgresql}} Shared Compute hosting model instance, use a command like:
 
-   ```sh
-   ibmcloud resource service-instance-create test-database databases-for-postgresql enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
-   ```
-   {: pre}
+    ```sh
+    ibmcloud resource service-instance-create test-database databases-for-postgresql enterprise us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
+    ```
+    {: pre}
 
-  Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+    Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
-   ```sh
-  ibmcloud resource service-instance-create test-database databases-for-elasticsearch enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
-   ```
-   {: pre}
+    ```sh
+    ibmcloud resource service-instance-create test-database databases-for-elasticsearch enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
+    ```
+    {: pre}
 
-   The fields in the command are described in the table that follows.
+    The fields in the command are described in the table that follows.
    
-   | Field | Description | Flag |
-   |-------|------------|------------|
-   | `INSTANCE_NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
-   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql`. |  |
-   | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
-   | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
-   | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
-   | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-   | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the following table or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
-   {: caption="Table 1. Basic command format fields" caption-side="top"}
+    | Field | Description | Flag |
+    |-------|------------|------------|
+    | `INSTANCE_NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
+    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql`. |  |
+    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
+    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
+    | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
+    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
+    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
+    | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the following table or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
+    {: caption="Table 1. Basic command format fields" caption-side="top"}
    
-   In the CLI, `service-endpoints` is a flag, not a parameter.
-   {: note}
+    In the CLI, `service-endpoints` is a flag, not a parameter.
+    {: note}
+
+    You will see a response like:
+
+    ```text
+    Creating service instance INSTANCE_NAME in resource group default of account    USER...
+    OK
+    Service instance INSTANCE_NAME was created.
+
+    Name:                INSTANCE_NAME
+    ID:                  crn:v1:bluemix:public:databases-for-postgresql:us-south:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+    GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
+    Location:            LOCATION
+    State:               provisioning
+    Type:                service_instance
+    Sub Type:            Public
+    Service Endpoints:   public
+    Allow Cleanup:       false
+    Locked:              false
+    Created at:          2023-06-26T19:42:07Z
+    Updated at:          2023-06-26T19:42:07Z
+    Last Operation:
+                         Status    create in progress
+                         Message   Started create instance operation
+    ```
+    {: codeblock}
+
+    - To check provisioning status, use the following command:
+
+      ```sh
+      ibmcloud resource service-instance <INSTANCE_NAME>
+      ```
+      {: pre}
+
+      When complete, you will see a response like:
+
+      ```text
+      Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
+      OK
+
+      Name:                  INSTANCE_NAME
+      ID:                    crn:v1:bluemix:public:databases-for-postgresql:us-south:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+      GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
+      Location:              <LOCATION>
+      Service Name:          databases-for-postgresql
+      Service Plan Name:     standard
+      Resource Group Name:   default
+      State:                 active
+      Type:                  service_instance
+      Sub Type:              Public
+      Locked:                false
+      Service Endpoints:     public
+      Created at:            2023-06-26T19:42:07Z
+      Created by:            USER
+      Updated at:            2023-06-26T19:53:25Z
+      Last Operation:
+                             Status    create succeeded
+                             Message   Provisioning postgresql with version 12 (100%)
+      ```
+      {: codeblock}
+
+
+    - (Optional) Deleting a service instance
+    Delete an instance by running a command like this one:
+
+      ```sh
+      ibmcloud resource service-instance-delete <INSTANCE_NAME>
+      ```
+      {: pre}
 
 ### The `host flavor` parameter
 {: #host-flavor-parameter-cli}
@@ -146,74 +214,6 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
    | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
    | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
    {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
-
-
-   You will see a response like:
-
-   ```text
-   Creating service instance INSTANCE_NAME in resource group default of account    USER...
-   OK
-   Service instance INSTANCE_NAME was created.
-
-   Name:                INSTANCE_NAME
-   ID:                  crn:v1:bluemix:public:databases-for-postgresql:us-south:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-   GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
-   Location:            LOCATION
-   State:               provisioning
-   Type:                service_instance
-   Sub Type:            Public
-   Service Endpoints:   public
-   Allow Cleanup:       false
-   Locked:              false
-   Created at:          2023-06-26T19:42:07Z
-   Updated at:          2023-06-26T19:42:07Z
-   Last Operation:
-                        Status    create in progress
-                        Message   Started create instance operation
-   ```
-   {: codeblock}
-
-4. To check provisioning status, use the following command:
-
-   ```sh
-   ibmcloud resource service-instance <INSTANCE_NAME>
-   ```
-   {: pre}
-
-   When complete, you will see a response like:
-
-   ```text
-   Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
-   OK
-
-   Name:                  INSTANCE_NAME
-   ID:                    crn:v1:bluemix:public:databases-for-postgresql:us-south:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-   GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
-   Location:              <LOCATION>
-   Service Name:          databases-for-postgresql
-   Service Plan Name:     standard
-   Resource Group Name:   default
-   State:                 active
-   Type:                  service_instance
-   Sub Type:              Public
-   Locked:                false
-   Service Endpoints:     public
-   Created at:            2023-06-26T19:42:07Z
-   Created by:            USER
-   Updated at:            2023-06-26T19:53:25Z
-   Last Operation:
-                          Status    create succeeded
-                          Message   Provisioning postgresql with version 12 (100%)
-   ```
-   {: codeblock}
-
-5. (Optional) Deleting a service instance
-   Delete an instance by running a command like this one:
-
-   ```sh
-   ibmcloud resource service-instance-delete <INSTANCE_NAME>
-   ```
-   {: pre}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
