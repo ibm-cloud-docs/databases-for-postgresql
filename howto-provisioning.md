@@ -157,7 +157,7 @@ Before provisioning, follow the instructions provided in the documentation to in
     - To check provisioning status, use the following command:
 
       ```sh
-      ibmcloud resource service-instance <INSTANCE_NAME>
+      ibmcloud resource service-instance <INSTANCE_NAME_OR_CRN>
       ```
       {: pre}
 
@@ -193,7 +193,7 @@ Before provisioning, follow the instructions provided in the documentation to in
     Delete an instance by running a command like this one:
 
       ```sh
-      ibmcloud resource service-instance-delete <INSTANCE_NAME>
+      ibmcloud resource service-instance-delete <INSTANCE_NAME_OR_CRN>
       ```
       {: pre}
 
@@ -226,7 +226,7 @@ The `service-instance-create` command supports a `-p` parameter, which allows JS
 For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 12 GB of memory across three members, then the command to provision 4 GBs per member looks like:
 
 ```sh
-ibmcloud resource service-instance-create databases-for-postgresql <INSTANCE_NAME> standard us-south \
+ibmcloud resource service-instance-create databases-for-postgresql <INSTANCE_NAME_OR_CRN> standard us-south \
 -p \ '{
   "backup_id": "crn:v1:blue:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "4096"
@@ -405,7 +405,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
       -H "Authorization: Bearer <>" \
       -H 'Content-Type: application/json' \
         -d '{
-        "name": "<INSTANCE_NAME",
+        "name": "<INSTANCE_NAME_OR_CRN",
         "location": "<LOCATION>",
         "resource_group": "RESOURCE_GROUP_ID",
         "resource_plan_id": "<SERVICE_PLAN_NAME>"
@@ -416,7 +416,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
     ```
     {: pre}
 
-    For example, to make a Shared Compute instance, follow this example:
+    For example, to make a Shared Compute instance, follow this command:
 
     ```sh
     curl -X POST \
