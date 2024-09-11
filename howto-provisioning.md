@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-08-08"
+lastupdated: "2024-09-10"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -30,7 +30,6 @@ Deploy from the console by specifying the following parameters:
 The platform that your database will be deployed on. Choose your required network and compute environment.
 
 - **{{site.data.keyword.cloud}}** - Deploy a database on the {{site.data.keyword.cloud_notm}} platform, in a region of your choosing.
-- **Satellite** Deploy your database on-prem, on the edge, or on any cloud. 
 
 ### Service details
 {: #service_details}
@@ -95,7 +94,7 @@ Before provisioning, follow the instructions provided in the documentation to in
 3. Provision your database with the following command:
 
     ```sh
-    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<host_flavor value>"}'
+    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p '{"members_host_flavor": "<members_host_flavor value>"}'
     ```
     {: pre}
 
@@ -106,7 +105,7 @@ Before provisioning, follow the instructions provided in the documentation to in
     ```
     {: pre}
 
-    Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+    Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
     ```sh
     ibmcloud resource service-instance-create test-database databases-for-elasticsearch enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}'
@@ -124,7 +123,7 @@ Before provisioning, follow the instructions provided in the documentation to in
     | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
     | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
     | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-    | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the following table or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
+    | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the following table or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
     {: caption="Table 1. Basic command format fields" caption-side="top"}
    
     In the CLI, `service-endpoints` is a flag, not a parameter.
@@ -198,13 +197,13 @@ Before provisioning, follow the instructions provided in the documentation to in
       ```
       {: pre}
 
-### The `host flavor` parameter
+### The `members host flavor` parameter
 {: #host-flavor-parameter-cli}
 {: cli}
 
-The `host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
+The `members_host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
-   | **Host flavor** | **host_flavor value** |
+   | **Members Host flavor** | **members_host_flavor value** |
    |:-------------------------:|:---------------------:|
    | Shared Compute            | `multitenant`    |
    | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
@@ -222,12 +221,12 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 {: #flags-params-service-endpoints}
 {: cli}
 
-The `service-instance-create` command supports a `-p` flag, which allows JSON-formatted parameters to be passed to the provisioning process. For example, you can pass Cloud Resource Names (CRNs) as parameter values, which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
+The `service-instance-create` command supports a `-p` parameter, which allows JSON-formatted parameters to be passed to the provisioning process. For example, you can pass Cloud Resource Names (CRNs) as parameter values, which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
 
 For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 12 GB of memory across three members, then the command to provision 4 GBs per member looks like:
 
 ```sh
-ibmcloud resource service-instance-create databases-for-postgresql <SERVICE_NAME> standard us-south \
+ibmcloud resource service-instance-create databases-for-postgresql <INSTANCE_NAME> standard us-south \
 -p \ '{
   "backup_id": "crn:v1:blue:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "4096"
@@ -239,7 +238,7 @@ ibmcloud resource service-instance-create databases-for-postgresql <SERVICE_NAME
 {: #provision-controller-api}
 {: api}
 
-Follow these steps to provision using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
+Follow these steps to provision by using the [Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller){: external}.
 
 1. Obtain an [IAM token from your API token](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#authentication){: external}.
 2. You need to know the ID of the resource group that you would like to deploy to. Use this command to obtain a list of resource groups in your account:
@@ -381,13 +380,13 @@ Follow these steps to provision using the [Resource Controller API](https://clou
     ```sh
     {
       "parameters": {
-        "members_host_flavor": "`b3c.4x16.encrypted`"
+        "members_host_flavor": "b3c.4x16.encrypted"
       }
     }
     ```
     {: pre}
 
-    To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit the following command:
+    To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale command with a new `members_host_flavor`:
 
     ```sh
     {
@@ -411,13 +410,13 @@ Follow these steps to provision using the [Resource Controller API](https://clou
         "resource_group": "RESOURCE_GROUP_ID",
         "resource_plan_id": "<SERVICE_PLAN_NAME>"
         "parameters": {
-            "host_flavor": {"id": "<host_flavor_value>"}
+            "members_host_flavor": "<members_host_flavor_value>"
         }
       }'
     ```
     {: pre}
 
-    To make a Shared Compute instance, follow this example:
+    For example, to make a Shared Compute instance, follow this example:
 
     ```sh
     curl -X POST \
@@ -430,9 +429,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
         "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
         "resource_plan_id": "databases-for-postgresql-standard"
         "parameters": {
-          "host_flavor": {
-            "id": "multitenant"
-          },
+          "members_host_flavor": "multitenant",
           "memory": {
             "allocation_mb": 16384
           },
@@ -444,7 +441,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
     ```
     {: pre}
 
-    Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+    Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
     ```sh
     curl -X POST \
@@ -457,9 +454,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
        "resource_plan_id": "databases-for-postgresql-standard"
        "parameters": {
-          "host_flavor": {
-            "id": "b3c.4x16.encrypted"
-          }
+          "member_host_flavor": "b3c.4x16.encrypted"
         }
       }'
     ```
@@ -477,16 +472,16 @@ Follow these steps to provision using the [Resource Controller API](https://clou
     | `resource_group` | The Resource group name. The default value is `default`. | -g |
     | `resource_plan_id` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-elasticsearch}}, use `databases-for-postgresql-standard`. |  |
     | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-    | `host_flavor` | To provision an Isolated or Shared Compute instance, use a parameter like `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
+    | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use a parameter like `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
     {: caption="Table 1. Basic command format fields" caption-side="top"}
 
 ### The `host flavor` parameter
 {: #host-flavor-parameter-api}
 {: api}
 
-The `host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
+The `members_host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
-| **Host flavor** | **host_flavor value** |
+| **Members Host flavor** | **members_host_flavor value** |
 |:-------------------------:|:---------------------:|
 | Shared Compute            | `multitenant`    |
 | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
@@ -509,10 +504,10 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 - `disk_encryption_key_crn` - The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about)), which is then used for disk encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.
 - `backup_encryption_key_crn` - The CRN of a KMS key (for example, [{{site.data.keyword.hscrypto}}](/docs/hs-crypto?topic=hs-crypto-get-started) or [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about)), which is then used for backup encryption. A KMS key CRN is in the format `crn:v1:<...>:key:<id>`.
 
-   To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect#byok-for-backups).
+   To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect#key-byok).
    {: note}
 
-- `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
+- `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "12288", and there are three database members, then the deployment gets 12 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
 - `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used. This parameter only applies to `multitenant'.
 - `members_cpu_allocation_count` - Enables and allocates the number of specified cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default Shared Compute CPU:RAM ratios will be applied. This parameter only applies to `multitenant'.
 - `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
