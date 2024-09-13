@@ -14,9 +14,9 @@ subcollection: databases-for-postgresql
 # Connecting an external application to your PostgreSQL deployment
 {: #external-app}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-postgresql_full}}. The service provides connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-postgresql_full}}. The service provides connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
-The connection strings can be used by any of the credentials you create on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings).
+The connection strings can be used by any of the credentials you create on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Getting Connection Strings](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings).
 
 ## Connecting to your PostgreSQL deployment with a language's driver
 {: #connect-language-driver}
@@ -184,7 +184,7 @@ To use the `node-postgres driver`, remove the `sslmode` parameter from the deplo
 
 All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
 
-For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/databases-for-postgresql?topic=databases-for-postgresql-faq-cert){: external}.
+For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/cloud-databases?topic=cloud-databases-faq-cert){: external}.
 
 ### Using the self-signed certificate
 {: #selfsigned-cert}
@@ -199,7 +199,7 @@ For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ]
 ### CLI plug-in support for the self-signed certificate
 {: #cli-support}
 
-You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the driver.
+You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "example-deployment"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the driver.
 
 ## Other Drivers
 {: #other-drivers}
@@ -210,7 +210,7 @@ PostgreSQL has a vast array of language drivers. The table covers a few of the m
 | ------- | ------- | ------- |
 | PHP | `pgsql` | [Link](http://php.net/manual/en/pgsql.examples-basic.php){: .external} |
 | Ruby| `ruby-pg` | [Link](https://github.com/ged/ruby-pg){: .external} |
-| Ruby on Rails | Rails | [Rails Guide](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-postgresql-database){: .external} |
+| Ruby on Rails | Rails | [Link](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-postgresql-database){: .external} |
 | C# | `ODBC` | [Link](https://wiki.postgresql.org/wiki/Using_Microsoft_.NET_with_the_PostgreSQL_Database_Server_via_ODBC){: .external} |
 | Go | `pq` | [Link](https://godoc.org/github.com/lib/pq){: .external} |
 | Node | `node-postgres` | [Link](https://node-postgres.com/){: .external} |

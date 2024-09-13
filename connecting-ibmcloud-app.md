@@ -30,7 +30,7 @@ Applications running in {{site.data.keyword.cloud_notm}} can be bound to your {{
 
 There are two steps to connecting a Cloud databases deployment to a Kubernetes Service application. First, your deployment needs to be bound to your cluster and its connection strings that are stored in a secret. The second step is configuring your application to use the connection strings.
 
-The sample app in the [Connecting a Kubernetes Service Tutorial](/docs/databases-for-postgresql?topic=cloud-databases-tutorial-k8s-app) provides a sample application that uses Node.js and demonstrates how to bind the sample application to a {{site.data.keyword.databases-for}} deployment.
+The sample app in the [Connecting a Kubernetes Service Tutorial](docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app) provides a sample application that uses Node.js and demonstrates how to bind the sample application to a {{site.data.keyword.databases-for}} deployment.
 {: .tip}
 
 Before connecting your Kubernetes Service application to a deployment, make sure that the deployment and cluster are both in the same region and resource group.
@@ -72,4 +72,4 @@ When you bind your application to Kubernetes Service, it creates an environment 
 
 The [Connection Strings](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#connection-string-breakdown) page contains a reference of the JSON fields.
 
-For more information, see the [Kubernetes Service docs](https://cloud.ibm.com/docs/containers?topic=containers-service-binding#reference_secret).
+For more information, see the [Kubernetes Service documentation](https://cloud.ibm.com/docs/containers?topic=containers-service-binding#reference_secret).
