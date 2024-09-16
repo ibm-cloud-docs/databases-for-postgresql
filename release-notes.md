@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-06-19"
+lastupdated: "2024-09-16"
 
 keywords: databases-for-postgresql release notes
 
