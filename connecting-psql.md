@@ -25,7 +25,7 @@ You must set the `admin` password before you use it to connect to the database. 
 ## Installing `psql`
 {: #installing-psql}
 
-To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from [postgresql.org](https://www.postgresql.org/download/){: .external}, as a [package from your operating system's package manager](https://www.compose.com/articles/postgresql-tips-installing-the-postgresql-client/){: .external}.
+To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from [postgresql.org](https://www.postgresql.org/download/){: .external}, as a [package from your operating system's package manager](https://www.ibm.com/blog/postgresql-tips-installing-the-postgresql-client/){: .external}.
 
 For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html){: .external}.
 
@@ -107,7 +107,7 @@ After that, click **OK** a couple of times to go back to the desktop. Start a ne
 ## `psql` Connection Strings
 {: #psql-connection-strings}
 
-Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
 The information that you need to make a connection with `psql` is in the "cli" section of your connection strings. The table contains a breakdown for reference.
 
@@ -132,13 +132,13 @@ Before creating a command-line client connection, ensure that you have [set the 
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating a command-line client connection. For example, to connect to a deployment named "example-postgres", use the following command:
 
 ```sh
-ibmcloud cdb deployment-connections example-postgres --start
+ibmcloud cdb deployment-connections <INSTANCE_NAME_OR_CRN> --start
 ```
 {: pre}
 
 or
 ```sh
-ibmcloud cdb cxn example-postgres -s
+ibmcloud cdb cxn <INSTANCE_NAME_OR_CRN> -s
 ```
 {: pre}
 
@@ -161,7 +161,7 @@ PGPASSWORD=$PASSWORD PGSSLROOTCERT=0b22f14b-7ba2-11e8-b8e9-568642342d40 psql 'ho
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command:
 ```sh
-ibmcloud cdb deployment-cacert "your-service-name"
+ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 

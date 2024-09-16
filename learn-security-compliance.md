@@ -27,14 +27,15 @@ subcollection: databases-for-postgresql
 - Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/databases-for-postgresql?topic=databases-for-postgresql-iam).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-postgresql}} storage is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui).
-- IP allowlisting - All deployments support [allowlisting IP addresses](/docs/databases-for-postgresql?topic=cloud-databases-allowlisting) to restrict access to the service.
-- Public and Private Networking - {{site.data.keyword.databases-for-postgresql}} is integrated with [Service Endpoints](/docs/databases-for-postgresql?topic=cloud-databases-service-endpoints). You can select whether to use connections over the public network, the {{site.data.keyword.cloud_notm}} internal network, or both.
-- Dedicated Cores - Allocating dedicated cores to your deployment introduces hypervisor-level isolation to your database instance, using isolated virtual machines to ensure that your data processing remains separated from other customers. It also provides a minimum number of CPUs to your deployment. Deployments with dedicated cores in the same Resource Group and {{site.data.keyword.cloud_notm}} Region can share a virtual machine.
+- CBR (Context-based restriction) - Protect your Cloud Databases resource with [conext-based restriction (CBR)](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui)
+- IP allowlisting (deprected) - All deployments support [allowlisting IP addresses](/docs/cloud-databases?topic=cloud-databases-allowlisting&interface=ui) to restrict access to the service.
+- Public and Private Networking - {{site.data.keyword.databases-for-postgresql}} is integrated with [Service Endpoints](/docs/databases-for-postgresql?topic=databases-for-postgresql-service-endpoints&interface=ui). You can select whether to use connections over the public network, the {{site.data.keyword.cloud_notm}} internal network, or both.
+
 
 ## Data resilience
 {: #data-resilience}
 
-- [Backups](/docs/databases-for-postgresql?topic=cloud-databases-dashboard-backups) are included in the service. {{site.data.keyword.databases-for-postgresql}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
+- [Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui) are included in the service. {{site.data.keyword.databases-for-postgresql}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
 - {{site.data.keyword.databases-for-postgresql}} deployments are configured with replication. Deployments contain a cluster with two data members. Both members contain a copy of your data by using asynchronous replication, with a distributed consensus mechanism to maintain cluster state and handle failovers. 
 - If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database member resides on a different host in the data center. 
 - If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the members are spread over the region's availability zone locations. 
@@ -54,8 +55,8 @@ You can request an SOC 2 Type 2 report from the customer portal or contact your 
 ## General Data Protection Regulation (GDPR) 
 {: #gdpr}
 
-If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client to provide {{site.data.keyword.IBM_notm}} standard services.  
-[IBM DPA](https://www.ibm.com/support/customer/zz/en/dpa.html){: .external}
+If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (DPA) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client to provide {{site.data.keyword.IBM_notm}} standard services.  
+[IBM DPA](https://www.ibm.com/support/customer/csol/terms/?id=Z126-7870&lc=en){: .external}
 
 {{site.data.keyword.databases-for-postgresql}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. 
 
@@ -82,5 +83,3 @@ A full list of PCI DSS-ready {{site.data.keyword.cloud_notm}} Platform services,
 
 - [The IBM Privacy Policy](https://www.ibm.com/privacy/us/en/)
 - [The IBM Cloud Notices and Terms of Use](/docs/overview/terms-of-use?topic=overview-terms)
-
-

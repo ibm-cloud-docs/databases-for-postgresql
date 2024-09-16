@@ -40,4 +40,4 @@ Review the following information to troubleshoot and resolve your `max_connectio
 {: tsResolve}
 
 * The preferred method for this process is to use [Connection Pooling](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#connection-pooling). Connection pooling prevents you from exceeding the connection limit and ensures that connections from your applications are being handled efficiently.{: .note}
-* Alternatively, see [Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
+* Alternatively, see [Changing your {{site.data.keyword.databases-for-postgresql_full}} Configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) and [Managing connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections&interface=cli).

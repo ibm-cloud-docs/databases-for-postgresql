@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 New hosting models
-:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types){: external}.
+:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui){: external}.
 
 ## 18 January 2024
 {: #databases-for-postgresql-18jan2023}
@@ -33,7 +33,7 @@ New hosting models
 
 {{site.data.keyword.databases-for-postgresql_full}} version 12 End of life on January 22, 2025
 :  Action required before January 22, 2025, for your PostgreSQL v12 deployments. After January 22, 2025, all IBM Cloud® Databases for PostgreSQL instances on version 12 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql_full}}.
-Upgrade your database instances by following the procedure at [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading). If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
+Upgrade your database instances by following the procedure at [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 27 November 2023
 {: #databases-for-postgresql-27nov2023}
@@ -65,14 +65,14 @@ If you have any questions or concerns, contact [{{site.data.keyword.databases-fo
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} v15 Preferred
-:  For more information, see [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
+:  For more information, see [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}.
 
 ## 25 May 2023
 {: #databases-for-postgresql-22may2023}
 {: release-note}
 
 Setting up disk alerts for disk utilization tutorial
-:  In this tutorial, you use the {{site.data.keyword.cloud_notm}} API and the [{{site.data.keyword.cloud_notm}} CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started){: external} to set up an alert that emails you whenever the disk utilization of your database exceeds 90%. This specific example creates an alert on a {{site.data.keyword.databases-for-elasticsearch}} deployment, but it is applicable to all the databases in the IBM {{site.data.keyword.databases-for}} catalog. For more information, see [Setting up disk alerts for disk utilization](/docs/databases-for-postgresql?topic=databases-for-postgresql-disk-util-alert-tutorial).
+:  In this tutorial, you use the {{site.data.keyword.cloud_notm}} API and the [{{site.data.keyword.cloud_notm}} CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started){: external} to set up an alert that emails you whenever the disk utilization of your database exceeds 90%. This specific example creates an alert on a {{site.data.keyword.databases-for-elasticsearch}} deployment, but it is applicable to all the databases in the IBM {{site.data.keyword.databases-for}} catalog. For more information, see [Setting up disk alerts for disk utilization](/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial).
 
 ## 28 October 2022
 {: #databases-for-postgresql-28oct2022}
@@ -87,14 +87,14 @@ Despite the extension, we strongly recommend our customers take prompt action an
 {: release-note}
 
 Deploying and Connecting a Cloud Databases Instance Tutorial
-:  This tutorial guides you through the process of deploying a {{site.data.keyword.databases-for}} instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on {{site.data.keyword.databases-for}}. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker. For more information, see [Deploying and Connecting a {{site.data.keyword.databases-for}} Instance](/docs/databases-for-postgresql?topic=cloud-databases-create-instance-tutorial).
+:  This tutorial guides you through the process of deploying a {{site.data.keyword.databases-for}} instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on {{site.data.keyword.databases-for}}. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker. For more information, see [Deploying and Connecting a {{site.data.keyword.databases-for}} Instance](/docs/cloud-databases?topic=cloud-databases-create-instance-tutorial).
 
 ## 11 October 2022
 {: #databases-for-postgresql-11oct2022}
 {: release-note}
 
 Protecting {{site.data.keyword.databases-for-postgresql_full}} resources with context-based restrictions
-:  Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with CBR and identity and access management (IAM) policies. For more information, see [Protecting Cloud Databases resources with context-based restrictions](/docs/databases-for-postgresql?topic=cloud-databases-cbr&interface=ui).
+:  Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with CBR and identity and access management (IAM) policies. For more information, see [Protecting Cloud Databases resources with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
 
 ## 27 June 2022
 {: #databases-for-postgresql-27june2022}
@@ -108,7 +108,7 @@ Protecting {{site.data.keyword.databases-for-postgresql_full}} resources with co
 {: release-note}
 
 Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform tutorial published
-:  In this tutorial, you learn how to use Terraform to provision a {{site.data.keyword.databases-for-postgresql_full}} instance. For more information, see [Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform](/docs/databases-for-postgresql?topic=cloud-databases-tutorial-provision-postgres-tf).
+:  In this tutorial, you learn how to use Terraform to provision a {{site.data.keyword.databases-for-postgresql_full}} instance. For more information, see [Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform](/docs/cloud-databases?topic=cloud-databases-tutorial-provision-postgres-tf&interface=ui).
 
 ## 29 March 2022
 {: #databases-for-postgresql-29mar2022}
@@ -129,7 +129,7 @@ Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Te
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} Security Goals Updated
-:  Available security and compliance goals updated. See updated goals [here](/docs/databases-for-redis?topic=databases-for-redis-manage-security-compliance).
+:  Available security and compliance goals updated. See updated goals [here](/docs/cloud-databases?topic=cloud-databases-manage-security-compliance).
 
 ## 30 June 2021
 {: #databases-for-postgresql-30jun2021}
