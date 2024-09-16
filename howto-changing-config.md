@@ -11,10 +11,10 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Changing your {{site.data.keyword.databases-for-postgresql}} Configuration
+# Changing your {{site.data.keyword.databases-for-postgresql}} configuration
 {: #changing-configuration}
 
-{{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PostgreSQL configuration settings so you can tune your PostgreSQL databases to your use case. To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration){: external} to write the changes to the configuration file for your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PostgreSQL configuration settings so you can tune your PostgreSQL databases to your use case. To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration){: external} to write the changes to the configuration file for your deployment.
 
 The configuration is defined in a schema. To make a change, you send a JSON object with the settings and their new values to the API or the CLI. For example, to set the `max_connections` setting to 150, you would supply:
 
@@ -33,13 +33,13 @@ For more information, see [Managing PostgreSQL Connections](/docs/databases-for-
 
 You can check the default configuration of your deployment with the `deployment-configuration-schema` command.  
 ```sh
-ibmcloud cdb deployment-configuration-schema <deployment name or CRN>
+ibmcloud cdb deployment-configuration-schema <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 
 Similarly, change your configuration with the `deployment-configuration` command. 
 ```sh
-ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING]
+ibmcloud cdb deployment-configuration <INSTANCE_NAME_OR_CRN> [@JSON_FILE | JSON_STRING]
 ```
 {: pre}
 
@@ -56,15 +56,15 @@ To change the configuration, send the settings that you would like to change as 
 For more information, see the [API Reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration){: external}.
 
 
-## Available {{site.data.keyword.databases-for-postgresql_full}} Configuration settings
+## Available {{site.data.keyword.databases-for-postgresql_full}} configuration settings
 {: #available-config-settings}
 
-### {{site.data.keyword.databases-for-postgresql_full}} Time Zone Settings
+### {{site.data.keyword.databases-for-postgresql_full}} time zone settings
 {: #mem-settings}
 
 The time zone for {{site.data.keyword.databases-for-postgresql_full}} deployments is always UTC (Coordinated Universal Time). This setting is not configurable by clients.
 
-### {{site.data.keyword.databases-for-postgresql_full}} Memory Settings
+### {{site.data.keyword.databases-for-postgresql_full}} Memory settings
 {: #mem-settings}
 
 [`shared_buffers`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-SHARED-BUFFERS){: .external}
@@ -144,13 +144,13 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Default - `10000`
 - Restarts database - No
 - Options - Minimum value of 100
-- Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging){: external}. Setting this number too low negatively impacts performance.
+- Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/cloud-databases?topic=cloud-databases-logging){: external}. Setting this number too low negatively impacts performance.
 
 [`log_connections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-CONNECTIONS){: .external}
 - Default - `off`
 - Restarts database - No
 - Options - Values of `on` or `off` 
-- Notes - Setting this value to `on` makes the logs verbose. It also shows the connections of the monitoring tool as it extracts metrics every 60 seconds. When this is set to `on`, it is recommended to set the application_name in the connection URI to keep an overview in the logs, as the IP addresses shown are the Kubernetes internal IPs. Details about adjusting the connection URI are found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING){: .external}. When set to `off`, there is no change in behavior to the default setting and no connections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging). If `on` is set, the logs show lines similar to this example, where the application name is set as `test-app`:
+- Notes - Setting this value to `on` makes the logs verbose. It also shows the connections of the monitoring tool as it extracts metrics every 60 seconds. When this is set to `on`, it is recommended to set the application_name in the connection URI to keep an overview in the logs, as the IP addresses shown are the Kubernetes internal IPs. Details about adjusting the connection URI are found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING){: .external}. When set to `off`, there is no change in behavior to the default setting and no connections are logged. Logs are available through the [logging integration](/docs/cloud-databases?topic=cloud-databases-logging). If `on` is set, the logs show lines similar to this example, where the application name is set as `test-app`:
 
 ```sh
 2021-03-01 10:27:56 UTC [[unknown]] [00000] [708]: [2-1] user=admin,db=ibmclouddb,client=127.0.0.1 LOG:  connection authorized: user=admin database=ibmclouddb application_name=test-app SSL enabled (protocol=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384, bits=256, compression=off)
@@ -160,13 +160,13 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Default - `off`
 - Restarts database - No
 - Options - Values of `on` or `off` 
-- Notes - Setting this value to `on` makes the logs verbose. It will also show the disconnections of the monitoring tools as it extracts metrics every 60 seconds. When this is set to `on`, it is recommended to set the application_name in the connection URI to keep an overview in the logs, as the IP addresses shown are the Kubernetes internal IPs. Details about adjusting the connection URI are found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING){: .external}. When set to `off`, there is no change in behavior to the default setting and no disconnections are logged. Logs are available through the [logging integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging). If `on` is set, the logs show lines similar to this example where the application name is set as `test-app`:
+- Notes - Setting this value to `on` makes the logs verbose. It will also show the disconnections of the monitoring tools as it extracts metrics every 60 seconds. When this is set to `on`, it is recommended to set the application_name in the connection URI to keep an overview in the logs, as the IP addresses shown are the Kubernetes internal IPs. Details about adjusting the connection URI are found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING){: .external}. When set to `off`, there is no change in behavior to the default setting and no disconnections are logged. Logs are available through the [logging integration](/docs/cloud-databases?topic=cloud-databases-logging). If `on` is set, the logs show lines similar to this example where the application name is set as `test-app`:
 
 ```sh
 2021-03-01 10:27:56 UTC [test-app] [00000] [708]: [3-1] user=admin,db=ibmclouddb,client=127.0.0.1 LOG:  disconnection: session time: 0:00:00.793 user=admin database=ibmclouddb host=127.0.0.1 port=50638
 ```    
 
-[`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config-logging.html){: .external}
+[`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config.html){: .external}
 - Default - `100`
 - Restarts database - No
 - Options - Minimum value of 100
@@ -184,7 +184,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Default - `6`
 - Restarts database - No
 
-### {{site.data.keyword.databases-for-postgresql_full}} WAL Settings
+### {{site.data.keyword.databases-for-postgresql_full}} WAL settings
 {: #wal-settings}
 
 [`archive_timeout`](https://www.postgresql.org/docs/current/runtime-config-wal.html){: .external}

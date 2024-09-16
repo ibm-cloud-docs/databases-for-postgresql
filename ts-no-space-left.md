@@ -31,5 +31,5 @@ Review the following information to troubleshoot and resolve your `No space left
 * [Scale up the disk](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling&interface=ui) to get your instance back online. 
    Scaling is a potentially long-running operation. For more information, see [Scaling Considerations](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling&interface=ui#resources-scaling-consider).
 
-* To prevent an issue with disk space, set up [monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring). 
+* To prevent an issue with disk space, set up [monitoring](/docs/cloud-databases?topic=cloud-databases-monitoring). 
 * Autoscaling is designed to respond to the short-to-medium term trends in resource usage on your {{site.data.keyword.databases-for-postgresql_full}} deployment. When enabled, your deployment is checked at the interval you specify. For more information, see [Autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling&interface=ui).
