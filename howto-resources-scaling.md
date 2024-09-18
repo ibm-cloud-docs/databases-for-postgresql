@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-10"
+lastupdated: "2024-09-18"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -81,10 +81,7 @@ The amount of memory allocated to the database's shared buffer pool is **not** a
 
 If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database. 
 
-Dedicated Core is deprecated, and will be removed in May 2025.
-{: note}
-
-The default of 0 cores uses compute resources on multi-tenanted hosts. This style of multi-tenant is deprecated, and will be removed in September 2025 in favor of Shared Compute. CPU can be scaled up or down.
+Old style dedicated core instances are deprecated, and will be removed in May 2025. Learn more about the new hosting models [here]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models)). 
 
 ## Scaling considerations
 {: #resources-scaling-consider}
@@ -417,7 +414,7 @@ resource "ibm_database" "<your_database>" {
   name              = "<your_database_name>"
   plan              = "standard"
   location          = "eu-gb"
-  service           = "databases-for-elasticsearch"
+  service           = "databases-for-postgresql"
   resource_group_id = data.ibm_resource_group.group.id
   tags              = ["tag1", "tag2"]
   adminpassword     = "password12"
@@ -439,7 +436,7 @@ resource "ibm_database" "<your_database>" {
     description = "desc"
   }
 }
-output "ICD Elasticsearch database connection string" {
+output "ICD PostgreSQL database connection string" {
   value = "http://${ibm_database.test_acc.ibm_database_connection.icd_conn}"
 }
 ```
