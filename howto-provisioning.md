@@ -2,7 +2,8 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-09-10"
+
+lastupdated: "2024-09-18"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -108,7 +109,7 @@ Before provisioning, follow the instructions provided in the documentation to in
     Provision a {{site.data.keyword.databases-for-postgresql}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-cli). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
     ```sh
-    ibmcloud resource service-instance-create test-database databases-for-elasticsearch enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}' --service-endpoints="private"
+    ibmcloud resource service-instance-create test-database databases-for-postgresql enterprise us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}' --service-endpoints="private"
     ```
     {: pre}
 
@@ -470,7 +471,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
     | `name` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
     | `location` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
     | `resource_group` | The Resource group name. The default value is `default`. | -g |
-    | `resource_plan_id` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-elasticsearch}}, use `databases-for-postgresql-standard`. |  |
+    | `resource_plan_id` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql-standard`. |  |
     | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
     | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use a parameter like `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
     {: caption="Table 1. Basic command format fields" caption-side="top"}
@@ -510,13 +511,14 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 - `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "12288", and there are three database members, then the deployment gets 12 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
 - `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used. This parameter only applies to `multitenant'.
 - `members_cpu_allocation_count` - Enables and allocates the number of specified cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default Shared Compute CPU:RAM ratios will be applied. This parameter only applies to `multitenant'.
-- `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
+- `remote_leader_id` - A CRN of the leader database to make the replica (read-only) deployment. The leader database is created by an {{site.data.keyword.databases-for-postgresql}} deployment. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment by using asynchronous replication. For more information, see [Configuring read-only replicas](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).
+- `service-endpoints` - The [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
 
 ## Provisioning with Terraform
 {: #provisioning-terraform}
 {: terraform}
 
-Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) supports provisioning {{site.data.keyword.databases-for}} deployments.
+Use Terraform to manage your infrastructure through the [`ibm_database` resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) supports provisioning {{site.data.keyword.databases-for}} deployments.
 
 Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later.
 
@@ -617,6 +619,7 @@ output "ICD Postgresql database connection string" {
 {: terraform}
 
 The `host_flavor` parameter defines your Compute sizing.
+
 - **Shared compute** - To provision a Shared Compute instance, specify `multitenant`.
 - **Isolated compute** - To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. Values can be seen in the table below.
 
