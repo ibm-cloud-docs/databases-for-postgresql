@@ -142,19 +142,16 @@ To configure your external PostgreSQL as a publisher, perform the following step
     listen_addresses='*'
     wal_level = logical
     ```
-
     {: .codeblock}
 
-3. Restart your PostgreSQL server.
-
-   Now you can define a publisher on the database and add the tables that you want to replicate to the subscriber.
+3. Restart your PostgreSQL server. 
+    Now you can define a publisher on the database and add the tables that you want to replicate to the subscriber.
 
 4. Log in to database you want to publish from with your replication user.
 
     ```sh
     psql -U replicator -d exampledb
     ```
-
     {: pre}
 
 5. Create the publication channel.
@@ -162,7 +159,6 @@ To configure your external PostgreSQL as a publisher, perform the following step
     ```sh
     exampledb=> CREATE PUBLICATION my_publication;
     ```
-
     {: pre}
 
 6. Add tables to publisher.
@@ -170,7 +166,6 @@ To configure your external PostgreSQL as a publisher, perform the following step
     ```sh
     exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
-
     {: pre}
 
     The number of workers that back the synchronization that is defined by the `max_logical_replication_workers` configuration parameter is limited and cannot be changed. Therefore, use the least possible number of publications and add as many tables as possible to one publication.
