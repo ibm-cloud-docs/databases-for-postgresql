@@ -16,7 +16,7 @@ subcollection: databases-for-postgresql
 
 When a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
 
-Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases){: external} endpoint.
+Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables){: external} endpoint.
 
 When you upgrade to a new instance, you also need to change the connection information in your application.
 {: note}
@@ -50,7 +50,7 @@ SELECT * FROM update_to_postgis_33();
 ## Upgrading from a read-only replica
 {: #upgrading-replica}
 
-Upgrade by [configuring a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas). Provision a read-only replica with the same database version as your deployment and wait while it replicates all of your data. When your deployment and its replica are synced, promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database. To perform the upgrade and promotion step, use a POST request to the [`/deployments/{id}/remotes/promotion`](https://cloud.ibm.com/apidocs/cloud-databases-api#promote-read-only-replica-to-a-full-deployment) endpoint with the version that you want to upgrade to in the body of the request. 
+Upgrade by [configuring a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas). Provision a read-only replica with the same database version as your deployment and wait while it replicates all of your data. When your deployment and its replica are synced, promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database. To perform the upgrade and promotion step, use a POST request to the [`/deployments/{id}/remotes/promotion`](/apidocs/cloud-databases-api/cloud-databases-api-v5#promotereadonlyreplica) endpoint with the version that you want to upgrade to in the body of the request. 
 
 This request looks like:
 ```sh
@@ -78,7 +78,7 @@ You can upgrade your database version by [restoring a backup](/docs/cloud-databa
 {: #upgrading-ui}
 {: ui}
 
-Upgrade to a new version when [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup-ui) from the _Backups_ menu of your _Deployment dashboard_. Click **Restore** on a backup to bring up a dialog box where you can change some options for the new deployment. One of the options is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
+Upgrade to a new version when [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup-ui) from the _Backups_ menu of your _Deployment dashboard_. Click **Restore** on a backup to the provisioning page on a new tab, where you can change some options for the new deployment. One of the options is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Create** to start the provision and restore process.
 
 ### Upgrading through the CLI
 {: #upgrading-cli}
@@ -86,7 +86,7 @@ Upgrade to a new version when [restoring a backup](/docs/cloud-databases?topic=c
 
 To upgrade and restore from a backup through the {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
 ```sh
-ibmcloud resource service-instance-create <service-name> <service-id> <service-plan-id> <region>
+ibmcloud resource service-instance-create <DEPLOYMENT_NAME_OR_CRN> <SERVICE_ID> <SERVICE_PLAN_ID> <REGION>
 ```
 {: pre}
 
@@ -106,7 +106,7 @@ ibmcloud resource service-instance-create example-upgrade databases-for-postgres
 {: #upgrading-api}
 {: api}
 
-Complete the necessary steps to use the [Resource Controller API](/docs/databases-for-postgresql?topic=databases-for-postgresql-provisioning&interface=api#provision-controller-api) before you use it to upgrade from a backup. Then, send the API a `POST` request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup. 
+Complete the necessary steps to use the [Resource controller API](/docs/databases-for-postgresql?topic=databases-for-postgresql-provisioning&interface=api#provision-controller-api) before you use it to upgrade from a backup. Then, send the API a `POST` request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup. 
 
 This command looks like:
 ```sh
@@ -128,7 +128,7 @@ curl -X POST \
 ### Dry running the promotion and upgrade
 {: #promotion-dry-run}
 
-To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log Analysis Integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
+To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log analysis integration](/docs/cloud-databases?topic=cloud-databases-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
 
 The dry run must be run with `skip_initial_backup` set to `false`, and `version` defined.
 

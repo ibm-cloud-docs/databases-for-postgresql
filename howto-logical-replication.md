@@ -12,6 +12,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
+
 # Databases for PostgreSQL as a logical replication destination
 {: #logical-replication}
 
@@ -166,6 +167,7 @@ To configure your external PostgreSQL as a publisher, perform the following step
     exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
     {: pre}
+
 
     The number of workers that back the synchronization that is defined by the `max_logical_replication_workers` configuration parameter is limited and cannot be changed. Therefore, use the least possible number of publications and add as many tables as possible to one publication.
 

@@ -87,12 +87,12 @@ The admin user does have the power to reset or close the connections for any use
 
 If your deployment reaches the connection limit or you are having trouble connecting to your deployment and suspect that a high number of connections is a problem, disconnect all of the connections to your deployment.
 
-In the UI, on the _Settings_ tab, there is a button to `End Connections` to your deployment. Use caution, as it disrupts anything that is connected to your deployment.
+In the UI, on the _Settings_ tab, there is a button to `End connections` to your deployment. Use caution, as it disrupts anything that is connected to your deployment.
 
 The CLI command to end connections to the deployment is:
 
 ```sh
-ibmcloud cdb deployment-kill-connections <deployment name or CRN>
+ibmcloud cdb deployment-kill-connections <DEPLOYMENT_NAME_OR_CRN>
 ```
 
 You can also use the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#killconnections) to perform the end all connections operation.
@@ -116,8 +116,9 @@ Next, change the value of `max_connections` on your deployment. To make permanen
 For example, to raise `max_connections` to 215, it might be a good idea to scale your deployment to at least 2 GB of RAM per data member, for a total of 4 GB of RAM for your deployment. Once the scaling operation has finishes, then set the connection limit. 
 1. Before you adjust `max_connections`, make sure to target your preferred region with a command like:
 
- ```sh
-ibmcloud target -r <region>
+
+```sh
+ibmcloud target -r <REGION>
 ```
 {: pre}
 
@@ -130,8 +131,8 @@ ibmcloud cdb deployment-groups-set deployment-example member --memory 4096
 
 3. Lastly, adjust `max_connections` with a command like:
 
- ```sh
-ibmcloud cdb deployment-configuration deployment-example '{"configuration":{"max_connections":215}}'
+```sh
+ibmcloud cdb deployment-configuration <DEPLOYMENT_NAME_OR_CRN> '{"configuration":{"max_connections":215}}'
 ```
 {: pre}
 

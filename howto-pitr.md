@@ -12,15 +12,15 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Point-in-time Recovery
+# Point-in-time recovery
 {: #pitr}
 
-{{site.data.keyword.databases-for-postgresql_full}} offers Point-In-Time Recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need. 
+{{site.data.keyword.databases-for-postgresql_full}} offers Point-in-time recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need. 
 
 For new hosting models, PITR is currently available through the CLI, API, and Terraform.
 {: note}
 
-The _Backups_ tab of your deployment's UI keeps all your PITR information under _Point-in-Time_.
+The _Backups and restore_ tab of your deployment's UI keeps all your PITR information under _Point-in-time_.
 
 ![PITR section of the Backups tab](images/pitr-backups-tab.png){: caption="PITR section of the Backups tab" caption-side="bottom"}
 
@@ -29,7 +29,7 @@ In PostgreSQL versions 13 and later, when restoring to a specific point within t
 
 Included information is the earliest time for a PITR. To discover the earliest recovery point through the CLI, use the [`cdb postgresql earliest-pitr-timestamp`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#postgresql-earliest-pitr-timestamp) command.
 ```sh
-ibmcloud cdb postgresql earliest-pitr-timestamp <deployment name or CRN>
+ibmcloud cdb postgresql earliest-pitr-timestamp <DEPLOYMENT_NAME_OR_CRN>
 ```
 {: pre}
 
@@ -61,7 +61,7 @@ It is important that you do not delete the source deployment while the backup is
 
 To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time. If you want to restore to the most recent available time, select that option. Clicking **Restore** brings up the options for your recovery. Enter a name, select the version, region, and allocated resources for the new deployment. Click **Recover** to start the process.
 
-![Recovery Options dialog](images/pitr-dialog.png){: caption="Recovery Options Dialog" caption-side="bottom"}
+![Recovery options dialog](images/pitr-dialog.png){: caption="Recovery Options Dialog" caption-side="bottom"}
 
 If you use Key Protect and have a key, you must use the CLI to recover, and a command is provided for your convenience.
 
@@ -69,11 +69,11 @@ If you use Key Protect and have a key, you must use the CLI to recover, and a co
 {: #pitr-cli}
 {: cli}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller CLI. Use the [`resource service-instance-create`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_create) command.
+The Resource controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource controller CLI. Use the [`resource service-instance-create`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_create) command.
 
 For PITR, use the `point_in_time_recovery_time` and `point_in_time_recovery_deployment_id` parameters. The `point_in_time_recovery_deployment_id` is the source deployment's ID and `point_in_time_recovery_time` is the timestamp in Coordinated Universal Time you want to restore to. To restore to the latest available point-in-time, use `"point_in_time_recovery_time":" "`.
 ```sh
-ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> <region> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":" "}'
+ibmcloud resource service-instance-create <DEPLOYMENT_NAME_OR_CRN> <SERVICE_ID> <REGION> -p '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP", "version":" "}'
 ```
 {: pre}
 
@@ -83,7 +83,7 @@ A pre-formatted command for a specific backup or PITR is available in detailed v
 
 When restoring through the CLI, optional parameters are available. Use them to customize resources or use a Key Protect key for BYOK encryption on the new deployment.
 ```sh
-ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> standard <region> <--service-endpoints SERVICE_ENDPOINTS_TYPE> -p
+ibmcloud resource service-instance-create <DEPLOYMENT_NAME_OR_CRN> <SERVICE_ID> standard <REGION> <--service-endpoints SERVICE_ENDPOINTS_TYPE> -p
 '{"point_in_time_recovery_deployment_id":"DEPLOYMENT_ID", "point_in_time_recovery_time":"TIMESTAMP","key_protect_key":"KEY_PROTECT_KEY_CRN", "members_disk_allocation_mb":"DESIRED_DISK_IN_MB", "members_memory_allocation_mb":"DESIRED_MEMORY_IN_MB", "members_cpu_allocation_count":"NUMBER_OF_CORES", "version":" "}'
 ```
 {: pre}
@@ -92,7 +92,7 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> s
 {: #pitr-api}
 {: api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup. 
+The Resource controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource controller API. You need to complete [the necessary steps to use the resource controller API](/docs/databases-for-postgresql?topic=cloud-databases-provisioning#provisioning-through-the-resource-controller-api) before you can use it to restore from a backup. 
 
 Once you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) endpoint.
 
@@ -102,10 +102,10 @@ curl -X POST \
   -H 'Authorization: Bearer <>' \
   -H 'Content-Type: application/json' \
     -d '{
-    "name": "<SERVICE_INSTANCE_NAME>",
-    "target": "<region>",
-    "resource_group": "<your-resource-group>",
-    "resource_plan_id": "<service-id>"
+    "name": "<DEPLOYMENT_NAME_OR_CRN>",
+    "target": "<REGION>",
+    "resource_group": "<RESOURCE_GROUP>",
+    "resource_plan_id": "<SERVICE_ID>"
     "point_in_time_recovery_time":"<TIMESTAMP>",
     "point_in_time_recovery_deployment_id":"<DEPLOYMENT_ID>"
   }'
@@ -121,7 +121,7 @@ If you need to adjust resources or use a Key Protect key, add the optional param
 ## Verifying PITR
 {: #pitr-verify}
 
-To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging Integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging) to be set up on your deployment.
+To verify the correct recovery time, check the database logs. Checking the database logs requires the [Logging integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging) to be set up on your deployment.
 
 When you perform a recovery, your data is restored from the most recent incremental backup. Any outstanding transactions from the WAL log are used to restore your database up to the time you recovered to. After the recovery is finished, and the transactions are run, the logs display a message. You can check that your logs have the message,
 ```sh

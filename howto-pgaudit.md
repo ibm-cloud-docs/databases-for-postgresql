@@ -22,12 +22,12 @@ subcollection: databases-for-postgresql
 
 The PostgreSQL Audit Extension (pgAudit) provides enablement of session logging for your {{site.data.keyword.databases-for-postgresql_full}} deployments. 
 
-## Session Logging
+## Session logging
 {: #session-logging}
 
 Session logging is off by default. You can enable Session logging parameters that log all activity for sets of audit event types. Session logging is enabled for the whole DB cluster and is either `on` or `off` for a specific event type.
 
-## Event Types
+## Event types
 {: #event-types}
 
 Session logging is configured per event type. The supported event types across all versions are:  
@@ -66,7 +66,7 @@ SELECT public.set_pgaudit_session_logging('{none}');
 Changing audit levels happens immediately when calling the function without interrupting the database activity.
 {: .note}
 
-## Audit Logs
+## Audit logs
 {: #pgaudit-logs}
 
 Audit events appear in {{site.data.keyword.la_full}} with the following format:
@@ -80,4 +80,3 @@ If you want to see the current log level, you can run the command:
 show pgaudit.log;
 ```
 {: .codeblock}
-

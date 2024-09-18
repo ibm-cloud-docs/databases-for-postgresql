@@ -20,7 +20,7 @@ A high-availability {{site.data.keyword.databases-for-postgresql}} read-only rep
 ## Provision a high-availability read-only replica
 {: #provision-ha-read-only-replica}
 
-High-availability {{site.data.keyword.databases-for-postgresql}} read-only replicas must initially be provisioned in the single-member (non-HA) configuration. To provision a read-only replica, follow the procedure that is outlined in [Provisioning a Read-only Replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision).
+High-availability {{site.data.keyword.databases-for-postgresql}} read-only replicas must initially be provisioned in the single-member (non-HA) configuration. To provision a read-only replica, follow the procedure that is outlined in [Provisioning a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision).
 
 After your read-replica is provisioned, use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction) to scale up the read replica to two (or more) members.
 
