@@ -119,7 +119,6 @@ Arguments:
 Usage:
     exampledb=> SELECT refresh_subscription('subs1','exampledb');
 ```
-
 {: .codeblock}
 
 ## Setting up logical replication on the publisher
@@ -180,7 +179,6 @@ To configure your {{site.data.keyword.databases-for-postgresql}} deployment as a
     ```sh
     psql -U admin -d exampledb
     ```
-
     {: pre}
 
 2. Run the following query to call the `create_subscription` function and create the subscriber channel.
@@ -188,7 +186,6 @@ To configure your {{site.data.keyword.databases-for-postgresql}} deployment as a
     ```sh
     exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','admin','password','exampledb','my_publication');
     ```
-
     {: pre}
 
 ## Monitoring replication
@@ -199,5 +196,4 @@ You can monitor the status of logical replication from both the publisher and th
 ```sh
 exampledb=> SELECT * FROM pg_stat_replication;
 ```
-
 {: pre}
