@@ -75,7 +75,7 @@ For step-by-step instructions for assigning, removing, and reviewing access, see
 If you manage your service through the IBM Cloud CLI and the cloud databases plug-in, you can create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command.
 
 ```bash
-ibmcloud cdb user-create example-deployment <newusername> <newpassword>
+ibmcloud cdb user-create example-deployment <NEW_USERNAME> <NEW_PASSWORD>
 ```
 {: pre}
 
@@ -169,7 +169,7 @@ GET /v4/ibm/deployments/:deployment_id/whitelists/ip_addresses
 Read Allowlisted IP Addresses
 ```
 
-### Operator and Editor
+### Operator and editor
 {: #operator}
 
 The Operator and Editor roles are functionally the same for {{site.data.keyword.databases-for}}. This list contains allowed actions for the Operator and the Editor roles.
@@ -373,12 +373,12 @@ POST /v4/ibm/deployments/:deployment_id/elasticsearch/file_syncs
 Create elasticsearch file sync
 ```
 
-## Adding users to _Service Credentials_
+## Adding users to _Service credentials_
 {: #user-management-adding-users-service-cred}
 
-Creating a new user from the CLI doesn't automatically populate that user's connection strings into _Service Credentials_. If you want to add them there, you can create a new credential with the existing user information.
+Creating a new user from the CLI doesn't automatically populate that user's connection strings into _Service credentials_. If you want to add them there, you can create a new credential with the existing user information.
 
-Enter the user name and password in the JSON field _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, putting `{"existing_credentials":{"username":"Robert","password":"supersecure"}}` in the field generates _Service Credentials_ with the username "Robert" and password "supersecure" filled into connection strings.
+Enter the user name and password in the JSON field _Add Inline Configuration Parameters_, or specify a file where the JSON information is stored. For example, putting `{"existing_credentials":{"username":"Robert","password":"supersecure"}}` in the field generates _Service credentials_ with the username "Robert" and password "supersecure" filled into connection strings.
 
 Generating credentials from an existing user does not check for or create that user.
 {: tip}

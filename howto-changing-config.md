@@ -25,7 +25,7 @@ The configuration is defined in a schema. To make a change, you send a JSON obje
 
 to the CLI or to the API. 
 
-For more information, see [Managing PostgreSQL Connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections). 
+For more information, see [Managing PostgreSQL connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections). 
 
 ## Using the CLI with {{site.data.keyword.databases-for-postgresql}}
 {: #using-cli}
@@ -64,7 +64,7 @@ For more information, see the [API Reference](https://cloud.ibm.com/apidocs/clou
 
 The time zone for {{site.data.keyword.databases-for-postgresql_full}} deployments is always UTC (Coordinated Universal Time). This setting is not configurable by clients.
 
-### {{site.data.keyword.databases-for-postgresql_full}} Memory settings
+### {{site.data.keyword.databases-for-postgresql_full}} memory settings
 {: #mem-settings}
 
 [`shared_buffers`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-SHARED-BUFFERS){: .external}
@@ -110,7 +110,7 @@ pg_statio_user_indexes;
 The `work_mem` value is automatically adjusted in relationship to the `shared_buffer` and `max_connection` configuration values.
 {: note}
 
-### {{site.data.keyword.databases-for-postgresql_full}} General Settings
+### {{site.data.keyword.databases-for-postgresql_full}} General settings
 {: #gen-settings}
 
 [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS){: .external}

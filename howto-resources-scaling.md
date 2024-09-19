@@ -18,27 +18,27 @@ subcollection: databases-for-postgresql
 For new [hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models), scaling is available through the CLI, API, and Terraform.
 {: note}
 
-To scale an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-iso-compute-cli) host flavor instance, set the relevant `hostflavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
+To scale an [Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-iso-compute-cli) host flavor instance, set the relevant `hostflavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
 {: important}
 {: cli}
 
-To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-shared-compute-cli) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `hostflavor` parameter.
+To scale a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-shared-compute-cli) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `hostflavor` parameter.
 {: important}
 {: cli}
 
-To scale an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api#hosting-models-iso-compute-api) host flavor instance, set the relevant `host_flavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
+To scale an [Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api#hosting-models-iso-compute-api) host flavor instance, set the relevant `host_flavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
 {: important}
 {: api}
 
-To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api#hosting-models-shared-compute-api) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter.
+To scale a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api#hosting-models-shared-compute-api) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter.
 {: important}
 {: api}
 
-To scale an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform#hosting-models-shared-compute-terraform) host flavor instance, set the relevant `host_flavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
+To scale an [Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform#hosting-models-shared-compute-terraform) host flavor instance, set the relevant `host_flavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
 {: important}
 {: terraform}
 
-To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform#hosting-models-iso-compute-terraform) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter.
+To scale a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform#hosting-models-iso-compute-terraform) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter.
 {: important}
 {: terraform}
 
@@ -89,7 +89,7 @@ Old style dedicated core instances are deprecated, and will be removed in May 20
 - Scaling up might cause your deployment to restart. If your deployment needs to be moved to a host with more capacity, the deployment is restarted as part of the move.
 - Scaling down RAM or CPU does not trigger restarts.
 - Disk cannot be scaled down.
-- Scaling between hosting models (Shared Compute, Isolated Compute, and Dedicated Cores) moves your deployment to new hosts. Your databases are restarted as part of that move. As your deployment is moved to a new host, this can also take longer than just adding more resources. For more information, see [Shared Compute and Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models).
+- Scaling between hosting models (Shared Compute, Isolated Compute, and Dedicated Cores) moves your deployment to new hosts. Your databases are restarted as part of that move. As your deployment is moved to a new host, this can also take longer than just adding more resources. For more information, see [Shared compute and Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 - Similarly, drastically scaling up CPU, RAM, or disk can take longer to run than small resource increases to account for provisioning more underlying hardware resources.
 - Scaling operations are logged in [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
 - If you find consistent trends in resource usage or want to scale when certain resource thresholds are reached, enable [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling) on your deployment.
@@ -104,7 +104,7 @@ For new [hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-mod
 
 A visual representation of your data members and their resource allocation is available on the _Resources_ tab from the left-hand navigation panel.
 
-![The Scale Resources Panel in _Resources_](images/scaling-update.png){: caption="Figure 1. The Scale Resources Panel" caption-side="bottom"}
+![The scale resources panel in _Resources_](images/scaling-update.png){: caption="Figure 1. The Scale Resources Panel" caption-side="bottom"}
 
 Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI currently uses a coarser-grained resolution of 8 GB increments for disk and 1 GB increments for memory. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
 
@@ -156,25 +156,10 @@ ibmcloud cdb deployment-groups-set example-deployment member --memory 8192
 ```
 {: pre}
 
-## Determine the hosting model of your database
-{: #resources-hosting-determine-cli}
-{: cli}
-
-Use the following command to review the value of the `hostflavor` attribute. This will be null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
+If your database is a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) instance, you can adjust the memory, CPU, and disk options with the following command. This can also be used to move a database from a different hosting model to the Shared Compute hosting model.
 
 ```sh
-ibmcloud cdb groups <deployment_id> --json
-```
-{: pre}
-
-## Switching to and between Hosting Models in the CLI
-{: #resources-switching-cli}
-{: cli}
-
-If your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) instance, you can adjust the memory, CPU, and disk options with the following command. If your database is not on Shared Compute, this command will also move a database from a different hosting model to the Shared Compute hosting model.
-
-```sh
-ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--memory <val>] [--cpu <val>] [--disk <val>] [--hostflavor multitenant]
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> <GROUP_ID> [--memory <val>] [--cpu <val>] [--disk <val>] [--hostflavor multitenant]
 ```
 {: pre}
 
@@ -185,10 +170,10 @@ ibmcloud cdb deployment-groups-set crn:abc ... xyz:: member  --memory 24576 --cp
 ```
 {: pre}
 
-If your database is an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance, memory and CPU are adjusted together by selecting the Isolated Compute size (see all sizes in Table 1). Disk is scaled separately. If your database is not on Isolated  Compute, this command  will also move a database from a different hosting model to the Isolated Compute hosting model.
+If your database is an [Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance, memory and CPU are adjusted together by selecting the Isolated Compute size (see all sizes in Table 1). Disk is scaled separately. To scale a {{site.data.keyword.databases-for}} Isolated Compute instance, use a command, such as the following that is used to scale to a 4 CPU by 16 RAM instance. This command  can also be used to move a database from a different hosting model to the Isolated Compute hosting model.
 
 ```sh
-ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--disk <val>] [--hostflavor b3c.4x16.encrypted]
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> <GROUP_ID> [--disk <val>] [--hostflavor b3c.4x16.encrypted]
 ```
 {: pre}
 
@@ -212,6 +197,16 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Table 1. Host flavor sizing parameter" caption-side="bottom"}
+
+## Determine the hosting model of your database
+{: #resources-hosting-determine}
+
+Use the following command to review the value of the `host_flavor` attribute. This will be null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
+
+```sh
+ibmcloud cdb groups <INSTANCE_NAME_OR_CRN> --json
+```
+{: pre}
 
 ## Scaling with the API
 {: #resources-scaling-api}
@@ -320,7 +315,7 @@ resource "ibm_database" "<your_database>" {
   name              = "<your_database_name>"
   plan              = "standard"
   location          = "eu-gb"
-  service           = "databases-for-elasticsearch"
+  service           = "databases-for-epostgresql"
   resource_group_id = data.ibm_resource_group.group.id
   tags              = ["tag1", "tag2"]
   adminpassword     = "password12"
@@ -345,7 +340,7 @@ resource "ibm_database" "<your_database>" {
     description = "desc"
   }
 }
-output "ICD Elasticsearch database connection string" {
+output "ICD PostgreSQL database connection string" {
   value = "http://${ibm_database.test_acc.ibm_database_connection.icd_conn}"
 }
 ```
@@ -358,7 +353,7 @@ output "ICD Elasticsearch database connection string" {
 
 Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be scaled to. You can change this later.
 
-To scale your {{site.data.keyword.databases-for-elasticsearch}} instance to the Shared Compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared Compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`. See the following example:
+To scale your {{site.data.keyword.databases-for-postgresql}} instance to the Shared compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`. See the following example:
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -368,7 +363,7 @@ resource "ibm_database" "<your_database>" {
   name              = "<your_database_name>"
   plan              = "standard"
   location          = "eu-gb"
-  service           = "databases-for-elasticsearch"
+  service           = "databases-for-postgresql"
   resource_group_id = data.ibm_resource_group.group.id
   tags              = ["tag1", "tag2"]
   adminpassword     = "password12"
@@ -396,13 +391,13 @@ resource "ibm_database" "<your_database>" {
     description = "desc"
   }
 }
-output "ICD Elasticsearch database connection string" {
+output "ICD PostgreSQL database connection string" {
   value = "http://${ibm_database.test_acc.ibm_database_connection.icd_conn}"
 }
 ```
 {: codeblock}
 
-Scale your {{site.data.keyword.databases-for-elasticsearch}} instance to Isolated Compute with the same `"host_flavor"` parameter, set to the desired Isolated size. This command works to scale your database instance to a different Isolated Compute size, as well as to move from another host flavor to the Isolated Compute host flavor. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both an Isolated size selection and separate CPU and RAM allocation selections.
+Scale your {{site.data.keyword.databases-for-postgresql}} instance to Isolated compute with the same `"host_flavor"` parameter, set to the desired Isolated size. This command works to scale your database instance to a different Isolated Compute size, as well as to move from another host flavor to the Isolated compute host flavor. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both an Isolated size selection and separate CPU and RAM allocation selections.
 
 To implement your change, run `terraform apply`.
 

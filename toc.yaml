@@ -89,7 +89,6 @@ toc:
           - howto-resources-scaling.md
           - howto-autoscaling.md
           - howto-horizontal-scaling.md
-          - howto-managing-connections.md
       - link:
           label: Managing Cloud Databases backups
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-dashboard-backups

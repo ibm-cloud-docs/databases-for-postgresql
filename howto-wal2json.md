@@ -72,7 +72,7 @@ subcollection: databases-for-postgresql
 
    Table creates do not appear.{: .note}
    
-## Wal2json Considerations and Tips
+## Wal2json considerations and tips
 {: #wal2json-tips}
    
 - Setting `wal_level` to `logical` increases the size of the WAL files because PostgreSQL needs more data to accomplish logical decoding. If you aren't using `wal2json`, leave `wal_level` at the default. Larger WAL files potentially mean that more disk space is required. Write throughput can decrease, along with replication lag that affects high availability and read-only replicas, and longer restore times from a backup.

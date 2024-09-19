@@ -11,12 +11,12 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing PostgreSQL Extensions
+# Managing PostgreSQL extensions
 {: #extensions}
 
 In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. To use them, [set the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) for your service and use it to [connect with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
-## Listing Installed Extensions
+## Listing installed extensions
 {: #listing-installed-extensions}
 
 Get a list of all the extensions installed on a database by using the `\dx` command.
@@ -31,7 +31,7 @@ ibmclouddb=> \dx
 (1 row)
 ```
 
-## Installing Extensions
+## Installing extensions
 {: #installing-extensions}
 
 To install an extension on to a database use [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/static/sql-createextension.html){: .external}. For example, to install `pg_stat_statements` on the `ibmclouddb` database, 
@@ -59,12 +59,12 @@ ibmclouddb=> \dx
 
 Database extensions in PostgreSQL are managed per database. If you have multiple databases that you need to install an extension on, run the `CREATE` command on each database.
 
-## Upgrading Extensions
+## Upgrading extensions
 {: #upgrading-extensions}
 
 If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` to upgrade it.
 
-## Extension-Specific Notes
+## Extension-specific notes
 {: #extensions-specific-notes}
 
 ### pg_repack
@@ -81,7 +81,7 @@ If there is a newer version of an extension available than the one you currently
 - Any user can run `pg_repack`, but the command is only able to repack a table that they have permissions on.
 - `pg_repack` needs to take an exclusive lock on objects it is reorganizing at the end of the reorganization. If it can't get this lock after a certain period, it cancels all conflicting queries. If it can't do so, the reorg fails. By default, only the admin user on PostgreSQL 9.6 and greater is able to cancel conflicting queries. To expose the ability to cancel queries to other database users, grant the `pg_signal_backend` role [from the admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user).
 
-## Available Extensions
+## Available extensions
 {: #available-extensions}
 
 This list is what is returned from a {{site.data.keyword.databases-for-postgresql}} deployment running PostgreSQL version 12. For a list of available extensions on your deployment, use `SELECT name FROM pg_available_extensions;` in `psql`.

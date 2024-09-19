@@ -54,7 +54,7 @@ git clone https://github.com/IBM/ibm-postgresql-pgadmin-codeengine.git
 ```
 {: pre}
 
-## Install the Infrastructure
+## Install the infrastructure
 {: #pgadmin-code-engine-icd-postgresql-install-infra}
 {: step}
 

@@ -18,13 +18,13 @@ subcollection: databases-for-postgresql
 {:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring IAM Authorizations
+# Configuring IAM authorizations
 {: #pgsql-iam}
 
 To create a storage configuration for a newly created IBM Cloud Databases for PostgreSQL enabled by IBM Cloud Satellite service location, you need to configure IAM authorizations.
 {: shortdesc}
 
-## Configure IAM Authorizations
+## Configure IAM authorizations
 {: #cd-postgresql-iamauth}
 
 - Configure your IAM Authorizations under the **Manage** tab.
@@ -37,10 +37,10 @@ To create a storage configuration for a newly created IBM Cloud Databases for Po
 
 The source service is the service that is granted access to the target service. The roles that you select define the level of access for this service. The target service is the service that you are granting permission to be accessed by the source service based on the assigned roles.
 
-- In the **Source Service** field, select **Databases for PostgreSQL development**.
-- In the **Target Service** field, select **Satellite**.
+- In the **Source service** field, select **Databases for PostgreSQL development**.
+- In the **Target service** field, select **Satellite**.
 - Select all options:
-    - **Satellite Cluster Creator** 
-    - **Satellite Link Administrator** 
-    - **Satellite Link Source Access Controller** 
+    - **Satellite cluster creator** 
+    - **Satellite link administrator** 
+    - **Satellite link source access controller** 
     - Then, **Authorize**.

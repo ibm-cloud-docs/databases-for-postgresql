@@ -18,10 +18,10 @@ subcollection: databases-for-postgresql
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Getting Connection Strings
+# Getting connection strings
 {: #connection-strings}
 
-## Getting Connection Strings in the UI
+## Getting connection strings in the UI
 {: #connection-strings-ui}
 {: ui}
 
@@ -32,19 +32,19 @@ To connect to {{site.data.keyword.databases-for-postgresql_full}}, you need some
 A {{site.data.keyword.databases-for-postgresql}} deployment is provisioned with an admin user, and after [setting the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui), you can use its connection strings to connect to your deployment.
 {: .tip}
 
-## Getting Connection Strings in the CLI
+## Getting connection strings in the CLI
 {: #connection-strings-cli}
 {: cli}
 
 Grab connection strings from the [CLI](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections).
 ```sh
-ibmcloud cdb deployment-connections example-deployment -u <newusername> [--endpoint-type <endpoint type>]
+ibmcloud cdb deployment-connections example-deployment -u <NEW_USERNAME> [--endpoint-type <ENDPOINT_TYPE>]
 ```
 {: pre}
 
 Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named "example-deployment", use the following command.
 ```sh
-ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [--endpoint-type <endpoint type>]
+ibmcloud cdb deployment-connections example-deployment -u <NEW_USERNAME> --all [--endpoint-type <ENDPOINT_TYPE>]
 ```
 {: pre}
 
@@ -53,7 +53,7 @@ If you don't specify a user, the `deployment-connections` commands return inform
 To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plug-in](/docs/cloud-databases?topic=cloud-databases-icd-cli).
 {: .tip}
 
-## Getting Connection Strings in the API
+## Getting connection strings in the API
 {: #connection-strings-api}
 {: api}
 
@@ -63,10 +63,10 @@ curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.c
 ```
 {: pre}
 
-## Connection String Breakdown
+## Connection string breakdown
 {: #connection-string-breakdown}
 
-### The PostgreSQL Section
+### The PostgreSQL section
 {: #postgres-section}
 
 The "PostgreSQL" tab contains information that is suited to applications that make connections to PostgreSQL.
@@ -87,8 +87,9 @@ The "PostgreSQL" tab contains information that is suited to applications that ma
 
 * `0...` indicates one or more of these entries in an array.
 
-### The CLI Section
+### The CLI section
 {: #cli-section}
+{: cli}
 
 The "CLI" section contains information that is suited for connecting with `psql`.
 

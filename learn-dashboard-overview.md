@@ -21,6 +21,8 @@ subcollection: databases-for-postgresql
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql_full}} deployment. The overview includes essential identifying information.
 
 
+The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql_full}} deployment. The overview includes essential identifying information.
+
 ### Type
 {: #type}
 
@@ -31,18 +33,10 @@ The type of database that is offered by the service, and the database version th
 
 The ID is a [CRN (Cloud Resource Name)](/docs/account?topic=account-crn){: external} that uniquely identifies the database instance. The CRN is used to refer to the database in the API and can be used with the CLI. The _Overview_ pane shows details of your service.
 
-## Observability
-{: #observability-tab}
-
-The _Observability_ tab provides access to the IBM Cloud Monitoring, logging, and event tracking integrations available for your deployment.
-- [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker)
-- [{{site.data.keyword.la_full}}](/docs/cloud-databases?topic=cloud-databases-logging)
-- [{{site.data.keyword.monitoringfull}}](/docs/cloud-databases?topic=cloud-databases-monitoring)
-
 ### Recent tasks
 {: #recent-tasks}
 
-Each time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recently completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24 - 48 hours. Unsuccessful tasks can show for 7 - 8 days. Tasks can also be retrieved from the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks){: external} and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.at_full}} integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
+Each time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recently completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24 - 48 hours. Unsuccessful tasks can show for 7 - 8 days. Tasks can also be retrieved from the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks){: external} and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.at_full}} integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
 
 ### Endpoints
 {: #endpoints}
@@ -60,7 +54,7 @@ You can manage your {{site.data.keyword.databases-for-postgresql}} service throu
 
 The resources tab contains information and configuration options on the size and resource usage of your deployment. You can
 - [Scale disk, memory, and CPU](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling)
-- [Configure Autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling)
+- [Configure autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling)
 
 ## Read-only replicas
 {: #read-replicas-tab}
@@ -71,6 +65,14 @@ The _Read-only replicas_ tab contains the UI for details for the read replicas f
 {: #backups-tab}
 
 The _Backups and restore_ tab is the UI for managing your instance's backups. Available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. For more information, see [Managing backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups).
+
+## Observability
+{: #observability-tab}
+
+The _Observability_ tab provides access to the IBM Cloud Monitoring, logging, and event tracking integrations available for your deployment.
+- [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker)
+- [{{site.data.keyword.la_full}}](/docs/cloud-databases?topic=cloud-databases-logging)
+- [{{site.data.keyword.monitoringfull}}](/docs/cloud-databases?topic=cloud-databases-monitoring)
 
 ## Settings
 {: #settings-tab}
