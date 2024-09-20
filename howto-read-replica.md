@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-06-09"
+  years: 2019, 2024
+lastupdated: "2024-09-20"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
