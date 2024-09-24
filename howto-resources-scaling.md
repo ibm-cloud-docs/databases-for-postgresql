@@ -173,7 +173,7 @@ ibmcloud cdb deployment-groups-set crn:abc ... xyz:: member  --memory 24576 --cp
 If your database is an [Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance, memory and CPU are adjusted together by selecting the Isolated Compute size (see all sizes in Table 1). Disk is scaled separately. To scale a {{site.data.keyword.databases-for}} Isolated Compute instance, use a command, such as the following that is used to scale to a 4 CPU by 16 RAM instance. This command  can also be used to move a database from a different hosting model to the Isolated Compute hosting model.
 
 ```sh
-ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> <GROUP_ID> [--disk <val>] [--hostflavor b3c.4x16.encrypted]
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> <GROUP_ID> [--disk <val>] [--hostflavor <hostflavor>]
 ```
 {: pre}
 
@@ -260,7 +260,7 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{i
       "cpu":
         {"allocation_count": 2},
       "memory":
-        {"allocation_mb": 4096}
+        {"allocation_mb": 8192}
     }' \
 ```
 {: pre}
