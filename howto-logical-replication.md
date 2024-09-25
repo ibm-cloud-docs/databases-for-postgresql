@@ -2,7 +2,8 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-18"
+lastupdated: "2024-09-25"
+
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
 
@@ -41,7 +42,8 @@ To configure your {{site.data.keyword.databases-for-postgresql}} deployment and 
 1. You need to create a database in your deployment with same name as the database you intend to replicate.
 2. Logical Replication works at the table level, so every table you select to publish, you need to create in the subscriber before starting the logical replication process. (You can use [`pg_dump`](https://www.postgresql.org/docs/current/app-pgdump.html){: .external} to help.) The table on the subscriber does not need to be identical to its publisher counterpart. However, the table on the subscriber must contain at least every column present in the table on the publisher. Additional columns present in the subscriber must not have NOT NULL or other constraints. If they do, replication fails.
 
-**Note** Native PostgreSQL subscription commands require superuser privileges, which are not available on {{site.data.keyword.databases-for-postgresql}} deployments. Instead, your deployment includes a set of functions that can be used to set and manage logical replication for the subscription.
+Native PostgreSQL subscription commands require superuser privileges, which are not available on {{site.data.keyword.databases-for-postgresql}} deployments. Instead, your deployment includes a set of functions that can be used to set and manage logical replication for the subscription. 
+{: .note}
 
 Only the admin user that is provided by {{site.data.keyword.databases-for-postgresql}} has permissions to run the following replication commands that allow you to subscribe and replicate content from an external PostgreSQL publisher.
 {: .tip}
@@ -108,6 +110,19 @@ Usage:
     exampledb=> SELECT enable_subscription('subs1','exampledb');
 ```
 
+**`subscription_slot_none`**
+
+This function is used to set the slot name of a subscription to NONE. This is needed in order to delete a subscription so that a remote replication slot cannot be dropped or does not exist or never existed.
+
+```bash
+Arguments:
+    subscription_name   Name the subscription channel to alter
+    db_name             The name of the replicated database
+
+Usage:
+    exampledb=> SELECT subscription_slot_none('subs1','exampledb');
+```
+
 **`refresh_subscription`**  
 
 This function is used to refresh a subscription on the subscriber after changes are made on the publisher, like adding or removing a table.
@@ -167,7 +182,6 @@ To configure your external PostgreSQL as a publisher, perform the following step
     exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
     ```
     {: pre}
-
 
     The number of workers that back the synchronization that is defined by the `max_logical_replication_workers` configuration parameter is limited and cannot be changed. Therefore, use the least possible number of publications and add as many tables as possible to one publication.
 
