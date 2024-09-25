@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-04-03"
+lastupdated: "2024-09-25"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -31,13 +31,15 @@ For more information, see [Managing PostgreSQL connections](/docs/databases-for-
 {: #using-cli}
 {: cli}
 
-You can check the default configuration of your deployment with the `deployment-configuration-schema` command.  
+You can check the default configuration of your deployment with the `deployment-configuration-schema` command.
+
 ```sh
 ibmcloud cdb deployment-configuration-schema <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 
-Similarly, change your configuration with the `deployment-configuration` command. 
+Similarly, change your configuration with the `deployment-configuration` command.
+
 ```sh
 ibmcloud cdb deployment-configuration <INSTANCE_NAME_OR_CRN> [@JSON_FILE | JSON_STRING]
 ```
@@ -53,7 +55,7 @@ The two deployment-configuration endpoints allow viewing the configuration schem
 
 To change the configuration, send the settings that you would like to change as a JSON object in the request body of a `PATCH` request to `/deployments/{id}/configuration`.
 
-For more information, see the [API Reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration){: external}.
+For more information, see the [API reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration){: external}.
 
 
 ## Available {{site.data.keyword.databases-for-postgresql_full}} configuration settings
@@ -68,6 +70,7 @@ The time zone for {{site.data.keyword.databases-for-postgresql_full}} deployment
 {: #mem-settings}
 
 [`shared_buffers`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-SHARED-BUFFERS){: .external}
+
 - Default - `32000` (number of 8 KiB buffers, or about 262 MB) 
 - Recommended max value: 25% of available RAM
 - Restarts database? - **Yes** 
@@ -110,10 +113,12 @@ pg_statio_user_indexes;
 The `work_mem` value is automatically adjusted in relationship to the `shared_buffer` and `max_connection` configuration values.
 {: note}
 
-### {{site.data.keyword.databases-for-postgresql_full}} General settings
+### {{site.data.keyword.databases-for-postgresql_full}} general settings
+
 {: #gen-settings}
 
 [`max_connections`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS){: .external}
+
 - Default - 115
 - Restarts database? - **YES**
 - Notes - [You might need to scale before you increase max connections.](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#connection-limits-ha)
@@ -125,28 +130,33 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Restarts database? - **YES**
 
 [`max_prepared_transactions`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS){: .external}
+
 - Default - `0`
 - Restarts database? - **YES**
 - Notes - The default value of `0` disables use of [prepared transactions](https://www.postgresql.org/docs/current/sql-prepare-transaction.html){: .external} and is recommended unless you need to use them.
 
 [`synchronous_commit`](https://www.postgresql.org/docs/current/wal-async-commit.html){: .external}
+
 - Default - `local`
 - Restarts database - No
 - Options - `local`, `on`, or `off`
 - Notes - Setting `synchronous_commit` to off increases transaction commit rate at the expense of a loss of committed transactions if an unclean shutdown occurs. With `synchronous_commit` set to `on`, a transaction is committed only when written to the leader and at least one replica. Therefore, the `on` setting is only available on formations that have been horizontally scaled to at least three members. Before implementing this change, read through the [High-Availability page](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}.
 
 [`effective_io_concurrency`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-EFFECTIVE-IO-CONCURRENCY){: .external}
+
 - Default - `12`
 - Restarts database - No
 - Notes - It is recommended to leave this setting at the default. Only increase it if you profiled SQL queries and have observed inefficient bitmap heap scans. As [IOPS is tied to disk size](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance#disk-iops), increasing this setting on default or smaller sized disks is also not recommended.
 
 [`deadlock_timeout`](https://www.postgresql.org/docs/current/runtime-config-locks.html){: .external}
+
 - Default - `10000`
 - Restarts database - No
 - Options - Minimum value of 100
 - Notes - The number of milliseconds to wait before checking for deadlock and the duration where lock waits are logged. Logs available through the [logging integration](/docs/cloud-databases?topic=cloud-databases-logging){: external}. Setting this number too low negatively impacts performance.
 
 [`log_connections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-CONNECTIONS){: .external}
+
 - Default - `off`
 - Restarts database - No
 - Options - Values of `on` or `off` 
@@ -157,6 +167,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 ```
 
 [`log_disconnections`](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-DISCONNECTIONS){: .external}
+
 - Default - `off`
 - Restarts database - No
 - Options - Values of `on` or `off` 
@@ -166,21 +177,25 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 2021-03-01 10:27:56 UTC [test-app] [00000] [708]: [3-1] user=admin,db=ibmclouddb,client=127.0.0.1 LOG:  disconnection: session time: 0:00:00.793 user=admin database=ibmclouddb host=127.0.0.1 port=50638
 ```    
 
-[`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config.html){: .external}
+[`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config-logging.html){: .external}
+
 - Default - `100`
 - Restarts database - No
 - Options - Minimum value of 100
 - Notes - Statements that take longer than the specified number of milliseconds are logged.  
 
 [`tcp_keepalives_idle`](https://www.postgresql.org/docs/10/runtime-config-connection.html){: .external}
+
 - Default - `111`
 - Restarts database - No
 
 [`tcp_keepalives_interval`](https://www.postgresql.org/docs/10/runtime-config-connection.html){: .external}
+
 - Default - `15`
 - Restarts database - No 
 
 [`tcp_keepalives_count`](https://www.postgresql.org/docs/10/runtime-config-connection.html){: .external}
+
 - Default - `6`
 - Restarts database - No
 
@@ -188,6 +203,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 {: #wal-settings}
 
 [`archive_timeout`](https://www.postgresql.org/docs/current/runtime-config-wal.html){: .external}
+
 - Default - `1800`
 - Restarts database - No
 - Options - Minimum value of 300
@@ -196,16 +212,19 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 The next three settings `wal_level`, `max_replication_slots` and `max_wal_senders` enable use of the [`wal2json` logical decoding plug-in](/docs/databases-for-postgresql?topic=databases-for-postgresql-wal2json). If you aren't using this plug-in, leave these settings at the default.
 
 [`wal_level`](https://www.postgresql.org/docs/current/runtime-config-wal.html){: .external}
-- Default - `hot_standby`
+
+- Default - `replica`
 - Restarts database - **YES**
-- Notes - Controls WAL level. Allowed values are `hot_standby` or `logical`. Set to logical to use logical decoding. If you are not using logical decoding, using `logical` increases the WAL size, which has several disadvantages and no real advantage. If you check your configuration using `SHOW wal_level;` in `psql`. As of version 9.6 the value `hot_standby` is mapped to `replica`.
+- Notes - Controls WAL level. Allowed values are `replica` or `logical`. Set to `logical` to use logical decoding. If you are not using logical decoding, using `logical` increases the WAL size, which has several disadvantages and no real advantage.
 
 [`max_replication_slots`](https://www.postgresql.org/docs/current/runtime-config-replication.html){: .external}
+
 - Default - `10`
 - Restarts database - **YES**
 - Notes - The maximum number of simultaneously defined replication slots. The default and minimum number of slots is 10. Twenty slots are reserved for internal use by your deployment for High-Availability (HA) purposes. To use slots, you need to set the value above 20 and have one slot per consumer. Add one extra slot over the minimum per expected consumer. Using `wal2json` and not increasing `max_replication_slots` can impact HA and read-only replicas. If you are not using `wal2json`, leave this setting at the default.
 
 [`max_wal_senders`](https://www.postgresql.org/docs/current/runtime-config-replication.html){: .external}
+
 - Default - `12`
 - Restarts database - **YES**
 - Notes - The maximum number of simultaneously running WAL sender processes. The default, and minimum, is 12. One `wal_sender` per consumer is required. Twenty slots are reserved for internal use by your deployment for High-Availability (HA) purposes. You need to set the value above 20 and it is recommended to add one more `wal_sender` over the minimum per expected consumer. Using `wal2json` and not increasing `max_wal_senders` can impact HA and read-only replicas. If you are not using `wal2json`, leave this setting at the default.
