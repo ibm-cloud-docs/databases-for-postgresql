@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-16"
+lastupdated: "2024-09-27"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 27 September 2024
+{: #databases-for-postgresql-27sept2024}
+{: release-note}
+
+{{site.data.keyword.databases-for-postgresql_full}} version 13 End of life on October 22, 2025
+:  Action required before October 22, 2025, for your PostgreSQL v13 deployments. After October 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 13 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql_full}}.
+Upgrade your database instances by following the procedure at [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 16 September 2024
 {: #databases-for-postgresql-16sept2024}
