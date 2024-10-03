@@ -34,7 +34,7 @@ pg_dump -h sl-eu-lon-2-portal.4.dblayer.com -p 17980 -d compose -U admin -f dump
 ```
 {: pre}
 
-The `pg_dump` command has many options and it is recommended that you [consult the official documentation](https://www.postgresql.org/docs/9.6/static/backup-dump.html){: .external} and [command reference](https://www.postgresql.org/docs/9.6/static/app-pgdump.html){: .external} for a fuller view of its capabilities.
+The `pg_dump` command has many options and it is recommended that you [consult the official documentation](https://www.postgresql.org/docs/current/backup-dump.html){: .external} and [command reference](https://www.postgresql.org/docs/current/app-pgdump.html){: .external} for a fuller view of its capabilities.
 
 ## Restoring pg_dump's output
 {: #restore-pg_dump-output}
@@ -68,4 +68,3 @@ For users with a TAR file containing sql and data separately, the command `pg_re
  PGPASSWORD=yourpasswordhere PGSSLROOTCERT=cert.crt pg_restore -h c7798cf6-e5d2-4513-b17f-3d3fa67d8291.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud -p 32484 -U admin -F t -d ibmclouddb tarfile.tar
  ```
  {: .pre}
-

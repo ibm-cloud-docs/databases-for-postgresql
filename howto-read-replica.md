@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-09-20"
+  years: 2019, 2023
+lastupdated: "2023-06-09"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -25,9 +25,9 @@ A high-availability {{site.data.keyword.databases-for-postgresql}} read-only rep
 ## The leader
 {: #read-only-replicas-leader}
 
-On the _Read Replicas_ tab of a {{site.data.keyword.databases-for-postgresql}} deployment before any read-only replicas are provisioned, the center pane notes that no read replicas exist and provides a **Create** button.
+On the _Read-only replicas_ tab of a {{site.data.keyword.databases-for-postgresql}} deployment before any read-only replicas are provisioned, the center pane notes that no read replicas exist and provides a **Create** button.
 
-If a deployment is a leader and has a read-only replica that is already attached to it, then the _Replication_ pane has a list of replica deployments and a link to each one. Click the cog to the right of the read-only replica's deployment name to manage it.
+If a deployment is a leader and has a read-only replica that is already attached to it, then the _Replication_ pane has a list of replica deployments and a link to each one. Click the cog icon to the right of the read-only replica's deployment name to manage it.
 
 ## Provisioning a read-only replica
 {: #read-only-replicas-provision}
@@ -41,14 +41,14 @@ Resources for PostgreSQL deployments are allocated per-deployment, and normal de
 
 Provision a read-only replica from the leader's _Read replicas_ tab by clicking **Create read-only replica**. The source instance is automatically completed. The read-only replica's name is auto-generated in the _Service name_ field, but you can rename it freely. You can choose the region to deploy it in, and its initial memory allocation. Disk size, version, and public or private endpoints are automatically configured to match the settings of the leader deployment.
 
-If you use [Key Protect](/docs/databases-for-postgresql?topic=cloud-databases-key-protect), Bring Your Own Key (BYOK) is supported only when provisioning from the CLI and API. Otherwise, the read-only replica is encrypted with a generated key.
+If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), Bring Your Own Key (BYOK) is supported only when provisioning from the CLI and API. Otherwise, the read-only replica is encrypted with a generated key.
 {: .tip}
 
 ### Provisioning through the CLI
 {: #read-only-replicas-leader-cli}
 {: cli}
 
-Provisioning a read-only replica through the CLI and the API works similarly to [provisioning a standard {{site.data.keyword.databases-for-postgresql}} deployment](/docs/databases-for-postgresql?topic=cloud-databases-provisioning). Provisioning is handled by the Resource Controller, and it uses a parameter `{"remote_leader_id": "crn:v1:..."}` to specify the leader of the replica you are provisioning.
+Provisioning a read-only replica through the CLI and the API works similarly to [provisioning a standard {{site.data.keyword.databases-for-postgresql}} deployment](/docs/databases-for-postgresql?topic=databases-for-postgresql-provisioning&interface=ui). Provisioning is handled by the Resource Controller, and it uses a parameter `{"remote_leader_id": "crn:v1:..."}` to specify the leader of the replica you are provisioning.
 
 
 To provision a read-only replica through the CLI, use a command like:
@@ -67,6 +67,7 @@ You must specify both the RAM and disk amounts, keeping in mind the minimum size
 
 ### Provisioning through the API
 {: #read-only-replicas-leader-api}
+{: api}
 
 Provisioning a read-only replica through the API works similarly to [provisioning a standard {{site.data.keyword.databases-for-postgresql}} deployment](/docs/databases-for-postgresql?topic=cloud-databases-provisioning). Provisioning is handled by the Resource Controller, and it uses a parameter `{"remote_leader_id": "crn:v1:..."}` to specify the leader of the replica you are provisioning.
 
