@@ -19,7 +19,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} supports [logical replication](https://www.postgresql.org/docs/current/logical-replication.html){: .external} from an external PostgreSQL instance to your deployment. You can set up your external PostgreSQL as a publisher, your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber, and replicate your data across from an external database into your deployment.
 
-Logical Replication is only available on deployments running PostgreSQL 10 or above. Links to the PostgreSQL documentation direct you to the current version of PostgreSQL. If you need find documentation for a specific version, you can find links to specific PostgreSQL versions on the PostgrerSQL documentation page.
+Logical Replication is only available on deployments running PostgreSQL 10 or above. Links to the PostgreSQL documentation direct you to the current version of PostgreSQL. If you need documentation for a specific version, you can find links to different PostgreSQL versions on the PostgreSQL documentation page.
 {: .tip}
 
 ## Configuring the publisher
@@ -151,7 +151,7 @@ To configure your external PostgreSQL as a publisher, perform the following step
 
     The "replicator" field is the user that you set up with the [PostgreSQL privilege `REPLICATION`](https://www.postgresql.org/docs/current/sql-createrole.html#replication){: .external}.
 
-2. Edit your local `postgresql.conf` with the required [logical replication configuration](https://www.postgresql.org/docs/current/logical-replication-config.html){: .external}. Set `wal_level` to 'logical', and set `listen_addresses='*'` to accept connections from any host.
+2. Edit your local `postgresql.conf` with the required [logical replication configuration](https://www.postgresql.org/docs/current/logical-replication-config.html){: .external}. Set `wal_level` to 'logical', and set `listen_addresses='*'` to accept connections from any host.  
 
     ```text
     listen_addresses='*'
@@ -159,24 +159,25 @@ To configure your external PostgreSQL as a publisher, perform the following step
     ```
     {: .codeblock}
 
-3. Restart your PostgreSQL server. 
-    Now you can define a publisher on the database and add the tables that you want to replicate to the subscriber.
+3. Restart your PostgreSQL server.
 
-4. Log in to database you want to publish from with your replication user.
+Now you can define a publisher on the database and add the tables that you want to replicate to the subscriber.
+
+1. Log in to database you want to publish from with your replication user.
 
     ```sh
     psql -U replicator -d exampledb
     ```
     {: pre}
 
-5. Create the publication channel.
+2. Create the publication channel.
 
     ```sh
     exampledb=> CREATE PUBLICATION my_publication;
     ```
     {: pre}
 
-6. Add tables to publisher.
+3. Add tables to publisher.
 
     ```sh
     exampledb=> ALTER PUBLICATION my_publication ADD TABLE my_table;
@@ -196,8 +197,8 @@ To configure your {{site.data.keyword.databases-for-postgresql}} deployment as a
     psql -U admin -d exampledb
     ```
     {: pre}
-
-2. Run the following query to call the `create_subscription` function and create the subscriber channel.
+    
+2. Run the following query to call the `create_subscription` function and create the subscriber channel. 
 
     ```sh
     exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','admin','password','exampledb','my_publication');
