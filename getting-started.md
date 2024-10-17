@@ -140,7 +140,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-   {: caption="Table 1. Basic command format fields" caption-side="top"}
+   {: caption="Basic command format fields" caption-side="top"}
 
    You see a response like:
 

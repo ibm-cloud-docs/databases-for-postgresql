@@ -35,7 +35,7 @@ All the information a driver needs to make a connection to your deployment is in
 | `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path |
 | `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
-{: caption="Table 1. postgres/URI connection information" caption-side="bottom"}
+{: caption="postgres/URI connection information" caption-side="bottom"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
@@ -194,7 +194,7 @@ For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ]
 3. Save the certificate to a file. (You can use the name that is provided or your own file name).
 4. Provide the path to the certificate to the driver or client.
 
-![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="Figure 1. The CLI plug-in information tab" caption-side="bottom"}
+![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="The CLI plug-in information tab" caption-side="bottom"}
 
 ### CLI plug-in support for the self-signed certificate
 {: #cli-support}
@@ -214,4 +214,4 @@ PostgreSQL has a vast array of language drivers. The table covers a few of the m
 | C# | `ODBC` | [Link](https://wiki.postgresql.org/wiki/Using_Microsoft_.NET_with_the_PostgreSQL_Database_Server_via_ODBC){: .external} |
 | Go | `pq` | [Link](https://godoc.org/github.com/lib/pq){: .external} |
 | Node | `node-postgres` | [Link](https://node-postgres.com/){: .external} |
-{: caption="Table 2. PostgreSQL drivers" caption-side="bottom"}
+{: caption="PostgreSQL drivers" caption-side="bottom"}
