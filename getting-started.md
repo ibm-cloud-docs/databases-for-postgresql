@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2023
-lastupdated: "2023-12-12"
+  years: 2018, 2024
+lastupdated: "2024-10-21"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -86,13 +86,13 @@ Follow these steps to complete the tutorial: {: terraform}
 1. Log in to the {{site.data.keyword.cloud_notm}} console.
 1. Click the [**{{site.data.keyword.databases-for-postgresql}} service**](https://cloud.ibm.com/databases/databases-for-postgresql/create){: external} in the **catalog**.
 
-1. In **Service Details**, configure the following:
+1. In **Service details**, configure the following:
     - **Service name** - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
-    - **The Resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
+    - **Resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
     - **Location** - The deployment's public cloud region or Satellite location.
 1. **Resource allocation** - Specify the initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores that you specify. *Once provisioned, disk cannot be scaled down.*
-1. In **Service Configuration**, configure the following:
-    - **Database Version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+1. In **Service configuration**, configure the following:
+    - **Database version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
     - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
     - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
@@ -436,7 +436,7 @@ pgAdmin runs as a server and you connect to it through a browser. When the serve
 
 When you first open pgAdmin, you get a prompt for setting a primary password. This password is different from your instance's password as it is used specifically for pgAdmin to store passwords to your PostgreSQL servers or PostgreSQL instance.
 
-The *Dashboard* panel has a *Welcome* screen. From the *Quick Links*, click *Add New Server*.
+The *Dashboard* panel has a *Welcome* screen. From the *Quick links*, click *Add new server*.
 
 On your instance's *Overview* page, there is an *Endpoints* panel with all the relevant connection information.
 
@@ -520,7 +520,6 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 {: note}
 
-
 ## Step 6: Connect {{site.data.keyword.at_full}}
 {: #activity_tracker_ui}
 {: ui}
@@ -580,29 +579,31 @@ To get up and running with {{site.data.keyword.at_short}}, see [Getting Started 
 
 {{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
 
-For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity Tracker integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
 {: note}
 
-## Next Steps
+## Next steps
 {: #next-steps}
 
-If you are using PostgreSQL for the first time, see the [official PostgreSQL documentation](https://www.postgresql.org/docs/){: .external}.
+- If you are using {{site.data.keyword.databases-for-postgresql}} for the first time, see the [official {{site.data.keyword.databases-for-postgresql}} documentation](https://www.postgresql.org/docs/){: external}.
+- Secure your deployment by adding [context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
+- Connect your deployment to [IBM Cloud Log Analysis](/docs/cloud-databases?topic=cloud-databases-logging&interface=ui) and [IBM Cloud Monitoring](/docs/cloud-databases?topic=cloud-databases-monitoring&interface=ui) for observability and alerting.
 
-Connect to and manage your databases and data with PostgreSQL's CLI tool [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+- Connect to and manage your databases and data with {{site.data.keyword.databases-for-postgresql}}'s CLI tool [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
-Looking for more tools on managing your instance? Connect to your instance with:
-- the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli){: external}
-- the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}
-- the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}
+- Looking for more tools on managing your databases? Connect to your instance with the following tools:
+    - [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli){: external}
+    - [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}
+    - [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}
 
-If you plan to use {{site.data.keyword.databases-for-postgresql}} for your applications, see:
-- [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app){: external}
-- [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app){: external}
+- If you plan to use {{site.data.keyword.databases-for-postgresql}} for your applications, see:
+    - [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app){: external}
+    - [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app){: external}
 
-To ensure the stability of your applications and your databases, see:
-- [High-Availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}
-- [Performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance){: external}
+- To ensure the stability of your applications and your databases, see:
+    - [High-availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}
+    - [Performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance){: external}
