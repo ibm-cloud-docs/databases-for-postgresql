@@ -56,19 +56,19 @@
     "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
     },
   "section_updates": {
-    "view_more": "/docs/databases-for-redis?topic=databases-for-redis-redis-relnotes",
+    "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
     "tiles": [
+      {
+        "date": "22 October 2024",
+        "title": "Databases for PostgreSQL end-of-life procedure change"
+      },
+      {
+        "date": "27 September 2024",
+        "title": "Databases for PostgreSQL version 13 End of life on October 22, 2025"
+      },
       {
         "date": "16 September 2024",
         "title": "Private endpoints as new default"
-      },
-      {
-        "date": "11 June 2024",
-        "title": "New `maxmemory`policies"
-      },
-      {
-        "date": "21 May 2024",
-        "title": "New guidance information about best practices and how to avoid common errors"
       },
       {
         "date": "1 May 2024",
