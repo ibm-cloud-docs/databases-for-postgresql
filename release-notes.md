@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-27"
+lastupdated: "2024-10-24"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 22 October 2024
+{: #databases-for-postgresql-22oct2024}
+{: release-note}
+
+{{site.data.keyword.databases-for-postgresql}} end-of-life procedure change
+:  Action is required for your {{site.data.keyword.databases-for-postgresql}} version 12 deployments before January 22, 2025. After this date, all {{site.data.keyword.databases-for-postgresql}} instances on version 12 that are still active will be upgraded in-place to the next major version, version 13. 
+We recommend that you complete the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 27 September 2024
 {: #databases-for-postgresql-27sept2024}

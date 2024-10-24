@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-09-18"
+lastupdated: "2024-10-24"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -160,6 +160,21 @@ ibmcloud cdb deployment-groups-set example-deployment member --memory 8192
 ```
 {: pre}
 
+## Determine the hosting model of your database
+{: #resources-hosting-determine}
+{: cli}
+
+Use the following command to review the value of the `host_flavor` attribute. This will be null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
+
+```sh
+ibmcloud cdb groups <INSTANCE_NAME_OR_CRN> --json
+```
+{: pre}
+
+## Switching to and between Hosting Models in the CLI
+{: #resources-switching-cli}
+{: cli}
+
 If your database is a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) instance, you can adjust the memory, CPU, and disk options with the following command. This can also be used to move a database from a different hosting model to the Shared Compute hosting model.
 
 ```sh
@@ -207,15 +222,7 @@ The `hostflavor` parameter defines your compute sizing. To provision a Shared Co
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Host flavor sizing parameter" caption-side="bottom"}
 
-## Determine the hosting model of your database
-{: #resources-hosting-determine}
 
-Use the following command to review the value of the `host_flavor` attribute. This will be null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
-
-```sh
-ibmcloud cdb groups <INSTANCE_NAME_OR_CRN> --json
-```
-{: pre}
 
 ## Review current resources and hosting model
 {: #review-resources-api}
