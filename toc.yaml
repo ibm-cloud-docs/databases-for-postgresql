@@ -166,8 +166,8 @@ toc:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
       - include: ../cloud-databases/reference-responsibilities.md
-      - topic: Data portability
-        navtitle: data-portability.md
+      - topic: data-portability.md
+        navtitle: Data portability
   - navgroup:
       id: help
       topics:
