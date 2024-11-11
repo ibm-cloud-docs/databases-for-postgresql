@@ -431,7 +431,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
         "resource_plan_id": "databases-for-postgresql-standard"
         "parameters": {
           "members_host_flavor": "multitenant",
-          "service_endpoints":"private"
+          "service_endpoints": "private"
           "memory": {
             "allocation_mb": 16384
           },
@@ -457,7 +457,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
        "resource_plan_id": "databases-for-postgresql-standard"
        "parameters": {
           "member_host_flavor": "b3c.4x16.encrypted",
-          "service_endpoints":"private"
+          "service_endpoints": "private"
         }
       }'
     ```
