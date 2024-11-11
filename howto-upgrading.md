@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-04-23"
+lastupdated: "2024-11-11"
 
 keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -21,7 +21,7 @@ Find the available versions of {{site.data.keyword.databases-for-postgresql}} in
 When you upgrade to a new instance, you also need to change the connection information in your application.
 {: note}
 
-## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v12 or earlier
+## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v12 
 {: #upgrading-reqs}
 
 If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
@@ -53,6 +53,7 @@ SELECT * FROM update_to_postgis_33();
 Upgrade by [configuring a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas). Provision a read-only replica with the same database version as your deployment and wait while it replicates all of your data. When your deployment and its replica are synced, promote and upgrade the read-only replica to a full, stand-alone deployment running the new version of the database. To perform the upgrade and promotion step, use a POST request to the [`/deployments/{id}/remotes/promotion`](/apidocs/cloud-databases-api/cloud-databases-api-v5#promotereadonlyreplica) endpoint with the version that you want to upgrade to in the body of the request. 
 
 This request looks like:
+
 ```sh
 curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/remotes/promotion \
@@ -85,6 +86,7 @@ Upgrade to a new version when [restoring a backup](/docs/cloud-databases?topic=c
 {: cli}
 
 To upgrade and restore from a backup through the {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
+
 ```sh
 ibmcloud resource service-instance-create <DEPLOYMENT_NAME_OR_CRN> <SERVICE_ID> <SERVICE_PLAN_ID> <REGION>
 ```
@@ -93,6 +95,7 @@ ibmcloud resource service-instance-create <DEPLOYMENT_NAME_OR_CRN> <SERVICE_ID> 
 The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are all required. You also supply the `-p` with the version and backup ID parameters in a JSON object. The new deployment is automatically sized with the same disk and memory as the source deployment at the time of the backup.
 
 This command looks like:
+
 ```sh
 ibmcloud resource service-instance-create example-upgrade databases-for-postgresql standard us-south \
 -p \ '{
@@ -109,6 +112,7 @@ ibmcloud resource service-instance-create example-upgrade databases-for-postgres
 Complete the necessary steps to use the [Resource controller API](/docs/databases-for-postgresql?topic=databases-for-postgresql-provisioning&interface=api#provision-controller-api) before you use it to upgrade from a backup. Then, send the API a `POST` request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup. 
 
 This command looks like:
+
 ```sh
 curl -X POST \
   https://resource-controller.cloud.ibm.com/v2/resource_instances \
@@ -133,6 +137,7 @@ To evaluate the effects of major version upgrades, trigger a dry run. A dry run 
 The dry run must be run with `skip_initial_backup` set to `false`, and `version` defined.
 
 The command looks like:
+
 ```sh
 curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/remotes/promotion \
@@ -148,12 +153,28 @@ curl -X POST \
 ```
 {: pre}
 
+## Forced upgrade
+{: #forced_upgrade}
+
+After the end-of-life date, all active {{site.data.keyword.databases-for-postgresql}} deployments on the deprecated version will be forcibly upgraded to the next supported version. For example, PostgreSQL Version 12 (deprecated) upgraes to Version 13.
+{: .note}
+
+**Upgrade before the end-of-life date to avoid the following risks:**
+
+- No SLAs are provided for this type of forced upgrade.
+- You may experience some data loss.
+- Your application may experience downtime.
+- Your application may stop working if it has any incompatibilities with the new version.
+- You cannot control the timing of when this upgrade will happen for your deployment.
+- There is no rollback process for this forced upgrade.
+
+For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy ){: external}.
+
 ## Changelog for major PostgreSQL versions
 {: #changelog-postgres}
 
-- [PostgreSQL 10](https://www.postgresql.org/docs/10/release-10.html){: external}
-- [PostgreSQL 11](https://www.postgresql.org/docs/11/release-11.html){: external}
 - [PostgreSQL 12](https://www.postgresql.org/docs/current/release-12.html){: external}
 - [PostgreSQL 13](https://www.postgresql.org/docs/13/release-13.html){: external}
 - [PostgreSQL 14](https://www.postgresql.org/docs/14/release-14.html){: external}
 - [PostgreSQL 15](https://www.postgresql.org/docs/release/15.0/){: external}
+- [PostgreSQL 16](https://www.postgresql.org/docs/release/16.0/){: external}
