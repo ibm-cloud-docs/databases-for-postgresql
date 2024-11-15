@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-02-22"
+lastupdated: "2024-11-15"
 
 keywords: deployment, crn, task, gui, api endpoint, postgresql dashboard
 
@@ -20,7 +20,6 @@ subcollection: databases-for-postgresql
 
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql_full}} deployment. The overview includes essential identifying information.
 
-
 The _Overview_ page shows you information about your {{site.data.keyword.databases-for-postgresql_full}} deployment. The overview includes essential identifying information.
 
 ### Type
@@ -36,7 +35,7 @@ The ID is a [CRN (Cloud Resource Name)](/docs/account?topic=account-crn){: exter
 ### Recent tasks
 {: #recent-tasks}
 
-Each time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recently completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24 - 48 hours. Unsuccessful tasks can show for 7 - 8 days. Tasks can also be retrieved from the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks){: external} and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.at_full}} integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
+Each time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recently completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24 - 48 hours. Unsuccessful tasks can show for 7 - 8 days. Tasks can also be retrieved from the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks){: external} and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through [{{site.data.keyword.atracker_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events).
 
 ### Endpoints
 {: #endpoints}
@@ -70,18 +69,20 @@ The _Backups and restore_ tab is the UI for managing your instance's backups. Av
 {: #observability-tab}
 
 The _Observability_ tab provides access to the IBM Cloud Monitoring, logging, and event tracking integrations available for your deployment.
-- [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker)
-- [{{site.data.keyword.la_full}}](/docs/cloud-databases?topic=cloud-databases-logging)
-- [{{site.data.keyword.monitoringfull}}](/docs/cloud-databases?topic=cloud-databases-monitoring)
+
+- [{{site.data.keyword.atracker_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events)
+- [{{site.data.keyword.logs_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging)
+- [{{site.data.keyword.monitoringfull}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring)
 
 ## Settings
 {: #settings-tab}
 
-The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can
-- view encryption details. Encryption at rest is enabled for all {{site.data.keyword.databases-for-postgresql}} deployments. If you brought your own encryption key from [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect), _Settings_ provides a link to your Key Protect instance, and the _Encryption Key_ field has the name of the key.
-- [Change the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui)
-- [Protecting Cloud Databases with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui)
-- [Implement or modify an IP allowlist](/docs/cloud-databases?topic=cloud-databases-allowlisting)
+The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can:
+
+- View encryption details. Encryption at rest is enabled for all {{site.data.keyword.databases-for-postgresql}} deployments. If you brought your own encryption key from [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect), _Settings_ provides a link to your Key Protect instance, and the _Encryption Key_ field has the name of the key.
+- [Change the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui).
+- [Protect Cloud Databases with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
+- [Implement or modify an IP allowlist](/docs/cloud-databases?topic=cloud-databases-allowlisting).
 
 ## Service credentials
 {: #service-cred-tab}

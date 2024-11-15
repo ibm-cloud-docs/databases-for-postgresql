@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-10-24"
+lastupdated: "2024-11-15"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -81,7 +81,7 @@ The amount of memory allocated to the database's shared buffer pool is **not** a
 
 If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database. 
 
-Old style dedicated core instances are deprecated, and will be removed in May 2025. Learn more about the new hosting models [here]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models)). 
+Old style dedicated core instances are deprecated, and will be removed in May 2025. For more information about the new hosting models, see the [Hosting models overview](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models). 
 
 ## Scaling considerations
 {: #resources-scaling-consider}
@@ -89,9 +89,9 @@ Old style dedicated core instances are deprecated, and will be removed in May 20
 - Scaling up might cause your deployment to restart. If your deployment needs to be moved to a host with more capacity, the deployment is restarted as part of the move.
 - Scaling down RAM or CPU does not trigger restarts.
 - Disk cannot be scaled down.
-- Scaling between hosting models (Shared Compute, Isolated Compute, and Dedicated Cores) moves your deployment to new hosts. Your databases are restarted as part of that move. As your deployment is moved to a new host, this can also take longer than just adding more resources. For more information, see [Shared compute and Isolated compute](/docs/cloud-databases?topic=cloud-databases-hosting-models).
+- Scaling between hosting models (Shared Compute, Isolated Compute, and Dedicated Cores) moves your deployment to new hosts. Your databases are restarted as part of that move. As your deployment is moved to a new host, this can also take longer than just adding more resources. For more information, see [Shared compute and Isolated compute](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models).
 - Similarly, drastically scaling up CPU, RAM, or disk can take longer to run than small resource increases to account for provisioning more underlying hardware resources.
-- Scaling operations are logged in [{{site.data.keyword.at_full}}](/docs/cloud-databases?topic=cloud-databases-activity-tracker).
+- Scaling operations are logged in [{{site.data.keyword.atracker_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events).
 - If you find consistent trends in resource usage or want to scale when certain resource thresholds are reached, enable [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling) on your deployment.
 - {{site.data.keyword.databases-for-postgresql}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling).
 
@@ -99,7 +99,7 @@ Old style dedicated core instances are deprecated, and will be removed in May 20
 {: #resources-scaling-ui}
 {: ui}
 
-For new [hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models), scaling is currently available through the CLI, API, and Terraform.
+For new [hosting models](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models), scaling is currently available through the CLI, API, and Terraform.
 {: note}
 
 A visual representation of your data members and their resource allocation is available on the _Resources_ tab from the left-hand navigation panel.
@@ -114,7 +114,7 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command.
 
-For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command will also reveal if your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
+For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command will also reveal if your database is a [Shared Compute]([/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-shared-compute-ui)) or [Isolated Compute](/doc/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
 
 `ibmcloud cdb deployment-groups example-deployment`
 
