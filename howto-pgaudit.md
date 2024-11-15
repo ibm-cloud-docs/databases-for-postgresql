@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-07-06"
+  years: 2020, 2024
+lastupdated: "2024-11-15"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -10,11 +10,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
 {{site.data.keyword.attribute-definition-list}}
 
 # Logging with pgAudit
@@ -30,14 +25,15 @@ Session logging is off by default. You can enable Session logging parameters tha
 ## Event types
 {: #event-types}
 
-Session logging is configured per event type. The supported event types across all versions are:  
+Session logging is configured per event type. The supported event types across all versions are:
+
 * FUNCTION 
 * ROLE
 * DDL
 * MISC
 * MISC_SET (this additional type is only supported in PostgreSQL 12 or greater)
 
-Further details of these event types and what they log are [documented here](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog){: .external}.
+For more information, see [pgaudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog){: .external}.
 
 
 ## Enabling pgAudit session logging
@@ -46,6 +42,7 @@ Further details of these event types and what they log are [documented here](htt
 To enable pgAudit session logging, connect as the admin user and call the `set_pgaudit_session_logging` function with the appropriate event parameters specified. Session logging is enabled directly in the database and no API or CLI access is provided. 
 
 For example, to enable DDL and ROLE you would call:
+
 ```sh
 SELECT public.set_pgaudit_session_logging('{ddl, role}');
 ```
@@ -58,6 +55,7 @@ Any subsequent calls replace the existing configuration; they are not additive. 
 {: #disable-pgaudit}
 
 To disable audit logging: call the same function with `none` specified. For example:
+
 ```sh
 SELECT public.set_pgaudit_session_logging('{none}');
 ```
@@ -69,13 +67,16 @@ Changing audit levels happens immediately when calling the function without inte
 ## Audit logs
 {: #pgaudit-logs}
 
-Audit events appear in {{site.data.keyword.la_full}} with the following format:
+Audit events appear in {{site.data.keyword.logs_full}} with the following format:
+
 ```sh
 LOG: AUDIT: SESSION,1,1,DDL,CREATE TABLE,,,create table f2 (id int);,<not logged>
 ```
+
 The format is documented [here](https://github.com/pgaudit/pgaudit/blob/master/README.md#format){: .external}. 
 
-If you want to see the current log level, you can run the command:  
+If you want to see the current log level, you can run the command:
+
 ```sh
 show pgaudit.log;
 ```
