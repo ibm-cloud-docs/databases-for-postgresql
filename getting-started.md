@@ -506,7 +506,7 @@ You can use {{site.data.keyword.mon_full_notm}} to get operational visibility in
 
 For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [MonitoringiIntegration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
+You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 {: note}
 
 ## Step 5: Connect {{site.data.keyword.mon_full_notm}} through Terraform
