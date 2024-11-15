@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-10-21"
+lastupdated: "2024-11-15"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -33,7 +33,7 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_ui)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_ui)
+* [Step 6: Connect {{site.data.keyword.atracker_full}}](#activity_tracker_ui)
 * [Next Steps](#next_steps)
 {: ui}
 
@@ -45,7 +45,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_cli)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_cli)
+* [Step 6: Connect {{site.data.keyword.atracker_full}}}](#activity_tracker_cli)
 * [Next Steps](#next_steps)
 {: cli}
 
@@ -69,7 +69,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
-* [Step 6: Connect {{site.data.keyword.at_full}}](#activity_tracker_tf)
+* [Step 6: Connect {{site.data.keyword.atracker_full}}](#activity_tracker_tf)
 * [Next Steps](#next_steps)
 {: terraform}
 
@@ -484,7 +484,7 @@ To set up context-based restrictions for your {{site.data.keyword.databases-for-
 
 You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
 
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 
 
 ## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the CLI
@@ -493,9 +493,9 @@ For more information about how to use {{site.data.keyword.monitoringshort}} with
 
 You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
 
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 {: note}
 
 ## Step 5: Connect {{site.data.keyword.mon_full_notm}} through the API
@@ -504,9 +504,9 @@ You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the
 
 You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
 
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [MonitoringiIntegration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 {: note}
 
 ## Step 5: Connect {{site.data.keyword.mon_full_notm}} through Terraform
@@ -515,24 +515,24 @@ You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the
 
 You can use {{site.data.keyword.mon_full_notm}} to get operational visibility into the performance and health of your applications, services, and platforms. {{site.data.keyword.mon_full_notm}} provides administrators, DevOps teams, and developers full stack telemetry with advanced features to monitor and troubleshoot, define alerts, and design custom dashboards.
 
-For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+For more information about how to use {{site.data.keyword.monitoringshort}} with {{site.data.keyword.databases-for-postgresql}}, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 
-You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
+You cannot connect {{site.data.keyword.mon_full_notm}} by using the CLI. Use the console to complete this task. For more information, see [Monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring).
 {: note}
 
-## Step 6: Connect {{site.data.keyword.at_full}}
+## Step 6: Connect {{site.data.keyword.atracker_full_notm}}
 {: #activity_tracker_ui}
 {: ui}
 
-{{site.data.keyword.at_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.at_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.at_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-postgresql}} service.
+{{site.data.keyword.atracker_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.atracker_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.atracker_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-postgresql}} service.
 
-To get up and running with {{site.data.keyword.at_short}}, see [Getting Started with {{site.data.keyword.at_short}}](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_objectives){: external}.
+To get up and running with {{site.data.keyword.atracker_short}}, see [Getting started with {{site.data.keyword.atracker_short}}](/docs/atracker?topic=atracker-getting-started){: external}.
 
-{{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
+{{site.data.keyword.atracker_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.atracker_short}} service in the same location where your service instance is available.
 
-For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events){: external}.
 
-Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
+Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/atracker?topic=atracker-event){: external}.
 
 
 ## Step 6: Connect {{site.data.keyword.at_full}} through the CLI
