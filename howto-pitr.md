@@ -17,12 +17,8 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} offers Point-in-time recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need. 
 
-For new hosting models, PITR is currently available through the CLI, API, and Terraform.
-{: note}
 
-The _Backups and restore_ tab of your deployment's UI keeps all your PITR information under _Point-in-time_.
-
-![PITR section of the Backups and restore tab](images/pitr-backups-tab.svg){: caption="PITR section of the Backups tab" caption-side="bottom"}
+The _Backups and restore_ tab of your deployment's UI keeps all your PITR information under _Point-in-time recovery_.
 
 In PostgreSQL versions 13 and later, when restoring to a specific point within the last seven days, with a restore time after the last transaction, your restore fails with the message `recovery ended before configured recovery target is reached`. Before PostgreSQL v13, when restoring to a specific point within the last seven days, with a restore time after the last transaction, the latest restore point is used. If your restore fails for this reason, then `Restore to last available point` or choose an earlier date/time for `Restore to a specific point in the last 7 days`.
 {: note}
@@ -62,8 +58,6 @@ It is important that you do not delete the source deployment while the backup is
 {: ui}
 
 To initiate a PITR, enter the time that you want to restore back to in Coordinated Universal Time. If you want to restore to the most recent available time, select that option. Clicking the **Restore** button brings up the new provisioning UI in a tab with the options for your recovery. Enter the service details, allocate resources, and set the database version, encryption and endpoint for your new deployment. Click **Point in time recovery** to start the process.
-
-![Recovery options dialog](images/pitr-dialog.png){: caption="Recovery Options Dialog" caption-side="bottom"}
 
 If you use Key Protect and have a key, you must use the CLI to recover, and a command is provided for your convenience.
 
