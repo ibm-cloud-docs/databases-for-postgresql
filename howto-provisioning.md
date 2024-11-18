@@ -406,12 +406,13 @@ Follow these steps to provision by using the [Resource Controller API](https://c
       -H 'Content-Type: application/json' \
         -d '{
         "name": "<INSTANCE_NAME_OR_CRN",
-        "location": "<LOCATION>",
+        "target": "<LOCATION>",
         "resource_group": "RESOURCE_GROUP_ID",
         "resource_plan_id": "<SERVICE_PLAN_NAME>"
         "parameters": {
             "members_host_flavor": "<members_host_flavor_value>",
-            "service_endpoints": "<ENDPOINT>"
+            "service_endpoints": "<ENDPOINT>",
+            "version": "<version>"
         }
       }'
     ```
@@ -426,18 +427,14 @@ Follow these steps to provision by using the [Resource Controller API](https://c
       -H 'Content-Type: application/json' \
         -d '{
         "name": "my-instance",
-        "location": "us-south",
+        "target": "us-south",
         "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
         "resource_plan_id": "databases-for-postgresql-standard"
         "parameters": {
           "members_host_flavor": "multitenant",
-          "service_endpoints": "private"
-          "memory": {
-            "allocation_mb": 16384
-          },
-          "cpu": {
-            "allocation_count": 4
-          }
+          "service_endpoints":"private",
+          "members_memory_allocation_mb": 16384, 
+          "members_cpu_allocation_count": 4
         }
       }'
     ```
@@ -452,7 +449,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
       -H 'Content-Type: application/json' \
         -d '{
        "name": "my-instance",
-       "location": "us-south",
+       "target": "us-south",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
        "resource_plan_id": "databases-for-postgresql-standard"
        "parameters": {
@@ -471,7 +468,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
     | Field | Description | Flag |
     |-------|------------|------------|
     | `name` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
-    | `location` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
+    | `target` [Required]{: tag-red} | The region where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
     | `resource_group` | The Resource group name. The default value is `default`. | -g |
     | `resource_plan_id` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql-standard`. |  |
     | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
