@@ -53,6 +53,7 @@ toc:
           - howto-resources-scaling.md
           - howto-autoscaling.md
           - howto-horizontal-scaling.md
+          - howto-managing-connections.md
       - include: ../cloud-databases/howto-manage-backups.md
       - howto-pitr.md
       - howto-migration.md
