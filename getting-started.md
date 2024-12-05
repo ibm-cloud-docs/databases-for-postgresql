@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-11-15"
+lastupdated: "2024-12-05"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -530,7 +530,7 @@ To get up and running with {{site.data.keyword.atracker_short}}, see [Getting st
 
 {{site.data.keyword.atracker_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.atracker_short}} service in the same location where your service instance is available.
 
-For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events){: external}.
+For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events).
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/atracker?topic=atracker-event){: external}.
 
@@ -545,11 +545,11 @@ To get up and running with {{site.data.keyword.at_short}}, see [Getting Started 
 
 {{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
 
-For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} by using the CLI. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the CLI. Use the console to complete this task. For more information, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 {: note}
 
 ## Step 6: Connect {{site.data.keyword.at_full}} through the API
@@ -562,11 +562,11 @@ To get up and running with {{site.data.keyword.at_short}}, see [Getting Started 
 
 {{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
 
-For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker Integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 {: note}
 
 ## Step 6: Connect {{site.data.keyword.at_full}} through Terraform
@@ -579,11 +579,11 @@ To get up and running with {{site.data.keyword.at_short}}, see [Getting Started 
 
 {{site.data.keyword.at_short}} can have only one instance per location. To view events, you must access the web UI of the {{site.data.keyword.at_short}} service in the same location where your service instance is available. For more information, see [Launch the web UI](/docs/activity-tracker?topic=activity-tracker-getting-started#gs_step4){: external}.
 
-For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity Tracker integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+For more information about events specific to {{site.data.keyword.databases-for-postgresql}}, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 
 Events are formatted according to the Cloud Auditing Data Federation (CADF) standard. For further details of the information they include, see [CADF standard](/docs/activity-tracker?topic=activity-tracker-about#cadf_standard){: external}.
 
-You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity Tracker integration](/docs/cloud-databases?topic=cloud-databases-activity-tracker){: external}.
+You cannot connect {{site.data.keyword.at_short}} by using the API. Use the console to complete this task. For more information, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 {: note}
 
 ## Next steps

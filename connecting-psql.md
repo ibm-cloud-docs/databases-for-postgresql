@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-10-26"
+  years: 2017, 2024
+lastupdated: "2024-12-05"
 
 keywords: postgresql, databases, psql, postgresql command line
 
@@ -107,7 +107,7 @@ After that, click **OK** a couple of times to go back to the desktop. Start a ne
 ## `psql` Connection Strings
 {: #psql-connection-strings}
 
-Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
+Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
 The information that you need to make a connection with `psql` is in the "cli" section of your connection strings. The table contains a breakdown for reference.
 

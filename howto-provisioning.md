@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-02"
+lastupdated: "2024-12-05"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -511,7 +511,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 - `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "8192", and there are two database members, then the deployment gets 8 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
 - `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used. This parameter only applies to `multitenant'.
 - `members_cpu_allocation_count` - Enables and allocates the number of specified cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default Shared Compute CPU:RAM ratios will be applied. This parameter only applies to `multitenant'.
-- `remote_leader_id` - A CRN of the leader database to make the replica (read-only) deployment. The leader database is created by an {{site.data.keyword.databases-for-postgresql}} deployment. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment by using asynchronous replication. For more information, see [Configuring read-only replicas](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).
+- `remote_leader_id` - A CRN of the leader database to make the replica (read-only) deployment. The leader database is created by an {{site.data.keyword.databases-for-postgresql}} deployment. A read-only replica is set up to replicate all of your data from the leader deployment to the replica deployment by using asynchronous replication. For more information, see [Configuring read-only replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).
 
 ## Provisioning with Terraform
 {: #provisioning-terraform}

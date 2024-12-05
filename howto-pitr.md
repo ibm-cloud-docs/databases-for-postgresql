@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-10-02"
+lastupdated: "2024-12-05"
 
 keywords: postgresql, databases, point in time recovery, backups, restore, pitr
 
@@ -89,7 +89,7 @@ ibmcloud resource service-instance-create <databases-for-postgresql> <INSTANCE_N
 {: #pitr-api}
 {: api}
 
-The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](apidocs/resource-controller/resource-controller) before you can use it to restore from a backup. 
+The Resource Controller supports provisioning of database deployments, and provisioning and restoring are the responsibility of the Resource Controller API. You need to complete [the necessary steps to use the resource controller API](/apidocs/resource-controller/resource-controller) before you can use it to restore from a backup. 
 
 Once you have all the information, the create request is a `POST` to the [`/resource_instances`](https://{DomainName}/apidocs/resource-controller#create-provision-a-new-resource-instance) endpoint.
 
