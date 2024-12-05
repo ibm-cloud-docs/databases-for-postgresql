@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-11-18"
+lastupdated: "2024-12-05"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -131,7 +131,7 @@ Clicking *Apply changes* triggers this scale operation.
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command.
 
-For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command will also reveal if your database is a [Shared Compute]([/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-shared-compute-ui)) or [Isolated Compute](/doc/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
+For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command will also reveal if your database is a [Shared Compute](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/doc/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
 
 `ibmcloud cdb deployment-groups example-deployment`
 
@@ -403,7 +403,7 @@ output "ICD PostgreSQL database connection string" {
 {: #resources-switching-terraform}
 {: terraform}
 
-Select the [hosting model]([/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be scaled to. You can change this later.
+Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be scaled to. You can change this later.
 
 To scale your {{site.data.keyword.databases-for-postgresql}} instance to the Shared compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`. See the following example:
 
