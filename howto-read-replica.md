@@ -69,7 +69,7 @@ You must specify both the RAM and disk amounts, keeping in mind the minimum size
 {: #read-only-replicas-leader-api}
 {: api}
 
-Provisioning a read-only replica through the API works similarly to [provisioning a standard {{site.data.keyword.databases-for-postgresql}} deployment](/docs/databases-for-postgresql?topic=cloud-databases-provisioning). Provisioning is handled by the Resource Controller, and it uses a parameter `{"remote_leader_id": "crn:v1:..."}` to specify the leader of the replica you are provisioning.
+Provisioning a read-only replica through the API works similarly to [provisioning a standard {{site.data.keyword.databases-for-postgresql}} deployment](/docs/databases-for-postgresql?topic=databases-for-postgresql-provisioning&interface=api). Provisioning is handled by the Resource Controller, and it uses a parameter `{"remote_leader_id": "crn:v1:..."}` to specify the leader of the replica you are provisioning.
 
 To provision a read-only replica through the API, use a command like:
 
