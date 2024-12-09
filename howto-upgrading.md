@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-11-11"
+lastupdated: "2024-12-09"
 
-keyowrds: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
+keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
 subcollection: databases-for-postgresql
 
@@ -70,6 +70,32 @@ curl -X POST \
 
 `skip_initial_backup` is optional. If set to `true`, the new deployment does not take an initial backup when the promotion completes. Your new deployment is available in a shorter amount of time, at the expense of not being backed up until the next automatic backup is run, or you take an on-demand backup.
 
+
+### Dry running the promotion and upgrade
+{: #promotion-dry-run}
+
+To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log analysis integration](/docs/cloud-databases?topic=cloud-databases-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
+
+The dry run must be run with `skip_initial_backup` set to `false`, and `version` defined.
+
+The command looks like:
+
+```sh
+curl -X POST \
+  https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/remotes/promotion \
+  -H 'Authorization: Bearer <>'  \
+ -H 'Content-Type: application/json' \
+ -d '{
+    "promotion": {
+        "version": "14",
+        "skip_initial_backup": false,
+        "dry_run": true
+    }
+}' \
+```
+{: pre}
+
+
 ## Back up and restore upgrade
 {: #backup-restore}
 
@@ -129,42 +155,18 @@ curl -X POST \
 ```
 {: pre}
 
-### Dry running the promotion and upgrade
-{: #promotion-dry-run}
-
-To evaluate the effects of major version upgrades, trigger a dry run. A dry run simulates the promotion and upgrade, with the results printed to the database logs. Access and view your database logs through the [Log analysis integration](/docs/cloud-databases?topic=cloud-databases-logging). This ensures the version that you are currently running with its extensions can be successfully upgraded to your intended version.
-
-The dry run must be run with `skip_initial_backup` set to `false`, and `version` defined.
-
-The command looks like:
-
-```sh
-curl -X POST \
-  https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/remotes/promotion \
-  -H 'Authorization: Bearer <>'  \
- -H 'Content-Type: application/json' \
- -d '{
-    "promotion": {
-        "version": "14",
-        "skip_initial_backup": false,
-        "dry_run": true
-    }
-}' \
-```
-{: pre}
-
 ## Forced upgrade
 {: #forced_upgrade}
 
-After the end-of-life date, all active {{site.data.keyword.databases-for-postgresql}} deployments on the deprecated version will be forcibly upgraded to the next supported version. For example, PostgreSQL Version 12 (deprecated) upgraes to Version 13.
+After the end-of-life date, all active {{site.data.keyword.databases-for-postgresql}} deployments on the deprecated version will be forcibly upgraded to the next supported version. For example, PostgreSQL Version 12 (deprecated) upgrades to Version 13.
 {: .note}
 
 **Upgrade before the end-of-life date to avoid the following risks:**
 
 - No SLAs are provided for this type of forced upgrade.
 - You may experience some data loss.
-- Your application may experience downtime.
-- Your application may stop working if it has any incompatibilities with the new version.
+- Your application may experience prolonged downtime.
+- Your application may stop working if it is incompatible with the new version.
 - You cannot control the timing of when this upgrade will happen for your deployment.
 - There is no rollback process for this forced upgrade.
 
