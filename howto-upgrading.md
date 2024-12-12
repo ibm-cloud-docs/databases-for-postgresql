@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-12-09"
+lastupdated: "2024-12-12"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -16,7 +16,7 @@ subcollection: databases-for-postgresql
 
 When a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
 
-Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-postgresql) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables){: external} endpoint.
+Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/databases/databases-for-postgresql/create) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables){: external} endpoint.
 
 When you upgrade to a new instance, you also need to change the connection information in your application.
 {: note}

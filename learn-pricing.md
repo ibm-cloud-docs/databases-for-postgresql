@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-03-03"
+  years: 2017, 2024
+lastupdated: "2024-12-12"
 
 keywords: postgresql pricing
 
@@ -19,7 +19,7 @@ A {{site.data.keyword.databases-for-postgresql}} Standard plan deploys as one hi
 ## Using the pricing calculator
 {: #pricing-calc}
 
-For pricing estimation, use the **Add to estimate** button on the [{{site.data.keyword.databases-for-postgresql}} catalog page](https://cloud.ibm.com/catalog/databases-for-postgresql). Input your total consumption across two data members into the calculator. This is roughly double the size of your data because your data is replicated to both members. For example, 5 GB of disk and 1 GB of RAM across two data members would be priced at 10 GB of disk and 2 GB of RAM respectively. 
+For pricing estimation, use the **Add to estimate** button on the [{{site.data.keyword.databases-for-postgresql}} catalog page](https://cloud.ibm.com/databases/databases-for-postgresql/create). Input your total consumption across two data members into the calculator. This is roughly double the size of your data because your data is replicated to both members. For example, 5 GB of disk and 1 GB of RAM across two data members would be priced at 10 GB of disk and 2 GB of RAM respectively. 
 
 ## Backups pricing
 {: #pricing-backup}
