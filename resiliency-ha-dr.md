@@ -24,7 +24,6 @@ subcollection: databases-for-postgresql
 {: #ha-architecture}
 
 ![Architecture](images/postgresql-base.svg){: caption="Postgresql architecture" caption-side="bottom"}
-{: style="text-align: center;"}
 
 {{site.data.keyword.databases-for-postgresql}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with two data members - leader and replica. The replica is kept up to date using asynchronous replication. A distributed consensus mechanism is used to maintain cluster state and handle failovers. If the leader becomes unreachable, the cluster initiates a failover, and the replica is promoted to leader, and a new replica rejoins the cluster as a replica. The leader and replica will always be in different zones of an MZR. If the replica fails, a new replica is created. If a zone failure results in a member failing, the new replica will be created in a surviving zone.
 
@@ -49,12 +48,14 @@ The service will, at times, do controlled failovers under normal operation. Thes
 | Member count | Minimum - 2 members. Default is a Standard two member deployment. A two-member cluster will automatically recover from a single instance or zone failure (with data loss up to the lag threshold). During data synchronization for a new replica, the cluster has exposure to second failure causing data loss. A three-member, see [adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling), is resilient to the failure of two members during the same failure period | Three members required for synchronous replication |
 | Synchronous replication | Improves RPO by adding remote member sync to the data write path. Please refer to [Synchronous replication](#postgresql-sync-repl}) below. | Performance impact and cost. |
 | Read-only replica | Read-only replicas can provide local access in remote regions, improving availability to potential network latency or connectivity issues. | All Write requests must be directed exclusively to the read-write cluster associated with the read-replica |
+{: caption="High availability features" caption-side="top"}
 
 #### Synchronous replication {{site.data.keyword.databases-for-postgresql}}
 {: #ha-synchronous-replication}
+
 By default, streaming replication is asynchronous. If the leader crashes, some transactions that were committed might not have synced to the replica, causing data loss. {{site.data.keyword.databases-for}} ensures that data loss is kept to a minimum substantial data loss; however, synchronous replication offers the ability to confirm that all changes made by a transaction have been synced to a replica. This ensures consistency across a cluster. This consistency comes from confirming that writes are written to a secondary before returning to the connecting client with `success`. For variables regarding synchronous replication, see [`synchronous_commit`](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#gen-settings) on the Changing Configuration page. 
 
-Synchronous replication brings replica availability into the primary write path. If there is no replica to acknowledge a write, it will hang until a replica is available. This requires at least three members to function reliably, as synchronous replication is not supported on two-member deployments. You _must_ horizontally scale to at least three members before enabling synchronous replication.  See [adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling)
+Synchronous replication brings replica availability into the primary write path. If there is no replica to acknowledge a write, it will hang until a replica is available. This requires at least three members to function reliably, as synchronous replication is not supported on two-member deployments. You _must_ horizontally scale to at least three members before enabling synchronous replication. See [adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling).
 
 While unlikely, it is possible that more than one replica might become unavailable simultaneously. If this happens, the primary database will not be able to complete any writes until a replica comes back online, effectively blocking all write traffic to your database. When you decide to use synchronous replication, weigh the relative costs and benefits of higher data durability versus potential availability issues.
 
@@ -67,7 +68,6 @@ Please note that configuring synchronous replication can significantly increase 
 The general strategy for disaster recovery is to create a new database, like the `Restore` database below. The contents of the new database can be a backup of the source database created before the disaster. A new database can be created using the point-in-time feature if the production database is available.
 
 ![Architecture](images/postgresql-restore.svg){: caption="Postgresql architecture" caption-side="bottom"}
-{: style="text-align: center;"}
 
 ### Disaster recovery features
 {: #dr-features}
@@ -79,6 +79,7 @@ The general strategy for disaster recovery is to create a new database, like the
 | Backup restore | Create database from previously created backup; see [Managing Cloud Databases backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups). | New connection strings for the restored database must be referenced throughout the workload. |
 | Point-in-time restore | Create database from the live production using [point-in-time recovery](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr) | Only possible if the active database is available and the RPO (disaster) falls within the supported window. It is not useful if the production cluster is unavailable. New connection strings for the restored database must be referenced throughout the workload.  |
 | Promote read replica | Create a [read-only replicas](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas) when planning for a disaster in the same or remote region. [Promote the read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#promoting-read-only-replica) to recover from a disaster. | Previously created read replica must be available. New connection strings for the restored database must be referenced throughout the workload.  |
+{: caption="Disaster recovery features" caption-side="top"}
 
 
 ### Planning for disaster recovery
@@ -92,7 +93,7 @@ The disaster recovery steps must be practiced regularly. As you build your plan,
 | Zone failure | Automatic failover (#postgresql-high-availability). The database members are distributed between zones. Configuring three members will provide additional resiliency to multiple zone failures. `/n  /n` Synchronous replication will reduce RPO at the expense of performance. |
 | Data corruption | Backup restore. Use the restored database in production or for source data to correct the corruption in the restored database. `/n /n` Point-in-time restore. Use the restored database in production or for source data to correct the corruption in the restored database. |
 | Regional failure | Backup restore. Use the restored database in production. `/n /n` Promote read replica. Promote a read-only replica to a read/write database. Use the restored database in production |
-
+{: caption="Failure scenarios and resolutions" caption-side="top"}
 
 ## Your responsibilities for HA and DR
 {: #feature-responsibilities}
