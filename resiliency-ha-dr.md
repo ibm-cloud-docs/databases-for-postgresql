@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-12-17"
+lastupdated: "2024-12-18"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, postgresql
 
@@ -128,3 +128,86 @@ The following checklist associated with each feature can help you create and pra
    - Practice the promotion process - create a temporary read replica in the desired region. The temporary replica can be promoted to read/write and some testing performed with little impact to production.
 
 To find out more about responsibility ownership between the customer and {{site.data.keyword.cloud_notm}} for using {{site.data.keyword.databases-for-postgresql}}, see [Shared responsibilities for {{site.data.keyword.databases-for}}](/docs/cloud-databases?topic=cloud-databases-responsibilities-cloud-databases). 
+
+-----------------------------
+------------Need to revisit the following topics-----  ----------------------
+
+## Recovery Time Objective (RTO) and Recovery Point Objective (RPO)
+{: #rto-rpo-features}
+
+
+
+| Feature | RTO and RPO |
+| -------------- | -------------- |
+| Automatic failover | RTO = minutes, RPO = minutes (TODO populate from test results) |
+| Synchronous replication | RTO = minutes, RPO = 0 |
+| Backup restore | RTO is based on the size of data and is approximately 10min + 1min/10GB, RPO = time of last backup (TODO real numbers) |
+| Point-in-time restore | RTO 10min + 1min/10GB, RPO = 5 min  (TODO real numbers) |
+| Promote read replica| RTO = 10min, RPO = 1min |
+| Feature | RTO = x, RPO = x  |
+{: caption="RTO/RPO features for {{site.data.keyword.databases-for-postgresql}}" caption-side="bottom"}
+
+
+## Change management
+{: #change-management}
+
+
+
+Change management includes tasks such as upgrades, configuration changes, and deletion.
+
+It is recommended that you grant users and processes the IAM roles and actions with the least privilege required for their work. For example, limit the ability to delete production resources.
+
+
+Consider creating a manual backup before upgrading to a new version.
+
+TODO more stuff for PostgreSQL?  
+
+## How {{site.data.keyword.IBM}} helps ensure disaster recovery
+{: #ibm-disaster-recovery}
+
+
+
+{{site.data.keyword.IBM}} takes specific recovery actions in the case of a disaster.
+
+### How {{site.data.keyword.IBM}} recovers from zone failures
+{: #ibm-zone-failure}
+
+The database is resilient from a single zone failure as described above.
+
+### How {{site.data.keyword.IBM}} recovers from regional failures
+{: #ibm-regional-failure}
+
+After a region has failed and has then been restored, IBM will attempt to restore the cluster in the same region with the same connection strings from the last state in internal persistent storage.
+- RTO - TODO
+- RPO - TODO
+
+
+If {{site.data.keyword.IBM}} can’t restore the service instance,the customer must restore as described in [Disaster recovery architecture](#disaster-recovery-intro).
+
+## How {{site.data.keyword.IBM}} maintains services
+{: #ibm-service-maintenance}
+
+
+All upgrades follow the {{site.data.keyword.IBM}} service best practices and have a recovery plan and rollback process in-place. Regular upgrades for new features and maintenance occur as part of normal operations. Such maintenance can occasionally cause short interruption intervals that are handled by [client availability retry logic](/docs/resiliency?topic=resiliency-client-retry-logic-for-ha). Changes are rolled out sequentially, region by region and zone by zone within a region. Updates are backed out at the first sign of a defect.
+
+
+Complex changes are enabled and disabled with feature flags to control exposure.
+- TODO is this true?  Do a number of changes get dropped in from the postgresql open source?
+
+
+Changes that impact customer workloads are detailed in notifications. For more information, see [monitoring notifications and status](/docs/account?topic=account-viewing-cloud-status) for planned maintenance, announcements, and release notes that impact this service.
+
+
+
+
+END OF TOPIC - rest are Postgresql specific notes
+
+## Links
+- [Understanding high availability for Cloud Databases](/docs/cloud-databases?topic=cloud-databases-ha-dr)
+- [Understanding business continuity and disaster recovery for Cloud Databases](/docs/cloud-databases?topic=cloud-databases-bc-dr)
+- [Shared responsibilities for Cloud Databases](/docs/cloud-databases?topic=cloud-databases-responsibilities-cloud-databases)
+- [High availability - Databases for PostgreSQL](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability)
+- [The high-availability read-only replica - Databases for PostgreSQL](/docs/databases-for-postgresql?topic=databases-for-postgresql-the-ha-read-only-replica)
+
+
+##################################################
