@@ -38,10 +38,10 @@ To scale a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-
 
 You can manually adjust the resources available to your {{site.data.keyword.databases-for-postgresql_full}} deployment to suit your workload and the size of your data.
 
-**Terraform scaling allocations are per-member.**
+**Note: Terraform scaling allocations are per-member.**
 {: terraform}
 
-**API scaling allocations use total allocation values.**
+**Note: API scaling allocations use total allocation values.**
 {: api}
 
 ## Resource breakdown
