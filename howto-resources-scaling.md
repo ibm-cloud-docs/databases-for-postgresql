@@ -39,12 +39,10 @@ To scale a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-
 You can manually adjust the resources available to your {{site.data.keyword.databases-for-postgresql_full}} deployment to suit your workload and the size of your data.
 
 Terraform scaling allocations are per-member. API scaling allocations use total allocation values.
-{: note}
-{: terraform}
+{: note}{: terraform}
 
 API scaling allocations use total allocation values.
-{: note}
-{: api}
+{: note}{: api}
 
 ## Resource breakdown
 {: #resource-breakdown}
@@ -255,8 +253,6 @@ The `hostflavor` parameter defines your compute sizing. To provision a Shared Co
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
 {: caption="Host flavor sizing parameter" caption-side="bottom"}
 
-
-
 ## Review current resources and hosting model
 {: #review-resources-api}
 {: api}
@@ -273,7 +269,6 @@ curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.c
 ## Scaling with the API
 {: #resources-scaling-api}
 {: api}
-
 
 To scale the memory of a deployment to 4096 MB of RAM for each member (there are 2 so a total memory of 8192 MB), use the [/deployments/{id}/groups/{group_id}](https://cloud.ibm.com/apidocs/cloud-databases-api#set-scaling-values-on-a-specified-group) API endpoint.
 
@@ -405,7 +400,6 @@ output "ICD PostgreSQL database connection string" {
 }
 ```
 {: codeblock}
-
 
 ## Switching to and Scaling Hosting Models in Terraform
 {: #resources-switching-terraform}
