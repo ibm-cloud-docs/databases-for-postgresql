@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-12-05"
+lastupdated: "2024-12-29"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -37,6 +37,14 @@ To scale a [Shared compute](/docs/cloud-databases?topic=cloud-databases-hosting-
 {: terraform}
 
 You can manually adjust the resources available to your {{site.data.keyword.databases-for-postgresql_full}} deployment to suit your workload and the size of your data.
+
+Terraform scaling allocations are per-member. API scaling allocations use total allocation values.
+{: note}
+{: terraform}
+
+API scaling allocations use total allocation values.
+{: note}
+{: api}
 
 ## Resource breakdown
 {: #resource-breakdown}
