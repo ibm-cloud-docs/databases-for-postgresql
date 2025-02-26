@@ -20,7 +20,8 @@ toc:
       - link:
           label: What is PostgreSQL?
           href: https://www.ibm.com/cloud/learn/postgresql
-      - getting-started.md
+      - topic: getting-started.md
+        navtitle: Getting started
       - topicgroup:
           label: Hosting models
           topics:
