@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-04-26"
+  years: 2017, 2025
+lastupdated: "2025-02-26"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -22,6 +22,7 @@ In PostgreSQL, extensions are modules that supply extra functions, operators, or
 Get a list of all the extensions installed on a database by using the `\dx` command.
 
 For example, the output for `\dx` when run on the {{site.data.keyword.databases-for-postgresql}} default database shows the only installed extension.
+
 ```sh
 ibmclouddb=> \dx
                  List of installed extensions
@@ -84,7 +85,7 @@ If there is a newer version of an extension available than the one you currently
 ## Available extensions
 {: #available-extensions}
 
-This list is what is returned from a {{site.data.keyword.databases-for-postgresql}} deployment running PostgreSQL version 12. For a list of available extensions on your deployment, use `SELECT name FROM pg_available_extensions;` in `psql`.
+See the following list of all available extensions. For a list of available extensions on your deployment, use `SELECT name FROM pg_available_extensions;` in `psql`.
 
 ```sh
 ibmclouddb=> SELECT name FROM pg_available_extensions order by 1;
@@ -117,14 +118,17 @@ ibmclouddb=> SELECT name FROM pg_available_extensions order by 1;
  lo
  ltree
  moddatetime
+ old_snapshot
  pageinspect
  pg_buffercache
  pg_freespacemap
  pg_prewarm
  pg_repack
  pg_stat_statements
+ pg_surgery
  pg_trgm
  pg_visibility
+ pg_walinspect
  pgaudit
  pgcrypto
  pgrouting
@@ -132,6 +136,7 @@ ibmclouddb=> SELECT name FROM pg_available_extensions order by 1;
  pgstattuple
  plpgsql
  postgis
+ postgis_raster
  postgis_tiger_geocoder
  postgis_topology
  postgres_fdw
@@ -145,10 +150,11 @@ ibmclouddb=> SELECT name FROM pg_available_extensions order by 1;
  unaccent
  uuid-ossp
  xml2
-(51 rows)
+(55 rows)
+
 ibmclouddb=> select version();
-                                                 version                                                 
----------------------------------------------------------------------------------------------------------
- PostgreSQL 12.4 on x86_64-pc-linux-gnu, compiled by gcc (Debian 6.3.0-18+deb9u1) 6.3.0 20170516, 64-bit
+                                                 version
+----------------------------------------------------------------------------------------------------------
+ PostgreSQL 16.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-2), 64-bit
 (1 row)
  ```
