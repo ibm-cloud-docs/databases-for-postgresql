@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-12-05"
+  years: 2023, 2025
+lastupdated: "2025-03-10"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -22,14 +22,6 @@ Provision a {{site.data.keyword.databases-for-postgresql_full}} deployment throu
 {: ui}
 
 Deploy from the console by specifying the following parameters:
-
-### Platform
-{: #platform}
-{: ui}
-
-The platform that your database will be deployed on. Choose your required network and compute environment.
-
-- **{{site.data.keyword.cloud}}** - Deploy a database on the {{site.data.keyword.cloud_notm}} platform, in a region of your choosing.
 
 ### Service details
 {: #service_details}
