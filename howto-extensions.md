@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2025
-lastupdated: "2025-02-26"
+lastupdated: "2025-03-12"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -35,7 +35,7 @@ ibmclouddb=> \dx
 ## Installing extensions
 {: #installing-extensions}
 
-To install an extension on to a database use [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/static/sql-createextension.html){: .external}. For example, to install `pg_stat_statements` on the `ibmclouddb` database, 
+To install an extension on to a database use [`CREATE EXTENSION`](https://www.postgresql.org/docs/current/static/sql-createextension.html){: .external}. For example, to install `pg_stat_statements` on the `ibmclouddb` database, use the following command:
 
 ```sh
 ibmclouddb=> CREATE EXTENSION pg_stat_statements;
@@ -43,11 +43,11 @@ CREATE EXTENSION
 ```
 {: pre}
 
-Extensions are installed into the read-only `ibm_extension` schema. The schema is part of the `search_path` so extension objects do not need to be qualified with a schema. 
+Extensions are installed into the read-only `ibm_extension` schema. The schema is part of the `search_path` so extension objects do not need to be qualified with a schema.
 The change from `public` schema to `ibm_extension` schema is necessary to protect the security and integrity of your data.
 
-
 If you run the `\dx` command after installing an extension, it appears in the table.
+
 ```sh
 ibmclouddb=> \dx
                                      List of installed extensions
@@ -72,7 +72,8 @@ If there is a newer version of an extension available than the one you currently
 {: #pg_repack}
 
 - [The `pg_repack` documentation](http://reorg.github.io/pg_repack/){: .external}
-- When you run the `pg_repack` command, pass the -k flag in to bypass the check for superuser. For example,
+- When you run the `pg_repack` command, pass the -k flag in to bypass the check for superuser. See the following example:
+
    ```sh
    pg_repack -k [OPTION]... [DBNAME]
    ```
@@ -81,6 +82,19 @@ If there is a newer version of an extension available than the one you currently
 - For `pg_repack` to run reliably, your deployment should be on PostgreSQL 9.6 and above.
 - Any user can run `pg_repack`, but the command is only able to repack a table that they have permissions on.
 - `pg_repack` needs to take an exclusive lock on objects it is reorganizing at the end of the reorganization. If it can't get this lock after a certain period, it cancels all conflicting queries. If it can't do so, the reorg fails. By default, only the admin user on PostgreSQL 9.6 and greater is able to cancel conflicting queries. To expose the ability to cancel queries to other database users, grant the `pg_signal_backend` role [from the admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user).
+
+
+### pgaudit
+{: #pgaudit}
+
+- See the [`pgaudit` documentation](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit){: .external}.
+
+- `pgaudit` libraries are preloaded, use CREATE EXTENSION to install the `pgaudit` extension on the ibmcloud database.
+
+  ```sh
+  CREATE EXTENSION pgaudit;
+  ```
+  {: pre}
 
 ## Available extensions
 {: #available-extensions}

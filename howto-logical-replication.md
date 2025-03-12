@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-09-25"
+  years: 2019, 2025
+lastupdated: "2025-03-12"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -17,9 +17,9 @@ subcollection: databases-for-postgresql
 # Databases for PostgreSQL as a logical replication destination
 {: #logical-replication}
 
-{{site.data.keyword.databases-for-postgresql_full}} supports [logical replication](https://www.postgresql.org/docs/current/logical-replication.html){: .external} from an external PostgreSQL instance to your deployment. You can set up your external PostgreSQL as a publisher, your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber, and replicate your data across from an external database into your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} supports [logical replication](https://www.postgresql.org/docs/current/logical-replication.html){: .external}, where you can create a subcriber or a publisher. You can also set up your external PostgreSQL as a publisher and your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber, and replicate your data across from an external database into your deployment.
 
-Logical Replication is only available on deployments running PostgreSQL 10 or above. Links to the PostgreSQL documentation direct you to the current version of PostgreSQL. If you need documentation for a specific version, you can find links to different PostgreSQL versions on the PostgreSQL documentation page.
+Logical replication is only available on deployments running PostgreSQL 10 or above. Links to the PostgreSQL documentation direct you to the current version of PostgreSQL. If you need documentation for a specific version, you can find links to different PostgreSQL versions on the PostgreSQL documentation page.
 {: .tip}
 
 ## Configuring the publisher
@@ -27,11 +27,80 @@ Logical Replication is only available on deployments running PostgreSQL 10 or ab
 
 The external PostgreSQL instance is the publisher, and needs to be configured in order for your {{site.data.keyword.databases-for-postgresql}} deployment to connect and be able to pull the data in correctly.
 
-1. Every table that is selected for replication needs to contain a [Primary Key](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS){: .external}, or have [`REPLICA IDENTITY`](https://www.postgresql.org/docs/current/sql-altertable.html#replica-identity){: .external} set.
-2. Your external (publisher) PostgreSQL needs to have a replication user that has the [PostgreSQL privilege `REPLICATION`](https://www.postgresql.org/docs/current/sql-createrole.html#replication){: .external}, and that user needs to have privileges on the databases you would like replicate.
-3. The PostgreSQL you are replicating from needs to have [TLS/SSL enabled](https://www.postgresql.org/docs/current/ssl-tcp.html){: .external}.
+### Publisher functions
+{: #publisher-functions}
 
-There are inherent limitations and some restrictions to logical replication outlined in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/logical-replication-restrictions.html){: .external}. Review these before deciding that logical replication is appropriate for your use-case.
+**`create_publisher`**
+
+In each database you can create multiple publications to publish the changes into a different subcriber.
+
+```sh
+Arguments:
+
+    publisher_name               The Unique name of publisher.
+    for table                    To publish single/list of tables
+    for all table                To publish all tables, along with future tables.
+    for all tables in schema     To publish all tables in schema, along wth future tables.
+
+Usage:
+    exampledb=> create publication my_publication for all tables ;
+    CREATE PUBLICATION
+```
+{: pre}
+
+**`list_publisher`**
+
+ List the number of publications running in each database.
+
+ ```sh
+ Usage:
+    exampledb=# select * from pg_publication;
+    oid  |    pubname     | pubowner | puballtables | pubinsert | pubupdate | pubdelete | pubtruncate
+    -------+----------------+----------+--------------+-----------+-----------+-----------+-------------
+    16401 | my_publication |       10 | t            | t         | t         | t         | t
+```
+{: pre}
+
+**`alter_publisher`**
+
+Modify the definition of the publication.
+
+```sh
+Syntax:
+ALTER PUBLICATION name ADD publication_object [, ...]
+ALTER PUBLICATION name SET publication_object [, ...]
+ALTER PUBLICATION name DROP publication_object [, ...]
+ALTER PUBLICATION name SET ( publication_parameter [= value] [, ... ] )
+ALTER PUBLICATION name OWNER TO { new_owner | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+ALTER PUBLICATION name RENAME TO new_name
+
+
+ Usage:
+    exampledb=# ALTER PUBLICATION my_publication RENAME TO my_publication_new;
+    ALTER PUBLICATION
+```
+{: pre}
+
+**`drop_publisher`**
+
+Drop/Remove the publication not in use.
+
+```sh
+Usage:
+    exampledb=# drop publication my_publication_new;
+    DROP PUBLICATION
+```
+{: pre}
+
+Consider the following as prerequisites:
+
+1. Configure the extenal (publisher) PostgreSQL [`wal_level=logical`](https://www.postgresql.org/docs/current/logical-replication-config.html#LOGICAL-REPLICATION-CONFIG-PUBLISHER){: .external}.
+2. Every table that is selected for replication needs to contain a [Primary key](https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS){: .external}, or have [`REPLICA IDENTITY`](https://www.postgresql.org/docs/current/sql-altertable.html#replica-identity){: .external} set.
+3. Your external (publisher) PostgreSQL needs to have a replication user that has the [PostgreSQL privilege `REPLICATION`](https://www.postgresql.org/docs/current/sql-createrole.html#replication){: .external}, and that user needs to have SELECT and USAGE privileges on the databases along with REPLICATION privileges.
+4. The PostgreSQL you are replicating from needs to have [TLS/SSL enabled](https://www.postgresql.org/docs/current/ssl-tcp.html){: .external}.
+5. Provide [BYPASSRLS](https://www.postgresql.org/docs/current/logical-replication-security.html) privileges to external (publisher) PostgreSQL replication user, if row-level-security is enabled.  
+
+There are inherent limitations and some restrictions to logical replication outlined in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/logical-replication-restrictions.html){: .external}. Review these before deciding that logical replication is appropriate for your use case.
 {: .tip}
 
 ## Configuring the subscriber
@@ -42,7 +111,7 @@ To configure your {{site.data.keyword.databases-for-postgresql}} deployment and 
 1. You need to create a database in your deployment with same name as the database you intend to replicate.
 2. Logical Replication works at the table level, so every table you select to publish, you need to create in the subscriber before starting the logical replication process. (You can use [`pg_dump`](https://www.postgresql.org/docs/current/app-pgdump.html){: .external} to help.) The table on the subscriber does not need to be identical to its publisher counterpart. However, the table on the subscriber must contain at least every column present in the table on the publisher. Additional columns present in the subscriber must not have NOT NULL or other constraints. If they do, replication fails.
 
-Native PostgreSQL subscription commands require superuser privileges, which are not available on {{site.data.keyword.databases-for-postgresql}} deployments. Instead, your deployment includes a set of functions that can be used to set and manage logical replication for the subscription. 
+Native PostgreSQL subscription commands require superuser privileges, which are not available on {{site.data.keyword.databases-for-postgresql}} deployments. Instead, your deployment includes a set of functions that can be used to set and manage logical replication for the subscription.
 {: .note}
 
 Only the admin user that is provided by {{site.data.keyword.databases-for-postgresql}} has permissions to run the following replication commands that allow you to subscribe and replicate content from an external PostgreSQL publisher.
@@ -197,8 +266,8 @@ To configure your {{site.data.keyword.databases-for-postgresql}} deployment as a
     psql -U admin -d exampledb
     ```
     {: pre}
-    
-2. Run the following query to call the `create_subscription` function and create the subscriber channel. 
+
+2. Run the following query to call the `create_subscription` function and create the subscriber channel.
 
     ```sh
     exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','admin','password','exampledb','my_publication');
