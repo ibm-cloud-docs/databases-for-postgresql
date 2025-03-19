@@ -30,7 +30,8 @@ toc:
           - include: ../cloud-databases/hosting-models-faq.md
           - include: ../cloud-databases/hosting-pricing.md
       - learn-dashboard-overview.md
-      - learn-high-availability.md
+      - topic: resiliency-ha-dr.md
+        navtitle: High availability and disaster recovery
       - learn-performance.md
       - learn-pricing.md
       - release-notes.md
