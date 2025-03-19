@@ -24,7 +24,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: #{: #databases-for-postgresql-10mar2025}
 {: release-note}
 
-{{site.data.keyword.databases-for-postgresql} {{site.data.keyword.satelliteshort}} plan is deprecated
+{{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan is deprecated
 :   {{site.data.keyword.satellitelong}} is now deprecated due to changes in market expectations, client fit, and lack of adoption. As of March 10 2025, all documentation relating to Satellite has been removed, as well as the ability to select {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
 
 ## 15 November 2024
