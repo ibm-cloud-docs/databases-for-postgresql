@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-03-11"
+lastupdated: "2025-03-28"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -23,13 +23,13 @@ completion-time: 30m
 {: toc-services=""}
 {: toc-completion-time="30m"}
 
-This tutorial guides you through the steps to quickly start by using {{site.data.keyword.databases-for-postgresql}} by provisioning an instance, setting up pgAdmin, setting your Admin password, and setting up logging and monitoring.
+This tutorial guides you through the steps to quickly start by using {{site.data.keyword.databases-for-postgresql}} by provisioning an instance, setting up pgAdmin, setting your admin password, and setting up logging and monitoring.
 
 Follow these steps to complete the tutorial: {: ui}
 
 * [Before you begin](#prereqs)
 * [Step 1: Provision through the console](#provision_instance_ui)
-* [Step 2: Set your Admin password through the console](#admin_pw)
+* [Step 2: Set your admin password through the console](#admin_pw)
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_ui)
@@ -41,7 +41,7 @@ Follow these steps to complete the tutorial: {: cli}
 
 * [Before you begin](#prereqs)
 * [Step 1: Provision through the CLI](#provision_instance_cli)
-* [Step 2: Set your Admin password through the CLI](#admin_pw)
+* [Step 2: Set your admin password through the CLI](#admin_pw)
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_cli)
@@ -53,7 +53,7 @@ Follow these steps to complete the tutorial: {: api}
 
 * [Before you begin](#prereqs)
 * [Step 1: Provision through the API](#provision_instance_api)
-* [Step 2: Set your Admin password](#admin_pw)
+* [Step 2: Set your admin password](#admin_pw)
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_api)
@@ -65,7 +65,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 * [Before you begin](#prereqs)
 * [Step 1: Provision through Terraform](#provision_instance_tf)
-* [Step 2: Set your Admin password](#admin_pw)
+* [Step 2: Set your admin password](#admin_pw)
 * [Step 3: Set up pgAdmin](#pgadmin)
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
@@ -92,9 +92,9 @@ Follow these steps to complete the tutorial: {: terraform}
     - **Location** - The deployment's public cloud region.
 1. **Resource allocation** - Specify the initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores that you specify. *Once provisioned, disk cannot be scaled down.*
 1. In **Service configuration**, configure the following:
-    - **Database version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+    - **Database version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
     - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-    - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
+    - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
     After you configure the appropriate settings, click **Create** to start the provisioning process. The {{site.data.keyword.databases-for-postgresql}} **Resource list** page opens.
 
@@ -131,13 +131,14 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
         {: codeblock}
 
    The fields in the command are described in the table that follows.
+   
    | Field | Description | Flag |
    |-------|------------|------------|
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
+   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    {: caption="Basic command format fields" caption-side="top"}
@@ -156,7 +157,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    State:               provisioning
    Type:                service_instance
    Sub Type:            Public
-   Service Endpoints:   public
+   Service Endpoints:   private
    Allow Cleanup:       false
    Locked:              false
    Created at:          2023-06-26T19:42:07Z
@@ -191,7 +192,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    Type:                  service_instance
    Sub Type:              Public
    Locked:                false
-   Service Endpoints:     public
+   Service Endpoints:     private
    Created at:            2023-06-26T19:42:07Z
    Created by:            USER
    Updated at:            2023-06-26T19:53:25Z
@@ -301,7 +302,7 @@ Follow these steps to provision by using the [resource controller API](https://c
 * `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used.
 * `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used.
 * `members_cpu_allocation_count` - Enables and allocates the number of specified dedicated cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default value "Shared CPU" uses compute resources on shared hosts.
-* `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
+* `service_endpoints` - The [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`. This is a required parameter.
 
 ## Step 1: Provision through Terraform
 {: #provision_instance_tf}
@@ -315,13 +316,13 @@ Use Terraform to manage your infrastructure through the [`ibm_database` Resource
 
 Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction){: external} to work with your {{site.data.keyword.databases-for-postgresql}} instance. The resource controller API is used to [provision an instance](#provision_instance_api).
 
-## Step 2: Set the Admin password
+## Step 2: Set the admin password
 {: #admin_pw}
 
 ### The admin user
 {: #admin_pw_admin_user}
 
-When you provision a {{site.data.keyword.databases-for-postgresql}} deployment, an Admin user is automatically created.
+When you provision a {{site.data.keyword.databases-for-postgresql}} deployment, an admin user is automatically created.
 
 Set the admin password before using it to connect.
 {: important}
@@ -365,13 +366,13 @@ GRANT pg_monitor TO "ibm-cloud-base-user";
 ```
 {: .pre}
 
-### Setting the Admin Password in the UI
+### Setting the admin password in the UI
 {: #user-management-set-admin-password-ui}
 {: ui}
 
 Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
-### Set the Admin password through the CLI
+### Set the admin password through the CLI
 {: #admin_pw_set_cli}
 {: cli}
 
@@ -384,7 +385,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 {: pre}
 
-### Set the Admin password through the API
+### Set the admin password through the API
 {: #admin_pw_set_api}
 {: api}
 
@@ -398,7 +399,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ```
 {: pre}
 
-### Set the Admin password through Terraform
+### Set the admin password through Terraform
 {: #admin_pw_set_tf}
 {: terraform}
 
@@ -425,9 +426,9 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
 {: pre}
 
-To set the Admin password through the UI, follow these steps:
+To set the admin password through the UI, follow these steps:
 
-Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin password*.
+Set your admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database admin password*.
 
 ## Step 3: Set up pgAdmin
 {: #pgadmin}
