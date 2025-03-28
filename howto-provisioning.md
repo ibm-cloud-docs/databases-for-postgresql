@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-03-11"
+lastupdated: "2025-03-28"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -117,9 +117,6 @@ Before provisioning, follow the instructions provided in the documentation to in
     | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the following table or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
     | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public`, `private` or `public-and-private`. |  |
     {: caption="Basic command format fields" caption-side="top"}
-   
-    In the CLI, `service-endpoints` is a flag, not a parameter.
-    {: note}
 
     You will see a response like:
 
@@ -465,7 +462,7 @@ Follow these steps to provision by using the [Resource Controller API](https://c
     | `resource_plan_id` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql-standard`. |  |
     | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
     | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use a parameter like `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
-    | `service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} of your deployment, either `public`, `private` or `public-and-private`. |  |
+    | `service_endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} of your deployment, either `public`, `private` or `public-and-private`. |  |
     {: caption="Basic command format fields" caption-side="top"}
 
 ### The `host flavor` parameter
