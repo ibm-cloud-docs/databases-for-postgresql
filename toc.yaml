@@ -95,12 +95,6 @@ toc:
           - include: ../cloud-databases/reference-hpcs.md
           - include: ../cloud-databases/cbr-tutorial.md
           - include: ../cloud-databases/howto-deprovisioning.md
-      - topicgroup:
-          label: IBM Cloud Databases enabled by IBM Cloud Satellite
-          topics:
-          - include: ../cloud-databases/howto-sat-loc.md
-          - include: ../cloud-databases/howto-sat-loc-aws.md
-          - include: ../cloud-databases/howto-sat-loc-onprem.md
   - navgroup:
       id: tutorial
       topics:
