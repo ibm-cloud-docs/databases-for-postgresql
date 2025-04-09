@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-03-19"
+lastupdated: "2025-04-09"
 
 keywords: databases-for-postgresql release notes
 
@@ -152,7 +152,7 @@ Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Te
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} supports synchronous replication
-:  {{site.data.keyword.databases-for-postgresql_full}} now supports synchronous replication. See documentation [here](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#sync-repl).
+:  {{site.data.keyword.databases-for-postgresql_full}} now supports synchronous replication. See documentation [here](/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-ha-dr#ha-synchronous-replication).
 
 ## 28 March 2022
 {: #databases-for-postgresql-28mar2022}
