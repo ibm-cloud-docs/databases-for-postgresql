@@ -121,7 +121,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 
 - Default - 115
 - Restarts database? - **YES**
-- Notes - [You might need to scale before you increase max connections.](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability#connection-limits-ha)
+- Notes - [You might need to scale before you increase max connections.](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-ha-dr#connection-limits-ha)
 
 [`max_locks_per_transaction`](https://www.postgresql.org/docs/current/runtime-config-locks.html#GUC-MAX-LOCKS-PER-TRANSACTION){: external}
 
@@ -140,7 +140,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Default - `local`
 - Restarts database - No
 - Options - `local`, `on`, or `off`
-- Notes - Setting `synchronous_commit` to off increases transaction commit rate at the expense of a loss of committed transactions if an unclean shutdown occurs. With `synchronous_commit` set to `on`, a transaction is committed only when written to the leader and at least one replica. Therefore, the `on` setting is only available on formations that have been horizontally scaled to at least three members. Before implementing this change, read through the [High-Availability page](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}.
+- Notes - Setting `synchronous_commit` to off increases transaction commit rate at the expense of a loss of committed transactions if an unclean shutdown occurs. With `synchronous_commit` set to `on`, a transaction is committed only when written to the leader and at least one replica. Therefore, the `on` setting is only available on formations that have been horizontally scaled to at least three members. Before implementing this change, see [High availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-ha-dr).
 
 [`effective_io_concurrency`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-EFFECTIVE-IO-CONCURRENCY){: .external}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-03-26"
+lastupdated: "2025-04-09"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, postgresql
 
@@ -33,9 +33,9 @@ Review the PostgreSQL documentation on [replication techniques](https://www.post
 
 In scenarios where a database becomes critically unhealthy, such as a server crash on the leader, {{site.data.keyword.databases-for-postgresql}} attempts a failover. This auto-failover capability is capped at 16 MB of data lag from leader to replica (a few rows of data once accounting for more PostgreSQL data overhead) and is not performed if the lag threshold is exceeded. If the potential for 16 MB of data loss is intolerable for the application, see [synchronous replication](#postgresql-sync-repl) below.
 
-Workloads that programmatically access the cluster must follow the [client availability retry logic](/docs/resiliency?topic=resiliency-client-retry-logic-for-ha) to maintain availability.
+Workloads that programmatically access the cluster must follow the client availability retry logic to maintain availability.
 
-The service will, at times, do controlled failovers under normal operation. These failovers are no-data-loss events but result in resets of active connections. There is a period of up to 15 seconds where reconnections can fail. At times, unplanned failovers might occur due to unforeseen events in the operating environment. These can take up to 45 seconds, but generally less than 30. [Service maintenance](#postgresql-ibm-service-maintenance), for example, trigger a controlled failover.
+The service will, at times, do controlled failovers under normal operation. These failovers are no-data-loss events but result in resets of active connections. There is a period of up to 15 seconds where reconnections can fail. At times, unplanned failovers might occur due to unforeseen events in the operating environment. These can take up to 45 seconds, but generally less than 30. Service maintenance, for example, triggers a controlled failover.
 
 ### High availability features
 {: #ha-features}
