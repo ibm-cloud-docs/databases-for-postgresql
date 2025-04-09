@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-03-28"
+lastupdated: "2025-04-09"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -602,9 +602,9 @@ You cannot connect {{site.data.keyword.at_short}} by using the API. Use the cons
     - [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}
 
 - If you plan to use {{site.data.keyword.databases-for-postgresql}} for your applications, see:
-    - [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app){: external}
-    - [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app){: external}
+    - [Connecting an external application](/docs/databases-for-postgresql?topic=databases-for-postgresql-external-app)
+    - [Connecting an {{site.data.keyword.cloud_notm}} application](/docs/databases-for-postgresql?topic=databases-for-postgresql-ibmcloud-app)
 
 - To ensure the stability of your applications and your databases, see:
-    - [High-availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-high-availability){: external}
-    - [Performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance){: external}
+    - [High availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-ha-dr)
+    - [Performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance)
