@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2025
-lastupdated: "2025-03-12"
+lastupdated: "2025-04-15"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -87,14 +87,7 @@ If there is a newer version of an extension available than the one you currently
 ### pgaudit
 {: #pgaudit}
 
-- See the [`pgaudit` documentation](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit){: .external}.
-
-- `pgaudit` libraries are preloaded, use CREATE EXTENSION to install the `pgaudit` extension on the ibmcloud database.
-
-  ```sh
-  CREATE EXTENSION pgaudit;
-  ```
-  {: pre}
+- `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs. 
 
 ## Available extensions
 {: #available-extensions}
