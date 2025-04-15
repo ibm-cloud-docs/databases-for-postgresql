@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2024
-lastupdated: "2024-12-12"
+  years: 2020, 2025
+lastupdated: "2025-04-15"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -38,11 +38,18 @@ CREATE EXTENSION pg_repack;
 ```
 {: pre}
 
-If you are using PostGIS, you must upgrade to PostGIS 3.3 before upgrading. This can be done by running the following against a database with PostGIS installed.
+If you are using PostGIS, you must first upgrade to PostGIS before upgrading PostgresSQL. This can be done by running the following command against a database with PostGIS installed.
 {: note}
 
 ```sh
-SELECT * FROM update_to_postgis_33();
+SELECT postgis_extensions_upgrade();
+```
+{: pre}
+
+Use the following query to validate the Postgis extension upgrade. 
+
+```sh
+SELECT postgis_full_version();
 ```
 {: pre}
 
