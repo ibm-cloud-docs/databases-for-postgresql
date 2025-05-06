@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-04-09"
+lastupdated: "2025-05-06"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,27 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 29 April 2025
+{: #databases-for-postgresql-29Apr2025}
+{: release-note}
+
+Seamless Vector Search comes to {{site.data.keyword.databases-for-postgresql}} with pgVector
+:  {{site.data.keyword.databases-for-postgresql_full}} users can now enhance their PostgreSQL instances with the pgVector extension, enabling native support for vector embeddings. This tight integration simplifies the development of AI-powered applications, accelerates the process, and reduces architectural complexity by eliminating the need for separate vector databases. For more information, see [Managing PostgreSQL extensions](/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions).
+
+PgVector is only offered for PostgreSQL version 15 and above.
+{: important}
+
+## 28 April 2025
+{: #databases-for-postgresql-28Apr2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-postgresql}} version 13 End of life on October 22, 2025
+:  This note is an update to the PostgreSQL v13 end-of-life approach, replacing our September 27, 2024 publication.
+
+:  Action is required before October 22, 2025, for your PostgreSQL v13 deployments. After October 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 13 that are still active will be upgraded in-place to the next major version, version 14. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading). 
+By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
+
 
 ## 10 March 2025
 {: #databases-for-postgresql-10mar2025}
