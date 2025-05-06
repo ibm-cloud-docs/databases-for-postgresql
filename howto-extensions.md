@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2025
-lastupdated: "2025-04-15"
+lastupdated: "2025-04-30"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -88,6 +88,14 @@ If there is a newer version of an extension available than the one you currently
 {: #pgaudit}
 
 - `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs. 
+
+
+### pgvector
+{: #pgvector}
+
+-  To add the `pgvector` extension to your deployment, use the `create extension vector` command.
+-  Important: `pgvector` requires PostgreSQL version 15 or higher.
+
 
 ## Available extensions
 {: #available-extensions}
