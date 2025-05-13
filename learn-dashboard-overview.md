@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-11-15"
+  years: 2018, 2025
+lastupdated: "2025-05-13"
 
 keywords: deployment, crn, task, gui, api endpoint, postgresql dashboard
 
@@ -40,7 +40,7 @@ Each time that you make administrative changes to your service (such as scaling,
 ### Endpoints
 {: #endpoints}
 
-The _Endpoints_ pane within the _Overview_ pane contains connection strings for your instance. Each tab contains connection information that is tailored to the type of connection or the protocol that uses it. Basic information includes _hostname_, _port_, the TLS self-signed certificate, TLS/SSL parameters, and the default database of your instance.
+The _Endpoints_ pane within the _Overview_ pane contains connection strings for your instance. Each tab contains connection information that is tailored to the type of connection or the protocol that uses it. Basic information includes _hostname_, _port_, the TLS service proprietary certificate, TLS/SSL parameters, and the default database of your instance.
 
 Reference tables for the different connection types are available on the [Getting credentials and connection strings](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings) page.
 

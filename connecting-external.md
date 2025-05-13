@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-09-29"
+  years: 2017, 2025
+lastupdated: "2025-05-13"
 
 keywords: postgresql drivers, python, java, javascript, certificate, postgresql connection string, postgresql connecting external application, postgresql python
 
@@ -23,17 +23,17 @@ The connection strings can be used by any of the credentials you create on your 
 
 All the information a driver needs to make a connection to your deployment is in the "postgres" section of your connection strings. The table contains a breakdown for reference.
 
-| Field Name | Index | Description |
+| Field name | Index | Description |
 | ---------- | ----- | ----------- |
-| `Type` | | Type of connection - for PostgreSQL, it is "URI" |
-| `Scheme` | | Scheme for a URI - for PostgreSQL, it is "postgresql" |
+| `Type` | | Type of connection - for PostgreSQL, it is "URI". |
+| `Scheme` | | Scheme for a URI - for PostgreSQL, it is "postgresql". |
 | `Path` | | Path for a URI - for PostgreSQL, it is the database name. The default is `ibmclouddb`. |
 | `Authentication` | `Username` | The username that you use to connect. |
 | `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD` |
 | `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. |
-| `Hosts` | `0...` | A hostname and port to connect to |
-| `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment |
+| `Hosts` | `0...` | A hostname and port to connect to. |
+| `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path. |
+| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment. |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
 {: caption="postgres/URI connection information" caption-side="bottom"}
 
@@ -179,14 +179,14 @@ client.connect(function(err) {
 To use the `node-postgres driver`, remove the `sslmode` parameter from the deployment's connection string. If not, this parameter overrides the `ssl: {...}` parameters, preventing the CA certificate from properly loading.
 {: .note}
 
-## Driver TLS and self-signed certificate support
+## Driver TLS and service proprietary certificate support
 {: #tls-certificate-support}
 
-All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption. Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection.
+All connections to {{site.data.keyword.databases-for-postgresql}} are TLS 1.2 enabled, so the driver you use to connect needs to be able to support encryption. Your deployment also comes with a service proprietary certificate so the driver can verify the server upon connection.
 
 For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/cloud-databases?topic=cloud-databases-faq-cert){: external}.
 
-### Using the self-signed certificate
+### Using the service proprietary certificate
 {: #selfsigned-cert}
 
 1. Copy the certificate information from the *Endpoints* panel or the Base64 field of the connection information.
@@ -196,7 +196,7 @@ For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ]
 
 ![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="The CLI plug-in information tab" caption-side="bottom"}
 
-### CLI plug-in support for the self-signed certificate
+### CLI plug-in support for the service proprietary certificate
 {: #cli-support}
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "example-deployment"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the driver.
