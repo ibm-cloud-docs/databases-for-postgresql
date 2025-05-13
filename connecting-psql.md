@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2024
-lastupdated: "2024-12-05"
+  years: 2017, 2025
+lastupdated: "2025-05-13"
 
 keywords: postgresql, databases, psql, postgresql command line
 
@@ -117,8 +117,8 @@ The information that you need to make a connection with `psql` is in the "cli" s
 | `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses `Arguments` as command-line parameters. |
 | `Environment` | | A list of key/values you set as environment variables. |
 | `Arguments` | 0... | The information that is passed as arguments to the command shown in the Bin field. |
-| `Certificate` | Base64 | A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
-| `Certificate` | Name | The allocated name for the self-signed certificate. |
+| `Certificate` | Base64 | A service proprietary certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
+| `Certificate` | Name | The allocated name for the service proprietary certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`. |
 {: caption="psql/cli connection information" caption-side="top"}
 
@@ -144,14 +144,14 @@ ibmcloud cdb cxn <INSTANCE_NAME_OR_CRN> -s
 
 The command prompts for the admin password and then runs the `psql` command-line client to connect to the database.
 
-If you have not installed the {{site.data.keyword.databases-for}} CLI plug-in, connect to your PostgreSQL databases using `psql` by giving it the "composed" connection string. It provides environment variables `PGPASSWORD` and `PGSSLROOTCERT`. Set `PGPASSWORD` to the admin's password and `PGSSLROOTCERT` to the path or file name for the self-signed certificate. 
+If you have not installed the {{site.data.keyword.databases-for}} CLI plug-in, connect to your PostgreSQL databases using `psql` by giving it the "composed" connection string. It provides environment variables `PGPASSWORD` and `PGSSLROOTCERT`. Set `PGPASSWORD` to the admin's password and `PGSSLROOTCERT` to the path or file name for the service proprietary certificate. 
 
 ```sh
 PGPASSWORD=$PASSWORD PGSSLROOTCERT=0b22f14b-7ba2-11e8-b8e9-568642342d40 psql 'host=4a8148fa-3806-4f9c-b3fc-6467f11b13bd.8f7bfd7f3faa4218aec56e069eb46187.databases.appdomain.cloud port=32325 dbname=ibmclouddb user=admin sslmode=verify-full'
 ```
 {: .codeblock}
 
-## Using the self-signed certificate
+## Using the service proprietary certificate
 {: #using-certificate}
 
 1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information. 
