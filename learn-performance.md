@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2022
-lastupdated: "2022-07-11"
+  years: 2020, 2025
+lastupdated: "2025-05-21"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits
 
@@ -10,12 +10,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Performance
