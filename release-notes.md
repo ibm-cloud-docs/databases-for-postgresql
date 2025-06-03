@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-05-06"
+lastupdated: "2025-06-03"
 
 keywords: databases-for-postgresql release notes
 
@@ -52,8 +52,8 @@ By proactively upgrading, you can control the timing and minimize any potential 
 {: #databases-for-postgresql-15nov2024}
 {: release-note}
 
-{{site.data.keyword.databases-for}} logs and events are now available on {{site.data.keyword.logs_full}}
-: {{site.data.keyword.databases-for}} has onboarded {{site.data.keyword.logs_full}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Customers are expected to use {{site.data.keyword.logs_full}} to review their database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started-cdb-logging-monitoring) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
+{{site.data.keyword.databases-for}} logs and events are now available on {{site.data.keyword.logs_routing_full}}
+: {{site.data.keyword.databases-for}} has onboarded {{site.data.keyword.logs_routing_full}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Customers are expected to use {{site.data.keyword.logs_routing_full}} to review their database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started-cdb-logging-monitoring) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
 
 ## 22 October 2024
 {: #databases-for-postgresql-22oct2024}
