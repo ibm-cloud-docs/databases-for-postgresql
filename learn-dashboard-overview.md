@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-05-13"
+lastupdated: "2025-06-03"
 
 keywords: deployment, crn, task, gui, api endpoint, postgresql dashboard
 
@@ -71,7 +71,7 @@ The _Backups and restore_ tab is the UI for managing your instance's backups. Av
 The _Observability_ tab provides access to the IBM Cloud Monitoring, logging, and event tracking integrations available for your deployment.
 
 - [{{site.data.keyword.atracker_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events)
-- [{{site.data.keyword.logs_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging)
+- [{{site.data.keyword.logs_routing_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging)
 - [{{site.data.keyword.monitoringfull}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring)
 
 ## Settings
