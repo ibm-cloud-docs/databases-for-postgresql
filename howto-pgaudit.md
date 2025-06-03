@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2024
-lastupdated: "2024-11-15"
+  years: 2020, 2025
+lastupdated: "2025-06-03"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -67,7 +67,7 @@ Changing audit levels happens immediately when calling the function without inte
 ## Audit logs
 {: #pgaudit-logs}
 
-Audit events appear in {{site.data.keyword.logs_full}} with the following format:
+Audit events appear in {{site.data.keyword.logs_routing_full}} with the following format:
 
 ```sh
 LOG: AUDIT: SESSION,1,1,DDL,CREATE TABLE,,,create table f2 (id int);,<not logged>
