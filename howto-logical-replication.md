@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-03-12"
+lastupdated: "2025-06-05"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -43,7 +43,7 @@ Arguments:
     for all tables in schema     To publish all tables in schema, along wth future tables.
 
 Usage:
-    exampledb=> create publication my_publication for all tables ;
+    exampledb=> CREATE PUBLICATION my_publication;
     CREATE PUBLICATION
 ```
 {: pre}
