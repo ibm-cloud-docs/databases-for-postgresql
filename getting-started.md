@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-06-03"
+lastupdated: "2025-06-05"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -570,11 +570,11 @@ Events are formatted according to the Cloud Auditing Data Federation (CADF) stan
 You cannot connect {{site.data.keyword.atracker_short}} by using the API. Use the console to complete this task. For more information, see [Activity tracking events](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events&interface=api).
 {: note}
 
-## Step 6: Connect {{site.data.keyword.atracker_full}} through Terraform
+## Step 6: Connect {{site.data.keyword.atracker_full_notm}} through Terraform
 {: #activity_tracker_tf}
 {: terraform}
 
-{{site.data.keyword.atracker_full_notm}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.atracker_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.atracker_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-postgresql}} service.
+{{site.data.keyword.atracker_full}} allows you to view, manage, and audit service activity to comply with corporate policies and industry regulations. {{site.data.keyword.atracker_short}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. Use {{site.data.keyword.atracker_short}} to track how users and applications interact with the {{site.data.keyword.databases-for-postgresql}} service.
 
 To get up and running with {{site.data.keyword.atracker_short}}, see [Getting Started with {{site.data.keyword.atracker_short}}](/docs/atracker?topic=atracker-getting-started){: external}.
 
