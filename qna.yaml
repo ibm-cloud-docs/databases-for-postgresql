@@ -1,0 +1,44 @@
+document_outline: |
+  Information about the Databases for PostgreSQL offering on IBM Cloud. PostgreSQL is a powerful, open source object-relational database that is highly customizable.
+domain: Databases for PostgreSQL
+seed_examples:
+  - context: |
+    questions_and_answers:
+      - question:
+        answer:
+      - question:
+        answer:
+      - question:
+        answer:
+  - context: |
+    questions_and_answers:
+      - question:
+        answer:
+      - question:
+        answer:
+      - question:
+        answer:
+  - context: |
+    questions_and_answers:
+      - question:
+        answer:
+      - question:
+        answer:
+      - question:
+        answer:
+  - context: |
+    questions_and_answers:
+      - question:
+        answer:
+      - question:
+        answer:
+      - question:
+        answer:
+  - context: |
+    questions_and_answers:
+      - question:
+        answer:
+      - question:
+        answer:
+      - question:
+        answer:
