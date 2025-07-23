@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-07-22"
+lastupdated: "2025-07-23"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -26,7 +26,7 @@ Filtered logical replication extends this capability by allowing you to specify 
 {: #logical-replicationp-prereq}
 
 - **PostgreSQL 15 or later** on publisher and subscriber.
-- Logical replication must be enabled. For more information, see [logical replication](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-logical-replication){: .internal}
+- Logical replication must be enabled. For more information, see [logical replication](/docs/databases-for-postgresql?topic=databases-for-postgresql-logical-replication).
 - Replication user must have appropriate privileges.
 
 ## Configuring row filters in logical replication
