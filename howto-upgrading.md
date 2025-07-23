@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2025
-lastupdated: "2025-04-15"
+lastupdated: "2025-07-22"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -14,14 +14,14 @@ subcollection: databases-for-postgresql
 # Upgrading to a new major version
 {: #upgrading}
 
-When a major version of a database is at its End Of Life (EOL), it is a good idea to upgrade to a current major version. 
+When a major version of a database is nearing its End Of Life (EOL), it is advisable to upgrade to a current major version. 
 
 Find the available versions of {{site.data.keyword.databases-for-postgresql}} in the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/databases/databases-for-postgresql/create) page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables){: external} endpoint.
 
 When you upgrade to a new instance, you also need to change the connection information in your application.
 {: note}
 
-## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v12 
+## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v13 
 {: #upgrading-reqs}
 
 If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
@@ -38,7 +38,7 @@ CREATE EXTENSION pg_repack;
 ```
 {: pre}
 
-If you are using PostGIS, you must first upgrade to PostGIS before upgrading PostgresSQL. This can be done by running the following command against a database with PostGIS installed.
+If you are using PostGIS, you must first upgrade to PostGIS before upgrading PostgreSQL. This can be done by running the following command against a database with PostGIS installed.
 {: note}
 
 ```sh
@@ -46,7 +46,7 @@ SELECT postgis_extensions_upgrade();
 ```
 {: pre}
 
-Use the following query to validate the Postgis extension upgrade. 
+Use the following query to validate the PostGIS extension upgrade. 
 
 ```sh
 SELECT postgis_full_version();
@@ -165,7 +165,7 @@ curl -X POST \
 ## Forced upgrade
 {: #forced_upgrade}
 
-After the end-of-life date, all active {{site.data.keyword.databases-for-postgresql}} deployments on the deprecated version will be forcibly upgraded to the next supported version. For example, PostgreSQL Version 12 (deprecated) upgrades to Version 13.
+After the end-of-life date, all active {{site.data.keyword.databases-for-postgresql}} deployments on the deprecated version will be forcibly upgraded to the next supported version. For example, PostgreSQL Version 13 (deprecated) upgrades to Version 14.
 {: .note}
 
 **Upgrade before the end-of-life date to avoid the following risks:**
@@ -182,8 +182,8 @@ For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.
 ## Changelog for major PostgreSQL versions
 {: #changelog-postgres}
 
-- [PostgreSQL 12](https://www.postgresql.org/docs/current/release-12.html){: external}
 - [PostgreSQL 13](https://www.postgresql.org/docs/13/release-13.html){: external}
 - [PostgreSQL 14](https://www.postgresql.org/docs/14/release-14.html){: external}
 - [PostgreSQL 15](https://www.postgresql.org/docs/release/15.0/){: external}
 - [PostgreSQL 16](https://www.postgresql.org/docs/release/16.0/){: external}
+- [PostgreSQL 16](https://www.postgresql.org/docs/release/17.0/){: external}
