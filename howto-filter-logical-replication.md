@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 
 
 # Databases for PostgreSQL as a filter logical replication destination
-{: #logical-replication}
+{: #filter-logical-replication}
 
 {{site.data.keyword.databases-for-postgresql_full}} supports [filter logical replication](https://www.postgresql.org/docs/15/logical-replication-row-filter.html){: .external}, where you can create  a publisher based on  **row-level filtering** and **column-list filtering** in logical replication, allowing fine-grained control over the data replicated to subscribers.
 
@@ -23,7 +23,7 @@ Filtered logical replication extends this capability by allowing you to specify 
 {: .tip}
 
 ## Prerequisites
-{: #logical-replicationp-prereq}
+{: #filter-logical-replication-prereq}
 
 - **PostgreSQL 15 or later** on publisher and subscriber.
 - Logical replication must be enabled. For more information, see [logical replication](/docs/databases-for-postgresql?topic=databases-for-postgresql-logical-replication).
@@ -35,7 +35,7 @@ Filtered logical replication extends this capability by allowing you to specify 
 A publisher with filtered replication for your {{site.data.keyword.databases-for-postgresql}} publishes only selected rows and/or columns of tables to subscribers using logical replication filters.
 
 ### Publisher functions
-{: #publisher-functions}
+{: #filter-logical-replication-publisher-functions}
 
 - **`create_publisher_with_filtered_rows`**
 
@@ -120,7 +120,7 @@ A publisher with filtered replication for your {{site.data.keyword.databases-for
 
 
 ### Subscriber functions
-{: #subscriber-functions}
+{: #filter-logical-replication-subscriber-functions}
 
 - **`create_subscription`**
 
