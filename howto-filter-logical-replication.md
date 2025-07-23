@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 # Databases for PostgreSQL as a filter logical replication destination
 {: #logical-replication}
 
-{{site.data.keyword.databases-for-postgresql_full}} supports [filter logical replication](https://www.postgresql.org/docs/15/logical-replication-row-filter.html){: .external}, where you a publisher based on  **row-level filtering** and **column-list filtering** in logical replication.
+{{site.data.keyword.databases-for-postgresql_full}} supports [filter logical replication](https://www.postgresql.org/docs/15/logical-replication-row-filter.html){: .external}, where you can create  a publisher based on  **row-level filtering** and **column-list filtering** in logical replication, allowing fine-grained control over the data replicated to subscribers.
 
 Filtered logical replication extends this capability by allowing you to specify which published tables and columns should be replicated to each subscriber. This filtering happens at the publication level and enables you to choose exactly what data needs to be replicated to each subscriber. This can be particularly useful in scenarios where not all data needs to be available on every node, for reasons related to security, performance, or data isolation.
 {: .tip}
