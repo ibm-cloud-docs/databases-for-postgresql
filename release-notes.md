@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-06-03"
+lastupdated: "2025-07-25"
 
 keywords: databases-for-postgresql release notes
 
@@ -46,7 +46,7 @@ By proactively upgrading, you can control the timing and minimize any potential 
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan is deprecated
-:   {{site.data.keyword.satellitelong}} is now deprecated due to changes in market expectations, client fit, and lack of adoption. As of March 10 2025, all documentation relating to Satellite has been removed, as well as the ability to select {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
+:   {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan is now deprecated. As of March 10 2025, all documentation relating to {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan has been removed, as well as the ability to select {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
 
 ## 15 November 2024
 {: #databases-for-postgresql-15nov2024}
