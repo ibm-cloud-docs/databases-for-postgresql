@@ -2,10 +2,10 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-07-23"
+lastupdated: "2025-08-01"
 
 
-keywords: postgresql, databases, postgres logical replication, postgresql logical replication
+keywords: postgresql, databases, postgres logical replication, postgresql logical replication, filter logical replication
 
 subcollection: databases-for-postgresql
 

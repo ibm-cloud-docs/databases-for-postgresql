@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-08-01"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -132,8 +132,16 @@ Arguments:
     db_name             The name of the database to be replicated
     publisher_name      The name of publisher channel on the publisher
 
+    These additional configuration options are only supported in PostgreSQL 17 and later.
+    copy_data           The copy_data parameter (true or false, default: true) determines whether the initial data from the publication should be copied to the subscriber when the subscription is created.
+    failover            The failover parameter (true or false, default: false) enables support for automatic failover of the subscription between replicated nodes, ensuring continuity during primary node transitions.
+    origin              The origin parameter (ANY or NONE, default: NONE) allows filtering of changes based on their origin. It helps exclude or include changes coming from specific nodes in multi-node or cascading replication setups.
+
 Usage:
     exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','exampledb','my_publication');
+
+    PostgreSQL 17 and later
+    exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','exampledb','my_publication'  'true',  'ANY' , 'true');
 ```
 
 **`delete_subscription`**
