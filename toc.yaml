@@ -76,6 +76,8 @@ toc:
           - howto-pgaudit.md
           - howto-pg-repack.md
           - howto-pg-vector.md
+          - howto-pganon.md
+          - howto-pg-cron.md
           - howto-icu.md
       - topicgroup:
           label: Observability
