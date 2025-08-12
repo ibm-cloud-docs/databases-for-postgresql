@@ -74,6 +74,8 @@ toc:
           - howto-extensions.md
           - howto-wal2json.md
           - howto-pgaudit.md
+          - howto-pg-repack.md
+          - howto-pg-vector.md
           - howto-icu.md
       - topicgroup:
           label: Observability

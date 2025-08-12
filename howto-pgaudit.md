@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-06-03"
+lastupdated: "2025-08-01"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -30,11 +30,13 @@ Session logging is configured per event type. The supported event types across a
 * FUNCTION 
 * ROLE
 * DDL
+* READ
+* WRITE
 * MISC
 * MISC_SET (this additional type is only supported in PostgreSQL 12 or greater)
+* NONE (to disable the logging)
 
 For more information, see [pgaudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog){: .external}.
-
 
 ## Enabling pgAudit session logging
 {: #enable-pgaudit-session-logging}
@@ -48,13 +50,37 @@ SELECT public.set_pgaudit_session_logging('{ddl, role}');
 ```
 {: .codeblock}
 
-Any subsequent calls replace the existing configuration; they are not additive. For example, a subsequent call to `SELECT public.set_pgaudit_session_logging('{misc}');` would log only `misc` but disable `ddl` and `role`.
+## Enabling pgAudit user logging
+{: #enable-pgaudit-user-logging}
+
+To enable pgAudit user logging, connect as the admin user and call the `set_pgaudit_user_logging` function with the appropriate event parameters specified. User logging is enabled for a specific user instead of all the users in the database.
+
+For example, to enable READ and WRITE, use the following command:
+
+```sh
+SELECT public.set_pgaudit_user_logging('{read, write}');
+```
+{: .codeblock}
+
+## Enabling pgAudit database logging
+{: #enable-pgaudit-database-logging}
+
+To enable pgAudit database specific logging, connect as the admin user and call the `set_pgaudit_database_logging` function with the appropriate event parameters specified. Database logging is enabled for a specific database, in case of multiple databases available in an instance.
+
+For example, to enable DDL and ROLE, use the following command:
+
+```sh
+SELECT public.set_pgaudit_database_logging('{ddl, role}');
+```
+{: .codeblock}
+
+Any subsequent calls replace the existing configuration; they are not additive. For example, a subsequent call to `SELECT public.set_pgaudit_session_logging('{misc}');` logs only `misc` but disable `ddl` and `role`.
 {: .note}
 
 ## Disabling pgAudit
 {: #disable-pgaudit}
 
-To disable audit logging: call the same function with `none` specified. For example:
+To disable audit logging, call the same function with `none` specified. For example:
 
 ```sh
 SELECT public.set_pgaudit_session_logging('{none}');
