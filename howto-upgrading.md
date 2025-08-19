@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2025
-lastupdated: "2025-07-22"
+lastupdated: "2025-08-15"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -179,6 +179,37 @@ After the end-of-life date, all active {{site.data.keyword.databases-for-postgre
 
 For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy ){: external}.
 
+
+## _Admin user_ issues during version upgrades
+{: #admin_user_issues}
+
+Starting with PostgreSQL 16, role privilege enforcement has become more stringent. In contrast, earlier versions allowed roles with the `CREATEROLE` attribute to manage other roles; version 16 and beyond require that a role has the `ADMIN OPTION` on another role to grant or revoke it.
+{: .note}
+
+**If you are upgrading your database from PostgreSQL v15 or earlier to PostgreSQL v16 or higher, you may encounter privilege-related errors, such as:**
+
+```sh
+ERROR: only roles with the ADMIN OPTION on role "some_role" may grant this role
+DETAIL: role "admin" is not permitted to grant role "some_role"
+```
+
+To address this issue, we provide a built-in helper function `grant_admin_option_to_roles` that is designed to restore the expected role management behavior.
+
+This function:
+
+- Applies only to databases upgraded from PostgreSQL v15 and earlier versions to PostgreSQL 16 and later (if you're encountering the error described above).
+- Accepts an arbitrary list of roles to apply the fix to.
+- Can only be executed by the `admin user`.
+- Is safe to run multiple times (idempotent).
+
+Sample usage:
+
+```
+SELECT grant_admin_option_to_roles('role1', 'role2', 'role3');
+```
+
+This ensures that the `admin user` retains the appropriate `ADMIN OPTION` privileges to manage designated roles in upgraded instances.
+
 ## Changelog for major PostgreSQL versions
 {: #changelog-postgres}
 
@@ -186,4 +217,4 @@ For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.
 - [PostgreSQL 14](https://www.postgresql.org/docs/14/release-14.html){: external}
 - [PostgreSQL 15](https://www.postgresql.org/docs/release/15.0/){: external}
 - [PostgreSQL 16](https://www.postgresql.org/docs/release/16.0/){: external}
-- [PostgreSQL 16](https://www.postgresql.org/docs/release/17.0/){: external}
+- [PostgreSQL 17](https://www.postgresql.org/docs/release/17.0/){: external}
