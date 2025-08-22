@@ -70,15 +70,20 @@ toc:
       - topicgroup:
           label: Configuring PostgreSQL
           topics:
-          - howto-changing-config.md
-          - howto-extensions.md
+          - topic: howto-changing-config.md
+            navtitle: Changing your configuration
+          - topic: howto-extensions.md
+            navtitle: Managing extensions
           - howto-wal2json.md
           - howto-pgaudit.md
           - howto-pg-repack.md
-          - howto-pg-vector.md
-          - howto-pganon.md
+          - topic: howto-pg-vector.md
+            navtitle: Exploring vector-based search using pg_vector
+          - topic: howto-pganon.md
+            navtitle: Data masking
           - howto-pg-cron.md
-          - howto-icu.md
+          - topic: howto-icu.md
+            navtitle: ICU support
       - topicgroup:
           label: Observability
           topics:
