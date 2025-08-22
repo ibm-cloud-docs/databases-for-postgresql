@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-07-25"
+lastupdated: "2025-08-22"
 
 keywords: databases-for-postgresql release notes
 
@@ -165,8 +165,8 @@ Protecting {{site.data.keyword.databases-for-postgresql_full}} resources with co
 {: #databases-for-postgresql-31may2022}
 {: release-note}
 
-Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform tutorial published
-:  In this tutorial, you learn how to use Terraform to provision a {{site.data.keyword.databases-for-postgresql_full}} instance. For more information, see [Provision a {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform](/docs/cloud-databases?topic=cloud-databases-tutorial-provision-postgres-tf&interface=ui).
+Provision an {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform tutorial published
+:  In this tutorial, you learn how to use Terraform to provision an {{site.data.keyword.databases-for-postgresql_full}} instance. For more information, see [Provision an {{site.data.keyword.databases-for-postgresql_full}} instance with Terraform](/docs/cloud-databases?topic=cloud-databases-tutorial-provision-postgres-tf&interface=ui).
 
 ## 29 March 2022
 {: #databases-for-postgresql-29mar2022}
