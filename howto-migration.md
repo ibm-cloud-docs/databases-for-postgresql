@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-07-06"
+  years: 2017, 2025
+lastupdated: "2025-08-22"
 
 keywords: postgresql, databases, postgres admin user, postgresql admin user, pg_dump, postgres migration, postgresql migration
 
@@ -9,12 +9,6 @@ subcollection: databases-for-postgresql
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
 {{site.data.keyword.attribute-definition-list}}
 
 # Migrating to {{site.data.keyword.databases-for-postgresql}}
@@ -35,6 +29,9 @@ pg_dump -h sl-eu-lon-2-portal.4.dblayer.com -p 17980 -d compose -U admin -f dump
 {: pre}
 
 The `pg_dump` command has many options and it is recommended that you [consult the official documentation](https://www.postgresql.org/docs/current/backup-dump.html){: .external} and [command reference](https://www.postgresql.org/docs/current/app-pgdump.html){: .external} for a fuller view of its capabilities.
+
+Using pg_dumpall will causes permission issues, as it tries to include system tables in the operation, which is not supported. As documented, use pg_dump and specify tables that are user-specific.
+{: .tip}
 
 ## Restoring pg_dump's output
 {: #restore-pg_dump-output}
