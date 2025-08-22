@@ -24,7 +24,7 @@ The extension supports the following masking strategies, each suitable for diffe
 - **Anonymous dumps**: Simply export the masked data into an SQL file.
 - **Generalization**: Replaces specific values with broader, less precise categories or range.
 
-# Static masking
+## Static masking
 {: #static-masking}
 
 Static masking is a data anonymization technique that irreversibly replaces sensitive information with synthetically generated,
@@ -32,7 +32,7 @@ format-preserving values. This process ensures the complete and permanent remova
 the possibility of re-identification or reconstruction.
 For more information, see [Static masking](https://postgresql-anonymizer.readthedocs.io/en/stable/tutorials/1-static_masking).
 
-## Enabling static masking
+### Enabling static masking
 {: #enabling-static-masking}
 
 1. Install the Anonymizer Extension.
@@ -79,14 +79,14 @@ least one masked column. This means that PostgreSQL will rewrite all the data on
 Depending on the database size, the hardware, and the instance config, it may be faster to export the anonymized data and reload it into the database.
 {: note}
 
-# Dynamic masking
+## Dynamic masking
 {: #dynamic-masking}
 
 Dynamic masking allows the database owner to obscure sensitive data for specific users,
 while permitting authorized users to access and modify the original, unmasked values.
 For more information, see [Dynamic masking](https://postgresql-anonymizer.readthedocs.io/en/stable/tutorials/2-dynamic_masking/).
 
-## Enabling dynamic masking
+### Enabling dynamic masking
 {: #enabling-dynamic-masking}
 
 1. Install the Anonymizer Extension.
@@ -169,14 +169,14 @@ Notes:
 - A masking rule may break data integrity. For instance, you can mask a column having a UNIQUE constraint with the value NULL. It is up to you to decide whether or not the mask users need data integrity.
 - Masked roles are not allowed to use EXPLAIN.
 
-# Anonymous dumps
+## Anonymous dumps
 {: #anonymous-dumps}
 
 An anonymous dump refers to the process of exporting a database that contains anonymized or de-identified data,
 rather than the original sensitive values. This is typically done to safely share, migrate, or analyze data without
 exposing personally identifiable information (PII) or sensitive attributes. For more information, see [Anonymous dumps](https://postgresql-anonymizer.readthedocs.io/en/latest/anonymous_dumps/).
 
-## Enabling anonymous dumps
+### Enabling anonymous dumps
 {: #enabling-anonymous-dumps}
 
 1. Install the Anonymizer Extension.
@@ -270,13 +270,13 @@ exposing personally identifiable information (PII) or sensitive attributes. For 
     ```
     {: pre}
 
-# Generalization
+## Generalization
 {: #generalization}
 
 The main idea of generalization is to blur the original data.
 For more information, see [Generalization](https://postgresql-anonymizer.readthedocs.io/en/stable/tutorials/4-generalization/#).
 
-## Enabling generalization
+### Enabling generalization
 {: #enabling-generalization}
 
 1. Install the anonymizer extension.
