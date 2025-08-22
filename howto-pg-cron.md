@@ -12,13 +12,12 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# What is pg_cron?
+# Scheduling jobs with pg_cron
 {: #pg_cron}
 
-pg_cron is an in-database job scheduling extension for PostgreSQL (version 10 and above) that lets you automate SQL tasks without leaving the database environment.
-It follows a familiar cron-like scheduling format, enabling you to set up recurring jobs using standard time expressions. Unlike traditional cron, which runs at the operating system level, pg_cron executes commands directly inside PostgreSQL. It also extends the cron concept by supporting second-level intervals, allowing jobs to run as frequently as every few seconds (from 1 to 59 seconds).
+`pg_cron` is an in-database job scheduling extension for PostgreSQL (version 10 and above) that lets you automate SQL tasks without leaving the database environment. It follows a familiar cron-like scheduling format, enabling you to set up recurring jobs using standard time expressions. Unlike traditional cron, which runs at the operating system level, pg_cron executes commands directly inside PostgreSQL. It also extends the cron concept by supporting second-level intervals, allowing jobs to run as frequently as every few seconds (from 1 to 59 seconds).
 
-## Setting up pg_cron
+## Setting up `pg_cron`
 {: #pg_cron-setting-up}
 
 1. Log in to ibmclouddb database.
@@ -28,34 +27,34 @@ It follows a familiar cron-like scheduling format, enabling you to set up recurr
     ```
     {: pre}
    
-3. Enable the pg_cron extension.
+3. Enable the `pg_cron` extension.
    
     ```sh
      create extension pg_cron;
     ```
     {: pre}
    
-5. Verify whether pg_cron is installed.
+5. Verify whether `pg_cron` is installed.
    
     ```sh
      \dx
      ```
    {: pre}
    
-    pg_cron can be installed on only ibmclouddb database.
+    `pg_cron` can be installed on only ibmclouddb database.
    {: note}
 
-7. Run the following command to grant privileges for pg_cron.
+7. Run the following command to grant privileges for `pg_cron`.
 
     ```sh
      select public.grant_pgcron_privileges();
     ```
     {: pre}
    
-## Schedule jobs
+## Scheduling jobs
 {: #pg_cron-schedule-jobs}
 
-pg_cron is enabled in ibmclouddb database, so use cron.schedule_in_database() to schedule your jobs.
+`pg_cron` is enabled in ibmclouddb database, so use cron.schedule_in_database() to schedule your jobs.
 
 ```sh
 SELECT cron.schedule_in_database(
@@ -92,7 +91,7 @@ ibmclouddb=> SELECT cron.unschedule(jobid);
 ```
 {: pre}
 
-## Examples for using pg_cron
+## Examples for using `pg_cron`
 {: #pg_cron-examples}
 
 - Log into ibmclouddb database:
@@ -102,7 +101,7 @@ ibmclouddb=> SELECT cron.unschedule(jobid);
 ```
 {: pre}
 
-- Enable the pg_cron extension:
+- Enable the `pg_cron` extension:
   
 ```sh
 ibmclouddb=> \dx
@@ -125,7 +124,7 @@ ibmclouddb=> \dx
 ```
 {: pre}
 
-- Grant privileges for pg_cron:
+- Grant privileges for `pg_cron`:
   
 ```sh
 ibmclouddb=> select public.grant_pgcron_privileges();
