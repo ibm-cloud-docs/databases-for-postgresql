@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-09-25"
+lastupdated: "2025-09-30"
 
 keywords: postgresql, databases, pg_cron, schedule, cron, cron jobs, schedule jobs, 
 
@@ -12,10 +12,12 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Scheduling jobs with pg_cron
+# Scheduling maintenance jobs with pg_cron
 {: #pg_cron}
 
-`pg_cron` is an in-database job scheduling extension for PostgreSQL (version 10 and above) that lets you automate SQL tasks without leaving the database environment. It follows a familiar cron-like scheduling format, enabling you to set up recurring jobs using standard time expressions. Unlike traditional cron, which runs at the operating system level, pg_cron executes commands directly inside PostgreSQL. It also extends the cron concept by supporting second-level intervals, allowing jobs to run as frequently as every few seconds (from 1 to 59 seconds).
+`pg_cron` is a PostgreSQL extension that provides in-database job scheduling, allowing you to automate SQL tasks without relying on external tools. For more information, see [`pg_cron`](https://github.com/citusdata/pg_cron).
+
+The `pg_cron` extension is supported on PostgreSQL version 13 and above.
 
 ## Setting up `pg_cron`
 {: #pg_cron-setting-up}
@@ -41,7 +43,7 @@ subcollection: databases-for-postgresql
      ```
    {: pre}
    
-    `pg_cron` can be installed on only ibmclouddb database.
+    `pg_cron` can be installed on only ibmclouddb databases.
    {: note}
 
 7. Run the following command to grant privileges for `pg_cron`.
@@ -54,7 +56,7 @@ subcollection: databases-for-postgresql
 ## Scheduling jobs
 {: #pg_cron-schedule-jobs}
 
-`pg_cron` is enabled in ibmclouddb database, so use cron.schedule_in_database() to schedule your jobs.
+Use `cron.schedule_in_database()` to schedule your jobs.
 
 ```sh
 SELECT cron.schedule_in_database(
@@ -91,7 +93,7 @@ ibmclouddb=> SELECT cron.unschedule(jobid);
 ```
 {: pre}
 
-## Examples for using `pg_cron`
+## Example for using `pg_cron`
 {: #pg_cron-examples}
 
 - Log into ibmclouddb database:
@@ -135,23 +137,25 @@ ibmclouddb=> select public.grant_pgcron_privileges();
 ```
 {: pre}
 
-- Log in into test database to create table:
-  
+
+- Scheduling a VACUUM job to run every Sunday at 4:00 AM. 
+
 ```sh
-test=> CREATE TABLE cron_test (id SERIAL PRIMARY KEY, inserted_at TIMESTAMP DEFAULT now() );
-CREATE TABLE
+SELECT cron.schedule_in_database(
+    job_name text,
+    schedule text,          -- cron expression
+    command text,           -- SQL command to run
+    database_name text      -- target database
+);
 ```
-{: pre}
-
-- Run the following command to schedule a job:
   
 ```sh
-SELECT cron.schedule_in_database('insert-into-cron-test', '* * * * *', $$INSERT INTO cron_test DEFAULT VALUES;$$,'test');
-
+ ibmclouddb=> SELECT cron.schedule_in_database('weekly-vacuum', '0 4 * * 0', 'VACUUM', 'test');
  schedule_in_database
 ----------------------
+                   35
+(1 row)
 
-                    1
 ```
 {: pre}
 
@@ -159,13 +163,9 @@ SELECT cron.schedule_in_database('insert-into-cron-test', '* * * * *', $$INSERT 
   
 ```sh
 ibmclouddb=> select * from cron.job;
-
- jobid | schedule  |                command                | nodename  | nodeport | database | username | active |        jobname
-
--------+-----------+---------------------------------------+-----------+----------+----------+----------+--------+-----------------------
-
-     1 | * * * * * | INSERT INTO cron_test DEFAULT VALUES; | localhost |     5432 | test     | admin    | t      | insert-into-cron-test
-
+ jobid | schedule  | command | nodename  | nodeport | database | username | active |    jobname
+-------+-----------+---------+-----------+----------+----------+----------+--------+---------------
+    35 | 0 4 * * 0 | VACUUM  | localhost |     5432 | test     | admin    | t      | weekly-vacuum
 (1 row)
 
 ```
@@ -175,24 +175,30 @@ ibmclouddb=> select * from cron.job;
 
 ```sh
 ibmclouddb=> select * from cron.job_run_details;
-
- jobid | runid | job_pid | database | username |                command                |  status   | return_message |          start_time           |           end_time
-
--------+-------+---------+----------+----------+---------------------------------------+-----------+----------------+-------------------------------+-------------------------------
-
-     1 |     1 |    1581 | test     | admin    | INSERT INTO cron_test DEFAULT VALUES; | succeeded | INSERT 0 1     | 2025-08-10 16:21:00.010363+00 | 2025-08-10 16:21:00.026172+00
-
-(1 row)
+ jobid | runid | job_pid | database | username | command |  status   | return_message |          start_time           |           end_time
+-------+-------+---------+----------+----------+---------+-----------+----------------+-------------------------------+-------------------------------
+    35 |    85 |   33810 | test     | admin    | VACUUM  | succeeded | VACUUM         | 2025-09-23 15:48:00.013814+00 | 2025-09-23 15:48:01.29763+00
 ```
 {: pre}
 
 - To unschedule jobs:
 
 ```sh
-ibmclouddb=> SELECT cron.unschedule(1);
+ibmclouddb=> SELECT cron.unschedule(35);
  unschedule
 ------------
  t
 (1 row)
 ```
 {: pre}
+
+- The records in `cron.job_run_details` are not cleaned automatically, but every user that can schedule cron jobs also has permission to delete their own cron.job_run_details records.
+  
+```sh
+ibmclouddb=> SELECT  cron.schedule('delete-job-run-details', '0 12 * * *', $$DELETE FROM cron.job_run_details WHERE end_time < now() - interval '7 days'$$);
+```
+{: pre}
+
+- `pg_cron` jobs are terminated whenever the database restarts as a result of activities such as scaling, failover, or switchover. Since there is no retry mechanism, the job will not resume automatically. You must either wait for the next scheduled run or adjust the schedule as needed.
+
+- Up to 5 pg_cron jobs run concurrently; extra jobs wait in a queue.
