@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-09-25"
+lastupdated: "2025-09-30"
 
 keywords: postgresql, databases, PostgreSQL Anonymizer, Postgresql data masking, GDPR compliance PostgreSQL, Static Masking, Dynamic Masking, Anonymous Dumps, Generalization
 
@@ -74,10 +74,18 @@ For more information, see [Static masking](https://postgresql-anonymizer.readthe
     ```
     {: pre}
 
-Static masking is a slow process. The principle of static masking is to update all lines of all tables containing at
-least one masked column. This means that PostgreSQL will rewrite all the data on disk.
-Depending on the database size, the hardware, and the instance config, it may be faster to export the anonymized data and reload it into the database.
-{: note}
+
+  - Static masking is a slow process. The principle of static masking is to update all lines of all tables containing at least one masked column. This means that PostgreSQL will rewrite all the data on disk. Depending on the database size, the hardware, and the instance config, it may be faster to export the anonymized data and reload it into the database.
+
+  - To apply masking to newly inserted rows in a table, execute the following command.
+
+    ```sh
+    SELECT anon.anonymize_table('<table_name>');
+    ```
+    {: pre}
+
+    This command ensures that any new data added to the table is masked according to the configured anonymization rules.
+    {: note}
 
 ## Dynamic masking
 {: #dynamic-masking}
@@ -129,7 +137,14 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-6. Declare the masking rules.
+6. Grant permissions on the masking table to a role.
+
+    ```sh
+      grant select on <schema_name>.<table_name> to <role_name> ;
+    ```
+    {: pre}
+
+8. Declare the masking rules.
 
     ```sh
     SECURITY LABEL FOR anon
@@ -138,7 +153,7 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-7. Verify the masking rules.
+9. Verify the masking rules.
 
     ```sh
     SELECT objoid::regclass, provider, label
@@ -147,27 +162,21 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-8. Grant Select access on masked tables.
 
-    ```sh
-    grant select on <schema_name>.<table_name> to <role_name>;
-    ```
-    {: pre}
-
-9. Connect to the database using the masked role, and query the table. You should see the masked data as per the rules defined.
+10. Connect to the database using the masked role, and query the table. You should see the masked data as per the rules defined.
 
     ```sh
     select * from <table_name>;
     ```
     {: pre}
 
-Notes:
+   Notes:
 
-- The anonymizer masks data based on who is querying.
-- Masked roles should not be allowed to insert, update, or delete data.
-- You can mask table in multiple schemas.
-- A masking rule may break data integrity. For instance, you can mask a column having a UNIQUE constraint with the value NULL. It is up to you to decide whether or not the mask users need data integrity.
-- Masked roles are not allowed to use EXPLAIN.
+    - The anonymizer masks data based on who is querying.
+    - Masked roles should not be allowed to insert, update, or delete data.
+    - You can mask table in multiple schemas.
+    - A masking rule may break data integrity. For instance, you can mask a column having a UNIQUE constraint with the value NULL. It is up to you to decide whether or not the mask users need data integrity.
+    - Masked roles are not allowed to use EXPLAIN.
 
 ## Anonymous dumps
 {: #anonymous-dumps}
@@ -200,14 +209,22 @@ exposing personally identifiable information (PII) or sensitive attributes. For 
     ```
     {: pre}
 
-4. Declare the schema as trusted. This allows the anonymizer to recognize custom masking functions defined in this schema.
+
+4. Create a role for exporting masked data.
 
     ```sh
-    SECURITY LABEL FOR anon ON SCHEMA <schema_name> IS 'TRUSTED';
+     CREATE ROLE <role_name> LOGIN PASSWORD '<enter_password>';
     ```
     {: pre}
 
-5. Define a custom masking function, as in the following example.
+5. Enable masking for role.
+
+    ```sh
+    select  public.enable_masking_for_dump('<role_name>','<schema_name>');
+    ```
+    {: pre}
+
+6. Define a custom masking function, as in the following example.
 
     ```sh
     CREATE OR REPLACE FUNCTION <schema_name>.remove_content(j JSONB)
@@ -219,19 +236,12 @@ exposing personally identifiable information (PII) or sensitive attributes. For 
     ```
     {: pre}
 
-6. Create a masking rule.
+7. Create a masking rule.
 
     ```sh
     SECURITY LABEL FOR anon
       ON COLUMN <table_name>.<column_name>
-      IS 'MASKED WITH FUNCTION anon.<custom_masking_function>()';
-    ```
-    {: pre}
-
-7. Create a role for exporting masked data.
-
-    ```sh
-     CREATE ROLE <role_name> LOGIN PASSWORD '<enter_password>';
+      IS 'MASKED WITH FUNCTION <schema_name>.<custom_masking_function>()';
     ```
     {: pre}
 
@@ -242,32 +252,26 @@ exposing personally identifiable information (PII) or sensitive attributes. For 
     ```
     {: pre}
 
-9. Enable masking for role.
+9. Grant access to the masked schema.
 
     ```sh
-    select  public.enable_masking_for_dump('<role_name>','<schema_name>');
+    GRANT USAGE ON SCHEMA <schema_name> TO <masked_role>;
     ```
     {: pre}
 
-10. Grant access to the masked schema.
-
-    ```sh
-    GRANT USAGE ON SCHEMA <masked_schema_name>> TO <masked_role>;
-    ```
-    {: pre}
-
-11. Grant Select access on masked tables.
+10. Grant Select access on masked tables.
 
     ```sh
     grant select ON <schema_name>.<table_name> to <masked_role>;
     ```
     {: pre}
 
-12. Export masked data using pg_dump as the masked role.
+11. Export masked data using pg_dump as the masked role.
 
-    ```sh
-    pg_dump -U <masked_user> -d <database_name> -f <dump_file_name>
-    ```
+    Please refer [here](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-migrating) for pg_dump commads 
+     
+    Note: To export masked data, run pg_dump using the masked role. If pg_dump is executed by an admin user, the data will be exported without masking. 
+
     {: pre}
 
 ## Generalization
@@ -328,6 +332,7 @@ For more information, see [Generalization](https://postgresql-anonymizer.readthe
     SELECT anon.k_anonymity('<view_name/table_name>');
     ```
     {: pre}
+
 
 ## Unmask a role
 {: #unmask-role}
