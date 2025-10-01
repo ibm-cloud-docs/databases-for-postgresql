@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-09-26"
+lastupdated: "2025-10-01"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -133,7 +133,7 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 
 - Default - `50`
 - Restarts database? - **YES**
-- Notes - The default value of `50` disables use of [prepared transactions](https://www.postgresql.org/docs/current/sql-prepare-transaction.html){: .external} and is recommended unless you need to use them.
+- Notes - Setting the value to `0` disables use of [prepared transactions](https://www.postgresql.org/docs/current/sql-prepare-transaction.html){: .external} and is recommended unless you need to use them.
 
 [`synchronous_commit`](https://www.postgresql.org/docs/current/wal-async-commit.html){: .external}
 
