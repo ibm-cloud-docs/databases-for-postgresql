@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-09-30"
+lastupdated: "2025-10-06"
 
 keywords: postgresql, databases, PostgreSQL Anonymizer, Postgresql data masking, GDPR compliance PostgreSQL, Static Masking, Dynamic Masking, Anonymous Dumps, Generalization
 
@@ -12,7 +12,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Data masking for {{site.data.keyword.databases-for-postgresql}}
+# Data masking using PostgreSQL Anonymizer
 {: #data-masking}
 
 {{site.data.keyword.databases-for-postgresql}} Anonymizer is a PostgreSQL extension designed to anonymize data by masking or replacing personally identifiable and sensitive business information in a {{site.data.keyword.databases-for-postgresql}} database.
@@ -162,7 +162,6 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-
 10. Connect to the database using the masked role, and query the table. You should see the masked data as per the rules defined.
 
     ```sh
@@ -170,13 +169,13 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-   Notes:
+Notes:
 
-    - The anonymizer masks data based on who is querying.
-    - Masked roles should not be allowed to insert, update, or delete data.
-    - You can mask table in multiple schemas.
-    - A masking rule may break data integrity. For instance, you can mask a column having a UNIQUE constraint with the value NULL. It is up to you to decide whether or not the mask users need data integrity.
-    - Masked roles are not allowed to use EXPLAIN.
+- The anonymizer masks data based on who is querying.
+- Masked roles should not be allowed to insert, update, or delete data.
+- You can mask table in multiple schemas.
+- A masking rule may break data integrity. For instance, you can mask a column having a UNIQUE constraint with the value NULL. It is up to you to decide whether or not the mask users need data integrity.
+- Masked roles are not allowed to use EXPLAIN.
 
 ## Anonymous dumps
 {: #anonymous-dumps}
