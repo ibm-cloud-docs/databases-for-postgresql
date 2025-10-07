@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-10-06"
+lastupdated: "2025-10-07"
 
 keywords: postgresql, databases, PostgreSQL Anonymizer, Postgresql data masking, GDPR compliance PostgreSQL, Static Masking, Dynamic Masking, Anonymous Dumps, Generalization
 
@@ -180,8 +180,7 @@ Notes:
 ## Anonymous dumps
 {: #anonymous-dumps}
 
-An anonymous dump refers to the process of exporting a database that contains anonymized or de-identified data,
-rather than the original sensitive values. This is typically done to safely share, migrate, or analyze data without
+An anonymous dump refers to the process of exporting a database that contains anonymized or de-identified data, rather than the original sensitive values. This is typically done to safely share, migrate, or analyze data without
 exposing personally identifiable information (PII) or sensitive attributes. For more information, see [Anonymous dumps](https://postgresql-anonymizer.readthedocs.io/en/latest/anonymous_dumps/).
 
 ### Enabling anonymous dumps
@@ -267,11 +266,10 @@ exposing personally identifiable information (PII) or sensitive attributes. For 
 
 11. Export masked data using pg_dump as the masked role.
 
-    Please refer [here](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-migrating) for pg_dump commads 
-     
-    Note: To export masked data, run pg_dump using the masked role. If pg_dump is executed by an admin user, the data will be exported without masking. 
+    For more information, see [pg dump commands](/docs/databases-for-postgresql?topic=databases-for-postgresql-migrating).
 
-    {: pre}
+    To export masked data, run pg_dump using the masked role. If pg_dump is executed by an admin user, the data will be exported without masking.
+    {: note}
 
 ## Generalization
 {: #generalization}
