@@ -80,7 +80,6 @@ toc:
           - topic: howto-pg-vector.md
             navtitle: Exploring vector-based search using pg_vector
           - topic: howto-pganon.md
-            navtitle: Data masking
           - howto-pg-cron.md
           - topic: howto-icu.md
             navtitle: ICU support
