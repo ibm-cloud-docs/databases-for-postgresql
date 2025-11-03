@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2025
-lastupdated: "2025-08-15"
+lastupdated: "2025-11-03"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -53,6 +53,42 @@ SELECT postgis_full_version();
 ```
 {: pre}
 
+## Handling the `anon` extension before upgrade
+{: #upgrading-handling}
+
+If the `anon` extension is installed, follow the steps below and execute the commands as the admin user before performing the upgrade.
+
+1. Remove all masking rules (if enabled).
+
+```sh
+SELECT anon.remove_masks_for_all_columns();
+```
+{: pre}
+
+2. Disable masking roles (the upgrade might fail if any roles are marked as masked).
+
+```sh
+SECURITY LABEL FOR anon ON ROLE <role_name> IS NULL;
+```
+{: pre}
+
+3. Drop the `anon` extension with the cascade option.
+
+```sh
+DROP EXTENSION anon CASCADE;
+```
+{: pre}
+
+4. If the `anon` extension is installed in multiple databases within an instance, follow the outlined steps for each database.
+
+{: pre}
+
+5. Post-upgrade steps:
+
+   After the upgrade is complete, re-enable the `anon` extension and reapply masking rules as required.
+
+   It is strongly recommended to validate the data both before and after dropping the extension to ensure masking consistency prior to performing the upgrade.
+   {: note}
 
 ## Upgrading from a read-only replica
 {: #upgrading-replica}
