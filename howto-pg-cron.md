@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-09-30"
+lastupdated: "2025-10-31"
 
 keywords: postgresql, databases, pg_cron, schedule, cron, cron jobs, schedule jobs, 
 
@@ -22,31 +22,31 @@ The `pg_cron` extension is supported on PostgreSQL version 13 and above.
 ## Setting up `pg_cron`
 {: #pg_cron-setting-up}
 
-1. Log in to ibmclouddb database.
+1. Log in to the ibmclouddb database as admin user.
    
     ```sh
      \c ibmclouddb
     ```
     {: pre}
    
-3. Enable the `pg_cron` extension.
+1. Enable the `pg_cron` extension.
    
     ```sh
      create extension pg_cron;
     ```
     {: pre}
    
-5. Verify whether `pg_cron` is installed.
+1. Verify whether `pg_cron` is installed.
    
     ```sh
      \dx
      ```
    {: pre}
    
-    `pg_cron` can be installed on only ibmclouddb databases.
+    `pg_cron` can be installed on only ibmclouddb databases and can be used only by admin user due to current security reasons.
    {: note}
 
-7. Run the following command to grant privileges for `pg_cron`.
+1. Run the following command to grant privileges for `pg_cron`.
 
     ```sh
      select public.grant_pgcron_privileges();
