@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2025
-lastupdated: "2025-11-03"
+lastupdated: "2025-11-04"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -113,7 +113,6 @@ curl -X POST \
 
 `skip_initial_backup` is optional. If set to `true`, the new deployment does not take an initial backup when the promotion completes. Your new deployment is available in a shorter amount of time, at the expense of not being backed up until the next automatic backup is run, or you take an on-demand backup.
 
-
 ### Dry running the promotion and upgrade
 {: #promotion-dry-run}
 
@@ -137,7 +136,6 @@ curl -X POST \
 }' \
 ```
 {: pre}
-
 
 ## Back up and restore upgrade
 {: #backup-restore}
@@ -215,7 +213,6 @@ After the end-of-life date, all active {{site.data.keyword.databases-for-postgre
 
 For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy ){: external}.
 
-
 ## _Admin user_ issues during version upgrades
 {: #admin_user_issues}
 
@@ -228,6 +225,7 @@ Starting with PostgreSQL 16, role privilege enforcement has become more stringen
 ERROR: only roles with the ADMIN OPTION on role "some_role" may grant this role
 DETAIL: role "admin" is not permitted to grant role "some_role"
 ```
+{: pre}
 
 To address this issue, we provide a built-in helper function `grant_admin_option_to_roles` that is designed to restore the expected role management behavior.
 
@@ -240,9 +238,10 @@ This function:
 
 Sample usage:
 
-```
+```sh
 SELECT grant_admin_option_to_roles('role1', 'role2', 'role3');
 ```
+{: pre}
 
 This ensures that the `admin user` retains the appropriate `ADMIN OPTION` privileges to manage designated roles in upgraded instances.
 
