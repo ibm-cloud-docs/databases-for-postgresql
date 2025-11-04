@@ -60,28 +60,26 @@ If the `anon` extension is installed, follow the steps below and execute the com
 
 1. Remove all masking rules (if enabled).
 
-```sh
-SELECT anon.remove_masks_for_all_columns();
-```
-{: pre}
+    ```sh
+    SELECT anon.remove_masks_for_all_columns();
+    ```
+    {: pre}
 
 2. Disable masking roles (the upgrade might fail if any roles are marked as masked).
 
-```sh
-SECURITY LABEL FOR anon ON ROLE <role_name> IS NULL;
-```
-{: pre}
+    ```sh
+    SECURITY LABEL FOR anon ON ROLE <role_name> IS NULL;
+    ```
+    {: pre}
 
 3. Drop the `anon` extension with the cascade option.
 
-```sh
-DROP EXTENSION anon CASCADE;
-```
-{: pre}
+    ```sh
+    DROP EXTENSION anon CASCADE;
+    ```
+    {: pre}
 
 4. If the `anon` extension is installed in multiple databases within an instance, follow the outlined steps for each database.
-
-{: pre}
 
 5. Post-upgrade steps:
 
