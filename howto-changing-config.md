@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-10-01"
+lastupdated: "2025-11-25"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -31,7 +31,8 @@ For more information, see [Managing PostgreSQL connections](/docs/databases-for-
 {: #using-cli}
 {: cli}
 
-You can check the default configuration of your deployment with the `deployment-configuration-schema` command.
+You can check the default configuration of your deployment with the `deployment-configuration-schema` command. The output of the `deployment-configuration-schema` command shows only the **default** configuration, even after you change your configuration. To view database-specific changes, query the database directly.
+{: important}
 
 ```sh
 ibmcloud cdb deployment-configuration-schema <INSTANCE_NAME_OR_CRN>

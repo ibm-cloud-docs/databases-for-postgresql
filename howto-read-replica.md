@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-06-09"
+  years: 2019, 2025
+lastupdated: "2025-11-25"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -104,11 +104,14 @@ On the _Read replicas_ tab of a read-only replica, _Replication_ contains its na
 
 You must monitor replication as replication status is not automatically monitored.
 
-Check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user). Once you are connected run either,
-- For PostgreSQL version 10 and newer, `SELECT * from pg_stat_replication;`.
+Check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user). Once you are connected run the following command:
 
-Or
-- For PostgreSQL version 9.x and older, `SELECT * FROM get_pg_stat_replication();`.
+```sh
+SELECT * from pg_stat_replication;
+```
+{: .codeblock}
+
+When monitoring the output for replication lag, note that the `application_name` refers to the formation ID, or the cloud resource name (CRN). Look for a `sync_state` value of "async", a `state` value of "Streaming" during the replication, and time statistics. For more information, see [pg_stat_replication](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW){: .external}.
 
 ### Read-only replica users and privileges
 {: #read-only-replica-users-priv}
