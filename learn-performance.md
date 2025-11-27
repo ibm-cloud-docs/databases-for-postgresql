@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-11-24"
+lastupdated: "2025-11-27"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits
 
@@ -50,14 +50,16 @@ Allocating larger amounts of memory (outside of the shared buffer pool) to your 
 ## Troubleshooting PostgreSQL performance
 {: #troubleshooting_performance}
 
-### Issue: You are seeing slow database performance
+Use the following guidance to troubleshoot problems with PostgreSQL performance.
 
-The common signs of this issue are as follows:
+### Slow database performance
+
+The common symptoms of this issue are as follows:
 
 * High disk IO (input/output) or memory usage
 * Slow queries
 
-The most common cause is examining slow queries. Use the following steps to explore:
+The most common cause is that slow queries are being examined. Complete the following steps to determine whether this is the case:
 
 1. List the long running queries:
 
@@ -66,29 +68,30 @@ The most common cause is examining slow queries. Use the following steps to expl
     ```
     {: codeblock}
 
-2. Validate the query blocking
+2. Validate query blocking:
+
     ```sh
     select pg_blocking_pids(pid), pid AS blocked_pid, state, query, age(now(),query_start) AS duration from pg_stat_activity where array_length(pg_blocking_pids(pid),1) > 0 order by 1,2;
     ```
     {: codeblock}
 
-3. Check the query execution plan.  Run 
+3. Check the query execution plan:
 
     ```sh
     Explain <query>;
     ```
     {: codeblock}
 
-4. Check whether DB stats are missing or not. Use the following query to validate - Action - Run Analyze; or 
+4. Check whether database statisitcs are missing. Use the following query to validate: **Action > Run Analyze** or run the following:
 
     ```sh
     Analyze <tablename>  select relname, n_live_tup, n_dead_tup, last_vacuum,last_autovacuum,last_analyze,last_autoanalyze, analyze_count,autoanalyze_count from pg_stat_all_tables where schemaname='public';
     ```
     {: codeblock}
 
-5. The index might be missing from the table. PostgreSQL provides index methods such as B-tree, hash, GiST, SP-GiST, GIN, and BRIN. Use one of these methods to create the index.
+5. The index might be missing from the table. PostgreSQL provides index methods such as B-Tree, hash, GiST, SP-GiST, GIN, and BRIN. Use one of these methods to create the index.
 
-6. The table is bloated: Run below to validate. Action- Run Vaccum <table name> 
+6. Check whether the table is bloated Run below to validate. **Action > Run Vaccum <table name>**
 
     ```sh
     SELECT
@@ -114,56 +117,60 @@ The most common cause is examining slow queries. Use the following steps to expl
     ```
     {: codeblock}
 
-7. Database or objects are created with pg_dump/pg_restore. Action - update stats
+7. Have the database or objects been created with `pg_dump` or `pg_restore`? **Action > update stats**
 
-8. If Query perform sorting operation, ensure that sufficient work_mem is allocated.-
+8. If the query is completing a sorting operation, ensure that sufficient `work_mem` is allocated.
 
-Additional finding using pg_stat statements
+9. You can also use `pg_stat` statements to find out the following information:
 
-9. Check Query average execution time/ no. of calls
+    * query average execution time/ no. of calls
 
-10. CPU % usage by the queries.
+    * CPU % usage by the queries.
 
-11. Memory % usage by the queries.
+    * memory % usage by the queries.
 
-## Troubleshooting deployment monitoring (disk and memory) and database load monitoring
+## Deployment monitoring and database load monitoring
 {: #troubleshooting_monitoring}
 
-{{site.data.keyword.databases-for-postgresql}} deployments offer an integration with the [IBM Cloud Monitoring](docs/cloud-databases?topic=cloud-databases-monitoring) service for monitoring of resource usage on your deployment.
+{{site.data.keyword.databases-for-postgresql}} deployments offer an integration with the [{{site.data.keyword.mon_full_notm}}](docs/cloud-databases?topic=cloud-databases-monitoring) service for monitoring of resource usage on your deployment. Use this service to monitor your deployment (disk and memory) and your database load.
 
-Use {{site.data.keyword.databases-for}} dashboards to set alerts on CPU, memory, and disk IOPS thresholds. Many of the available metrics, like disk usage and IOPS, are useful to help you configure [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling&interface=ui) on your deployment. Autoscaling is not enabled by default and must be configured manually.
+Use {{site.data.keyword.databases-for}} dashboards to set alerts on CPU, memory, and disk IOPS thresholds. Many of the available metrics, like disk usage and IOPS, are useful to help you configure [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling&interface=ui) on your deployment. Autoscaling is not enabled by default therefore you must configure it manually.
 
-Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion, for example changes in disk IO or CPU or memory faults resulting in performance issues.
+Observing trends in your usage and configuring the autoscaling to respond to these trends can help alleviate performance problems before your databases become unstable because of resource exhaustion. For example, changes in disk IO or CPU or memory faults resulting in performance issues.
 
-1. Disk IOPS
+## Disk IOPS
+{: #disk_iops}
 
 The number of input/output operations per second (IOPS) is limited by the type and size of storage volume. Storage volumes for Databases for PostgreSQL deployments are provisioned on [Block Storage Endurance Volumes](/docs/BlockStorage?topic=BlockStorage-orderingBlockStorage&interface=ui) in the 10 IOPS per GB tier.
 
 If your operational load saturates or exceeds the IOPS limit, database requests and operations are delayed until the storage subsystem can catch up. Extended periods of heavy load can cause your deployment to be unable to process queries and become effectively unavailable. You can increase the number IOPS available to your deployment by increasing disk size. For example, for 10 IOPS per GB tier, you can increase IOPS by increasing volume size.
 
-Experience has shown that extended periods of even 40-50% disk utilization have a significant negative impact on database performance.
+Extended periods of even 40-50% disk utilization can have a significant negative impact on database performance.
 {: .note}
 
-We recommend at least 100 GB disk (1,000 IOPS) for production environments. IOPS = 10 × allocated GB (for example, 100 GB = 1,000 IOPS)
+Allocate at least 100 GB disk (1,000 IOPS) for production environments. IOPS = 10 × allocated GB (for example, 100 GB = 1,000 IOPS)
 {: .tip}
 
-2. Memory usage
+## Memory usage
+{: #memory_usage}
 
-Memory is the fastest and most efficient way to access and process data. Because of this, a database almost always performs faster using memory instead of reading data from disk. There are other metrics to look at, such as cache hits, blocks read, and blocks hit, so there are other considerations. Just seeing 100% memory usage is not by itself a cause for concern. If memory is exhausted and swap pages are used, performance can degrade significantly.
+Memory is the fastest and most efficient way to access and process data. Because of this, a database almost always performs faster using memory instead of reading data from disk. There are other metrics to look at and consider like cache hits, blocks read, and blocks hit. Just seeing 100% memory usage is not by itself a cause for concern. If memory is exhausted and swap pages are used, performance can degrade significantly.
 
 You can set the amount of memory that is dedicated to the database's shared buffer pool by adjusting [shared_buffers](docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration&interface=cli#mem-settings) in your {{site.data.keyword.databases-for-postgresql}} configuration. The maximum recommended value is 25% of the deployment's total memory. Allocating too much memory to the shared buffer pool can starve the system of memory for other purposes and hinders performance, or possibly even disable the database.
 
 ## Database load monitoring
 {: #load_monitoring}
 
-There are two options to check database load:
+You have two options to check database load:
 
-Option 1. Check for long running queries, for example by using {{site.data.keyword.logs_full_notm}} (ICL):
-[How do I track query history?](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-pg-queries#troubleshoot-long-term-query-history)
+### Option 1. Check for long running queries by using {{site.data.keyword.logs_full_notm}} (ICL):
 
-You can use the following sample <DataPrime> query in {{site.data.keyword.logs_full_notm}}:
+For more information, see [How do I track query history?](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-pg-queries#troubleshoot-long-term-query-history).
 
-After the “IBM cloud logs” loads switch to “</>DataPrime” tab (do not change anything in </>lucene search bar). After you switch to </>DataPrime tab, run search as below to get SQL that are running for more than 1000 millis. below is same to paste in search for </>DataPrime tab
+You can use the following sample DataPrime query in {{site.data.keyword.logs_full_notm}}.
+
+1. After **IBM Cloud Logs** loads, switch to the **</>DataPrime** tab (do not change anything in the </>Lucene search bar).
+2. From the **</>DataPrime** tab, run the following search to get SQL that are running for more than 1000 millis. You can also paste it into search for </>DataPrime tab.
 
 ```sh
 {
@@ -175,18 +182,23 @@ source logs|filter message.attr.durationMillis>=1000
 {: codeblock}
 
 
-* Option 2. Consider enabling the [logminduration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html)
+### Option 2. Consider enabling the logminduration_statement
+
+For more information, see [logminduration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html).
 
 You can also install the [pg_stat_statements extension](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions)
 
+```sh
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+```
+{: codeblock}
 
 This allows you to query the stats to find examples of queries that are particularly long-running, so you can isolate issues and consider a different query pattern, new or modified indexes, different table design, or other strategies to improve performance.
 
 ### Query 1: Identify time-consuming queries
 {: #time_consuming_queries}
 
-You can spot time-consuming queries by running the following command:
+You can spot time-consuming queries by running the following statement:
 
 ```sh
 SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_exec_time, ROUND(SUM(pct_exec_time) OVER (ORDER BY total_exec_time DESC)) AS cum_pct_exec_time, avg_exec_time FROM ( SELECT pu.usename AS username, pd.datname AS database, pss.queryid, LEFT(pss.query, 50) AS query_preview, pss.calls, ROUND(pss.total_exec_time::numeric, 3) AS total_exec_time, ROUND((100.0 * pss.total_exec_time / SUM(pss.total_exec_time) OVER ())::numeric, 2) AS pct_exec_time, ROUND(pss.mean_exec_time::numeric, 3) AS avg_exec_time FROM pg_stat_statements pss JOIN pg_user pu ON pss.userid = pu.usesysid JOIN pg_database pd ON pss.dbid = pd.oid ) AS subquery ORDER BY total_exec_time DESC LIMIT 25;
@@ -215,19 +227,15 @@ username |  database  | queryid |      query_preview       | calls  | t
 This query tracks execution statistics of SQL statements and provides the following information:
 
 * Shows the 25 queries that took the most total time to run
-
 * Displays who ran it, on which database, and a preview of the query
-
 * Shows how often each query was run and how long it took on average
-
 * Calculates what percentage of total database time each query used
-
 * Provides a running total of database time used
 
 ### Query 2: Identify frequently run queries
 {: #frequently_run_queries}
 
-You can spot frequently run queries by running the following command:
+You can spot frequently run queries by running the following statement:
 
 ```sh
 SELECT
@@ -261,6 +269,7 @@ LIMIT 25;
 ```
 {: codeblock}
 
+This produces a result like the following:
 
 ```sh
 username |  database  | queryid |      query_preview       | calls | pct_calls | cum_pct_calls | total_exec_time | avg_exec_time 
@@ -282,22 +291,21 @@ username |  database  | queryid |      query_preview       | calls | pct
 This query provides the following information:
 
 * Shows the 25 queries that were run most often
-
 * Displays who ran it, on which database, and a preview of the query
-
 * Shows how many times each query was run and how long it took in total and on average
-
 * Calculates what percentage of all query calls each query represents
 * Provides a running total of query calls
 
 
 
-To get current performance across all queries, run the following command:
+To obtain the current performance across all queries, run the following statement:
 
 ```sh
 select now() as t1,sum(total_exec_time) as et1, sum(calls) as c1 from pg_stat_statements
 ```
 {: codeblock}
+
+This produces a result like the following:
 
 ```sh
               t1               |        et1         |   c1   
@@ -310,7 +318,7 @@ select now() as t1,sum(total_exec_time) as et1, sum(calls) as c1 from pg_stat_st
 ```
 {: codeblock}
 
-then wait 10 seconds and
+Then wait 10 seconds and run the following statement:
 
 ```sh
 select now() as t2,sum(total_exec_time) as et2, sum(calls) as c2 from pg_stat_statements
@@ -373,13 +381,11 @@ pg_stat_activity, pg_stat_bgwriter, and pg_buffercache are important tools in Po
 
 
 * Check for any recipes running for example backups and batch upload of data:
-    Automatic backups are completed daily and kept with a simple retention schedule of 30 days. If a backup got stuck, you can check “Available backups” section and identify the stuck backup in cloud UI page of DB instance.
+    Automatic backups are completed daily and kept with a simple retention schedule of 30 days. If a backup is stuck, you can check the “Available backups” section and identify the stuck backup in the cloud UI page of the DB instance.
 
+* Check your {{site.data.keyword.cloud_notm}} notifications for any maintenance for example, database patching.
 
-
-* Check your IBM Cloud notifications if there was any maintenance for example, database patching
-
-### Possible next actions:
+### Next actions
 {: #next_actions}
 
 * Optimize slow queries
@@ -396,7 +402,7 @@ SELECT * FROM student WHERE student_id = 12345;
 
     * Queries that use a lot of memory or disk space
 
-    * Add IBM cloud resources as needed:
+    * Add {{site.data.keyword.cloud_notm}} resources as needed:
 
         * Scale the disk/memory for higher IOPS and memory
 
