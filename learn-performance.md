@@ -212,9 +212,16 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 | Cell content | Cell content | Cell content |
 {: caption="Markdown coding for tables" caption-side="bottom"}
 
+| username | database  | queryid |
+| -------------- | -------------- | -------------- |
+| ibm    | postgres |  |
+| ibm | postgres  |  |
+| ibm | postgres  |  |
+{: caption="Markdown coding for tables" caption-side="bottom"}
 
 
-| username |  database  | queryid |      query_preview       | calls  | total_exec_time | pct_exec_time | cum_pct_exec_time | avg_exec_time |
+
+| username |  database  | queryid |  query_preview    | calls  | total_exec_time | pct_exec_time | cum_pct_exec_time | avg_exec_time |
 
 | -------------- | -------------- | -------------- |-------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
 
