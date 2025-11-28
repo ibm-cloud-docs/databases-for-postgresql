@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-11-27"
+lastupdated: "2025-11-28"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits
 
@@ -212,12 +212,14 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 | Cell content | Cell content | Cell content |
 {: caption="Markdown coding for tables" caption-side="bottom"}
 
-| username | database  | queryid |
-| -------------- | -------------- | -------------- |
-| ibm    | postgres |  |
-| ibm | postgres  |  |
-| ibm | postgres  |  |
-{: caption="Markdown coding for tables" caption-side="bottom"}
+| username | database  | queryid | query_preview |   calls  |
+| -------------- | -------------- | -------------- | -------------- | -------------- |
+| ibm    | postgres |  | <insufficient privilege> | 50685 | 38286.580  | 19.52 | 20 | 0.755 |
+| ibm | postgres  |    | <insufficient privilege> | 280111  |  |  |  |  |
+| ibm | postgres  |  |<insufficient privilege> | 18   |  |  |  |  |
+| ibm | postgres  |    |<insufficient privilege> | 18  |  |  |  |  |
+| ibm | postgres  |    |<insufficient privilege> | 37552  |  |  |  |  |
+{: caption="Markdown coding for tablesfri" caption-side="bottom"}
 
 
 
