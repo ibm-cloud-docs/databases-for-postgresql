@@ -205,21 +205,14 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 ```
 {: codeblock}
 
-| Column header | Column header | Column header |
-| -------------- | -------------- | -------------- |
-| Cell content | Cell content | Cell content |
-| Cell content | Cell content | Cell content |
-| Cell content | Cell content | Cell content |
-{: caption="Markdown coding for tables" caption-side="bottom"}
-
-| username | database  | queryid | query_preview |   calls  |
-| -------------- | -------------- | -------------- | -------------- | -------------- |
-| ibm    | postgres |  | <insufficient privilege> | 50685 | 38286.580  | 19.52 | 20 | 0.755 |
-| ibm | postgres  |    | <insufficient privilege> | 280111  |  |  |  |  |
-| ibm | postgres  |  |<insufficient privilege> | 18   |  |  |  |  |
-| ibm | postgres  |    |<insufficient privilege> | 18  |  |  |  |  |
-| ibm | postgres  |    |<insufficient privilege> | 37552  |  |  |  |  |
-{: caption="Markdown coding for tablesfri" caption-side="bottom"}
+| username | database  | queryid | query_preview |   calls  | total_exec_time | pct_exec_time | cum_pct_exec_time | avg_exec_time |
+| -------------- | -------------- | -------------- | -------------- | -------------- |-------------- |-------------- |-------------- |-------------- |
+| ibm    | postgres |  | &amp;gt;insufficient privilege> | 50685 | 38286.580  | 19.52 | 20 | 0.755 |
+| ibm | postgres  |    | &amp;gt;insufficient privilege> | 280111  | 28477.951 | 14.52 | 34  | 0.102 |
+| ibm | postgres  |  |&amp;gt;insufficient privilege> | 18   14568.978 |          7.43 |                41 |       809.388 |
+| ibm | postgres  |    |&amp;gt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
+| ibm | postgres  |    |&amp;gt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
+{: caption="Result from time consuming query statment" caption-side="bottom"}
 
 
 
