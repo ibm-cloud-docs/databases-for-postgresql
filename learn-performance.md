@@ -212,6 +212,7 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 | ibm | postgres  |  |&amp;lt;insufficient privilege> | 18   14568.978 |          7.43 |                41 |       809.388 |
 | ibm | postgres  |    |&amp;lt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
 | ibm | postgres  |    |&amp;lt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
+| 5 rows  |    | |  |        |           |                |         |
 {: caption="Result from time consuming query statment" caption-side="bottom"}
 
 
@@ -393,6 +394,21 @@ LIMIT 10;
 (10 rows)
 ```
 {: codeblock}
+
+|query  | calls |      avg_time |  
+| -------------- | -------------- | -------------- |
+|&amp;lt;insufficient privilege> | 14706 |  1.6311896077791408 |
+| &amp;lt;insufficient privilege> | 80305 |  0.2004813740987463 |
+| &amp;lt;insufficient privilege> |     6 |   800.7297508333332 |
+| &amp;lt;insufficient privilege> |     6 |   721.1415835000001 |
+| &amp;lt;insufficient privilege> | 10316 |  0.3907427791779766 |
+| &amp;lt;insufficient privilege> | 10316 | 0.35429842613416024 |
+| &amp;lt;insufficient privilege> | 10316 |  0.3184477990500202 |
+| &amp;lt;insufficient privilege> | 10316 |  0.2285179489143081 |
+| &amp;lt;insufficient privilege> | 12439 |  0.1407493980223488 |
+| &amp;lt;insufficient privilege> | 10316 |  0.1605010507948812 |
+| (10 rows) | |  |
+{: caption="Result from top 10 time consuming queries statement" caption-side="bottom"}
 
 pg_stat_activity, pg_stat_bgwriter, and pg_buffercache are important tools in PostgreSQL for monitoring and understanding database performance.
 {: .note}
