@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-11-28"
+lastupdated: "2025-11-30"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits
 
@@ -207,11 +207,11 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 
 | username | database  | queryid | query_preview |   calls  | total_exec_time | pct_exec_time | cum_pct_exec_time | avg_exec_time |
 | -------------- | -------------- | -------------- | -------------- | -------------- |-------------- |-------------- |-------------- |-------------- |
-| ibm    | postgres |  | &amp;gt;insufficient privilege> | 50685 | 38286.580  | 19.52 | 20 | 0.755 |
-| ibm | postgres  |    | &amp;gt;insufficient privilege> | 280111  | 28477.951 | 14.52 | 34  | 0.102 |
-| ibm | postgres  |  |&amp;gt;insufficient privilege> | 18   14568.978 |          7.43 |                41 |       809.388 |
-| ibm | postgres  |    |&amp;gt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
-| ibm | postgres  |    |&amp;gt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
+| ibm    | postgres |  | &amp;lt;insufficient privilege> | 50685 | 38286.580  | 19.52 | 20 | 0.755 |
+| ibm | postgres  |    | &amp;lt;insufficient privilege> | 280111  | 28477.951 | 14.52 | 34  | 0.102 |
+| ibm | postgres  |  |&amp;lt;insufficient privilege> | 18   14568.978 |          7.43 |                41 |       809.388 |
+| ibm | postgres  |    |&amp;lt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
+| ibm | postgres  |    |&amp;lt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
 {: caption="Result from time consuming query statment" caption-side="bottom"}
 
 
@@ -281,7 +281,7 @@ LIMIT 25;
 
 This produces a result like the following:
 
-```sh
+
 username |  database  | queryid |      query_preview       | calls | pct_calls | cum_pct_calls | total_exec_time | avg_exec_time 
 
 ----------+------------+---------+--------------------------+-------+-----------+---------------+-----------------+---------------
@@ -295,8 +295,16 @@ username |  database  | queryid |      query_preview       | calls | pct
  ibm      | postgres   |         | <insufficient privilege> | 14702 |      4.36 |            45 |       23982.252 |         1.631
 
  ibm      | postgres   |         | <insufficient privilege> | 12436 |      3.69 |            49 |        1750.426 |         0.141
-```
-{: codeblock}
+
+|username |  database  | queryid |      query_preview       | calls | pct_calls | cum_pct_calls | total_exec_time | avg_exec_time |
+| -------------- | -------------- | -------------- | -------------- | -------------- |-------------- |-------------- |-------------- |-------------- |
+| ibm      | postgres   |         | &amp;lt;insufficient privilege> | 80285 |     23.84 |            24 |       16095.420 |         0.200 |
+| ibm      | postgres   |         | &amp;lt;insufficient privilege> | 36832 |     10.94 |            35 |         548.787 |         0.015 |
+| ibm      | postgres   |         | &amp;lt;insufficient privilege> | 20626 |      6.12 |            41 |         741.755 |         0.036 |
+| ibm      | postgres   |         | &amp;lt;insufficient privilege> | 14702 |      4.36 |            45 |       23982.252 |         1.631 |
+| ibm      | postgres   |         | &amp;lt;insufficient privilege> | 12436 |      3.69 |            49 |        1750.426 |         0.141 |
+{: caption="Result from frequently run query statment" caption-side="bottom"}
+
 
 This query provides the following information:
 
