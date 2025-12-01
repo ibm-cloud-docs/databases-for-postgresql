@@ -18,14 +18,14 @@ subcollection: databases-for-postgresql
 Use the following guidance to troubleshoot problems with {{site.data.keyword.databases-for-postgresql_full}} performance.
 
 
-### Slow database performance
+## Slow database performance
 
-The common symptoms of this issue are as follows:
+The typical symptoms of this problem are as follows:
 
 * High disk IO (input/output) or memory usage
 * Slow queries
 
-The most common cause is that slow queries are being examined. Complete the following steps to determine whether this is the case:
+The most common cause is slow queries being examined. Complete the following steps to determine whether this is the case:
 
 1. List the long running queries:
 
@@ -48,16 +48,18 @@ The most common cause is that slow queries are being examined. Complete the foll
     ```
     {: codeblock}
 
-4. Check whether database statisitcs are missing. Use the following query to validate: **Action > Run Analyze** or run the following:
+4. Check whether database statisitcs are missing. Use the following query to validate: **Action > Run Analyze**
+Or run the following command:
 
     ```sh
     Analyze <tablename>  select relname, n_live_tup, n_dead_tup, last_vacuum,last_autovacuum,last_analyze,last_autoanalyze, analyze_count,autoanalyze_count from pg_stat_all_tables where schemaname='public';
     ```
     {: codeblock}
 
-5. The index might be missing from the table. PostgreSQL provides index methods such as B-Tree, hash, GiST, SP-GiST, GIN, and BRIN. Use one of these methods to create the index.
+5. Check whether the index is missing from the table. PostgreSQL provides index methods such as B-Tree, hash, GiST, SP-GiST, GIN, and BRIN. Use one of these methods to create the index.
 
-6. Check whether the table is bloated Run below to validate. **Action > Run Vaccum <table name>**
+6. Check whether the table is bloated. Run the following query to validate. **Action > Run Vaccum <table name>**.
+Or run the following statement:
 
     ```sh
     SELECT
@@ -83,17 +85,17 @@ The most common cause is that slow queries are being examined. Complete the foll
     ```
     {: codeblock}
 
-7. Have the database or objects been created with `pg_dump` or `pg_restore`? **Action > update stats**
+7. Have the database or objects been created with `pg_dump` or `pg_restore`? Use **Action > update stats** to refresh.
 
-8. If the query is completing a sorting operation, ensure that sufficient `work_mem` is allocated.
+8. Ensure that sufficient `work_mem` is allocated, if the query is completing a sorting operation.
 
-9. You can also use `pg_stat` statements to find out the following information:
+9. Use `pg_stat` statements to find out the following information:
 
-    * query average execution time/ no. of calls
+    * query average execution time and number of calls
 
-    * CPU % usage by the queries.
+    * CPU % usage by the queries
 
-    * memory % usage by the queries.
+    * memory % usage by the queries
 
 ## Deployment monitoring and database load monitoring
 {: #troubleshooting_monitoring}
@@ -112,8 +114,6 @@ The number of input/output operations per second (IOPS) is limited by the type a
 If your operational load saturates or exceeds the IOPS limit, database requests and operations are delayed until the storage subsystem can catch up. Extended periods of heavy load can cause your deployment to be unable to process queries and become effectively unavailable. You can increase the number IOPS available to your deployment by increasing disk size. For example, for 10 IOPS per GB tier, you can increase IOPS by increasing volume size.
 
 Extended periods of even 40-50% disk utilization can have a significant negative impact on database performance.
-{: .note}
-
 Allocate at least 100 GB disk (1,000 IOPS) for production environments. IOPS = 10 × allocated GB (for example, 100 GB = 1,000 IOPS)
 {: .tip}
 
@@ -135,8 +135,8 @@ For more information, see [How do I track query history?](https://cloud.ibm.com/
 
 You can use the following sample DataPrime query in {{site.data.keyword.logs_full_notm}}.
 
-1. After **IBM Cloud Logs** loads, switch to the **</>DataPrime** tab (do not change anything in the </>Lucene search bar).
-2. From the **</>DataPrime** tab, run the following search to get SQL that are running for more than 1000 millis. You can also paste it into search for </>DataPrime tab.
+1. After **IBM Cloud Logs** loads, switch to the **</>DataPrime** tab. Do not change anything in the **</>Lucene** search bar.
+2. From the **</>DataPrime** tab, run the following search to find SQL that is running for more than 1000 milliseconds. You can also paste it into search for </>DataPrime tab.
 
 ```sh
 {
@@ -148,7 +148,7 @@ source logs|filter message.attr.durationMillis>=1000
 {: codeblock}
 
 
-### Option 2. Consider enabling the logminduration_statement
+### Option 2. Enable the logminduration_statement
 
 For more information, see [logminduration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html).
 
@@ -159,9 +159,9 @@ CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
 ```
 {: codeblock}
 
-This allows you to query the stats to find examples of queries that are particularly long-running, so you can isolate issues and consider a different query pattern, new or modified indexes, different table design, or other strategies to improve performance.
+This allows you to query the statistics to find examples of queries that are particularly long-running. You can then isolate issues and consider a different query pattern, new or modified indexes, different table design, or other strategies to improve performance.
 
-### Query 1: Identify time-consuming queries
+#### Query 1: Identify time-consuming queries
 {: #time_consuming_queries}
 
 You can spot time-consuming queries by running the following statement:
@@ -179,17 +179,17 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 | ibm | postgres  |    |&amp;lt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
 | ibm | ibmclouddb  |    |&amp;lt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
 | (5 rows)  |    | |  |        |           |                |         |
-{: caption="Result from time consuming query statment" caption-side="bottom"}
+{: caption="Result from time consuming query statement" caption-side="bottom"}
 
-This query tracks execution statistics of SQL statements and provides the following information:
+This query tracks the execution statistics of SQL statements and provides the following information:
 
-* Shows the 25 queries that took the most total time to run
-* Displays who ran it, on which database, and a preview of the query
+* Shows the 25 queries that took the most time in total to run
+* Displays who ran the query, on which database, and a preview of the query
 * Shows how often each query was run and how long it took on average
-* Calculates what percentage of total database time each query used
+* Calculates the percentage of total database time each query used
 * Provides a running total of database time used
 
-### Query 2: Identify frequently run queries
+#### Query 2: Identify frequently run queries
 {: #frequently_run_queries}
 
 You can spot frequently run queries by running the following statement:
@@ -226,7 +226,7 @@ LIMIT 25;
 ```
 {: codeblock}
 
-This produces the following result:
+This statement produces the following result:
 
 |username |  database  | queryid |      query_preview       | calls | pct_calls | cum_pct_calls | total_exec_time | avg_exec_time |
 | -------------- | -------------- | -------------- | -------------- | -------------- |-------------- |-------------- |-------------- |-------------- |
@@ -235,17 +235,16 @@ This produces the following result:
 | ibm      | postgres   |         | &amp;lt;insufficient privilege> | 20626 |      6.12 |            41 |         741.755 |         0.036 |
 | ibm      | postgres   |         | &amp;lt;insufficient privilege> | 14702 |      4.36 |            45 |       23982.252 |         1.631 |
 | ibm      | postgres   |         | &amp;lt;insufficient privilege> | 12436 |      3.69 |            49 |        1750.426 |         0.141 |
-{: caption="Result from frequently run query statment" caption-side="bottom"}
+{: caption="Result from frequently run query statement" caption-side="bottom"}
 
 
 This query provides the following information:
 
 * Shows the 25 queries that were run most often
-* Displays who ran it, on which database, and a preview of the query
+* Displays who ran the query, on which database, and a preview of the query
 * Shows how many times each query was run and how long it took in total and on average
-* Calculates what percentage of all query calls each query represents
+* Calculates the percentage of all query calls each query represents
 * Provides a running total of query calls
-
 
 
 To obtain the current performance across all queries, run the following statement:
@@ -255,7 +254,7 @@ select now() as t1,sum(total_exec_time) as et1, sum(calls) as c1 from pg_stat_st
 ```
 {: codeblock}
 
-This produces a result like the following:
+This produces the following result:
 
 
 |              t1               |        et1         |   c1   |
@@ -276,9 +275,9 @@ select now() as t2,sum(total_exec_time) as et2, sum(calls) as c2 from pg_stat_st
 |2025-09-30 08:16:18.943609+00 | 104113.70054399982 | 336896|
 | (1 row) | | |
 
-then -> queries per second = (c2-c1)/(t2-t1) and avg query performance = (et2-et1)/(c2-c1)
+Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)
 
-To get the top 10 time consuming queries:
+To get the top 10 time-consuming queries:
 
 ```sh
 SELECT query, calls, total_exec_time/calls as avg_time
@@ -304,14 +303,14 @@ LIMIT 10;
 | (10 rows) | |  |
 {: caption="Result from top 10 time consuming queries statement" caption-side="bottom"}
 
-pg_stat_activity, pg_stat_bgwriter, and pg_buffercache are important tools in PostgreSQL for monitoring and understanding database performance.
+`pg_stat_activity`, `pg_stat_bgwriter`, and `pg_buffercache` are important tools in PostgreSQL for monitoring and understanding database performance.
 {: .note}
 
 
-* Check for any recipes running for example backups and batch upload of data:
-    Automatic backups are completed daily and kept with a simple retention schedule of 30 days. If a backup is stuck, you can check the “Available backups” section and identify the stuck backup in the cloud UI page of the DB instance.
+* Check for any recipes running backups and batch upload of data  for example :
+    automatic backups are completed daily and kept with a simple retention schedule of 30 days. If a backup is stuck, you can check the **Available backups** section and identify the stuck backup in the Cloud UI page of the database instance.
 
-* Check your {{site.data.keyword.cloud_notm}} notifications for any maintenance for example, database patching.
+* Check your {{site.data.keyword.cloud_notm}} notifications for any maintenance.  For example, database patching.
 
 ### Next actions
 {: #next_actions}
@@ -320,17 +319,17 @@ pg_stat_activity, pg_stat_bgwriter, and pg_buffercache are important tools in Po
 
     * Run EXPLAIN (ANALYZE, BUFFERS) on slow queries. This shows how the database runs the query and where it is slow
 
-```sh
-EXPLAIN (ANALYZE, BUFFERS)
-SELECT * FROM student WHERE student_id = 12345;
-```
-{: codeblock}
+    ```sh
+    EXPLAIN (ANALYZE, BUFFERS)
+    SELECT * FROM student WHERE student_id = 12345;
+    ```
+    {: codeblock}
 
-* Look for:
+    * Look for:
 
-    * Queries that use a lot of memory or disk space
+        * Queries that use a lot of memory or disk space
 
-    * Add {{site.data.keyword.cloud_notm}} resources as needed:
+        * Add {{site.data.keyword.cloud_notm}} resources as needed:
 
         * Scale the disk/memory for higher IOPS and memory
 

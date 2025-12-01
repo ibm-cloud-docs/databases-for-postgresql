@@ -31,7 +31,6 @@ toc:
           - include: ../cloud-databases/hosting-pricing.md
       - learn-dashboard-overview.md
       - learn-performance.md
-      - learn-performance-troubleshooting.md
       - learn-pricing.md
       - release-notes.md
   - navgroup:
@@ -144,6 +143,7 @@ toc:
           - ts-max-connections.md
           - ts-no-space-left.md
           - queries.md
+          - ts-performance-troubleshooting.md
           - include: ../cloud-databases/ts-terraform.md
       - topicgroup:
           label: FAQs
