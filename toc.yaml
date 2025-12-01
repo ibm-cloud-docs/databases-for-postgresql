@@ -31,6 +31,7 @@ toc:
           - include: ../cloud-databases/hosting-pricing.md
       - learn-dashboard-overview.md
       - learn-performance.md
+      - learn-performance-troubleshooting.md
       - learn-pricing.md
       - release-notes.md
   - navgroup:
