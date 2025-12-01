@@ -211,29 +211,9 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 | ibm | postgres  |    | &amp;lt;insufficient privilege> | 280111  | 28477.951 | 14.52 | 34  | 0.102 |
 | ibm | postgres  |  |&amp;lt;insufficient privilege> | 18   | 14568.978 |          7.43 |                41 |       809.388 |
 | ibm | postgres  |    |&amp;lt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
-| ibm | postgres  |    |&amp;lt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
+| ibm | ibmclouddb  |    |&amp;lt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
 | (5 rows)  |    | |  |        |           |                |         |
 {: caption="Result from time consuming query statment" caption-side="bottom"}
-
-
-
-| username |  database  | queryid |  query_preview    | calls  | total_exec_time | pct_exec_time | cum_pct_exec_time | avg_exec_time |
-
-| -------------- | -------------- | -------------- |-------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-
-| ibm      | postgres   |         | <insufficient privilege> |  50685 |       38286.580 |         19.52 |                20 |         0.755 |
-
-| ibm      | postgres   |         | <insufficient privilege> | 280111 |       28477.951 |         14.52 |                34 |         0.102 |
-
-| ibm      | postgres   |         | <insufficient privilege> |     18 |       14568.978 |          7.43 |                41 |       809.388 |
-
- | ibm      | postgres   |         | <insufficient privilege> |     18 |       12103.904 |          6.17 |                48 |       672.439 |
-
-| ibm      | ibmclouddb |         | <insufficient privilege> |  37552 |        7799.984 |          3.98 |                52 |         0.208 |
-
-(5 rows)
-{: caption="Markdown coding for tables" caption-side="bottom"}
-
 
 This query tracks execution statistics of SQL statements and provides the following information:
 
@@ -280,22 +260,7 @@ LIMIT 25;
 ```
 {: codeblock}
 
-This produces a result like the following:
-
-
-username |  database  | queryid |      query_preview       | calls | pct_calls | cum_pct_calls | total_exec_time | avg_exec_time 
-
-----------+------------+---------+--------------------------+-------+-----------+---------------+-----------------+---------------
-
- ibm      | postgres   |         | <insufficient privilege> | 80285 |     23.84 |            24 |       16095.420 |         0.200
-
- ibm      | postgres   |         | <insufficient privilege> | 36832 |     10.94 |            35 |         548.787 |         0.015
-
- ibm      | postgres   |         | <insufficient privilege> | 20626 |      6.12 |            41 |         741.755 |         0.036
-
- ibm      | postgres   |         | <insufficient privilege> | 14702 |      4.36 |            45 |       23982.252 |         1.631
-
- ibm      | postgres   |         | <insufficient privilege> | 12436 |      3.69 |            49 |        1750.426 |         0.141
+This produces the following result:
 
 |username |  database  | queryid |      query_preview       | calls | pct_calls | cum_pct_calls | total_exec_time | avg_exec_time |
 | -------------- | -------------- | -------------- | -------------- | -------------- |-------------- |-------------- |-------------- |-------------- |
@@ -366,34 +331,6 @@ LIMIT 10;
 ```
 {: codeblock}
 
-```sh
-          query           | calls |      avg_time       
-
---------------------------+-------+---------------------
-
- <insufficient privilege> | 14706 |  1.6311896077791408
-
- <insufficient privilege> | 80305 |  0.2004813740987463
-
- <insufficient privilege> |     6 |   800.7297508333332
-
- <insufficient privilege> |     6 |   721.1415835000001
-
- <insufficient privilege> | 10316 |  0.3907427791779766
-
- <insufficient privilege> | 10316 | 0.35429842613416024
-
- <insufficient privilege> | 10316 |  0.3184477990500202
-
- <insufficient privilege> | 10316 |  0.2285179489143081
-
- <insufficient privilege> | 12439 |  0.1407493980223488
-
- <insufficient privilege> | 10316 |  0.1605010507948812
-
-(10 rows)
-```
-{: codeblock}
 
 |query  | calls |      avg_time |  
 | -------------- | -------------- | -------------- |
