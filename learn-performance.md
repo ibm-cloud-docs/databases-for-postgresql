@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-11-30"
+lastupdated: "2025-12-01"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits
 
@@ -47,7 +47,7 @@ Allocating larger amounts of memory (outside of the shared buffer pool) to your 
 {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your PostgreSQL database to **115**. 15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. After the connection limit is reached, any attempts at starting a new connection results in an error. To prevent overwhelming your deployment with connections, use connection pooling, or scale your deployment and increase its connection limit. For more information, see the [Managing PostgreSQL connections](/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections) page.
 
 
-## Troubleshooting PostgreSQL performance
+## Troubleshooting performance
 {: #troubleshooting_performance}
 
 Use the following guidance to troubleshoot problems with PostgreSQL performance.
@@ -209,10 +209,10 @@ SELECT username, database, queryid, query_preview, calls, total_exec_time, pct_e
 | -------------- | -------------- | -------------- | -------------- | -------------- |-------------- |-------------- |-------------- |-------------- |
 | ibm    | postgres |  | &amp;lt;insufficient privilege> | 50685 | 38286.580  | 19.52 | 20 | 0.755 |
 | ibm | postgres  |    | &amp;lt;insufficient privilege> | 280111  | 28477.951 | 14.52 | 34  | 0.102 |
-| ibm | postgres  |  |&amp;lt;insufficient privilege> | 18   14568.978 |          7.43 |                41 |       809.388 |
+| ibm | postgres  |  |&amp;lt;insufficient privilege> | 18   | 14568.978 |          7.43 |                41 |       809.388 |
 | ibm | postgres  |    |&amp;lt;insufficient privilege> | 18   |    12103.904 |          6.17 |                48 |       672.439 |
 | ibm | postgres  |    |&amp;lt;insufficient privilege> | 37552  |        7799.984 |          3.98 |                52 |         0.208 |
-| 5 rows  |    | |  |        |           |                |         |
+| (5 rows)  |    | |  |        |           |                |         |
 {: caption="Result from time consuming query statment" caption-side="bottom"}
 
 
