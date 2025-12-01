@@ -291,16 +291,12 @@ select now() as t1,sum(total_exec_time) as et1, sum(calls) as c1 from pg_stat_st
 
 This produces a result like the following:
 
-```sh
-              t1               |        et1         |   c1   
 
--------------------------------+--------------------+--------
+|              t1               |        et1         |   c1   |
+| -------------- | -------------- | -------------- |
+|2025-09-30 08:15:43.898157+00 | 104109.55454499979 | 336889|
+|(1 row)| | |
 
- 2025-09-30 08:15:43.898157+00 | 104109.55454499979 | 336889
-
-(1 row)
-```
-{: codeblock}
 
 Then wait 10 seconds and run the following statement:
 
@@ -309,15 +305,10 @@ select now() as t2,sum(total_exec_time) as et2, sum(calls) as c2 from pg_stat_st
 ```
 {: codeblock}
 
-
-```sh
-              t2               |        et2         |   c2   
-
--------------------------------+--------------------+--------
-
- 2025-09-30 08:16:18.943609+00 | 104113.70054399982 | 336896
-
-(1 row)
+|             t2               |        et2         |   c2   |
+| -------------- | -------------- | -------------- |
+|2025-09-30 08:16:18.943609+00 | 104113.70054399982 | 336896|
+| (1 row) | | |
 
 then -> queries per second = (c2-c1)/(t2-t1) and avg query performance = (et2-et1)/(c2-c1)
 
