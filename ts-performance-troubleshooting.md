@@ -19,6 +19,7 @@ Use the following guidance to troubleshoot problems with {{site.data.keyword.dat
 
 
 ## Slow database performance
+{: #slow_database_performance}
 
 The typical symptoms of this problem are as follows:
 
@@ -130,6 +131,7 @@ You can set the amount of memory that is dedicated to the database's shared buff
 You have two options to check database load:
 
 ### Option 1. Check for long running queries by using {{site.data.keyword.logs_full_notm}} (ICL):
+{: #long_running_queries}
 
 For more information, see [How do I track query history?](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-pg-queries#troubleshoot-long-term-query-history).
 
@@ -149,6 +151,7 @@ source logs|filter message.attr.durationMillis>=1000
 
 
 ### Option 2. Enable the logminduration_statement
+{: #enabling_logminduration_statement}
 
 For more information, see [logminduration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html).
 
@@ -333,11 +336,11 @@ LIMIT 10;
 
         * Scale the disk/memory for higher IOPS and memory
 
-* Missing or inefficient indexes are a common cause of slow queries. Use EXPLAIN to identify sequential scans and consider adding indexes
+* Missing or inefficient indexes are a common cause of slow queries. Use EXPLAIN to identify sequential scans and consider adding indexes.
 
-* Run VACUUM to help database health analysis
+* Run VACUUM to help with database health analysis.
 
 * Consider using connection pooling to handle more connections. {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your {{site.data.keyword.databases-for-postgresql}} database to **115**.
     15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. After the connection limit is reached, any attempts at starting a new connection result in an error. To prevent overwhelming your deployment with connections, use connection pooling, or scale your deployment and increase its connection limit. For more information, see [Managing PostgreSQL connection pooling](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#connection-pooling)
 
-* If you believe this is a platform issue such as caused by maintenance, contact IBM Support with the Database CRN
+* If you believe this is a platform issue such as maintenance, contact IBM Support with the database CRN.

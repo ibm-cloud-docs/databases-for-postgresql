@@ -49,4 +49,4 @@ Allocating larger amounts of memory (outside of the shared buffer pool) to your 
 ## Troubleshooting
 {: #performance_troubleshooting}
 
-For help in understanding performance issues in PostgreSQL and how to fix them, see [Troubleshooting PostgreSQL performance](docs/databases-for-postgresql?topic=databases-for-postgresql-troubleshooting_performance).
+For help in understanding performance issues in PostgreSQL and how to fix them, see [Troubleshooting PostgreSQL performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-troubleshooting_performance).
