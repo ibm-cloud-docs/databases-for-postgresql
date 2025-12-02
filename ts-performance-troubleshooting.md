@@ -290,7 +290,8 @@ The query provides the following information:
     | (1 row) | | |
     {: caption="Result from select now() statement" caption-side="bottom"}
 
-`Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)`
+3. Calculate the queries per second:
+    `Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)`
 
 #### Top 10 time-consuming queries
 {: #current_performance_queries}
@@ -320,11 +321,13 @@ This produces the following result:
 | &amp;lt;insufficient privilege> | 12439 |  0.1407493980223488 |
 | &amp;lt;insufficient privilege> | 10316 |  0.1605010507948812 |
 | (10 rows) | |  |
-{: caption="Result from top 10 time consuming queries statement" caption-side="bottom"}
+{: caption="Result from top 10 time-consuming queries statement" caption-side="bottom"}
 
 
-### Other actions to take
-{: #next_actions}
+## Further actions you can take to improve performance
+{: #further_actions}
+
+You can also consider the following actions to troubleshoot performance:
 
 * Optimize slow queries
 
@@ -340,7 +343,7 @@ This produces the following result:
 
         * Queries that use a lot of memory or disk space
 
-        * Add {{site.data.keyword.cloud_notm}} resources as needed:
+        * Add {{site.data.keyword.cloud_notm}} resources as needed
 
         * Scale the disk/memory for higher IOPS and memory
 
