@@ -291,7 +291,10 @@ The query provides the following information:
     {: caption="Result from select now() statement" caption-side="bottom"}
 
 3. Calculate the queries per second:
-    `Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)`
+    ```sh
+    Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)
+    ```
+    {: codeblock}
 
 #### Top 10 time-consuming queries
 {: #current_performance_queries}
