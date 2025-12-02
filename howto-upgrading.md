@@ -16,9 +16,9 @@ subcollection: databases-for-postgresql
 
 As of December 2025, {{site.data.keyword.databases-for-postgresql}} provides three different upgrade paths:
 
-  - In-place upgrade to a new major version.
-  - Restoring from backup.
-  - Upgrading from a read-only replica.
+- In-place upgrade to a new major version.
+- Restoring from backup.
+- Upgrading from a read-only replica.
 
 When a major version of a database is nearing its End Of Life (EOL), it is advisable to upgrade to a current major version. 
 
