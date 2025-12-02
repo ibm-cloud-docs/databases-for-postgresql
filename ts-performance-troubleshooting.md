@@ -17,6 +17,8 @@ subcollection: databases-for-postgresql
 
 Use the following guidance to troubleshoot problems with {{site.data.keyword.databases-for-postgresql_full}} performance.
 
+For a general overview, see [PostgreSQL performance](/docs/databases-for-postgresql?topic=databases-for-postgresql-performance).
+
 
 ## Slow database performance
 {: #slow_database_performance}
@@ -98,6 +100,9 @@ Alternatively, use the following statement:
 
     * memory percentage usage by the queries
 
+`pg_stat_activity`, `pg_stat_bgwriter`, and `pg_buffercache` are important tools in PostgreSQL for monitoring and understanding database performance.
+{: .note}
+
 ## Deployment monitoring and database load monitoring
 {: #troubleshooting_monitoring}
 
@@ -133,7 +138,7 @@ You have two options to check database load:
 ### Option 1. Check for long running queries by using {{site.data.keyword.logs_full_notm}} (ICL):
 {: #long_running_queries}
 
-For more information, see [How do I track query history?](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-pg-queries#troubleshoot-long-term-query-history)
+For more information, see [How do I track query history?](/docs/databases-for-postgresql?topic=databases-for-postgresql-pg-queries#troubleshoot-long-term-query-history)
 
 You can use the following sample DataPrime query in {{site.data.keyword.logs_full_notm}}.
 
@@ -153,9 +158,9 @@ source logs|filter message.attr.durationMillis>=1000
 ### Option 2. Enable the `log_min_duration_statement`
 {: #enabling_logminduration_statement}
 
-Using the `log_min_duration_statement` makes sure statements that take longer than the specified number of milliseconds are logged. For more information, see [log_min_duration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN).
+Using the `log_min_duration_statement` specifies that statements that take longer than the specified number of milliseconds are logged. For more information, see [log_min_duration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN).
 
-You can also install the [pg_stat_statements extension](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions):
+You can also install the [pg_stat_statements extension](/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions):
 
 ```sh
 CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
@@ -186,7 +191,7 @@ This statement produces the following result:
 | (5 rows)  |    | |  |        |           |                |         |
 {: caption="Result from time-consuming query statement" caption-side="bottom"}
 
-This query tracks the execution statistics of SQL statements and provides the following information:
+The query tracks the execution statistics of SQL statements and provides the following information:
 
 * Shows the 25 queries that took the most time in total to run
 * Displays who ran the query, on which database, and a preview of the query
@@ -243,7 +248,7 @@ This statement produces the following result:
 {: caption="Result from frequently run query statement" caption-side="bottom"}
 
 
-This query provides the following information:
+The query provides the following information:
 
 * Shows the 25 queries that were run most often
 * Displays who ran the query, on which database, and a preview of the query
@@ -251,7 +256,7 @@ This query provides the following information:
 * Calculates the percentage of all query calls each query represents
 * Provides a running total of query calls
 
-#### Current performance of all queries
+#### Get current performance of all queries
 {: #current_performance_queries}
 
 1. To obtain the current performance across all queries, run the following statement:
@@ -283,14 +288,14 @@ This query provides the following information:
     | -------------- | -------------- | -------------- |
     |2025-09-30 08:16:18.943609+00 | 104113.70054399982 | 336896|
     | (1 row) | | |
-    {: caption="Result from performance of all current queries statement" caption-side="bottom"}
+    {: caption="Result from select now() statement" caption-side="bottom"}
 
-Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)
+`Queries per second = (c2-c1)/(t2-t1) and average query performance = (et2-et1)/(c2-c1)`
 
 #### Top 10 time-consuming queries
 {: #current_performance_queries}
 
-To get the top 10 time-consuming queries:
+To obtain the top 10 time-consuming queries:
 
 ```sh
 SELECT query, calls, total_exec_time/calls as avg_time
@@ -300,6 +305,7 @@ LIMIT 10;
 ```
 {: codeblock}
 
+This produces the following result:
 
 |query  | calls |      avg_time |  
 | -------------- | -------------- | -------------- |
@@ -316,16 +322,8 @@ LIMIT 10;
 | (10 rows) | |  |
 {: caption="Result from top 10 time consuming queries statement" caption-side="bottom"}
 
-`pg_stat_activity`, `pg_stat_bgwriter`, and `pg_buffercache` are important tools in PostgreSQL for monitoring and understanding database performance.
-{: .note}
 
-
-* Check for any recipes running backups and batch upload of data  for example :
-    automatic backups are completed daily and kept with a simple retention schedule of 30 days. If a backup is stuck, you can check the **Available backups** section and identify the stuck backup in the Cloud UI page of the database instance.
-
-* Check your {{site.data.keyword.cloud_notm}} notifications for any maintenance. For example, database patching.
-
-### Next actions
+### Other actions to take
 {: #next_actions}
 
 * Optimize slow queries
@@ -351,6 +349,11 @@ LIMIT 10;
 * Run VACUUM to help with database health analysis.
 
 * Consider using connection pooling to handle more connections. {{site.data.keyword.databases-for-postgresql}} sets the maximum number of connections to your {{site.data.keyword.databases-for-postgresql}} database to **115**.
-    15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. After the connection limit is reached, any attempts at starting a new connection result in an error. To prevent overwhelming your deployment with connections, use connection pooling, or scale your deployment and increase its connection limit. For more information, see [Managing PostgreSQL connection pooling](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#connection-pooling)
+    15 connections are reserved for the superuser to maintain the state and integrity of your database, and 100 connections are available for you and your applications. After the connection limit is reached, any attempts at starting a new connection result in an error. To prevent overwhelming your deployment with connections, use connection pooling, or scale your deployment and increase its connection limit. For more information, see [Managing PostgreSQL connection pooling](https://cloud.ibm.com/docs/databases-for-postgresql?topic=databases-for-postgresql-managing-connections#connection-pooling).
+
+* Check for any recipes running backups and batch upload of data  for example :
+    automatic backups are completed daily and kept with a simple retention schedule of 30 days. If a backup is stuck, you can check the **Available backups** section and identify the stuck backup in the Cloud UI page of the database instance.
+
+* Check your {{site.data.keyword.cloud_notm}} notifications for any maintenance. For example, database patching.
 
 * If you believe this is a platform issue such as maintenance, contact IBM Support with the database CRN.
