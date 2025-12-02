@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-11-25"
+lastupdated: "2025-12-02"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -250,3 +250,12 @@ If you need to upgrade to a new major version of the database, you can do so whe
 - Replication is asynchronous, and might be subject to replication lag. By default, there is no consistent communication between the primary and replica. It is possible for a read-only replica to fall far enough behind that it needs to be resynced. Replication lag can be greater when the replica is in a region far away geographically from its leader.
 
 - A read-only replica is a deployment with single data member and does not have any internal high availability. It is prone to temporary interruptions and downtime during maintenance. If you have applications that rely on read-only replicas, be sure to have logic to retry failed queries, or load-balancing over multiple read-only replicas.
+
+### Read-only replica status at in-place major version upgrades
+{: #read-only-replicas-ipu}
+
+With the introduction of in-place major version upgrades in our {{site.data.keyword.databases-for-postgresql}} service, read-only replicas can help maintain read transaction continuity and prove especially useful during upgrade processes. However, note that this feature is not yet applicable to read-only replicas at the moment. Still, if your service needs to read data from the instance that the upgrade is in progress, you may consider to [create a standby instance](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) and update your application’s connection details to point to the standby. This ensures you have an up-to-date copy of your database prior to starting the upgrade. The standby instance can also be promoted and used as a primary instance if the in-place upgrade does not complete successfully.
+
+During an in-place major version upgrade, the source instance and its read-only replicas lose replication functionality, and replication is **not** automatically restored after the upgrade (also note that the version change makes them incompatible). However, read-only replicas remain fully operational as standalone instances. So, you can safely promote a read-only replica to a primary instance at any time, independent of the upgrade outcome. In the event of an upgrade failure, promoting a read-only replica allows you to quickly restore your database.
+{: important}
+  
