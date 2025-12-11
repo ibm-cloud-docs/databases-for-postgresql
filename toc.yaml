@@ -143,6 +143,7 @@ toc:
           - ts-max-connections.md
           - ts-no-space-left.md
           - queries.md
+          - ts-performance-troubleshooting.md
           - include: ../cloud-databases/ts-terraform.md
       - topicgroup:
           label: FAQs

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2025
-lastupdated: "2025-11-03"
+lastupdated: "2025-12-05"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,27 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 08 Dec 2025
+{: #databases-for-postgreSQL-08Dec2025}
+{: release-note}
+
+In-place major version upgrades for {{site.data.keyword.databases-for-postgresql_full}}
+:  This new capability simplifies the upgrade process and enhances operational lifecycle management for your database instances.
+  * The feature is now available for PostgreSQL v14, providing a streamlined path to v15.
+  * Support for additional PostgreSQL versions will be added in upcoming releases.
+
+  This enhancement reduces upgrade complexity, minimizes downtime, and ensures a smoother transition to newer versions. Key benefits include:
+  * Connection parameters retained — no reconfiguration needed after the upgrade.
+  * Faster upgrade process compared to traditional methods.
+  * Flexible scheduling — choose the upgrade time that best fits your workload.
+  * Seamless migration from PostgreSQL v14 to v15.
+
+  For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
+
+  You can still perform major version upgrades using read-replica promote upgrade or backup and restore methods. The new in-place upgrade feature provides an additional option.
+  {: note}
+
 
 ## 16 October 2025
 {: #databases-for-postgresql-16oct2025}

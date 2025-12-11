@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-08-22"
+lastupdated: "2025-11-25"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 # Logging with `pgaudit`
 {: #pgaudit}
 
-The PostgreSQL Audit Extension (`pgaudit`) provides enablement of session logging for your {{site.data.keyword.databases-for-postgresql_full}} deployments. 
+The PostgreSQL Audit Extension (`pgaudit`) provides enablement of session logging for your {{site.data.keyword.databases-for-postgresql_full}} deployments. To view the audit logs, make sure you enabled [Logging for {{site.data.keyword.databases-for}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-logging) and completed the step for [Creating a S2S authorization to grant access to send logs to {{site.data.keyword.logs_full}}](/docs/logs-router?topic=logs-router-iam-service-auth-logs-routing).
 
 ## Session logging
 {: #session-logging}
