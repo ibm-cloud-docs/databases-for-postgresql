@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2023
-lastupdated: "2023-10-18"
+  years: 2019, 2025
+lastupdated: "2025-12-16"
 
 keywords: troubleshooting for PostgreSQL, query history, slow queries
 
@@ -14,7 +14,7 @@ content-type: troubleshoot
 
 {{site.data.keyword.attribute-definition-list}}
 
-# PostgreSQL Queries
+# PostgreSQL queries
 {: #pg-queries}
 {: troubleshoot}
 {: support}
@@ -35,10 +35,10 @@ Your {{site.data.keyword.databases-for-postgresql}} deployment is experiencing s
 You are experiencing slow queries.
 {: tsCauses}
 
-- LogDNA is a log management service that can be integrated with {{site.data.keyword.databases-for}} to collect, analyze, and store logs. Use the LogDNA timeline feature to see how often a search term appears in the log over time. The timeline typically shows log events as bars or markers that are distributed along the time axis. The length or height of the bars or markers can represent the event frequency or other parameters, depending on the timeline visualization. A long query by itself isn't a problem. A series of them can be, and identifying the actual duration can also help.
+- [{{site.data.keyword.logs_full}}](https://cloud.ibm.com/docs/logs-router?topic=logs-router-getting-started) is a log management service that can be integrated with {{site.data.keyword.databases-for}} to collect, analyze, and store logs. Use the {{site.data.keyword.logs_full_notm}} timeline feature to see how often a search term appears in the log over time. The timeline typically shows log events as markers that are distributed along the time axis. The length or height of the lines or markers can represent the event frequency or other parameters, depending on the timeline visualization. A long query by itself isn't a problem. A series of them can be, and identifying the actual duration can also help.
 - Enable [`pg_stat_statements`](https://www.postgresql.org/docs/14/pgstatstatements.html){: external} to identify bottlenecks and areas for optimization. `pg_stat_statements` is a PostgreSQL extension that tracks the planning and execution statistics of all SQL statements that are executed by a server.
-- Enable [`logminduration_statement`](https://www.postgresql.org/docs/14/runtime-config-logging.html){: external}, a configuration parameter in PostgreSQL that determines the minimum length of time after which queries should be logged. By setting an appropriate value, you can configure PostgreSQL to log queries that exceed a certain execution time. Adjust the value based on your requirements.
-- For more information, see [Changing your {{site.data.keyword.databases-for-postgresql}} Configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
+- Configuring the log_min_duration_statement allows users to log statements that take longer than a specified time to complete. 
+- For more information, see [Changing your {{site.data.keyword.databases-for-postgresql}} configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
 {: tsResolve}
 
 ## How do I keep slow query logging from exposing sensitive data?
@@ -56,10 +56,9 @@ PostgreSQL queries can contain sensitive data such as personal information, pass
 {: tsCauses}
 
 If you worry about exposing sensitive information in your PosgreSQL logs, do the following:
+
 - Use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external} to adjust the “100 milliseconds” default threshold to a much larger value. Doing so will disable the entry from being written to the logs.
 - Adjust your queries to contain hashed passwords instead of cleartext passwords.
     Updating your queries with hashed passwords requires changes to your application.
     {: note}
 {: tsResolve}
-
-
