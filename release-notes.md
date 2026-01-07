@@ -54,10 +54,10 @@ By proactively upgrading, you can control the timing and minimize any potential 
 {: #databases-for-postgresql-02oct2025}
 {: release-note}
 
-As part of the latest {{site.data.keyword.databases-for-postgresql}} release, two new extensions have been introduced: PgAnon for native data masking and PgCron for job scheduling. 
-:PgAnon enables efficient data anonymization, supporting privacy and compliance requirements across various use cases. PgCron adds native job scheduling capabilities to PostgreSQL, allowing users to automate recurring tasks within the database environment. For setup instructions and additional details, see the documentation for both [anon](/docs/databases-for-postgresql?topic=databases-for-postgresql-data-masking) and [pg_cron](/docs/databases-for-postgresql?topic=databases-for-postgresql-pg_cron).
+As part of the latest {{site.data.keyword.databases-for-postgresql}} release, two new extensions have been introduced: PgAnon for native data masking and PgCron for job scheduling
+:  PgAnon enables efficient data anonymization, supporting privacy and compliance requirements across various use cases. PgCron adds native job scheduling capabilities to PostgreSQL, allowing users to automate recurring tasks within the database environment. For setup instructions and more  information, see the documentation for both [anon](/docs/databases-for-postgresql?topic=databases-for-postgresql-data-masking) and [pg_cron](/docs/databases-for-postgresql?topic=databases-for-postgresql-pg_cron).
 
-:Additionally, this release also includes an enhancement to **Pgaudit**, enabling session logging for your PostgreSQL deployments. For more information, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit).
+:  Additionally, this release also includes an enhancement to **Pgaudit**, enabling session logging for your PostgreSQL deployments. For more information, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit).
 
 
 ## 29 April 2025
