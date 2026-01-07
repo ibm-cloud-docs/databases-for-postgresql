@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-12-02"
+  years: 2020, 2026
+lastupdated: "2026-01-07"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -26,6 +26,10 @@ Find the available versions of {{site.data.keyword.databases-for-postgresql}} in
 
 When you upgrade to a new instance, you also need to change the connection information in your application.
 {: note}
+
+In the following example commands, the full CRN of the database instance is required for the {id}. Since the CRN contains special characters, it must be *URL-encoded* to avoid a "not_found" error.
+{: note}
+
 
 ## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v14 
 {: #upgrading-reqs}
