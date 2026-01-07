@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2025
-lastupdated: "2025-11-25"
+  years: 2026
+lastupdated: "2026-01-07"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -61,6 +61,8 @@ For more information, see the [API reference](https://cloud.ibm.com/apidocs/clou
 
 ## Available {{site.data.keyword.databases-for-postgresql_full}} configuration settings
 {: #available-config-settings}
+
+This section provides information about the available {{site.data.keyword.databases-for-postgresql_full_notm}} configuration settings. To suggest a configuration setting that is not listed here as a product enhancement, submit an idea in the [IBM Ideas Portal](https://ideas.ibm.com). If you prefer, you can limit your view to only {{site.data.keyword.cloud_notm}} enhancements at [{{site.data.keyword.cloud_notm}} Ideas](https://ibmcloud.ideas.ibm.com/).
 
 ### {{site.data.keyword.databases-for-postgresql_full}} time zone settings
 {: #mem-settings}
