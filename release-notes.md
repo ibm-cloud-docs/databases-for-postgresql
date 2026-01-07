@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-12-05"
+  years: 2019, 2026
+lastupdated: "2026-01-07"
 
 keywords: databases-for-postgresql release notes
 
@@ -46,7 +46,6 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} version 14 End of life on October 21, 2026
-
 :  Action is required before October 21, 2026, for your PostgreSQL v14 deployments. After October 21, 2026, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 14 that are still active will be upgraded in-place to the next major version, version 15. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading). 
 By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
