@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-01-07"
+lastupdated: "2026-01-09"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+
+## 18 Dec 2025
+{: #databases-for-postgreSQL-18Dec2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-postgresql_full}} version 18 is now available
+:  If you use a previous version of {{site.data.keyword.databases-for-postgresql_full}}, you can migrate to version 18, which is the next available version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}.
 
 ## 08 Dec 2025
 {: #databases-for-postgreSQL-08Dec2025}
