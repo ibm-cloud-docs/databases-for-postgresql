@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2026
-lastupdated: "2026-01-07"
+lastupdated: "2026-01-09"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -382,8 +382,8 @@ This ensures that the `admin user` retains the appropriate `ADMIN OPTION` privil
 ## Changelog for major PostgreSQL versions
 {: #changelog-postgres}
 
-- [PostgreSQL 13](https://www.postgresql.org/docs/13/release-13.html){: external}
 - [PostgreSQL 14](https://www.postgresql.org/docs/14/release-14.html){: external}
 - [PostgreSQL 15](https://www.postgresql.org/docs/release/15.0/){: external}
 - [PostgreSQL 16](https://www.postgresql.org/docs/release/16.0/){: external}
 - [PostgreSQL 17](https://www.postgresql.org/docs/release/17.0/){: external}
+- [PostgreSQL 18](https://www.postgresql.org/docs/release/18.0/){: external}
