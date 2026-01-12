@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-12-02"
+  years: 2020, 2026
+lastupdated: "2026-01-12"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits, troubleshooting
 
@@ -334,7 +334,7 @@ You can also consider the following actions to troubleshoot performance:
 
 * Optimize slow queries
 
-    * Run EXPLAIN (ANALYZE, BUFFERS) on slow queries. This shows how the database runs the query and where it is slow
+    * Run EXPLAIN (ANALYZE, BUFFERS) on slow queries. This shows how the database runs the query and where it is slow. For example:
 
     ```sh
     EXPLAIN (ANALYZE, BUFFERS)
