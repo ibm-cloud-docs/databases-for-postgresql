@@ -1,44 +1,226 @@
-document_outline: |
-  Information about the Databases for PostgreSQL offering on IBM Cloud. PostgreSQL is a powerful, open source object-relational database that is highly customizable.
+document_outline: Information about the Databases for PostgreSQL offering on IBM Cloud. PostgreSQL is a powerful, open source object-relational database that is highly customizable.
 domain: Databases for PostgreSQL
 seed_examples:
   - context: |
+     All the information a driver needs to make a connection to your deployment is in the "postgres" section of your connection strings. The table contains a breakdown for reference.
+
+     | Field name | Index | Description |
+     | ---------- | ----- | ----------- |
+     | `Type` | | Type of connection - for PostgreSQL, it is "URI". |
+     | `Scheme` | | Scheme for a URI - for PostgreSQL, it is "postgresql". |
+     | `Path` | | Path for a URI - for PostgreSQL, it is the database name. The default is `ibmclouddb`. |
+     | `Authentication` | `Username` | The username that you use to connect. |
+     | `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD` |
+     | `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. |
+     | `Hosts` | `0...` | A hostname and port to connect to. |
+     | `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path. |
+     | `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment. |
+     | `Certificate` | Base64 | A base64 encoded version of the certificate. |
+     {: caption="postgres/URI connection information" caption-side="bottom"}
+
+     * `0...` indicates that there might be one or more of these entries in an array.
+
+     Many PostgreSQL drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
+
+     ```sh
+     postgres://ibm_cloud_30399dec_4835_4967_a23d_30587a08d9a8:$PASSWORD@981ac415-5a35-4ac7-b6bb-fb609326dc42.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32704/ibmclouddb?sslmode=verify-full
+     ```
+     {: .codeblock}
     questions_and_answers:
-      - question:
-        answer:
-      - question:
-        answer:
-      - question:
-        answer:
+      - question: What type of connection does the "Type" field in PostgreSQL connection strings represent?
+        answer: The "Type" field in the PostgreSQL connection strings represents a URI type of connection.
+      - question: Where's the database name in the PostgreSQL connection strings?
+        answer: The "postgres" section of your connection strings has a field that is called "Path" where you can locate the database name. The default value is `ibmclouddb`.
+      - question: What does the URI format connection string look like for my postgresql database deployment
+        answer: |
+         In the "composed" field of your connection strings, you can find the URI-formatted connection string that is often used for PostgreSQL drivers to connect to your database deployment. Here's an example of a URI-formatted connection string:
+
+         ```
+         postgres://ibm_cloud_30399dec_4835_4967_a23d_30587a08d9a8:$PASSWORD@981ac415-5a35-4ac7-b6bb-fb609326dc42.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32704/ibmclouddb?sslmode=verify-full
+         ```
   - context: |
+     ## Dedicated cores pricing
+     {: #core-pricing}
+
+     You have the option of selecting the CPU allocation for your deployment. With dedicated cores, your resource group is given a single-tenant host with a guaranteed minimum reserve of cpu shares. Your deployments are then allocated the number of CPUs you specify. The cost of dedicated cores is $30 per core per month, and each member gets the selected number of cores. For example, if you provision a deployment with three dedicated cores per member that is a total of six cores and billed at $180 per month.
+
+     Dedicated cores are an optional feature. The default `Shared CPU` setting provisions your deployment on hosts with shared compute resources and incurs no additional charge.
+
+     ## Scaling per member
+     {: #scaling-member}
+
+     {{site.data.keyword.databases-for-postgresql}} deployments have minimum and maximum allocation for disk and RAM as shown. Scaling deployments through the API/CLI provides more granularity and also allows a user to scale a database instance up to 4 TB of disk per member.
+
+     | Resource | Minimum | Maximum | Scaling Granularity (API/CLI) |
+     | ---------- | ----- | ----- | ------- |
+     | Disk | 5 GB per member | 4 TB per member | 1024 MB per member |
+     | RAM | 1 GB per member | 112 GB per member | 128 MB per member |
+     | CPU (if enabled) | 0.5 vCPUs per member | 28 vCPUs per member| 2 CPU per member |
+     {: caption="Per Member Scaling Limits" caption-side="top"}
     questions_and_answers:
-      - question:
-        answer:
-      - question:
-        answer:
-      - question:
-        answer:
+      - question: What's the minimum RAM allocation for my PostgreSQL database?
+        answer: Databases for PostgreSQL deployments have a minimum and maximum allocation for both disk and RAM. The maximum allocation for RAM is 112 GB per member and the minimum is 1 GB per member.
+      - question: How much do dedicated cores for PostgreSQL deployments cost, and how are they billed?
+        answer: Dedicated cores for PostgreSQL deployments cost $30 per core per month.
+      - question: Do I have to buy dedicated cores?
+        answer: No, dedicated cores are an optional feature for Databases for PostgreSQL.
   - context: |
+     {{site.data.keyword.databases-for-postgresql_full}} deployments support the [wal2json](https://github.com/eulerto/wal2json){: external} plug-in, enabling [logical decoding](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html){: external} on your deployment.
+
+     Note:
+
+     - **Deprecated:** This plug-in is deprecated in PostgreSQL versions 9.6 and 10.
+     - **Supported:** Only available in PostgreSQL versions **11 and above**.
+
+     1. First, you need to [configure](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) the `wal_level`, `max_replication_slots`, and `max_wal_senders` settings. Change the `wal_level` to `logical`. The `max_replication_slots`, and `max_wal_senders` both need to be set to a value greater than 20. {{site.data.keyword.databases-for-postgresql}} reserves 20 replication slots and WAL senders for current and future operational purposes.
+
+        ```sh
+        curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/configuration
+          -H 'Authorization: Bearer <>'
+          -H 'Content-Type: application/json'
+          -d '{"configuration": {
+                "wal_level": "logical",
+                "max_replication_slots": 21,
+                "max_wal_senders": 21
+                }
+              }'
+        ```
+        {: pre}
+
+     2. Set a password for the [`repl` user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-repl-user).
+        Any user's password can be changed by using the {{site.data.keyword.databases-for}} CLI plug-in [`cdb deployment-user-password`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-user-password) command or {{site.data.keyword.databases-for}} API [`/deployments/{id}/users/{username}`](https://cloud.ibm.com/apidocs/cloud-databases-api#set-database-level-user-s-password) endpoint. The `repl` user has REPLICATION privileges and the `wal2json` plug-in uses it after you set a password for it.
+
+     3. Create a replication slot on the database from the {{site.data.keyword.databases-for}} API. Send a POST request to the [`/deployments/{id}/postgresql/logical_replication_slots`](https://cloud.ibm.com/apidocs/cloud-databases-api#create-a-new-logical-replication-slot) endpoint.
+
+        ```sh
+        curl -X POST https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/postgresql/logical_replication_slots -H 'Authorization: Bearer <>'
+          -H 'Content-Type: application/json'
+          -d '{"logical_replication_slot": {
+               "name": "<slot_name>",
+               "database_name": "<database_name>",
+               "plugin_type": "wal2json"
+               }
+             }'
+        ```
+        {: pre}
+
+        The plug-in type must be `wal2json`. The database must be an existing database. The slot name can contain only lowercase letters, numbers, and the underscore character. You can check the existence of the replication slot by connecting to any database and running the following command:
+
+        ```sh
+        SELECT * FROM pg_replication_slots WHERE slot_name = '<slot_name>';
+        ```
+        {: pre}
+
+     4. To test the plug-in, run `pg_recvlogical` from the command-line. The command is available with an installation of PostgreSQL. Use the host and port from your deployment, and the database and slot name you created through the API.
+
+        ```sh
+        PGSSLMODE=require pg_recvlogical -d <DATABASE NAME> -U repl -h <HOST> -p <PORT> --slot <SLOT NAME> --start -o pretty-print=1 -f -
+        ```
+        {: pre}
+
+     5. Create a table on `ibmclouddb` and insert some data. Ensure that the inserts come out in the command-line that is running `pg_recvlogical`.
+
+        Table creates do not appear.
+        {: .note}
     questions_and_answers:
-      - question:
-        answer:
-      - question:
-        answer:
-      - question:
-        answer:
+      - question: How do I configure a PostgreSQL deployment for using the wal2json plugin?
+        answer: |
+         To configure a PostgreSQL deployment for logical decoding using the wal2json plug-in, complete the following steps:
+         1. Change the `wal_level` to logical, and set `max_replication_slots` and `max_wal_senders` to values greater than 20.
+         2. Create a password for the `repl` user.
+         3. Create a replication slot using the {{site.data.keyword.databases-for}} API. Send a POST request to the `/deployments/{id}/postgresql/logical_replication_slots` endpoint.
+         4. Test the plug-in by running the `pg_recvlogical` from the command-line. Use the host and port from your deployment, and the database and slot name you created through the API.
+         5. Create a table on `ibmclouddb`, and insert some data to check that the inserts come out in the command-line that is running `pg_recvlogical`.
+      - question: How can I test the wal2json plugin is working?
+        answer: |
+         To test that you enabled logical decoding by using the wal2json plug-in, run `pg_recvlogical` from the command-line. The command is available with an installation of PostgreSQL. You must use the host and port from the deployment and the database and slot name that you created by using the API. See the following example:
+         ```
+         PGSSLMODE=require pg_recvlogical -d <DATABASE NAME> -U repl -h <HOST> -p <PORT> --slot <SLOT NAME> --start -o pretty-print=1 -f -
+         ```
+      - question: What are the rules for my slot name when making the POST request?
+        answer: You can use only lowercase letters, numbers, and the underscore (`_`) character for the slot name.
   - context: |
+     # Migrating to {{site.data.keyword.databases-for-postgresql}}
+     {: #migrating}
+
+     Various options exist to migrate data from existing PostgreSQL databases to {{site.data.keyword.databases-for-postgresql_full}}. We focus on the simplest and most effective. To get started, you need PostgreSQL installed locally so you have the `psql` and `pg_dump` tools. And while not strictly required, the {{site.data.keyword.databases-for}} CLI makes it easier to connect and restore to a new {{site.data.keyword.databases-for-postgresql}} deployment.
+
+     ## pg_dump
+     {: #pg_dump}
+
+     On your source database run `pg_dump` to create an SQL file, which can be used to re-create the database. At a minimum, `pg_dump` takes a hostname (`-h` flag), port number (`-p` flag), database name (`-d` flag), username (`-U` flag), and a file (or directory name) to write the dump to (`-f` flag).
+
+     For example, the following command dumps the PostgreSQL "compose" database that is hosted on sl-eu-lon-2-portal.4.dblayer.com, port 17980, using the admin user and save the results in `dump.sql`.
+
+     ```sh
+     pg_dump -h sl-eu-lon-2-portal.4.dblayer.com -p 17980 -d compose -U admin -f dump.sql
+     ```
+     {: pre}
+
+     The `pg_dump` command has many options and it is recommended that you [consult the official documentation](https://www.postgresql.org/docs/current/backup-dump.html){: .external} and [command reference](https://www.postgresql.org/docs/current/app-pgdump.html){: .external} for a fuller view of its capabilities.
     questions_and_answers:
-      - question:
-        answer:
-      - question:
-        answer:
-      - question:
-        answer:
+      - question: What tools do I need to migrate data to Databases for PostgreSQL
+        answer: To begin migrating data, you need to have PostgreSQL installed locally to access the `psql` and `pg_dump` tools. While not strictly required, using the IBM Cloud Databases CLI is recommended because it simplifies the process of connecting to and restoring data in a new Databases for PostgreSQL deployment.
+      - question: What's the pg_dump command used for during migration?
+        answer: The `pg_dump`` command is used on the source database to create an SQL file that can re-create the database. This dump file is needed to transfer the database contents to IBM Cloud Databases for PostgreSQL.
+      - question: Give me a sample pg_dump command with the required options
+        answer: |
+         Sure, here's an example where the command dumps the PostgreSQL "compose" database that is hosted on sl-eu-lon-2-portal.4.dblayer.com, port 17980, using the admin user and saves the results in `dump.sql`.
+
+         ```sh
+         pg_dump -h sl-eu-lon-2-portal.4.dblayer.com -p 17980 -d compose -U admin -f dump.sql
+         ```
   - context: |
+     ## Configuring autoscaling in the API
+     {: #config-autoscaling-api}
+     {: api}
+
+     You can get the autoscaling parameters for your deployment through the API by sending a `GET` request to the [`/deployments/{id}/groups/{group_id}/autoscaling`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-the-autoscaling-configuration-from-a-deploymen) endpoint.
+
+     ```sh
+     curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling'
+     ```
+     {: pre}
+
+     To enable and set the autoscaling parameters for your deployment through the API, send a `POST` request to the endpoint. Enabling autoscaling works by setting the `scalers` (`io_utilization` or `capacity`) to `true`.
+
+     ```sh
+     curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling -H 'Authorization: Bearer <>'
+     -H 'Content-Type: application/json'
+     -d '{
+         "autoscaling": {
+           "memory": {
+             "scalers": {
+               "io_utilization": {
+                 "enabled": true,
+                 "over_period": "5m",
+                 "above_percent": 90
+               }
+             },
+             "limits": {
+               "scale_increase_percent": 10,
+               "scale_period_seconds": 30,
+               "scale_maximum_mb": 125952,
+               "units": "mb"
+             }
+           }
+         }
+       }'
+     ```
+     {: pre}
+
+     To disable autoscaling, send the PATCH request with the currently enabled scalers set to `false`. If all of them are set to `false`, then autoscaling is disabled on your deployment.
+
+     CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
     questions_and_answers:
-      - question:
-        answer:
-      - question:
-        answer:
-      - question:
-        answer:
+      - question: How do I get the current autoscaling configuration for my postgresql deployment?
+        answer: |
+         You can retrieve the autoscaling configuration by sending a GET request to the `/deployments/{id}/groups/{group_id}/autoscaling`` endpoint. For example:
+         ```sh
+         curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling'
+         ```
+      - question: How do I enable autoscaling for my postgresql database
+        answer: |
+         You can use the API to enable autoscaling by sending a POST request with the `scalers` (`io_utilization` or `capacity`) set to true.
+      - question: I want to disable autoscaling for my postgresql db
+        answer: Sure, you can disable autoscaling for your Databases for PostgreSQL by using the API and setting the `scalers` (`io_utilization` or `capacity`) set to `false` in a PATCH request.
