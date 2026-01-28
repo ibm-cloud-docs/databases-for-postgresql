@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-28"
 
 keywords: databases-for-postgresql release notes
 
@@ -20,6 +20,24 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+
+## 28 Jan 2026
+{: #databases-for-postgreSQL-28Jan2026}
+{: release-note}
+
+Accelerated availability for PITR restores
+:  {{site.data.keyword.databases-for-postgresql_full}} now allows customers to access database instances immediately following a primary Point-in-Time Recovery (PITR) restoration. This enhancement eliminates the wait time for secondary node synchronization, allowing operations to resume faster than ever.
+
+How it works:
+
+* Accelerated availability: The primary node is restored and opened for traffic, while the secondary (HA) node synchronizes in the background.
+* Configuration: This behavior is controlled via the new `async_restore` parameter.
+
+Key benefits and risk considerations:
+
+* This feature enables immediate database access following primary node restoration, significantly reducing the time required to resume operations. However, High Availability (HA) remains inactive during the initial recovery phase; if a zone failure occurs before the secondary node fully synchronizes, the instance may be exposed to potential data loss. Clients are advised to carefully evaluate these risks before enabling this feature.
+
+For implementation guidance, see the [async_restore documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=cli#async_restore-pg).
 
 ## 18 Dec 2025
 {: #databases-for-postgreSQL-18Dec2025}
@@ -207,7 +225,7 @@ Protecting {{site.data.keyword.databases-for-postgresql_full}} resources with co
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} 10: End-of-Life in November 2022
-:  On 3 November 2022, all {{site.data.keyword.databases-for-postgresql_full}} instances on version 10 that are still active will be disabled. For more information, see [{{site.data.keyword.databases-for-postgresql_full}} 10: End-of-Life in November 2022](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-for-postgresql-10-end-of-life-in-november-2022).
+:  On 3 November 2022, all {{site.data.keyword.databases-for-postgresql_full}} instances on version 10 that are still active will be disabled.
 
 ## 31 May 2022
 {: #databases-for-postgresql-31may2022}
@@ -242,60 +260,60 @@ Provision an {{site.data.keyword.databases-for-postgresql_full}} instance with T
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-postgresql_full}} support for {{site.data.keyword.cloud_notm}} Databases enabled by {{site.data.keyword.cloud_notm}} Satellite.
-:  A distributed cloud provides consistent security and services across environments, centralized workload visibility, reduced latency, easier compliance, and higher application development velocity. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/deploy-managed-cloud-native-databases-anywhere-with-ibm-cloud-satellite).
+:  A distributed cloud provides consistent security and services across environments, centralized workload visibility, reduced latency, easier compliance, and higher application development velocity.
 
 ## 5 May 2021
 {: #databases-for-postgresql-05may2021}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} 9.6 End of Life
-:  On 11 November 2021, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 9.6 that are still active will be disabled. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-postgresql-9-6-end-of-life).
+:  On 11 November 2021, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 9.6 that are still active will be disabled.
 
 ## 15 February 2021
 {: #databases-for-postgresql-15feb2021}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} Horizontal Scaling
-:  Customers can scale {{site.data.keyword.databases-for-postgresql_full}} by adding members to their database instance. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/whats-new-in-ibm-cloud-databases).
+:  Customers can scale {{site.data.keyword.databases-for-postgresql_full}} by adding members to their database instance.
 
 ## 9 Sept 2020
 {: #databases-for-postgresql-09sep2020}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} 9.5 End of Life
-:  On November 11, 2021, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 9.5 that are still active will be disabled. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/postgresql-9-5-end-of-life).
+:  On November 11, 2021, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 9.5 that are still active will be disabled.
 
 ## 13 April 2020
 {: #databases-for-postgresql-13apr2020}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} autoscaling
-:  Starting after 26 April 2020, all deployments of {{site.data.keyword.databases-for-postgresql_full}} will have a minor change in the format of PostgreSQL logs emitted into Log Analysis with LogDNA.  See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-portfolio-introduces-autoscaling).
+:  Starting after 26 April 2020, all deployments of {{site.data.keyword.databases-for-postgresql_full}} will have a minor change in the format of PostgreSQL logs emitted into Log Analysis with LogDNA.
 
 ## 27 March 2020
 {: #databases-for-postgresql-27mar2020}
 {: release-note}
 
 Changes to {{site.data.keyword.databases-for-postgresql_full}} Logging
-:  We are excited to announce that autoscaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-postgresql_full}}via the UI, API, and CLI. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/changes-to-databases-for-postgresql-logging).
+:  We are excited to announce that autoscaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-postgresql_full}}via the UI, API, and CLI.
 
 ## 2 October 2019
 {: #databases-for-postgresql-02oct2019}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql_full}} Announces Point-In-Time Recovery
-:  {{site.data.keyword.databases-for-postgresql_full}} now allows you to restore a database into a new instance from a specific timestamp. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-for-postgresql-announces-point-in-time-recovery).
+:  {{site.data.keyword.databases-for-postgresql_full}} now allows you to restore a database into a new instance from a specific timestamp.
 
 ## 6 August 2019
 {: #databases-for-postgresql-06aug2019}
 {: release-note}
 
 New Regions Available for {{site.data.keyword.cloud_notm}} Database Services
-:  {{site.data.keyword.databases-for-postgresql_full}} is now available to be deployed in Seoul; South Korea; and Chennai, India. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/new-regions-available-for-ibm-cloud-database-services).
+:  {{site.data.keyword.databases-for-postgresql_full}} is now available to be deployed in Seoul; South Korea; and Chennai, India.
 
 ## 2 October 2018
 {: #databases-for-postgresql-02oct2018}
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-postgresql_full}}
-:  {{site.data.keyword.databases-for-postgresql_full}} added to the [{{site.data.keyword.cloud_notm}} Databases](https://www.ibm.com/cloud/databases) family. See blog post announcement [here](https://www.ibm.com/cloud/blog/ibm-cloud-databases-for-postgresql-and-databases-for-redis-are-now-generally-available).
+:  {{site.data.keyword.databases-for-postgresql_full}} added to the [{{site.data.keyword.cloud_notm}} Databases](https://www.ibm.com/cloud/databases) family.
