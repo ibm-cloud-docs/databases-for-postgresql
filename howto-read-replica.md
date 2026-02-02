@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-12-02"
+  years: 2019, 2026
+lastupdated: "2026-02-02"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -248,6 +248,8 @@ If you need to upgrade to a new major version of the database, you can do so whe
 - Read-only replicas do not auto-scale to match the leader. If the amount of data you store outgrows the disk that is allocated to your deployments, scale the disk on the read-only replicas and then the leader. Scaling the read-only replica first ensures that you do not run out of space on the read-only replicas. If you scaled the leader's disk for performance and not for space, it is not necessary to scale the read-only replicas.
 
 - Replication is asynchronous, and might be subject to replication lag. By default, there is no consistent communication between the primary and replica. It is possible for a read-only replica to fall far enough behind that it needs to be resynced. Replication lag can be greater when the replica is in a region far away geographically from its leader.
+
+- If you monitor your deployment with the {{site.data.keyword.mon_full_notm}} service, you can observe the [PostgreSQL Read replica replication lag](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring&interface=ui#ibm_databases_for_postgresql_read_replica_replication_lag_bytes) metric for trends. If you see a value of `-2` for this metric, which might indicate a problem, perform the steps in [Checking replication status](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#checking-replication-status) to determine if replication is working as expected. If you have concerns after checking the replication status, contact [IBM Cloud Support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external} to check your deployment before you resync. 
 
 - A read-only replica is a deployment with single data member and does not have any internal high availability. It is prone to temporary interruptions and downtime during maintenance. If you have applications that rely on read-only replicas, be sure to have logic to retry failed queries, or load-balancing over multiple read-only replicas.
 
