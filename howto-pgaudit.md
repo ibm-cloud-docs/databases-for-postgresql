@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-11-25"
+  years: 2020, 2026
+lastupdated: "2026-02-27"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -67,11 +67,17 @@ SELECT public.set_pgaudit_user_logging('{read, write}');
 
 To enable `pgaudit` database specific logging, connect as the admin user and call the `set_pgaudit_database_logging` function with the appropriate event parameters specified. Database logging is enabled for a specific database, in case of multiple databases available in an instance.
 
-For example, to enable DDL and ROLE, use the following command:
+For example, to enable DDL and ROLE in current_database, use the following command:
 
 ```sh
-SELECT public.set_pgaudit_database_logging('{ddl, role}');
+SELECT public.set_pgaudit_database_logging(current_database(),'{ddl, role}');
 ```
+or
+
+```sh
+SELECT public.set_pgaudit_database_logging('sampledatabase','{read, write, ddl}');
+```
+
 {: .codeblock}
 
 Any subsequent calls replace the existing configuration; they are not additive. For example, a subsequent call to `SELECT public.set_pgaudit_session_logging('{misc}');` logs only `misc` but disable `ddl` and `role`.
