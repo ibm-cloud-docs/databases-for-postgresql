@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2025
-lastupdated: "2025-06-05"
+  years: 2018, 2026
+lastupdated: "2026-03-03"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -308,7 +308,7 @@ Follow these steps to provision by using the [resource controller API](https://c
 {: #provision_instance_tf}
 {: terraform}
 
-Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}. Alternatively, you can use Terraform IBM Modules to manage your infrastructure through [Terraform IBM Modules for {{site.data.keyword.databases-for-postgresql}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-postgresql/ibm/latest){: external}.
 
 ### Using APIs
 {: #using_apis}
