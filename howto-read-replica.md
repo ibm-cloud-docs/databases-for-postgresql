@@ -113,7 +113,7 @@ SELECT * from pg_stat_replication;
 
 When monitoring the output for replication lag, note that the `application_name` refers to the formation ID of the replicas - the last populated section of the cloud resource name (CRN). Look for a `sync_state` value of "async", a `state` value of "Streaming" during the replication, and time statistics.
 
-Your deployment always has a replica for its HA paired node, and the `application_name` will the the same as your main deployment, and the `sync_state` value will be "sync". You should expect an additional row of output for each read only replica, and the `application_name` will be different and the `sync_state` will be "async". You can then evaluate whether or not it is in sync with the additional information provided by the query results.
+Your deployment always has a replica for its HA paired node, the `application_name` will the same as your main deployment, and the `sync_state` value will be "sync". You should expect an additional row of output for each read-only replica, the `application_name` will be different and the `sync_state` will be "async". You can then evaluate whether it is in sync with the additional information provided by the query results.
 
 For more information, see [pg_stat_replication](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW){: .external}.
 
