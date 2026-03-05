@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-03-03"
+lastupdated: "2026-03-05"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -111,7 +111,7 @@ SELECT * from pg_stat_replication;
 ```
 {: .codeblock}
 
-When monitoring the output for replication lag, note that the `application_name` refers to the formation ID of the replicas - the last populated section of the cloud resource name (CRN). Look for a `sync_state` value of "async", a `state` value of "Streaming" during the replication, and time statistics.
+When monitoring the output for replication lag, note that the `application_name` refers to the formation ID of the replicas: the last populated section of the cloud resource name (CRN). Look for a `sync_state` value of "async", a `state` value of "Streaming" during the replication, and time statistics.
 
 Your deployment always has a replica for its HA paired node, the `application_name` will the same as your main deployment, and the `sync_state` value will be "sync". You should expect an additional row of output for each read-only replica, the `application_name` will be different and the `sync_state` will be "async". You can then evaluate whether it is in sync with the additional information provided by the query results.
 
