@@ -53,7 +53,7 @@
   "section_devtools": {
     "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
     "cli": "/docs/databases-cli-plugin",
-    "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
+    "terraform": "https://registry.terraform.io/modules/terraform-ibm-modules/icd-postgresql/ibm/latest"
   },
   "section_updates": {
     "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
