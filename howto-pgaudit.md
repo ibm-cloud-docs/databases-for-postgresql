@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2026
-lastupdated: "2026-02-27"
+lastupdated: "2026-03-09"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -33,7 +33,7 @@ Session logging is configured per event type. The supported event types across a
 * READ
 * WRITE
 * MISC
-* MISC_SET (this additional type is only supported in PostgreSQL 12 or greater)
+* MISC_SET
 * NONE (to disable the logging)
 
 For more information, see [`pgaudit`](https://github.com/pgaudit/pgaudit/blob/master/README.md#pgauditlog){: .external}.
