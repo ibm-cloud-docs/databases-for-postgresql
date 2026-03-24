@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-03-24"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -68,7 +68,7 @@ SELECT postgis_full_version();
 
 In-place major version upgrade allows you to upgrade your deployment to the next new [major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-versioning-policy#version-definitions), eliminating the need to [restore a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading&interface=ui#backup-restore) into a new deployment. This approach maintains the same connection strings, without the need to reconfigure the deployment. However, if the new major version requires application adjustments, these must be addressed.
 
-During the in-place major version upgrade window, your deployment will experience a brief period of downtime. This is expected, as the process follows the vendor-recommended upgrade approach. The exact duration may vary depending on the size and complexity of your deployment’s schema. If your service needs to read data from the upgraded instance during this time, you may want to [create a standby instance](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) and update your application’s connection details to point to the standby. This ensures you have an up-to-date copy of your database prior to starting the upgrade. The standby instance can also be promoted and used as a primary instance if the in-place upgrade does not complete successfully. Additional information is available on the read-only replica page and can be seen [here](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-ipu).
+During the in-place major version upgrade window, your deployment will experience a brief period of downtime. This is expected, as the process follows the vendor-recommended upgrade approach. The exact duration may vary depending on the size and complexity of your deployment’s schema. If your service needs to read data from the upgraded instance during this time, you may want to [create a standby instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) and update your application’s connection details to point to the standby. This ensures you have an up-to-date copy of your database prior to starting the upgrade. The standby instance can also be promoted and used as a primary instance if the in-place upgrade does not complete successfully. Additional information is available on the read-only replica page and can be seen [here](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-ipu).
 {: important}
 
 {{site.data.keyword.databases-for-postgresql}} gives customers flexibility in managing their own backups. The in-place major version upgrade process does not automatically create a backup before or after the task. If the upgrade is not successful, you may need to restore your deployment from your most recent backup into a new instance.
