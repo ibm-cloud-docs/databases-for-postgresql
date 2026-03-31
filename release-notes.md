@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-01-28"
+lastupdated: "2026-03-31"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 27 March 2026
+{: #databases-for-elasticsearch-27mar2026}
+{: release-note}
+
+Deprecation of {{site.data.keyword.hscrypto}}
+: {{site.data.keyword.cloud}} is transitioning its dedicated key management offering from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant). As part of this transition, {{site.data.keyword.hscrypto}} will reach **End of Life (EOL) on March 20, 2027**. After this date, the service will no longer be supported, and any remaining instances will be terminated.
+To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information on how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/cloud-databases?topic=cloud-databases-hpcs#migrating_hpcs_to_kp).
 
 
 ## 28 Jan 2026
@@ -72,7 +80,7 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} version 14 End of life on October 21, 2026
-:  Action is required before October 21, 2026, for your PostgreSQL v14 deployments. After October 21, 2026, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 14 that are still active will be upgraded in-place to the next major version, version 15. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading). 
+:  Action is required before October 21, 2026, for your PostgreSQL v14 deployments. After October 21, 2026, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 14 that are still active will be upgraded in-place to the next major version, version 15. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 
@@ -103,7 +111,7 @@ PgVector is only offered for PostgreSQL version 15 and above.
 {{site.data.keyword.databases-for-postgresql}} version 13 End of life on October 22, 2025
 :  This note is an update to the PostgreSQL v13 end-of-life approach, replacing our September 27, 2024 publication.
 
-:  Action is required before October 22, 2025, for your PostgreSQL v13 deployments. After October 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 13 that are still active will be upgraded in-place to the next major version, version 14. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading). 
+:  Action is required before October 22, 2025, for your PostgreSQL v13 deployments. After October 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 13 that are still active will be upgraded in-place to the next major version, version 14. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 
@@ -126,7 +134,7 @@ By proactively upgrading, you can control the timing and minimize any potential 
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} end-of-life procedure change
-:  Action is required for your {{site.data.keyword.databases-for-postgresql}} version 12 deployments before January 22, 2025. After this date, all {{site.data.keyword.databases-for-postgresql}} instances on version 12 that are still active will be upgraded in-place to the next major version, version 13. 
+:  Action is required for your {{site.data.keyword.databases-for-postgresql}} version 12 deployments before January 22, 2025. After this date, all {{site.data.keyword.databases-for-postgresql}} instances on version 12 that are still active will be upgraded in-place to the next major version, version 13.
 We recommend that you complete the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 27 September 2024
