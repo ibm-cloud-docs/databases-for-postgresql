@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2026
-lastupdated: "2026-03-09"
+lastupdated: "2026-04-01"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -46,9 +46,12 @@ To enable `pgaudit` session logging, connect as the admin user and call the `set
 For example, to enable DDL and ROLE you would call:
 
 ```sh
-SELECT public.set_pgaudit_session_logging('{ddl, role}');
+SELECT public.set_pgaudit_session_logging(current_database(),'{ddl, role}');
 ```
 {: .codeblock}
+
+You may specify a database with `dbname` instead of the current_database() function.
+{: .tip}
 
 ## Enabling `pgaudit` user logging
 {: #enable-pgaudit-user-logging}
@@ -58,7 +61,7 @@ To enable `pgaudit` user logging, connect as the admin user and call the `set_pg
 For example, to enable READ and WRITE, use the following command:
 
 ```sh
-SELECT public.set_pgaudit_user_logging('{read, write}');
+SELECT public.set_pgaudit_user_logging(current_database(),'{read, write}');
 ```
 {: .codeblock}
 
@@ -89,7 +92,7 @@ Any subsequent calls replace the existing configuration; they are not additive. 
 To disable audit logging, call the same function with `none` specified. For example:
 
 ```sh
-SELECT public.set_pgaudit_session_logging('{none}');
+SELECT public.set_pgaudit_session_logging(current_database(),'{none}');
 ```
 {: .codeblock}
 
