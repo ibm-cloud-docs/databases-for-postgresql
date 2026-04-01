@@ -9,7 +9,7 @@ toc:
     console-page: /catalog/services/databases-for-postgresql
     product-page: https://www.ibm.com/cloud/databases-for-postgresql
     path: databases-for-postgresql
-    label: Databases for PostgreSQL
+    label: Databases for PostgreSQL Gen 1
   entries:
   - navgroup:
       id: learn
