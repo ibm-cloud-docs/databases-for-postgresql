@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-03-05"
+lastupdated: "2026-04-16"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -63,7 +63,7 @@ ibmcloud resource service-instance-create <REPLICA_NAME_OR_CRN> databases-for-po
 ```
 {: pre}
 
-You must specify both the RAM and disk amounts, keeping in mind the minimum size is 2 GB RAM and 10 GB disk. You can optionally specify whether the read-only replica uses public or private endpoints. You are not able to specify a version for the read-only replica. The version is automatically set to the same major version as the leader deployment.
+You must specify both the RAM and disk amounts, keeping in mind the minimum size is 8 GB RAM and 10 GB disk. You can optionally specify whether the read-only replica uses public or private endpoints. You are not able to specify a version for the read-only replica. The version is automatically set to the same major version as the leader deployment.
 
 ### Provisioning through the API
 {: #read-only-replicas-leader-api}
@@ -92,7 +92,7 @@ curl -X POST \
 ```
 {: pre}
 
-You must specify both the RAM and disk amounts, keeping in mind the minimum size is 2 GB RAM and 10 GB disk. You can optionally specify whether the read-only replica uses public or private endpoints. You are not able to specify a version for the read-only replica. The version is automatically set to the same major version as the leader deployment.
+You must specify both the RAM and disk amounts, keeping in mind the minimum size is 8 GB RAM and 10 GB disk. You can optionally specify whether the read-only replica uses public or private endpoints. You are not able to specify a version for the read-only replica. The version is automatically set to the same major version as the leader deployment.
 
 ## The read-only replica
 {: #the-read-only-replica}
@@ -247,7 +247,7 @@ If you need to upgrade to a new major version of the database, you can do so whe
 
 - The read-only replica does not participate in leader->follower elections for the leader cluster and failover to the read-only replica is not automated. Promotion of the read-only replica to a full deployment is a manual, user-initiated task.
 
-- The minimum size of a read-only replica is 2 GB RAM and 10 GB of disk. This is true even if your leader deployment is smaller.
+- The minimum size of a read-only replica is 8 GB RAM and 10 GB of disk. This is true even if your leader deployment is smaller.
 
 - Read-only replicas do not auto-scale to match the leader. If the amount of data you store outgrows the disk that is allocated to your deployments, scale the disk on the read-only replicas and then the leader. Scaling the read-only replica first ensures that you do not run out of space on the read-only replicas. If you scaled the leader's disk for performance and not for space, it is not necessary to scale the read-only replicas.
 
