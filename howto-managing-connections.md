@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-12-05"
+  years: 2019, 2026
+lastupdated: "2026-05-13"
 
 keywords: postgresql, databases, connection limits, terminating connections, postgresql connection pooling, postgres connection pooling, managing connections
 
@@ -87,7 +87,7 @@ The admin user does have the power to reset or close the connections for any use
 
 If your deployment reaches the connection limit or you are having trouble connecting to your deployment and suspect that a high number of connections is a problem, disconnect all of the connections to your deployment.
 
-In the UI, on the _Settings_ tab, there is a button to `End connections` to your deployment. Use caution, as it disrupts anything that is connected to your deployment.
+In the UI, on the _Settings_ tab, there is a button to `End connections` to your deployment. Use caution, because it disrupts anything that is connected to your deployment.
 
 The CLI command to end connections to the deployment is:
 
@@ -113,7 +113,7 @@ PostgreSQL allocates some amount of memory on a per-connection basis, typically 
 
 Next, change the value of `max_connections` on your deployment. To make permanent changes to the [PostgreSQL configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#changing-configuration), you want to use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration) to write the changes to the configuration file for your deployment.
 
-For example, to raise `max_connections` to 215, it might be a good idea to scale your deployment to at least 2 GB of RAM per data member, for a total of 4 GB of RAM for your deployment. Once the scaling operation has finishes, then set the connection limit. 
+For example, to raise `max_connections` to 215, it might be a good idea to scale your deployment to at least 2 GB of RAM per data member, for a total of 4 GB of RAM for your deployment. Once the scaling operation has finishes, then set the connection limit.
 1. Before you adjust `max_connections`, make sure to target your preferred region with a command like:
 
 
