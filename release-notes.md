@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-03-31"
+lastupdated: "2026-05-14"
 
 keywords: databases-for-postgresql release notes
 
@@ -39,7 +39,7 @@ Accelerated availability for PITR restores
 How it works:
 
 * Accelerated availability: The primary node is restored and opened for traffic, while the secondary (HA) node synchronizes in the background.
-* Configuration: This behavior is controlled via the new `async_restore` parameter.
+* Configuration: This behavior is controlled using the new `async_restore` parameter.
 
 Key benefits and risk considerations:
 
