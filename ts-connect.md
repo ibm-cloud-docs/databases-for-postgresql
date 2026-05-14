@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-06-03"
+  years: 2020, 2026
+lastupdated: "2026-05-14"
 
 keywords: troubleshooting for PostgreSQL, connecting postgresql deployment, postgres endpoints
 
@@ -29,5 +29,6 @@ Review the following information to troubleshoot and resolve common connectivity
 {: tsResolve}
 
 * An unsecured connection is a common cause of connectivity errors.  All {{site.data.keyword.databases-for-postgresql}} connections use TLS/SSL encryption; {{site.data.keyword.databases-for-postgresql}} rejects unsecured connections.  To avoid errors, make sure you configured a secure connection.  Refer to [Getting started](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started) for an example of a secure connection.
+* A full disk can cause connectivity issues.  If your operational load saturates or exceeds the IOPS limit, database requests and operations are delayed until the disk can catch up.  To mitigate issues, see [Adding disk, memory, and CPU](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling) to scale resources and increase disk size. To monitor the amount of disk space, refer to [Deployment monitoring and database load monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-troubleshooting_performance#troubleshooting_monitoring).
 * If you are using a private endpoint, make sure that you specify connection strings that contain the private endpoint (see [Credentials for private endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints&interface=ui#private-endpoints-credentials)) and that you followed the steps in [Connecting through private endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints&interface=ui#private-endpoint-connections).
 * If your application log captures a short connection interruption, that behavior is expected as a normal part of operations for this managed service. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}. However, if you experience several minutes of connection interruption check the Cloud Status for the service. For more information, see [Application-level high-availability](/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-ha-dr#application-level-ha).
