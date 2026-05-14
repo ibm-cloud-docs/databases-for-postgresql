@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-04-16"
+lastupdated: "2026-05-14"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -241,7 +241,7 @@ If you need to upgrade to a new major version of the database, you can do so whe
 
 - Backups are disabled on read-only replicas. Backups are taken only on leader deployments.
 
-- Replicas are restorable to other regions, except for EU Cloud-enabled regions (currently `eu-de` and `par-01`), which are only restorable with each other (for example, `par-01` replicas can be restored to `eu-de`, and vice versa).
+- Replicas are restorable to other regions, except for EU Cloud-enabled regions (currently `eu-de`, `eu-es`, and `par-01`), which are only restorable with each other (for example, `par-01` replicas can be restored to `eu-de`, and vice versa).
 
 - There is a limit of five read-only replicas per leader.
 
