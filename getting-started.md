@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2026
-lastupdated: "2026-03-19"
+lastupdated: "2026-05-21"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -100,7 +100,7 @@ Follow these steps to complete the tutorial: {: terraform}
 
 1. Click **Create**. The {{site.data.keyword.databases-for}} **Resource list** page opens.
 
-1. When your instance has been provisioned, click the instance name to view more information.
+1. When your instance is provisioned, click the instance name to view more information.
 
 ## Step 1: Provision through the CLI
 {: #provision_instance_cli}
@@ -287,7 +287,7 @@ Follow these steps to provision by using the [resource controller API](https://c
    The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
    {: required}
 
-## List of Additional Parameters
+## List of additional parameters
 {: #provisioning-parameters-api}
 {: api}
 
