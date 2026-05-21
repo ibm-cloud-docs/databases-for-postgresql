@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2026
-lastupdated: "2026-05-14"
+lastupdated: "2026-05-21"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -287,7 +287,7 @@ Follow these steps to provision by using the [resource controller API](https://c
    The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required.
    {: required}
 
-## List of Additional Parameters
+## List of additional parameters
 {: #provisioning-parameters-api}
 {: api}
 
