@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2025
-lastupdated: "2025-04-30"
+  years: 2017, 2026
+lastupdated: "2026-06-08"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -64,6 +64,10 @@ Database extensions in PostgreSQL are managed per database. If you have multiple
 {: #upgrading-extensions}
 
 If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` to upgrade it.
+
+{: pre}
+
+When upgrading the pg_repack extension specifically; drop the old version from the database and [install](https://reorg.github.io/pg_repack/) the new version.
 
 ## Extension-specific notes
 {: #extensions-specific-notes}
