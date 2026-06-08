@@ -67,7 +67,7 @@ If there is a newer version of an extension available than the one you currently
 
 {: pre}
 
-When upgrading the pg_repack extension specifically; drop the old version from the database and [install](https://reorg.github.io/pg_repack/) the new version.
+When upgrading the **pg_repack** extension specifically; drop the old version from the database and [install](https://reorg.github.io/pg_repack/) the new version.
 
 ## Extension-specific notes
 {: #extensions-specific-notes}
@@ -91,7 +91,7 @@ When upgrading the pg_repack extension specifically; drop the old version from t
 ### pgaudit
 {: #pgaudit}
 
-- `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs. 
+- `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs.
 
 
 ### pgvector
@@ -112,7 +112,7 @@ ibmclouddb=> SELECT name FROM pg_available_extensions order by 1;
 {: pre}
 
 ```sh
-             name             
+             name
 ------------------------------
  address_standardizer
  address_standardizer_data_us
