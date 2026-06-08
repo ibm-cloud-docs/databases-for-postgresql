@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2025
-lastupdated: "2025-04-30"
+  years: 2017, 2026
+lastupdated: "2026-06-08"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -65,6 +65,10 @@ Database extensions in PostgreSQL are managed per database. If you have multiple
 
 If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` to upgrade it.
 
+{: pre}
+
+When upgrading the **pg_repack** extension specifically; drop the old version from the database and [install](https://reorg.github.io/pg_repack/) the new version.
+
 ## Extension-specific notes
 {: #extensions-specific-notes}
 
@@ -87,7 +91,7 @@ If there is a newer version of an extension available than the one you currently
 ### pgaudit
 {: #pgaudit}
 
-- `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs. 
+- `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs.
 
 
 ### pgvector
@@ -108,7 +112,7 @@ ibmclouddb=> SELECT name FROM pg_available_extensions order by 1;
 {: pre}
 
 ```sh
-             name             
+             name
 ------------------------------
  address_standardizer
  address_standardizer_data_us
