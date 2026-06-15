@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-05-14"
+lastupdated: "2026-06-15"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,25 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 15 Jun 2026
+{: #databases-for-postgreSQL-15Jun2026}
+{: release-note}
+
+In-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}
+: In continuation to the In-place major version upgrades for PostgreSQL release notes dated 08 Dec 2025, we now have In-place upgrade (IPU) for all major versions for PostgreSQL v14, v15, v16, v17, providing a streamlined path to v18.
+
+This enhancement reduces upgrade complexity, minimizes downtime, and ensures a smoother transition to newer versions. Key benefits include:
+
+* Connection parameters retained — no reconfiguration needed after the upgrade.
+* Faster upgrade process compared to traditional methods.
+* Flexible scheduling — choose the upgrade time that best fits your workload.
+* Seamless migration from PostgreSQL v14 or v15 or v16 or v17 to v18.
+
+For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
+
+You can still perform major version upgrades using read-replica promote upgrade or backup and restore methods. The new in-place upgrade feature provides an additional option.
+{: note}
 
 ## 27 March 2026
 {: #databases-for-elasticsearch-27mar2026}
