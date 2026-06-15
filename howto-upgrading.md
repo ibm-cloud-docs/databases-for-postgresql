@@ -34,11 +34,12 @@ In the following example commands, the full CRN of the database instance is requ
 ## Requirements for upgrading to newer PostgreSQL major version
 {: #upgrading-reqs}
 
-Before you start any major version upgrade path, review any extensions, replication objects, and application dependencies that must be maintained first.
+Before you start on any major version upgrade path, review any extensions, replication objects, and application dependencies that must be maintained first.
 
-Some extensions and logical replication objects are version-specific or depend on server-side components that must match the PostgreSQL major version. Removing them before the upgrade helps avoid failures and lets you recreate only the supported objects after the new version is running.
+Some extensions and logical replication objects are version specific or depend on server-side components that must match the PostgreSQL major version. Removing them before the upgrade helps avoid failures and lets you recreate only the supported objects after the new version is running.
 
 ### Extensions and logical replication objects to review
+{: #extensions-objects}
 
 Review the following items before the upgrade:
 
@@ -53,7 +54,7 @@ Review the following items before the upgrade:
 - `Logical replication slots`
 
 **Application dependencies**
-- If you remove extensions or replication objects that your applications depend on, validate your data flows and application behavior before you proceed with the upgrade. Also consider the possible disruptions in your application logic that depends on specific PostgreSQL features.
+If you remove extensions or replication objects that your applications depend on, validate your data flows and application behavior before you proceed with the upgrade. Also, consider the possible disruptions to your application logic that depends on specific PostgreSQL features.
 {: note}
 
 ### `pg_repack`
@@ -88,7 +89,7 @@ If you use `wal2json` for logical decoding, you must drop all associated replica
 Before upgrading:
 1. Ensure all pending WAL data has been consumed.
 2. Stop your application that uses the replication slot.
-3. Drop the replication slot(s):
+3. Drop the replication slots:
 
 ```sh
 SELECT pg_drop_replication_slot('your_slot_name');
