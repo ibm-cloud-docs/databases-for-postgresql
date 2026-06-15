@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2026
-lastupdated: "2026-03-24"
+lastupdated: "2026-06-15"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -31,25 +31,111 @@ In the following example commands, the full CRN of the database instance is requ
 {: note}
 
 
-## Requirements for upgrading to newer PostgreSQL major version from PostgreSQL v14
+## Requirements for upgrading to newer PostgreSQL major version
 {: #upgrading-reqs}
 
-If you have `pg_repack` installed, you need to remove it before performing the upgrade. This can be done with a command like:
+Before you start any major version upgrade path, review any extensions, replication objects, and application dependencies that must be maintained first.
+
+Some extensions and logical replication objects are version-specific or depend on server-side components that must match the PostgreSQL major version. Removing them before the upgrade helps avoid failures and lets you recreate only the supported objects after the new version is running.
+
+### Extensions and logical replication objects to review
+
+Review the following items before the upgrade:
+
+**Extensions**
+- `pg_repack`
+- `old_snapshot`
+- `wal2json`
+- `anon`
+- `PostGIS`
+
+**Replication slots**
+- `Logical replication slots`
+
+**Application dependencies**
+- If you remove extensions or replication objects that your applications depend on, validate your data flows and application behavior before you proceed with the upgrade. Also consider the possible disruptions in your application logic that depends on specific PostgreSQL features.
+{: note}
+
+### `pg_repack`
+
+Drop `pg_repack` before the upgrade and recreate it after the upgrade. `pg_repack` uses a version-specific extension and client/server components that must match the PostgreSQL major version.
 
 ```sh
 DROP EXTENSION pg_repack;
 ```
 {: pre}
 
-After upgrading, reinstall `pg_repack`. This can be done with the following command:
+Recreate the extension after the upgrade only if your workload still requires it.
 
 ```sh
 CREATE EXTENSION pg_repack;
 ```
 {: pre}
 
-If you are using PostGIS, you must first upgrade to PostGIS before upgrading PostgreSQL. This can be done by running the following command against a database with PostGIS installed.
+### `old_snapshot`
+
+Drop `old_snapshot` before the upgrade. DO NOT recreate it after upgrading to PostgreSQL 18 because it is no longer supported.
+
+```sh
+DROP EXTENSION old_snapshot;
+```
+{: pre}
+
+### `wal2json` replication slots
+
+If you use `wal2json` for logical decoding, you must drop all associated replication slots before the upgrade. The `pg_upgrade` utility strictly forbids major version upgrades while replication slots exist and will throw a critical error and halt the upgrade.
+
+Before upgrading:
+1. Ensure all pending WAL data has been consumed.
+2. Stop your application that uses the replication slot.
+3. Drop the replication slot(s):
+
+```sh
+SELECT pg_drop_replication_slot('your_slot_name');
+```
+{: pre}
+
+After the upgrade, you can recreate the replication slots as needed. Note that `wal2json` is not installed via `CREATE EXTENSION` but is configured through database parameters (`wal_level`, `max_replication_slots`, `max_wal_senders`) and table permissions, which do not prevent upgrades.
+
+
+### `anon`
+{: #upgrading-handling}
+
+Remove the `anon` extension before the upgrade and re-enable it after the upgrade if you still need it. Additional steps are required before you drop `anon`.
+
+If the `anon` extension is installed, follow the steps below and execute the commands as the admin user before performing the upgrade.
+
+1. Remove all masking rules (if enabled).
+
+    ```sh
+    SELECT anon.remove_masks_for_all_columns();
+    ```
+    {: pre}
+
+2. Disable masking roles (the upgrade might fail if any roles are marked as masked).
+
+    ```sh
+    SECURITY LABEL FOR anon ON ROLE <role_name> IS NULL;
+    ```
+    {: pre}
+
+3. Drop the `anon` extension with the cascade option.
+
+    ```sh
+    DROP EXTENSION anon CASCADE;
+    ```
+    {: pre}
+
+4. If the `anon` extension is installed in multiple databases within an instance, follow the outlined steps for each database.
+
+5. After the upgrade is complete, re-enable the `anon` extension and reapply masking rules as required.
+
+It is strongly recommended to validate the data both before and after dropping the extension to ensure masking consistency prior to performing the upgrade.
 {: note}
+
+### `PostGIS`
+
+If you are using PostGIS, first upgrade PostGIS before you upgrade PostgreSQL.
 
 ```sh
 SELECT postgis_extensions_upgrade();
@@ -63,17 +149,32 @@ SELECT postgis_full_version();
 ```
 {: pre}
 
+### `Logical replication slots`
+
+Drop all logical replication slots before the upgrade and recreate them after the upgrade. Logical slots are tied to the source server state and should be recreated cleanly on the upgraded instance.
+
+```sh
+SELECT pg_drop_replication_slot('<slot_name>');
+```
+{: pre}
+
 ## In-place major version upgrades
 {: #upgrading-in-place}
 
-In-place major version upgrade allows you to upgrade your deployment to the next new [major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-versioning-policy#version-definitions), eliminating the need to [restore a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading&interface=ui#backup-restore) into a new deployment. This approach maintains the same connection strings, without the need to reconfigure the deployment. However, if the new major version requires application adjustments, these must be addressed.
+In-place major version upgrade allows you to upgrade your deployment to a supported target [major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-versioning-policy#version-definitions), eliminating the need to [restore a backup](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading&interface=ui#backup-restore) into a new deployment. This approach maintains the same connection strings, without the need to reconfigure the deployment. However, if the new major version requires application adjustments, these must be addressed.
 
 During the in-place major version upgrade window, your deployment will experience a brief period of downtime. This is expected, as the process follows the vendor-recommended upgrade approach. The exact duration might vary depending on the size and complexity of your deployment’s schema. If your service needs to read data from the upgraded instance during this time, you can [create a standby instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) and update your application’s connection details to point to the standby. This ensures you have an up-to-date copy of your database before starting the upgrade. The standby instance can also be promoted and used as a primary instance if the in-place upgrade does not complete successfully. For additional information, see [Read-only replica status at in-place major version upgrades](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-ipu).
 {: important}
 
-{{site.data.keyword.databases-for-postgresql}} gives customers flexibility in managing their own backups. The in-place major version upgrade process does not automatically create a backup before or after the task. If the upgrade is not successful, you may need to restore your deployment from your most recent backup into a new instance.
+{{site.data.keyword.databases-for-postgresql}} gives customers flexibility in managing their own backups. The in-place major version upgrade process does not automatically create a backup before or after the task. If the upgrade is not successful, you might need to restore your deployment from your most recent valid backup into a new instance.
 
-While in-place upgrades are supported, performing them without a recent backup is not advised. Having a current backup before and after initiating the upgrade provides an added layer of protection and helps ensure a smooth recovery path if needed. Hence, consider having a fresh backup before and after the in-place major version upgrade task.
+For the best recovery posture, strongly consider taking a fresh backup before IPU and another backup immediately after IPU completes.
+
+- A backup before IPU helps protect data integrity and gives you a restore source for the latest state of your database if the upgrade fails.
+- A backup immediately after IPU creates the first restore point for the new PostgreSQL major version timeline.
+- If you wait for the next scheduled backup after a successful IPU, PITR and restore operations for the new version are not available until that backup is taken. Still, you can identify a PITR timestamp from before the IPU attempt. That way, you can use the last available backup before IPU together with PITR to restore the pre-IPU PostgreSQL version into a new deployment. The same planning also applies when you use [Back up and restore upgrade](#backup-restore). For more information, see [Point-in-time recovery (PITR)](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr).
+
+Taking both backups yourself, instead of waiting for the automated backup schedule, gives you a more predictable recovery point before and after the upgrade.
 {: important}
 
 ### Before you begin
@@ -88,16 +189,28 @@ Consider the following aspects before starting the upgrade procedure.
     ```bash
     ibmcloud cdb capability-show versions postgresql
     ```
-- Your deployment must be in a healthy state before upgrading.
-- Your deployment must have at least 10% of your disk space available.
-- Your deployment must not be under heavy I/O pressure (max: 90% allowed).
-- You can only upgrade from PostgreSQL 14 to the PostgreSQL 15 at this stage.
+    {: pre}
+
+- Ensure that you reviewed the precheck-related requirements in this topic before you trigger IPU. IPU runs directly on the source deployment and does not create a new instance. For customer safety, the service runs prechecks before the upgrade starts and blocks the operation if a risk is detected. In particular, verify the following items:
+  - Your deployment is in a healthy state.
+  - Your deployment has at least 10% free disk space available. The default maximum allowed disk usage for IPU prechecks is 90%.
+  - Your deployment is not under heavy I/O pressure. The default maximum allowed I/O utilization for IPU precheck is 90%.
+  - Your schema size and object counts are within the default precheck thresholds. By default, no individual schema can exceed 100 GB, and the total number of indexes and sequences must remain below 50,000.
+  - You completed any required extension and logical replication slot cleanup before the upgrade.
 - Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.postgresql.org/docs/release/) from the database vendor to see any changes that may affect your applications.
 - Downgrading a deployment to a previous version is not supported.
-- In-place major version upgrade cannot be cancelled once it started.
-- If you do not have a fresh backup, consider to take one before upgrading.
+- In-place major version upgrade cannot be cancelled once it starts.
+- If you do not have a fresh backup, consider taking one before upgrading.
 
-Also note that after the upgrade completes, your database will be running a new PostgreSQL major version. Because PostgreSQL stores data in version-specific formats, the new PostgreSQL data directory cannot be used with earlier versions. This means that backups taken before the upgrade cannot be used to restore into the new PostgreSQL version. To maintain full restore and PITR (Point-in-Time Recovery) capabilities going forward, take a new backup after the upgrade. This new backup becomes the baseline for all future recovery operations in the PostgreSQL timeline.
+| Source PostgreSQL version | Supported in-place upgrade target |
+| ------------------------- | --------------------------------- |
+| 14 | 15, 18 |
+| All other supported source versions | 18 |
+{: caption="Supported in-place upgrade paths" caption-side="top"}
+
+Also note that after the upgrade completes, your database runs a new PostgreSQL major version. Because PostgreSQL stores data in version-specific formats, backups and PITR points from before the upgrade belong to the earlier version timeline and cannot be restored into the upgraded version. To maintain full restore and PITR (Point-in-Time Recovery) capabilities for the new version, take a new backup immediately after the upgrade completes. That backup becomes the baseline for future recovery operations on the new version timeline.
+
+If IPU fails, valid backups from before the upgrade can still be used with PITR to restore the earlier PostgreSQL version into a new instance.
 {: important}
 
 ### Upgrading in the UI
@@ -188,41 +301,6 @@ An in-place major upgrade will not proceed until all prechecks have passed. Thes
 `pg_upgrade` performs rapid upgrades by creating new system tables and simply reusing the old user data files. The time required to create these system tables scales with the number of database objects.
 The resource consumption can be evaluated by using the [monitoring integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring&interface=ui). If not all database components are available to be upgraded, the upgrade task fails. This can happen due to maintenance. Tasks that failed due to failed healthchecks can be retried later. If the task continuously fails, open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter).
 If certain checks are not relevant to your environment and the upgrade is still blocked, create a support ticket for further assistance.
-
-## Handling the `anon` extension before upgrade
-{: #upgrading-handling}
-
-If the `anon` extension is installed, follow the steps below and execute the commands as the admin user before performing the upgrade.
-
-1. Remove all masking rules (if enabled).
-
-    ```sh
-    SELECT anon.remove_masks_for_all_columns();
-    ```
-    {: pre}
-
-2. Disable masking roles (the upgrade might fail if any roles are marked as masked).
-
-    ```sh
-    SECURITY LABEL FOR anon ON ROLE <role_name> IS NULL;
-    ```
-    {: pre}
-
-3. Drop the `anon` extension with the cascade option.
-
-    ```sh
-    DROP EXTENSION anon CASCADE;
-    ```
-    {: pre}
-
-4. If the `anon` extension is installed in multiple databases within an instance, follow the outlined steps for each database.
-
-5. Post-upgrade steps:
-
-   After the upgrade is complete, re-enable the `anon` extension and reapply masking rules as required.
-
-   It is strongly recommended to validate the data both before and after dropping the extension to ensure masking consistency prior to performing the upgrade.
-   {: note}
 
 ## Upgrading from a read-only replica
 {: #upgrading-replica}
@@ -347,13 +425,16 @@ After the end-of-life date, all active {{site.data.keyword.databases-for-postgre
 
 For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy ){: external}.
 
-## _Admin user_ issues during version upgrades
+## _Role privilege_ issues during version upgrades
 {: #admin_user_issues}
 
-Starting with PostgreSQL 16, role privilege enforcement has become more stringent. In contrast, earlier versions allowed roles with the `CREATEROLE` attribute to manage other roles; version 16 and beyond require that a role has the `ADMIN OPTION` on another role to grant or revoke it.
+Starting with PostgreSQL 16, role privilege enforcement is more stringent. This is an upstream PostgreSQL architectural change, not an {{site.data.keyword.ibm}}-specific behavior change. In earlier versions, roles with the `CREATEROLE` attribute could manage other roles more broadly. In PostgreSQL 16 and later, a role must have the `ADMIN OPTION` on another role to grant or revoke it. For background, see the PostgreSQL 16 [release notes](https://www.postgresql.org/docs/16/release-16.html){: external}, [Role Attributes](https://www.postgresql.org/docs/16/role-attributes.html){: external}, and [`GRANT` on roles](https://www.postgresql.org/docs/16/sql-grant.html){: external}.
 {: .note}
 
-**If you are upgrading your database from PostgreSQL v15 or earlier to PostgreSQL v16 or higher, you may encounter privilege-related errors, such as:**
+If you are upgrading from PostgreSQL 15 or earlier to PostgreSQL 16 or later, review your role grants before IPU. Where role management must continue after the upgrade, make sure the required roles are granted with `WITH ADMIN OPTION` before you start the upgrade.
+{: warning}
+
+**If you encounter privilege-related errors after the upgrade, such as:**
 
 ```sh
 ERROR: only roles with the ADMIN OPTION on role "some_role" may grant this role
@@ -361,23 +442,20 @@ DETAIL: role "admin" is not permitted to grant role "some_role"
 ```
 {: pre}
 
-To address this issue, we provide a built-in helper function `grant_admin_option_to_roles` that is designed to restore the expected role management behavior.
-
-This function:
+**Use the built-in helper function `grant_admin_option_to_roles` to restore `ADMIN OPTION` for specific roles:**
 
 - Applies only to databases upgraded from PostgreSQL v15 and earlier versions to PostgreSQL 16 and later (if you're encountering the error described above).
 - Accepts an arbitrary list of roles to apply the fix to.
-- Can only be executed by the `admin user`.
+- Can only be executed by the `admin` user.
 - Is safe to run multiple times (idempotent).
 
 Sample usage:
-
 ```sh
 SELECT grant_admin_option_to_roles('role1', 'role2', 'role3');
 ```
 {: pre}
 
-This ensures that the `admin user` retains the appropriate `ADMIN OPTION` privileges to manage designated roles in upgraded instances.
+This function grants the specified roles (`role1`, `role2`, `role3`) to the `admin` user with `ADMIN OPTION`, allowing the `admin` user to manage (grant, revoke, alter, or drop) these roles in upgraded instances.
 
 ## Changelog for major PostgreSQL versions
 {: #changelog-postgres}
