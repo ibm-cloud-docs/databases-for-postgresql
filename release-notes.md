@@ -31,7 +31,7 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
     * Connection parameters are retained meaning no reconfiguration needed after the upgrade.
     * Faster upgrade process compared to traditional methods.
     * Flexible scheduling so you can choose the upgrade time that best fits your workload.
-    * Seamless migration from PostgreSQL v14 or v15 or v16 or v17 to v18.
+    * Seamless migration from PostgreSQL v14, v15, v16, or v17 to v18.
 
 :  For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 
