@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2026
-lastupdated: "2026-06-08"
+lastupdated: "2026-06-15"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -91,7 +91,7 @@ When upgrading the **pg_repack** extension specifically; drop the old version fr
 ### pgaudit
 {: #pgaudit}
 
-- `pgaudit` libraries are preloaded and do not require execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable pgaudit logs.
+- `pgaudit` libraries are preloaded and do not require the execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable `pgaudit` logs.
 
 
 ### pgvector
