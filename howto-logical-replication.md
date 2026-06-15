@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-08-01"
+  years: 2019, 2026
+lastupdated: "2026-06-11"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -127,15 +127,23 @@ Arguments:
     subscription_name   Unique name to create the subscription channel with
     host_ip             Publisher hostname or public IP address
     port                Port number publisher is running on
-    username            `admin` user created on the publisher
     password            Password of the `admin` user on the publisher
+    username            `admin` user created on the publisher
     db_name             The name of the database to be replicated
     publisher_name      The name of publisher channel on the publisher
 
     These additional configuration options are only supported in PostgreSQL 17 and later.
-    copy_data           The copy_data parameter (true or false, default: true) determines whether the initial data from the publication should be copied to the subscriber when the subscription is created.
-    failover            The failover parameter (true or false, default: false) enables support for automatic failover of the subscription between replicated nodes, ensuring continuity during primary node transitions.
-    origin              The origin parameter (ANY or NONE, default: NONE) allows filtering of changes based on their origin. It helps exclude or include changes coming from specific nodes in multi-node or cascading replication setups.
+    copy_data           The copy_data parameter (true or false, default: true)
+                        determines whether the initial data from the publication
+                        should be copied to the subscriber when the subscription
+                        is created.
+    origin              The origin parameter (ANY or NONE, default: NONE) allows
+                        filtering of changes based on their origin. It helps exclude
+                        or include changes coming from specific nodes in multi-node or
+                        cascading replication setups.
+    failover            The failover parameter (true or false, default: false) enables
+                        support for automatic failover of the subscription between replicated
+                        nodes, ensuring continuity during primary node transitions.
 
 Usage:
     exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','exampledb','my_publication');
