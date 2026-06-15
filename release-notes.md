@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 In-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}
-: As a continuation of the in-place major version upgrades for PostgreSQL release notes dated 08 Dec 2025, we now have in-place upgrade (IPU) for all major versions of PostgreSQL v14, v15, v16, v17. This provides a streamlined path to v18.
+: As a continuation of the in-place major version upgrades for PostgreSQL release notes dated 08 Dec 2025, we now have in-place upgrade (IPU) for all major versions of PostgreSQL v14, v15, v16, and v17. This provides a streamlined path to v18.
 
 :  This enhancement reduces upgrade complexity, minimizes downtime, and ensures a smoother transition to newer versions. Key benefits include:
     * Connection parameters are retained meaning no reconfiguration needed after the upgrade.
