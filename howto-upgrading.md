@@ -173,7 +173,7 @@ For the best recovery posture, strongly consider taking a fresh backup before IP
 
 - A backup before IPU helps protect data integrity and gives you a restore source for the latest state of your database if the upgrade fails.
 - A backup immediately after IPU creates the first restore point for the new PostgreSQL major version timeline.
-- If you wait for the next scheduled backup after a successful IPU, PITR and restore operations for the new version are not available until that backup is taken. Still, you can identify a PITR timestamp from before the IPU attempt. That way, you can use the last available backup before IPU together with PITR to restore the pre-IPU PostgreSQL version into a new deployment. The same planning also applies when you use [Back up and restore upgrade](#backup-restore). For more information, see [Point-in-time recovery (PITR)](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr).
+- If you wait for the next scheduled backup after a successful IPU, PITR and restore operations for the new version are not available until that backup is taken. You can still identify a PITR timestamp from before the IPU attempt. That way, you can use the last available backup before IPU together with PITR to restore the pre-IPU PostgreSQL version into a new deployment. The same planning also applies when you use [Back up and restore upgrade](#backup-restore). For more information, see [Point-in-time recovery (PITR)](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr).
 
 Taking both backups yourself, instead of waiting for the automated backup schedule, gives you a more predictable recovery point before and after the upgrade.
 {: important}
@@ -183,9 +183,9 @@ Taking both backups yourself, instead of waiting for the automated backup schedu
 
 Consider the following aspects before starting the upgrade procedure.
 
-- Check if version upgrade is available for your deployment version by checking the deployment capability information via UI, API, CLI, or Terraform.
+- Check if version upgrade is available for your deployment version by checking the deployment capability information using UI, API, CLI, or Terraform.
 
-  Example: Looking up version upgrade information with CLI.
+  Example: looking up version upgrade information with CLI:
 
     ```bash
     ibmcloud cdb capability-show versions postgresql
@@ -198,9 +198,9 @@ Consider the following aspects before starting the upgrade procedure.
   - Your deployment is not under heavy I/O pressure. The default maximum allowed I/O utilization for IPU precheck is 90%.
   - Your schema size and object counts are within the default precheck thresholds. By default, no individual schema can exceed 100 GB, and the total number of indexes and sequences must remain below 50,000.
   - You completed any required extension and logical replication slot cleanup before the upgrade.
-- Each major version contains some features that may not be backward-compatible with previous versions. Check the [release notes](https://www.postgresql.org/docs/release/) from the database vendor to see any changes that may affect your applications.
+- Each major version contains some features that might not be backward-compatible with previous versions. Check the [release notes](https://www.postgresql.org/docs/release/) from the database vendor to see any changes that might affect your applications.
 - Downgrading a deployment to a previous version is not supported.
-- In-place major version upgrade cannot be cancelled once it starts.
+- In-place major version upgrade cannot be cancelled after it starts.
 - If you do not have a fresh backup, consider taking one before upgrading.
 
 | Source PostgreSQL version | Supported in-place upgrade target |
@@ -209,7 +209,7 @@ Consider the following aspects before starting the upgrade procedure.
 | All other supported source versions | 18 |
 {: caption="Supported in-place upgrade paths" caption-side="top"}
 
-Also note that after the upgrade completes, your database runs a new PostgreSQL major version. Because PostgreSQL stores data in version-specific formats, backups and PITR points from before the upgrade belong to the earlier version timeline and cannot be restored into the upgraded version. To maintain full restore and PITR (Point-in-Time Recovery) capabilities for the new version, take a new backup immediately after the upgrade completes. That backup becomes the baseline for future recovery operations on the new version timeline.
+Also, note that after the upgrade completes, your database runs a new PostgreSQL major version. Because PostgreSQL stores data in version-specific formats, backups, and PITR points from before the upgrade belong to the earlier version timeline and cannot be restored into the upgraded version. To maintain full restore and PITR (Point-in-Time Recovery) capabilities for the new version, take a new backup immediately after the upgrade completes. That backup becomes the baseline for future recovery operations on the new version timeline.
 
 If IPU fails, valid backups from before the upgrade can still be used with PITR to restore the earlier PostgreSQL version into a new instance.
 {: important}
@@ -445,12 +445,13 @@ DETAIL: role "admin" is not permitted to grant role "some_role"
 
 **Use the built-in helper function `grant_admin_option_to_roles` to restore `ADMIN OPTION` for specific roles:**
 
-- Applies only to databases upgraded from PostgreSQL v15 and earlier versions to PostgreSQL 16 and later (if you're encountering the error described above).
+- Applies only to databases upgraded from PostgreSQL v15 and earlier versions to PostgreSQL 16 and later (if you're encountering the error described previously).
 - Accepts an arbitrary list of roles to apply the fix to.
 - Can only be executed by the `admin` user.
 - Is safe to run multiple times (idempotent).
 
 Sample usage:
+
 ```sh
 SELECT grant_admin_option_to_roles('role1', 'role2', 'role3');
 ```
