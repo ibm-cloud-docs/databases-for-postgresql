@@ -64,10 +64,10 @@ ORDER BY extname;
 
 To run pg_repack with your desired options, use the following syntax:
 
-  ```sh
+   ```sh
    pg_repack -k [OPTION]... [DBNAME]
-
    ```
+
    {: pre}
 
 - The -k option tells pg_repack to keep the original table if a problem occurs, allowing for safer operation in critical environments.
