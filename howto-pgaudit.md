@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2026
-lastupdated: "2026-04-01"
+lastupdated: "2026-07-14"
 
 keywords: postgresql, databases, pgaudit, logging, session, object, pg role, postgresql logging, postgres logging
 
@@ -61,7 +61,7 @@ To enable `pgaudit` user logging, connect as the admin user and call the `set_pg
 For example, to enable READ and WRITE, use the following command:
 
 ```sh
-SELECT public.set_pgaudit_user_logging(current_database(),'{read, write}');
+SELECT public.set_pgaudit_user_logging(<CREATED USER>,'{read, write}');
 ```
 {: .codeblock}
 
