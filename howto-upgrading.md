@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2026
-lastupdated: "2026-07-20"
+lastupdated: "2026-07-23"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -387,7 +387,7 @@ ibmcloud resource service-instance-create example-upgrade databases-for-postgres
 -p \ '{
   "backup_id": "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "version":14
-}'--service-endpoints "public" 
+}'--service-endpoints "public"
 ```
 {: pre}
 
@@ -435,13 +435,13 @@ For the end-of-life dates, refer to the [version policy page](https://cloud.ibm.
 ## _Role privilege_ issues during version upgrades
 {: #admin_user_issues}
 
-Starting with PostgreSQL 16, role privilege enforcement is more stringent. This is an upstream PostgreSQL architectural change, not an {{site.data.keyword.ibm}}-specific behavior change. In earlier versions, roles with the `CREATEROLE` attribute could manage other roles more broadly. In PostgreSQL 16 and later, a role must have the `ADMIN OPTION` on another role to grant or revoke it. For background, see the PostgreSQL 16 [release notes](https://www.postgresql.org/docs/16/release-16.html){: external}, [Role Attributes](https://www.postgresql.org/docs/16/role-attributes.html){: external}, and [`GRANT` on roles](https://www.postgresql.org/docs/16/sql-grant.html){: external}.
+Starting with PostgreSQL 16, role privilege enforcement is more stringent. This is an upstream PostgreSQL architectural change, not a behavior change specific to {{site.data.keyword.ibm}}. In earlier versions, roles with the `CREATEROLE` attribute could manage other roles more broadly. In PostgreSQL 16 and later, a role must have the `ADMIN OPTION` on another role to grant or revoke it. For background, see the PostgreSQL 16 [release notes](https://www.postgresql.org/docs/16/release-16.html){: external}, [Role Attributes](https://www.postgresql.org/docs/16/role-attributes.html){: external}, and [`GRANT` on roles](https://www.postgresql.org/docs/16/sql-grant.html){: external}.
 {: .note}
 
 If you are upgrading from PostgreSQL 15 or earlier to PostgreSQL 16 or later, review your role grants before IPU. Where role management must continue after the upgrade, make sure the required roles are granted with `WITH ADMIN OPTION` before you start the upgrade.
 {: warning}
 
-**If you encounter privilege-related errors after the upgrade, such as:**
+**If you encounter privilege-related errors after the upgrade, for example:**
 
 ```sh
 ERROR: only roles with the ADMIN OPTION on role "some_role" may grant this role
