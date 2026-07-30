@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2026
-lastupdated: "2026-07-23"
+lastupdated: "2026-07-30"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -179,7 +179,7 @@ For the best recovery posture, strongly consider taking a fresh backup before IP
 
 - A backup before IPU helps protect data integrity and gives you a restore source for the latest state of your database if the upgrade fails.
 - A backup immediately after IPU creates the first restore point for the new PostgreSQL major version timeline.
-- If you wait for the next scheduled backup after a successful IPU, PITR and restore operations for the new version are not available until that backup is taken. You can still identify a PITR timestamp from before the IPU attempt. That waycyou can use the last available backup before IPU together with PITR to restore the pre-IPU PostgreSQL version into a new deployment. The same planning also applies when you use [Back up and restore upgrade](#backup-restore). For more information, see [Point-in-time recovery (PITR)](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr).
+- If you wait for the next scheduled backup after a successful IPU, PITR and restore operations for the new version are not available until that backup is taken. You can still identify a PITR timestamp from before the IPU attempt. This allows you to use the last available backup before IPU together with PITR to restore the pre-IPU PostgreSQL version into a new deployment. The same planning also applies when you use [Back up and restore upgrade](#backup-restore). For more information, see [Point-in-time recovery (PITR)](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr).
 
 Taking both backups yourself, instead of waiting for the automated backup schedule, gives you a more predictable recovery point before and after the upgrade.
 {: important}
@@ -199,6 +199,7 @@ Consider the following aspects before starting the upgrade procedure.
     {: pre}
 
 - Ensure that you review the precheck-related requirements in this topic before you trigger IPU. IPU runs directly on the source deployment and does not create a new instance. For customer safety, the service runs prechecks before the upgrade starts and blocks the operation if a risk is detected. In particular, verify the following items:
+  - Your deployment has at most 3 members.
   - Your deployment is in a healthy state.
   - Your deployment has at least 10% free disk space available. The default maximum allowed disk usage for IPU prechecks is 90%.
   - Your deployment is not under heavy I/O pressure. The default maximum allowed I/O utilization for IPU precheck is 90%.
@@ -301,6 +302,7 @@ If your applications show unexpected issues after a successful in-place major ve
 
 An in-place major upgrade will not proceed until all prechecks have passed. These safeguards exist to protect your deployment because the upgrade operates directly on the source instance. If the upgrade is blocked, review the following areas:
 
+- Member count: in-place major version upgrade supports deployments with at most 3 members. If your deployment has more than 3 members, the prechecks block the upgrade. Members cannot be removed through [horizontal scaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling), so open a support ticket with [IBM Cloud support](https://cloud.ibm.com/login?redirect=%2Funifiedsupport%2Fsupportcenter) to reduce the member count before you retry the upgrade.
 -  Cluster state: ensure that the Patroni cluster is healthy and that a clear leader/replica state is present. Upgrades cannot proceed if Patroni reports instability or failover conditions.
 - Disk space: verify that sufficient free space is available. The process uses `pg_upgrade` link mode, which requires adequate headroom. If disk usage exceeds the configured limit (default: 90%), free space before retrying.
 - Disk I/O load: check current I/O utilization and IOPS. Upgrades are paused when the system is under heavy load to prevent performance degradation or upgrade failure.
