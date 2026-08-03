@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-06-15"
+lastupdated: "2026-08-03"
 
 keywords: databases-for-postgresql release notes
 
@@ -20,8 +20,15 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 31 July 2026
+{: #databases-for-postgreSQL-31Jul2026}
+{: release-note}
+
+Built-in support for PgBouncer `auth_query` authentication
+:  {{site.data.keyword.databases-for-postgresql}} deployments now include a `pgbouncer_lookup()` helper function and a supporting `pgbouncer_auth` role. If you run your own PgBouncer connection pooler, you can set PgBouncer's `auth_query` option to validate users directly against your deployment instead of maintaining a local user list. Password changes and credential rotations take effect immediately, with no PgBouncer restart required. For more information, see [Connection pooling with PgBouncer](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgbouncer).
+
 ## 15 June 2026
-{: #databases-for-postgreSQL-15Jun2026}
+{: #databases-for-postgreSQL-15jun2026}
 {: release-note}
 
 In-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}
@@ -39,7 +46,7 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
 {: note}
 
 ## 27 March 2026
-{: #databases-for-elasticsearch-27mar2026}
+{: #databases-for-postgreSQL-27mar2026}
 {: release-note}
 
 Deprecation of {{site.data.keyword.hscrypto}}
