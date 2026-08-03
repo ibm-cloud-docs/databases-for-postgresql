@@ -2,9 +2,9 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-05-13"
+lastupdated: "2026-08-03"
 
-keywords: postgresql, databases, connection limits, terminating connections, postgresql connection pooling, postgres connection pooling, managing connections
+keywords: postgresql, databases, connection limits, terminating connections, postgresql connection pooling, postgres connection pooling, managing connections, pgbouncer, auth_query
 
 subcollection: databases-for-postgresql
 
@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 
 Connections to your {{site.data.keyword.databases-for-postgresql}} deployment use resources, so it is important to consider how many connections you need to tune your deployment's performance. PostgreSQL uses a `max_connections` setting to limit the number of connections (and resources that are consumed by connections) to prevent run-away connection behavior from overwhelming your deployment's resources.
 
-You can check the value of `max_connections` with your [admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user) and [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+You can check the value of `max_connections` with your [admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#user-admin) and [`psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
 ```sh
 ibmclouddb=> SHOW max_connections;
@@ -104,7 +104,7 @@ One way to prevent exceeding the connection limit and ensure that connections fr
 
 Many PostgreSQL driver libraries have connection pooling classes and functions. You need to consult your driver's documentation to implement connection pooling that is optimal for your use case. For example, the Python driver Psycopg2 has classes to handle connection pooling in your application. The Java PostgreSQL JDBC driver has methods for [connection pooling at both the application and application server level](https://jdbc.postgresql.org/documentation/datasource/){: .external}.
 
-Alternatively, you can use a third-party tool such as [PgBouncer](https://pgbouncer.github.io/){: .external} to manage your application's connections.
+Alternatively, you can use a third-party tool such as [PgBouncer](https://www.pgbouncer.org/){: .external} to manage your application's connections. {{site.data.keyword.databases-for-postgresql}} deployments include built-in support for PgBouncer's `auth_query` authentication, so a PgBouncer instance that you run can validate users against the database without maintaining a local password list, and password changes take effect without a PgBouncer restart. For setup steps, see [Connection pooling with PgBouncer](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgbouncer).
 
 ## Raising the connection limit
 {: #raise-connection-limit}
