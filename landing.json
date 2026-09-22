@@ -64,11 +64,11 @@
       },
       {
         "date": "15 June 2026",
-        "title": "In-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}"
+        "title": "In-place major version upgrades available for PostgreSQL"
       },
       {
         "date": "27 March 2026",
-        "title": "Deprecation of {{site.data.keyword.hscrypto}}"
+        "title": "Deprecation of Hyper Protect Crypto Services"
       }
     ]
   }
