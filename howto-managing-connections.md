@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-08-03"
+lastupdated: "2026-09-22"
 
 keywords: postgresql, databases, connection limits, terminating connections, postgresql connection pooling, postgres connection pooling, managing connections, pgbouncer, auth_query
 
@@ -162,7 +162,7 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 
 In the event of a network connection or failover, it is possible that broken TCP/IP connections remain in a half-opened/closed state until the TCP keepalive timeouts are reached. To avoid this scenario, set the `socket_timeout` and `connection_timeout` settings in your specific application drivers, as well. The correct settings _vary based on the specific workload and it is important to run load tests before going to production_. A good starting point for the `connection_timeout` is 2 - 5 seconds. For the `socket_timeout`, a good starting point is 30 - 60 seconds.
 
-Furthermore, on the server side, the following [keepalive configurations](https://www.postgresql.org/docs/12/runtime-config-connection.html){: .external} are used as the default.
+Furthermore, on the server side, the following [keepalive configurations](https://www.postgresql.org/docs/current/runtime-config-connection.html#RUNTIME-CONFIG-TCP-SETTINGS){: .external} are used as the default.
 
 - `tcp_keepalives_idle` is set to 5 minutes
 - `tcp_keepalives_interval` probe interval is set to 10 seconds

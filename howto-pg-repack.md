@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-08-01"
+  years: 2026
+lastupdated: "2026-09-22"
 
 keywords:  postgresql, databases, postgresql extensions, postgres extensions, ibm_extension , pg_repack
 
@@ -19,7 +19,7 @@ pg_repack is an extension for your {{site.data.keyword.databases-for-postgresql_
 
 Bloat typically occurs in PostgreSQL when rows in a table are updated or deleted, leaving space that isn't reused. Over time, this can cause tables to take up more disk space than necessary, leading to decreased performance due to increased disk I/O and memory usage.
 
-pg_repack is supported by PostgreSQL version >9.5.
+`pg_repack` is available on supported versions of {{site.data.keyword.databases-for-postgresql}}.
 
 Run the following query to enable the extension:
 

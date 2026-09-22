@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2026
-lastupdated: "2026-05-21"
+lastupdated: "2026-09-22"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -198,7 +198,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    Updated at:            2023-06-26T19:53:25Z
    Last Operation:
                           Status    create succeeded
-                          Message   Provisioning PostgreSQL with version 12 (100%)
+                          Message   Provisioning PostgreSQL with version 14 (100%)
    ```
    {: codeblock}
 

@@ -2,7 +2,7 @@
 copyright:
 
   years: 2026
-lastupdated: "2026-09-20"
+lastupdated: "2026-09-22"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, postgresql
 
@@ -18,7 +18,7 @@ subcollection: databases-for-postgresql
 [High availability](#x2284708){: term} (HA) is the ability for a service to remain operational and accessible in the presence of unexpected failures. [Disaster recovery](#x2113280){: term} is the process of recovering the service instance to a working state.
 {: shortdesc}
 
-{{site.data.keyword.databases-for-postgresql}} is a regional service that fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) with the Standard plan. For more information, see [Service Level Agreement (SLA)](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en). For more information about the available {{site.data.keyword.cloud_notm}} regions and data centers for site.data.keyword.databases-for-postgresql, see [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region).
+{{site.data.keyword.databases-for-postgresql}} is a regional service that fulfills the defined [Service Level Objectives (SLO)](/docs/resiliency?topic=resiliency-slo) with the Standard plan. For more information, see [Service Level Agreement (SLA)](https://www.ibm.com/support/customer/csol/terms/?id=i126-9268&lc=en). For more information about the available {{site.data.keyword.cloud_notm}} regions and data centers for {{site.data.keyword.databases-for-postgresql}}, see [Service and infrastructure availability by location](/docs/overview?topic=overview-services_region).
 
 ## High availability architecture
 {: #ha-architecture}
@@ -31,7 +31,7 @@ You can extend high-availability further by adding [PostgreSQL members](/docs/da
 
 Review the PostgreSQL documentation on [replication techniques](https://www.postgresql.org/docs/current/wal-async-commit.html){: .external} to understand the constraints and tradeoffs that are associated with the asynchronous replication strategy that is deployed by default.
 
-In scenarios where a database becomes critically unhealthy, such as a server crash on the leader, {{site.data.keyword.databases-for-postgresql}} attempts a failover. This auto-failover capability is capped at 16 MB of data lag from leader to replica (a few rows of data once accounting for more PostgreSQL data overhead) and is not performed if the lag threshold is exceeded. If the potential for 16 MB of data loss is intolerable for the application, see [synchronous replication](#postgresql-sync-repl).
+In scenarios where a database becomes critically unhealthy, such as a server failure on the leader, {{site.data.keyword.databases-for-postgresql}} attempts a failover. This auto-failover capability is capped at 16 MB of data lag from leader to replica and is not performed if the lag threshold is exceeded. If the potential for 16 MB of data loss is intolerable for the application, see [synchronous replication](#ha-synchronous-replication).
 
 Workloads that programmatically access the cluster must follow the client availability retry logic to maintain availability.
 
@@ -46,7 +46,7 @@ The service will, at times, do controlled failovers under normal operation. Thes
 | -------------- | -------------- | -------------- |
 | Automatic failover | Standard on all clusters and resilient against a zone or single member failure |
 | Member count | Minimum - 2 members. Default is a Standard two member deployment. A two-member cluster will automatically recover from a single instance or zone failure (with data loss up to the lag threshold). During data synchronization for a new replica, the cluster has exposure to second failure causing data loss. A three-member, see [adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling), is resilient to the failure of two members during the same failure period | Three members required for synchronous replication |
-| Synchronous replication | Improves RPO by adding remote member sync to the data write path. Refer to [Synchronous replication](#postgresql-sync-repl}) below. | Performance impact and cost. |
+| Synchronous replication | Improves RPO by adding by adding synchronous replication to a remote member in the write path. For more information, see [Synchronous replication](#ha-synchronous-replication). | Performance impact and cost. |
 | Read-only replica | Read-only replicas can provide local access in remote regions, improving availability to potential network latency or connectivity issues. | All Write requests must be directed exclusively to the read-write cluster associated with the read-replica |
 {: caption="High availability features" caption-side="top"}
 
@@ -57,7 +57,7 @@ By default, streaming replication is asynchronous. If the leader crashes, some t
 
 Synchronous replication brings replica availability into the primary write path. If there is no replica to acknowledge a write, it will hang until a replica is available. This requires at least three members to function reliably, as synchronous replication is not supported on two-member deployments. You _must_ horizontally scale to at least three members before enabling synchronous replication. See [adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling).
 
-While unlikely, it is possible that more than one replica might become unavailable simultaneously. If this happens, the primary database will not be able to complete any writes until a replica comes back online, effectively blocking all write traffic to your database. When you decide to use synchronous replication, weigh the relative costs and benefits of higher data durability versus potential availability issues.
+While unlikely, it is possible that more than one replica might become unavailable simultaneously. If this happens, the primary database will not be able to complete any writes until a replica comes back online, effectively blocking all write traffic to your database. Consider the tradeoff between improved durability and the risk of blocked writes before you enable synchronous replication.
 
 Configuring synchronous replication can significantly increase write latency and reduce overall throughput. For optimal performance, it is recommended to use synchronous replication only on specific databases or workloads that require the highest degree of data durability.
 {: .note}
@@ -89,7 +89,7 @@ The disaster recovery steps must be practiced regularly. As you build your plan,
 | Failure | Resolution |
 | -------------- | -------------- |
 | Hardware failure (single point) | IBM provides a database that is resilient from a single point of hardware failure within a zone - no configuration is required. |
-| Zone failure | Automatic failover (#postgresql-high-availability). The database members are distributed between zones. Configuring three members will provide additional resiliency to multiple zone failures. \n \nSynchronous replication will reduce RPO at the expense of performance. |
+| Zone failure | [Automatic failover](#ha-architecture). The database members are distributed between zones. Configuring three members will provide additional resiliency to multiple zone failures. \n \n Synchronous replication will reduce RPO at the expense of performance. |
 | Data corruption | Backup restore. Use the restored database in production or for source data to correct the corruption in the restored database. \n \nPoint-in-time restore. Use the restored database in production or for source data to correct the corruption in the restored database. |
 | Regional failure | Backup restore. Use the restored database in production. \n \nPromote read replica. Promote a read-only replica to a read/write database. Use the restored database in production |
 {: caption="Failure scenarios and resolutions" caption-side="top"}
@@ -103,7 +103,9 @@ Because {{site.data.keyword.databases-for-postgresql}} is a managed service, reg
 
 Your applications must be designed to handle temporary interruptions to the database, implement error handling for failed database commands, and implement retry logic to recover from a temporary interruption.
 
-Several minutes of database unavailability or connection interruption are not expected. Open a [support case](https://cloud.ibm.com/unifiedsupport/cases/add) with details if you have periods longer than a minute with no connectivity so we can investigate.
+Outside of a planned in-place major version upgrade (IPMVU), database unavailability or connection interruptions lasting more than a few minutes are not expected. If you experience a loss of connectivity for longer than a few minutes, open a [support case](https://cloud.ibm.com/unifiedsupport/supportcenter) and provide details so that we can investigate.
+
+During an in-place major version upgrade (IPMVU), temporary write and connection interruptions are expected. Monitor the upgrade task throughout the process. For more information, see [Availability during an upgrade](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place-availability).
 
 ## Connection limits
 {: #connection-limits-ha}
@@ -122,13 +124,14 @@ When restoring a database from backups or using point-in-time restore, a new dat
 A recovered database may also need the same customer-created dependencies of the disaster database - make sure this and other services exist in the recovered region:
 - {{site.data.keyword.keymanagementservicefull}}
 
-Remember that deleting a database also deletes its associated backups. However, deleted databases may be recoverable within a limited timeframe. Refer to the [documentation](/docs/cloud-databases?topic=cloud-databases-faq-backups) for specific details on database recovery procedures.
+Remember that deleting a database also deletes its associated backups. However, deleted databases may be recoverable within a limited time frame. Refer to the [documentation](/docs/cloud-databases?topic=cloud-databases-faq-backups) for specific details on database recovery procedures.
 
 It is not possible to copy backups off the {{site.data.keyword.cloud_notm}}, so consider using the database-specific tools for additional backups. It may be required to recover from malicious database deletion followed by a reclamation-delete of a database. Careful management of IAM access to databases can help reduce exposure to this problem.
 
 The following checklist associated with each feature can help you create and practice your plan.
 
-- Backup restore
+- Backup restore:
+
    - Verify backups are available at the desired frequency to meet RPO requirements. [Managing Cloud Databases backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) documents backup frequency. Consider a script using [IBM Cloud® Code Engine - Working with the Periodic timer (cron) event producer](/docs/codeengine?topic=codeengine-subscribe-cron) to create additional on-demand backups to improve RPO if the criticality and size of the database allow. However, given PostgreSQL's PITR capabilities, carefully evaluate the need for additional backups.
    - There are some restrictions on database restore regions - verify your restore goals can be achieved by reading [managing Cloud Databases backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups).
    - Verify the retention period of the backups meet your requirements.
@@ -137,7 +140,9 @@ The following checklist associated with each feature can help you create and pra
 - Point-in-time restore
    - Verify the procedures covered earlier.
    - Verify desired backup is in the window.
-- Promote read replica
+
+- Promote read replica:
+
    - Verify that a read replica exists in the recovery region.
    - Practice the promotion process - create a temporary read replica in the desired region. The temporary replica can be promoted to read/write and some testing performed with little impact to production.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-03-19"
+lastupdated: "2026-09-22"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -173,7 +173,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       Updated at:            2023-06-26T19:53:25Z
       Last Operation:
                              Status    create succeeded
-                             Message   Provisioning postgresql with version 12 (100%)
+                             Message   Provisioning postgresql with version 14 (100%)
       ```
       {: codeblock}
 

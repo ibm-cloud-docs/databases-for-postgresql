@@ -59,20 +59,16 @@
     "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
     "tiles": [
       {
-        "date": "22 October 2024",
-        "title": "Databases for PostgreSQL end-of-life procedure change"
+        "date": "31 July 2026",
+        "title": "Built-in support for PgBouncer `auth_query` authentication"
       },
       {
-        "date": "27 September 2024",
-        "title": "Databases for PostgreSQL version 13 End of life on October 22, 2025"
+        "date": "15 June 2026",
+        "title": "In-place major version upgrades available for PostgreSQL"
       },
       {
-        "date": "16 September 2024",
-        "title": "Private endpoints as new default"
-      },
-      {
-        "date": "1 May 2024",
-        "title": "New hosting models"
+        "date": "27 March 2026",
+        "title": "Deprecation of Hyper Protect Crypto Services"
       }
     ]
   }

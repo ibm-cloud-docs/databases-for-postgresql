@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-05-14"
+lastupdated: "2026-09-22"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -115,7 +115,7 @@ When monitoring the output for replication lag, note that the `application_name`
 
 Your deployment always has a replica for its HA paired node, the `application_name` will the same as your main deployment, and the `sync_state` value will be "sync". You should expect an additional row of output for each read-only replica, the `application_name` will be different and the `sync_state` will be "async". You can then evaluate whether it is in sync with the additional information provided by the query results.
 
-For more information, see [pg_stat_replication](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW){: .external}.
+For more information, see [`pg_stat_replication`](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW){: .external}.
 
 ### Read-only replica users and privileges
 {: #read-only-replica-users-priv}
@@ -169,7 +169,7 @@ curl -X POST \
 
 A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. If something happens to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. Promoting a read-replica cluster to a stand-alone cluster will be quicker if the read-replica cluster already has more than one data member.
 
-Upon promotion, the read-only replica terminates its connection to the leader and becomes a stand-alone {{site.data.keyword.databases-for-postgresql}} deployment. The deployment can start accepting and running read and write operations, backups are enabled, and it is issued its own admin user. A new data member is added so the deployment becomes a cluster with two data members. This increases the cost as it is billed at the same per member consumption rate, but the deployment has two members instead of one.
+Upon promotion, the read-only replica terminates its connection to the leader and becomes a stand-alone {{site.data.keyword.databases-for-postgresql}} deployment. The deployment can start accepting and running read and write operations, backups are enabled, and it is issued its own admin user. For a single-member read-only replica, promotion adds a second data member. As a result, the cost increases because you are billed for two data members at the same per-member rate.
 
 When you promote a read-only replica, you can skip the initial backup that would normally be taken upon promotion. Skipping the initial backup means that your replica becomes available more quickly, but there is no immediate backup available. You can start an on-demand backup once the promotion process is complete.
 
@@ -218,13 +218,13 @@ curl -X POST \
 ### Time to completion
 {: #read-only-replica-completion}
 
-The promote task completes only when the database is highly available. However, read/write availability occurs after about 10 minutes with one major caveat: the database is not highly available until the task completes.
+Read and write access might become available before the promotion task completes. Wait for task completion before relying on the promoted deployment's high availability.
 
 The full promotion time of a read-replica is determined by the size of the data in two possible ways:
-- Read replicas are single members. When promoted, the formation spec is changed to two members, which creates a second replica. The creation time of that replica depends on the size of the data. The creation of that replica runs at 25 MB/s to avoid saturating the network. As databases grow, the creation can take a substantial amount of time. The task does not complete until the creation of that replica is done.
+- Promoting a single-member read-only replica adds a second data member. The creation time of that replica depends on database size, available resources, and workload. Large databases can take longer to copy. The task does not complete until the creation of that replica is done.
 - If you choose to take a backup as part of the promotion, the completion of that backup also needs to finish before the task completes. Again, this depends on the size of the database.
 
-There is no High-Availability member until the promotion task completes. Likewise, if you have selected to have an initial backup, no backup exists until the second point completes or a manual backup is created.
+Consider the promoted deployment's first backup as a separate recovery milestone. If you selected an initial backup, confirm that it completed successfully. Otherwise, create an on-demand backup or wait for a successful scheduled backup before relying on recovery from a backup of the promoted deployment.
 {: note}
 
 ### Upgrading while promoting
@@ -257,10 +257,11 @@ If you need to upgrade to a new major version of the database, you can do so whe
 
 - A read-only replica is a deployment with single data member and does not have any internal high availability. It is prone to temporary interruptions and downtime during maintenance. If you have applications that rely on read-only replicas, be sure to have logic to retry failed queries, or load-balancing over multiple read-only replicas.
 
-### Read-only replica status at in-place major version upgrades
+### Read-only replicas and in-place major version upgrades
 {: #read-only-replicas-ipu}
 
-With the introduction of in-place major version upgrades in our {{site.data.keyword.databases-for-postgresql}} service, read-only replicas can help maintain read transaction continuity and prove especially useful during upgrade processes. However, note that this feature is not yet applicable to read-only replicas at the moment. Still, if your service needs to read data from the instance that the upgrade is in progress, you may consider to [create a standby instance](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) and update your application’s connection details to point to the standby. This ensures you have an up-to-date copy of your database prior to starting the upgrade. The standby instance can also be promoted and used as a primary instance if the in-place upgrade does not complete successfully.
+An in-place major version upgrade (IPMVU) cannot run on a read-only replica or while read-only replicas are attached to the source deployment. Before you upgrade the source deployment, promote any replicas that you want to retain and delete any replicas that you no longer need. The source deployment's own high-availability members are upgraded as part of the IPMVU.
 
-During an in-place major version upgrade, the source instance and its read-only replicas lose replication functionality, and replication is **not** automatically restored after the upgrade (also note that the version change makes them incompatible). However, read-only replicas remain fully operational as standalone instances. So, you can safely promote a read-only replica to a primary instance at any time, independent of the upgrade outcome. In the event of an upgrade failure, promoting a read-only replica allows you to quickly restore your database.
-{: important}
+[Promoting a read-only replica](#promoting-read-only-replica) stops replication from the source deployment. The promoted deployment does not receive subsequent changes from the source deployment. As a result, it is not a continuously updated copy during the source deployment upgrade. After the source upgrade completes, provision new read-only replicas if needed.
+
+To upgrade a read-only replica while promoting it to an independent deployment, see [Upgrading while promoting](#read-only-replica-upgrading-promoting). For source upgrade preparation and availability, see [IPMVU](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place).
