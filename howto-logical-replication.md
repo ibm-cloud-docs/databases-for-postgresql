@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-09-22"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -19,7 +19,7 @@ subcollection: databases-for-postgresql
 
 {{site.data.keyword.databases-for-postgresql_full}} supports [logical replication](https://www.postgresql.org/docs/current/logical-replication.html){: .external}, where you can create a subcriber or a publisher. You can also set up your external PostgreSQL as a publisher and your {{site.data.keyword.databases-for-postgresql}} deployment as a subscriber, and replicate your data across from an external database into your deployment.
 
-Logical replication is only available on deployments running PostgreSQL 10 or above. Links to the PostgreSQL documentation direct you to the current version of PostgreSQL. If you need documentation for a specific version, you can find links to different PostgreSQL versions on the PostgreSQL documentation page.
+Links to the PostgreSQL documentation point to the latest version of PostgreSQL. If you use a different version, see the PostgreSQL documentation page for links to version-specific documentation.
 {: .tip}
 
 ## Configuring the publisher
