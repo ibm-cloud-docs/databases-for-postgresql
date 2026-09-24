@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-09-22"
+lastupdated: "2026-09-24"
 
 keywords: postgresql, databases, point in time recovery, backups, restore, pitr
 
@@ -15,15 +15,12 @@ subcollection: databases-for-postgresql
 # Point-in-time recovery
 {: #pitr}
 
-{{site.data.keyword.databases-for-postgresql_full}} supports point-in-time recovery (PITR) to an available recovery point within the last 7 days. PITR restores a backup into a new deployment and replays retained transaction logs to the requested time.
-
-Point-in-time recovery (PITR) for changes made after an in-place major version upgrade (IPMVU) requires a successful backup of the upgraded deployment and the corresponding transaction logs. The service automatically queues the backup to run after the upgrade task completes. Before you rely on PITR for the upgraded deployment, verify that the backup completed successfully. PITR cannot replay transactions across a major version upgrade. For more information, see [Backups and recovery for IPMVU](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place-backups).
-{: important}
+{{site.data.keyword.databases-for-postgresql_full}} offers Point-in-time recovery (PITR) for any time in the last 7 days. The deployment performs continuous incremental backups and can replay transactions to bring a new deployment that is restored from a backup to any point in that 7-day window you need. 
 
 
 The _Backups and restore_ tab of your deployment's UI keeps all your PITR information under _Point-in-time recovery_.
 
-If the requested restore time is later than the last available transaction, the restore operation fails with the message `recovery ended before configured recovery target is reached`. If your restore fails for this reason, select `Restore to last available point` or choose an earlier date/time for `Restore to a specific point in the last 7 days`.
+In PostgreSQL versions 13 and later, when restoring to a specific point within the last seven days, with a restore time after the last transaction, your restore fails with the message `recovery ended before configured recovery target is reached`. Before PostgreSQL v13, when restoring to a specific point within the last seven days, with a restore time after the last transaction, the latest restore point is used. If your restore fails for this reason, then `Restore to last available point` or choose an earlier date/time for `Restore to a specific point in the last 7 days`.
 {: note}
 
 Included information is the earliest time for a PITR. To discover the earliest recovery point through the CLI, use the [`cdb postgresql earliest-pitr-timestamp`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#postgresql-earliest-pitr-timestamp) command.
@@ -51,7 +48,7 @@ Backups are restored to a new deployment. After the new deployment finishes prov
 
 By default the new deployment is auto-sized to the same disk and memory allocation as the source deployment at the time of the backup that you are restoring from. Especially in the case of PITR that might not be the current size of your deployment. If you need to adjust the resources that are allocated to the new deployment, use the optional fields in the UI, CLI, or API to resize the new deployment. Be sure to allocate enough for your data and workload, if the deployment is not given enough resources the restore fails.
 
-While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters, such as `shared_buffers`, `max_connections`, `deadlock_timeout`, `archive_timeout`, and others) to ensure accurate setting for the instance after the restore is complete.
+While storage and memory are restored to the same as the source deployment, specific instance configurations are not automatically set for the new instance. In this case, rerunning the configuration after a restore might be needed. Note any instance modifications before running the restore (parameters like shared_buffers, max_connections, deadlock_timeout, archive_timeout, and others) to ensure accurate setting for the instance after the restore is complete.
 
 It is important that you do not delete the source deployment while the backup is restoring. You must wait until the new deployment is provisioned and the backup is restored before deleting the old deployment. Deleting a deployment also deletes its backups so not only does the restore fail, you might not be able to recover the backup either.
 {: .tip}
@@ -116,7 +113,7 @@ The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are al
 
 For PITR, use the `point_in_time_recovery_time` and `point_in_time_recovery_deployment_id` parameters. The `point_in_time_recovery_deployment_id` is the source deployment's ID and `point_in_time_recovery_time` is the timestamp in Coordinated Universal Time you want to restore to. To restore to the latest available point-in-time use `"point_in_time_recovery_time":" "`.
 
-To customize resource allocations or use a Key Protect key, include the applicable parameters and their values in the request body: `key_protect_key`, `members_disk_allocation_mb`, `members_memory_allocation_mb`, and `members_cpu_allocation_count`.
+If you need to adjust resources or use a Key Protect key, add the optional parameters `key_protect_key`, `members_disk_allocation_mb`, `members_memory_allocation_mb`, and/or `members_cpu_allocation_count`, and their values to the body of the request.
 
 ## Verifying PITR
 {: #pitr-verify}

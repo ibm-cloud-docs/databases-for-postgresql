@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-09-22"
+lastupdated: "2026-09-24"
 
 keywords: postgresql, databases, pg_cron, schedule, cron, cron jobs, schedule jobs, 
 
@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 
 `pg_cron` is a PostgreSQL extension that provides in-database job scheduling, allowing you to automate SQL tasks without relying on external tools. For more information, see [`pg_cron`](https://github.com/citusdata/pg_cron).
 
-The `pg_cron` extension is available on supported versions of {{site.data.keyword.databases-for-postgresql}}.
+The `pg_cron` extension is supported on PostgreSQL version 13 and above.
 
 ## Setting up `pg_cron`
 {: #pg_cron-setting-up}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-09-22"
+lastupdated: "2026-09-24"
 
 keywords: postgresql, databases, wal2json
 
@@ -16,6 +16,11 @@ subcollection: databases-for-postgresql
 {: #wal2json}
 
 {{site.data.keyword.databases-for-postgresql_full}} deployments support the [`wal2json`](https://github.com/eulerto/wal2json){: external} plug-in, enabling [logical decoding](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html){: external} on your deployment.
+
+Note:
+
+- **Deprecated:** This plug-in is deprecated in PostgreSQL versions 9.6 and 10.  
+- **Supported:** Only available in PostgreSQL versions **11 and above**.
 
 1. First, you need to [configure](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) the `wal_level`, `max_replication_slots`, and `max_wal_senders` settings. Change the `wal_level` to `logical`. The `max_replication_slots`, and `max_wal_senders` both need to be set to a value greater than 20. {{site.data.keyword.databases-for-postgresql}} reserves 20 replication slots and WAL senders for current and future operational purposes.
 
@@ -79,10 +84,19 @@ subcollection: databases-for-postgresql
 
 - If you create a logical replication slot, and a consumer is not connected and consuming the changes, you run the risk of running your deployment out of disk space. The replication slot tells PostgreSQL to keep all the transaction logs that have the changes that the consumer needs. If nothing is consuming those changes, PostgreSQL continues collecting them until it is out of disk space. You can monitor disk space with the [{{site.data.keyword.monitoringfull}} integration](/docs/databases-for-postgresql?topic=databases-for-postgresql-monitoring). If you run out of space, you can [scale up disk](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling), which allows the database to start. Then, you can either start consuming the changes or drop the slot.
 
-- You can check how much disk space is being used by a specific replication slot and whether that replication slot has an active consumer. Use the `admin` user to run the following query:
+- You can check how much disk space is being used by a specific replication slot and whether that replication slot has an active consumer. Use the `admin` user to run one of the following commands:  
+
+   **PostgreSQL 10.x and newer**
 
     ```sh
     SELECT slot_name, pg_size_pretty(pg_wal_lsn_diff(pg_current_wal_lsn(),restart_lsn)) AS lag, active from pg_replication_slots WHERE slot_type='logical';
+    ```
+    {: pre}
+
+   **PostgreSQL 9.x**
+
+    ```sh
+    SELECT slot_name, pg_size_pretty(pg_xlog_location_diff(pg_current_xlog_location(),restart_lsn)) AS lag, active FROM pg_replication_slots WHERE slot_type='logical';
     ```
     {: pre}
 

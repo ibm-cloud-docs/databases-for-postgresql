@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-09-22"
+lastupdated: "2026-09-24"
 
 keywords: postgresql, databases, pgbouncer, connection pooling, connection pooler, auth_query, auth_user, pgbouncer_auth, scram-sha-256, credential rotation, transaction pooling
 
@@ -35,7 +35,7 @@ You need:
   - Hostname and port, from the [connection strings]...
   - CA certificate, retrieved with `ibmcloud cdb deployment-cacert`.
 
-Support for `pgbouncer_lookup` is rolling out across deployments. To confirm that your deployment has the function, use `psql` to connect as `admin` and run `\df public.pgbouncer_lookup`. If the result is empty, your deployment receives the function with an upcoming maintenance update.
+Support for `pgbouncer_lookup` is rolling out across deployments. To confirm that your deployment has the function, connect with `psql` as `admin` and run `\df public.pgbouncer_lookup`. If the result is empty, your deployment receives the function with an upcoming maintenance update.
 {: note}
 
 ## Creating a dedicated authentication user
@@ -43,7 +43,7 @@ Support for `pgbouncer_lookup` is rolling out across deployments. To confirm tha
 
 PgBouncer runs `auth_query` as one designated login role, its `auth_user`. Create a role that is used only for this purpose. A dedicated role that owns no data and runs nothing else is the least-privilege choice.
 
-Use `psql` to connect as the `admin` user, then create the role and grant it `pgbouncer_auth`:
+Connect with `psql` as the `admin` user, then create the role and grant it `pgbouncer_auth`:
 
 ```sql
 CREATE ROLE pool_auth WITH LOGIN PASSWORD '<POOL_AUTH_PASSWORD>';
@@ -72,7 +72,7 @@ The following PgBouncer settings are required when connecting to a {{site.data.k
 - `auth_query = SELECT * FROM public.pgbouncer_lookup($1)`, because PgBouncer's default `auth_query` reads `pg_authid` directly and your database users cannot read it.
 - Server-side TLS, because deployments only accept TLS connections. Set `server_tls_sslmode = verify-full`, and save the certificate that you retrieved with `ibmcloud cdb deployment-cacert` to the path that you set in `server_tls_ca_file`.
 
-PgBouncer reads the credentials of its own `auth_user` from `auth_file`, so in this configuration, `userlist.txt` contains only the `auth_user` credentials. Every other user resolves through `auth_query`. Restrict the file's permissions to the PgBouncer process owner, for example with mode `0600`.
+PgBouncer reads the credentials of its own `auth_user` from `auth_file`, so in this configuration, userlist.txt contains only the auth_user credentials. Every other user resolves through `auth_query`. Restrict the file's permissions to the PgBouncer process owner, for example with mode `0600`.
 
 ```txt
 "pool_auth" "<POOL_AUTH_PASSWORD>"
@@ -111,7 +111,7 @@ For descriptions of every setting, see the [PgBouncer configuration reference](h
 ## Verifying the setup
 {: #pgbouncer-verify}
 
-1. Confirm that the lookup resolves one of your database users. Use `psql` to connect as `admin` and run:
+1. Confirm that the lookup resolves one of your database users. Connect with `psql` as `admin` and run:
 
     ```sql
     SELECT usename, passwd IS NOT NULL AS can_authenticate
@@ -142,7 +142,7 @@ For descriptions of every setting, see the [PgBouncer configuration reference](h
 ## How the security model works
 {: #pgbouncer-security-model}
 
-The `pgbouncer_lookup` function exposes only the information that PgBouncer requires for authentication.
+The pgbouncer_lookup function exposes only the information that PgBouncer requires for authentication.
 
 - The function runs with [`SECURITY DEFINER`](https://www.postgresql.org/docs/current/sql-createfunction.html#SQL-CREATEFUNCTION-SECURITY){: external} and a pinned `search_path`, and reads `pg_catalog.pg_authid` on your behalf. Direct access to `pg_authid` and `pg_shadow` stays blocked.
 - It returns hashed SCRAM verifiers, never plain-text passwords.
@@ -159,7 +159,7 @@ PgBouncer's default `auth_query` reads `pg_authid` directly, which your database
 - The `admin` user cannot authenticate through `auth_query`. For administrative tasks, connect as `admin` directly to the deployment, not through PgBouncer.
 - The `postgres` database does not have the lookup function, so never set `auth_dbname = postgres`.
 - In transaction pooling mode (`pool_mode = transaction`), session state such as `SET` variables, temporary tables, advisory locks, and `LISTEN` channels does not carry over between transactions. Protocol-level prepared statements require `max_prepared_statements` and PgBouncer 1.21.0 or later. For more information, see [PgBouncer features](https://www.pgbouncer.org/features.html){: external}.
-- During an [in-place major version upgrade](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place-availability), your deployment is temporarily read-only or unavailable, and connections can be reset until the upgrade completes. PgBouncer automatically re-establishes server connections. Applications must handle connection and read-only errors, retry interrupted transactions when it is safe to do so, and re-prepare statements as needed.
+- During an [in-place major version upgrade](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place), your deployment experiences a brief period of downtime and open connections are terminated (SQLSTATE `57P01`). PgBouncer re-establishes its server connections automatically, but your applications must retry interrupted transactions and re-prepare statements.
 - Read-only users cannot connect to the primary endpoint. To pool their connections, add a separate `[databases]` entry that points at your [read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas).
 
 ## Next steps
