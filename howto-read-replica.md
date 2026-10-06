@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-06"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -54,12 +54,7 @@ Provisioning a read-only replica through the CLI and the API works similarly to 
 To provision a read-only replica through the CLI, use a command like:
 
 ```sh
-ibmcloud resource service-instance-create <REPLICA_NAME_OR_CRN> databases-for-postgresql standard <REGION> \
--p \ '{
-  "remote_leader_id": "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71819::",
-  "members_memory_allocation_mb": "2048",
-  "members_disk_allocation_mb": "10240"
-}'
+ibmcloud resource service-instance-create <READ-REPLICA-NAME> databases-for-postgresql standard <REGION> -p '{ "remote_leader_id": "crn:v1:bluemix:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71819::", "members_memory_allocation_mb": "32768", "members_disk_allocation_mb": "20480"}' --service-endpoints public
 ```
 {: pre}
 
