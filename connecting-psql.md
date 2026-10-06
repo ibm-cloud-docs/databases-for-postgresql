@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-06"
 
 keywords: postgresql, databases, psql, postgresql command line
 
@@ -111,7 +111,7 @@ Connection strings are displayed in the _Endpoints_ panel of your deployment's _
 
 The information that you need to make a connection with `psql` is in the "cli" section of your connection strings. The table contains a breakdown for reference.
 
-| Field Name|Index|Description|
+| Field name| Index  |Description |
 | ---------- | ----- | ----------- |
 | `Bin` | | The recommended binary to create a connection; in this case it is `psql`. |
 | `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings, and uses `Arguments` as command-line parameters. |
@@ -150,6 +150,18 @@ If you have not installed the {{site.data.keyword.databases-for}} CLI plug-in, c
 PGPASSWORD=$PASSWORD PGSSLROOTCERT=0b22f14b-7ba2-11e8-b8e9-568642342d40 psql 'host=4a8148fa-3806-4f9c-b3fc-6467f11b13bd.8f7bfd7f3faa4218aec56e069eb46187.databases.appdomain.cloud port=32325 dbname=ibmclouddb user=admin sslmode=verify-full'
 ```
 {: .codeblock}
+
+## Connecting to deployments with private endpoints only
+{: #create-cli-private-connection}
+
+For deployments that use private endpoints only, specify the endpoint type when retrieving connection information with the {{site.data.keyword.cloud}} CLI:
+
+```sh
+ibmcloud cdb cxn <INSTANCE_NAME_OR_CRN> -s -e private
+```
+{: pre}
+
+The `-e private` option returns private endpoint connection details. Private endpoints can be accessed only from {{site.data.keyword.cloud_notm}} resources with private network connectivity, such as a VPC, Cloud VPN, or Cloud Shell.
 
 ## Using the service proprietary certificate
 {: #using-certificate}
