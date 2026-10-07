@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-07"
 
 keywords: databases-for-postgresql release notes
 
@@ -20,19 +20,32 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
-## 31 July 2026
-{: #databases-for-postgreSQL-31Jul2026}
+## 7 October 2026
+{: #databases-for-postgresql-07Oct2026}
+{: release-note}
+
+Improved in-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}
+:  You can now upgrade in place from any supported PostgreSQL version directly to any later supported version. For example, you can upgrade from version 15 to 17, or from version 16 to 17.
+
+:  High-availability members now reuse their existing data files where possible, rather than copying the whole database again. The service still copies the whole database to every high-availability member if any database contains an `UNLOGGED` table. On PostgreSQL 16 and 17, bulk loads and heavily concurrent inserts can also cause full copies. If every member needs a full copy, writes stay blocked until the first copy finishes, which can take hours for a large database. Writes now resume before the upgrade task completes. The service then restarts the members and switches the primary role, which ends client sessions again. After a successful upgrade, the service automatically queues a backup of the upgraded deployment.
+
+:  The upgrade now fails before it interrupts writes if the deployment has read-only replicas, logical replication slots, or prepared transactions. On PostgreSQL 16 and earlier, logical subscriptions also block the upgrade. Previously, read-only replicas stopped replicating during the upgrade and did not resume. Before you upgrade, promote or delete read-only replicas, and delete these slots and subscriptions. Have the owning applications resolve prepared transactions.
+
+:  Every in-place upgrade empties `UNLOGGED` tables and restarts `UNLOGGED` sequences. Some conditions make the upgrade fail after writes are blocked, and the prechecks do not detect them. For example, the upgrade fails if an index uses a `LANGUAGE sql` function with a string body that names objects without their schema. Before you upgrade, resolve the [conditions that the prechecks do not detect](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place-undetected), and run the [self-check queries](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place-self-checks).
+
+## 3 August 2026
+{: #databases-for-postgresql-31Jul2026}
 {: release-note}
 
 Built-in support for PgBouncer `auth_query` authentication
 :  {{site.data.keyword.databases-for-postgresql}} deployments now include a `pgbouncer_lookup()` helper function and a supporting `pgbouncer_auth` role. If you run your own PgBouncer connection pooler, you can set PgBouncer's `auth_query` option to validate users directly against your deployment instead of maintaining a local user list. Password changes and credential rotations take effect immediately, with no PgBouncer restart required. For more information, see [Connection pooling with PgBouncer](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgbouncer).
 
 ## 15 June 2026
-{: #databases-for-postgreSQL-15jun2026}
+{: #databases-for-postgresql-15jun2026}
 {: release-note}
 
 In-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}
-: As a continuation of the in-place major version upgrades for PostgreSQL release notes dated 08 Dec 2025, we now have in-place upgrade (IPU) for all major versions of PostgreSQL v14, v15, v16, and v17. This provides a streamlined path to v18.
+: This release extends in-place major version upgrade (IPMVU) support to PostgreSQL v14, v15, v16, and v17, with PostgreSQL v18 as the target.
 
 :  This enhancement reduces upgrade complexity, minimizes downtime, and ensures a smoother transition to newer versions. Key benefits include:
     * Connection parameters are retained meaning no reconfiguration needed after the upgrade.
@@ -42,11 +55,11 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
 
 :  For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 
-:  You can still perform major version upgrades using read-replica promote upgrade or backup and restore methods. The new in-place upgrade feature provides an additional option.
+:  You can still perform major version upgrades using read-replica promote upgrade or backup and restore methods. IPMVU provides an additional option.
 {: note}
 
 ## 27 March 2026
-{: #databases-for-postgreSQL-27mar2026}
+{: #databases-for-postgresql-27mar2026}
 {: release-note}
 
 Deprecation of {{site.data.keyword.hscrypto}}
@@ -54,8 +67,8 @@ Deprecation of {{site.data.keyword.hscrypto}}
 To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information on how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/cloud-databases?topic=cloud-databases-hpcs#migrating_hpcs_to_kp).
 
 
-## 28 Jan 2026
-{: #databases-for-postgreSQL-28Jan2026}
+## 28 January 2026
+{: #databases-for-postgresql-28Jan2026}
 {: release-note}
 
 Accelerated availability for PITR restores
@@ -72,15 +85,15 @@ Key benefits and risk considerations:
 
 For implementation guidance, see the [async_restore documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=cli#async_restore-pg).
 
-## 18 Dec 2025
-{: #databases-for-postgreSQL-18Dec2025}
+## 18 December 2025
+{: #databases-for-postgresql-18Dec2025}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} version 18 is now available
 :  If you use a previous version of {{site.data.keyword.databases-for-postgresql}}, you can migrate to version 18, which is the next available version. For more information, see [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}.
 
-## 08 Dec 2025
-{: #databases-for-postgreSQL-08Dec2025}
+## 8 December 2025
+{: #databases-for-postgresql-08Dec2025}
 {: release-note}
 
 In-place major version upgrades for {{site.data.keyword.databases-for-postgresql}}
@@ -89,14 +102,14 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
   * Support for additional PostgreSQL versions will be added in upcoming releases.
 
   This enhancement reduces upgrade complexity, minimizes downtime, and ensures a smoother transition to newer versions. Key benefits include:
-  * Connection parameters retained — no reconfiguration needed after the upgrade.
+  * You keep the same connection parameters, so you do not need to reconfigure your applications after the upgrade.
   * Faster upgrade process compared to traditional methods.
-  * Flexible scheduling — choose the upgrade time that best fits your workload.
+  * Flexible scheduling, so you can choose the upgrade time that best fits your workload.
   * Seamless migration from PostgreSQL v14 to v15.
 
   For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 
-  You can still perform major version upgrades using read-replica promote upgrade or backup and restore methods. The new in-place upgrade feature provides an additional option.
+  You can still perform major version upgrades using read-replica promote upgrade or backup and restore methods. In-place upgrades provide an additional option.
   {: note}
 
 
@@ -105,11 +118,11 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} version 14 End of life on October 21, 2026
-:  Action is required before October 21, 2026, for your PostgreSQL v14 deployments. After October 21, 2026, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 14 that are still active will be upgraded in-place to the next major version, version 15. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
+:  Action is required before October 21, 2026, for your PostgreSQL v14 deployments. After October 21, 2026, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 14 that are still active will be upgraded in place to the next major version, version 15. Complete your upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
 By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 
-## 02 October 2025
+## 2 October 2025
 {: #databases-for-postgresql-02oct2025}
 {: release-note}
 
@@ -129,23 +142,12 @@ Seamless Vector Search comes to {{site.data.keyword.databases-for-postgresql}} w
 PgVector is only offered for PostgreSQL version 15 and above.
 {: important}
 
-## 28 April 2025
-{: #databases-for-postgresql-28Apr2025}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} version 13 End of life on October 22, 2025
-:  This note is an update to the PostgreSQL v13 end-of-life approach, replacing our September 27, 2024 publication.
-
-:  Action is required before October 22, 2025, for your PostgreSQL v13 deployments. After October 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 13 that are still active will be upgraded in-place to the next major version, version 14. We recommend completing the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
-By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
-
-
 ## 10 March 2025
 {: #databases-for-postgresql-10mar2025}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan is deprecated
-:   {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan is now deprecated. As of March 10 2025, all documentation relating to {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan has been removed, as well as the ability to select {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
+:   {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan is now deprecated. As of 10 March 2025, all documentation relating to {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan has been removed, as well as the ability to select {{site.data.keyword.databases-for-postgresql}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
 
 ## 15 November 2024
 {: #databases-for-postgresql-15nov2024}
@@ -153,22 +155,6 @@ By proactively upgrading, you can control the timing and minimize any potential 
 
 {{site.data.keyword.databases-for}} logs and events are now available on {{site.data.keyword.logs_routing_full}}
 : {{site.data.keyword.databases-for}} has onboarded {{site.data.keyword.logs_routing_full}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Customers are expected to use {{site.data.keyword.logs_routing_full}} to review their database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started-cdb-logging-monitoring) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
-
-## 22 October 2024
-{: #databases-for-postgresql-22oct2024}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} end-of-life procedure change
-:  Action is required for your {{site.data.keyword.databases-for-postgresql}} version 12 deployments before January 22, 2025. After this date, all {{site.data.keyword.databases-for-postgresql}} instances on version 12 that are still active will be upgraded in-place to the next major version, version 13.
-We recommend that you complete the upgrades before the end-of-life date. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. By proactively upgrading, you can control the timing and minimize any potential downtime. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
-
-## 27 September 2024
-{: #databases-for-postgresql-27sept2024}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} version 13 End of life on October 22, 2025
-:  Action required before October 22, 2025, for your PostgreSQL v13 deployments. After October 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 13 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql}}.
-Upgrade your database instances by following the procedure at [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
 
 ## 16 September 2024
 {: #databases-for-postgresql-16sept2024}
@@ -184,14 +170,6 @@ Private endpoints as new default
 New hosting models
 :  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui){: external}.
 
-## 18 January 2024
-{: #databases-for-postgresql-18jan2023}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql_full}} version 12 End of life on January 22, 2025
-:  Action required before January 22, 2025, for your PostgreSQL v12 deployments. After January 22, 2025, all {{site.data.keyword.cloud_notm}} Databases for PostgreSQL instances on version 12 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql}}.
-Upgrade your database instances by following the procedure at [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}. If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
-
 ## 27 November 2023
 {: #databases-for-postgresql-27nov2023}
 {: release-note}
@@ -199,45 +177,27 @@ Upgrade your database instances by following the procedure at [Upgrading to a ne
 Monitoring Integration documentation updated
 :  Monitoring Integration documentation now lists metrics for all {{site.data.keyword.databases-for}} services. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
-## 17 Nov 2023
-{: #databases-for-postgresql-25aug2023}
+## 17 November 2023
+{: #databases-for-postgresql-17nov2023}
 {: release-note}
 
 Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance published
 :  With this tutorial, deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure.
 For more information, see [Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgadmin-code-engine-icd-postgresql){: external}.
 
-## 25 Aug 2023
-{: #databases-for-postgresql-25aug2023}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} version 11 End of life on February 29, 2024
-:  Action required before February 29, 2024, for your PostgreSQL 11 deployments. After February 29, 2024, all {{site.data.keyword.databases-for-postgresql}} instances on version 11 that are still active will be disabled. Users are expected to be on the latest versions of PostgreSQL or get the preferred version of {{site.data.keyword.databases-for-postgresql}}, with all the great features added to version 15. Upgrade your database instances by following the procedure at [Upgrading to a new Major Version
-](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}.
-For more information, see the original [announcement](https://www.ibm.com/blog/announcement/ibm-cloud-databases-for-postgresql-11-end-of-life-on-february-29-2024/){: external}.
-If you have any questions or concerns, contact [{{site.data.keyword.databases-for}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: external}.
-
-## 07 July 2023
-{: #databases-for-postgresql-13july2023}
+## 7 July 2023
+{: #databases-for-postgresql-07july2023}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} v15 Preferred
 :  For more information, see [Upgrading to a new Major Version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading){: external}.
 
 ## 25 May 2023
-{: #databases-for-postgresql-22may2023}
+{: #databases-for-postgresql-25may2023}
 {: release-note}
 
 Setting up disk alerts for disk utilization tutorial
 :  In this tutorial, you use the {{site.data.keyword.cloud_notm}} API and the [{{site.data.keyword.cloud_notm}} CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started){: external} to set up an alert that emails you whenever the disk utilization of your database exceeds 90%. This specific example creates an alert on a {{site.data.keyword.databases-for-elasticsearch}} deployment, but it is applicable to all the databases in the IBM {{site.data.keyword.databases-for}} catalog. For more information, see [Setting up disk alerts for disk utilization](/docs/cloud-databases?topic=cloud-databases-disk-util-alert-tutorial).
-
-## 28 October 2022
-{: #databases-for-postgresql-28oct2022}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} v10: End-of-Life Extension
-:  To ensure additional time for you to upgrade, {{site.data.keyword.databases-for}} is extending the EOL support for PostgreSQL v10 until February 22, 2023.
-Despite the extension, we strongly recommend our customers take prompt action and upgrade instances immediately. If no action is taken, databases will be disabled on February 22, 2023.
 
 ## 19 October 2022
 {: #databases-for-postgresql-19oct2022}
@@ -253,13 +213,6 @@ Deploying and Connecting a Cloud Databases Instance Tutorial
 Protecting {{site.data.keyword.databases-for-postgresql}} resources with context-based restrictions
 :  Context-based restrictions (CBR) give account owners and administrators the ability to define and enforce access restrictions for {{site.data.keyword.cloud}} resources based on the context of access requests. Access to {{site.data.keyword.databases-for}} resources can be controlled with CBR and identity and access management (IAM) policies. For more information, see [Protecting Cloud Databases resources with context-based restrictions](/docs/cloud-databases?topic=cloud-databases-cbr&interface=ui).
 
-## 27 June 2022
-{: #databases-for-postgresql-27june2022}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} 10: End-of-Life in November 2022
-:  On 3 November 2022, all {{site.data.keyword.databases-for-postgresql}} instances on version 10 that are still active will be disabled.
-
 ## 31 May 2022
 {: #databases-for-postgresql-31may2022}
 {: release-note}
@@ -273,13 +226,6 @@ Provision an {{site.data.keyword.databases-for-postgresql}} instance with Terraf
 
 {{site.data.keyword.databases-for-postgresql}} supports synchronous replication
 :  {{site.data.keyword.databases-for-postgresql}} now supports synchronous replication. See documentation [here](/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-ha-dr#ha-synchronous-replication).
-
-## 28 March 2022
-{: #databases-for-postgresql-28mar2022}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} Requirements for upgrading to PostgreSQL (v 13, 14) from PostgreSQL (v10, 11, 12)
-:  See information regarding updating to versions 13 and 14 [here](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-reqs).
 
 ## 25 March 2022
 {: #databases-for-postgresql-25mar2022}
@@ -295,13 +241,6 @@ Provision an {{site.data.keyword.databases-for-postgresql}} instance with Terraf
 General Availability of {{site.data.keyword.databases-for-postgresql}} support for {{site.data.keyword.cloud_notm}} Databases enabled by {{site.data.keyword.cloud_notm}} Satellite.
 :  A distributed cloud provides consistent security and services across environments, centralized workload visibility, reduced latency, easier compliance, and higher application development velocity.
 
-## 5 May 2021
-{: #databases-for-postgresql-05may2021}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} 9.6 End of Life
-:  On 11 November 2021, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 9.6 that are still active will be disabled.
-
 ## 15 February 2021
 {: #databases-for-postgresql-15feb2021}
 {: release-note}
@@ -309,26 +248,19 @@ General Availability of {{site.data.keyword.databases-for-postgresql}} support f
 {{site.data.keyword.databases-for-postgresql}} Horizontal Scaling
 :  Customers can scale {{site.data.keyword.databases-for-postgresql}} by adding members to their database instance.
 
-## 9 Sept 2020
-{: #databases-for-postgresql-09sep2020}
-{: release-note}
-
-{{site.data.keyword.databases-for-postgresql}} 9.5 End of Life
-:  On November 11, 2021, all {{site.data.keyword.cloud_notm}} {{site.data.keyword.databases-for-postgresql}} instances on version 9.5 that are still active will be disabled.
-
 ## 13 April 2020
 {: #databases-for-postgresql-13apr2020}
 {: release-note}
 
 {{site.data.keyword.databases-for-postgresql}} autoscaling
-:  Starting after 26 April 2020, all deployments of {{site.data.keyword.databases-for-postgresql}} will have a minor change in the format of PostgreSQL logs emitted into Log Analysis with LogDNA.
+:  We are excited to announce that automatic scaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-postgresql}} through the UI, API, and CLI.
 
 ## 27 March 2020
 {: #databases-for-postgresql-27mar2020}
 {: release-note}
 
 Changes to {{site.data.keyword.databases-for-postgresql}} Logging
-:  We are excited to announce that autoscaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-postgresql}}via the UI, API, and CLI.
+:  Starting after 26 April 2020, all deployments of {{site.data.keyword.databases-for-postgresql}} will have a minor change in the format of PostgreSQL logs emitted into Log Analysis with LogDNA.
 
 ## 2 October 2019
 {: #databases-for-postgresql-02oct2019}

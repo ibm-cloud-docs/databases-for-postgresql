@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2025
-lastupdated: "2025-05-13"
+  years: 2017, 2026
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, postgres connections string, postgresql connection string
 
@@ -30,13 +30,15 @@ A {{site.data.keyword.databases-for-postgresql}} deployment is provisioned with 
 {: #connection-strings-cli}
 {: cli}
 
-Grab connection strings from the [CLI](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections).
+Get connection strings from the [CLI](/docs/cli?topic=cli-cdb-reference#deployment-connections){: .external}.
+
 ```sh
 ibmcloud cdb deployment-connections example-deployment -u <NEW_USERNAME> [--endpoint-type <ENDPOINT_TYPE>]
 ```
 {: pre}
 
 Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named "example-deployment", use the following command.
+
 ```sh
 ibmcloud cdb deployment-connections example-deployment -u <NEW_USERNAME> --all [--endpoint-type <ENDPOINT_TYPE>]
 ```
@@ -52,6 +54,7 @@ To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keywor
 {: api}
 
 To retrieve user's connection strings from the API, use the [`/users/{userid}/connections`](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection) endpoint. You must specify in the path which user and which type of endpoint (public or private) is to be used in the returned connection strings. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
+
 ```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/{userid}/connections/{endpoint_type}'
 ```
@@ -65,19 +68,19 @@ curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.c
 
 The "PostgreSQL" tab contains information that is suited to applications that make connections to PostgreSQL.
 
-| Field Name | Index | Description |
+| Field name | Index | Description |
 | ---------- | ----- | ----------- |
-| `Type` | | Type of connection - for PostgreSQL, it is "URI" |
-| `Scheme` | | Scheme for a URI - for PostgreSQL, it is "postgresql" |
+| `Type` | | Type of connection - for PostgreSQL, it is "URI". |
+| `Scheme` | | Scheme for a URI - for PostgreSQL, it is "postgresql". |
 | `Path` | | Path for a URI - for PostgreSQL, it is the database name. The default is `ibmclouddb`. |
 | `Authentication` | `Username` | The username that you use to connect. |
-| `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD` |
+| `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD`. |
 | `Authentication` | `Method`|How authentication takes place; "direct" authentication is handled by the driver. |
-| `Hosts` | `0...` | A hostname and port to connect to |
-| `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path |
-| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment |
+| `Hosts` | `0...` | A hostname and port to connect to. |
+| `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path. |
+| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment. |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
-{: caption="postgresql/URI connection information" caption-side="top"}
+{: caption="Postgresql/URI connection information" caption-side="top"}
 
 * `0...` indicates one or more of these entries in an array.
 

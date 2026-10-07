@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-07"
 
 keywords: pgAdmin, postgresql gui, postgresql, postgres, postgresql cloud database, potgres getting started
 
@@ -34,7 +34,7 @@ Follow these steps to complete the tutorial: {: ui}
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_ui)
 * [Step 6: Connect {{site.data.keyword.atracker_full}}](#activity_tracker_ui)
-* [Next Steps](#next_steps)
+* [Next Steps](#next-steps)
 {: ui}
 
 Follow these steps to complete the tutorial: {: cli}
@@ -46,7 +46,7 @@ Follow these steps to complete the tutorial: {: cli}
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_cli)
 * [Step 6: Connect {{site.data.keyword.atracker_full}}}](#activity_tracker_cli)
-* [Next Steps](#next_steps)
+* [Next Steps](#next-steps)
 {: cli}
 
 Follow these steps to complete the tutorial: {: api}
@@ -58,7 +58,7 @@ Follow these steps to complete the tutorial: {: api}
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_api)
 * [Step 6: Connect {{site.data.keyword.atracker_full}}](#activity_tracker_api)
-* [Next Steps](#next_steps)
+* [Next Steps](#next-steps)
 {: api}
 
 Follow these steps to complete the tutorial: {: terraform}
@@ -70,7 +70,7 @@ Follow these steps to complete the tutorial: {: terraform}
 * [Step 4: Set up context-based restrictions](#postgresql_cbr)
 * [Step 5: Connect {{site.data.keyword.mon_full_notm}}](#connect_monitoring_tf)
 * [Step 6: Connect {{site.data.keyword.atracker_full}}](#activity_tracker_tf)
-* [Next Steps](#next_steps)
+* [Next Steps](#next-steps)
 {: terraform}
 
 
@@ -198,7 +198,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
    Updated at:            2023-06-26T19:53:25Z
    Last Operation:
                           Status    create succeeded
-                          Message   Provisioning PostgreSQL with version 12 (100%)
+                          Message   Provisioning PostgreSQL with version <VERSION> (100%)
    ```
    {: codeblock}
 
@@ -213,7 +213,7 @@ You can provision a {{site.data.keyword.databases-for-postgresql}} instance thro
 ### Connect to your database with the CLI
 {: #connecting-cli}
 
-Find the appropriate commands to connect to your database from the CLI in [Cloud Databases CLI Reference](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) and [Connecting with psql](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+Find the appropriate commands to connect to your database from the CLI in [Cloud Databases CLI Reference](/docs/cli?topic=cli-cdb-reference) and [Connecting with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
 The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating a CLI connection. For example, to connect to a deployment named "example-postgres", use a command like:
 
@@ -258,7 +258,7 @@ Follow these steps to provision by using the [resource controller API](https://c
 
 1. You need to know the region that you would like to deploy into.
 
-   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
+   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference#regions).
 
    The command looks like:
 
@@ -331,7 +331,7 @@ When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are
 
 When `admin` creates a resource in a database, like a table, `admin` owns that object. Resources that are created by `admin` are not accessible by other users, unless you expressly grant permissions to them.
 
-The biggest difference between the `admin` user and any other users you add to your deployment is the [`pg_monitor`](https://www.postgresql.org/docs/current/default-roles.html){: .external} and [`pg_signal_backend`](https://www.postgresql.org/docs/current/default-roles.html){: .external} roles. The `pg_monitor` role provides a set of permissions that makes the admin user appropriate for monitoring the database server. The `pg_signal_backend` role provides the admin user the ability to send signals to cancel queries and connections that are initiated by other users. It is not able to send signals to processes owned by superusers.
+The biggest difference between the `admin` user and any other users you add to your deployment is the [`pg_monitor`](https://www.postgresql.org/docs/current/predefined-roles.html#PREDEFINED-ROLE-PG-MONITOR){: .external} and [`pg_signal_backend`](https://www.postgresql.org/docs/current/predefined-roles.html#PREDEFINED-ROLE-PG-SIGNAL-BACKEND){: .external} roles. The `pg_monitor` role provides a set of permissions that makes the admin user appropriate for monitoring the database server. The `pg_signal_backend` role provides the admin user the ability to send signals to cancel queries and connections that are initiated by other users. It is not able to send signals to processes owned by superusers.
 
 You can also use the `admin` user to grant these two roles to other users on your deployment.
 
@@ -389,7 +389,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 {: #admin_pw_set_api}
 {: api}
 
-The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser) endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -405,7 +405,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 
 To set the Admin password, use the API:
 
-The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser) endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -598,7 +598,7 @@ You cannot connect {{site.data.keyword.atracker_short}} by using the API. Use th
 
 - Looking for more tools on managing your databases? Connect to your instance with the following tools:
     - [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli){: external}
-    - [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}
+    - [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference)
     - [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api){: external}
 
 - If you plan to use {{site.data.keyword.databases-for-postgresql}} for your applications, see:

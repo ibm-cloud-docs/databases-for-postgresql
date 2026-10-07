@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-11-04"
+  years: 2019, 2026
+lastupdated: "2026-10-07"
 
 keywords: admin, superuser, roles, service credentials, postgresql users, postgresql service credentials, connection strings, admin password, new user
 
@@ -26,7 +26,7 @@ When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are
 
 When `admin` creates a resource in a database, like a table, `admin` owns that object. Resources that are created by `admin` are not accessible by other users, unless you expressly grant permissions to them.
 
-The biggest difference between the `admin` user and any other users you add to your deployment is the [`pg_monitor`](https://www.postgresql.org/docs/current/default-roles.html){: .external} and [`pg_signal_backend`](https://www.postgresql.org/docs/current/default-roles.html){: .external} roles. The `pg_monitor` role provides a set of permissions that makes the admin user appropriate for monitoring the database server. The `pg_signal_backend` role provides the admin user the ability to send signals to cancel queries and connections that are initiated by other users. It is not able to send signals to processes owned by superusers.
+The biggest difference between the `admin` user and any other users you add to your deployment is the [`pg_monitor`](https://www.postgresql.org/docs/current/predefined-roles.html#PREDEFINED-ROLE-PG-MONITOR){: .external} and [`pg_signal_backend`](https://www.postgresql.org/docs/current/predefined-roles.html#PREDEFINED-ROLE-PG-SIGNAL-BACKEND){: .external} roles. The `pg_monitor` role provides a set of permissions that makes the admin user appropriate for monitoring the database server. The `pg_signal_backend` role provides the admin user the ability to send signals to cancel queries and connections that are initiated by other users. It is not able to send signals to processes owned by superusers.
 
 You can also use the `admin` user to grant these two roles to other users on your deployment.
 
@@ -71,7 +71,7 @@ Set your admin password through the UI by selecting your instance from the Resou
 {: #user-management-set-admin-password-cli}
 {: cli}
 
-Use the `cdb user-password` command from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin) to set the `admin` password.
+Use the `cdb user-password` command from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference#deployment-user-password) to set the `admin` password.
 
 For example, to set the admin password for a deployment named `example-deployment`, use the following command:
 
@@ -84,7 +84,7 @@ ibmcloud cdb user-password example-deployment admin <NEW_PASSWORD>
 {: #user-management-set-admin-password-api}
 {: api}
 
-The foundation endpoint that is shown on the Overview panel deployment details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The foundation endpoint that is shown on the Overview panel deployment details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](/apidocs/cloud-databases-api/cloud-databases-api-v5#updateuser) endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -97,7 +97,7 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ## _Service credential_ users
 {: #user-management-service-cred}
 
-Users that you [create through the _Service credentials_ panel](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#creating-users-in-_service-credentials_) are members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
+Users that you [create through the _Service credentials_ panel](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#user-management-creating-users-service-cred) are members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
 
 When a user in a group creates a resource in a database, like a table, all users that are in the same group have access to that resource. Resources that are created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the admin user.
 
@@ -105,11 +105,11 @@ When a user in a group creates a resource in a database, like a table, all users
 {: #user-management-cli}
 {: cli}
 
-Users that you create through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin) are also members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
+Users that you create through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference#deployment-user-create) are also members of `ibm-cloud-base-user`. They are able to log in, create users, and create databases.
 
 When a user creates a resource in a database, like a table, all users that are in the same group have access to that resource. Resources that are created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the `admin` user.
 
-Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#adding-users-to-_service-credentials_) if you choose.
+Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#user-management-adding-users-service-cred) if you choose.
 
 ## Users created through the API
 {: #user-management-api}
@@ -119,7 +119,7 @@ Users that you create through the [{{site.data.keyword.databases-for}} API](http
 
 When a user creates a resource in a database, like a table, all users that are in the same group have access to that resource. Resources that are created by any of the users in `ibm-cloud-base-user` are accessible to other users in `ibm-cloud-base-user`, including the admin user.
 
-Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#adding-users-to-_service-credentials_) if you choose.
+Users that are created directly from the API and CLI do not appear in _Service Credentials_, but you can [add them](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#user-management-adding-users-service-cred) if you choose.
 
 ## The read-only user
 {: #user-management-read-only-user}
@@ -145,7 +145,7 @@ The `ibm` account is the only superuser on your deployment. A superuser account 
 
 You can bypass creating users through IBM Cloud entirely, and create users directly in PostgreSQL with `psql`. This allows you to use PostgreSQL's native [role and user management](https://www.postgresql.org/docs/current/database-roles.html){: .external}. Users/roles created in `psql` must have all of their privileges set manually, as well as privileges to the objects that they create.
 
-Users that are created directly in PostgreSQL do not appear in _Service credentials_, but you can [add them](/docs/databases-for-postgresql?topic=databases-for-postgresql-connection-strings#adding-users-to-_service-credentials_) if you choose. 
+Users that are created directly in PostgreSQL do not appear in _Service credentials_, but you can [add them](#user-management-adding-users-service-cred) if you choose.
 
 Note that these users are not integrated with IAM controls, even if added to _Service credentials_.
 {: .tip}
@@ -153,7 +153,7 @@ Note that these users are not integrated with IAM controls, even if added to _Se
 ## Additional users and connection strings
 {: #creating_users}
 
-Access to your {{site.data.keyword.databases-for-postgresql}} deployment is not limited to the `admin` user. Add users in the UI in _Service credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
+Access to your {{site.data.keyword.databases-for-postgresql}} deployment is not limited to the `admin` user. Add users in the UI in _Service credentials_, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference#deployment-user-create), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints.
 

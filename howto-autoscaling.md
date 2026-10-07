@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-11-20"
+  years: 2020, 2026
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, scaling, autoscaling, memory, disk I/O, postgresql autoscaling, postgres autoscaling
 
@@ -70,14 +70,14 @@ CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling i
 {: #config-autoscaling-cli}
 {: cli}
 
-You can get the autoscaling parameters for your deployment through the CLI by using the [`cdb deployment-autoscaling`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#-ibmcloud-cdb-deployment-autoscaling-) command.
+You can get the automatic scaling parameters for your deployment through the CLI by using the [`cdb deployment-autoscaling`](/docs/cli?topic=cli-cdb-reference#deployment-autoscaling) command.
 
 ```sh
 ibmcloud cdb deployment-autoscaling <DEPLOYMENT_NAME_OR_CRN> member
 ```
 {: pre}
 
-To enable and set autoscaling parameters through the CLI, use a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#-ibmcloud-cdb-deployment-autoscaling-set-) command.
+To enable and set automatic scaling parameters through the CLI, use a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/cli?topic=cli-cdb-reference#deployment-autoscaling-set) command.
 
 ```sh
 ibmcloud cdb deployment-autoscaling-set <DEPLOYMENT_NAME_OR_CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 114688,"units": "mb"}}}}'
@@ -90,7 +90,7 @@ CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling i
 {: #config-autoscaling-api}
 {: api}
 
-You can get the autoscaling parameters for your deployment through the API by sending a `GET` request to the [`/deployments/{id}/groups/{group_id}/autoscaling`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-the-autoscaling-configuration-from-a-deploymen) endpoint.
+You can get the automatic scaling parameters for your deployment through the API by sending a `GET` request to the [`/deployments/{id}/groups/{group_id}/autoscaling`](/apidocs/cloud-databases-api/cloud-databases-api-v5#getautoscalingconditions) endpoint.
 
 ```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member/autoscaling'

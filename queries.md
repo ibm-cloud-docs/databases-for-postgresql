@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-12-16"
+  years: 2019, 2026
+lastupdated: "2026-10-07"
 
 keywords: troubleshooting for PostgreSQL, query history, slow queries
 
@@ -36,7 +36,7 @@ You are experiencing slow queries.
 {: tsCauses}
 
 - [{{site.data.keyword.logs_full}}](https://cloud.ibm.com/docs/logs-router?topic=logs-router-getting-started) is a log management service that can be integrated with {{site.data.keyword.databases-for}} to collect, analyze, and store logs. Use the {{site.data.keyword.logs_full_notm}} timeline feature to see how often a search term appears in the log over time. The timeline typically shows log events as markers that are distributed along the time axis. The length or height of the lines or markers can represent the event frequency or other parameters, depending on the timeline visualization. A long query by itself isn't a problem. A series of them can be, and identifying the actual duration can also help.
-- Enable [`pg_stat_statements`](https://www.postgresql.org/docs/14/pgstatstatements.html){: external} to identify bottlenecks and areas for optimization. `pg_stat_statements` is a PostgreSQL extension that tracks the planning and execution statistics of all SQL statements that are executed by a server.
+- Enable [`pg_stat_statements`](https://www.postgresql.org/docs/current/pgstatstatements.html){: external} to identify bottlenecks and areas for optimization. `pg_stat_statements` is a PostgreSQL extension that tracks the planning and execution statistics of all SQL statements that are executed by a server.
 - Configuring the log_min_duration_statement allows users to log statements that take longer than a specified time to complete. 
 - For more information, see [Changing your {{site.data.keyword.databases-for-postgresql}} configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration).
 {: tsResolve}

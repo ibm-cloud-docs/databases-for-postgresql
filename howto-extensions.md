@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -14,7 +14,7 @@ subcollection: databases-for-postgresql
 # Managing PostgreSQL extensions
 {: #extensions}
 
-In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. To use them, [set the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) for your service and use it to [connect with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
+In PostgreSQL, extensions are modules that supply extra functions, operators, or types. Many extensions are available in {{site.data.keyword.databases-for-postgresql_full}}. To use them, [set the admin password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) for your service, and then [use `psql` to connect](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql).
 
 ## Listing installed extensions
 {: #listing-installed-extensions}
@@ -50,10 +50,10 @@ If you run the `\dx` command after installing an extension, it appears in the ta
 
 ```sh
 ibmclouddb=> \dx
-                                     List of installed extensions
-        Name        | Version |   Schema      |                        Description
---------------------+---------+---------------+-----------------------------------------------------------
- pg_stat_statements | 1.5     | ibm_extension | track execution statistics of all SQL statements executed
+                                             List of installed extensions
+        Name        | Version |    Schema     |                              Description
+--------------------+---------+---------------+------------------------------------------------------------------------
+ pg_stat_statements | 1.10    | ibm_extension | track planning and execution statistics of all SQL statements executed
  plpgsql            | 1.0     | pg_catalog    | PL/pgSQL procedural language
 (2 rows)
 ```
@@ -63,16 +63,19 @@ Database extensions in PostgreSQL are managed per database. If you have multiple
 ## Upgrading extensions
 {: #upgrading-extensions}
 
-If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` to upgrade it.
+If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` command to update it:
 
+```sql
+ALTER EXTENSION <extension_name> UPDATE;
+```
 {: pre}
 
-When upgrading the **pg_repack** extension specifically; drop the old version from the database and [install](https://reorg.github.io/pg_repack/) the new version.
+To upgrade the `pg_repack` extension, run `DROP EXTENSION pg_repack;` and then `CREATE EXTENSION pg_repack;` in each database that uses it.
 
 ## Extension-specific notes
 {: #extensions-specific-notes}
 
-### pg_repack
+### `pg_repack`
 {: #pg_repack}
 
 - [The `pg_repack` documentation](http://reorg.github.io/pg_repack/){: .external}
@@ -83,18 +86,17 @@ When upgrading the **pg_repack** extension specifically; drop the old version fr
    ```
    {: pre}
 
-- For `pg_repack` to run reliably, your deployment should be on PostgreSQL 9.6 and above.
 - Any user can run `pg_repack`, but the command is only able to repack a table that they have permissions on.
-- `pg_repack` needs to take an exclusive lock on objects it is reorganizing at the end of the reorganization. If it can't get this lock after a certain period, it cancels all conflicting queries. If it can't do so, the reorg fails. By default, only the admin user on PostgreSQL 9.6 and greater is able to cancel conflicting queries. To expose the ability to cancel queries to other database users, grant the `pg_signal_backend` role [from the admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user).
+- `pg_repack` needs to take an exclusive lock on objects it is reorganizing at the end of the reorganization. If it can't get this lock after a certain period, it cancels all conflicting queries. If it can't do so, the reorg fails. By default, only the admin user is able to cancel conflicting queries. To let other database users cancel queries, grant them the `pg_signal_backend` role [from the admin user](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#user-admin).
 
 
-### pgaudit
+### `pgaudit`
 {: #pgaudit}
 
-- `pgaudit` libraries are preloaded and do not require the execution of `create extension pgaudit`. For more information, see [Logging with pgAudit](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit) to enable `pgaudit` logs.
+- The service loads the `pgaudit` library at startup. You cannot create the `pgaudit` extension, so DDL entries in the audit logs do not include the object type and name. To enable `pgaudit` logs, see [Logging with `pgaudit`](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit).
 
 
-### pgvector
+### `pgvector`
 {: #pgvector}
 
 -  To add the `pgvector` extension to your deployment, use the `create extension vector` command.

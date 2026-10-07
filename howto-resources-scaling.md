@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-03-03"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -67,7 +67,7 @@ You cannot scale down storage. If your data set size has decreased, you can reco
 
 If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the RAM allocation that you want for your database.
 
-Dedicated Core is deprecated, and will be removed in May 2025.
+Dedicated Core is deprecated.
 {: note}
 
 Adding memory to the total allocation adds memory to the members equally. {{site.data.keyword.databases-for-postgresql}} deployments have their memory allocation policy set at 50% heap and 50% system memory, so increasing the amount of RAM increases both heap and system memory. RAM can be scaled up or down.
@@ -81,7 +81,7 @@ The amount of memory allocated to the database's shared buffer pool is **not** a
 
 If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database.
 
-Old style dedicated core instances are deprecated, and will be removed in May 2025. For more information about the new hosting models, see the [Hosting models overview](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models).
+Old style dedicated core instances are deprecated. For more information about the new hosting models, see the [Hosting models overview](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models).
 
 ## Scaling considerations
 {: #resources-scaling-consider}
@@ -135,7 +135,7 @@ Clicking *Apply changes* triggers this scale operation.
 {: #review-resources-cli}
 {: cli}
 
-[{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command.
+[{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/cli?topic=cli-cdb-reference#deployment-groups) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command.
 
 For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command will also reveal if your database is a [Shared Compute](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/doc/databases-for-postgresql?topic=databases-for-postgresql-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
 
@@ -259,7 +259,7 @@ The `hostflavor` parameter defines your compute sizing. To provision a Shared Co
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-To view the current and scalable resources on a deployment, use the [/deployments/{id}/groups](https://cloud.ibm.com/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl) endpoint. Note that this command will also reveal if your database is a [Shared Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `host_flavor` attribute. If the `host_flavor` is null, it is on an old style hosting model.
+To view the current and scalable resources on a deployment, use the [/deployments/{id}/groups](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymentscalinggroups) endpoint. Note that this command will also reveal if your database is a [Shared Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `host_flavor` attribute. If the `host_flavor` is null, it is on an old style hosting model.
 
 ```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups'
@@ -270,7 +270,7 @@ curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.c
 {: #resources-scaling-api}
 {: api}
 
-To scale the memory of a deployment to 4096 MB of RAM for each member (there are 2 so a total memory of 8192 MB), use the [/deployments/{id}/groups/{group_id}](https://cloud.ibm.com/apidocs/cloud-databases-api#set-scaling-values-on-a-specified-group) API endpoint.
+To scale the memory of a deployment to 4096 MB of RAM for each member (there are 2 so a total memory of 8192 MB), use the [/deployments/{id}/groups/{group_id}](/apidocs/cloud-databases-api/cloud-databases-api-v5#setdeploymentscalinggroup) API endpoint.
 
 ```sh
 curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member' \

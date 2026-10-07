@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2023
-lastupdated: "2023-06-07"
+  years: 2020, 2026
+lastupdated: "2026-10-07"
 
 keywords: databases, scaling, horizontal scaling, postgresql members, postgres members, postgres scaling, data members
 
@@ -16,7 +16,7 @@ subcollection: databases-for-postgresql
 # Adding PostgreSQL members
 {: #horizontal-scaling}
 
-By adding more members, it's possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally, which increases deployment reliability by spreading data across extra `Availability zones`, where available. Horizontally scaling deployments to three PostgreSQL members is required before enabling [synchronous replication](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#general-settings). Adding a member does not spread loads nor help with capacity in your deployment; however, PostgreSQL members are eligible for failovers.
+By adding more members, it's possible to scale your {{site.data.keyword.databases-for-postgresql_full}} deployment horizontally, which increases deployment reliability by spreading data across extra `Availability zones`, where available. Horizontally scaling deployments to three PostgreSQL members is required before enabling [synchronous replication](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#gen-settings). Adding a member does not spread loads nor help with capacity in your deployment; however, PostgreSQL members are eligible for failovers.
 
 Horizontal scaling can increase only disk and memory allotments. Members cannot be scaled down.
 {: .note}
