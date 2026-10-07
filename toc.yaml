@@ -68,9 +68,6 @@ toc:
           - howto-ha-read-replica.md
           - howto-logical-replication.md
           - howto-filter-logical-replication.md
-          - link:
-              label: Upgrading PostgreSQL with minimal downtime using logical replication
-              href: https://www.ibm.com/blog/upgrading-ibm-cloud-databases-for-postgresql-with-minimal-downtime/
       - topicgroup:
           label: Configuring PostgreSQL
           topics:

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-10-06"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, read-only replica, resync, promote, cross-region replication, postgres replica, postgresql replica, leader deployment, read replica, data member, replication status
 
@@ -32,7 +32,7 @@ If a deployment is a leader and has a read-only replica that is already attached
 ## Provisioning a read-only replica
 {: #read-only-replicas-provision}
 
-Resources for PostgreSQL deployments are allocated per-deployment, and normal deployments have two members. Since a read-only replica has only one member, and provisioning currently uses values that are half of the requested values for memory and storage, provisioning can fail. The web UI cannot modify the value for storage and it automatically uses the leader deployment’s value - which is cut in half. If that is insufficient for your data to fit, you need to use the API or CLI to specify twice the storage you want to be provisioned. (The same applies to memory, although a lower amount of memory might not prevent the restore from being successful.) An update is in progress to remediate this situation.
+Resources for PostgreSQL deployments are allocated per-deployment, and normal deployments have two members. Since a read-only replica has only one member, and provisioning currently uses values that are half of the requested values for memory and storage, provisioning can fail. The web UI cannot modify the value for storage and it automatically uses the leader deployment’s value - which is cut in half. If that is insufficient for your data to fit, you need to use the API or CLI to specify twice the storage you want to be provisioned. (The same applies to memory, although a lower amount of memory might not prevent the restore from being successful.)
 {: important}
 
 ### Provisioning through the UI
@@ -99,7 +99,7 @@ On the _Read replicas_ tab of a read-only replica, _Replication_ contains its na
 
 You must monitor replication as replication status is not automatically monitored.
 
-Check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#the-admin-user). Once you are connected run the following command:
+Check the replication status of a read-only replica with `psql`, but only from its leader. [Connect to the leader deployment with `psql`](/docs/databases-for-postgresql?topic=databases-for-postgresql-connecting-psql) using the [admin credentials](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management#user-admin). Once you are connected run the following command:
 
 ```sh
 SELECT * from pg_stat_replication;
@@ -110,7 +110,7 @@ When monitoring the output for replication lag, note that the `application_name`
 
 Your deployment always has a replica for its HA paired node, the `application_name` will the same as your main deployment, and the `sync_state` value will be "sync". You should expect an additional row of output for each read-only replica, the `application_name` will be different and the `sync_state` will be "async". You can then evaluate whether it is in sync with the additional information provided by the query results.
 
-For more information, see [pg_stat_replication](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW){: .external}.
+For more information, see [`pg_stat_replication`](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-REPLICATION-VIEW){: .external}.
 
 ### Read-only replica users and privileges
 {: #read-only-replica-users-priv}
@@ -141,7 +141,7 @@ The amount of time it takes to resync a read-only replica varies, but the proces
 {: #resyncing-read-only-replica-cli}
 {: cli}
 
-To start a resync through the CLI, use the [`cdb read-replica-resync`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#read-replica-resync) command.
+To start a resync through the CLI, use the [`cdb read-replica-resync`](/docs/cli?topic=cli-cdb-reference#read-replica-resync) command.
 ```sh
 ibmcloud cdb read-replica-resync <DEPLOYMENT_NAME_OR_CRN>
 ```
@@ -151,7 +151,7 @@ ibmcloud cdb read-replica-resync <DEPLOYMENT_NAME_OR_CRN>
 {: #resyncing-read-only-replica-api}
 {: api}
 
-To start a resync through the API, send a POST to the [`/deployments/{id}/remotes/resync`](https://cloud.ibm.com/apidocs/cloud-databases-api#resync-read-only-replica) endpoint.
+To start a resync through the API, send a POST to the [`/deployments/{id}/remotes/resync`](/apidocs/cloud-databases-api/cloud-databases-api-v5#resyncreplica) endpoint.
 ```sh
 curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/resync \
@@ -164,7 +164,7 @@ curl -X POST \
 
 A read-only replica is able to be promoted to an independent cluster that can accept write operations as well as read operations. If something happens to the leader deployment, the read-only replica can be promoted to a stand-alone cluster and start accepting writes from your application. Promoting a read-replica cluster to a stand-alone cluster will be quicker if the read-replica cluster already has more than one data member.
 
-Upon promotion, the read-only replica terminates its connection to the leader and becomes a stand-alone {{site.data.keyword.databases-for-postgresql}} deployment. The deployment can start accepting and running read and write operations, backups are enabled, and it is issued its own admin user. A new data member is added so the deployment becomes a cluster with two data members. This increases the cost as it is billed at the same per member consumption rate, but the deployment has two members instead of one.
+Upon promotion, the read-only replica terminates its connection to the leader and becomes a stand-alone {{site.data.keyword.databases-for-postgresql}} deployment. The deployment can start accepting and running read and write operations, backups are enabled, and it is issued its own admin user. For a single-member read-only replica, promotion adds a second data member. As a result, the cost increases because you are billed for two data members at the same per-member rate.
 
 When you promote a read-only replica, you can skip the initial backup that would normally be taken upon promotion. Skipping the initial backup means that your replica becomes available more quickly, but there is no immediate backup available. You can start an on-demand backup once the promotion process is complete.
 
@@ -180,7 +180,7 @@ To promote a read-only replica from the UI, click **Promote read-only replica**.
 {: #promoting-read-only-replica-cli}
 {: cli}
 
-To promote through the CLI, use the [`cdb read-replica-promote`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#read-replica-promote) command.
+To promote through the CLI, use the [`cdb read-replica-promote`](/docs/cli?topic=cli-cdb-reference#read-replica-promote) command.
 ```sh
 ibmcloud cdb read-replica-promote <DEPLOYMENT_NAME_OR_CRN>
 ```
@@ -190,7 +190,7 @@ ibmcloud cdb read-replica-promote <DEPLOYMENT_NAME_OR_CRN>
 {: #promoting-read-only-replica-api}
 {: api}
 
-To promote through the API, send a POST to the [`/deployments/{id}/remotes/promotion`](https://cloud.ibm.com/apidocs/cloud-databases-api#modify-read-only-replication-on-a-deployment) endpoint.
+To promote through the API, send a POST to the [`/deployments/{id}/remotes/promotion`](/apidocs/cloud-databases-api/cloud-databases-api-v5#promotereadonlyreplica) endpoint.
 ```sh
 curl -X POST \
   https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/remotes/promotion \
@@ -213,19 +213,19 @@ curl -X POST \
 ### Time to completion
 {: #read-only-replica-completion}
 
-The promote task completes only when the database is highly available. However, read/write availability occurs after about 10 minutes with one major caveat: the database is not highly available until the task completes.
+Read and write access might become available before the promotion task completes. Wait for task completion before relying on the promoted deployment's high availability.
 
 The full promotion time of a read-replica is determined by the size of the data in two possible ways:
-- Read replicas are single members. When promoted, the formation spec is changed to two members, which creates a second replica. The creation time of that replica depends on the size of the data. The creation of that replica runs at 25 MB/s to avoid saturating the network. As databases grow, the creation can take a substantial amount of time. The task does not complete until the creation of that replica is done.
+- Promoting a single-member read-only replica adds a second data member. The creation time of that replica depends on database size, available resources, and workload. Large databases can take longer to copy. The task does not complete until the creation of that replica is done.
 - If you choose to take a backup as part of the promotion, the completion of that backup also needs to finish before the task completes. Again, this depends on the size of the database.
 
-There is no High-Availability member until the promotion task completes. Likewise, if you have selected to have an initial backup, no backup exists until the second point completes or a manual backup is created.
+Consider the promoted deployment's first backup as a separate recovery milestone. If you selected an initial backup, confirm that it completed successfully. Otherwise, create an on-demand backup or wait for a successful scheduled backup before relying on recovery from a backup of the promoted deployment.
 {: note}
 
 ### Upgrading while promoting
 {: #read-only-replica-upgrading-promoting}
 
-If you need to upgrade to a new major version of the database, you can do so when promoting a read-only replica to a stand-alone deployment. For more information, see [Upgrading to a new major version](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading).
+If you need to upgrade to a new major version of the database, you can do so when promoting a read-only replica to a stand-alone deployment. For more information, see [Upgrading from a read-only replica](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-replica).
 
 ## Read-only replica considerations
 {: #read-only-replicas-consider}
@@ -252,10 +252,20 @@ If you need to upgrade to a new major version of the database, you can do so whe
 
 - A read-only replica is a deployment with single data member and does not have any internal high availability. It is prone to temporary interruptions and downtime during maintenance. If you have applications that rely on read-only replicas, be sure to have logic to retry failed queries, or load-balancing over multiple read-only replicas.
 
-### Read-only replica status at in-place major version upgrades
+### Read-only replicas and in-place major version upgrades
 {: #read-only-replicas-ipu}
 
-With the introduction of in-place major version upgrades in our {{site.data.keyword.databases-for-postgresql}} service, read-only replicas can help maintain read transaction continuity and prove especially useful during upgrade processes. However, note that this feature is not yet applicable to read-only replicas at the moment. Still, if your service needs to read data from the instance that the upgrade is in progress, you may consider to [create a standby instance](docs/databases-for-postgresql?topic=databases-for-postgresql-read-only-replicas&interface=ui#read-only-replicas-provision) and update your application’s connection details to point to the standby. This ensures you have an up-to-date copy of your database prior to starting the upgrade. The standby instance can also be promoted and used as a primary instance if the in-place upgrade does not complete successfully.
+An in-place major version upgrade (IPMVU) upgrades the source deployment and its built-in high-availability members. Read-only replicas must run the same PostgreSQL major version as their source. They cannot continue [physical replication](https://www.postgresql.org/docs/current/warm-standby.html#STANDBY-PLANNING){: external} from a source that runs a different major version.
 
-During an in-place major version upgrade, the source instance and its read-only replicas lose replication functionality, and replication is **not** automatically restored after the upgrade (also note that the version change makes them incompatible). However, read-only replicas remain fully operational as standalone instances. So, you can safely promote a read-only replica to a primary instance at any time, independent of the upgrade outcome. In the event of an upgrade failure, promoting a read-only replica allows you to quickly restore your database.
-{: important}
+The upgrade fails its prechecks if any read-only replica is associated with the source. This includes replicas in other regions, high-availability read-only replicas, and replicas that are provisioning. A replica still counts while it is disconnected. To list the replicas, run [`ibmcloud cdb deployment-read-replicas`](/docs/cli?topic=cli-cdb-reference#deployment-read-replicas) with the source deployment's name or CRN. The list does not include deleted replicas that are awaiting reclamation. Although these replicas are not shown in the list, they still fail the precheck.
+
+Before you request the source upgrade:
+
+- [Promote the replicas](#promoting-read-only-replica) that you need to keep. Promotion ends replication and makes each replica an independent deployment. A promoted replica no longer receives changes from the source and cannot rejoin it as a replica. Plan for applications that read current data from these replicas.
+- Delete any replicas that you no longer need by using the [`ibmcloud resource service-instance-delete`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance_delete){: external} command with the replica's name or CRN. A deleted replica stays associated with the source until it is permanently deleted. To delete it permanently, find its reclamation ID with [`ibmcloud resource reclamations`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamations){: external}, and then run [`ibmcloud resource reclamation-delete`](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_reclamation_delete){: external} with that ID.
+
+Wait for every promotion or deletion to finish before you request the upgrade, and do not create read-only replicas until the upgrade task completes. The service does not block replica creation during the upgrade. A replica that you create while the upgrade runs cannot replicate from the upgraded deployment. Delete it, and create a new one after the task completes. If the precheck keeps failing after you promote or delete every replica, contact support. If the upgrade task shows **Failed**, see [Troubleshooting IPMVU](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place-troubleshooting).
+
+After the source upgrade completes, provision new read-only replicas if needed, and [verify that replication has caught up](#checking-replication-status) before you direct read traffic to them.
+
+IPMVU is not available on a read-only replica deployment. To upgrade a replica while you promote it to an independent deployment, see [Upgrading while promoting](#read-only-replica-upgrading-promoting). For source upgrade preparation and availability, see [In-place major version upgrade](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#upgrading-in-place).

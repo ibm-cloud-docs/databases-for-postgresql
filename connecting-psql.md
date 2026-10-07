@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2026
-lastupdated: "2026-10-06"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, psql, postgresql command line
 
@@ -17,7 +17,7 @@ subcollection: databases-for-postgresql
 
 Use `psql` for direct interaction and monitoring of the data structures that are created within the database. `psql` is also useful for testing and monitoring queries and performance, installing and modifying scripts, and other management activities.
 
-The `admin` user comes with the PostgreSQL default role [`pg_monitor`](https://www.postgresql.org/docs/10/static/default-roles.html){: .external}, that allows access to PostgreSQL monitoring views and functions. By default, the `admin` user does not have permissions on objects that are created by other users.
+The `admin` user is a member of the PostgreSQL predefined role [`pg_monitor`](https://www.postgresql.org/docs/current/predefined-roles.html#PREDEFINED-ROLE-PG-MONITOR){: .external}, which allows access to PostgreSQL monitoring views and functions. By default, the `admin` user does not have permissions on objects that are created by users that you create with SQL commands.
 
 You must set the `admin` password before you use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-postgresql?topic=databases-for-postgresql-user-management&interface=ui#user-management-set-admin-password-ui) page.
 {: .tip}
@@ -25,9 +25,9 @@ You must set the `admin` password before you use it to connect to the database. 
 ## Installing `psql`
 {: #installing-psql}
 
-To use `psql`, the PostgreSQL client tools need to be installed on the local system. They can be installed with the full PostgreSQL package that is provided from [postgresql.org](https://www.postgresql.org/download/){: .external}, as a [package from your operating system's package manager](https://www.ibm.com/blog/postgresql-tips-installing-the-postgresql-client/){: .external}.
+To use `psql`, install the PostgreSQL client tools on your local system. You can install them from the [PostgreSQL downloads page](https://www.postgresql.org/download/){: .external} or with your operating system's package manager.
 
-For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/app-psql.html){: .external}.
+For more information about `psql`, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/app-psql.html){: .external}.
 
 Most instructions for installing the PostgreSQL tools assume you want the database installed too. It's a reasonable assumption if you're dealing with users who don't have access to PostgreSQL in the cloud or on a remote server.
 
@@ -64,31 +64,10 @@ sudo apt-get install postgresql-client
 
 This will install the PostgreSQL client.
 
-### Installing `postgresql-client` on Red Hat Enterprise Linux
+### Installing `psql` on Red Hat Enterprise Linux
 {: #installing-psql-rh-linux}
 
-For Red Hat Enterprise Linux (or RHEL as it's usually written), there's a little more setup than with Ubuntu. For RHEL, the package manager is [`Yum`](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-yum#doc-wrapper){: external}. 
-
-First, you need to point `Yum` to the PostgreSQL repository, like this:
-
-```sh
-sudo yum install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat10-10-2.noarch.rpm
-```
-{: pre}
-
-`Yum` goes to that URL and configures itself to use that package repository. With that done, you can add packages by name:
-
-```sh
-sudo yum install postgresql15
-```
-{: pre}
-
-This command installs just the client packages. If you are wondering where to find that repository URL, head to Linux Downloads (Red Hat Family) where you'll find a form that will let you select the PostgreSQL version, platform and architecture and it'll give you the appropriate instructions for that Red Hat variant - that includes CentOS, Scientific Linux, and Oracle Enterprise Linux. It also includes Fedora. Fedora's default repositories already have a PostgreSQL client available from them. So For Fedora 27 and 28 and later, install the PostgreSQL client from the terminal with:
-
-```sh
-sudo dnf install postgresql.x86_64
-```
-{: pre}
+Follow the [PostgreSQL installation instructions for Red Hat-based distributions](https://www.postgresql.org/download/linux/redhat/){: external}. Select your PostgreSQL version, platform, and architecture, and run the commands that set up the repository. Then, install only the client package, for example `sudo dnf install -y postgresql18`. You do not need to install, initialize, or start a PostgreSQL server to connect to your deployment.
 
 ### Installing `psql` on Windows
 {: #installing-psql-windows}
@@ -107,7 +86,7 @@ After that, click **OK** a couple of times to go back to the desktop. Start a ne
 ## `psql` Connection Strings
 {: #psql-connection-strings}
 
-Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
+Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference#deployment-connections), and the [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
 The information that you need to make a connection with `psql` is in the "cli" section of your connection strings. The table contains a breakdown for reference.
 

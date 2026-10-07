@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2026
-lastupdated: "2026-01-12"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, monitoring, scaling, autoscaling, resources, postgresql connection limits, troubleshooting
 
@@ -158,7 +158,7 @@ source logs|filter message.attr.durationMillis>=1000
 ### Option 2. Enable the `log_min_duration_statement`
 {: #enabling_logminduration_statement}
 
-Using the `log_min_duration_statement` specifies that statements that take longer than the specified number of milliseconds are logged. For more information, see [log_min_duration_statement](https://www.postgresql.org/docs/14/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN).
+Using the `log_min_duration_statement` specifies that statements that take longer than the specified number of milliseconds are logged. For more information, see [`log_min_duration_statement`](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN).
 
 You can also install the [pg_stat_statements extension](/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions):
 

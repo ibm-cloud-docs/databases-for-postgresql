@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, connection limits, terminating connections, postgresql connection pooling, postgres connection pooling, managing connections, pgbouncer, auth_query
 
@@ -111,7 +111,7 @@ Alternatively, you can use a third-party tool such as [PgBouncer](https://www.pg
 
 PostgreSQL allocates some amount of memory on a per-connection basis, typically around 5 - 10 MB per connection. It is important to consider the total amount of memory that is available to your deployment before increasing the connection limit. To raise the connection limit, first you might want to [scale your deployment](/docs/databases-for-postgresql?topic=databases-for-postgresql-resources-scaling) to ensure that you have enough memory to accommodate more connections.
 
-Next, change the value of `max_connections` on your deployment. To make permanent changes to the [PostgreSQL configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#changing-configuration), you want to use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration) to write the changes to the configuration file for your deployment.
+Next, change the value of `max_connections` on your deployment. To make permanent changes to the [PostgreSQL configuration](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration#changing-configuration), you want to use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/cli?topic=cli-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration) to write the changes to the configuration file for your deployment.
 
 For example, to raise `max_connections` to 215, it might be a good idea to scale your deployment to at least 2 GB of RAM per data member, for a total of 4 GB of RAM for your deployment. Once the scaling operation has finishes, then set the connection limit.
 1. Before you adjust `max_connections`, make sure to target your preferred region with a command like:
@@ -162,10 +162,10 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 
 In the event of a network connection or failover, it is possible that broken TCP/IP connections remain in a half-opened/closed state until the TCP keepalive timeouts are reached. To avoid this scenario, set the `socket_timeout` and `connection_timeout` settings in your specific application drivers, as well. The correct settings _vary based on the specific workload and it is important to run load tests before going to production_. A good starting point for the `connection_timeout` is 2 - 5 seconds. For the `socket_timeout`, a good starting point is 30 - 60 seconds.
 
-Furthermore, on the server side, the following [keepalive configurations](https://www.postgresql.org/docs/12/runtime-config-connection.html){: .external} are used as the default.
+Furthermore, on the server side, the following [TCP keep-alive settings](https://www.postgresql.org/docs/current/runtime-config-connection.html#RUNTIME-CONFIG-TCP-SETTINGS){: .external} are used as the default.
 
-- `tcp_keepalives_idle` is set to 5 minutes
-- `tcp_keepalives_interval` probe interval is set to 10 seconds
+- `tcp_keepalives_idle` is set to 111 seconds
+- `tcp_keepalives_interval` is set to 15 seconds
 - `tcp_keepalives_count` is set to 6
 
 To prevent half-open/closed connections or bursts in connection attempts from overwhelming your deployment, set the [`max_connections` parameter](/docs/databases-for-postgresql?topic=databases-for-postgresql-changing-configuration) for Postgres to at least double your expected connection count.

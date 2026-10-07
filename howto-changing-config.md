@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-07"
 
 keywords: postgresql, databases, config, postgresql uri, postgresql logging integration, changing postgresql configuration, postgresql time zone, postgresql logging, postgresql connection uri, changing config, changing configuration
 
@@ -14,7 +14,7 @@ subcollection: databases-for-postgresql
 # Changing your {{site.data.keyword.databases-for-postgresql}} configuration
 {: #changing-configuration}
 
-{{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PostgreSQL configuration settings so you can tune your PostgreSQL databases to your use case. To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration){: external} to write the changes to the configuration file for your deployment.
+{{site.data.keyword.databases-for-postgresql_full}} allows you to change some of the PostgreSQL configuration settings so you can tune your PostgreSQL databases to your use case. To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/cli?topic=cli-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration){: external} to write the changes to the configuration file for your deployment.
 
 The configuration is defined in a schema. To make a change, you send a JSON object with the settings and their new values to the API or the CLI. For example, to set the `max_connections` setting to 150, you would supply:
 
@@ -46,7 +46,7 @@ ibmcloud cdb deployment-configuration <INSTANCE_NAME_OR_CRN> [@JSON_FILE | JSON_
 ```
 {: pre}
 
-The command reads the changes that you would like to make from the JSON object or a file. For more information, see the [reference page](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration).
+The command reads the changes that you would like to make from the JSON object or a file. For more information, see the [reference page](/docs/cli?topic=cli-cdb-reference#deployment-configuration).
 
 ## Using the API with {{site.data.keyword.databases-for-postgresql_full}}
 {: #using-api}
@@ -56,7 +56,7 @@ The two deployment-configuration endpoints allow viewing the configuration schem
 
 To change the configuration, send the settings that you would like to change as a JSON object in the request body of a `PATCH` request to `/deployments/{id}/configuration`.
 
-For more information, see the [API reference](https://cloud.ibm.com/apidocs/cloud-databases-api#change-your-database-configuration){: external}.
+For more information, see the [API reference](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration).
 
 
 ## Available {{site.data.keyword.databases-for-postgresql_full}} configuration settings
@@ -187,17 +187,17 @@ The `work_mem` value is automatically adjusted in relationship to the `shared_bu
 - Options - Minimum value of 100
 - Notes - Statements that take longer than the specified number of milliseconds are logged.  
 
-[`tcp_keepalives_idle`](https://www.postgresql.org/docs/10/runtime-config-connection.html){: .external}
+[`tcp_keepalives_idle`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-TCP-KEEPALIVES-IDLE){: .external}
 
 - Default - `111`
 - Restarts database - No
 
-[`tcp_keepalives_interval`](https://www.postgresql.org/docs/10/runtime-config-connection.html){: .external}
+[`tcp_keepalives_interval`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-TCP-KEEPALIVES-INTERVAL){: .external}
 
 - Default - `15`
 - Restarts database - No 
 
-[`tcp_keepalives_count`](https://www.postgresql.org/docs/10/runtime-config-connection.html){: .external}
+[`tcp_keepalives_count`](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-TCP-KEEPALIVES-COUNT){: .external}
 
 - Default - `6`
 - Restarts database - No

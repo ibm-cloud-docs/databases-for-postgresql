@@ -52,27 +52,23 @@
   ],
   "section_devtools": {
     "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
-    "cli": "/docs/databases-cli-plugin",
+    "cli": "/docs/cli?topic=cli-cdb-reference",
     "terraform": "https://registry.terraform.io/modules/terraform-ibm-modules/icd-postgresql/ibm/latest"
   },
   "section_updates": {
     "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
     "tiles": [
       {
-        "date": "22 October 2024",
-        "title": "Databases for PostgreSQL end-of-life procedure change"
+        "date": "[Publish date]",
+        "title": "Improved in-place major version upgrades for PostgreSQL"
       },
       {
-        "date": "27 September 2024",
-        "title": "Databases for PostgreSQL version 13 End of life on October 22, 2025"
+        "date": "3 August 2026",
+        "title": "Built-in support for PgBouncer auth_query authentication"
       },
       {
-        "date": "16 September 2024",
-        "title": "Private endpoints as new default"
-      },
-      {
-        "date": "1 May 2024",
-        "title": "New hosting models"
+        "date": "15 June 2026",
+        "title": "In-place major version upgrades to PostgreSQL 18"
       }
     ]
   }

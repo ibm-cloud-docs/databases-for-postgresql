@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-09-24"
+lastupdated: "2026-10-07"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
 
@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 # Provisioning
 {: #provisioning}
 
-Provision an {{site.data.keyword.databases-for-postgresql_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-postgresql/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-postgresql/ibm/latest){: external}.
+Provision an {{site.data.keyword.databases-for-postgresql_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-postgresql/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-postgresql/ibm/latest){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
@@ -173,7 +173,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       Updated at:            2023-06-26T19:53:25Z
       Last Operation:
                              Status    create succeeded
-                             Message   Provisioning postgresql with version 12 (100%)
+                             Message   Provisioning postgresql with version <VERSION> (100%)
       ```
       {: codeblock}
 
