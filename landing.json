@@ -59,7 +59,7 @@
     "view_more": "/docs/databases-for-postgresql?topic=databases-for-postgresql-postgresql-relnotes",
     "tiles": [
       {
-        "date": "[Publish date]",
+        "date": "7 October 2026",
         "title": "Improved in-place major version upgrades for PostgreSQL"
       },
       {
