@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2026
-lastupdated: "2026-10-07"
+lastupdated: "2026-11-02"
 
 keywords: postgresql, databases, upgrading, major versions, postgresql new deployment, postgresql database version, postgresql major version
 
@@ -148,14 +148,14 @@ WHERE p.probin = '$libdir/libpgrouting-3.5';
 ```
 {: pre}
 
-If the query returns a row, update `pgRouting` to version 4.0.1 before you upgrade, and then run the query again:
+If the query returns a row, update `pgRouting` to the latest version that your deployment provides before you upgrade, and then run the query again:
 
 ```sql
-ALTER EXTENSION pgrouting UPDATE TO '4.0.1';
+ALTER EXTENSION pgrouting UPDATE;
 ```
 {: pre}
 
-`pgRouting` 4.0 removes several functions, such as `pgr_createTopology`, `pgr_analyzeGraph`, and `pgr_nodeNetwork`, and changes others. Test your applications with version 4.0.1 on a staging deployment first. If they need the removed functions, contact support before you upgrade to PostgreSQL 18. From PostgreSQL 16, you can also upgrade to PostgreSQL 17, which includes the 3.5 library.
+`pgRouting` 4.0 removes several functions, such as `pgr_createTopology`, `pgr_analyzeGraph`, and `pgr_nodeNetwork`, and changes others. Test your applications with `pgRouting` 4.0 on a staging deployment first. If they need the removed functions, contact support before you upgrade to PostgreSQL 18. From PostgreSQL 16, you can also upgrade to PostgreSQL 17, which includes the 3.5 library.
 
 #### SQL functions in indexes, partition keys, and generated columns
 {: #sql-function-wrappers}
@@ -770,7 +770,7 @@ Run the following queries as the `admin` user with `psql` before you submit the 
     ```
     {: pre}
 
-15. Database names that the upgrade cannot use. Expect no rows. To fix a listed database, its owner must connect to another database and run `ALTER DATABASE "<database_name>" RENAME TO <new_name>;` while no sessions are connected to to the database being renamed. The owner must also have the `CREATEDB` attribute. Then, update any applications that connect to the database.
+15. Database names that the upgrade cannot use. Expect no rows. To fix a listed database, its owner must connect to another database and run `ALTER DATABASE "<database_name>" RENAME TO <new_name>;` while no sessions are connected to the database being renamed. The owner must also have the `CREATEDB` attribute. Then, update any applications that connect to the database.
 
     ```sql
     SELECT datname

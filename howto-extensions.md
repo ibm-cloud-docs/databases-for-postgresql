@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2026
-lastupdated: "2026-10-07"
+lastupdated: "2026-11-02"
 
 keywords: postgresql, databases, postgresql extensions, postgres extensions, ibm_extension
 
@@ -63,14 +63,28 @@ Database extensions in PostgreSQL are managed per database. If you have multiple
 ## Upgrading extensions
 {: #upgrading-extensions}
 
-If there is a newer version of an extension available than the one you currently have installed, use the `ALTER EXTENSION` command to update it:
+To list the extensions in the current database that have a newer version available, run the following query:
+
+```sql
+SELECT e.extname, e.extversion AS installed_version, a.default_version AS available_version
+FROM pg_catalog.pg_extension AS e
+JOIN pg_catalog.pg_available_extensions AS a ON a.name = e.extname
+WHERE e.extversion <> a.default_version;
+```
+{: pre}
+
+To update an extension, run the `ALTER EXTENSION` command in each database where the extension is installed:
 
 ```sql
 ALTER EXTENSION <extension_name> UPDATE;
 ```
 {: pre}
 
-To upgrade the `pg_repack` extension, run `DROP EXTENSION pg_repack;` and then `CREATE EXTENSION pg_repack;` in each database that uses it.
+The following extensions need a different procedure:
+
+- To upgrade the `pg_repack` extension, run `DROP EXTENSION pg_repack;` and then `CREATE EXTENSION pg_repack;` in each database that uses it.
+- PostgreSQL Anonymizer (`anon`) does not support `ALTER EXTENSION ... UPDATE`. To upgrade it, see [Upgrading PostgreSQL Anonymizer](/docs/databases-for-postgresql?topic=databases-for-postgresql-data-masking#anon-upgrading).
+- Updating `pgRouting` 3.x moves it to version 4.0, which removes several functions. Before you update, see [`pgRouting`](/docs/databases-for-postgresql?topic=databases-for-postgresql-upgrading#pgrouting).
 
 ## Extension-specific notes
 {: #extensions-specific-notes}
