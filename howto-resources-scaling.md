@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-10-07"
+lastupdated: "2026-11-05"
 
 keywords: postgresql, scaling, memory, disk IOPS, CPU, postgresql dedicated cores, scaling postgresql
 
@@ -91,6 +91,7 @@ Old style dedicated core instances are deprecated. For more information about th
 - Disk cannot be scaled down.
 - Scaling between hosting models (Shared Compute, Isolated Compute, and Dedicated Cores) moves your deployment to new hosts. Your databases are restarted as part of that move. As your deployment is moved to a new host, this can also take longer than just adding more resources. For more information, see [Shared compute and Isolated compute](/docs/databases-for-postgresql?topic=databases-for-postgresql-hosting-models).
 - Similarly, drastically scaling up CPU, RAM, or disk can take longer to run than small resource increases to account for provisioning more underlying hardware resources.
+- Scaling can be queued behind a running or planned backup and does not start until the backup completes.
 - Scaling operations are logged in [{{site.data.keyword.atracker_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-at_events).
 - If you find consistent trends in resource usage or want to scale when certain resource thresholds are reached, enable [autoscaling](/docs/databases-for-postgresql?topic=databases-for-postgresql-autoscaling) on your deployment.
 - {{site.data.keyword.databases-for-postgresql}} is designed to balance work load across a cluster and can benefit from being horizontally scaled. If you are concerned about performance, check out [Adding PostgreSQL members](/docs/databases-for-postgresql?topic=databases-for-postgresql-horizontal-scaling).
