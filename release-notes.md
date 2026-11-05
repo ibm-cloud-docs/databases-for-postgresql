@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-10-07"
+lastupdated: "2026-11-02"
 
 keywords: databases-for-postgresql release notes
 
@@ -19,6 +19,28 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-postgresql_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 30 October 2026
+{: #databases-for-postgresql-30oct2026}
+{: release-note}
+
+Updated extensions and PostGIS libraries
+:  This release updates the following extensions and libraries:
+    * PostgreSQL Anonymizer (`anon`) 3.3.2
+    * `pg_cron` 1.6.8
+    * `pgRouting` 4.0.2
+    * `pgvector` 0.8.7, on PostgreSQL 15 and later
+    * `wal2json` 2.7
+    * The libraries that PostGIS uses: GEOS 3.15.0, PROJ 9.9.0 with PROJ-data 1.25.0, and GDAL 3.13.3
+
+:  To update an extension that is installed in a database, run `ALTER EXTENSION <extension_name> UPDATE;` in that database. PostgreSQL Anonymizer does not support this command, and updating `pgRouting` 3.x moves it to version 4.0, which removes several functions. For both cases, see [Upgrading extensions](/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions#upgrading-extensions).
+
+:  Some of these updates change behavior. Test the following changes before you rely on them in production:
+    * PostgreSQL Anonymizer 3.3 fixes several vulnerabilities that let masked roles read unmasked data. Masking rules can no longer contain subqueries. While dynamic masking is enabled, masked roles can no longer run functions that have an SQL-standard body. PostgreSQL also does not inline functions in their queries, which can slow some of those queries.
+    * `wal2json` 2.7 changes its output. Format version 1 includes `columnoptionals` regardless of the `include-types` option, format version 2 reports `typeoid` as an unsigned value, and `wal2json` escapes default expressions like other strings. On PostgreSQL 14 to 16, which ran version 2.4 or 2.5, the update also includes the output fixes from the versions in between. For details, see the [`wal2json` release notes](https://github.com/eulerto/wal2json/releases){: external}. Check the applications that parse this output.
+    * `pgRouting` 4.0.2 returns an error when `pgr_drivingDistance` or `pgr_withPointsDD` receives a negative distance.
+    * GEOS 3.15.0 changes the results of some overlay functions, such as `ST_Intersection` and `ST_Union`. For example, these functions can return a `LINESTRING` where they previously returned a `MULTILINESTRING` with contiguous parts.
+    * PROJ 9.9.0 updates its EPSG database from version 12.029 to version 13.102, so `ST_Transform` can return different results for some coordinate reference systems.
 
 ## 7 October 2026
 {: #databases-for-postgresql-07Oct2026}
@@ -38,7 +60,7 @@ Improved in-place major version upgrades for {{site.data.keyword.databases-for-p
 {: release-note}
 
 Built-in support for PgBouncer `auth_query` authentication
-:  {{site.data.keyword.databases-for-postgresql}} deployments now include a `pgbouncer_lookup()` helper function and a supporting `pgbouncer_auth` role. If you run your own PgBouncer connection pooler, you can set PgBouncer's `auth_query` option to validate users directly against your deployment instead of maintaining a local user list. Password changes and credential rotations take effect immediately, with no PgBouncer restart required. For more information, see [Connection pooling with PgBouncer](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgbouncer).
+:  {{site.data.keyword.databases-for-postgresql}} deployments now include a `pgbouncer_lookup()` helper function and a supporting `pgbouncer_auth` role. If you run your own PgBouncer connection pooler, you can set PgBouncer's `auth_query` option to validate users directly against your deployment rather than maintaining a local user list. Password changes and credential rotations take effect immediately, with no PgBouncer restart required. For more information, see [Connection pooling with PgBouncer](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgbouncer).
 
 ## 15 June 2026
 {: #databases-for-postgresql-15jun2026}
@@ -64,7 +86,7 @@ In-place major version upgrades for {{site.data.keyword.databases-for-postgresql
 
 Deprecation of {{site.data.keyword.hscrypto}}
 : {{site.data.keyword.cloud}} is transitioning its dedicated key management offering from {{site.data.keyword.hscrypto}} to {{site.data.keyword.keymanagementservicelong}} Dedicated (Single Tenant). As part of this transition, {{site.data.keyword.hscrypto}} will reach **End of Life (EOL) on March 20, 2027**. After this date, the service will no longer be supported, and any remaining instances will be terminated.
-To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information on how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/cloud-databases?topic=cloud-databases-hpcs#migrating_hpcs_to_kp).
+To ensure continued service availability and support, you must migrate all existing HPCS root keys to {{site.data.keyword.keymanagementservicelong_notm}} Dedicated (Single Tenant) before the EOL date. For more information about how to migrate your encryption keys, see [Migrating from {{site.data.keyword.hscrypto}} (HPCS) to {{site.data.keyword.keymanagementserviceshort}} Dedicated (KP-ST)](/docs/cloud-databases?topic=cloud-databases-hpcs#migrating_hpcs_to_kp).
 
 
 ## 28 January 2026
@@ -83,7 +105,7 @@ Key benefits and risk considerations:
 
 * This feature enables immediate database access following primary node restoration, significantly reducing the time required to resume operations. However, High Availability (HA) remains inactive during the initial recovery phase; if a zone failure occurs before the secondary node fully synchronizes, the instance may be exposed to potential data loss. Clients are advised to carefully evaluate these risks before enabling this feature.
 
-For implementation guidance, see the [async_restore documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=cli#async_restore-pg).
+For implementation guidance, see the [`async_restore` documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-dashboard-backups&interface=cli#async_restore-pg).
 
 ## 18 December 2025
 {: #databases-for-postgresql-18Dec2025}
@@ -127,17 +149,17 @@ By proactively upgrading, you can control the timing and minimize any potential 
 {: release-note}
 
 As part of the latest {{site.data.keyword.databases-for-postgresql}} release, two new extensions have been introduced: PgAnon for native data masking and PgCron for job scheduling
-:  PgAnon enables efficient data anonymization, supporting privacy and compliance requirements across various use cases. PgCron adds native job scheduling capabilities to PostgreSQL, allowing users to automate recurring tasks within the database environment. For setup instructions and more information, see the documentation for both [anon](/docs/databases-for-postgresql?topic=databases-for-postgresql-data-masking) and [pg_cron](/docs/databases-for-postgresql?topic=databases-for-postgresql-pg_cron).
+:  PgAnon enables efficient data anonymization, supporting privacy and compliance requirements across various use cases. PgCron adds native job scheduling capabilities to PostgreSQL, allowing users to automate recurring tasks within the database environment. For setup instructions and more information, see the documentation for both [`anon`](/docs/databases-for-postgresql?topic=databases-for-postgresql-data-masking) and [`pg_cron`](/docs/databases-for-postgresql?topic=databases-for-postgresql-pg_cron).
 
-:  Additionally, this release also includes an enhancement to **Pgaudit**, enabling session logging for your PostgreSQL deployments. For more information, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit).
+:  Additionally, this release also includes an enhancement to `pgaudit`, enabling session logging for your PostgreSQL deployments. For more information, see the [documentation](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgaudit).
 
 
 ## 29 April 2025
 {: #databases-for-postgresql-29Apr2025}
 {: release-note}
 
-Seamless Vector Search comes to {{site.data.keyword.databases-for-postgresql}} with pgVector
-:  {{site.data.keyword.databases-for-postgresql}} users can now enhance their PostgreSQL instances with the pgVector extension, enabling native support for vector embeddings. This tight integration simplifies the development of AI-powered applications, accelerates the process, and reduces architectural complexity by eliminating the need for separate vector databases. For more information, see [Managing PostgreSQL extensions](/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions).
+Seamless Vector Search comes to {{site.data.keyword.databases-for-postgresql}} with `pgvector`
+:  {{site.data.keyword.databases-for-postgresql}} users can now enhance their PostgreSQL instances with the `pgvector` extension, enabling native support for vector embeddings. This tight integration simplifies the development of AI-powered applications, accelerates the process, and reduces architectural complexity by eliminating the need for separate vector databases. For more information, see [Managing PostgreSQL extensions](/docs/databases-for-postgresql?topic=databases-for-postgresql-extensions).
 
 PgVector is only offered for PostgreSQL version 15 and above.
 {: important}
@@ -154,7 +176,7 @@ PgVector is only offered for PostgreSQL version 15 and above.
 {: release-note}
 
 {{site.data.keyword.databases-for}} logs and events are now available on {{site.data.keyword.logs_routing_full}}
-: {{site.data.keyword.databases-for}} has onboarded {{site.data.keyword.logs_routing_full}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Customers are expected to use {{site.data.keyword.logs_routing_full}} to review their database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started-cdb-logging-monitoring) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
+: {{site.data.keyword.databases-for}} integrates with {{site.data.keyword.logs_routing_full}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Customers are expected to use {{site.data.keyword.logs_routing_full}} to review their database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started-cdb-logging-monitoring) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
 
 ## 16 September 2024
 {: #databases-for-postgresql-16sept2024}
@@ -168,7 +190,7 @@ Private endpoints as new default
 {: release-note}
 
 New hosting models
-:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui){: external}.
+:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, high-performance enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui){: external}.
 
 ## 27 November 2023
 {: #databases-for-postgresql-27nov2023}
@@ -181,9 +203,9 @@ Monitoring Integration documentation updated
 {: #databases-for-postgresql-17nov2023}
 {: release-note}
 
-Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance published
-:  With this tutorial, deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance. pgadmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure.
-For more information, see [Deploy pgadmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgadmin-code-engine-icd-postgresql){: external}.
+Deploy pgAdmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance published
+:  With this tutorial, deploy pgAdmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance. pgAdmin is a web interface that allows you to view and modify the data in your PostgreSQL database. Code Engine is a fully managed, serverless platform that allows you to run workloads without worrying about deploying infrastructure.
+For more information, see [Deploy pgAdmin using Code Engine and connect to your {{site.data.keyword.databases-for-postgresql}} instance](/docs/databases-for-postgresql?topic=databases-for-postgresql-pgadmin-code-engine-icd-postgresql){: external}.
 
 ## 7 July 2023
 {: #databases-for-postgresql-07july2023}

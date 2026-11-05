@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025
-lastupdated: "2025-10-07"
+  years: 2026
+lastupdated: "2026-11-02"
 
 keywords: postgresql, databases, PostgreSQL Anonymizer, Postgresql data masking, GDPR compliance PostgreSQL, Static Masking, Dynamic Masking, Anonymous Dumps, Generalization
 
@@ -67,7 +67,7 @@ For more information, see [Static masking](https://postgresql-anonymizer.readthe
     ```
     {: pre}
 
-5. Apply the rules permanently. below command permanently replaces the original data in the specified table with the masked data.
+5. Apply the rules permanently. The following command replaces the original data in the specified table with the masked data.
 
     ```sh
     SELECT anon.anonymize_table('<table_name>');
@@ -75,7 +75,7 @@ For more information, see [Static masking](https://postgresql-anonymizer.readthe
     {: pre}
 
 
-  - Static masking is a slow process. The principle of static masking is to update all lines of all tables containing at least one masked column. This means that PostgreSQL will rewrite all the data on disk. Depending on the database size, the hardware, and the instance config, it may be faster to export the anonymized data and reload it into the database.
+  - Static masking is a slow process. The principle of static masking is to update all lines of all tables containing at least one masked column. This means that PostgreSQL will rewrite all the data on disk. Depending on the database size, the hardware, and the instance configuration, it may be faster to export the anonymized data and reload it into the database.
 
   - To apply masking to newly inserted rows in a table, execute the following command.
 
@@ -144,7 +144,7 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-8. Declare the masking rules.
+7. Declare the masking rules.
 
     ```sh
     SECURITY LABEL FOR anon
@@ -153,7 +153,7 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-9. Verify the masking rules.
+8. Verify the masking rules.
 
     ```sh
     SELECT objoid::regclass, provider, label
@@ -162,7 +162,7 @@ For more information, see [Dynamic masking](https://postgresql-anonymizer.readth
     ```
     {: pre}
 
-10. Connect to the database using the masked role, and query the table. You should see the masked data as per the rules defined.
+9. Connect to the database by using the masked role, and query the table. The query returns the data masked according to the rules that you declared.
 
     ```sh
     select * from <table_name>;
@@ -246,29 +246,29 @@ exposing personally identifiable information (PII) or sensitive attributes. For 
 8. Label the role as a masked role.
 
     ```sh
-    SECURITY LABEL FOR anon ON ROLE <schema_name> IS 'MASKED';
+    SECURITY LABEL FOR anon ON ROLE <role_name> IS 'MASKED';
     ```
     {: pre}
 
 9. Grant access to the masked schema.
 
     ```sh
-    GRANT USAGE ON SCHEMA <schema_name> TO <masked_role>;
+    GRANT USAGE ON SCHEMA <schema_name> TO <role_name>;
     ```
     {: pre}
 
 10. Grant Select access on masked tables.
 
     ```sh
-    grant select ON <schema_name>.<table_name> to <masked_role>;
+    grant select ON <schema_name>.<table_name> to <role_name>;
     ```
     {: pre}
 
-11. Export masked data using pg_dump as the masked role.
+11. Export the masked data by running `pg_dump` as the masked role.
 
-    For more information, see [pg dump commands](/docs/databases-for-postgresql?topic=databases-for-postgresql-migrating).
+    For more information, see [`pg_dump` commands](/docs/databases-for-postgresql?topic=databases-for-postgresql-migrating).
 
-    To export masked data, run pg_dump using the masked role. If pg_dump is executed by an admin user, the data will be exported without masking.
+    Run `pg_dump` as the masked role to export masked data. If the admin user runs `pg_dump`, the export contains the original, unmasked data.
     {: note}
 
 ## Generalization
@@ -344,7 +344,7 @@ SECURITY LABEL FOR anon ON ROLE <role_name> IS NULL;
 ## Disable masking rule
 {: #disable-masking}
 
-Use the following command to disable the masking role.
+Use the following command to disable the masking rule for a column.
 
 ```sh
 SECURITY LABEL FOR anon
@@ -352,3 +352,42 @@ SECURITY LABEL FOR anon
   IS NULL;
 ```
 {: pre}
+
+## Upgrading PostgreSQL Anonymizer
+{: #anon-upgrading}
+
+PostgreSQL Anonymizer does not provide upgrade scripts, so `ALTER EXTENSION anon UPDATE` fails with the error `extension "anon" has no update path`. When your deployment provides a newer version of the extension, drop and re-create the extension in each database that uses it. Before you start, review the [PostgreSQL Anonymizer upgrade notes](https://postgresql-anonymizer.readthedocs.io/en/stable/UPGRADE/){: external} for the versions after the installed one.
+
+1. Compare the installed version with the version that your deployment provides.
+
+    ```sql
+    SELECT e.extversion AS installed_version, a.default_version AS available_version
+    FROM pg_catalog.pg_extension AS e
+    JOIN pg_catalog.pg_available_extensions AS a ON a.name = e.extname
+    WHERE e.extname = 'anon';
+    ```
+    {: pre}
+
+    If both versions are the same, the database is up to date.
+
+2. Drop the extension.
+
+    ```sql
+    DROP EXTENSION anon;
+    ```
+    {: pre}
+
+    If views or other objects use `anon` functions, the command fails with the error `cannot drop extension anon because other objects depend on it`, and the error details list those objects. Save their definitions, drop them, and run the command again. Do not add `CASCADE` to the command, because `CASCADE` drops those objects permanently.
+
+3. Re-create and initialize the extension.
+
+    ```sql
+    CREATE EXTENSION anon;
+    SELECT public.run_anon_init();
+    ```
+    {: pre}
+
+4. Re-create the objects that you dropped in step 2.
+
+PostgreSQL stores masking rules, masked roles, and trusted schemas as security labels on your own objects. They remain in place when you drop and re-create the extension.
+{: note}
