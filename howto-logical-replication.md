@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2026
-lastupdated: "2026-10-07"
+lastupdated: "2026-11-10"
 
 
 keywords: postgresql, databases, postgres logical replication, postgresql logical replication
@@ -45,6 +45,35 @@ Arguments:
 Usage:
     exampledb=> CREATE PUBLICATION my_publication;
     CREATE PUBLICATION
+```
+{: pre}
+
+**`create_publication_all_tables`**
+
+Creates a publication that includes all tables in the database, including tables created in the future.
+
+```sh
+Arguments:
+    publisher_name               The unique name of the publication to create.
+    db_name                      The name of the database where the publication is created.
+
+Usage:
+    exampledb=> SELECT create_publication_all_tables('my_publication', 'exampledb');
+```
+{: pre}
+
+**`create_publication_for_schema`**
+
+Creates a publication for all tables within a specific schema (supported on PostgreSQL 15 and later).
+
+```sh
+Arguments:
+    publisher_name               The unique name of the publication to create.
+    schema_name                  The name of the schema (for example, 'public').
+    db_name                      The name of the database where the publication is created.
+
+Usage:
+    exampledb=> SELECT create_publication_for_schema('my_publication', 'public', 'exampledb');
 ```
 {: pre}
 
@@ -138,19 +167,20 @@ Arguments:
                         determines whether the initial data from the publication
                         should be copied to the subscriber when the subscription
                         is created.
-    origin              The origin parameter (ANY or NONE, default: NONE) allows
+    origin              The origin parameter (ANY or NONE, default: 'ANY') allows
                         filtering of changes based on their origin. It helps exclude
                         or include changes coming from specific nodes in multi-node or
                         cascading replication setups.
     failover            The failover parameter (true or false, default: false) enables
                         support for automatic failover of the subscription between replicated
                         nodes, ensuring continuity during primary node transitions.
+                        Must be set to false when subscribing to PostgreSQL 16 or earlier publishers.
 
 Usage:
-    exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','exampledb','my_publication');
+    exampledb=> SELECT create_subscription('subs1', '130.215.223.184', '5432', 'password', 'admin', 'exampledb', 'my_publication');
 
     PostgreSQL 17 and later
-    exampledb=> SELECT create_subscription('subs1','130.215.223.184','5432','password','admin','exampledb','my_publication'  'true',  'ANY' , 'true');
+    exampledb=> SELECT create_subscription('subs1', '130.215.223.184', '5432', 'password', 'admin', 'exampledb', 'my_publication', true, 'ANY', false);
 ```
 
 **`delete_subscription`**
